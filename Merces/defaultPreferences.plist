@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>taxiTipArray</key>
+	<array>
+		<real>0.19</real>
+		<real>0.21</real>
+		<real>0.25</real>
+	</array>
+	<key>quickTipArray</key>
+	<array>
+		<integer>0</integer>
+		<integer>0</integer>
+		<integer>0</integer>
+	</array>
+	<key>salonTipArray</key>
+	<array>
+		<real>0.1</real>
+		<real>0.2</real>
+		<real>0.25</real>
+	</array>
+	<key>diningTipArray</key>
+	<array>
+		<real>0.1</real>
+		<real>0.18</real>
+		<real>0.22</real>
+	</array>
+	<key>deliveryTipArray</key>
+	<array>
+		<real>0.15</real>
+		<real>0.2</real>
+		<real>0.25</real>
+	</array>
+	<key>casinoTipArray</key>
+	<array>
+		<real>0</real>
+		<real>0.01</real>
+		<real>0.03</real>
+	</array>
+	<key>barTipArray</key>
+	<array>
+		<real>0.05</real>
+		<real>0.1</real>
+		<real>0.2</real>
+	</array>
+	<key>userLocalSalesTax</key>
+	<real>0</real>
+	<key>roundTotalAmountSwitchOnOff</key>
+	<false/>
+	<key>roundTipAmountSwitchOnOff</key>
+	<false/>
+	<key>tipIncludeTaxSwitchOnOff</key>
+	<false/>
+	<key>subtotalIsPostTaxSwitchOnOff</key>
+	<false/>
+	<key>useDynamicText</key>
+	<false/>
+	<key>phoneBackgroundColor</key>
+	<string>UIDeviceRGBColorSpace 1 0.972549 0.913725 1</string>
+	<key>phoneMainColor</key>
+	<string>UIDeviceRGBColorSpace 0.549 0.627 0.49 1</string>
+	<key>phoneTextColor</key>
+	<string>UIDeviceRGBColorSpace 0.309804 0.313725 0.317647 1</string>
+	<key>watchMainColor</key>
+	<string>UIDeviceRGBColorSpace 0.549 0.627 0.49 1</string>
+	<key>watchTextColor</key>
+	<string>UIDeviceRGBColorSpace 1 0.972549 0.913725 1</string>
+	<key>changeColorAlertShown</key>
+	<false/>
+	<key>setupAlertShown</key>
+	<false/>
+</dict>
+</plist>

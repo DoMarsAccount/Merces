@@ -1,0 +1,52 @@
+/* 
+  Localizable.strings
+  Merces
+
+  Created by Donovan McCray on 4/18/15.
+  Copyright (c) 2015 DoMarsToyBox. All rights reserved.
+*/
+
+Dining = "식사";
+Bar = "바";
+Taxi = "텍시";
+Salon = "살롱";
+Delivery = "배달";
+
+VenueServiceQuality =  "장소 서비스 품질 설정";
+
+Subtotal = "소계";
+SalesTax = "판매 세금";
+TipRate = "팁 비율";
+NumberOfPeople = "사람 수";
+VenueAndService = "장소 및 서비스";
+TotaledAmounts = "총 금액";
+
+Venue = "장소";
+ServiceRating = "서비스 질";
+
+TipAmount = "팁 금액";
+TotalAmountPerPerson = "총 (일인당)";
+GrandTotal = "총 합계";
+
+MainColor = "주요 색상";
+SecondaryColor = "보조 색상";
+
+WelcomeToMerces = "Merces에 오신 것을 환영합니다!";
+IdealExperience = "최상의 경험을 위해, 개인화먼저 내 Merces 설정.";
+TakeToMyMerces = "나를 내 Merces하기 위해 수행";
+DoItLater = "나는 나중에 할 것";
+JustToBeSafe = "그냥 안전을 위해 ";
+WantToClearValues = "모든 값을 지우시겠습니까?";
+No = "아니";
+Yes = "그래";
+
+DontTapGlass = "유리를 누릅니다하지 마십시오. 대신, 와이프는 색상을 선택 떠났다.";
+Whoops = "사고";
+Okay = "확인";
+
+// Apple Watch
+
+Settings = "설정";
+Themes = "테마";
+General = "일반";
+RoundUp = "원화 반올림";

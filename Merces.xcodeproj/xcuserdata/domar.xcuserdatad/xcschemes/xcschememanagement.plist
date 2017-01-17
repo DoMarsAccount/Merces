@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Merces WatchKit App.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>Merces.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>MercesWidget.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>E38D63CC1ACB323E0060EE81</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E3AB121F1E2DC1DF0021C889</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E3B4B2B31ABB2CF7002A6C16</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E3B4B2C81ABB2CF7002A6C16</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

@@ -1,0 +1,52 @@
+/* 
+  Localizable.strings
+  Merces
+
+  Created by Donovan McCray on 4/18/15.
+  Copyright (c) 2015 DoMarsToyBox. All rights reserved.
+*/
+
+Dining = "餐";
+Bar = "酒吧";
+Taxi = "出租車";
+Salon = "沙龍";
+Delivery = "交貨";
+
+VenueServiceQuality =  "服務設置地點質量";
+
+Subtotal = "小計";
+SalesTax = "营业税";
+TipRate = "提示率";
+NumberOfPeople = "人數 ";
+VenueAndService = "場地和服務";
+TotaledAmounts = "數量";
+
+Venue = "地方";
+ServiceRating = "服務質量";
+
+TipAmount = "提示金額";
+TotalAmountPerPerson = "共（每人）";
+GrandTotal = "累計";
+
+MainColor = "主色";
+SecondaryColor = "間色";
+
+WelcomeToMerces = "歡迎來到Merces！";
+IdealExperience = "為了獲得最佳的體驗，個性化你我的Merces設置第一。";
+TakeToMyMerces = "帶我去我的Merces";
+DoItLater = "我稍後將會去做";
+JustToBeSafe = "為了安全起見";
+WantToClearValues = "你想清除所有值？";
+No = "不";
+Yes = "是的";
+
+DontTapGlass = "不要拍打玻璃。相反，輕掃留下來選擇顏色。";
+Whoops = "哎呦";
+Okay = "好";
+
+// Apple Watch
+
+Settings = "設置";
+Themes = "主題";
+General = "一般";
+RoundUp = "圍捕";
