@@ -123,17 +123,17 @@
 		E3A61E131AE3F6A700F2467C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E3A61E141AE3F6AC00F2467C /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E3A61E171AE450A100F2467C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		E3AB12001E2DBE950021C889 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
-		E3AB12011E2DBE950021C889 /* MainPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
-		E3AB12021E2DBE950021C889 /* SettingsPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
-		E3AB12031E2DBE950021C889 /* OptimalUsagePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptimalUsagePage.swift; sourceTree = "<group>"; };
-		E3AB12041E2DBE950021C889 /* MyMerces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMerces.swift; sourceTree = "<group>"; };
-		E3AB12051E2DBE950021C889 /* ThemesPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemesPage.swift; sourceTree = "<group>"; };
-		E3AB12061E2DBE950021C889 /* InAppPurchasePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchasePage.swift; sourceTree = "<group>"; };
-		E3AB120F1E2DBED50021C889 /* VariableAmountsClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VariableAmountsClass.swift; sourceTree = "<group>"; };
-		E3AB12101E2DBED50021C889 /* NumberFormattingClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberFormattingClass.swift; sourceTree = "<group>"; };
-		E3AB12111E2DBED50021C889 /* ColoringAndThemes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColoringAndThemes.swift; sourceTree = "<group>"; };
-		E3AB12121E2DBED50021C889 /* AppleWatchColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleWatchColors.swift; sourceTree = "<group>"; };
+		E3AB12001E2DBE950021C889 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationController.swift; path = Merces/NavigationController.swift; sourceTree = "<group>"; };
+		E3AB12011E2DBE950021C889 /* MainPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainPage.swift; path = Merces/MainPage.swift; sourceTree = "<group>"; };
+		E3AB12021E2DBE950021C889 /* SettingsPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsPage.swift; path = Merces/SettingsPage.swift; sourceTree = "<group>"; };
+		E3AB12031E2DBE950021C889 /* OptimalUsagePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OptimalUsagePage.swift; path = Merces/OptimalUsagePage.swift; sourceTree = "<group>"; };
+		E3AB12041E2DBE950021C889 /* MyMerces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyMerces.swift; path = Merces/MyMerces.swift; sourceTree = "<group>"; };
+		E3AB12051E2DBE950021C889 /* ThemesPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThemesPage.swift; path = Merces/ThemesPage.swift; sourceTree = "<group>"; };
+		E3AB12061E2DBE950021C889 /* InAppPurchasePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InAppPurchasePage.swift; path = Merces/InAppPurchasePage.swift; sourceTree = "<group>"; };
+		E3AB120F1E2DBED50021C889 /* VariableAmountsClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VariableAmountsClass.swift; path = "../../../OG Merces/Merces/VariableAmountsClass.swift"; sourceTree = "<group>"; };
+		E3AB12101E2DBED50021C889 /* NumberFormattingClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NumberFormattingClass.swift; path = "../../../OG Merces/Merces/NumberFormattingClass.swift"; sourceTree = "<group>"; };
+		E3AB12111E2DBED50021C889 /* ColoringAndThemes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColoringAndThemes.swift; path = "../../../OG Merces/Merces/ColoringAndThemes.swift"; sourceTree = "<group>"; };
+		E3AB12121E2DBED50021C889 /* AppleWatchColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppleWatchColors.swift; path = "../../../OG Merces/Merces/AppleWatchColors.swift"; sourceTree = "<group>"; };
 		E3AB12181E2DBF210021C889 /* defaultPreferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaultPreferences.plist; sourceTree = "<group>"; };
 		E3AB121A1E2DBF480021C889 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E3AB12201E2DC1DF0021C889 /* MercesWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MercesWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,6 +212,21 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E33460A91E32CC3000D467C6 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E3AB12001E2DBE950021C889 /* NavigationController.swift */,
+				E3AB12011E2DBE950021C889 /* MainPage.swift */,
+				E3AB12021E2DBE950021C889 /* SettingsPage.swift */,
+				E3AB12031E2DBE950021C889 /* OptimalUsagePage.swift */,
+				E3AB12041E2DBE950021C889 /* MyMerces.swift */,
+				E3AB12051E2DBE950021C889 /* ThemesPage.swift */,
+				E3AB12061E2DBE950021C889 /* InAppPurchasePage.swift */,
+			);
+			name = ViewControllers;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		E38D63C41ACB323E0060EE81 /* Merces WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,21 +299,6 @@
 			name = Tables;
 			sourceTree = "<group>";
 		};
-		E3AB12071E2DBE950021C889 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				E3AB12001E2DBE950021C889 /* NavigationController.swift */,
-				E3AB12011E2DBE950021C889 /* MainPage.swift */,
-				E3AB12021E2DBE950021C889 /* SettingsPage.swift */,
-				E3AB12031E2DBE950021C889 /* OptimalUsagePage.swift */,
-				E3AB12041E2DBE950021C889 /* MyMerces.swift */,
-				E3AB12051E2DBE950021C889 /* ThemesPage.swift */,
-				E3AB12061E2DBE950021C889 /* InAppPurchasePage.swift */,
-			);
-			name = ViewControllers;
-			path = ../../GitRepos/Mercii/Mercii;
-			sourceTree = "<group>";
-		};
 		E3AB12131E2DBED50021C889 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -356,7 +356,7 @@
 				E3B4B2DD1ABB2D67002A6C16 /* Spring */,
 				E3B4B2ED1ABB2E46002A6C16 /* Views */,
 				E3B4B2C01ABB2CF7002A6C16 /* Images.xcassets */,
-				E3AB12071E2DBE950021C889 /* ViewControllers */,
+				E33460A91E32CC3000D467C6 /* ViewControllers */,
 				E3B4B2B71ABB2CF7002A6C16 /* Supporting Files */,
 			);
 			path = Merces;

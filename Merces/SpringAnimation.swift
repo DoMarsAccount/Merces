@@ -17,11 +17,11 @@ func spring(_ duration: TimeInterval, animations: (() -> Void)!) {
     
     UIView.animate(withDuration: duration, delay: delay as TimeInterval, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
         
-        animations()
+            animations()
         
-    }, completion: { finished in
-        
-        
+        }, completion: { finished in
+    
+            
     })
     
 }
@@ -49,8 +49,8 @@ func springForInputViews(_ duration: TimeInterval, animations:(() -> Void)!) {
         
         animations()
         
-    }, completion: { finished in
-        
+        }, completion: { finished in
+            
     })
     
 }
@@ -61,8 +61,8 @@ func springComplete(_ duration: TimeInterval, animations: (() -> Void)!, complet
         
         animations()
         
-    }, completion: { finished in
-        completion(true)
+        }, completion: { finished in
+            completion(true)
     })
 }
 
@@ -72,8 +72,8 @@ func springForTotaledAmountsViews(_ duration: TimeInterval, animations:(() -> Vo
         
         animations()
         
-    }, completion: { finished in
-        completion(true)
+        }, completion: { finished in
+            completion(true)
     })
     
 }
@@ -90,7 +90,7 @@ func springScaleFrom (_ view: UIView, x: CGFloat, y: CGFloat, scaleX: CGFloat, s
         let scale = CGAffineTransform(scaleX: 1, y: 1)
         view.transform = translation.concatenating(scale)
         
-    }, completion: nil)
+        }, completion: nil)
 }
 
 func springScaleTo (_ view: UIView, x: CGFloat, y: CGFloat, scaleX: CGFloat, scaleY: CGFloat) {
@@ -104,7 +104,7 @@ func springScaleTo (_ view: UIView, x: CGFloat, y: CGFloat, scaleX: CGFloat, sca
         let scale = CGAffineTransform(scaleX: scaleX, y: scaleY)
         view.transform = translation.concatenating(scale)
         
-    }, completion: nil)
+        }, completion: nil)
 }
 
 func popoverTopRight(_ view: UIView) {
@@ -121,6 +121,6 @@ func popoverTopRight(_ view: UIView) {
         view.transform = translate.concatenating(scale)
         view.alpha = 1
         
-    }, completion: nil)
+        }, completion: nil)
     
 }

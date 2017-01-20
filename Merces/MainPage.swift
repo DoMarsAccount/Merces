@@ -1,0 +1,1526 @@
+
+//
+//  MainPage.swift
+//  Merces
+//
+//  Created by Donovan McCray on 3/19/15.
+//  Copyright (c) 2015 DoMarsToyBox. All rights reserved.
+//
+
+import UIKit
+import ChameleonFramework
+
+let varAmountsObject = VariableAmountsClass()
+
+let coloringThemes = ColoringAndThemes()
+
+@available(iOS 10.0, *)
+class MainPage: UIViewController {
+
+    var userWantsToEditThisField: String!
+    
+    var keypadIsUp = false
+    
+    var venueSelectorIsUp = false
+    
+    var totalAmountsViewIsFull = false
+    
+    /* ----------------- Collection Outlets --------------------- */
+    
+    @IBOutlet var collectionSectionHeaderLabels: [UILabel]!
+    
+    @IBOutlet var collectionTotaledAmountsLabels: [UILabel]!
+    
+    @IBOutlet var collectionInputFieldLabels: [UITextField]!
+    
+    @IBOutlet var collectionTotaledAmountDisplays: [UILabel]!
+    
+    @IBOutlet var collectionKeypadButtons: [UIButton]!
+    
+    @IBOutlet var collectionVenueViews: [UIView]!
+    
+    @IBOutlet var collectionVenueLabels: [UILabel]!
+    
+    @IBOutlet var collectionMainViews: [UIView]!
+    
+    
+    /* ----------------- Views -------------------- */
+    
+    @IBOutlet var billTaxPeopleStuffView: UIView!
+    
+    @IBOutlet var venueAndServiceStuffView: UIView!
+    
+    @IBOutlet var totaledAmountsStuffView: UIView!
+    
+    @IBOutlet var keypadStuffView: UIView!
+    
+    @IBOutlet var venuesStuffView: UIView!
+    
+    /* ----------------- Outlets -------------------- */
+    
+    @IBOutlet var billAmountTextFieldOutlet: UITextField!
+    @IBOutlet var taxAmountTextFieldOutlet: UITextField!
+    @IBOutlet var tipRateTextFieldOutlet: UITextField!
+    @IBOutlet var numberOfPeoplePayingTextFieldOutlet: UITextField!
+    @IBOutlet var venueSelectionLabelOutlet: UITextField!
+    
+    @IBOutlet var serviceRatingLabelOutlet: UISegmentedControl!
+    
+    @IBOutlet var settingsIconOutlet: UIBarButtonItem!
+
+    @IBOutlet var totaledAmountsLabel: UILabel!
+    
+    @IBOutlet var tipAmountLabelOutlet: UILabel!
+    @IBOutlet var totalAmountPerPersonLabelOutlet: UILabel!
+    @IBOutlet var totalAmountLabelOutlet: UILabel!
+    
+    @IBOutlet var tipAmountTitleLabel: UILabel!
+    @IBOutlet var totalAmountPerPersonTitleLabel: UILabel!
+    @IBOutlet var totalAmountTitleLabel: UILabel!
+    
+    @IBOutlet weak var taxAmountMaskOutlet: UIButton!
+    
+    @IBOutlet var coinsImageOutlet: UIImageView!
+    
+    @IBOutlet var moreOrLessPerPersonLabel: UILabel!
+    
+    /* ----------------- Constraint Outlets -------------------- */
+    
+    @IBOutlet var singlePersonTotaledAmountsViewCOnstraint: NSLayoutConstraint!
+    
+    
+    
+    /* ---- Default Field Sizes ----- */
+    
+    var origTipAmountTitleLabelHeight:CGFloat = 0.0
+    
+    var origTipAmountTitleLabelY:CGFloat = 0.0
+    
+    var origTipAmountLabelHeight:CGFloat = 0.0
+    
+    var origTipAmountLabelY:CGFloat = 0.0
+    
+    var origTotalAmountPerPersonTitleLabelHeight:CGFloat = 0.0
+    
+    var origTotalAmountPerPersonTitleLabelY:CGFloat = 0.0
+    
+    var origTotalAmountPerPersonalLabelHeight:CGFloat = 0.0
+    
+    var origTotalAmountPerPersonalLabelY:CGFloat = 0.0
+    
+    var origTotalAmountTitleLabelHeight:CGFloat = 0.0
+    
+    var origTotalAmountTitleLabelY:CGFloat = 0.0
+    
+    var origTotalAmountLabelHeight:CGFloat = 0.0
+    
+    var origTotalAmountLabelY:CGFloat = 0.0
+    
+    var origTotaledAmountsFrameHeight:CGFloat = 0.0
+    
+    var origTotaledAmountsFrameWidth:CGFloat = 0.0
+    
+    var origTotaledAmountsFrameY:CGFloat = 0.0
+    
+    var origTotaledAmountsLabelHeight:CGFloat = 0.0
+    
+    var origTotaledAmountsLabelWidth:CGFloat = 0.0
+    
+    var origTotaledAmountsLabelY:CGFloat = 0.0
+    
+    /* --------------- Else -------------- */
+    
+    let generator = UISelectionFeedbackGenerator()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.setStatusBarStyle(UIStatusBarStyleContrast)
+        
+        /* ------------ Set up Default Values ------------- */
+        let defaultPrefsFile = Bundle.main.path(forResource: "defaultPreferences", ofType: "plist")
+        
+        let defaultPreferences = NSDictionary(contentsOfFile: defaultPrefsFile!)
+        
+        UserDefaults(suiteName:"group.DoMarsToyBox.Merces")?.register(defaults: defaultPreferences! as! [String : AnyObject])
+        
+        var haveShownSetupAlert = UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.bool(forKey: "setupAlertShown")
+        
+        UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.set(varAmountsObject.localSalesTax, forKey: "userLocalSalesTax")
+        
+        /* ------------ Accessibility/ Dynamic Type ------------- */
+        
+        NotificationCenter.default.addObserver(self,
+            selector: #selector(MainPage.preferredContentSizeChanged(_:)),
+            name: NSNotification.Name.UIContentSizeCategoryDidChange,
+            object: nil)
+        
+        /* ------------ Display Quick Venue ------------- */
+        
+        varAmountsObject.selectedVenue = "Quick"
+        
+        varAmountsObject.tipRateArray = varAmountsObject.venuesAndTipsDictionary[varAmountsObject.selectedVenue]!
+        
+        varAmountsObject.tipRate = varAmountsObject.tipRateArray[1]
+        
+        venueSelectionLabelOutlet.text = varAmountsObject.selectedVenue
+        
+        serviceRatingLabelOutlet.selectedSegmentIndex = 1
+        
+        updateColorValues()
+        
+        updateFieldValues()
+        
+        /* ------------ Intro -------------- */
+        
+        
+        if haveShownSetupAlert == false && varAmountsObject.quickTipArray[1] == 0 {
+              
+            let alert = UIAlertController(title: "Welcome to Merces!", message: "For the best experience, personalize your settings first.", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Let's do it!", comment: "Take me to My Merces"), style: UIAlertActionStyle.default, handler: { (_) in
+                
+                let myMercesViewController = self.storyboard?.instantiateViewController(withIdentifier: "MyMerces") as! MyMerces
+                
+                self.navigationController?.pushViewController(myMercesViewController, animated: true)
+                
+            }))
+            
+            alert.addAction(UIAlertAction(title: NSLocalizedString("I'll do it later", comment: "I'll do it later"), style: UIAlertActionStyle.cancel, handler: { (_) in
+                
+                
+                
+            }))
+            
+            UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.set(true, forKey: "setupAlertShown")
+            
+            haveShownSetupAlert = UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.bool(forKey: "setupAlertShown")
+            
+            
+            self.present(alert, animated: true, completion: nil)
+            
+        }
+        
+        
+        
+    }
+    
+    
+    func preferredContentSizeChanged(_ notification: Notification) {
+        
+        updateFieldValues()
+        
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        updateColorValues()
+        
+        varAmountsObject.tipRateArray = varAmountsObject.venuesAndTipsDictionary[varAmountsObject.selectedVenue]!
+        
+        updateFieldValues()
+        
+    }
+    
+    
+    /* =================== User Input Actions ====================== */
+    
+    @IBAction func buttonPressed(_ sender: UIButton) {
+        
+        springForKeypadButtonsPressed(sender: sender, animations: {
+            
+            let buttonTitle = sender.titleLabel!.text!
+            
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+            
+            if self.userWantsToEditThisField == "Bill Amount" {
+                
+                varAmountsObject.arrayOfButtonsPressedForBillAmountAsString.append(buttonTitle)
+                
+                self.calculate(varAmountsObject.arrayOfButtonsPressedForBillAmountAsString, firstResponderValue: self.billAmountTextFieldOutlet.tag)
+                
+            } else if self.userWantsToEditThisField == "Tax Amount" {
+                
+                varAmountsObject.arrayOfButtonsPressedForTaxAmountAsString.append(buttonTitle)
+                
+                self.calculate(varAmountsObject.arrayOfButtonsPressedForTaxAmountAsString, firstResponderValue: self.taxAmountTextFieldOutlet.tag)
+                
+                
+            } else if self.userWantsToEditThisField == "Tip Rate" {
+                
+                varAmountsObject.arrayOfButtonsPressedForTipRateAsString.append(buttonTitle)
+                
+                self.calculate(varAmountsObject.arrayOfButtonsPressedForTipRateAsString, firstResponderValue: self.tipRateTextFieldOutlet.tag)
+                
+            } else if self.userWantsToEditThisField == "Number of People" {
+                
+                varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.append(buttonTitle)
+                
+                self.calculate(varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString, firstResponderValue: self.numberOfPeoplePayingTextFieldOutlet.tag)
+                
+            }
+            
+        })
+        
+    }
+    
+    
+    @IBAction func deletePressed(_ sender: UIButton) {
+        
+        springForKeypadButtonsPressed(sender: sender, animations: {
+            
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+            
+            if self.userWantsToEditThisField == "Bill Amount" {
+                
+                if !varAmountsObject.arrayOfButtonsPressedForBillAmountAsString.isEmpty {
+                    varAmountsObject.arrayOfButtonsPressedForBillAmountAsString.removeLast()
+                    
+                }
+                
+                self.calculate(varAmountsObject.arrayOfButtonsPressedForBillAmountAsString, firstResponderValue: self.billAmountTextFieldOutlet.tag)
+                
+            } else if self.userWantsToEditThisField == "Tax Amount" {
+                
+                if !varAmountsObject.arrayOfButtonsPressedForTaxAmountAsString.isEmpty {
+                    
+                    varAmountsObject.arrayOfButtonsPressedForTaxAmountAsString.removeLast()
+                    
+                }
+                
+                self.calculate(varAmountsObject.arrayOfButtonsPressedForTaxAmountAsString, firstResponderValue: self.taxAmountTextFieldOutlet.tag)
+                
+            } else if self.userWantsToEditThisField == "Tip Rate" {
+                
+                if !varAmountsObject.arrayOfButtonsPressedForTipRateAsString.isEmpty {
+                    
+                    varAmountsObject.arrayOfButtonsPressedForTipRateAsString.removeLast()
+                    
+                }
+                
+                self.calculate(varAmountsObject.arrayOfButtonsPressedForTipRateAsString, firstResponderValue: self.tipRateTextFieldOutlet.tag)
+                
+            } else if self.userWantsToEditThisField == "Number of People" {
+                
+                if !varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.isEmpty {
+                    
+                    varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.removeLast()
+                    
+                }
+                self.calculate(varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString, firstResponderValue: self.numberOfPeoplePayingTextFieldOutlet.tag)
+                
+            }
+            
+        })
+        
+    }
+    
+    
+    @IBAction func donePressed(_ sender: UIButton) {
+        
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        
+        self.unscaleViewsWithSpring()
+        
+        if self.userWantsToEditThisField == "Bill Amount" {
+            
+            self.keypadDisappear()
+            
+        } else if self.userWantsToEditThisField == "Tax Amount" {
+            
+            self.keypadDisappear()
+            
+        } else if self.userWantsToEditThisField == "Tip Rate" {
+            
+            self.keypadDisappear()
+            
+        } else if self.userWantsToEditThisField == "Number of People" {
+            
+            self.keypadDisappear()
+            
+        }
+        
+        self.updateFieldValues()
+        
+        checkTotalAmountPerPersonValue()
+        
+    }
+    
+    func checkTotalAmountPerPersonValue() {
+        
+        if varAmountsObject.moreOrLessPerPerson != 0.0 {
+            
+            if moreOrLessPerPersonLabel.isHidden != true {
+                
+                moreOrLessPerPersonLabel.isHidden = true
+                
+                totalAmountPerPersonTitleLabel.isHidden = false
+                
+                totalAmountPerPersonLabelOutlet.isHidden = false
+                
+            }
+            
+            coinsImageOutlet.isHidden = false
+            
+            var hold = varAmountsObject.moreOrLessPerPerson
+            
+            // $0.09 / 2 yields odd result
+            
+            if round(hold) == 0 {
+                
+                if hold > 0 { hold = 1 }
+                else { hold = -1 }
+                
+            }
+            
+            if hold < 0 {
+                
+                coinsImageOutlet.image = UIImage(named: "coins-green")
+                
+            } else if hold > 0 {
+                
+                coinsImageOutlet.image = UIImage(named: "coins-red")
+                
+            } else {
+                
+                coinsImageOutlet.image = UIImage(named: "")
+                
+            }
+            
+            //print("Round:\(round(hold)) | Reg:\(hold) | Actual: \(varAmountsObject.moreOrLessPerPerson)")
+            
+        } else {
+            
+            moreOrLessPerPersonLabel.isHidden = true
+            
+            if varAmountsObject.numberOfPeoplePaying != 1 {
+            
+                totalAmountPerPersonTitleLabel.isHidden = false
+                
+                totalAmountPerPersonLabelOutlet.isHidden = false
+                
+            }
+            
+            coinsImageOutlet.isHidden = true
+            
+        }
+        
+    }
+    
+    @IBAction func venueSelected(_ sender: UIButton) {
+        
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        
+        /*
+        
+        10 = Bar
+        11 = Dining
+        12 = Taxi
+        13 = Quick
+        14 = Salon
+        15 = Delivery
+        
+        */
+        
+        switch sender.tag {
+            
+        case 10:
+            
+            varAmountsObject.selectedVenue = NSLocalizedString("Bar", comment: "Bar")
+            
+        case 11:
+            
+            varAmountsObject.selectedVenue = NSLocalizedString("Dining", comment:"Dining")
+            
+        case 12:
+            
+            varAmountsObject.selectedVenue = NSLocalizedString("Taxi", comment:"Taxi")
+            
+        case 13:
+            
+            varAmountsObject.selectedVenue = "Quick"
+            
+        case 14:
+            
+            varAmountsObject.selectedVenue = NSLocalizedString("Salon", comment:"Salon")
+            
+        case 15:
+            
+            varAmountsObject.selectedVenue = NSLocalizedString("Delivery", comment:"Delivery")
+            
+        default:
+            
+            varAmountsObject.selectedVenue = "None"
+            
+        }
+        
+        unscaleViewsWithSpring(); venueSelectorDisappear()
+        
+        varAmountsObject.tipRateArray = varAmountsObject.venuesAndTipsDictionary[varAmountsObject.selectedVenue]!
+        
+        venueSelectionLabelOutlet.text = varAmountsObject.selectedVenue
+        
+        serviceRatingLabelOutlet.selectedSegmentIndex = 1
+        
+        
+        if serviceRatingLabelOutlet.selectedSegmentIndex == 0 {
+            
+            varAmountsObject.tipRate = varAmountsObject.tipRateArray[0]
+            
+        } else if serviceRatingLabelOutlet.selectedSegmentIndex == 2 {
+            
+            varAmountsObject.tipRate = varAmountsObject.tipRateArray[2]
+            
+        } else {
+            
+            varAmountsObject.tipRate = varAmountsObject.tipRateArray[1]
+        }
+        
+        updateFieldValues()
+        
+    }
+    
+    
+    /*  ======================   Button Masks  ====================== */
+    
+    @IBAction func billAmountMaskButton(_ sender: AnyObject) {
+        
+        generator.selectionChanged()
+        
+        keypadAppear()
+        
+        userWantsToEditThisField = "Bill Amount"
+        
+        varAmountsObject.firstResponderTag = billAmountTextFieldOutlet.tag
+        
+        scaleViewsWithSpring(billAmountTextFieldOutlet.tag)
+        
+        // Here to smooth out effects of "Subtotal is Post Tax switch"
+        
+        self.calculate(varAmountsObject.arrayOfButtonsPressedForBillAmountAsString, firstResponderValue: self.billAmountTextFieldOutlet.tag)
+        
+        billAmountTextFieldOutlet.text = varAmountsObject.updateValues().formattedBillAmount
+        
+    }
+    
+    @IBAction func taxAmountMaskButton(_ sender: AnyObject) {
+        
+        generator.selectionChanged()
+        
+        keypadAppear()
+        
+        userWantsToEditThisField = "Tax Amount"
+        
+        varAmountsObject.firstResponderTag = taxAmountTextFieldOutlet.tag
+        
+        scaleViewsWithSpring(taxAmountTextFieldOutlet.tag)
+        
+    }
+    
+    @IBAction func numberOfPeopleMaskButton(_ sender: AnyObject) {
+        
+        generator.selectionChanged()
+        
+        keypadAppear()
+        
+        userWantsToEditThisField = "Number of People"
+        
+        varAmountsObject.firstResponderTag = numberOfPeoplePayingTextFieldOutlet.tag
+        
+        scaleViewsWithSpring(numberOfPeoplePayingTextFieldOutlet.tag)
+        
+    }
+    
+    @IBAction func tipRateMaskButton(_ sender: AnyObject) {
+        
+        generator.selectionChanged()
+        
+        keypadAppear()
+        
+        userWantsToEditThisField = "Tip Rate"
+        
+        varAmountsObject.firstResponderTag = tipRateTextFieldOutlet.tag
+        
+        scaleViewsWithSpring(tipRateTextFieldOutlet.tag)
+        
+    }
+    
+    @IBAction func venueMaskButton(_ sender: AnyObject) {
+        
+        generator.selectionChanged()
+        
+        venueSelectorAppear()
+        
+        userWantsToEditThisField = "Venue"
+        
+        scaleViewsWithSpring(venueSelectionLabelOutlet.tag)
+        
+    }
+    
+    /* ==================== Service Rating ===================== */
+    
+    @IBAction func serviceRatingSegmentedControl(_ sender: UISegmentedControl) {
+        
+        generator.selectionChanged()
+        
+        // Here to smooth out effects of "Subtotal Post Tax"
+        // means user selection is in place
+        self.calculate(varAmountsObject.arrayOfButtonsPressedForBillAmountAsString, firstResponderValue: self.billAmountTextFieldOutlet.tag)
+        
+        // Here because it means user selection is done
+        varAmountsObject.updateSubtotalForPostTaxDesired()
+        
+        varAmountsObject.tipRateArray = varAmountsObject.venuesAndTipsDictionary[varAmountsObject.selectedVenue]!
+        
+        if sender.selectedSegmentIndex == 0 {
+            
+            varAmountsObject.tipRate = varAmountsObject.tipRateArray[0]
+            
+        } else if sender.selectedSegmentIndex == 2{
+            
+            varAmountsObject.tipRate = varAmountsObject.tipRateArray[2]
+            
+        } else {
+            
+            varAmountsObject.tipRate = varAmountsObject.tipRateArray[1]
+            
+        }
+        
+        updateFieldValues()
+        
+        checkTotalAmountPerPersonValue()
+        
+    }
+    
+    
+    /* ------------------ Updating Values and Views -------------------- */
+    
+    
+    func calculate(_ arrayOfButtonsPressed: [String], firstResponderValue: Int) {
+        
+        if firstResponderValue == 3 {
+            
+            varAmountsObject.display(arrayOfButtonsPressed, sentFirstResponderTag: 3)
+            
+        } else {
+            
+            varAmountsObject.calculate(arrayOfButtonsPressed, sentFirstResponderTag: firstResponderValue)
+            
+        }
+        
+        updateFieldValues()
+        
+    }
+    
+    func updateFieldValues() {
+        
+        for sectionHeader in collectionSectionHeaderLabels {
+            
+            sectionHeader.font = checkForDynamicType(20)
+        }
+        
+        for inputFields in collectionInputFieldLabels {
+            
+            inputFields.font = checkForDynamicType(24)
+            
+        }
+        
+        for totaledLabels in collectionTotaledAmountsLabels {
+            
+            totaledLabels.font = checkForDynamicType(16)
+            
+        }
+        
+        for totaledDisplay in collectionTotaledAmountDisplays {
+            
+            totaledDisplay.font = checkForDynamicType(24)
+            
+        }
+        
+        for venueLabels in collectionVenueLabels {
+            
+            venueLabels.font = checkForDynamicType(20)
+            
+        }
+        
+        for keypadButtons in collectionKeypadButtons {
+            
+            keypadButtons.titleLabel?.font = checkForDynamicType(28)
+            
+        }
+        
+        if varAmountsObject.numberOfPeoplePaying == 1 {
+            
+            singlePersonTotaledAmountsViewCOnstraint.priority = 997
+            
+            totalAmountPerPersonTitleLabel.isHidden = true
+            
+            totalAmountPerPersonLabelOutlet.isHidden = true
+            
+        } else {
+            
+            singlePersonTotaledAmountsViewCOnstraint.priority = 990
+            
+            totalAmountPerPersonTitleLabel.isHidden = false
+            
+            totalAmountPerPersonLabelOutlet.isHidden = false
+            
+        }
+        
+        /* ----- Value Output ---- */
+        
+        billAmountTextFieldOutlet.text = varAmountsObject.updateValues().formattedBillAmount
+        
+        taxAmountTextFieldOutlet.text = varAmountsObject.updateValues().formattedTaxAmount
+        
+        numberOfPeoplePayingTextFieldOutlet.text = varAmountsObject.updateValues().numberOfPeoplePaying
+        
+        tipRateTextFieldOutlet.text = varAmountsObject.updateValues().formattedTipRate
+        
+        venueSelectionLabelOutlet.text = varAmountsObject.selectedVenue
+        
+        
+        numberOfPeoplePayingTextFieldOutlet.text = varAmountsObject.updateValues().numberOfPeoplePaying
+        
+        tipAmountLabelOutlet.text = varAmountsObject.updateValues().tipAmount
+        
+        
+        totalAmountLabelOutlet.text = varAmountsObject.updateValues().totalAmount
+        
+        totalAmountPerPersonLabelOutlet.text = varAmountsObject.updateValues().totalAmountPerPerson
+        
+        if varAmountsObject.moreOrLessPerPerson < 0 {
+            
+            coinsImageOutlet.image = UIImage(named: "coins-green")
+            
+        } else if varAmountsObject.moreOrLessPerPerson > 0 {
+            
+            coinsImageOutlet.image = UIImage(named: "coins-red")
+            
+        } else {
+            
+            coinsImageOutlet.isHidden = true
+            
+        }
+        
+        
+    }
+
+    func updateColorValues() {
+        
+        /* ------------ Navigation Bar Coloring ------------- */
+        
+        // Full Nav Bar Coloring
+        self.navigationController?.navigationBar.barTintColor = coloringThemes.getMainColor()
+        
+        // Background Coloring
+        self.view.backgroundColor = coloringThemes.getBackgroundColor()
+        
+        
+        // Title Coloring
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)]
+        
+        
+        // Back Button Coloring
+        self.navigationController?.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)
+        
+        /* other */
+        
+        serviceRatingLabelOutlet.tintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getViewBackgroundColor(), isFlat: true)
+        //UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor, isFlat: true)
+        
+        serviceRatingLabelOutlet.layer.borderColor = self.view.backgroundColor?.cgColor
+       
+        
+        for sectionHeader in collectionSectionHeaderLabels {
+            
+            sectionHeader.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getViewBackgroundColor(), isFlat: true)
+            //UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor, isFlat: true)
+            
+        }
+        
+        /*------ Corners and Borders ------*/
+        
+        // for billTax, Venue, and totaledAmounts Views
+        for MainViews in collectionMainViews {
+            
+            MainViews.layer.cornerRadius = 5
+            
+            MainViews.layer.borderWidth = 1
+            
+            MainViews.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor!, isFlat: true).cgColor
+            
+            MainViews.backgroundColor = coloringThemes.getViewBackgroundColor()
+            
+        }
+        
+        for inputFields in collectionInputFieldLabels {
+            
+            inputFields.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getViewBackgroundColor(), isFlat: true)
+            
+            inputFields.layer.cornerRadius = 2.5
+            
+            inputFields.layer.borderWidth = 1
+            
+            inputFields.layer.borderColor = inputFields.textColor!.cgColor
+            
+        }
+        
+        for totaledAmountsLabels in collectionTotaledAmountsLabels {
+            
+            totaledAmountsLabels.layer.cornerRadius = 2.5
+            
+            totaledAmountsLabels.layer.borderWidth = 1
+            
+            totaledAmountsLabels.layer.borderColor = totaledAmountsLabels.textColor!.cgColor
+            
+        }
+        
+        for totaledAmountsDisplays in collectionTotaledAmountDisplays {
+            
+            totaledAmountsDisplays.layer.cornerRadius = 2.5
+            
+            totaledAmountsDisplays.layer.borderWidth = 1
+            
+            totaledAmountsDisplays.layer.borderColor = totaledAmountsDisplays.textColor!.cgColor
+            
+        }
+        
+        for totaledDisplays in collectionTotaledAmountDisplays {
+            
+            totaledDisplays.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getViewBackgroundColor(), isFlat: true)
+            //UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor, isFlat: true)
+            
+        }
+        
+        for totaledAmounts in collectionTotaledAmountsLabels {
+            
+            totaledAmounts.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getViewBackgroundColor(), isFlat: true)
+            //UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor, isFlat: true)
+            
+        }
+        
+        /* -------- KeypadView coloring ---------- */
+        
+        keypadStuffView.layer.cornerRadius = 5
+        
+        keypadStuffView.layer.borderWidth = 2.5
+        
+        keypadStuffView.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor!, isFlat: true).cgColor
+        
+        keypadStuffView.backgroundColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getViewBackgroundColor(), isFlat: true)
+        
+        
+        for keypadButtons in collectionKeypadButtons {
+            
+            keypadButtons.setTitleColor(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true), for: .normal)
+            
+            keypadButtons.setTitleColor(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true), for: .highlighted)
+            
+            keypadButtons.setTitleColor(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true), for: .selected)
+            
+            keypadButtons.layer.borderWidth = 1.5
+            
+            keypadButtons.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getBackgroundColor(), isFlat: true).cgColor
+            
+            keypadButtons.backgroundColor = coloringThemes.getMainColor()
+            
+            keypadButtons.layer.cornerRadius = 5
+            
+        }
+        
+        /* -------- VenueView coloring -------- */
+        
+        venuesStuffView.backgroundColor = coloringThemes.getMainColor()
+        
+        venuesStuffView.layer.cornerRadius = 5
+        
+        venuesStuffView.layer.borderWidth = 2.5
+        
+        venuesStuffView.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor!, isFlat: true).cgColor
+        
+        venuesStuffView.backgroundColor = coloringThemes.getMainColor()
+  
+
+        for venueViews in collectionVenueViews {
+            
+            venueViews.backgroundColor = coloringThemes.getViewBackgroundColor()
+            
+            venueViews.layer.cornerRadius = 7.5
+            
+            venueViews.layer.borderWidth = 2.5
+            
+        }
+        
+        if varAmountsObject.localSalesTax != 0.0 {
+        
+            taxAmountMaskOutlet.isEnabled = false
+            
+            taxAmountTextFieldOutlet.backgroundColor = tipAmountLabelOutlet.backgroundColor
+            
+        } else {
+            
+            taxAmountMaskOutlet.isEnabled = true
+            
+            taxAmountTextFieldOutlet.backgroundColor = UIColor.clear
+            
+        }
+        
+    }
+    
+    func checkForDynamicType(_ preferredFontSize: CGFloat) -> UIFont {
+        
+        if UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.bool(forKey: "useDynamicText") == true {
+            
+            return UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
+            
+        } else {
+            
+            return UIFont(name: "HelveticaNeue-CondensedBold", size: preferredFontSize)!
+            
+        }
+        
+    }
+    
+    
+   /* ====================== ANIMATIONS ===================== */
+    
+    /* ------------------------ Input Fields Appear & Dissapear ------------------ */
+    
+    func keypadAppear() {
+        
+        if venueSelectorIsUp == true {
+            
+            venueSelectorIsUp = false; venuesStuffView.alpha = 1.0
+            
+            totaledAmountsStuffView.isHidden = false; totaledAmountsStuffView.alpha = 1.0
+            
+            keypadStuffView.isHidden = false; keypadStuffView.alpha = 1.0
+            
+            totaledAmountsStuffView.transform = CGAffineTransform(translationX: -self.view.frame.width , y: 0)
+            
+            keypadStuffView.transform = CGAffineTransform(translationX: (-self.view.frame.width - self.view.frame.width) , y: 0)
+            
+            UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+                
+                self.venuesStuffView.transform = CGAffineTransform(translationX: (self.view.frame.width + self.view.frame.width), y: 0)
+                
+                self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: self.view.frame.width , y: 0)
+                
+                self.keypadStuffView.transform = CGAffineTransform(translationX: 0, y: 0)
+                
+                }, completion: { finished in
+                    
+                    self.venuesStuffView.alpha = 0.0
+                    
+                    self.totaledAmountsStuffView.alpha = 0.0
+                    
+                    
+            })
+            
+            
+        } else if keypadIsUp != true {
+            
+            
+            totaledAmountsStuffView.alpha = 1.0
+            
+            
+            keypadStuffView.isHidden = false; keypadStuffView.alpha = 1.0
+            
+            keypadStuffView.transform = CGAffineTransform(translationX: -self.view.frame.width, y: 0)
+            
+            
+            UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+                
+                self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: self.view.frame.width , y: 0)
+                
+                self.keypadStuffView.transform = CGAffineTransform(translationX: 0, y: 0)
+                
+                
+                }, completion: { finished in
+                    
+                    self.totaledAmountsStuffView.alpha = 0.0
+                    
+            })
+            
+        }
+        
+        keypadIsUp = true
+        
+    }
+    
+    func keypadDisappear() {
+        
+        keypadIsUp = false; keypadStuffView.alpha = 1.0
+        
+        totaledAmountsStuffView.isHidden = false; totaledAmountsStuffView.alpha = 1.0
+        
+        // In case user switched from Venue selector to keypad, 
+        // Make sure Totaled Amount View is in correct spot for anim.
+        self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: self.view.frame.width , y: 0)
+        
+        UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+            
+            self.keypadStuffView.transform = CGAffineTransform(translationX: -self.view.frame.width , y: 0)
+            
+            self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: 0, y: 0)
+            
+        }, completion: { finished in
+            
+            self.keypadStuffView.alpha = 0.0
+            
+        })
+        
+    }
+    
+    func venueSelectorAppear() {
+        
+        if keypadIsUp == true {
+            
+            keypadIsUp = false; keypadStuffView.alpha = 1.0
+            
+            venuesStuffView.isHidden = false; venuesStuffView.alpha = 1.0
+            
+            totaledAmountsStuffView.isHidden = false; totaledAmountsStuffView.alpha = 1.0
+            
+            totaledAmountsStuffView.transform = CGAffineTransform(translationX: self.view.frame.width , y: 0)
+            
+            venuesStuffView.transform = CGAffineTransform(translationX: (self.view.frame.width + self.view.frame.width) , y: 0)
+            
+            UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+                
+                self.keypadStuffView.transform = CGAffineTransform(translationX: (-self.view.frame.width - self.view.frame.width) , y: 0)
+                
+                self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: -self.view.frame.width , y: 0)
+                
+                self.venuesStuffView.transform = CGAffineTransform(translationX: 0, y: 0)
+                
+                }, completion: { finished in
+                    
+                    self.totaledAmountsStuffView.alpha = 0.0
+                    
+                    self.keypadStuffView.alpha = 0.0
+                    
+            })
+            
+        } else if venueSelectorIsUp != true {
+            
+            totaledAmountsStuffView.alpha = 1.0
+            
+            venuesStuffView.isHidden = false; venuesStuffView.alpha = 1.0
+            
+            venuesStuffView.transform = CGAffineTransform(translationX: self.view.frame.width , y: 0)
+            
+            //venuesStuffView.transform = CGAffineTransform(translationX: 0, y: 200)
+            
+            UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+                
+                self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: -self.view.frame.width, y: 0)
+                
+                self.venuesStuffView.transform = CGAffineTransform(translationX: 0, y: 0)
+                
+                }, completion: { finished in
+                    
+                    self.totaledAmountsStuffView.alpha = 0.0
+                    
+            })
+            
+        }
+        
+        venueSelectorIsUp = true
+        
+    }
+    
+    func venueSelectorDisappear() {
+        
+        venueSelectorIsUp = false; venuesStuffView.alpha = 1.0
+        
+        totaledAmountsStuffView.isHidden = false; totaledAmountsStuffView.alpha = 1.0
+        
+        // In case user switched from Keypad to Venue selector,
+        // Make sure Totaled Amount View is in correct spot for anim.
+        self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: -self.view.frame.width, y: 0)
+        
+        UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+            
+            self.venuesStuffView.transform = CGAffineTransform(translationX: self.view.frame.width , y: 0)
+            
+            self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: 0, y: 0)
+            
+            }, completion: { finished in
+                
+                self.venuesStuffView.alpha = 0.0
+                
+        })
+        
+    }
+    
+    /* ------------------------ View Scaling/ Springing --------------------- */
+    
+    func scaleViewsWithSpring(_ editedViewsTag: Int) {
+        
+        // Here to smooth out effects of "Subtotal Post Tax"
+        // means user selection is in place
+        self.calculate(varAmountsObject.arrayOfButtonsPressedForBillAmountAsString, firstResponderValue: self.billAmountTextFieldOutlet.tag)
+        
+        for textFields in collectionInputFieldLabels {
+            
+            spring(0.7, animations: {
+                
+                if editedViewsTag != textFields.tag {
+                    
+                    textFields.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+                    
+                    textFields.layer.borderWidth = 1.0
+                    
+                } else {
+                    
+                    textFields.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+                    
+                    textFields.layer.borderWidth = 0.0
+                    
+                }
+                
+            })
+            
+        }
+        
+        for sectionHeaders in collectionSectionHeaderLabels {
+            
+            spring(0.7, animations: {
+                
+                if sectionHeaders.tag != 0 {
+                    
+                    if editedViewsTag != sectionHeaders.tag {
+                        
+                        sectionHeaders.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+                        
+                    } else {
+                        
+                        sectionHeaders.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+                        
+                    }
+                }
+                
+            })
+            
+        }
+        
+    }
+    
+    func unscaleViewsWithSpring() {
+        
+        // Here because it means user selection is done
+        varAmountsObject.updateSubtotalForPostTaxDesired()
+        
+        for textFields in collectionInputFieldLabels {
+            
+            spring(0.7, animations:  {
+                
+                textFields.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                
+                textFields.layer.borderWidth = 1.0
+                
+            })
+            
+        }
+        
+        for sectionHeaders in collectionSectionHeaderLabels {
+            
+            spring(0.7, animations: {
+                
+                sectionHeaders.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                
+            })
+            
+        }
+        
+    }
+    
+    @IBAction func totaledAmountsLabelWasTapped(_ recognizer:UITapGestureRecognizer) {
+        
+        totalAmountsViewIsFull = !totalAmountsViewIsFull
+        
+        self.coinsImageOutlet.isHidden = true
+        
+        // if user is looking at MOLPP message, change back
+        
+        moreOrLessPerPersonLabel.isHidden = true
+        
+        if varAmountsObject.numberOfPeoplePaying > 1 {
+        
+            totalAmountPerPersonTitleLabel.isHidden = false
+            
+            totalAmountPerPersonLabelOutlet.isHidden = false
+            
+        }
+        
+        if totalAmountsViewIsFull == true {
+            
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+            
+            settingsIconOutlet.isEnabled = false
+            
+            origTipAmountTitleLabelHeight = self.tipAmountTitleLabel.frame.height
+            
+            origTipAmountTitleLabelY = self.tipAmountTitleLabel.frame.origin.y
+            
+            origTipAmountLabelHeight = self.tipAmountLabelOutlet.frame.height
+            
+            origTipAmountLabelY = self.tipAmountLabelOutlet.frame.origin.y
+            
+            origTotalAmountPerPersonTitleLabelHeight = self.totalAmountPerPersonTitleLabel.frame.height
+            
+            origTotalAmountPerPersonTitleLabelY = self.totalAmountPerPersonTitleLabel.frame.origin.y
+            
+            origTotalAmountPerPersonalLabelHeight = self.totalAmountPerPersonLabelOutlet.frame.height
+            
+            origTotalAmountPerPersonalLabelY = self.totalAmountPerPersonLabelOutlet.frame.origin.y
+            
+            origTotalAmountTitleLabelHeight = self.totalAmountTitleLabel.frame.height
+            
+            origTotalAmountTitleLabelY = self.totalAmountTitleLabel.frame.origin.y
+            
+            origTotalAmountLabelHeight = self.totalAmountLabelOutlet.frame.height
+            
+            origTotalAmountLabelY = self.totalAmountLabelOutlet.frame.origin.y
+            
+            origTotaledAmountsFrameHeight = self.totaledAmountsStuffView.frame.height
+            
+            origTotaledAmountsFrameWidth = self.totaledAmountsStuffView.frame.width
+            
+            origTotaledAmountsFrameY = self.totaledAmountsStuffView.frame.origin.y
+            
+            origTotaledAmountsLabelHeight = self.totaledAmountsLabel.frame.height
+            
+            origTotaledAmountsLabelWidth = self.totaledAmountsLabel.frame.width
+            
+            origTotaledAmountsLabelY = self.totaledAmountsLabel.frame.origin.y
+            
+            
+            UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+                
+                self.billTaxPeopleStuffView.transform = CGAffineTransform(translationX: 0, y: -self.view.frame.height)
+                
+                self.venueAndServiceStuffView.transform = CGAffineTransform(translationX: 0, y: -self.view.frame.height)
+                
+                }, completion: {finished in
+                    
+                    UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+                        
+                        
+                        //Top Portion of View is smaller when in landscape, so need to check the device orientation
+                        
+                        if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft || UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
+                            
+                            self.origTotaledAmountsLabelWidth = self.totaledAmountsLabel.frame.width
+                            
+                            self.totaledAmountsStuffView.frame = CGRect(x: 8,
+                                y: ((self.navigationController?.navigationBar.frame.size.height)! + 8),
+                                width: self.totaledAmountsStuffView.frame.width,
+                                height: self.view.frame.height - ((self.navigationController?.navigationBar.frame.size.height)! + 16))
+                            
+                        } else {
+                            
+                            self.totaledAmountsStuffView.frame = CGRect(x: 8,
+                                y: ((self.navigationController?.navigationBar.frame.size.height)! + UIApplication.shared.statusBarFrame.size.height + 8),
+                                width: self.totaledAmountsStuffView.frame.width,
+                                height: self.view.frame.height - ((self.navigationController?.navigationBar.frame.size.height)! + UIApplication.shared.statusBarFrame.size.height + 16))
+                            
+                        }
+                        
+                        //Added 16 to the height reducations to make up for the distances of heighest and lowest views from the frame
+                        
+                        
+                        }, completion: {finished in
+                            
+                            UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+                                
+                                self.totalAmountTitleLabel.frame =
+                                    CGRect(x: 8,
+                                        y: self.totaledAmountsStuffView.frame.height - (self.totaledAmountsStuffView.frame.height / 4) - 8,
+                                        width: self.tipAmountTitleLabel.frame.width,
+                                        height: self.totaledAmountsStuffView.frame.height / 4)
+                                
+                                
+                                self.totalAmountLabelOutlet.frame =
+                                    CGRect(x: self.totalAmountTitleLabel.frame.width + 16,
+                                        y: self.totaledAmountsStuffView.frame.height - (self.totaledAmountsStuffView.frame.height / 4) - 8 ,
+                                        width: self.tipAmountLabelOutlet.frame.width,
+                                        height: self.totaledAmountsStuffView.frame.height / 4)
+                                
+                                
+                                }, completion: { finished in
+                                    
+                                    UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+                                        
+                                        if varAmountsObject.moreOrLessPerPerson != 1 {
+                          
+                                            self.totalAmountPerPersonTitleLabel.frame =
+                                                CGRect(x: 8,
+                                                    y: self.totaledAmountsStuffView.frame.height - (self.totaledAmountsStuffView.frame.height / 4) - self.totalAmountLabelOutlet.frame.height - 16,
+                                                    width: self.tipAmountTitleLabel.frame.width,
+                                                    height: self.totaledAmountsStuffView.frame.height / 4)
+                                            
+                                            
+                                            self.totalAmountPerPersonLabelOutlet.frame =
+                                                CGRect(x: self.totalAmountTitleLabel.frame.width + 16,
+                                                    y: self.totaledAmountsStuffView.frame.height - (self.totaledAmountsStuffView.frame.height / 4) - self.totalAmountLabelOutlet.frame.height - 16,
+                                                    width: self.tipAmountLabelOutlet.frame.width,
+                                                    height: self.totaledAmountsStuffView.frame.height / 4)
+                                
+                                            
+    //                                        self.totalAmountPerPersonTitleLabel.alpha = 1
+    //                                        
+    //                                        self.totalAmountPerPersonLabelOutlet.alpha = 1
+                                            
+                                        }
+                                        
+                                        }, completion: {finished in
+                                            
+                                            UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+                                                
+                                                self.tipAmountTitleLabel.frame =
+                                                    CGRect(x: 8,
+                                                        y: self.totaledAmountsStuffView.frame.height - (self.totaledAmountsStuffView.frame.height / 4) - self.totalAmountLabelOutlet.frame.height - self.totalAmountPerPersonTitleLabel.frame.height - 24,
+                                                        width: self.tipAmountTitleLabel.frame.width,
+                                                        height: self.totaledAmountsStuffView.frame.height / 4)
+                                                
+                                                self.tipAmountLabelOutlet.frame =
+                                                    CGRect(x: self.totalAmountTitleLabel.frame.width + 16,
+                                                        y: self.totaledAmountsStuffView.frame.height - (self.totaledAmountsStuffView.frame.height / 4) - self.totalAmountLabelOutlet.frame.height - self.totalAmountPerPersonTitleLabel.frame.height - 24,
+                                                        width: self.tipAmountLabelOutlet.frame.width,
+                                                        height: self.totaledAmountsStuffView.frame.height / 4)
+                                                
+                                                self.tipAmountLabelOutlet.alpha = 1
+                                                
+                                                self.tipAmountTitleLabel.alpha = 1
+                                                
+                                                }, completion: {finished in
+                                                    
+                                                    spring(0.9, animations: {
+                                                        
+                                                        self.totaledAmountsLabel.frame =
+                                                            CGRect(x: 8,
+                                                                y: self.totaledAmountsStuffView.frame.height - (self.totaledAmountsStuffView.frame.height / 4) - self.totalAmountLabelOutlet.frame.height - self.totalAmountPerPersonTitleLabel.frame.height - self.tipAmountTitleLabel.frame.height - 24,
+                                                                width: self.tipAmountLabelOutlet.frame.width + self.tipAmountTitleLabel.frame.width + 8,
+                                                                height: (self.totaledAmountsStuffView.frame.height / 4) + 8)
+                                     
+                                                    })
+                                            })
+                                    })
+                            })
+                    })
+                    
+                    
+            })
+            
+        }
+            
+        else {
+            
+            UIView.animate(withDuration: 1.1, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+                
+                self.tipAmountTitleLabel.frame =
+                    CGRect(x: 8,
+                        y: self.origTipAmountTitleLabelY,
+                        width: self.tipAmountTitleLabel.frame.width,
+                        height: self.origTipAmountTitleLabelHeight)
+                
+                self.tipAmountLabelOutlet.frame =
+                    CGRect(x: self.totalAmountTitleLabel.frame.width + 16,
+                        y: self.origTipAmountLabelY,
+                        width: self.tipAmountLabelOutlet.frame.width,
+                        height: self.origTipAmountLabelHeight)
+                
+                self.totalAmountPerPersonTitleLabel.frame =
+                    CGRect(x: 8,
+                        y: self.origTotalAmountPerPersonTitleLabelY,
+                        width: self.totalAmountPerPersonTitleLabel.frame.width,
+                        height: self.origTotalAmountPerPersonTitleLabelHeight)
+                
+                
+                self.totalAmountPerPersonLabelOutlet.frame =
+                    CGRect(x: self.totalAmountTitleLabel.frame.width + 16,
+                        y: self.origTotalAmountPerPersonalLabelY,
+                        width: self.totalAmountPerPersonLabelOutlet.frame.width,
+                        height: self.origTotalAmountPerPersonalLabelHeight)
+                
+                self.totalAmountTitleLabel.frame =
+                    CGRect(x: 8,
+                        y: self.origTotalAmountTitleLabelY,
+                        width: self.totalAmountTitleLabel.frame.width,
+                        height: self.origTotalAmountTitleLabelHeight)
+                
+                
+                self.totalAmountLabelOutlet.frame =
+                    CGRect(x: self.totalAmountTitleLabel.frame.width + 16,
+                        y: self.origTotalAmountLabelY,
+                        width: self.totalAmountLabelOutlet.frame.width,
+                        height: self.origTotalAmountLabelHeight)
+                
+                self.totaledAmountsLabel.frame =
+                    CGRect(x: 8,
+                        y: self.origTotaledAmountsLabelY,
+                        width: self.origTotaledAmountsLabelWidth,
+                        height: self.origTotaledAmountsLabelHeight)
+                
+                
+                }, completion: {finished in
+                    
+                    
+                    UIView.animate(withDuration: 1, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIViewAnimationOptions.curveEaseIn, animations: {
+                        
+                        self.totaledAmountsStuffView.frame = CGRect(x: 8,
+                            y: self.origTotaledAmountsFrameY,
+                            width: self.origTotaledAmountsFrameWidth,
+                            height: self.origTotaledAmountsFrameHeight)
+                        
+                        self.billTaxPeopleStuffView.transform = CGAffineTransform(translationX: 0, y: 0)
+                        
+                        self.billTaxPeopleStuffView.alpha = 1
+                        
+                        self.venueAndServiceStuffView.transform = CGAffineTransform(translationX: 0, y: 0)
+                        
+                        self.venueAndServiceStuffView.alpha = 1
+                        
+                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                       
+                        
+                        }, completion: {finished in
+                            
+                            self.settingsIconOutlet.isEnabled = true
+                            
+                            //self.coinsImageOutlet.isHidden = false
+                            
+                            self.checkTotalAmountPerPersonValue()
+                            
+                            self.totaledAmountsStuffView.frame = CGRect(x: 8,
+                                y: self.origTotaledAmountsFrameY,
+                                width: self.origTotaledAmountsFrameWidth,
+                                height: self.origTotaledAmountsFrameHeight)
+                            
+                            self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: 0, y: 0)
+                            
+                    })
+                    
+                    
+            })
+            
+        }
+
+        
+    }
+    
+    @IBAction func coinsImageWasTapped(_ recognizer:UITapGestureRecognizer) {
+        
+        if varAmountsObject.moreOrLessPerPerson != 0.0 {
+            
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+            
+            springForInputViews(0.3, animations: {
+            
+                self.coinsImageOutlet.isHidden = true
+                
+                self.moreOrLessPerPersonLabel.isHidden = false
+                
+                self.totalAmountPerPersonTitleLabel.isHidden = true
+                
+                self.totalAmountPerPersonLabelOutlet.isHidden = true
+                
+            })
+            
+            var hold = varAmountsObject.moreOrLessPerPerson
+            
+            if round(hold) == 0 {
+                
+                if hold > 0 { hold = 1 }
+                else { hold = -1 }
+                
+            }
+            
+            let absValHold = Int(abs(round(hold)))
+            
+            if hold < 0 {
+                
+                if absValHold == 1 {
+                    
+                    moreOrLessPerPersonLabel.text = "Total has \(absValHold) penny extra"
+                    
+                } else {
+                    
+                    moreOrLessPerPersonLabel.text = "Total has \(absValHold) pennies extra"
+                    
+                }
+                
+            } else {
+                
+                if absValHold == 1 {
+                    
+                    moreOrLessPerPersonLabel.text = "Total needs \(absValHold) more penny"
+                    
+                } else {
+                    
+                    moreOrLessPerPersonLabel.text = "Total needs \(absValHold) more pennies"
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
+    
+    @IBAction func MOLPPLabelWasTapped(_ recognizer:UITapGestureRecognizer) {
+        
+        if moreOrLessPerPersonLabel.isHidden == false {
+            
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+            
+            moreOrLessPerPersonLabel.isHidden = true
+            
+            totalAmountPerPersonTitleLabel.isHidden = false
+            
+            totalAmountPerPersonLabelOutlet.isHidden = false
+            
+            coinsImageOutlet.isHidden = false
+            
+        }
+        
+    }
+    
+    /* -------------------------------- Alert View Stuff ------------------------------ */
+    
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        
+        if motion == .motionShake {
+            
+            //Code for a regular iOS Alert
+            
+            let alert = UIAlertController(title: "Just to be safe...", message: "Do you want to clear all values?", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: "No"), style: UIAlertActionStyle.default, handler: { (_) in
+                
+                
+                
+            }))
+            
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: "Yes"), style: UIAlertActionStyle.destructive, handler: { (_) in
+                
+                varAmountsObject.resetValues()
+                
+                self.venueSelectionLabelOutlet.text = varAmountsObject.selectedVenue
+                
+                self.updateFieldValues()
+                
+            }))
+            
+            self.present(alert, animated: true, completion: nil)
+            
+        }
+        
+    }
+
+
+}
