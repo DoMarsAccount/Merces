@@ -57,9 +57,9 @@
 	<key>useDynamicText</key>
 	<false/>
 	<key>phoneBackgroundColor</key>
-	<string>UIDeviceRGBColorSpace 1 0.972549 0.913725 1</string>
+	<string>UIExtendedSRGBColorSpace 0.94 0.94 0.96 1</string>
 	<key>phoneMainColor</key>
-	<string>UIDeviceRGBColorSpace 0.549 0.627 0.49 1</string>
+	<string>UIExtendedSRGBColorSpace 0.365 0.4 0.537 1</string>
 	<key>phoneTextColor</key>
 	<string>UIDeviceRGBColorSpace 0.309804 0.313725 0.317647 1</string>
 	<key>watchMainColor</key>
