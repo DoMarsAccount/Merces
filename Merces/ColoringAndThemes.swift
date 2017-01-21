@@ -56,9 +56,9 @@ class ColoringAndThemes {
     
     init() {
         
-        arrayOfAllColors = [appleWatchObject.leatherLoopBrightBlue, appleBackgroundColor, appleWatchObject.gold, appleWatchObject.roseGold, camoGreen, tan, fiveDollarBillPurple, hundredDollarBillBlue, hundredDollarBillOrange, appleMusicColor, appleMessagesColor, appleWatchObject.sportBandWhite, appleWatchObject.modernBuckleBlack, appleWatchObject.modernBuckleBrightRed, appleWatchObject.modernBuckleBrown ]
+        arrayOfAllColors = [appleWatchObject.leatherLoopBrightBlue, appleBackgroundColor, appleWatchObject.gold, appleWatchObject.roseGold, camoGreen, tan, fiveDollarBillPurple, hundredDollarBillBlue, hundredDollarBillOrange, appleMusicColor, appleMessagesColor, appleWatchObject.sportBandWhite, appleWatchObject.modernBuckleBlack, appleWatchObject.modernBuckleBrightRed, appleWatchObject.modernBuckleBrown]
         
-        arrayOfAllColorNames = ["Faded Blue (Default)", "Light Gray (Default)", "Gold", "Rose Gold", "Camo Green", "Tan", "Purple", "Blue", "Orange", "Hot Pink", "Neon Green", "White", "Black", "Bright Red", "Brown"]
+        arrayOfAllColorNames = ["Faded Blue (Default)", "Light Gray (Default)", "Gold", "Rose Gold", "Camo Green", "Tan", "Purple", "Blue", "Burnt Orange", "Hot Pink", "Neon Green", "White", "Black", "Bright Red", "Brown"]
         
         
     }

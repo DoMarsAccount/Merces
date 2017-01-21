@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		00A610FC15D4ED252C737DC1 /* libPods-MercesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA7BA650B3FB6048042FC4C9 /* libPods-MercesTests.a */; };
 		7D1DEE16862D475BCA4F1E29 /* Pods_Merces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F251037667992C1F444B6F5B /* Pods_Merces.framework */; };
+		E33460AB1E32EF2300D467C6 /* ThemesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33460AA1E32EF2300D467C6 /* ThemesCollectionViewCell.swift */; };
+		E33460B11E32F23D00D467C6 /* ThemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33460B01E32F23D00D467C6 /* ThemesViewController.swift */; };
 		E3A61E101AE3F69C00F2467C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E3A61E121AE3F69C00F2467C /* Localizable.strings */; };
 		E3AB12081E2DBE950021C889 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12001E2DBE950021C889 /* NavigationController.swift */; };
 		E3AB12091E2DBE950021C889 /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12011E2DBE950021C889 /* MainPage.swift */; };
@@ -94,6 +96,8 @@
 		AC73B4422AD0D72C597BA6E5 /* Pods-MercesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MercesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MercesTests/Pods-MercesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D7BDDFCD6B56C6B727260FE1 /* libPods-Merces WatchKit App.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Merces WatchKit App.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA7BA650B3FB6048042FC4C9 /* libPods-MercesTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MercesTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E33460AA1E32EF2300D467C6 /* ThemesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemesCollectionViewCell.swift; sourceTree = "<group>"; };
+		E33460B01E32F23D00D467C6 /* ThemesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemesViewController.swift; sourceTree = "<group>"; };
 		E335CC901AE59DD700D26A65 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E33A95551AE34C620008737D /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Interface.strings; sourceTree = "<group>"; };
 		E38D63C61ACB323E0060EE81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -358,6 +362,8 @@
 				E3B4B2C01ABB2CF7002A6C16 /* Images.xcassets */,
 				E33460A91E32CC3000D467C6 /* ViewControllers */,
 				E3B4B2B71ABB2CF7002A6C16 /* Supporting Files */,
+				E33460B01E32F23D00D467C6 /* ThemesViewController.swift */,
+				E33460AA1E32EF2300D467C6 /* ThemesCollectionViewCell.swift */,
 			);
 			path = Merces;
 			sourceTree = "<group>";
@@ -689,10 +695,12 @@
 				E3AB12081E2DBE950021C889 /* NavigationController.swift in Sources */,
 				E3AB120D1E2DBE950021C889 /* ThemesPage.swift in Sources */,
 				E3AB120C1E2DBE950021C889 /* MyMerces.swift in Sources */,
+				E33460B11E32F23D00D467C6 /* ThemesViewController.swift in Sources */,
 				E3AB12091E2DBE950021C889 /* MainPage.swift in Sources */,
 				E3B4B2BA1ABB2CF7002A6C16 /* AppDelegate.swift in Sources */,
 				E3AB120E1E2DBE950021C889 /* InAppPurchasePage.swift in Sources */,
 				E3AB12171E2DBED50021C889 /* AppleWatchColors.swift in Sources */,
+				E33460AB1E32EF2300D467C6 /* ThemesCollectionViewCell.swift in Sources */,
 				E3B4B2DB1ABB2D62002A6C16 /* BlurView.swift in Sources */,
 				E3AB12141E2DBED50021C889 /* VariableAmountsClass.swift in Sources */,
 				E3AB12151E2DBED50021C889 /* NumberFormattingClass.swift in Sources */,

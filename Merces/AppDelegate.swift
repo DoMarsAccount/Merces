@@ -115,7 +115,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         } else if shortcutItem.localizedTitle == "Color Picker" {
             
-            let requestedViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ThemesPage") as! ThemesPage
+            let requestedViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ThemesPage") as! ThemesViewController
             
             rootView.pushViewController(requestedViewController, animated: true)
             

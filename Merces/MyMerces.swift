@@ -649,7 +649,9 @@ class MyMerces: UIViewController {
         
         
         
-        venueServiceQualityLabelOutlet.text = translatedVenueValueToEdit + " " + NSLocalizedString("Venue Service Quality", comment:"Venue Service Quality Settings")
+        //venueServiceQualityLabelOutlet.text = translatedVenueValueToEdit + " " + NSLocalizedString("Venue Service Quality", comment:"Venue Service Quality Settings")
+        
+        venueServiceQualityLabelOutlet.text = "Venue: " + translatedVenueValueToEdit
         
         
     }
