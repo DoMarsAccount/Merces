@@ -13,9 +13,9 @@ class ColoringAndThemes {
     let appleWatchObject = AppleWatchColors()
     
     
-    let mainColor = UIColor(red: 0.549, green: 0.627, blue: 0.490, alpha: 1)
+    let camoGreen = UIColor(red: 0.549, green: 0.627, blue: 0.490, alpha: 1)
     
-    let backgroundColor =  UIColor(red: 1.0, green: 0.97254901960784, blue: 0.91372549019608, alpha: 1)
+    let tan =  UIColor(red: 1.0, green: 0.97254901960784, blue: 0.91372549019608, alpha: 1)
     
     let textColor = UIColor(red: 0.30980392, green: 0.31372549, blue: 0.31764706, alpha: 1)
     
@@ -25,17 +25,23 @@ class ColoringAndThemes {
     
     let watchTextColor = UIColor(red: 1.0, green: 0.97254901960784, blue: 0.91372549019608, alpha: 1)
     
+    
+    // Light Gray (Default)
     let appleBackgroundColor = UIColor(red:0.94, green:0.94, blue:0.96, alpha:1.0)
     
+    // Hot Pink
     let appleMusicColor = UIColor(red:1.00, green:0.18, blue:0.33, alpha:1.0)
     
+    // Neon Green
     let appleMessagesColor = UIColor(red:0.30, green:0.85, blue:0.39, alpha:1.0)
     
-    
+    // Purple
     let fiveDollarBillPurple = UIColor(red:0.506, green:0.310, blue:0.384, alpha:1)
     
+    // Orange
     let hundredDollarBillOrange = UIColor(red:0.722, green:0.420, blue:0.192, alpha:1)
     
+    // Blue
     let hundredDollarBillBlue = UIColor(red:0.220, green:0.275, blue:0.467, alpha:1)
     
     
@@ -50,9 +56,9 @@ class ColoringAndThemes {
     
     init() {
         
-        arrayOfAllColors = [mainColor, backgroundColor, fiveDollarBillPurple, hundredDollarBillBlue, hundredDollarBillOrange, appleMusicColor, appleMessagesColor, appleBackgroundColor, appleWatchObject.gold, appleWatchObject.roseGold, appleWatchObject.sportBandWhite, appleWatchObject.modernBuckleBlack, appleWatchObject.modernBuckleBrightRed, appleWatchObject.modernBuckleBrown, appleWatchObject.leatherLoopBrightBlue]
+        arrayOfAllColors = [appleWatchObject.leatherLoopBrightBlue, appleBackgroundColor, appleWatchObject.gold, appleWatchObject.roseGold, camoGreen, tan, fiveDollarBillPurple, hundredDollarBillBlue, hundredDollarBillOrange, appleMusicColor, appleMessagesColor, appleWatchObject.sportBandWhite, appleWatchObject.modernBuckleBlack, appleWatchObject.modernBuckleBrightRed, appleWatchObject.modernBuckleBrown ]
         
-        arrayOfAllColorNames = ["Camo Green", "Tan", "Purple", "Blue", "Orange", "Hot Pink", "Neon Green", "Light Gray (Default)", "Gold", "Rose Gold", "White", "Black", "Bright Red", "Brown", "Faded Blue (Default)"]
+        arrayOfAllColorNames = ["Faded Blue (Default)", "Light Gray (Default)", "Gold", "Rose Gold", "Camo Green", "Tan", "Purple", "Blue", "Orange", "Hot Pink", "Neon Green", "White", "Black", "Bright Red", "Brown"]
         
         
     }
@@ -132,11 +138,11 @@ class ColoringAndThemes {
             
         case "UIExtendedSRGBColorSpace 0.549 0.627 0.49 1":
             
-            return mainColor
+            return camoGreen
             
         case "UIExtendedSRGBColorSpace 1 0.972549 0.913725 1":
             
-            return backgroundColor
+            return tan
             
         case "UIExtendedSRGBColorSpace 0.309804 0.313725 0.317647 1":
             
@@ -215,10 +221,6 @@ class ColoringAndThemes {
         case "UIExtendedSRGBColorSpace 0.365 0.4 0.537 1":
             
             return appleWatchObject.leatherLoopBrightBlue
-            
-        case "UIExtendedSRGBColorSpace 0.2 0.2 0.2 1":
-            
-            return appleWatchObject.leatherLoopBlack
             
         case "UIExtendedSRGBColorSpace 0.6 0.518 0.478 1":
             
