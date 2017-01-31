@@ -225,10 +225,21 @@
 				E3AB12031E2DBE950021C889 /* OptimalUsagePage.swift */,
 				E3AB12041E2DBE950021C889 /* MyMerces.swift */,
 				E3AB12051E2DBE950021C889 /* ThemesPage.swift */,
+				E33460B21E33EFB000D467C6 /* Themes Page */,
 				E3AB12061E2DBE950021C889 /* InAppPurchasePage.swift */,
 			);
 			name = ViewControllers;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		E33460B21E33EFB000D467C6 /* Themes Page */ = {
+			isa = PBXGroup;
+			children = (
+				E33460B01E32F23D00D467C6 /* ThemesViewController.swift */,
+				E33460AA1E32EF2300D467C6 /* ThemesCollectionViewCell.swift */,
+			);
+			name = "Themes Page";
+			path = Merces;
 			sourceTree = "<group>";
 		};
 		E38D63C41ACB323E0060EE81 /* Merces WatchKit Extension */ = {
@@ -362,8 +373,6 @@
 				E3B4B2C01ABB2CF7002A6C16 /* Images.xcassets */,
 				E33460A91E32CC3000D467C6 /* ViewControllers */,
 				E3B4B2B71ABB2CF7002A6C16 /* Supporting Files */,
-				E33460B01E32F23D00D467C6 /* ThemesViewController.swift */,
-				E33460AA1E32EF2300D467C6 /* ThemesCollectionViewCell.swift */,
 			);
 			path = Merces;
 			sourceTree = "<group>";

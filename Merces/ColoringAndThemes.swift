@@ -25,6 +25,17 @@ class ColoringAndThemes {
     
     let watchTextColor = UIColor(red: 1.0, green: 0.97254901960784, blue: 0.91372549019608, alpha: 1)
     
+    // #4
+    let appIconGreen1 = UIColor(red:0.51, green:0.85, blue:0.57, alpha:1.0)
+    
+    // #2
+    let appIconGreen2 = UIColor(red:0.46, green:0.73, blue:0.56, alpha:1.0)
+    
+    // #1
+    let appIconGreen3 = UIColor(red:0.42, green:0.67, blue:0.55, alpha:1.0)
+    
+    // #3
+    let appIconGreen4 = UIColor(red:0.04, green:0.85, blue:0.57, alpha:1.0)
     
     // Light Gray (Default)
     let appleBackgroundColor = UIColor(red:0.94, green:0.94, blue:0.96, alpha:1.0)
@@ -56,9 +67,9 @@ class ColoringAndThemes {
     
     init() {
         
-        arrayOfAllColors = [appleWatchObject.leatherLoopBrightBlue, appleBackgroundColor, appleWatchObject.gold, appleWatchObject.roseGold, camoGreen, tan, fiveDollarBillPurple, hundredDollarBillBlue, hundredDollarBillOrange, appleMusicColor, appleMessagesColor, appleWatchObject.sportBandWhite, appleWatchObject.modernBuckleBlack, appleWatchObject.modernBuckleBrightRed, appleWatchObject.modernBuckleBrown]
+        arrayOfAllColors = [appleWatchObject.leatherLoopBrightBlue, appleBackgroundColor, appleWatchObject.gold, appleWatchObject.roseGold, camoGreen, tan, fiveDollarBillPurple, hundredDollarBillBlue, hundredDollarBillOrange, appleMusicColor, appleMessagesColor, appleWatchObject.sportBandWhite, appleWatchObject.modernBuckleBlack, appleWatchObject.modernBuckleBrightRed, appleWatchObject.modernBuckleBrown, appIconGreen1, appIconGreen2, appIconGreen3, appIconGreen4]
         
-        arrayOfAllColorNames = ["Faded Blue (Default)", "Light Gray (Default)", "Gold", "Rose Gold", "Camo Green", "Tan", "Purple", "Blue", "Burnt Orange", "Hot Pink", "Neon Green", "White", "Black", "Bright Red", "Brown"]
+        arrayOfAllColorNames = ["Faded Blue (Default)", "Light Gray (Default)", "Gold", "Rose Gold", "Camo Green", "Tan", "Purple", "Blue", "Burnt Orange", "Hot Pink", "Neon Green", "White", "Black", "Bright Red", "Brown", "Green1", "Green2", "Green3", "Green4",]
         
         
     }
@@ -73,7 +84,7 @@ class ColoringAndThemes {
             
         }
         
-        return appleWatchObject.leatherLoopBrightBlue
+        return appIconGreen3
     }
     
     func getBackgroundColor() -> UIColor {
@@ -92,6 +103,15 @@ class ColoringAndThemes {
     }
     
     func getViewBackgroundColor() -> UIColor {
+        
+        if let currentViewBackgroundColor = UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.string(forKey: "phoneViewBackgroundColor") {
+            
+            //print("\(UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.string(forKey: "phoneViewBackgroundColor"))")
+            
+            
+            return switchOfColors(currentColor: currentViewBackgroundColor)
+            
+        }
         
         return UIColor.white
         
@@ -136,115 +156,135 @@ class ColoringAndThemes {
         
         switch currentColor {
             
-        case "UIExtendedSRGBColorSpace 0.549 0.627 0.49 1":
+            case "UIExtendedSRGBColorSpace 0.51 0.85 0.57 1":
             
-            return camoGreen
+            return appIconGreen1
             
-        case "UIExtendedSRGBColorSpace 1 0.972549 0.913725 1":
+            case "UIExtendedSRGBColorSpace 0.46 0.73 0.56 1":
             
-            return tan
+            return appIconGreen2
             
-        case "UIExtendedSRGBColorSpace 0.309804 0.313725 0.317647 1":
+            case "UIExtendedSRGBColorSpace 0.42 0.67 0.55 1":
             
-            return textColor
+            return appIconGreen3
             
-        case "UIExtendedSRGBColorSpace 0.506 0.31 0.384 1":
+            case "UIExtendedSRGBColorSpace 0.04 0.85 0.57 1":
             
-            return fiveDollarBillPurple
+            return appIconGreen4
             
-        case "UIExtendedSRGBColorSpace 0.22 0.275 0.467 1":
-            
-            return hundredDollarBillBlue
-            
-        case "UIExtendedSRGBColorSpace 0.722 0.42 0.192 1":
-            
-            return hundredDollarBillOrange
-            
-        case "UIExtendedSRGBColorSpace 0.651 0.651 0.651 1":
-            
-            return appleWatchObject.silverAluminum
-            
-        case "UIExtendedSRGBColorSpace 0.325 0.325 0.325 1":
-            
-            return appleWatchObject.spaceGrayAluminum
-            
-        case "UIExtendedSRGBColorSpace 0.96 0.89 0.8 1":
-            
-            return appleWatchObject.gold
-            
-        case "UIExtendedSRGBColorSpace 0.97 0.85 0.83 1":
-            
-            return appleWatchObject.roseGold
-            
-            // Modern Buckle colors
-            
-        case "UIExtendedSRGBColorSpace 0.816 0.294 0.231 1":
-            
-            return appleWatchObject.modernBuckleBrightRed
-            
-        case "UIExtendedSRGBColorSpace 0.271 0.29 0.369 1":
-            
-            return appleWatchObject.modernBuckleMidnightBlue
-            
-        case "UIExtendedSRGBColorSpace 0.573 0.443 0.341 1":
-            
-            return appleWatchObject.modernBuckleBrown
-            
-        case "UIExtendedSRGBColorSpace 0.922 0.843 0.824 1":
-            
-            return appleWatchObject.modernBuckleSoftPink
-            
-        case "UIExtendedSRGBColorSpace 0.2 0.2 0.2 1":
-            
-            return appleWatchObject.modernBuckleBlack
-            
-            // Sport Band Colors
-            
-        case "UIExtendedSRGBColorSpace 0.694 0.788 0.42 1":
-            
-            return appleWatchObject.sportBandGreen
-            
-        case "UIExtendedSRGBColorSpace 0.318 0.659 0.89 1":
-            
-            return appleWatchObject.sportBandBlue
-            
-        case "UIExtendedSRGBColorSpace 0.976 0.447 0.424 1":
-            
-            return appleWatchObject.sportBandPink
-            
-        case "UIExtendedSRGBColorSpace 0.969 0.969 0.969 1":
-            
-            return appleWatchObject.sportBandWhite
-            
-            // Leather Buckle Colors
-            
-        case "UIExtendedSRGBColorSpace 0.365 0.4 0.537 1":
-            
-            return appleWatchObject.leatherLoopBrightBlue
-            
-        case "UIExtendedSRGBColorSpace 0.6 0.518 0.478 1":
-            
-            return appleWatchObject.leatherLoopLightBrown
-            
-        case "UIExtendedSRGBColorSpace 0.671 0.627 0.604 1":
-            
-            return appleWatchObject.leatherLoopStone
-            
-        case "UIExtendedSRGBColorSpace 1 0.18 0.33 1":
-            
-            return appleMusicColor
-            
-        case "UIExtendedSRGBColorSpace 0.3 0.85 0.39 1":
-            
-            return appleMessagesColor
-            
-        case "UIExtendedSRGBColorSpace 0.94 0.94 0.96 1":
-            
-            return appleBackgroundColor
-            
-        default:
-            
-            return textColor
+            case "UIExtendedSRGBColorSpace 0.549 0.627 0.49 1":
+                
+                return camoGreen
+                
+            case "UIExtendedSRGBColorSpace 0.549 0.627 0.49 1":
+                
+                return camoGreen
+                
+            case "UIExtendedSRGBColorSpace 1 0.972549 0.913725 1":
+                
+                return tan
+                
+            case "UIExtendedSRGBColorSpace 0.309804 0.313725 0.317647 1":
+                
+                return textColor
+                
+            case "UIExtendedSRGBColorSpace 0.506 0.31 0.384 1":
+                
+                return fiveDollarBillPurple
+                
+            case "UIExtendedSRGBColorSpace 0.22 0.275 0.467 1":
+                
+                return hundredDollarBillBlue
+                
+            case "UIExtendedSRGBColorSpace 0.722 0.42 0.192 1":
+                
+                return hundredDollarBillOrange
+                
+            case "UIExtendedSRGBColorSpace 0.651 0.651 0.651 1":
+                
+                return appleWatchObject.silverAluminum
+                
+            case "UIExtendedSRGBColorSpace 0.325 0.325 0.325 1":
+                
+                return appleWatchObject.spaceGrayAluminum
+                
+            case "UIExtendedSRGBColorSpace 0.96 0.89 0.8 1":
+                
+                return appleWatchObject.gold
+                
+            case "UIExtendedSRGBColorSpace 0.97 0.85 0.83 1":
+                
+                return appleWatchObject.roseGold
+                
+                // Modern Buckle colors
+                
+            case "UIExtendedSRGBColorSpace 0.816 0.294 0.231 1":
+                
+                return appleWatchObject.modernBuckleBrightRed
+                
+            case "UIExtendedSRGBColorSpace 0.271 0.29 0.369 1":
+                
+                return appleWatchObject.modernBuckleMidnightBlue
+                
+            case "UIExtendedSRGBColorSpace 0.573 0.443 0.341 1":
+                
+                return appleWatchObject.modernBuckleBrown
+                
+            case "UIExtendedSRGBColorSpace 0.922 0.843 0.824 1":
+                
+                return appleWatchObject.modernBuckleSoftPink
+                
+            case "UIExtendedSRGBColorSpace 0.2 0.2 0.2 1":
+                
+                return appleWatchObject.modernBuckleBlack
+                
+                // Sport Band Colors
+                
+            case "UIExtendedSRGBColorSpace 0.694 0.788 0.42 1":
+                
+                return appleWatchObject.sportBandGreen
+                
+            case "UIExtendedSRGBColorSpace 0.318 0.659 0.89 1":
+                
+                return appleWatchObject.sportBandBlue
+                
+            case "UIExtendedSRGBColorSpace 0.976 0.447 0.424 1":
+                
+                return appleWatchObject.sportBandPink
+                
+            case "UIExtendedSRGBColorSpace 1 1 1 1":
+                
+                return appleWatchObject.sportBandWhite
+                
+                // Leather Buckle Colors
+                
+            case "UIExtendedSRGBColorSpace 0.365 0.4 0.537 1":
+                
+                return appleWatchObject.leatherLoopBrightBlue
+                
+            case "UIExtendedSRGBColorSpace 0.6 0.518 0.478 1":
+                
+                return appleWatchObject.leatherLoopLightBrown
+                
+            case "UIExtendedSRGBColorSpace 0.671 0.627 0.604 1":
+                
+                return appleWatchObject.leatherLoopStone
+                
+            case "UIExtendedSRGBColorSpace 1 0.18 0.33 1":
+                
+                return appleMusicColor
+                
+            case "UIExtendedSRGBColorSpace 0.3 0.85 0.39 1":
+                
+                return appleMessagesColor
+                
+            case "UIExtendedSRGBColorSpace 0.94 0.94 0.96 1":
+                
+                return appleBackgroundColor
+                
+            default:
+                
+                return UIColor.white
             
         }
         

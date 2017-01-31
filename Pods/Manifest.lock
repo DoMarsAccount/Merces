@@ -2,13 +2,9 @@ PODS:
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
-  - MMWormhole (2.0.0):
-    - MMWormhole/Core (= 2.0.0)
-  - MMWormhole/Core (2.0.0)
 
 DEPENDENCIES:
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
-  - MMWormhole (~> 2.0.0)
 
 EXTERNAL SOURCES:
   ChameleonFramework:
@@ -21,8 +17,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
-  MMWormhole: 0cd3fd35a9118b2e2d762b499f54eeaace0be791
 
-PODFILE CHECKSUM: d1d392a903c7d836e0903309df641b07079049f0
+PODFILE CHECKSUM: e082a024b2ff62ec9e94a1ac4c2db00ddc365382
 
 COCOAPODS: 1.1.1

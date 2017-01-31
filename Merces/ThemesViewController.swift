@@ -10,9 +10,24 @@ import UIKit
 
 class ThemesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    @IBOutlet var themesCollectionView: UICollectionView!
+    /* ------ Collection Outlets ------ */
+    
+    @IBOutlet var collectionThemesCollectionViews: [UICollectionView]!
+    @IBOutlet var collectionThemesLabels: [UILabel]!
+    
+    /* ------ Label Outlets ------ */
     
     @IBOutlet var themesLabel: UILabel!
+    @IBOutlet var themesBackgroundLabel: UILabel!
+    @IBOutlet var themesViewLabel: UILabel!
+    
+    /* ------ CollectionView Outlets ------ */
+    
+    @IBOutlet var themesCollectionView: UICollectionView!
+    @IBOutlet var themesBackgroundCollectionView: UICollectionView!
+    @IBOutlet var themesViewCollectionView: UICollectionView!
+    
+    
     
     let reuseIdentifier = "cell"
 
@@ -21,21 +36,25 @@ class ThemesViewController: UIViewController, UICollectionViewDataSource, UIColl
 
         // Do any additional setup after loading the view.
         
-        themesCollectionView.layer.cornerRadius = 5
+        for collectionView in collectionThemesCollectionViews {
+            
+            collectionView.layer.cornerRadius = 5
+            
+            collectionView.layer.borderWidth = 1
+            
+            collectionView.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor!, isFlat: true).cgColor
+            
+        }
         
-        themesCollectionView.layer.borderWidth = 1
-        
-        themesCollectionView.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor!, isFlat: true).cgColor
-        
-        themesLabel.layer.cornerRadius = 2
-        
-        themesLabel.layer.borderWidth = 4
-        
-        themesLabel.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor!, isFlat: true).cgColor
-        
-        themesLabel.backgroundColor = coloringThemes.getMainColor()
-        
-        themesLabel.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)
+        for themesLabel in collectionThemesLabels {
+            
+            themesLabel.layer.cornerRadius = 2
+            
+            themesLabel.layer.borderWidth = 4
+            
+            themesLabel.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor!, isFlat: true).cgColor
+            
+        }
         
         updateColorValues()
         
@@ -66,20 +85,45 @@ class ThemesViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         cell.viewCellImageOutlet.layer.borderWidth = 2
         
-        cell.viewCellImageOutlet.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor!, isFlat: true).cgColor
+        cell.viewCellImageOutlet.layer.borderColor = UIColor.black.cgColor
         
-        //cell.viewCellImageOutlet.layer.borderColor = coloringThemes.arrayOfAllColors[indexPath.item].cgColor
-        
-        if coloringThemes.arrayOfAllColors[indexPath.item] == coloringThemes.getMainColor() {
+        if collectionView == self.themesCollectionView {
             
-            cell.layer.borderWidth = 3
+            if coloringThemes.arrayOfAllColors[indexPath.item] == coloringThemes.getMainColor() {
+                
+                cell.layer.borderWidth = 3
+                
+                cell.layer.borderColor = UIColor.green.cgColor
+                
+                themesLabel.text = "Main Color: \(coloringThemes.arrayOfAllColorNames[indexPath.item])"
+                
+            }
             
-            cell.layer.borderColor = UIColor.green.cgColor
+        } else if collectionView == self.themesBackgroundCollectionView {
             
-            themesLabel.text = "Main Color: \(coloringThemes.arrayOfAllColorNames[indexPath.item])"
+            if coloringThemes.arrayOfAllColors[indexPath.item] == coloringThemes.getBackgroundColor() {
+                
+                cell.layer.borderWidth = 3
+                
+                cell.layer.borderColor = UIColor.green.cgColor
+                
+                themesBackgroundLabel.text = "Background Color: \(coloringThemes.arrayOfAllColorNames[indexPath.item])"
+                
+            }
+            
+        } else if collectionView == self.themesViewCollectionView {
+            
+            if coloringThemes.arrayOfAllColors[indexPath.item] == coloringThemes.getViewBackgroundColor() {
+                
+                cell.layer.borderWidth = 3
+                
+                cell.layer.borderColor = UIColor.green.cgColor
+                
+                themesViewLabel.text = "View Color: \(coloringThemes.arrayOfAllColorNames[indexPath.item])"
+                
+            }
             
         }
-        
         
         return cell
     }
@@ -89,9 +133,25 @@ class ThemesViewController: UIViewController, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // handle tap events
         
-        UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.set("\(coloringThemes.arrayOfAllColors[indexPath.row])", forKey: "phoneMainColor")
+        if collectionView == self.themesCollectionView {
         
-        themesLabel.text = "Main Color: \(coloringThemes.arrayOfAllColorNames[indexPath.item])"
+            UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.set("\(coloringThemes.arrayOfAllColors[indexPath.row])", forKey: "phoneMainColor")
+            
+            themesLabel.text = "Main Color: \(coloringThemes.arrayOfAllColorNames[indexPath.item])"
+            
+        } else if collectionView == self.themesBackgroundCollectionView {
+            
+            UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.set("\(coloringThemes.arrayOfAllColors[indexPath.row])", forKey: "phoneBackgroundColor")
+            
+            themesBackgroundLabel.text = "Background Color: \(coloringThemes.arrayOfAllColorNames[indexPath.item])"
+            
+        } else if collectionView == self.themesViewCollectionView {
+            
+            UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.set("\(coloringThemes.arrayOfAllColors[indexPath.row])", forKey: "phoneViewBackgroundColor")
+            
+            themesViewLabel.text = "View Color: \(coloringThemes.arrayOfAllColorNames[indexPath.item])"
+            
+        }
         
         collectionView.reloadData()
         
@@ -126,11 +186,31 @@ class ThemesViewController: UIViewController, UICollectionViewDataSource, UIColl
         // Back Button Coloring
         self.navigationController?.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)
         
-        self.themesCollectionView.backgroundColor = coloringThemes.getViewBackgroundColor()
-        
         themesLabel.backgroundColor = coloringThemes.getMainColor()
         
         themesLabel.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)
+        
+        themesBackgroundLabel.backgroundColor = coloringThemes.getBackgroundColor()
+        
+        themesBackgroundLabel.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getBackgroundColor(), isFlat: true)
+        
+        themesViewLabel.backgroundColor = coloringThemes.getViewBackgroundColor()
+        
+        themesViewLabel.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getViewBackgroundColor(), isFlat: true)
+        
+        for collectionView in collectionThemesCollectionViews {
+            
+            collectionView.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor!, isFlat: true).cgColor
+            
+            collectionView.backgroundColor = coloringThemes.getViewBackgroundColor()
+            
+        }
+        
+        for themesLabel in collectionThemesLabels {
+            
+            themesLabel.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor!, isFlat: true).cgColor
+            
+        }
         
         
     }

@@ -32,7 +32,7 @@ class AppleWatchColors {
     let sportBandPink = UIColor(red:0.976, green:0.447, blue:0.424, alpha:1)
     
     // White
-    let sportBandWhite = UIColor(red:0.969, green:0.969, blue:0.969, alpha:1)
+    let sportBandWhite = UIColor(red:1, green:1, blue:1, alpha:1)
 
     /* ----- Modern Buckles ----- */
 

@@ -168,15 +168,14 @@ class SettingsPage: UITableViewController {
         
         for tableViewCell in collectionTableViewCell {
             
-            tableViewCell.backgroundColor = UIColor.white //coloringThemes.getBackgroundColor()
+            tableViewCell.backgroundColor = coloringThemes.getViewBackgroundColor()
             
         }
         
         for settingsHeaders in collectionSettingsInformation {
             
             settingsHeaders.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getViewBackgroundColor(), isFlat: true)
-            //UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getBackgroundColor(), isFlat: true)
-            
+        
         }
         
         for switches in collectionSwitches {
@@ -184,6 +183,14 @@ class SettingsPage: UITableViewController {
             switches.onTintColor = coloringThemes.getMainColor()
             
             switches.tintColor =  coloringThemes.getMainColor()
+            
+            if coloringThemes.getMainColor() == coloringThemes.getViewBackgroundColor() {
+                
+                switches.onTintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)
+                
+                switches.tintColor =  UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)
+                
+            }
             
         }
         

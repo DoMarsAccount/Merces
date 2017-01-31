@@ -9,11 +9,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>MMWormhole.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-Merces.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,22 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>5C8B0A5762D4572F2D507F7315F54FFA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>76BD4592010354D6C23D6ECCA20D83A8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E177B24984660B3DD2D26CBEBF1C95A7</key>
+		<key>FB62579C1D2A146CA5799A3F08A47DBB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FB62579C1D2A146CA5799A3F08A47DBB</key>
+		<key>FD872404D5B4737FE196AA5A9C5D8F16</key>
 		<dict>
 			<key>primary</key>
 			<true/>

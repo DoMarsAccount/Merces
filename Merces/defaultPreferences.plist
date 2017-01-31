@@ -59,7 +59,9 @@
 	<key>phoneBackgroundColor</key>
 	<string>UIExtendedSRGBColorSpace 0.94 0.94 0.96 1</string>
 	<key>phoneMainColor</key>
-	<string>UIExtendedSRGBColorSpace 0.365 0.4 0.537 1</string>
+	<string>UIExtendedSRGBColorSpace 0.42 0.67 0.55 1</string>
+	<key>phoneViewBackgroundColor</key>
+	<string>UIExtendedSRGBColorSpace 1 1 1 1</string>
 	<key>phoneTextColor</key>
 	<string>UIDeviceRGBColorSpace 0.309804 0.313725 0.317647 1</string>
 	<key>watchMainColor</key>

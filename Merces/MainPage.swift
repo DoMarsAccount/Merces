@@ -838,18 +838,28 @@ class MainPage: UIViewController {
         
         venuesStuffView.layer.borderWidth = 2.5
         
-        venuesStuffView.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor!, isFlat: true).cgColor
+        venuesStuffView.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getBackgroundColor(), isFlat: true).cgColor
         
         venuesStuffView.backgroundColor = coloringThemes.getMainColor()
   
 
         for venueViews in collectionVenueViews {
             
-            venueViews.backgroundColor = coloringThemes.getViewBackgroundColor()
+            if "\(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true))" == "UIExtendedSRGBColorSpace 0.15 0.15 0.15 1" {
+                
+                venueViews.backgroundColor = coloringThemes.getMainColor()
+                
+            } else {
+            
+                venueViews.backgroundColor = UIColor.white //UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)
+                
+            }
             
             venueViews.layer.cornerRadius = 7.5
             
             venueViews.layer.borderWidth = 2.5
+            
+            venueViews.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true).cgColor
             
         }
         
@@ -1446,11 +1456,11 @@ class MainPage: UIViewController {
                 
                 if absValHold == 1 {
                     
-                    moreOrLessPerPersonLabel.text = "Total has \(absValHold) penny extra"
+                    moreOrLessPerPersonLabel.text = "Results in \(absValHold) penny extra"
                     
                 } else {
                     
-                    moreOrLessPerPersonLabel.text = "Total has \(absValHold) pennies extra"
+                    moreOrLessPerPersonLabel.text = "Results in \(absValHold) pennies extra"
                     
                 }
                 
@@ -1458,11 +1468,11 @@ class MainPage: UIViewController {
                 
                 if absValHold == 1 {
                     
-                    moreOrLessPerPersonLabel.text = "Total needs \(absValHold) more penny"
+                    moreOrLessPerPersonLabel.text = "Result will need \(absValHold) more penny"
                     
                 } else {
                     
-                    moreOrLessPerPersonLabel.text = "Total needs \(absValHold) more pennies"
+                    moreOrLessPerPersonLabel.text = "Result will need \(absValHold) more pennies"
                     
                 }
                 

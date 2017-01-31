@@ -103,23 +103,27 @@
       "scale" : "2x"
     },
     {
-      "idiom" : "ipad",
       "size" : "50x50",
+      "idiom" : "ipad",
+      "filename" : "Icon-50.png",
       "scale" : "1x"
     },
     {
-      "idiom" : "ipad",
       "size" : "50x50",
+      "idiom" : "ipad",
+      "filename" : "Icon-50@2x.png",
       "scale" : "2x"
     },
     {
-      "idiom" : "ipad",
       "size" : "72x72",
+      "idiom" : "ipad",
+      "filename" : "Icon-72.png",
       "scale" : "1x"
     },
     {
-      "idiom" : "ipad",
       "size" : "72x72",
+      "idiom" : "ipad",
+      "filename" : "Icon-72@2x.png",
       "scale" : "2x"
     },
     {
@@ -143,7 +147,7 @@
     {
       "size" : "24x24",
       "idiom" : "watch",
-      "filename" : "Icon (48px).png",
+      "filename" : "Icon-24@2x.png",
       "scale" : "2x",
       "role" : "notificationCenter",
       "subtype" : "38mm"
@@ -151,7 +155,7 @@
     {
       "size" : "27.5x27.5",
       "idiom" : "watch",
-      "filename" : "Icon (55px).png",
+      "filename" : "Icon-27.5@2x.png",
       "scale" : "2x",
       "role" : "notificationCenter",
       "subtype" : "42mm"
@@ -159,21 +163,21 @@
     {
       "size" : "29x29",
       "idiom" : "watch",
-      "filename" : "Icon (58px)-2.png",
+      "filename" : "Icon-29@2x-2.png",
       "role" : "companionSettings",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "watch",
-      "filename" : "Icon (87px)-1.png",
+      "filename" : "Icon-29@3x-1.png",
       "role" : "companionSettings",
       "scale" : "3x"
     },
     {
       "size" : "40x40",
       "idiom" : "watch",
-      "filename" : "Icon (80px)-2.png",
+      "filename" : "Icon-40@2x-2.png",
       "scale" : "2x",
       "role" : "appLauncher",
       "subtype" : "38mm"
@@ -181,7 +185,7 @@
     {
       "size" : "44x44",
       "idiom" : "watch",
-      "filename" : "Icon (88px).png",
+      "filename" : "Icon-44@2x.png",
       "scale" : "2x",
       "role" : "longLook",
       "subtype" : "42mm"
@@ -189,7 +193,7 @@
     {
       "size" : "86x86",
       "idiom" : "watch",
-      "filename" : "Icon (172px).png",
+      "filename" : "Icon-86@2x.png",
       "scale" : "2x",
       "role" : "quickLook",
       "subtype" : "38mm"
@@ -197,7 +201,7 @@
     {
       "size" : "98x98",
       "idiom" : "watch",
-      "filename" : "Icon (196px).png",
+      "filename" : "Icon-98@2x.png",
       "scale" : "2x",
       "role" : "quickLook",
       "subtype" : "42mm"
