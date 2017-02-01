@@ -37,8 +37,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     /* ----------------- Constraint Outlets --------------------- */
     
+    @IBOutlet var numOfPeopleWidthConstraint: NSLayoutConstraint!
+    
     @IBOutlet var subTBottomConstraint: NSLayoutConstraint!
     
+    @IBOutlet var tipAmountTrailingConstraint: NSLayoutConstraint!
     /* ----------------- Collection Outlets --------------------- */
     @IBOutlet var collectionDisplayViewLabels: [UILabel]!
     
@@ -63,10 +66,12 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet var numOfPeopleDisplayOutlet: UILabel!
     @IBOutlet var salesTaxDisplayOutlet: UILabel!
     @IBOutlet var tipAmountDisplayOutlet: UILabel!
+    @IBOutlet var totalAmountPerPersonDisplayOutlet: UILabel!
     
     @IBOutlet var salesTaxLabelOutlet: UILabel!
     @IBOutlet var numOfPeopleLabelOutlet: UILabel!
     @IBOutlet var tipAmountLabelOutlet: UILabel!
+    @IBOutlet var totalAmountPerPersonLabelOutlet: UILabel!
     
     @IBOutlet var displayViewOutlet: UIView!
     @IBOutlet weak var keypadViewOutlet: UIView!
@@ -157,6 +162,28 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             for item in collectionExpandedViewItems {
                 
                 item.isHidden = false
+                
+            }
+            
+            if varAmountsObject.numberOfPeoplePaying > 1 {
+                
+                tipAmountTrailingConstraint.priority = 990
+                
+                totalAmountPerPersonLabelOutlet.isHidden = false
+                
+                totalAmountPerPersonDisplayOutlet.isHidden = false
+                
+                numOfPeopleWidthConstraint.priority = 990
+                
+            } else {
+                
+                tipAmountTrailingConstraint.priority = 997
+                
+                totalAmountPerPersonDisplayOutlet.isHidden = true
+                
+                totalAmountPerPersonLabelOutlet.isHidden = true
+                
+                numOfPeopleWidthConstraint.priority = 997
                 
             }
             
@@ -406,6 +433,28 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         scaleViews(editedViewsTag: amountIndexer)
         
+        if varAmountsObject.numberOfPeoplePaying > 1 {
+            
+            tipAmountTrailingConstraint.priority = 990
+            
+            totalAmountPerPersonLabelOutlet.isHidden = false
+            
+            totalAmountPerPersonDisplayOutlet.isHidden = false
+            
+            numOfPeopleWidthConstraint.priority = 990
+            
+        } else {
+            
+            tipAmountTrailingConstraint.priority = 997
+            
+            totalAmountPerPersonDisplayOutlet.isHidden = true
+            
+            totalAmountPerPersonLabelOutlet.isHidden = true
+            
+            numOfPeopleWidthConstraint.priority = 997
+            
+        }
+        
         /* ---- Value Output --- */
         
         subtotalDisplayOutlet.text = varAmountsObject.updateValues().formattedBillAmount
@@ -419,6 +468,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         salesTaxDisplayOutlet.text = varAmountsObject.updateValues().formattedTaxAmount
         
         tipAmountDisplayOutlet.text = varAmountsObject.updateValues().tipAmount
+        
+        totalAmountPerPersonDisplayOutlet.text = varAmountsObject.updateValues().totalAmountPerPerson
         
     }
     
