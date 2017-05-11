@@ -19,20 +19,12 @@
 		E3AB120C1E2DBE950021C889 /* MyMerces.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12041E2DBE950021C889 /* MyMerces.swift */; };
 		E3AB120D1E2DBE950021C889 /* ThemesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12051E2DBE950021C889 /* ThemesPage.swift */; };
 		E3AB120E1E2DBE950021C889 /* InAppPurchasePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12061E2DBE950021C889 /* InAppPurchasePage.swift */; };
-		E3AB12141E2DBED50021C889 /* VariableAmountsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB120F1E2DBED50021C889 /* VariableAmountsClass.swift */; };
-		E3AB12151E2DBED50021C889 /* NumberFormattingClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12101E2DBED50021C889 /* NumberFormattingClass.swift */; };
-		E3AB12161E2DBED50021C889 /* ColoringAndThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12111E2DBED50021C889 /* ColoringAndThemes.swift */; };
-		E3AB12171E2DBED50021C889 /* AppleWatchColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12121E2DBED50021C889 /* AppleWatchColors.swift */; };
 		E3AB12191E2DBF210021C889 /* defaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3AB12181E2DBF210021C889 /* defaultPreferences.plist */; };
 		E3AB121B1E2DBF480021C889 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3AB121A1E2DBF480021C889 /* Main.storyboard */; };
 		E3AB12221E2DC1DF0021C889 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3AB12211E2DC1DF0021C889 /* NotificationCenter.framework */; };
 		E3AB12251E2DC1DF0021C889 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12241E2DC1DF0021C889 /* TodayViewController.swift */; };
 		E3AB122C1E2DC1DF0021C889 /* MercesWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E3AB12201E2DC1DF0021C889 /* MercesWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E3AB12321E2DC2080021C889 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3AB12311E2DC2080021C889 /* MainInterface.storyboard */; };
-		E3AB12331E2DC2380021C889 /* VariableAmountsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB120F1E2DBED50021C889 /* VariableAmountsClass.swift */; };
-		E3AB12341E2DC23C0021C889 /* NumberFormattingClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12101E2DBED50021C889 /* NumberFormattingClass.swift */; };
-		E3AB12351E2DC23E0021C889 /* ColoringAndThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12111E2DBED50021C889 /* ColoringAndThemes.swift */; };
-		E3AB12361E2DC2410021C889 /* AppleWatchColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12121E2DBED50021C889 /* AppleWatchColors.swift */; };
 		E3AB12371E2DC25F0021C889 /* SpringAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B4B2DA1ABB2D62002A6C16 /* SpringAnimation.swift */; };
 		E3AB12391E2DC2F90021C889 /* defaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3AB12181E2DBF210021C889 /* defaultPreferences.plist */; };
 		E3B4B2BA1ABB2CF7002A6C16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B4B2B91ABB2CF7002A6C16 /* AppDelegate.swift */; };
@@ -41,6 +33,14 @@
 		E3B4B2DB1ABB2D62002A6C16 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B4B2D91ABB2D62002A6C16 /* BlurView.swift */; };
 		E3B4B2DC1ABB2D62002A6C16 /* SpringAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B4B2DA1ABB2D62002A6C16 /* SpringAnimation.swift */; };
 		E3B4B2EC1ABB2E1E002A6C16 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B4B2EA1ABB2E1E002A6C16 /* LaunchScreen.xib */; };
+		E3FD0FAA1EC3DB1A00763ED2 /* NumberFormattingClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD0FA91EC3DB1A00763ED2 /* NumberFormattingClass.swift */; };
+		E3FD0FAB1EC3DB1A00763ED2 /* NumberFormattingClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD0FA91EC3DB1A00763ED2 /* NumberFormattingClass.swift */; };
+		E3FD0FAF1EC3DB3600763ED2 /* AppleWatchColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD0FAC1EC3DB3600763ED2 /* AppleWatchColors.swift */; };
+		E3FD0FB01EC3DB3600763ED2 /* AppleWatchColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD0FAC1EC3DB3600763ED2 /* AppleWatchColors.swift */; };
+		E3FD0FB11EC3DB3600763ED2 /* ColoringAndThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD0FAD1EC3DB3600763ED2 /* ColoringAndThemes.swift */; };
+		E3FD0FB21EC3DB3600763ED2 /* ColoringAndThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD0FAD1EC3DB3600763ED2 /* ColoringAndThemes.swift */; };
+		E3FD0FB31EC3DB3600763ED2 /* VariableAmountsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD0FAE1EC3DB3600763ED2 /* VariableAmountsClass.swift */; };
+		E3FD0FB41EC3DB3600763ED2 /* VariableAmountsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD0FAE1EC3DB3600763ED2 /* VariableAmountsClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,10 +134,6 @@
 		E3AB12041E2DBE950021C889 /* MyMerces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyMerces.swift; path = Merces/MyMerces.swift; sourceTree = "<group>"; };
 		E3AB12051E2DBE950021C889 /* ThemesPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThemesPage.swift; path = Merces/ThemesPage.swift; sourceTree = "<group>"; };
 		E3AB12061E2DBE950021C889 /* InAppPurchasePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InAppPurchasePage.swift; path = Merces/InAppPurchasePage.swift; sourceTree = "<group>"; };
-		E3AB120F1E2DBED50021C889 /* VariableAmountsClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VariableAmountsClass.swift; path = "../../../OG Merces/Merces/VariableAmountsClass.swift"; sourceTree = "<group>"; };
-		E3AB12101E2DBED50021C889 /* NumberFormattingClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NumberFormattingClass.swift; path = "../../../OG Merces/Merces/NumberFormattingClass.swift"; sourceTree = "<group>"; };
-		E3AB12111E2DBED50021C889 /* ColoringAndThemes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColoringAndThemes.swift; path = "../../../OG Merces/Merces/ColoringAndThemes.swift"; sourceTree = "<group>"; };
-		E3AB12121E2DBED50021C889 /* AppleWatchColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppleWatchColors.swift; path = "../../../OG Merces/Merces/AppleWatchColors.swift"; sourceTree = "<group>"; };
 		E3AB12181E2DBF210021C889 /* defaultPreferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaultPreferences.plist; sourceTree = "<group>"; };
 		E3AB121A1E2DBF480021C889 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E3AB12201E2DC1DF0021C889 /* MercesWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MercesWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +154,10 @@
 		E3B4B2EA1ABB2E1E002A6C16 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		E3B4B2FD1ABB329C002A6C16 /* Merces-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Merces-Bridging-Header.h"; sourceTree = "<group>"; };
 		E3B4B3001ABBEC59002A6C16 /* Merces.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Merces.entitlements; sourceTree = "<group>"; };
+		E3FD0FA91EC3DB1A00763ED2 /* NumberFormattingClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NumberFormattingClass.swift; path = Merces/NumberFormattingClass.swift; sourceTree = SOURCE_ROOT; };
+		E3FD0FAC1EC3DB3600763ED2 /* AppleWatchColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppleWatchColors.swift; path = Merces/AppleWatchColors.swift; sourceTree = SOURCE_ROOT; };
+		E3FD0FAD1EC3DB3600763ED2 /* ColoringAndThemes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColoringAndThemes.swift; path = Merces/ColoringAndThemes.swift; sourceTree = SOURCE_ROOT; };
+		E3FD0FAE1EC3DB3600763ED2 /* VariableAmountsClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VariableAmountsClass.swift; path = Merces/VariableAmountsClass.swift; sourceTree = SOURCE_ROOT; };
 		F251037667992C1F444B6F5B /* Pods_Merces.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Merces.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -317,10 +317,10 @@
 		E3AB12131E2DBED50021C889 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				E3AB120F1E2DBED50021C889 /* VariableAmountsClass.swift */,
-				E3AB12101E2DBED50021C889 /* NumberFormattingClass.swift */,
-				E3AB12111E2DBED50021C889 /* ColoringAndThemes.swift */,
-				E3AB12121E2DBED50021C889 /* AppleWatchColors.swift */,
+				E3FD0FA91EC3DB1A00763ED2 /* NumberFormattingClass.swift */,
+				E3FD0FAC1EC3DB3600763ED2 /* AppleWatchColors.swift */,
+				E3FD0FAD1EC3DB3600763ED2 /* ColoringAndThemes.swift */,
+				E3FD0FAE1EC3DB3600763ED2 /* VariableAmountsClass.swift */,
 			);
 			name = Classes;
 			path = ../../GitRepos/Mercii/Mercii;
@@ -688,12 +688,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3AB12351E2DC23E0021C889 /* ColoringAndThemes.swift in Sources */,
-				E3AB12331E2DC2380021C889 /* VariableAmountsClass.swift in Sources */,
+				E3FD0FB41EC3DB3600763ED2 /* VariableAmountsClass.swift in Sources */,
+				E3FD0FB21EC3DB3600763ED2 /* ColoringAndThemes.swift in Sources */,
 				E3AB12251E2DC1DF0021C889 /* TodayViewController.swift in Sources */,
 				E3AB12371E2DC25F0021C889 /* SpringAnimation.swift in Sources */,
-				E3AB12341E2DC23C0021C889 /* NumberFormattingClass.swift in Sources */,
-				E3AB12361E2DC2410021C889 /* AppleWatchColors.swift in Sources */,
+				E3FD0FB01EC3DB3600763ED2 /* AppleWatchColors.swift in Sources */,
+				E3FD0FAB1EC3DB1A00763ED2 /* NumberFormattingClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -701,22 +701,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3FD0FB31EC3DB3600763ED2 /* VariableAmountsClass.swift in Sources */,
 				E3AB12081E2DBE950021C889 /* NavigationController.swift in Sources */,
 				E3AB120D1E2DBE950021C889 /* ThemesPage.swift in Sources */,
 				E3AB120C1E2DBE950021C889 /* MyMerces.swift in Sources */,
+				E3FD0FB11EC3DB3600763ED2 /* ColoringAndThemes.swift in Sources */,
 				E33460B11E32F23D00D467C6 /* ThemesViewController.swift in Sources */,
 				E3AB12091E2DBE950021C889 /* MainPage.swift in Sources */,
 				E3B4B2BA1ABB2CF7002A6C16 /* AppDelegate.swift in Sources */,
+				E3FD0FAF1EC3DB3600763ED2 /* AppleWatchColors.swift in Sources */,
 				E3AB120E1E2DBE950021C889 /* InAppPurchasePage.swift in Sources */,
-				E3AB12171E2DBED50021C889 /* AppleWatchColors.swift in Sources */,
 				E33460AB1E32EF2300D467C6 /* ThemesCollectionViewCell.swift in Sources */,
 				E3B4B2DB1ABB2D62002A6C16 /* BlurView.swift in Sources */,
-				E3AB12141E2DBED50021C889 /* VariableAmountsClass.swift in Sources */,
-				E3AB12151E2DBED50021C889 /* NumberFormattingClass.swift in Sources */,
-				E3AB12161E2DBED50021C889 /* ColoringAndThemes.swift in Sources */,
 				E3B4B2DC1ABB2D62002A6C16 /* SpringAnimation.swift in Sources */,
 				E3AB120A1E2DBE950021C889 /* SettingsPage.swift in Sources */,
 				E3AB120B1E2DBE950021C889 /* OptimalUsagePage.swift in Sources */,
+				E3FD0FAA1EC3DB1A00763ED2 /* NumberFormattingClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -29,7 +29,7 @@ func spring(_ duration: TimeInterval, animations: (() -> Void)!) {
 // Personal Spring
 func springForKeypadButtonsPressed (sender: UIButton, animations: (() -> Void)!) {
     
-    UIView.animate(withDuration: 0.1, delay: delay, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+    UIView.animate(withDuration: 0.03, delay: delay, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
         
         sender.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         

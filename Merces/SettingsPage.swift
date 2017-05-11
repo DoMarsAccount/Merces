@@ -182,7 +182,7 @@ class SettingsPage: UITableViewController {
             
             switches.onTintColor = coloringThemes.getMainColor()
             
-            switches.tintColor =  coloringThemes.getMainColor()
+            //switches.tintColor =  coloringThemes.getMainColor()
             
             if coloringThemes.getMainColor() == coloringThemes.getViewBackgroundColor() {
                 

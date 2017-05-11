@@ -89,6 +89,20 @@ class MainPage: UIViewController {
     @IBOutlet var singlePersonTotaledAmountsViewCOnstraint: NSLayoutConstraint!
     
     
+    @IBOutlet var noTipSplitPersonViewConstraint: NSLayoutConstraint!
+    
+    @IBOutlet var noTipSplitPersonViewConstraint2: NSLayoutConstraint!
+    
+    
+    @IBOutlet var tipAmountsLabelConstraint: NSLayoutConstraint!
+    
+    @IBOutlet var tipAmountsDisplayConstraint: NSLayoutConstraint!
+    
+    
+    @IBOutlet var gTotalDisplayConstraint: NSLayoutConstraint!
+    
+    @IBOutlet var gTotalLabelConstraint: NSLayoutConstraint!
+    
     
     /* ---- Default Field Sizes ----- */
     
@@ -613,6 +627,95 @@ class MainPage: UIViewController {
         
     }
     
+    func handleTotalAmountsView() {
+        
+        // singlePersonTotaledAmountsViewCOnstraint
+        // noTipSplitPersonViewConstraint
+        //
+        
+        if varAmountsObject.tipRate == 0.00 {
+            
+            // hide tip amount section
+            
+            tipAmountsDisplayConstraint.priority = 980
+            tipAmountsLabelConstraint.priority = 980
+            
+            noTipSplitPersonViewConstraint.priority = 970
+            noTipSplitPersonViewConstraint2.priority = 970
+            
+            gTotalLabelConstraint.priority = 999
+            
+            
+            tipAmountLabelOutlet.isHidden = true
+            
+            tipAmountTitleLabel.isHidden = true
+            
+        } else {
+            
+            // show tip amount section
+            
+            tipAmountsDisplayConstraint.priority = 999
+            tipAmountsLabelConstraint.priority = 999
+            
+            gTotalLabelConstraint.priority = 985
+            
+            
+            tipAmountLabelOutlet.isHidden = false
+            
+            tipAmountTitleLabel.isHidden = false
+            
+        }
+        
+        if varAmountsObject.numberOfPeoplePaying == 1 {
+            
+            // hide total per person section
+            
+            singlePersonTotaledAmountsViewCOnstraint.priority = 997
+            
+            
+            totalAmountPerPersonTitleLabel.isHidden = true
+            
+            totalAmountPerPersonLabelOutlet.isHidden = true
+            
+        } else {
+            
+            // show total per person
+            
+            if (varAmountsObject.tipRate != 0.00) {
+                // show all three sections
+                
+                noTipSplitPersonViewConstraint.priority = 970
+                noTipSplitPersonViewConstraint2.priority = 970
+                
+                gTotalLabelConstraint.priority = 985
+                
+                singlePersonTotaledAmountsViewCOnstraint.priority = 990
+                
+            } else {
+                // show total per person and gTotal
+                
+                gTotalLabelConstraint.priority = 990
+                
+                singlePersonTotaledAmountsViewCOnstraint.priority = 985
+                
+                noTipSplitPersonViewConstraint.priority = 999
+                noTipSplitPersonViewConstraint2.priority = 999
+                
+                tipAmountsDisplayConstraint.priority = 980
+                tipAmountsLabelConstraint.priority = 980
+                
+            }
+            
+            
+            
+            totalAmountPerPersonTitleLabel.isHidden = false
+            
+            totalAmountPerPersonLabelOutlet.isHidden = false
+            
+        }
+        
+    }
+    
     func updateFieldValues() {
         
         for sectionHeader in collectionSectionHeaderLabels {
@@ -650,23 +753,7 @@ class MainPage: UIViewController {
             
         }
         
-        if varAmountsObject.numberOfPeoplePaying == 1 {
-            
-            singlePersonTotaledAmountsViewCOnstraint.priority = 997
-            
-            totalAmountPerPersonTitleLabel.isHidden = true
-            
-            totalAmountPerPersonLabelOutlet.isHidden = true
-            
-        } else {
-            
-            singlePersonTotaledAmountsViewCOnstraint.priority = 990
-            
-            totalAmountPerPersonTitleLabel.isHidden = false
-            
-            totalAmountPerPersonLabelOutlet.isHidden = false
-            
-        }
+        handleTotalAmountsView()
         
         /* ----- Value Output ---- */
         
@@ -884,6 +971,8 @@ class MainPage: UIViewController {
         if UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.bool(forKey: "useDynamicText") == true {
             
             return UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
+            
+            
             
         } else {
             

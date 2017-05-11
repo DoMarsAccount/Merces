@@ -26,12 +26,13 @@ class ColoringAndThemes {
     let watchTextColor = UIColor(red: 1.0, green: 0.97254901960784, blue: 0.91372549019608, alpha: 1)
     
     // #4
-    let appIconGreen1 = UIColor(red:0.51, green:0.85, blue:0.57, alpha:1.0)
+    //let appIconGreen1 = UIColor(red:0.51, green:0.85, blue:0.57, alpha:1.0)
     
     // #2
-    let appIconGreen2 = UIColor(red:0.46, green:0.73, blue:0.56, alpha:1.0)
+    //let appIconGreen2 = UIColor(red:0.46, green:0.73, blue:0.56, alpha:1.0)
     
     // #1
+    // #6BAB8C in Hex
     let appIconGreen3 = UIColor(red:0.42, green:0.67, blue:0.55, alpha:1.0)
     
     // #3
@@ -67,9 +68,9 @@ class ColoringAndThemes {
     
     init() {
         
-        arrayOfAllColors = [appleWatchObject.leatherLoopBrightBlue, appleBackgroundColor, appleWatchObject.gold, appleWatchObject.roseGold, camoGreen, tan, fiveDollarBillPurple, hundredDollarBillBlue, hundredDollarBillOrange, appleMusicColor, appleMessagesColor, appleWatchObject.sportBandWhite, appleWatchObject.modernBuckleBlack, appleWatchObject.modernBuckleBrightRed, appleWatchObject.modernBuckleBrown, appIconGreen1, appIconGreen2, appIconGreen3, appIconGreen4]
+        arrayOfAllColors = [appIconGreen3, appleWatchObject.leatherLoopBrightBlue, appleBackgroundColor, appleWatchObject.gold, appleWatchObject.roseGold, camoGreen, tan, fiveDollarBillPurple, hundredDollarBillBlue, hundredDollarBillOrange, appleMusicColor, appleMessagesColor, appleWatchObject.sportBandWhite, appleWatchObject.modernBuckleBlack, appleWatchObject.modernBuckleBrightRed, appleWatchObject.modernBuckleBrown, appIconGreen4]
         
-        arrayOfAllColorNames = ["Faded Blue (Default)", "Light Gray (Default)", "Gold", "Rose Gold", "Camo Green", "Tan", "Purple", "Blue", "Burnt Orange", "Hot Pink", "Neon Green", "White", "Black", "Bright Red", "Brown", "Green1", "Green2", "Green3", "Green4",]
+        arrayOfAllColorNames = ["Green", "Faded Blue", "Light Gray", "Gold", "Rose Gold", "Camo Green", "Tan", "Purple", "Blue", "Burnt Orange", "Hot Pink", "Neon Green", "White", "Black", "Bright Red", "Brown", "Aqua Green"]
         
         
     }
@@ -156,13 +157,13 @@ class ColoringAndThemes {
         
         switch currentColor {
             
-            case "UIExtendedSRGBColorSpace 0.51 0.85 0.57 1":
-            
-            return appIconGreen1
-            
-            case "UIExtendedSRGBColorSpace 0.46 0.73 0.56 1":
-            
-            return appIconGreen2
+//            case "UIExtendedSRGBColorSpace 0.51 0.85 0.57 1":
+//            
+//            return appIconGreen1
+//            
+//            case "UIExtendedSRGBColorSpace 0.46 0.73 0.56 1":
+//            
+//            return appIconGreen2
             
             case "UIExtendedSRGBColorSpace 0.42 0.67 0.55 1":
             

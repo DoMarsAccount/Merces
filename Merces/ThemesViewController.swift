@@ -165,9 +165,27 @@ class ThemesViewController: UIViewController, UICollectionViewDataSource, UIColl
         
     }
     
+    func checkForDynamicType(_ preferredFontSize: CGFloat) -> UIFont {
+        
+        if UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.bool(forKey: "useDynamicText") == true {
+            
+            return UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
+            
+            
+            
+        } else {
+            
+            return UIFont(name: "HelveticaNeue-CondensedBold", size: preferredFontSize)!
+            
+        }
+        
+    }
+    
     
 
     func updateColorValues() {
+        
+        
         
         self.setStatusBarStyle(UIStatusBarStyleContrast)
         
@@ -210,7 +228,11 @@ class ThemesViewController: UIViewController, UICollectionViewDataSource, UIColl
             
             themesLabel.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor!, isFlat: true).cgColor
             
+            themesLabel.font = checkForDynamicType(24)
+            
         }
+        
+        
         
         
     }
