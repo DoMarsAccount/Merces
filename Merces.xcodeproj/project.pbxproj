@@ -503,7 +503,7 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = DoMarsToyBox;
 				TargetAttributes = {
 					E3AB121F1E2DC1DF0021C889 = {

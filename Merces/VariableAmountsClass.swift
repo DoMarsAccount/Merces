@@ -131,105 +131,40 @@ class VariableAmountsClass
         // 1 = Average
         // 2 = Great
         
-        if tipRateToEdit == 0 {
+        if tipRateToEdit >= 0 && tipRateToEdit <= 2 {
             
             if venueToEdit == "Dining" {
                 
-                diningTipArray[0] = inputAmount * 0.01
+                diningTipArray[tipRateToEdit] = inputAmount * 0.01
                 
             } else if venueToEdit == "Bar" {
                 
-                barTipArray[0] = inputAmount * 0.01
+                barTipArray[tipRateToEdit] = inputAmount * 0.01
                 
             } else if venueToEdit == "Quick" {
                 
-                quickTipArray[0] = inputAmount * 0.01
+                quickTipArray[tipRateToEdit] = inputAmount * 0.01
                 
             } else if venueToEdit == "Taxi" {
                 
-                taxiTipArray[0] = inputAmount * 0.01
+                taxiTipArray[tipRateToEdit] = inputAmount * 0.01
                 
             } else if venueToEdit == "Salon" {
                 
-                salonTipArray[0] = inputAmount * 0.01
+                salonTipArray[tipRateToEdit] = inputAmount * 0.01
                 
             } /*else if venueToEdit == "Casino" {
+                 
+                 casinoTipArray[tipRateToEdit] = inputAmount * 0.01
+                 
+             }*/ else if venueToEdit == "Delivery" {
                 
-                casinoTipArray[0] = inputAmount * 0.01
-                
-            }*/ else if venueToEdit == "Delivery" {
-                
-                deliveryTipArray[0] = inputAmount * 0.01
-                
-            }
-            
-        } else if tipRateToEdit == 1 {
-            
-            if venueToEdit == "Dining" {
-                
-                diningTipArray[1] = inputAmount * 0.01
-                
-            } else if venueToEdit == "Bar" {
-                
-                barTipArray[1] = inputAmount * 0.01
-                
-            } else if venueToEdit == "Quick" {
-                
-                quickTipArray[1] = inputAmount * 0.01
-                
-            } else if venueToEdit == "Taxi" {
-                
-                taxiTipArray[1] = inputAmount * 0.01
-                
-            } else if venueToEdit == "Salon" {
-                
-                salonTipArray[1] = inputAmount * 0.01
-                
-            }/* else if venueToEdit == "Casino" {
-                
-                casinoTipArray[1] = inputAmount * 0.01
-                
-            }*/ else if venueToEdit == "Delivery" {
-                
-                deliveryTipArray[1] = inputAmount * 0.01
+                deliveryTipArray[tipRateToEdit] = inputAmount * 0.01
                 
             }
-            
-            
-        } else if tipRateToEdit == 2 {
-            
-            if venueToEdit == "Dining" {
-                
-                diningTipArray[2] = inputAmount * 0.01
-                
-            } else if venueToEdit == "Bar" {
-                
-                barTipArray[2] = inputAmount * 0.01
-                
-            } else if venueToEdit == "Quick" {
-                
-                quickTipArray[2] = inputAmount * 0.01
-                
-            } else if venueToEdit == "Taxi" {
-                
-                taxiTipArray[2] = inputAmount * 0.01
-                
-            } else if venueToEdit == "Salon" {
-                
-                salonTipArray[2] = inputAmount * 0.01
-                
-            }/* else if venueToEdit == "Casino" {
-                
-                casinoTipArray[2] = inputAmount * 0.01
-                
-            }*/ else if venueToEdit == "Delivery" {
-                
-                deliveryTipArray[2] = inputAmount * 0.01
-                
-            }
-            
             
         }
+        
         
         UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.setValue(diningTipArray, forKey: "diningTipArray")
         UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.setValue(barTipArray, forKey: "barTipArray")
@@ -258,6 +193,7 @@ class VariableAmountsClass
             useTaxAmount(true)
             
         case 3:
+            
             
             if inputAmount >= 2147483647 {
                 

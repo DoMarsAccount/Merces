@@ -67,6 +67,8 @@ class MainPage: UIViewController {
     @IBOutlet var serviceRatingLabelOutlet: UISegmentedControl!
     
     @IBOutlet var settingsIconOutlet: UIBarButtonItem!
+    @IBOutlet var modeSwitchOutlet: UIBarButtonItem!
+    var isModeTipCalc = true
 
     @IBOutlet var totaledAmountsLabel: UILabel!
     
@@ -237,6 +239,94 @@ class MainPage: UIViewController {
         
     }
     
+    @IBAction func modeSwitchButtonPressed(_ sender: UIBarButtonItem) {
+        
+        if isModeTipCalc {
+            
+            self.modeSwitchOutlet.isEnabled = false
+            
+            // move center view left
+            UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+                
+                self.venueAndServiceStuffView.transform = CGAffineTransform(translationX: -self.venueAndServiceStuffView.frame.width - 8, y: 0)
+                
+                
+            }, completion: { finished in
+                
+                self.venueAndServiceStuffView.alpha = 0.0
+                
+                // move bottom view up
+                UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+                    
+                    self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: 0, y: -self.venueAndServiceStuffView.frame.height - 8)
+                    
+                    
+                }, completion: { finished in
+                    
+                    // move keypad view right
+                    UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+                        
+                        self.keypadStuffView.alpha = 1
+                        
+                        self.keypadStuffView.transform = CGAffineTransform(translationX: 0, y: 0)
+                        
+                        
+                    }, completion: { finished in
+                        
+                        self.isModeTipCalc = false
+                        
+                        self.modeSwitchOutlet.isEnabled = true
+                        
+                    })
+                    
+                })
+                
+            })
+            
+            
+        } else {
+            
+            self.modeSwitchOutlet.isEnabled = false
+            
+            /* move back*/
+            
+            UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+               
+                self.keypadStuffView.transform = CGAffineTransform(translationX: -self.keypadStuffView.frame.width - 8, y: 0)
+                
+                
+            }, completion: { finished in
+            
+                UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+                    
+                    self.keypadStuffView.alpha = 0.0
+                    
+                    self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: 0, y: 0)
+                    
+                }, completion: { finished in
+                    
+                    UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+                        
+                        self.venueAndServiceStuffView.alpha = 1.0
+                        
+                        self.venueAndServiceStuffView.transform = CGAffineTransform(translationX: 0, y: 0)
+                        
+                        
+                    }, completion: { finished in
+                        
+                        self.modeSwitchOutlet.isEnabled = true
+                        
+                        self.isModeTipCalc = true
+                        
+                    })
+                    
+                })
+                
+            })
+            
+        }
+        
+    }
     
     /* =================== User Input Actions ====================== */
     
@@ -997,7 +1087,9 @@ class MainPage: UIViewController {
             
             keypadStuffView.isHidden = false; keypadStuffView.alpha = 1.0
             
-            totaledAmountsStuffView.transform = CGAffineTransform(translationX: -self.view.frame.width , y: 0)
+            if isModeTipCalc {
+                totaledAmountsStuffView.transform = CGAffineTransform(translationX: -self.view.frame.width , y: 0)
+            }
             
             keypadStuffView.transform = CGAffineTransform(translationX: (-self.view.frame.width - self.view.frame.width) , y: 0)
             
@@ -1005,7 +1097,9 @@ class MainPage: UIViewController {
                 
                 self.venuesStuffView.transform = CGAffineTransform(translationX: (self.view.frame.width + self.view.frame.width), y: 0)
                 
-                self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: self.view.frame.width , y: 0)
+                if self.isModeTipCalc {
+                    self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: self.view.frame.width , y: 0)
+                }
                 
                 self.keypadStuffView.transform = CGAffineTransform(translationX: 0, y: 0)
                 
@@ -1013,9 +1107,9 @@ class MainPage: UIViewController {
                     
                     self.venuesStuffView.alpha = 0.0
                     
-                    self.totaledAmountsStuffView.alpha = 0.0
-                    
-                    
+                    if self.isModeTipCalc {
+                        self.totaledAmountsStuffView.alpha = 0.0
+                    }
             })
             
             
@@ -1032,14 +1126,18 @@ class MainPage: UIViewController {
             
             UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
                 
-                self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: self.view.frame.width , y: 0)
+                if self.isModeTipCalc {
+                    self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: self.view.frame.width , y: 0)
+                }
                 
                 self.keypadStuffView.transform = CGAffineTransform(translationX: 0, y: 0)
                 
                 
                 }, completion: { finished in
                     
-                    self.totaledAmountsStuffView.alpha = 0.0
+                    if self.isModeTipCalc {
+                        self.totaledAmountsStuffView.alpha = 0.0
+                    }
                     
             })
             
@@ -1057,13 +1155,16 @@ class MainPage: UIViewController {
         
         // In case user switched from Venue selector to keypad, 
         // Make sure Totaled Amount View is in correct spot for anim.
-        self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: self.view.frame.width , y: 0)
+        if isModeTipCalc {
+            self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: self.view.frame.width , y: 0)
+        }
         
         UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
             
             self.keypadStuffView.transform = CGAffineTransform(translationX: -self.view.frame.width , y: 0)
-            
-            self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: 0, y: 0)
+            if self.isModeTipCalc {
+                self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: 0, y: 0)
+            }
             
         }, completion: { finished in
             
@@ -1260,6 +1361,7 @@ class MainPage: UIViewController {
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
             
             settingsIconOutlet.isEnabled = false
+            modeSwitchOutlet.isEnabled = false
             
             origTipAmountTitleLabelHeight = self.tipAmountTitleLabel.frame.height
             
@@ -1490,6 +1592,7 @@ class MainPage: UIViewController {
                         }, completion: {finished in
                             
                             self.settingsIconOutlet.isEnabled = true
+                            self.modeSwitchOutlet.isEnabled = true
                             
                             //self.coinsImageOutlet.isHidden = false
                             
