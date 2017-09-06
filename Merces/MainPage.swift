@@ -223,9 +223,7 @@ class MainPage: UIViewController {
     
     
     func preferredContentSizeChanged(_ notification: Notification) {
-        
         updateFieldValues()
-        
     }
     
     
@@ -244,6 +242,7 @@ class MainPage: UIViewController {
         if isModeTipCalc {
             
             self.modeSwitchOutlet.isEnabled = false
+            self.modeSwitchOutlet.image = UIImage(named: "shopping_bag")
             
             // move center view left
             UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
@@ -287,19 +286,20 @@ class MainPage: UIViewController {
         } else {
             
             self.modeSwitchOutlet.isEnabled = false
+            self.modeSwitchOutlet.image = UIImage(named: "tipping")
             
             /* move back*/
             
             UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
                
-                self.keypadStuffView.transform = CGAffineTransform(translationX: -self.keypadStuffView.frame.width - 8, y: 0)
+//                self.keypadStuffView.transform = CGAffineTransform(translationX: -self.keypadStuffView.frame.width - 8, y: 0)
                 
                 
             }, completion: { finished in
             
                 UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
                     
-                    self.keypadStuffView.alpha = 0.0
+                    //self.keypadStuffView.alpha = 0.0
                     
                     self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: 0, y: 0)
                     

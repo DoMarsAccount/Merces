@@ -998,7 +998,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Merces" id="SEl-1C-Gsq">
-                        <barButtonItem key="leftBarButtonItem" image="dice" id="lAj-oU-2Yl">
+                        <barButtonItem key="leftBarButtonItem" image="tipping" id="lAj-oU-2Yl">
                             <connections>
                                 <action selector="modeSwitchButtonPressed:" destination="RXx-uf-TO6" id="p7m-iQ-TTM"/>
                             </connections>
@@ -2455,7 +2455,6 @@
         <image name="LaunchPage" width="1008" height="318"/>
         <image name="beer" width="23" height="24"/>
         <image name="cogwheel" width="24" height="24"/>
-        <image name="dice" width="27" height="23"/>
         <image name="dining_set" width="29" height="18"/>
         <image name="fast_forward" width="25" height="18"/>
         <image name="handshake" width="36" height="24"/>
@@ -2465,5 +2464,6 @@
         <image name="taxi" width="26" height="24"/>
         <image name="thumbs_down" width="24" height="21"/>
         <image name="thumbs_up" width="24" height="21"/>
+        <image name="tipping" width="27" height="24"/>
     </resources>
 </document>
