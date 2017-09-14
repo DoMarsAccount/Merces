@@ -1,0 +1,258 @@
+
+/* Class = "UILabel"; text = "Tip Amount:"; ObjectID = "3XI-IE-OKT"; */
+"3XI-IE-OKT.text" = "Tip Amount:";
+
+/* Class = "UILabel"; text = "Venue: "; ObjectID = "41O-Cu-JAl"; */
+"41O-Cu-JAl.text" = "Venue: ";
+
+/* Class = "UILabel"; text = "Total (per person):"; ObjectID = "4YN-Pu-mbm"; */
+"4YN-Pu-mbm.text" = "Total (per person):";
+
+/* Class = "UILabel"; text = "Totaled Amounts"; ObjectID = "56J-CM-e7L"; */
+"56J-CM-e7L.text" = "Totaled Amounts";
+
+/* Class = "UILabel"; text = "Quick"; ObjectID = "5Vi-Pz-qvG"; */
+"5Vi-Pz-qvG.text" = "Quick";
+
+/* Class = "UIButton"; normalTitle = "6"; ObjectID = "62D-gL-Lrb"; */
+"62D-gL-Lrb.normalTitle" = "6";
+
+/* Class = "UILabel"; text = "Dining"; ObjectID = "7YO-dR-9wI"; */
+"7YO-dR-9wI.text" = "Dining";
+
+/* Class = "UILabel"; text = "Grand Total:"; ObjectID = "7Z2-GO-Ql5"; */
+"7Z2-GO-Ql5.text" = "Grand Total:";
+
+/* Class = "UILabel"; text = "Local Sales Tax Rate"; ObjectID = "7aw-et-bXV"; */
+"7aw-et-bXV.text" = "Local Sales Tax Rate";
+
+/* Class = "UILabel"; text = "Subtotal is Post Tax"; ObjectID = "7vM-yK-3hN"; */
+"7vM-yK-3hN.text" = "Subtotal is Post Tax";
+
+/* Class = "UIButton"; normalTitle = "4"; ObjectID = "81E-Ga-4tY"; */
+"81E-Ga-4tY.normalTitle" = "4";
+
+/* Class = "UILabel"; text = "View Color: "; ObjectID = "92M-oJ-xGl"; */
+"92M-oJ-xGl.text" = "View Color: ";
+
+/* Class = "UILabel"; text = "Venue"; ObjectID = "9VS-6V-Z6W"; */
+"9VS-6V-Z6W.text" = "Venue";
+
+/* Class = "UIButton"; normalTitle = "6"; ObjectID = "ALc-tc-VKI"; */
+"ALc-tc-VKI.normalTitle" = "6";
+
+/* Class = "UIButton"; normalTitle = "8"; ObjectID = "CQZ-yH-Dv3"; */
+"CQZ-yH-Dv3.normalTitle" = "8";
+
+/* Class = "UITextField"; placeholder = "Preferred Rate"; ObjectID = "DTn-rY-DBB"; */
+"DTn-rY-DBB.placeholder" = "Preferred Rate";
+
+/* Class = "UITableViewController"; title = "Themes Page"; ObjectID = "E6h-s0-Dsb"; */
+"E6h-s0-Dsb.title" = "Themes Page";
+
+/* Class = "UILabel"; text = "Tip Includes Tax"; ObjectID = "EBB-bG-clT"; */
+"EBB-bG-clT.text" = "Tip Includes Tax";
+
+/* Class = "UILabel"; text = "Optimal Usage Guide"; ObjectID = "G09-eG-Zw2"; */
+"G09-eG-Zw2.text" = "Optimal Usage Guide";
+
+/* Class = "UIButton"; normalTitle = "7"; ObjectID = "GCd-hy-8Rk"; */
+"GCd-hy-8Rk.normalTitle" = "7";
+
+/* Class = "UINavigationItem"; title = "About Merces"; ObjectID = "INY-LI-eaH"; */
+"INY-LI-eaH.title" = "About Merces";
+
+/* Class = "UITableViewSection"; footerTitle = " "; ObjectID = "Ie9-7z-ngA"; */
+"Ie9-7z-ngA.footerTitle" = " ";
+
+/* Class = "UITableViewSection"; headerTitle = "Feedback"; ObjectID = "Ie9-7z-ngA"; */
+"Ie9-7z-ngA.headerTitle" = "Feedback";
+
+/* Class = "UINavigationItem"; title = "Color Picker"; ObjectID = "JVe-zf-FUE"; */
+"JVe-zf-FUE.title" = "Color Picker";
+
+/* Class = "UITextField"; text = "0.000%"; ObjectID = "JZj-Va-YgW"; */
+"JZj-Va-YgW.text" = "0.000%";
+
+/* Class = "UIButton"; normalTitle = "7"; ObjectID = "Kax-4H-rzO"; */
+"Kax-4H-rzO.normalTitle" = "7";
+
+/* Class = "UILabel"; text = "Sales Tax"; ObjectID = "KeK-2p-XwQ"; */
+"KeK-2p-XwQ.text" = "Sales Tax";
+
+/* Class = "UITableViewSection"; headerTitle = "Support"; ObjectID = "KfM-DA-qYY"; */
+"KfM-DA-qYY.headerTitle" = "Support";
+
+/* Class = "UINavigationItem"; title = "Optimal Usage Guide"; ObjectID = "LAn-9G-E08"; */
+"LAn-9G-E08.title" = "Optimal Usage Guide";
+
+/* Class = "UITextField"; text = "$0.00"; ObjectID = "LJ0-NW-PnP"; */
+"LJ0-NW-PnP.text" = "$0.00";
+
+/* Class = "UILabel"; text = "About Merces"; ObjectID = "P5s-2v-GjX"; */
+"P5s-2v-GjX.text" = "About Merces";
+
+/* Class = "UILabel"; text = "Use Your iPhone's Text Size"; ObjectID = "Px2-fB-09T"; */
+"Px2-fB-09T.text" = "Use Your iPhone's Text Size";
+
+/* Class = "UITableViewSection"; headerTitle = "Round Up to Nearest Dollar"; ObjectID = "QcI-ig-crr"; */
+"QcI-ig-crr.headerTitle" = "Round Up to Nearest Dollar";
+
+/* Class = "UINavigationItem"; title = "Merces"; ObjectID = "SEl-1C-Gsq"; */
+"SEl-1C-Gsq.title" = "Merces";
+
+/* Class = "UITableViewSection"; headerTitle = "General"; ObjectID = "SNw-No-8yH"; */
+"SNw-No-8yH.headerTitle" = "General";
+
+/* Class = "UIViewController"; title = "My Merces"; ObjectID = "SyW-Px-p1c"; */
+"SyW-Px-p1c.title" = "My Merces";
+
+/* Class = "UILabel"; text = "Main Color: "; ObjectID = "Tcr-Tc-0cC"; */
+"Tcr-Tc-0cC.text" = "Main Color: ";
+
+/* Class = "UITextField"; placeholder = "Preferred Rate"; ObjectID = "TgY-Pl-6cx"; */
+"TgY-Pl-6cx.placeholder" = "Preferred Rate";
+
+/* Class = "UIButton"; normalTitle = "1"; ObjectID = "UoF-lv-Lvq"; */
+"UoF-lv-Lvq.normalTitle" = "1";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "UyQ-0u-2LJ"; */
+"UyQ-0u-2LJ.text" = "Title";
+
+/* Class = "UITableViewSection"; headerTitle = "About"; ObjectID = "VDU-zx-a1l"; */
+"VDU-zx-a1l.headerTitle" = "About";
+
+/* Class = "UIButton"; normalTitle = "5"; ObjectID = "VPH-8H-XDA"; */
+"VPH-8H-XDA.normalTitle" = "5";
+
+/* Class = "UIButton"; normalTitle = "2"; ObjectID = "VRu-mN-0jI"; */
+"VRu-mN-0jI.normalTitle" = "2";
+
+/* Class = "UILabel"; text = "Background Color: "; ObjectID = "W4b-N4-TeU"; */
+"W4b-N4-TeU.text" = "Background Color: ";
+
+/* Class = "UILabel"; text = "Bar"; ObjectID = "XFY-4Z-rUX"; */
+"XFY-4Z-rUX.text" = "Bar";
+
+/* Class = "UILabel"; text = "Subtotal"; ObjectID = "XQX-VB-B2j"; */
+"XQX-VB-B2j.text" = "Subtotal";
+
+/* Class = "UIButton"; normalTitle = "2"; ObjectID = "aDZ-do-HYM"; */
+"aDZ-do-HYM.normalTitle" = "2";
+
+/* Class = "UIButton"; normalTitle = "9"; ObjectID = "aLN-nd-R53"; */
+"aLN-nd-R53.normalTitle" = "9";
+
+/* Class = "UILabel"; text = "Mid"; ObjectID = "b50-Yj-WGT"; */
+"b50-Yj-WGT.text" = "Mid";
+
+/* Class = "UILabel"; text = "Service Level"; ObjectID = "b8Z-yt-xAv"; */
+"b8Z-yt-xAv.text" = "Service Level";
+
+/* Class = "UIButton"; normalTitle = "3"; ObjectID = "bFo-kz-L6X"; */
+"bFo-kz-L6X.normalTitle" = "3";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "cqg-n6-Qaz"; */
+"cqg-n6-Qaz.title" = "Settings";
+
+/* Class = "UILabel"; text = "Low"; ObjectID = "e4w-y1-moW"; */
+"e4w-y1-moW.text" = "Low";
+
+/* Class = "UIButton"; normalTitle = "Purchase"; ObjectID = "f0w-aK-HhI"; */
+"f0w-aK-HhI.normalTitle" = "Purchase";
+
+/* Class = "UIButton"; normalTitle = "⌫"; ObjectID = "fGT-Jr-oqe"; */
+"fGT-Jr-oqe.normalTitle" = "⌫";
+
+/* Class = "UIButton"; normalTitle = "0"; ObjectID = "hXF-sh-PRg"; */
+"hXF-sh-PRg.normalTitle" = "0";
+
+/* Class = "UITextField"; text = "1"; ObjectID = "hbo-d7-pDV"; */
+"hbo-d7-pDV.text" = "1";
+
+/* Class = "UINavigationItem"; title = "My Merces"; ObjectID = "im6-RM-NlN"; */
+"im6-RM-NlN.title" = "My Merces";
+
+/* Class = "UILabel"; text = "Salon"; ObjectID = "jSc-2N-iVU"; */
+"jSc-2N-iVU.text" = "Salon";
+
+/* Class = "UILabel"; text = "$0.00"; ObjectID = "lqi-ve-hvU"; */
+"lqi-ve-hvU.text" = "$0.00";
+
+/* Class = "UIButton"; normalTitle = "0"; ObjectID = "lwq-E5-6YN"; */
+"lwq-E5-6YN.normalTitle" = "0";
+
+/* Class = "UIButton"; normalTitle = "⏎"; ObjectID = "n99-hs-bkE"; */
+"n99-hs-bkE.normalTitle" = "⏎";
+
+/* Class = "UILabel"; text = "Leave a Rating (opens App Store)"; ObjectID = "naE-6i-zDf"; */
+"naE-6i-zDf.text" = "Leave a Rating (opens App Store)";
+
+/* Class = "UINavigationItem"; title = "Color Picker"; ObjectID = "nex-qO-Ef0"; */
+"nex-qO-Ef0.title" = "Color Picker";
+
+/* Class = "UILabel"; text = "# of people"; ObjectID = "ni0-8K-BUD"; */
+"ni0-8K-BUD.text" = "# of people";
+
+/* Class = "UITableViewSection"; headerTitle = "Accessibility"; ObjectID = "pt0-cm-Ljf"; */
+"pt0-cm-Ljf.headerTitle" = "Accessibility";
+
+/* Class = "UILabel"; text = "My Merces"; ObjectID = "pxj-Re-eJ6"; */
+"pxj-Re-eJ6.text" = "My Merces";
+
+/* Class = "UITextField"; placeholder = "Preferred Rate"; ObjectID = "qHz-r7-Yv1"; */
+"qHz-r7-Yv1.placeholder" = "Preferred Rate";
+
+/* Class = "UIButton"; normalTitle = "5"; ObjectID = "qbO-xA-iR7"; */
+"qbO-xA-iR7.normalTitle" = "5";
+
+/* Class = "UILabel"; text = "Taxi"; ObjectID = "qu3-sR-xhY"; */
+"qu3-sR-xhY.text" = "Taxi";
+
+/* Class = "UIButton"; normalTitle = "1"; ObjectID = "rn9-FG-FYo"; */
+"rn9-FG-FYo.normalTitle" = "1";
+
+/* Class = "UILabel"; text = "Tip Amount"; ObjectID = "sZY-gd-Pao"; */
+"sZY-gd-Pao.text" = "Tip Amount";
+
+/* Class = "UIButton"; normalTitle = "⌫"; ObjectID = "t9f-dc-4GO"; */
+"t9f-dc-4GO.normalTitle" = "⌫";
+
+/* Class = "UIButton"; normalTitle = "Restore Purchase"; ObjectID = "tV7-fU-zD7"; */
+"tV7-fU-zD7.normalTitle" = "Restore Purchase";
+
+/* Class = "UILabel"; text = "$0.00"; ObjectID = "tb7-ZN-o9e"; */
+"tb7-ZN-o9e.text" = "$0.00";
+
+/* Class = "UIButton"; normalTitle = "3"; ObjectID = "uUb-1l-QOw"; */
+"uUb-1l-QOw.normalTitle" = "3";
+
+/* Class = "UIButton"; normalTitle = "4"; ObjectID = "uyb-et-YTD"; */
+"uyb-et-YTD.normalTitle" = "4";
+
+/* Class = "UIButton"; normalTitle = "9"; ObjectID = "vcY-5k-BQF"; */
+"vcY-5k-BQF.normalTitle" = "9";
+
+/* Class = "UILabel"; text = "High"; ObjectID = "vfU-VY-gA1"; */
+"vfU-VY-gA1.text" = "High";
+
+/* Class = "UILabel"; text = "Delivery"; ObjectID = "wCO-qB-Lbh"; */
+"wCO-qB-Lbh.text" = "Delivery";
+
+/* Class = "UIButton"; normalTitle = "⏎"; ObjectID = "wFY-A8-iE4"; */
+"wFY-A8-iE4.normalTitle" = "⏎";
+
+/* Class = "UIButton"; normalTitle = "8"; ObjectID = "wZE-VW-WW6"; */
+"wZE-VW-WW6.normalTitle" = "8";
+
+/* Class = "UILabel"; text = "Tip Rate"; ObjectID = "wjv-bx-gpi"; */
+"wjv-bx-gpi.text" = "Tip Rate";
+
+/* Class = "UILabel"; text = "Grand Total"; ObjectID = "xcb-eo-RkH"; */
+"xcb-eo-RkH.text" = "Grand Total";
+
+/* Class = "UILabel"; text = "$0.00"; ObjectID = "yOa-Tp-0HJ"; */
+"yOa-Tp-0HJ.text" = "$0.00";
+
+/* Class = "UITextField"; text = "$0.00"; ObjectID = "ytJ-v7-LvX"; */
+"ytJ-v7-LvX.text" = "$0.00";

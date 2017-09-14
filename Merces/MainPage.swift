@@ -191,10 +191,13 @@ class MainPage: UIViewController {
         
         
         if haveShownSetupAlert == false && varAmountsObject.quickTipArray[1] == 0 {
-              
-            let alert = UIAlertController(title: "Welcome to Merces!", message: "For the best experience, personalize your settings first.", preferredStyle: UIAlertControllerStyle.alert)
             
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Let's do it!", comment: "Take me to My Merces"), style: UIAlertActionStyle.default, handler: { (_) in
+            let alertTitle = NSLocalizedString("WelcomeToMerces", comment: "welcome message")
+            let alertMessage = NSLocalizedString("IdealExperience", comment: "best use case")
+              
+            let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction(UIAlertAction(title: NSLocalizedString("TakeToMyMerces", comment: "Take me to My Merces"), style: UIAlertActionStyle.default, handler: { (_) in
                 
                 let myMercesViewController = self.storyboard?.instantiateViewController(withIdentifier: "MyMerces") as! MyMerces
                 
@@ -202,7 +205,7 @@ class MainPage: UIViewController {
                 
             }))
             
-            alert.addAction(UIAlertAction(title: NSLocalizedString("I'll do it later", comment: "I'll do it later"), style: UIAlertActionStyle.cancel, handler: { (_) in
+            alert.addAction(UIAlertAction(title: NSLocalizedString("DoItLater", comment: "I'll do it later"), style: UIAlertActionStyle.cancel, handler: { (_) in
                 
                 
                 
@@ -292,7 +295,7 @@ class MainPage: UIViewController {
             
             UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
                
-//                self.keypadStuffView.transform = CGAffineTransform(translationX: -self.keypadStuffView.frame.width - 8, y: 0)
+                self.keypadStuffView.transform = CGAffineTransform(translationX: -self.keypadStuffView.frame.width - 8, y: 0)
                 
                 
             }, completion: { finished in
@@ -1700,7 +1703,9 @@ class MainPage: UIViewController {
             
             //Code for a regular iOS Alert
             
-            let alert = UIAlertController(title: "Just to be safe...", message: "Do you want to clear all values?", preferredStyle: UIAlertControllerStyle.alert)
+            let alertTitle = NSLocalizedString("JustToBeSafe", comment: "safety check")
+            let alertMessage = NSLocalizedString("WantToClearValues", comment: "safety message")
+            let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
             
             alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: "No"), style: UIAlertActionStyle.default, handler: { (_) in
                 

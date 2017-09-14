@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00A610FC15D4ED252C737DC1 /* libPods-MercesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA7BA650B3FB6048042FC4C9 /* libPods-MercesTests.a */; };
+		78B3D1EF1F6A05FF009C8051 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78B3D1F11F6A05FF009C8051 /* Main.storyboard */; };
 		7D1DEE16862D475BCA4F1E29 /* Pods_Merces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F251037667992C1F444B6F5B /* Pods_Merces.framework */; };
 		E33460AB1E32EF2300D467C6 /* ThemesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33460AA1E32EF2300D467C6 /* ThemesCollectionViewCell.swift */; };
 		E33460B11E32F23D00D467C6 /* ThemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33460B01E32F23D00D467C6 /* ThemesViewController.swift */; };
@@ -20,7 +21,6 @@
 		E3AB120D1E2DBE950021C889 /* ThemesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12051E2DBE950021C889 /* ThemesPage.swift */; };
 		E3AB120E1E2DBE950021C889 /* InAppPurchasePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12061E2DBE950021C889 /* InAppPurchasePage.swift */; };
 		E3AB12191E2DBF210021C889 /* defaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3AB12181E2DBF210021C889 /* defaultPreferences.plist */; };
-		E3AB121B1E2DBF480021C889 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3AB121A1E2DBF480021C889 /* Main.storyboard */; };
 		E3AB12221E2DC1DF0021C889 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3AB12211E2DC1DF0021C889 /* NotificationCenter.framework */; };
 		E3AB12251E2DC1DF0021C889 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12241E2DC1DF0021C889 /* TodayViewController.swift */; };
 		E3AB122C1E2DC1DF0021C889 /* MercesWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E3AB12201E2DC1DF0021C889 /* MercesWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -89,6 +89,10 @@
 		114411A3AA1179BD7CD421B4 /* Pods-Merces WatchKit App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Merces WatchKit App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Merces WatchKit App/Pods-Merces WatchKit App.release.xcconfig"; sourceTree = "<group>"; };
 		22E19BF2E33EE889A46B7EB5 /* libPods-Merces WatchKit Extension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Merces WatchKit Extension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63688267B953C1EDB1DE8E96 /* Pods-Merces WatchKit App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Merces WatchKit App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Merces WatchKit App/Pods-Merces WatchKit App.debug.xcconfig"; sourceTree = "<group>"; };
+		78B3D1EE1F6A0199009C8051 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		78B3D1F21F6A0611009C8051 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		78B3D1F41F6A061F009C8051 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		78B3D1F51F6A0660009C8051 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		9506843059A034A4E21823EA /* Pods-Merces.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Merces.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Merces/Pods-Merces.debug.xcconfig"; sourceTree = "<group>"; };
 		9F25C645504846EFFD41DEA8 /* Pods-MercesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MercesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MercesTests/Pods-MercesTests.release.xcconfig"; sourceTree = "<group>"; };
 		A3D38EFEC0B24B02425C5533 /* Pods-Merces WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Merces WatchKit Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-Merces WatchKit Extension/Pods-Merces WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
@@ -135,7 +139,6 @@
 		E3AB12051E2DBE950021C889 /* ThemesPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThemesPage.swift; path = Merces/ThemesPage.swift; sourceTree = "<group>"; };
 		E3AB12061E2DBE950021C889 /* InAppPurchasePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InAppPurchasePage.swift; path = Merces/InAppPurchasePage.swift; sourceTree = "<group>"; };
 		E3AB12181E2DBF210021C889 /* defaultPreferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaultPreferences.plist; sourceTree = "<group>"; };
-		E3AB121A1E2DBF480021C889 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E3AB12201E2DC1DF0021C889 /* MercesWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MercesWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3AB12211E2DC1DF0021C889 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		E3AB12241E2DC1DF0021C889 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -416,7 +419,7 @@
 		E3B4B2ED1ABB2E46002A6C16 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E3AB121A1E2DBF480021C889 /* Main.storyboard */,
+				78B3D1F11F6A05FF009C8051 /* Main.storyboard */,
 				E3B4B2EA1ABB2E1E002A6C16 /* LaunchScreen.xib */,
 			);
 			name = Views;
@@ -574,7 +577,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3A61E101AE3F69C00F2467C /* Localizable.strings in Resources */,
-				E3AB121B1E2DBF480021C889 /* Main.storyboard in Resources */,
+				78B3D1EF1F6A05FF009C8051 /* Main.storyboard in Resources */,
 				E3B4B2EC1ABB2E1E002A6C16 /* LaunchScreen.xib in Resources */,
 				E3B4B2C11ABB2CF7002A6C16 /* Images.xcassets in Resources */,
 				E3AB12191E2DBF210021C889 /* defaultPreferences.plist in Resources */,
@@ -744,6 +747,16 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		78B3D1F11F6A05FF009C8051 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				78B3D1F21F6A0611009C8051 /* Base */,
+				78B3D1F41F6A061F009C8051 /* en */,
+				78B3D1F51F6A0660009C8051 /* zh-Hant */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		E38D63D41ACB323F0060EE81 /* Interface.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -765,6 +778,7 @@
 				E3A61E141AE3F6AC00F2467C /* ko */,
 				E3A61E171AE450A100F2467C /* fr */,
 				E335CC901AE59DD700D26A65 /* de */,
+				78B3D1EE1F6A0199009C8051 /* Base */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
