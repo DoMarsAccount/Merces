@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StoreKit
 
 class SettingsPage: UITableViewController {
 
@@ -146,10 +147,15 @@ class SettingsPage: UITableViewController {
     
     @IBAction func userWantsToRateButtonPressed(_ sender: AnyObject) {
         
-        UIApplication.shared.open(URL(string: "https://itunes.apple.com/us/app/merces-personal-tip-calculator/id978591776?ls=1&mt=8")!, options: [:], completionHandler: nil)
+        if #available(iOS 10.3, *) {
+            
+            SKStoreReviewController.requestReview()
+            
+        } else {
         
-        print("Test")
+            UIApplication.shared.open(URL(string: "https://itunes.apple.com/us/app/merces-personal-tip-calculator/id978591776?ls=1&mt=8")!, options: [:], completionHandler: nil)
 
+        }
     }
     
     

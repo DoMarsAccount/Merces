@@ -186,7 +186,7 @@
 "n99-hs-bkE.normalTitle" = "⏎";
 
 /* Class = "UILabel"; text = "Leave a Rating (opens App Store)"; ObjectID = "naE-6i-zDf"; */
-"naE-6i-zDf.text" = "Leave a Rating (opens App Store)";
+"naE-6i-zDf.text" = "Leave a Rating";
 
 /* Class = "UINavigationItem"; title = "Color Picker"; ObjectID = "nex-qO-Ef0"; */
 "nex-qO-Ef0.title" = "Color Picker";
