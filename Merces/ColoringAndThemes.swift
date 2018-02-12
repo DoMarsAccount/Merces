@@ -237,7 +237,8 @@ class ColoringAndThemes {
                 
             case "UIExtendedSRGBColorSpace 0.2 0.2 0.2 1":
                 
-                return appleWatchObject.modernBuckleBlack
+                //return appleWatchObject.modernBuckleBlack
+                return UIColor.black
                 
                 // Sport Band Colors
                 
