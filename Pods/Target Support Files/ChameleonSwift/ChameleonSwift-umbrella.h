@@ -10,3 +10,7 @@
 #endif
 #endif
 
+
+FOUNDATION_EXPORT double ChameleonSwiftVersionNumber;
+FOUNDATION_EXPORT const unsigned char ChameleonSwiftVersionString[];
+

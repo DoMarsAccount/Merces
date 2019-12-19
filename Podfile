@@ -4,9 +4,8 @@
 target 'Merces' do
 use_frameworks!
 
-pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
-
-#pod 'MMWormhole', '~> 2.0.0'
+pod 'ChameleonSwift', '~> 3.2'
+pod 'ChameleonFramework', '~> 2.1'
 
 end
 

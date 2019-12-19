@@ -185,9 +185,7 @@ class ThemesViewController: UIViewController, UICollectionViewDataSource, UIColl
 
     func updateColorValues() {
         
-        
-        
-        self.setStatusBarStyle(UIStatusBarStyleContrast)
+//        self.setStatusBarStyle(UIStatusBarStyleContrast)
         
         /* ------------ Navigation Bar Coloring ------------- */
         
@@ -198,7 +196,7 @@ class ThemesViewController: UIViewController, UICollectionViewDataSource, UIColl
         self.view.backgroundColor = coloringThemes.getBackgroundColor()
         
         // Title Coloring
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)]
         
         
         // Back Button Coloring

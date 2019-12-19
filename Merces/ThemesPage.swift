@@ -103,7 +103,7 @@ class ThemesPage: UITableViewController {
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         
-        let setMainColorAction = UITableViewRowAction(style: .normal, title: NSLocalizedString("MainColor", comment: "Main Color"), handler: { Void in
+        let setMainColorAction = UITableViewRowAction(style: .normal, title: NSLocalizedString("MainColor", comment: "Main Color"), handler: { _,_   in
             
             self.tableView.setEditing(false, animated: true)
             
@@ -113,7 +113,7 @@ class ThemesPage: UITableViewController {
             
         })
         
-        let setBackgroundColorAction = UITableViewRowAction(style: .default, title: NSLocalizedString("SecondaryColor", comment: "Secondary Color"), handler: { Void in
+        let setBackgroundColorAction = UITableViewRowAction(style: .default, title: NSLocalizedString("SecondaryColor", comment: "Secondary Color"), handler: { _,_   in
             
             self.tableView.setEditing(false, animated: true)
             
@@ -162,7 +162,7 @@ class ThemesPage: UITableViewController {
         self.view.backgroundColor = coloringThemes.getBackgroundColor()
         
         // Title Coloring
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)]
         
         
         // Back Button Coloring

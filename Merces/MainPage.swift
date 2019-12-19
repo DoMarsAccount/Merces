@@ -225,7 +225,7 @@ class MainPage: UIViewController {
     }
     
     
-    func preferredContentSizeChanged(_ notification: Notification) {
+    @objc func preferredContentSizeChanged(_ notification: Notification) {
         updateFieldValues()
     }
     
@@ -730,13 +730,13 @@ class MainPage: UIViewController {
             
             // hide tip amount section
             
-            tipAmountsDisplayConstraint.priority = 980
-            tipAmountsLabelConstraint.priority = 980
+            tipAmountsDisplayConstraint.priority = UILayoutPriority(rawValue: 980)
+            tipAmountsLabelConstraint.priority = UILayoutPriority(rawValue: 980)
             
-            noTipSplitPersonViewConstraint.priority = 970
-            noTipSplitPersonViewConstraint2.priority = 970
+            noTipSplitPersonViewConstraint.priority = UILayoutPriority(rawValue: 970)
+            noTipSplitPersonViewConstraint2.priority = UILayoutPriority(rawValue: 970)
             
-            gTotalLabelConstraint.priority = 999
+            gTotalLabelConstraint.priority = UILayoutPriority(rawValue: 999)
             
             
             tipAmountLabelOutlet.isHidden = true
@@ -747,10 +747,10 @@ class MainPage: UIViewController {
             
             // show tip amount section
             
-            tipAmountsDisplayConstraint.priority = 999
-            tipAmountsLabelConstraint.priority = 999
+            tipAmountsDisplayConstraint.priority = UILayoutPriority(rawValue: 999)
+            tipAmountsLabelConstraint.priority = UILayoutPriority(rawValue: 999)
             
-            gTotalLabelConstraint.priority = 985
+            gTotalLabelConstraint.priority = UILayoutPriority(rawValue: 985)
             
             
             tipAmountLabelOutlet.isHidden = false
@@ -763,7 +763,7 @@ class MainPage: UIViewController {
             
             // hide total per person section
             
-            singlePersonTotaledAmountsViewCOnstraint.priority = 997
+            singlePersonTotaledAmountsViewCOnstraint.priority = UILayoutPriority(rawValue: 997)
             
             
             totalAmountPerPersonTitleLabel.isHidden = true
@@ -777,25 +777,25 @@ class MainPage: UIViewController {
             if (varAmountsObject.tipRate != 0.00) {
                 // show all three sections
                 
-                noTipSplitPersonViewConstraint.priority = 970
-                noTipSplitPersonViewConstraint2.priority = 970
+                noTipSplitPersonViewConstraint.priority = UILayoutPriority(rawValue: 970)
+                noTipSplitPersonViewConstraint2.priority = UILayoutPriority(rawValue: 970)
                 
-                gTotalLabelConstraint.priority = 985
+                gTotalLabelConstraint.priority = UILayoutPriority(rawValue: 985)
                 
-                singlePersonTotaledAmountsViewCOnstraint.priority = 990
+                singlePersonTotaledAmountsViewCOnstraint.priority = UILayoutPriority(rawValue: 990)
                 
             } else {
                 // show total per person and gTotal
                 
-                gTotalLabelConstraint.priority = 990
+                gTotalLabelConstraint.priority = UILayoutPriority(rawValue: 990)
                 
-                singlePersonTotaledAmountsViewCOnstraint.priority = 985
+                singlePersonTotaledAmountsViewCOnstraint.priority = UILayoutPriority(rawValue: 985)
                 
-                noTipSplitPersonViewConstraint.priority = 999
-                noTipSplitPersonViewConstraint2.priority = 999
+                noTipSplitPersonViewConstraint.priority = UILayoutPriority(rawValue: 999)
+                noTipSplitPersonViewConstraint2.priority = UILayoutPriority(rawValue: 999)
                 
-                tipAmountsDisplayConstraint.priority = 980
-                tipAmountsLabelConstraint.priority = 980
+                tipAmountsDisplayConstraint.priority = UILayoutPriority(rawValue: 980)
+                tipAmountsLabelConstraint.priority = UILayoutPriority(rawValue: 980)
                 
             }
             
@@ -899,7 +899,7 @@ class MainPage: UIViewController {
         
         
         // Title Coloring
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)]
         
         
         // Back Button Coloring
@@ -1359,261 +1359,261 @@ class MainPage: UIViewController {
             
         }
         
-        if totalAmountsViewIsFull == true {
-            
-            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-            
-            settingsIconOutlet.isEnabled = false
-            modeSwitchOutlet.isEnabled = false
-            
-            origTipAmountTitleLabelHeight = self.tipAmountTitleLabel.frame.height
-            
-            origTipAmountTitleLabelY = self.tipAmountTitleLabel.frame.origin.y
-            
-            origTipAmountLabelHeight = self.tipAmountLabelOutlet.frame.height
-            
-            origTipAmountLabelY = self.tipAmountLabelOutlet.frame.origin.y
-            
-            origTotalAmountPerPersonTitleLabelHeight = self.totalAmountPerPersonTitleLabel.frame.height
-            
-            origTotalAmountPerPersonTitleLabelY = self.totalAmountPerPersonTitleLabel.frame.origin.y
-            
-            origTotalAmountPerPersonalLabelHeight = self.totalAmountPerPersonLabelOutlet.frame.height
-            
-            origTotalAmountPerPersonalLabelY = self.totalAmountPerPersonLabelOutlet.frame.origin.y
-            
-            origTotalAmountTitleLabelHeight = self.totalAmountTitleLabel.frame.height
-            
-            origTotalAmountTitleLabelY = self.totalAmountTitleLabel.frame.origin.y
-            
-            origTotalAmountLabelHeight = self.totalAmountLabelOutlet.frame.height
-            
-            origTotalAmountLabelY = self.totalAmountLabelOutlet.frame.origin.y
-            
-            origTotaledAmountsFrameHeight = self.totaledAmountsStuffView.frame.height
-            
-            origTotaledAmountsFrameWidth = self.totaledAmountsStuffView.frame.width
-            
-            origTotaledAmountsFrameY = self.totaledAmountsStuffView.frame.origin.y
-            
-            origTotaledAmountsLabelHeight = self.totaledAmountsLabel.frame.height
-            
-            origTotaledAmountsLabelWidth = self.totaledAmountsLabel.frame.width
-            
-            origTotaledAmountsLabelY = self.totaledAmountsLabel.frame.origin.y
-            
-            
-            UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
-                
-                self.billTaxPeopleStuffView.transform = CGAffineTransform(translationX: 0, y: -self.view.frame.height)
-                
-                self.venueAndServiceStuffView.transform = CGAffineTransform(translationX: 0, y: -self.view.frame.height)
-                
-                }, completion: {finished in
-                    
-                    UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
-                        
-                        
-                        //Top Portion of View is smaller when in landscape, so need to check the device orientation
-                        
-                        if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft || UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
-                            
-                            self.origTotaledAmountsLabelWidth = self.totaledAmountsLabel.frame.width
-                            
-                            self.totaledAmountsStuffView.frame = CGRect(x: 8,
-                                y: ((self.navigationController?.navigationBar.frame.size.height)! + 8),
-                                width: self.totaledAmountsStuffView.frame.width,
-                                height: self.view.frame.height - ((self.navigationController?.navigationBar.frame.size.height)! + 16))
-                            
-                        } else {
-                            
-                            self.totaledAmountsStuffView.frame = CGRect(x: 8,
-                                y: ((self.navigationController?.navigationBar.frame.size.height)! + UIApplication.shared.statusBarFrame.size.height + 8),
-                                width: self.totaledAmountsStuffView.frame.width,
-                                height: self.view.frame.height - ((self.navigationController?.navigationBar.frame.size.height)! + UIApplication.shared.statusBarFrame.size.height + 16))
-                            
-                        }
-                        
-                        //Added 16 to the height reducations to make up for the distances of heighest and lowest views from the frame
-                        
-                        
-                        }, completion: {finished in
-                            
-                            UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
-                                
-                                self.totalAmountTitleLabel.frame =
-                                    CGRect(x: 8,
-                                        y: self.totaledAmountsStuffView.frame.height - (self.totaledAmountsStuffView.frame.height / 4) - 8,
-                                        width: self.tipAmountTitleLabel.frame.width,
-                                        height: self.totaledAmountsStuffView.frame.height / 4)
-                                
-                                
-                                self.totalAmountLabelOutlet.frame =
-                                    CGRect(x: self.totalAmountTitleLabel.frame.width + 16,
-                                        y: self.totaledAmountsStuffView.frame.height - (self.totaledAmountsStuffView.frame.height / 4) - 8 ,
-                                        width: self.tipAmountLabelOutlet.frame.width,
-                                        height: self.totaledAmountsStuffView.frame.height / 4)
-                                
-                                
-                                }, completion: { finished in
-                                    
-                                    UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
-                                        
-                                        if varAmountsObject.moreOrLessPerPerson != 1 {
-                          
-                                            self.totalAmountPerPersonTitleLabel.frame =
-                                                CGRect(x: 8,
-                                                    y: self.totaledAmountsStuffView.frame.height - (self.totaledAmountsStuffView.frame.height / 4) - self.totalAmountLabelOutlet.frame.height - 16,
-                                                    width: self.tipAmountTitleLabel.frame.width,
-                                                    height: self.totaledAmountsStuffView.frame.height / 4)
-                                            
-                                            
-                                            self.totalAmountPerPersonLabelOutlet.frame =
-                                                CGRect(x: self.totalAmountTitleLabel.frame.width + 16,
-                                                    y: self.totaledAmountsStuffView.frame.height - (self.totaledAmountsStuffView.frame.height / 4) - self.totalAmountLabelOutlet.frame.height - 16,
-                                                    width: self.tipAmountLabelOutlet.frame.width,
-                                                    height: self.totaledAmountsStuffView.frame.height / 4)
-                                
-                                            
-    //                                        self.totalAmountPerPersonTitleLabel.alpha = 1
-    //                                        
-    //                                        self.totalAmountPerPersonLabelOutlet.alpha = 1
-                                            
-                                        }
-                                        
-                                        }, completion: {finished in
-                                            
-                                            UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
-                                                
-                                                self.tipAmountTitleLabel.frame =
-                                                    CGRect(x: 8,
-                                                        y: self.totaledAmountsStuffView.frame.height - (self.totaledAmountsStuffView.frame.height / 4) - self.totalAmountLabelOutlet.frame.height - self.totalAmountPerPersonTitleLabel.frame.height - 24,
-                                                        width: self.tipAmountTitleLabel.frame.width,
-                                                        height: self.totaledAmountsStuffView.frame.height / 4)
-                                                
-                                                self.tipAmountLabelOutlet.frame =
-                                                    CGRect(x: self.totalAmountTitleLabel.frame.width + 16,
-                                                        y: self.totaledAmountsStuffView.frame.height - (self.totaledAmountsStuffView.frame.height / 4) - self.totalAmountLabelOutlet.frame.height - self.totalAmountPerPersonTitleLabel.frame.height - 24,
-                                                        width: self.tipAmountLabelOutlet.frame.width,
-                                                        height: self.totaledAmountsStuffView.frame.height / 4)
-                                                
-                                                self.tipAmountLabelOutlet.alpha = 1
-                                                
-                                                self.tipAmountTitleLabel.alpha = 1
-                                                
-                                                }, completion: {finished in
-                                                    
-                                                    spring(0.9, animations: {
-                                                        
-                                                        self.totaledAmountsLabel.frame =
-                                                            CGRect(x: 8,
-                                                                y: self.totaledAmountsStuffView.frame.height - (self.totaledAmountsStuffView.frame.height / 4) - self.totalAmountLabelOutlet.frame.height - self.totalAmountPerPersonTitleLabel.frame.height - self.tipAmountTitleLabel.frame.height - 24,
-                                                                width: self.tipAmountLabelOutlet.frame.width + self.tipAmountTitleLabel.frame.width + 8,
-                                                                height: (self.totaledAmountsStuffView.frame.height / 4) + 8)
-                                     
-                                                    })
-                                            })
-                                    })
-                            })
-                    })
-                    
-                    
-            })
-            
-        }
-            
-        else {
-            
-            UIView.animate(withDuration: 1.1, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
-                
-                self.tipAmountTitleLabel.frame =
-                    CGRect(x: 8,
-                        y: self.origTipAmountTitleLabelY,
-                        width: self.tipAmountTitleLabel.frame.width,
-                        height: self.origTipAmountTitleLabelHeight)
-                
-                self.tipAmountLabelOutlet.frame =
-                    CGRect(x: self.totalAmountTitleLabel.frame.width + 16,
-                        y: self.origTipAmountLabelY,
-                        width: self.tipAmountLabelOutlet.frame.width,
-                        height: self.origTipAmountLabelHeight)
-                
-                self.totalAmountPerPersonTitleLabel.frame =
-                    CGRect(x: 8,
-                        y: self.origTotalAmountPerPersonTitleLabelY,
-                        width: self.totalAmountPerPersonTitleLabel.frame.width,
-                        height: self.origTotalAmountPerPersonTitleLabelHeight)
-                
-                
-                self.totalAmountPerPersonLabelOutlet.frame =
-                    CGRect(x: self.totalAmountTitleLabel.frame.width + 16,
-                        y: self.origTotalAmountPerPersonalLabelY,
-                        width: self.totalAmountPerPersonLabelOutlet.frame.width,
-                        height: self.origTotalAmountPerPersonalLabelHeight)
-                
-                self.totalAmountTitleLabel.frame =
-                    CGRect(x: 8,
-                        y: self.origTotalAmountTitleLabelY,
-                        width: self.totalAmountTitleLabel.frame.width,
-                        height: self.origTotalAmountTitleLabelHeight)
-                
-                
-                self.totalAmountLabelOutlet.frame =
-                    CGRect(x: self.totalAmountTitleLabel.frame.width + 16,
-                        y: self.origTotalAmountLabelY,
-                        width: self.totalAmountLabelOutlet.frame.width,
-                        height: self.origTotalAmountLabelHeight)
-                
-                self.totaledAmountsLabel.frame =
-                    CGRect(x: 8,
-                        y: self.origTotaledAmountsLabelY,
-                        width: self.origTotaledAmountsLabelWidth,
-                        height: self.origTotaledAmountsLabelHeight)
-                
-                
-                }, completion: {finished in
-                    
-                    
-                    UIView.animate(withDuration: 1, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIViewAnimationOptions.curveEaseIn, animations: {
-                        
-                        self.totaledAmountsStuffView.frame = CGRect(x: 8,
-                            y: self.origTotaledAmountsFrameY,
-                            width: self.origTotaledAmountsFrameWidth,
-                            height: self.origTotaledAmountsFrameHeight)
-                        
-                        self.billTaxPeopleStuffView.transform = CGAffineTransform(translationX: 0, y: 0)
-                        
-                        self.billTaxPeopleStuffView.alpha = 1
-                        
-                        self.venueAndServiceStuffView.transform = CGAffineTransform(translationX: 0, y: 0)
-                        
-                        self.venueAndServiceStuffView.alpha = 1
-                        
-                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
-                       
-                        
-                        }, completion: {finished in
-                            
-                            self.settingsIconOutlet.isEnabled = true
-                            self.modeSwitchOutlet.isEnabled = true
-                            
-                            //self.coinsImageOutlet.isHidden = false
-                            
-                            self.checkTotalAmountPerPersonValue()
-                            
-                            self.totaledAmountsStuffView.frame = CGRect(x: 8,
-                                y: self.origTotaledAmountsFrameY,
-                                width: self.origTotaledAmountsFrameWidth,
-                                height: self.origTotaledAmountsFrameHeight)
-                            
-                            self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: 0, y: 0)
-                            
-                    })
-                    
-                    
-            })
-            
-        }
+//        if totalAmountsViewIsFull == true {
+//            
+//            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+//            
+//            settingsIconOutlet.isEnabled = false
+//            modeSwitchOutlet.isEnabled = false
+//            
+//            origTipAmountTitleLabelHeight = self.tipAmountTitleLabel.frame.height
+//            
+//            origTipAmountTitleLabelY = self.tipAmountTitleLabel.frame.origin.y
+//            
+//            origTipAmountLabelHeight = self.tipAmountLabelOutlet.frame.height
+//            
+//            origTipAmountLabelY = self.tipAmountLabelOutlet.frame.origin.y
+//            
+//            origTotalAmountPerPersonTitleLabelHeight = self.totalAmountPerPersonTitleLabel.frame.height
+//            
+//            origTotalAmountPerPersonTitleLabelY = self.totalAmountPerPersonTitleLabel.frame.origin.y
+//            
+//            origTotalAmountPerPersonalLabelHeight = self.totalAmountPerPersonLabelOutlet.frame.height
+//            
+//            origTotalAmountPerPersonalLabelY = self.totalAmountPerPersonLabelOutlet.frame.origin.y
+//            
+//            origTotalAmountTitleLabelHeight = self.totalAmountTitleLabel.frame.height
+//            
+//            origTotalAmountTitleLabelY = self.totalAmountTitleLabel.frame.origin.y
+//            
+//            origTotalAmountLabelHeight = self.totalAmountLabelOutlet.frame.height
+//            
+//            origTotalAmountLabelY = self.totalAmountLabelOutlet.frame.origin.y
+//            
+//            origTotaledAmountsFrameHeight = self.totaledAmountsStuffView.frame.height
+//            
+//            origTotaledAmountsFrameWidth = self.totaledAmountsStuffView.frame.width
+//            
+//            origTotaledAmountsFrameY = self.totaledAmountsStuffView.frame.origin.y
+//            
+//            origTotaledAmountsLabelHeight = self.totaledAmountsLabel.frame.height
+//            
+//            origTotaledAmountsLabelWidth = self.totaledAmountsLabel.frame.width
+//            
+//            origTotaledAmountsLabelY = self.totaledAmountsLabel.frame.origin.y
+//            
+//            
+//            UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+//                
+//                self.billTaxPeopleStuffView.transform = CGAffineTransform(translationX: 0, y: -self.view.frame.height)
+//                
+//                self.venueAndServiceStuffView.transform = CGAffineTransform(translationX: 0, y: -self.view.frame.height)
+//                
+//                }, completion: {finished in
+//                    
+//                    UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+//                        
+//                        
+//                        //Top Portion of View is smaller when in landscape, so need to check the device orientation
+//                        
+//                        if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft || UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
+//                            
+//                            self.origTotaledAmountsLabelWidth = self.totaledAmountsLabel.frame.width
+//                            
+//                            self.totaledAmountsStuffView.frame = CGRect(x: 8,
+//                                y: ((self.navigationController?.navigationBar.frame.size.height)! + 8),
+//                                width: self.totaledAmountsStuffView.frame.width,
+//                                height: self.view.frame.height - ((self.navigationController?.navigationBar.frame.size.height)! + 16))
+//                            
+//                        } else {
+//                            
+//                            self.totaledAmountsStuffView.frame = CGRect(x: 8,
+//                                y: ((self.navigationController?.navigationBar.frame.size.height)! + UIApplication.shared.statusBarFrame.size.height + 8),
+//                                width: self.totaledAmountsStuffView.frame.width,
+//                                height: self.view.frame.height - ((self.navigationController?.navigationBar.frame.size.height)! + UIApplication.shared.statusBarFrame.size.height + 16))
+//                            
+//                        }
+//                        
+//                        //Added 16 to the height reducations to make up for the distances of heighest and lowest views from the frame
+//                        
+//                        
+//                        }, completion: {finished in
+//                            
+//                            UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+//                                
+//                                self.totalAmountTitleLabel.frame =
+//                                    CGRect(x: 8,
+//                                        y: self.totaledAmountsStuffView.frame.height - (self.totaledAmountsStuffView.frame.height / 4) - 8,
+//                                        width: self.tipAmountTitleLabel.frame.width,
+//                                        height: self.totaledAmountsStuffView.frame.height / 4)
+//                                
+//                                
+//                                self.totalAmountLabelOutlet.frame =
+//                                    CGRect(x: self.totalAmountTitleLabel.frame.width + 16,
+//                                        y: self.totaledAmountsStuffView.frame.height - (self.totaledAmountsStuffView.frame.height / 4) - 8 ,
+//                                        width: self.tipAmountLabelOutlet.frame.width,
+//                                        height: self.totaledAmountsStuffView.frame.height / 4)
+//                                
+//                                
+//                                }, completion: { finished in
+//                                    
+//                                    UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+//                                        
+//                                        if varAmountsObject.moreOrLessPerPerson != 1 {
+//                          
+//                                            self.totalAmountPerPersonTitleLabel.frame =
+//                                                CGRect(x: 8,
+//                                                    y: self.totaledAmountsStuffView.frame.height - (self.totaledAmountsStuffView.frame.height / 4) - self.totalAmountLabelOutlet.frame.height - 16,
+//                                                    width: self.tipAmountTitleLabel.frame.width,
+//                                                    height: self.totaledAmountsStuffView.frame.height / 4)
+//                                            
+//                                            
+//                                            self.totalAmountPerPersonLabelOutlet.frame =
+//                                                CGRect(x: self.totalAmountTitleLabel.frame.width + 16,
+//                                                    y: self.totaledAmountsStuffView.frame.height - (self.totaledAmountsStuffView.frame.height / 4) - self.totalAmountLabelOutlet.frame.height - 16,
+//                                                    width: self.tipAmountLabelOutlet.frame.width,
+//                                                    height: self.totaledAmountsStuffView.frame.height / 4)
+//                                
+//                                            
+//    //                                        self.totalAmountPerPersonTitleLabel.alpha = 1
+//    //                                        
+//    //                                        self.totalAmountPerPersonLabelOutlet.alpha = 1
+//                                            
+//                                        }
+//                                        
+//                                        }, completion: {finished in
+//                                            
+//                                            UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+//                                                
+//                                                self.tipAmountTitleLabel.frame =
+//                                                    CGRect(x: 8,
+//                                                        y: self.totaledAmountsStuffView.frame.height - (self.totaledAmountsStuffView.frame.height / 4) - self.totalAmountLabelOutlet.frame.height - self.totalAmountPerPersonTitleLabel.frame.height - 24,
+//                                                        width: self.tipAmountTitleLabel.frame.width,
+//                                                        height: self.totaledAmountsStuffView.frame.height / 4)
+//                                                
+//                                                self.tipAmountLabelOutlet.frame =
+//                                                    CGRect(x: self.totalAmountTitleLabel.frame.width + 16,
+//                                                        y: self.totaledAmountsStuffView.frame.height - (self.totaledAmountsStuffView.frame.height / 4) - self.totalAmountLabelOutlet.frame.height - self.totalAmountPerPersonTitleLabel.frame.height - 24,
+//                                                        width: self.tipAmountLabelOutlet.frame.width,
+//                                                        height: self.totaledAmountsStuffView.frame.height / 4)
+//                                                
+//                                                self.tipAmountLabelOutlet.alpha = 1
+//                                                
+//                                                self.tipAmountTitleLabel.alpha = 1
+//                                                
+//                                                }, completion: {finished in
+//                                                    
+//                                                    spring(0.9, animations: {
+//                                                        
+//                                                        self.totaledAmountsLabel.frame =
+//                                                            CGRect(x: 8,
+//                                                                y: self.totaledAmountsStuffView.frame.height - (self.totaledAmountsStuffView.frame.height / 4) - self.totalAmountLabelOutlet.frame.height - self.totalAmountPerPersonTitleLabel.frame.height - self.tipAmountTitleLabel.frame.height - 24,
+//                                                                width: self.tipAmountLabelOutlet.frame.width + self.tipAmountTitleLabel.frame.width + 8,
+//                                                                height: (self.totaledAmountsStuffView.frame.height / 4) + 8)
+//                                     
+//                                                    })
+//                                            })
+//                                    })
+//                            })
+//                    })
+//                    
+//                    
+//            })
+//            
+//        }
+//            
+//        else {
+//            
+//            UIView.animate(withDuration: 1.1, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+//                
+//                self.tipAmountTitleLabel.frame =
+//                    CGRect(x: 8,
+//                        y: self.origTipAmountTitleLabelY,
+//                        width: self.tipAmountTitleLabel.frame.width,
+//                        height: self.origTipAmountTitleLabelHeight)
+//                
+//                self.tipAmountLabelOutlet.frame =
+//                    CGRect(x: self.totalAmountTitleLabel.frame.width + 16,
+//                        y: self.origTipAmountLabelY,
+//                        width: self.tipAmountLabelOutlet.frame.width,
+//                        height: self.origTipAmountLabelHeight)
+//                
+//                self.totalAmountPerPersonTitleLabel.frame =
+//                    CGRect(x: 8,
+//                        y: self.origTotalAmountPerPersonTitleLabelY,
+//                        width: self.totalAmountPerPersonTitleLabel.frame.width,
+//                        height: self.origTotalAmountPerPersonTitleLabelHeight)
+//                
+//                
+//                self.totalAmountPerPersonLabelOutlet.frame =
+//                    CGRect(x: self.totalAmountTitleLabel.frame.width + 16,
+//                        y: self.origTotalAmountPerPersonalLabelY,
+//                        width: self.totalAmountPerPersonLabelOutlet.frame.width,
+//                        height: self.origTotalAmountPerPersonalLabelHeight)
+//                
+//                self.totalAmountTitleLabel.frame =
+//                    CGRect(x: 8,
+//                        y: self.origTotalAmountTitleLabelY,
+//                        width: self.totalAmountTitleLabel.frame.width,
+//                        height: self.origTotalAmountTitleLabelHeight)
+//                
+//                
+//                self.totalAmountLabelOutlet.frame =
+//                    CGRect(x: self.totalAmountTitleLabel.frame.width + 16,
+//                        y: self.origTotalAmountLabelY,
+//                        width: self.totalAmountLabelOutlet.frame.width,
+//                        height: self.origTotalAmountLabelHeight)
+//                
+//                self.totaledAmountsLabel.frame =
+//                    CGRect(x: 8,
+//                        y: self.origTotaledAmountsLabelY,
+//                        width: self.origTotaledAmountsLabelWidth,
+//                        height: self.origTotaledAmountsLabelHeight)
+//                
+//                
+//                }, completion: {finished in
+//                    
+//                    
+//                    UIView.animate(withDuration: 1, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: UIViewAnimationOptions.curveEaseIn, animations: {
+//                        
+//                        self.totaledAmountsStuffView.frame = CGRect(x: 8,
+//                            y: self.origTotaledAmountsFrameY,
+//                            width: self.origTotaledAmountsFrameWidth,
+//                            height: self.origTotaledAmountsFrameHeight)
+//                        
+//                        self.billTaxPeopleStuffView.transform = CGAffineTransform(translationX: 0, y: 0)
+//                        
+//                        self.billTaxPeopleStuffView.alpha = 1
+//                        
+//                        self.venueAndServiceStuffView.transform = CGAffineTransform(translationX: 0, y: 0)
+//                        
+//                        self.venueAndServiceStuffView.alpha = 1
+//                        
+//                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+//                       
+//                        
+//                        }, completion: {finished in
+//                            
+//                            self.settingsIconOutlet.isEnabled = true
+//                            self.modeSwitchOutlet.isEnabled = true
+//                            
+//                            //self.coinsImageOutlet.isHidden = false
+//                            
+//                            self.checkTotalAmountPerPersonValue()
+//                            
+//                            self.totaledAmountsStuffView.frame = CGRect(x: 8,
+//                                y: self.origTotaledAmountsFrameY,
+//                                width: self.origTotaledAmountsFrameWidth,
+//                                height: self.origTotaledAmountsFrameHeight)
+//                            
+//                            self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: 0, y: 0)
+//                            
+//                    })
+//                    
+//                    
+//            })
+//            
+//        }
 
         
     }

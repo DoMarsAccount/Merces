@@ -6,4 +6,3 @@
 //  Copyright (c) 2015 DoMarsToyBox. All rights reserved.
 //
 
-#import "ChameleonFramework/Chameleon.h"

@@ -81,7 +81,7 @@ class MyMerces: UIViewController {
         
     }
     
-    func preferredContentSizeChanged(_ notification: Notification) {
+    @objc func preferredContentSizeChanged(_ notification: Notification) {
         
         updateFieldValues()
         
@@ -353,7 +353,7 @@ class MyMerces: UIViewController {
         /* ------------ Navigation Bar Coloring ------------- */
         self.navigationController?.navigationBar.barTintColor = coloringThemes.getMainColor()
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true) ]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true) ]
         
         self.navigationController?.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)
         

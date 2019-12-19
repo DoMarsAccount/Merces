@@ -145,7 +145,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                 
             }
             
-            subTBottomConstraint.priority = 997
+            subTBottomConstraint.priority = UILayoutPriority(rawValue: 997)
             
             view.layoutIfNeeded()
             
@@ -153,7 +153,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             
             currentDisplayIsExpanded = true
             
-            subTBottomConstraint.priority = 990
+            subTBottomConstraint.priority = UILayoutPriority(rawValue: 990)
             
             view.layoutIfNeeded()
             
@@ -167,23 +167,23 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             
             if varAmountsObject.numberOfPeoplePaying > 1 {
                 
-                tipAmountTrailingConstraint.priority = 990
+                tipAmountTrailingConstraint.priority = UILayoutPriority(rawValue: 990)
                 
                 totalAmountPerPersonLabelOutlet.isHidden = false
                 
                 totalAmountPerPersonDisplayOutlet.isHidden = false
                 
-                numOfPeopleWidthConstraint.priority = 990
+                numOfPeopleWidthConstraint.priority = UILayoutPriority(rawValue: 990)
                 
             } else {
                 
-                tipAmountTrailingConstraint.priority = 997
+                tipAmountTrailingConstraint.priority = UILayoutPriority(rawValue: 997)
                 
                 totalAmountPerPersonDisplayOutlet.isHidden = true
                 
                 totalAmountPerPersonLabelOutlet.isHidden = true
                 
-                numOfPeopleWidthConstraint.priority = 997
+                numOfPeopleWidthConstraint.priority = UILayoutPriority(rawValue: 997)
                 
             }
             
@@ -435,23 +435,23 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         if varAmountsObject.numberOfPeoplePaying > 1 {
             
-            tipAmountTrailingConstraint.priority = 990
+            tipAmountTrailingConstraint.priority = UILayoutPriority(rawValue: 990)
             
             totalAmountPerPersonLabelOutlet.isHidden = false
             
             totalAmountPerPersonDisplayOutlet.isHidden = false
             
-            numOfPeopleWidthConstraint.priority = 990
+            numOfPeopleWidthConstraint.priority = UILayoutPriority(rawValue: 990)
             
         } else {
             
-            tipAmountTrailingConstraint.priority = 997
+            tipAmountTrailingConstraint.priority = UILayoutPriority(rawValue: 997)
             
             totalAmountPerPersonDisplayOutlet.isHidden = true
             
             totalAmountPerPersonLabelOutlet.isHidden = true
             
-            numOfPeopleWidthConstraint.priority = 997
+            numOfPeopleWidthConstraint.priority = UILayoutPriority(rawValue: 997)
             
         }
         

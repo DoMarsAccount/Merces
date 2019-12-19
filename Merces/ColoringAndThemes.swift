@@ -177,10 +177,6 @@ class ColoringAndThemes {
                 
                 return camoGreen
                 
-            case "UIExtendedSRGBColorSpace 0.549 0.627 0.49 1":
-                
-                return camoGreen
-                
             case "UIExtendedSRGBColorSpace 1 0.972549 0.913725 1":
                 
                 return tan
