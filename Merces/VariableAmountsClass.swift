@@ -194,7 +194,6 @@ class VariableAmountsClass
             
         case 3:
             
-            
             if inputAmount >= 2147483647 {
                 
                 arrayOfButtonsPressedForNumberOfPeoplePayingAsString = []
@@ -212,8 +211,6 @@ class VariableAmountsClass
                     numberOfPeoplePaying = Int(inputAmount)
                     
                 }
-                
-                
             }
             
         case 4:

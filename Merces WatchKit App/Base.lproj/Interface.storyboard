@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7531" systemVersion="14E7f" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ND5-dC-Eyu">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="15702" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ND5-dC-Eyu">
+    <device id="watch38"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="15501"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
@@ -12,48 +13,48 @@
                     <items>
                         <group width="1" height="2" alignment="left" id="cDG-GA-ZY5"/>
                         <button width="1" alignment="center" title="Subtotal" id="2RC-s7-wkn">
-                            <color key="titleColor" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <color key="backgroundColor" red="0.58431372550000005" green="0.66274509800000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="titleColor" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.51542294025421143" green="0.60457563400268555" blue="0.44719970226287842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="font" type="boldSystem" pointSize="16"/>
                             <connections>
                                 <segue destination="XBK-df-ofJ" kind="push" identifier="billAmountSegue" id="XIo-m7-ycD"/>
                             </connections>
                         </button>
                         <button width="1" alignment="center" title="Sales Tax" id="94f-qC-vfu">
-                            <color key="titleColor" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <color key="backgroundColor" red="0.58431372550000005" green="0.66274509800000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="titleColor" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.51542294025421143" green="0.60457563400268555" blue="0.44719970226287842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="font" type="boldSystem" pointSize="16"/>
                             <connections>
                                 <segue destination="XBK-df-ofJ" kind="push" identifier="taxAmountSegue" id="5Ms-Ul-0Q8"/>
                             </connections>
                         </button>
                         <button width="1" alignment="center" title="Tip Rate" id="4x8-eX-jIu">
-                            <color key="titleColor" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <color key="backgroundColor" red="0.58431372550000005" green="0.66274509800000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="titleColor" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.51542294025421143" green="0.60457563400268555" blue="0.44719970226287842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="font" type="boldSystem" pointSize="16"/>
                             <connections>
                                 <segue destination="XBK-df-ofJ" kind="push" identifier="tipRateSegue" id="Cs5-fN-bfh"/>
                             </connections>
                         </button>
                         <button width="1" alignment="center" title="# of people" id="bFY-DW-GUb">
-                            <color key="titleColor" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <color key="backgroundColor" red="0.58431372550000005" green="0.66274509800000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="titleColor" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.51542294025421143" green="0.60457563400268555" blue="0.44719970226287842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="font" type="boldSystem" pointSize="16"/>
                             <connections>
                                 <segue destination="XBK-df-ofJ" kind="push" identifier="numberOfPeopleSegue" id="Fox-ek-og3"/>
                             </connections>
                         </button>
                         <button width="1" alignment="center" title="Venue and Service" id="D63-Vt-RQp">
-                            <color key="titleColor" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <color key="backgroundColor" red="0.58431372550000005" green="0.66274509800000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="titleColor" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.51542294025421143" green="0.60457563400268555" blue="0.44719970226287842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="font" type="boldSystem" pointSize="16"/>
                             <connections>
                                 <segue destination="mbm-an-8bd" kind="push" id="Md9-Mp-b4r"/>
                             </connections>
                         </button>
                         <button width="1" alignment="center" title="Totaled Amounts" id="7wV-TC-HnU">
-                            <color key="titleColor" red="0.58431372550000005" green="0.66274509800000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <color key="backgroundColor" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="titleColor" red="0.51542294025421143" green="0.60457563400268555" blue="0.44719970226287842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="font" type="boldSystem" pointSize="15"/>
                             <connections>
                                 <segue destination="GYE-h2-h2x" kind="push" id="lSc-9W-dg2"/>
@@ -94,8 +95,8 @@
                         <group width="1" alignment="left" id="0XD-tS-wAc">
                             <items>
                                 <button width="44" height="27" alignment="left" title="1" id="pWz-GZ-m8y">
-                                    <color key="titleColor" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="backgroundColor" red="0.58431372550000005" green="0.66274509800000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.51542294025421143" green="0.60457563400268555" blue="0.44719970226287842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="boldSystem" pointSize="15"/>
                                     <variation key="device=watch42mm" height="33" width="50"/>
                                     <connections>
@@ -103,8 +104,8 @@
                                     </connections>
                                 </button>
                                 <button width="44" height="27" alignment="center" title="2" id="AZu-cs-yrr">
-                                    <color key="titleColor" red="0.58431372550000005" green="0.66274509800000003" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.58431372550000005" green="0.66274509800000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="boldSystem" pointSize="15"/>
                                     <variation key="device=watch42mm" height="33" width="50"/>
                                     <connections>
@@ -112,8 +113,8 @@
                                     </connections>
                                 </button>
                                 <button width="44" height="27" alignment="right" title="3" id="4et-u0-lAv">
-                                    <color key="titleColor" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="backgroundColor" red="0.58431372550000005" green="0.66274509800000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.51542294025421143" green="0.60457563400268555" blue="0.44719970226287842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="boldSystem" pointSize="15"/>
                                     <variation key="device=watch42mm" height="33" width="50"/>
                                     <connections>
@@ -125,8 +126,8 @@
                         <group width="1" alignment="left" id="vZ1-Xm-06M">
                             <items>
                                 <button width="44" height="27" alignment="left" title="4" id="6MD-wu-UJn">
-                                    <color key="titleColor" red="0.58431372550000005" green="0.66274509800000003" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.58431372550000005" green="0.66274509800000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="boldSystem" pointSize="15"/>
                                     <variation key="device=watch42mm" height="33" width="50"/>
                                     <connections>
@@ -134,8 +135,8 @@
                                     </connections>
                                 </button>
                                 <button width="44" height="27" alignment="center" title="5" id="PJK-zG-jhP">
-                                    <color key="titleColor" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="backgroundColor" red="0.58431372550000005" green="0.66274509800000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.51542294025421143" green="0.60457563400268555" blue="0.44719970226287842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="boldSystem" pointSize="15"/>
                                     <variation key="device=watch42mm" height="33" width="50"/>
                                     <connections>
@@ -143,8 +144,8 @@
                                     </connections>
                                 </button>
                                 <button width="44" height="27" alignment="right" title="6" id="n82-Lp-GcL">
-                                    <color key="titleColor" red="0.58431372550000005" green="0.66274509800000003" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.58431372550000005" green="0.66274509800000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="boldSystem" pointSize="15"/>
                                     <variation key="device=watch42mm" height="33" width="50"/>
                                     <connections>
@@ -156,8 +157,8 @@
                         <group width="1" alignment="left" id="pAF-Es-Q1r">
                             <items>
                                 <button width="44" height="27" alignment="left" title="7" id="87v-4t-f87">
-                                    <color key="titleColor" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="backgroundColor" red="0.58431372550000005" green="0.66274509800000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.51542294025421143" green="0.60457563400268555" blue="0.44719970226287842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="boldSystem" pointSize="15"/>
                                     <variation key="device=watch42mm" height="33" width="50"/>
                                     <connections>
@@ -165,8 +166,8 @@
                                     </connections>
                                 </button>
                                 <button width="44" height="27" alignment="center" title="8" id="7hT-hy-4Ti">
-                                    <color key="titleColor" red="0.58431372550000005" green="0.66274509800000003" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.58431372550000005" green="0.66274509800000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="boldSystem" pointSize="15"/>
                                     <variation key="device=watch42mm" height="33" width="50"/>
                                     <connections>
@@ -174,8 +175,8 @@
                                     </connections>
                                 </button>
                                 <button width="44" height="27" alignment="right" title="9" id="eJM-ym-0wE">
-                                    <color key="titleColor" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="backgroundColor" red="0.58431372550000005" green="0.66274509800000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.51542294025421143" green="0.60457563400268555" blue="0.44719970226287842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="boldSystem" pointSize="15"/>
                                     <variation key="device=watch42mm" height="33" width="50"/>
                                     <connections>
@@ -187,8 +188,8 @@
                         <group width="1" alignment="left" id="tLy-a4-WUQ">
                             <items>
                                 <button width="44" height="27" alignment="left" title="⏎" id="cXk-5w-rVG">
-                                    <color key="titleColor" red="0.58431372550000005" green="0.66274509800000003" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.58431372550000005" green="0.66274509800000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="boldSystem" pointSize="15"/>
                                     <variation key="device=watch42mm" height="33" width="50"/>
                                     <connections>
@@ -196,8 +197,8 @@
                                     </connections>
                                 </button>
                                 <button width="44" height="27" alignment="center" title="0" id="zSA-rM-gJB">
-                                    <color key="titleColor" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="backgroundColor" red="0.58431372550000005" green="0.66274509800000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.51542294025421143" green="0.60457563400268555" blue="0.44719970226287842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="boldSystem" pointSize="15"/>
                                     <variation key="device=watch42mm" height="33" width="50"/>
                                     <connections>
@@ -205,8 +206,8 @@
                                     </connections>
                                 </button>
                                 <button width="44" height="27" alignment="right" title="⌫" id="05N-va-Uds">
-                                    <color key="titleColor" red="0.58431372550000005" green="0.66274509800000003" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.58431372550000005" green="0.66274509800000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="boldSystem" pointSize="15"/>
                                     <variation key="device=watch42mm" height="33" width="50"/>
                                     <connections>
@@ -241,49 +242,49 @@
                 <controller identifier="SettingsController" id="WQM-mB-Xzw" customClass="SettingsInterfaceController" customModule="Merces_WatchKit_Extension">
                     <items>
                         <separator alignment="left" id="29R-F0-w1X">
-                            <color key="color" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="color" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </separator>
                         <group width="1" alignment="left" layout="vertical" id="Rp4-gN-xvQ">
                             <items>
                                 <label width="1" alignment="left" text="General" textAlignment="center" id="HOd-8f-fa0">
-                                    <color key="textColor" red="0.58431372550000005" green="0.66274509800000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" red="0.51542294025421143" green="0.60457563400268555" blue="0.44719970226287842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="boldSystem" pointSize="16"/>
                                 </label>
                                 <switch width="1" alignment="left" title="Tip includes tax" id="YgS-CK-9bs">
                                     <fontDescription key="font" type="boldSystem" pointSize="16"/>
-                                    <color key="titleColor" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <connections>
                                         <action selector="tipIncludesTaxSwitchAction:" destination="WQM-mB-Xzw" id="ci4-eD-G14"/>
                                     </connections>
                                 </switch>
                                 <button width="1" alignment="left" title="Themes" id="97e-F9-rEG">
-                                    <color key="titleColor" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="boldSystem" pointSize="16"/>
                                     <connections>
                                         <segue destination="7cq-Fx-58W" kind="push" id="gAe-Z6-mEO"/>
                                     </connections>
                                 </button>
                                 <separator alignment="left" id="tkz-iq-chS">
-                                    <color key="color" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="color" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </separator>
                             </items>
                         </group>
                         <group width="1" alignment="left" layout="vertical" id="kQR-kA-GG6">
                             <items>
                                 <label width="1" alignment="left" text="Round Up to Nearest Dollar" textAlignment="center" numberOfLines="2" id="piV-Ok-tLJ">
-                                    <color key="textColor" red="0.58431372550000005" green="0.66274509800000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" red="0.51542294025421143" green="0.60457563400268555" blue="0.44719970226287842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="boldSystem" pointSize="16"/>
                                 </label>
                                 <switch width="1" alignment="left" title="Grand Total" id="Wzt-Nd-FSl">
                                     <fontDescription key="font" type="boldSystem" pointSize="16"/>
-                                    <color key="titleColor" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <connections>
                                         <action selector="roundUpTotalAmountSwitchAction:" destination="WQM-mB-Xzw" id="OVM-S2-txa"/>
                                     </connections>
                                 </switch>
                                 <switch width="1" alignment="left" title="Tip Amount" id="Us2-yg-xih">
                                     <fontDescription key="font" type="boldSystem" pointSize="16"/>
-                                    <color key="titleColor" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <connections>
                                         <action selector="roundUpTipAmountSwitchAction:" destination="WQM-mB-Xzw" id="sZ4-4F-zpf"/>
                                     </connections>
@@ -291,7 +292,7 @@
                             </items>
                         </group>
                         <separator alignment="left" id="Nek-6W-RGb">
-                            <color key="color" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="color" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </separator>
                     </items>
                     <connections>
@@ -375,54 +376,54 @@
                 <controller id="GYE-h2-h2x" customClass="TotaledAmountsInterfaceController" customModule="Merces_WatchKit_Extension">
                     <items>
                         <separator alignment="left" id="eb0-gE-ORI">
-                            <color key="color" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="color" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </separator>
                         <group width="1" alignment="left" layout="vertical" id="DcT-lg-JYx">
                             <items>
                                 <label width="136" alignment="center" text="Tip Amount:" textAlignment="center" id="3Qw-Hf-fYF">
-                                    <color key="textColor" red="0.58431372550000005" green="0.66274509800000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" red="0.51542294025421143" green="0.60457563400268555" blue="0.44719970226287842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="boldSystem" pointSize="16"/>
                                 </label>
                                 <label width="136" height="37.5" alignment="center" text="$0.00" textAlignment="center" id="coi-8N-SnK">
-                                    <color key="textColor" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="boldSystem" pointSize="16"/>
                                 </label>
                             </items>
                         </group>
                         <separator alignment="left" id="rjd-rL-or6">
-                            <color key="color" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="color" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </separator>
                         <group width="1" alignment="left" layout="vertical" id="Jsd-TW-WdX">
                             <items>
                                 <label width="136" alignment="center" textAlignment="center" numberOfLines="2" id="Ll0-ov-1TA">
                                     <string key="text">Total Amount 
 (per person):</string>
-                                    <color key="textColor" red="0.58431372550000005" green="0.66274509800000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" red="0.51542294025421143" green="0.60457563400268555" blue="0.44719970226287842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="boldSystem" pointSize="16"/>
                                 </label>
                                 <label width="1" height="37.5" alignment="center" text="$0.00" textAlignment="center" numberOfLines="3" minimumScaleFactor="0.30000000000000016" id="Vc9-gX-rWy">
-                                    <color key="textColor" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="boldSystem" pointSize="16"/>
                                 </label>
                             </items>
                         </group>
                         <separator alignment="left" id="q9c-gJ-zCw">
-                            <color key="color" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="color" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </separator>
                         <group width="1" alignment="left" layout="vertical" id="tlu-uT-SaA">
                             <items>
                                 <label width="136" alignment="center" text="Grand Total: " textAlignment="center" id="ifo-mk-n1H">
-                                    <color key="textColor" red="0.58431372550000005" green="0.66274509800000003" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" red="0.51542294025421143" green="0.60457563400268555" blue="0.44719970226287842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="boldSystem" pointSize="16"/>
                                 </label>
                                 <label width="1" height="37.5" alignment="center" text="$0.00" textAlignment="center" numberOfLines="2" minimumScaleFactor="0.70000000000000007" id="Gfm-Ta-1IM">
-                                    <color key="textColor" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="boldSystem" pointSize="16"/>
                                 </label>
                             </items>
                         </group>
                         <separator alignment="left" id="vhD-gw-HzZ">
-                            <color key="color" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="color" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </separator>
                     </items>
                     <connections>
@@ -448,7 +449,7 @@
                                     <group key="rootItem" width="1" alignment="left" animationDuration="1" id="QaM-N0-YFq">
                                         <items>
                                             <button width="136" alignment="center" id="VE4-em-S9h">
-                                                <color key="titleColor" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleColor" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
                                                 <connections>
                                                     <segue destination="mjZ-t7-FMI" kind="push" identifier="VenueServiceRatings" id="6RJ-tx-Ctg"/>
@@ -482,7 +483,7 @@
                                     <group key="rootItem" width="1" alignment="left" id="s8e-nw-eGh">
                                         <items>
                                             <button width="1" alignment="center" id="iza-Rs-r0L">
-                                                <color key="titleColor" red="1" green="0.97254901959999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleColor" red="0.99929511547088623" green="0.96715271472930908" blue="0.89277768135070801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
                                                 <connections>
                                                     <segue destination="K88-ax-Smj" kind="push" identifier="ServiceRatingChosen" id="jh5-IN-0pY"/>
@@ -513,9 +514,12 @@
             <point key="canvasLocation" x="861" y="709"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cogwheel" width="24" height="24"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XIo-m7-ycD"/>
-        <segue reference="sko-nu-GVg"/>
         <segue reference="OPv-5J-L2n"/>
+        <segue reference="sko-nu-GVg"/>
+        <segue reference="XIo-m7-ycD"/>
     </inferredMetricsTieBreakers>
 </document>
