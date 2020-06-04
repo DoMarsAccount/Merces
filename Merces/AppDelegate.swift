@@ -92,7 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         guard let shortcut = launchedShortcutItem else { return }
         
-        handleShortcut(shortcutItem: shortcut)
+        var _ = handleShortcut(shortcutItem: shortcut)
         
         launchedShortcutItem = nil
     }

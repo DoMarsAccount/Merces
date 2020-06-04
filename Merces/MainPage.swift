@@ -7,6 +7,15 @@
 //  Copyright (c) 2015 DoMarsToyBox. All rights reserved.
 //
 
+enum EditableTextFields {
+    case subtotal
+    case salesTax
+    case numPeople
+    case tipRate
+    case venue
+    case none
+}
+
 import UIKit
 import ChameleonFramework
 
@@ -16,7 +25,8 @@ let coloringThemes = ColoringAndThemes()
 
 @available(iOS 10.0, *)
 class MainPage: UIViewController {
-
+    
+    var userEditingThisField: EditableTextFields = .none
     var userWantsToEditThisField: String!
     
     var keypadIsUp = false
@@ -336,36 +346,33 @@ class MainPage: UIViewController {
     @IBAction func buttonPressed(_ sender: UIButton) {
         
         springForKeypadButtonsPressed(sender: sender, animations: {
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
             
             let buttonTitle = sender.titleLabel!.text!
             
-            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-            
-            if self.userWantsToEditThisField == "Bill Amount" {
-                
+            switch self.userEditingThisField {
+            case .subtotal:
                 varAmountsObject.arrayOfButtonsPressedForBillAmountAsString.append(buttonTitle)
                 
                 self.calculate(varAmountsObject.arrayOfButtonsPressedForBillAmountAsString, firstResponderValue: self.billAmountTextFieldOutlet.tag)
                 
-            } else if self.userWantsToEditThisField == "Tax Amount" {
-                
+            case .salesTax:
                 varAmountsObject.arrayOfButtonsPressedForTaxAmountAsString.append(buttonTitle)
                 
                 self.calculate(varAmountsObject.arrayOfButtonsPressedForTaxAmountAsString, firstResponderValue: self.taxAmountTextFieldOutlet.tag)
                 
-                
-            } else if self.userWantsToEditThisField == "Tip Rate" {
-                
+            case .tipRate:
                 varAmountsObject.arrayOfButtonsPressedForTipRateAsString.append(buttonTitle)
                 
                 self.calculate(varAmountsObject.arrayOfButtonsPressedForTipRateAsString, firstResponderValue: self.tipRateTextFieldOutlet.tag)
                 
-            } else if self.userWantsToEditThisField == "Number of People" {
-                
+            case .numPeople:
                 varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.append(buttonTitle)
                 
                 self.calculate(varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString, firstResponderValue: self.numberOfPeoplePayingTextFieldOutlet.tag)
                 
+            default:
+                return
             }
             
         })
@@ -379,44 +386,37 @@ class MainPage: UIViewController {
             
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
             
-            if self.userWantsToEditThisField == "Bill Amount" {
-                
+            switch self.userEditingThisField {
+            case .subtotal:
                 if !varAmountsObject.arrayOfButtonsPressedForBillAmountAsString.isEmpty {
                     varAmountsObject.arrayOfButtonsPressedForBillAmountAsString.removeLast()
-                    
                 }
                 
                 self.calculate(varAmountsObject.arrayOfButtonsPressedForBillAmountAsString, firstResponderValue: self.billAmountTextFieldOutlet.tag)
                 
-            } else if self.userWantsToEditThisField == "Tax Amount" {
-                
+            case .salesTax:
                 if !varAmountsObject.arrayOfButtonsPressedForTaxAmountAsString.isEmpty {
-                    
                     varAmountsObject.arrayOfButtonsPressedForTaxAmountAsString.removeLast()
-                    
                 }
                 
                 self.calculate(varAmountsObject.arrayOfButtonsPressedForTaxAmountAsString, firstResponderValue: self.taxAmountTextFieldOutlet.tag)
                 
-            } else if self.userWantsToEditThisField == "Tip Rate" {
-                
+            case .tipRate:
                 if !varAmountsObject.arrayOfButtonsPressedForTipRateAsString.isEmpty {
-                    
                     varAmountsObject.arrayOfButtonsPressedForTipRateAsString.removeLast()
-                    
                 }
                 
                 self.calculate(varAmountsObject.arrayOfButtonsPressedForTipRateAsString, firstResponderValue: self.tipRateTextFieldOutlet.tag)
                 
-            } else if self.userWantsToEditThisField == "Number of People" {
-                
+            case .numPeople:
                 if !varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.isEmpty {
-                    
                     varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.removeLast()
-                    
                 }
+                
                 self.calculate(varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString, firstResponderValue: self.numberOfPeoplePayingTextFieldOutlet.tag)
                 
+            default:
+                return
             }
             
         })
@@ -430,23 +430,7 @@ class MainPage: UIViewController {
         
         self.unscaleViewsWithSpring()
         
-        if self.userWantsToEditThisField == "Bill Amount" {
-            
-            self.keypadDisappear()
-            
-        } else if self.userWantsToEditThisField == "Tax Amount" {
-            
-            self.keypadDisappear()
-            
-        } else if self.userWantsToEditThisField == "Tip Rate" {
-            
-            self.keypadDisappear()
-            
-        } else if self.userWantsToEditThisField == "Number of People" {
-            
-            self.keypadDisappear()
-            
-        }
+        self.keypadDisappear()
         
         self.updateFieldValues()
         
@@ -570,19 +554,7 @@ class MainPage: UIViewController {
         
         serviceRatingLabelOutlet.selectedSegmentIndex = 1
         
-        
-        if serviceRatingLabelOutlet.selectedSegmentIndex == 0 {
-            
-            varAmountsObject.tipRate = varAmountsObject.tipRateArray[0]
-            
-        } else if serviceRatingLabelOutlet.selectedSegmentIndex == 2 {
-            
-            varAmountsObject.tipRate = varAmountsObject.tipRateArray[2]
-            
-        } else {
-            
-            varAmountsObject.tipRate = varAmountsObject.tipRateArray[1]
-        }
+        varAmountsObject.tipRate = varAmountsObject.tipRateArray[serviceRatingLabelOutlet.selectedSegmentIndex]
         
         updateFieldValues()
         
@@ -597,7 +569,7 @@ class MainPage: UIViewController {
         
         keypadAppear()
         
-        userWantsToEditThisField = "Bill Amount"
+        userEditingThisField = .subtotal
         
         varAmountsObject.firstResponderTag = billAmountTextFieldOutlet.tag
         
@@ -617,7 +589,7 @@ class MainPage: UIViewController {
         
         keypadAppear()
         
-        userWantsToEditThisField = "Tax Amount"
+        userEditingThisField = .salesTax
         
         varAmountsObject.firstResponderTag = taxAmountTextFieldOutlet.tag
         
@@ -631,7 +603,7 @@ class MainPage: UIViewController {
         
         keypadAppear()
         
-        userWantsToEditThisField = "Number of People"
+        userEditingThisField = .numPeople
         
         varAmountsObject.firstResponderTag = numberOfPeoplePayingTextFieldOutlet.tag
         
@@ -645,7 +617,7 @@ class MainPage: UIViewController {
         
         keypadAppear()
         
-        userWantsToEditThisField = "Tip Rate"
+        userEditingThisField = .tipRate
         
         varAmountsObject.firstResponderTag = tipRateTextFieldOutlet.tag
         
@@ -659,7 +631,7 @@ class MainPage: UIViewController {
         
         venueSelectorAppear()
         
-        userWantsToEditThisField = "Venue"
+        userEditingThisField = .venue
         
         scaleViewsWithSpring(venueSelectionLabelOutlet.tag)
         
@@ -720,6 +692,7 @@ class MainPage: UIViewController {
         
     }
     
+    /// Logic for when views appear/ disappear
     func handleTotalAmountsView() {
         
         // singlePersonTotaledAmountsViewCOnstraint
@@ -883,10 +856,9 @@ class MainPage: UIViewController {
             coinsImageOutlet.isHidden = true
             
         }
-        
-        
     }
 
+    /// This method updates the colors used throughout the app in response to user changing their theme
     func updateColorValues() {
         
         /* ------------ Navigation Bar Coloring ------------- */
@@ -1025,7 +997,7 @@ class MainPage: UIViewController {
 
         for venueViews in collectionVenueViews {
             
-            if "\(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true))" == "UIExtendedSRGBColorSpace 0.15 0.15 0.15 1" {
+            if "\(String(describing: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)))" == "UIExtendedSRGBColorSpace 0.15 0.15 0.15 1" {
                 
                 venueViews.backgroundColor = coloringThemes.getMainColor()
                 
@@ -1060,19 +1032,11 @@ class MainPage: UIViewController {
     }
     
     func checkForDynamicType(_ preferredFontSize: CGFloat) -> UIFont {
-        
         if UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.bool(forKey: "useDynamicText") == true {
-            
             return UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
-            
-            
-            
         } else {
-            
             return UIFont(name: "HelveticaNeue-CondensedBold", size: preferredFontSize)!
-            
         }
-        
     }
     
     

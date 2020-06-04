@@ -8,6 +8,30 @@
 
 import Foundation
 
+extension Double {
+    /// Rounds the double to decimal places value
+    func roundTo(places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
+    }
+}
+
+extension String {
+    /// Convert this string to a double
+    func toDouble() -> Double {
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.current
+        formatter.numberStyle = .currency
+        
+        if let money = formatter.number(from: self) {
+            return Double(truncating: money)
+        } else {
+            formatter.numberStyle = .decimal
+            return Double(truncating: formatter.number(from: self)!)
+        }
+    }
+}
+
 class NumberFormattingClass {
     
     // Rounds the entered Double value into a variant that includes the $
