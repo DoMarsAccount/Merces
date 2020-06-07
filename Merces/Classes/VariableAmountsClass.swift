@@ -36,8 +36,7 @@ class VariableAmountsClass
     
     /* Functions */
     
-    func calculate(_ arrayOfPressedButtonValues: [String], sentFirstResponderTag: Int){
-        
+    func calculate(_ arrayOfPressedButtonValues: [String], activeField: EditableTextFields){
         
         var inputAmount = 0.00
         
@@ -51,10 +50,10 @@ class VariableAmountsClass
             
         }
         
-        checkResponderStatus(inputAmount, firstResponderTag: sentFirstResponderTag)
+        checkResponderStatus(inputAmount, activeField: activeField)
     }
     
-    func display(_ arrayOfPressedButtonValues: [String], sentFirstResponderTag: Int) {
+    func display(_ arrayOfPressedButtonValues: [String], activeField: EditableTextFields) {
         
         var inputAmount = 1.0
         
@@ -73,94 +72,72 @@ class VariableAmountsClass
             
         }
         
-        checkResponderStatus(inputAmount, firstResponderTag: sentFirstResponderTag)
+        checkResponderStatus(inputAmount, activeField: activeField)
         
     }
     
-    func checkResponderStatus(_ inputAmount: Double, firstResponderTag: Int) {
+    func checkResponderStatus(_ inputAmount: Double, activeField: EditableTextFields) {
         
-        switch firstResponderTag {
-            
-        case 1:
-            
+        switch activeField {
+        case .subtotal:
             billAmount = inputAmount
-            
             useTaxAmount(false)
             
-        case 2:
-            
+        case .salesTax:
             taxAmount = inputAmount
-            
             useTaxAmount(true)
             
-        case 3:
-            
+        case .numPeople:
             if inputAmount >= 2147483647 {
-                
                 arrayOfButtonsPressedForNumberOfPeoplePayingAsString = []
-                
                 numberOfPeoplePaying = 0
                 
             } else {
-                
                 if inputAmount != 1 {
-                    
                     numberOfPeoplePaying = Int(inputAmount * 100)
                     
                 } else {
-                    
                     numberOfPeoplePaying = Int(inputAmount)
                     
                 }
             }
             
-        case 4:
-            
+        case .tipRate:
             tipRate = inputAmount * 0.01
             
-            
-        case 5:
-            
+        case .venue:
             localSalesTax = inputAmount * 0.001
             
-            
         default:
-            
             break
             
         }
-        
     }
     
     func useTaxAmount(_ doEditTaxAmount: Bool) {
-        
         var locallyCalculatedTaxAmount = billAmount * localSalesTax
         
-        if (UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.double(forKey: "userLocalSalesTax")) != 0.0 {
+        if mUserDefaults?.double(forKey: "userLocalSalesTax") != 0.0 {
             
             locallyCalculatedTaxAmount = billAmount * localSalesTax
-            
         }
         
         if doEditTaxAmount != true {
-            
             taxAmount = locallyCalculatedTaxAmount
-            
         }
-        
     }
     
     
     func updateValues() -> (formattedBillAmount: String, formattedTaxAmount: String, formattedTipRate: String, numberOfPeoplePaying: String, tipAmount: String, totalAmount: String, totalAmountPerPerson: String) {
         
-        tipAmount = (UserDefaults(suiteName: "group.DoMarsToyBox.Merces")!.bool(forKey: "tipIncludeTaxSwitchOnOff") ? (billAmount + taxAmount) * tipRate : billAmount * tipRate)
+        tipAmount = (mUserDefaults!.bool(forKey: "tipIncludeTaxSwitchOnOff") ? (billAmount + taxAmount) * tipRate : billAmount * tipRate)
         
         
         totalAmount = billAmount + tipAmount + taxAmount
         
         totalAmountPerPerson = totalAmount / Double(numberOfPeoplePaying)
         
-        if UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.bool(forKey: "roundTipAmountSwitchOnOff") == true {
+        if mUserDefaults?.bool(forKey: "roundTipAmountSwitchOnOff") == true {
             
             tipAmount = ceil(tipAmount)
             
@@ -170,8 +147,7 @@ class VariableAmountsClass
             
         }
         
-        if UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.bool(forKey: "roundTotalAmountSwitchOnOff") == true {
-            
+        if mUserDefaults?.bool(forKey: "roundTotalAmountSwitchOnOff") == true {
             
             totalAmount = ceil(billAmount + tipAmount + taxAmount)
             

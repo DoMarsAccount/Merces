@@ -290,8 +290,24 @@ class MyMerces: UIViewController {
     /* ------------------ Updating Values and Views -------------------- */
     
     func calculate(_ arrayOfButtonsPressed: [String], firstResponderValue: Int) {
+        var activeField: EditableTextFields = .none
         
-        varAmountsObject.calculate(arrayOfButtonsPressed, sentFirstResponderTag: firstResponderValue)
+        switch firstResponderValue {
+        case 1:
+            activeField = .subtotal
+        case 2:
+            activeField = .salesTax
+        case 3:
+            activeField = .numPeople
+        case 4:
+            activeField = .tipRate
+        case 5:
+            activeField = .venue
+        default:
+            activeField = .none
+        }
+        
+        varAmountsObject.calculate(arrayOfButtonsPressed, activeField: activeField)
         
     }
     

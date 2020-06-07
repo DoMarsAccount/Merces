@@ -14,6 +14,23 @@ enum ServiceQuality {
     case Great
 }
 
+enum EditableTextFields {
+    case subtotal
+    case salesTax
+    case numPeople
+    case tipRate
+    case venue
+    case none
+}
+
+/* First Responder Tags
+ * 1 = Subtotal / Bill Amount
+ * 2 = Sales Tax / Tax Amount
+ * 3 = Number of People Paying
+ * 4 = Tip Rate
+ * 5 = Sales Tax
+ */
+
 class TippingModel {
     
     var subtotal: String

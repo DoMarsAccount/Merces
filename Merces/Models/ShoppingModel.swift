@@ -9,6 +9,12 @@
 import Foundation
 
 class ShoppingModel {
+    enum EditableFields {
+        case subtotal
+        case salesTax
+        case none
+    }
+    
     var billAmount: Double
     var taxAmount: Double
     

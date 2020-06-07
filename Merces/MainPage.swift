@@ -7,15 +7,6 @@
 //  Copyright (c) 2015 DoMarsToyBox. All rights reserved.
 //
 
-enum EditableTextFields {
-    case subtotal
-    case salesTax
-    case numPeople
-    case tipRate
-    case venue
-    case none
-}
-
 import UIKit
 import ChameleonFramework
 
@@ -354,22 +345,22 @@ class MainPage: UIViewController {
             case .subtotal:
                 varAmountsObject.arrayOfButtonsPressedForBillAmountAsString.append(buttonTitle)
                 
-                self.calculate(varAmountsObject.arrayOfButtonsPressedForBillAmountAsString, firstResponderValue: self.billAmountTextFieldOutlet.tag)
+                self.calculate(varAmountsObject.arrayOfButtonsPressedForBillAmountAsString, activeField: self.userEditingThisField)
                 
             case .salesTax:
                 varAmountsObject.arrayOfButtonsPressedForTaxAmountAsString.append(buttonTitle)
                 
-                self.calculate(varAmountsObject.arrayOfButtonsPressedForTaxAmountAsString, firstResponderValue: self.taxAmountTextFieldOutlet.tag)
+                self.calculate(varAmountsObject.arrayOfButtonsPressedForTaxAmountAsString, activeField: self.userEditingThisField)
                 
             case .tipRate:
                 varAmountsObject.arrayOfButtonsPressedForTipRateAsString.append(buttonTitle)
                 
-                self.calculate(varAmountsObject.arrayOfButtonsPressedForTipRateAsString, firstResponderValue: self.tipRateTextFieldOutlet.tag)
+                self.calculate(varAmountsObject.arrayOfButtonsPressedForTipRateAsString, activeField: self.userEditingThisField)
                 
             case .numPeople:
                 varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.append(buttonTitle)
                 
-                self.calculate(varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString, firstResponderValue: self.numberOfPeoplePayingTextFieldOutlet.tag)
+                self.calculate(varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString, activeField: self.userEditingThisField)
                 
             default:
                 return
@@ -392,28 +383,28 @@ class MainPage: UIViewController {
                     varAmountsObject.arrayOfButtonsPressedForBillAmountAsString.removeLast()
                 }
                 
-                self.calculate(varAmountsObject.arrayOfButtonsPressedForBillAmountAsString, firstResponderValue: self.billAmountTextFieldOutlet.tag)
+                self.calculate(varAmountsObject.arrayOfButtonsPressedForBillAmountAsString, activeField: self.userEditingThisField)
                 
             case .salesTax:
                 if !varAmountsObject.arrayOfButtonsPressedForTaxAmountAsString.isEmpty {
                     varAmountsObject.arrayOfButtonsPressedForTaxAmountAsString.removeLast()
                 }
                 
-                self.calculate(varAmountsObject.arrayOfButtonsPressedForTaxAmountAsString, firstResponderValue: self.taxAmountTextFieldOutlet.tag)
+                self.calculate(varAmountsObject.arrayOfButtonsPressedForTaxAmountAsString, activeField: self.userEditingThisField)
                 
             case .tipRate:
                 if !varAmountsObject.arrayOfButtonsPressedForTipRateAsString.isEmpty {
                     varAmountsObject.arrayOfButtonsPressedForTipRateAsString.removeLast()
                 }
                 
-                self.calculate(varAmountsObject.arrayOfButtonsPressedForTipRateAsString, firstResponderValue: self.tipRateTextFieldOutlet.tag)
+                self.calculate(varAmountsObject.arrayOfButtonsPressedForTipRateAsString, activeField: self.userEditingThisField)
                 
             case .numPeople:
                 if !varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.isEmpty {
                     varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.removeLast()
                 }
                 
-                self.calculate(varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString, firstResponderValue: self.numberOfPeoplePayingTextFieldOutlet.tag)
+                self.calculate(varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString, activeField: self.userEditingThisField)
                 
             default:
                 return
@@ -565,7 +556,7 @@ class MainPage: UIViewController {
         
         // Here to smooth out effects of "Subtotal is Post Tax switch"
         
-        self.calculate(varAmountsObject.arrayOfButtonsPressedForBillAmountAsString, firstResponderValue: self.billAmountTextFieldOutlet.tag)
+        self.calculate(varAmountsObject.arrayOfButtonsPressedForBillAmountAsString, activeField: self.userEditingThisField)
         
         billAmountTextFieldOutlet.text = varAmountsObject.updateValues().formattedBillAmount
         
@@ -633,7 +624,7 @@ class MainPage: UIViewController {
         
         // Here to smooth out effects of "Subtotal Post Tax"
         // means user selection is in place
-        self.calculate(varAmountsObject.arrayOfButtonsPressedForBillAmountAsString, firstResponderValue: self.billAmountTextFieldOutlet.tag)
+        self.calculate(varAmountsObject.arrayOfButtonsPressedForBillAmountAsString, activeField: .subtotal)
         
         // Here because it means user selection is done
         varAmountsObject.updateSubtotalForPostTaxDesired()
@@ -652,20 +643,16 @@ class MainPage: UIViewController {
     /* ------------------ Updating Values and Views -------------------- */
     
     
-    func calculate(_ arrayOfButtonsPressed: [String], firstResponderValue: Int) {
+    func calculate(_ arrayOfButtonsPressed: [String], activeField: EditableTextFields) {
         
-        if firstResponderValue == 3 {
-            
-            varAmountsObject.display(arrayOfButtonsPressed, sentFirstResponderTag: 3)
+        if activeField == .numPeople {
+            varAmountsObject.display(arrayOfButtonsPressed, activeField: activeField)
             
         } else {
-            
-            varAmountsObject.calculate(arrayOfButtonsPressed, sentFirstResponderTag: firstResponderValue)
+            varAmountsObject.calculate(arrayOfButtonsPressed, activeField: activeField)
             
         }
-        
         updateFieldValues()
-        
     }
     
     /// Logic for when views appear/ disappear
@@ -1205,7 +1192,7 @@ class MainPage: UIViewController {
         
         // Here to smooth out effects of "Subtotal Post Tax"
         // means user selection is in place
-        self.calculate(varAmountsObject.arrayOfButtonsPressedForBillAmountAsString, firstResponderValue: self.billAmountTextFieldOutlet.tag)
+        self.calculate(varAmountsObject.arrayOfButtonsPressedForBillAmountAsString, activeField: .subtotal)
         
         for textFields in collectionInputFieldLabels {
             
