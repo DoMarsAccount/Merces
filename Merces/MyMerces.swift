@@ -75,7 +75,7 @@ class MyMerces: UIViewController {
             name: NSNotification.Name.UIContentSizeCategoryDidChange,
             object: nil)
         
-        UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.set(varAmountsObject.localSalesTax, forKey: "userLocalSalesTax")
+        mUserDefaults?.set(varAmountsObject.userPrefs.localSalesTax, forKey: "userLocalSalesTax")
         
     }
     
@@ -224,7 +224,7 @@ class MyMerces: UIViewController {
             
         }
         
-        UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.set(varAmountsObject.localSalesTax, forKey: "userLocalSalesTax")
+        mUserDefaults?.set(varAmountsObject.userPrefs.localSalesTax, forKey: "userLocalSalesTax")
         
     }
     
@@ -346,17 +346,17 @@ class MyMerces: UIViewController {
         }
         
         
-        if varAmountsObject.localSalesTax == 0.00 {
+        if varAmountsObject.userPrefs.localSalesTax == 0.00 {
             
             localSalesTaxOutlet.text = "0.000%"
             
         } else {
             
-            localSalesTaxOutlet.text = "\(nmbrFormatter.roundForPercentWithThreeDecimalPlaces(number: varAmountsObject.localSalesTax))"
+            localSalesTaxOutlet.text = "\(nmbrFormatter.roundForPercentWithThreeDecimalPlaces(number: varAmountsObject.userPrefs.localSalesTax))"
             
         }
         
-        (UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.set(varAmountsObject.localSalesTax, forKey: "userLocalSalesTax"))
+        mUserDefaults?.set(varAmountsObject.userPrefs.localSalesTax, forKey: "userLocalSalesTax")
         
         editTipPresets()
         

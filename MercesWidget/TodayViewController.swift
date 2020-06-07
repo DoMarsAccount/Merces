@@ -121,11 +121,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         /* ------------ Display Quick Venue ------------- */
         
-        varAmountsObject.selectedVenue = .quick
+        varAmountsObject.tipModel.selectedVenue = .quick
         
-        varAmountsObject.tipRateArray = tipRates(for: varAmountsObject.selectedVenue)
+        varAmountsObject.tipRateArray = tipRates(for: varAmountsObject.tipModel.selectedVenue)
         
-        varAmountsObject.tipRate = varAmountsObject.tipRateArray[1]
+        varAmountsObject.tipModel.tipRate = varAmountsObject.tipRateArray[1]
         
     }
     
@@ -165,7 +165,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                 
             }
             
-            if varAmountsObject.numberOfPeoplePaying > 1 {
+            if varAmountsObject.tipModel.partySize > 1 {
                 
                 tipAmountTrailingConstraint.priority = UILayoutPriority(rawValue: 990)
                 
@@ -366,7 +366,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                     
                     self.amountIndexer += 1
                     
-                    if (varAmountsObject.localSalesTax != 0.0) && (self.amountIndexer == 2) {
+                    if (varAmountsObject.userPrefs.localSalesTax != 0.0) && (self.amountIndexer == 2) {
                         
                         self.amountIndexer += 1
                         
@@ -433,7 +433,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         scaleViews(editedViewsTag: amountIndexer)
         
-        if varAmountsObject.numberOfPeoplePaying > 1 {
+        if varAmountsObject.tipModel.partySize > 1 {
             
             tipAmountTrailingConstraint.priority = UILayoutPriority(rawValue: 990)
             
@@ -479,7 +479,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         keypadViewOutlet.backgroundColor = UIColor.black
         
-        if varAmountsObject.localSalesTax != 0.0 {
+        if varAmountsObject.userPrefs.localSalesTax != 0.0 {
             
             salesTaxDisplayOutlet.backgroundColor = grandTotalDisplayOutlet.backgroundColor
             

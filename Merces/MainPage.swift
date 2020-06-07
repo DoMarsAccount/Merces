@@ -21,9 +21,7 @@ class MainPage: UIViewController {
     var userWantsToEditThisField: String!
     
     var keypadIsUp = false
-    
     var venueSelectorIsUp = false
-    
     var totalAmountsViewIsFull = false
     
     /* ----------------- Collection Outlets --------------------- */
@@ -69,7 +67,6 @@ class MainPage: UIViewController {
     
     @IBOutlet var settingsIconOutlet: UIBarButtonItem!
     @IBOutlet var modeSwitchOutlet: UIBarButtonItem!
-    var isModeTipCalc = true
 
     @IBOutlet var totaledAmountsLabel: UILabel!
     
@@ -163,7 +160,7 @@ class MainPage: UIViewController {
         
         var haveShownSetupAlert = UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.bool(forKey: "setupAlertShown")
         
-        UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.set(varAmountsObject.localSalesTax, forKey: "userLocalSalesTax")
+        mUserDefaults?.set(varAmountsObject.userPrefs.localSalesTax, forKey: "userLocalSalesTax")
         
         /* ------------ Accessibility/ Dynamic Type ------------- */
         
@@ -174,13 +171,13 @@ class MainPage: UIViewController {
         
         /* ------------ Display Quick Venue ------------- */
         
-        varAmountsObject.selectedVenue = .quick
+        varAmountsObject.tipModel.selectedVenue = .quick
         
-        varAmountsObject.tipRateArray = tipRates(for: varAmountsObject.selectedVenue)
+        varAmountsObject.tipRateArray = tipRates(for: varAmountsObject.tipModel.selectedVenue)
         
-        varAmountsObject.tipRate = varAmountsObject.tipRateArray[1]
+        varAmountsObject.tipModel.tipRate = varAmountsObject.tipRateArray[1]
         
-        venueSelectionLabelOutlet.text = venueName(for: varAmountsObject.selectedVenue)
+        venueSelectionLabelOutlet.text = venueName(for: varAmountsObject.tipModel.selectedVenue)
         
         serviceRatingLabelOutlet.selectedSegmentIndex = 1
         
@@ -235,7 +232,7 @@ class MainPage: UIViewController {
         
         updateColorValues()
         
-        varAmountsObject.tipRateArray = tipRates(for: varAmountsObject.selectedVenue)
+        varAmountsObject.tipRateArray = tipRates(for: varAmountsObject.tipModel.selectedVenue)
         
         updateFieldValues()
         
@@ -243,7 +240,7 @@ class MainPage: UIViewController {
     
     @IBAction func modeSwitchButtonPressed(_ sender: UIBarButtonItem) {
         
-        if isModeTipCalc {
+        if varAmountsObject.userPrefs.isModeTipCalc {
             
             self.modeSwitchOutlet.isEnabled = false
             self.modeSwitchOutlet.image = UIImage(named: "shopping_bag")
@@ -276,7 +273,7 @@ class MainPage: UIViewController {
                         
                     }, completion: { finished in
                         
-                        self.isModeTipCalc = false
+                        varAmountsObject.userPrefs.isModeTipCalc = false
                         
                         self.modeSwitchOutlet.isEnabled = true
                         
@@ -320,7 +317,7 @@ class MainPage: UIViewController {
                         
                         self.modeSwitchOutlet.isEnabled = true
                         
-                        self.isModeTipCalc = true
+                        varAmountsObject.userPrefs.isModeTipCalc = true
                         
                     })
                     
@@ -431,7 +428,7 @@ class MainPage: UIViewController {
     
     func checkTotalAmountPerPersonValue() {
         
-        if varAmountsObject.moreOrLessPerPerson != 0.0 {
+        if varAmountsObject.tipModel.moreOrLessPerPerson != 0.0 {
             
             if moreOrLessPerPersonLabel.isHidden != true {
                 
@@ -445,7 +442,7 @@ class MainPage: UIViewController {
             
             coinsImageOutlet.isHidden = false
             
-            var hold = varAmountsObject.moreOrLessPerPerson
+            var hold = varAmountsObject.tipModel.moreOrLessPerPerson
             
             // $0.09 / 2 yields odd result
             
@@ -476,7 +473,7 @@ class MainPage: UIViewController {
             
             moreOrLessPerPersonLabel.isHidden = true
             
-            if varAmountsObject.numberOfPeoplePaying != 1 {
+            if varAmountsObject.tipModel.partySize != 1 {
             
                 totalAmountPerPersonTitleLabel.isHidden = false
                 
@@ -503,37 +500,37 @@ class MainPage: UIViewController {
         */
         switch sender.tag {
         case 10:
-            varAmountsObject.selectedVenue = .bar
+            varAmountsObject.tipModel.selectedVenue = .bar
             
         case 11:
-            varAmountsObject.selectedVenue = .dining
+            varAmountsObject.tipModel.selectedVenue = .dining
             
         case 12:
-            varAmountsObject.selectedVenue = .taxi
+            varAmountsObject.tipModel.selectedVenue = .taxi
             
         case 13:
-            varAmountsObject.selectedVenue = .quick
+            varAmountsObject.tipModel.selectedVenue = .quick
             
         case 14:
-            varAmountsObject.selectedVenue = .salon
+            varAmountsObject.tipModel.selectedVenue = .salon
             
         case 15:
-            varAmountsObject.selectedVenue = .delivery
+            varAmountsObject.tipModel.selectedVenue = .delivery
             
         default:
-            varAmountsObject.selectedVenue = .none
+            varAmountsObject.tipModel.selectedVenue = .none
             
         }
         
         unscaleViewsWithSpring(); venueSelectorDisappear()
         
-        varAmountsObject.tipRateArray = tipRates(for: varAmountsObject.selectedVenue)
+        varAmountsObject.tipRateArray = tipRates(for: varAmountsObject.tipModel.selectedVenue)
         
-        venueSelectionLabelOutlet.text = venueName(for: varAmountsObject.selectedVenue)
+        venueSelectionLabelOutlet.text = venueName(for: varAmountsObject.tipModel.selectedVenue)
         
         serviceRatingLabelOutlet.selectedSegmentIndex = 1
         
-        varAmountsObject.tipRate = varAmountsObject.tipRateArray[serviceRatingLabelOutlet.selectedSegmentIndex]
+        varAmountsObject.tipModel.tipRate = varAmountsObject.tipRateArray[serviceRatingLabelOutlet.selectedSegmentIndex]
         
         updateFieldValues()
         
@@ -629,9 +626,9 @@ class MainPage: UIViewController {
         // Here because it means user selection is done
         varAmountsObject.updateSubtotalForPostTaxDesired()
         
-        varAmountsObject.tipRateArray = tipRates(for: varAmountsObject.selectedVenue)
+        varAmountsObject.tipRateArray = tipRates(for: varAmountsObject.tipModel.selectedVenue)
         
-        varAmountsObject.tipRate = varAmountsObject.tipRateArray[sender.selectedSegmentIndex]
+        varAmountsObject.tipModel.tipRate = varAmountsObject.tipRateArray[sender.selectedSegmentIndex]
         
         updateFieldValues()
         
@@ -662,7 +659,7 @@ class MainPage: UIViewController {
         // noTipSplitPersonViewConstraint
         //
         
-        if varAmountsObject.tipRate == 0.00 {
+        if varAmountsObject.tipModel.tipRate == 0.00 {
             
             // hide tip amount section
             
@@ -695,7 +692,7 @@ class MainPage: UIViewController {
             
         }
         
-        if varAmountsObject.numberOfPeoplePaying == 1 {
+        if varAmountsObject.tipModel.partySize == 1 {
             
             // hide total per person section
             
@@ -710,7 +707,7 @@ class MainPage: UIViewController {
             
             // show total per person
             
-            if (varAmountsObject.tipRate != 0.00) {
+            if (varAmountsObject.tipModel.tipRate != 0.00) {
                 // show all three sections
                 
                 noTipSplitPersonViewConstraint.priority = UILayoutPriority(rawValue: 970)
@@ -794,7 +791,7 @@ class MainPage: UIViewController {
         
         tipRateTextFieldOutlet.text = varAmountsObject.updateValues().formattedTipRate
         
-        venueSelectionLabelOutlet.text = venueName(for: varAmountsObject.selectedVenue)
+        venueSelectionLabelOutlet.text = venueName(for: varAmountsObject.tipModel.selectedVenue)
         
         
         numberOfPeoplePayingTextFieldOutlet.text = varAmountsObject.updateValues().numberOfPeoplePaying
@@ -806,11 +803,11 @@ class MainPage: UIViewController {
         
         totalAmountPerPersonLabelOutlet.text = varAmountsObject.updateValues().totalAmountPerPerson
         
-        if varAmountsObject.moreOrLessPerPerson < 0 {
+        if varAmountsObject.tipModel.moreOrLessPerPerson < 0 {
             
             coinsImageOutlet.image = UIImage(named: "coins-green")
             
-        } else if varAmountsObject.moreOrLessPerPerson > 0 {
+        } else if varAmountsObject.tipModel.moreOrLessPerPerson > 0 {
             
             coinsImageOutlet.image = UIImage(named: "coins-red")
             
@@ -978,7 +975,7 @@ class MainPage: UIViewController {
             
         }
         
-        if varAmountsObject.localSalesTax != 0.0 {
+        if varAmountsObject.userPrefs.localSalesTax != 0.0 {
         
             taxAmountMaskOutlet.isEnabled = false
             
@@ -1017,7 +1014,7 @@ class MainPage: UIViewController {
             
             keypadStuffView.isHidden = false; keypadStuffView.alpha = 1.0
             
-            if isModeTipCalc {
+            if varAmountsObject.userPrefs.isModeTipCalc {
                 totaledAmountsStuffView.transform = CGAffineTransform(translationX: -self.view.frame.width , y: 0)
             }
             
@@ -1027,7 +1024,7 @@ class MainPage: UIViewController {
                 
                 self.venuesStuffView.transform = CGAffineTransform(translationX: (self.view.frame.width + self.view.frame.width), y: 0)
                 
-                if self.isModeTipCalc {
+                if varAmountsObject.userPrefs.isModeTipCalc {
                     self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: self.view.frame.width , y: 0)
                 }
                 
@@ -1037,7 +1034,7 @@ class MainPage: UIViewController {
                     
                     self.venuesStuffView.alpha = 0.0
                     
-                    if self.isModeTipCalc {
+                    if varAmountsObject.userPrefs.isModeTipCalc {
                         self.totaledAmountsStuffView.alpha = 0.0
                     }
             })
@@ -1056,7 +1053,7 @@ class MainPage: UIViewController {
             
             UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
                 
-                if self.isModeTipCalc {
+                if varAmountsObject.userPrefs.isModeTipCalc {
                     self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: self.view.frame.width , y: 0)
                 }
                 
@@ -1065,7 +1062,7 @@ class MainPage: UIViewController {
                 
                 }, completion: { finished in
                     
-                    if self.isModeTipCalc {
+                    if varAmountsObject.userPrefs.isModeTipCalc {
                         self.totaledAmountsStuffView.alpha = 0.0
                     }
                     
@@ -1085,14 +1082,14 @@ class MainPage: UIViewController {
         
         // In case user switched from Venue selector to keypad, 
         // Make sure Totaled Amount View is in correct spot for anim.
-        if isModeTipCalc {
+        if varAmountsObject.userPrefs.isModeTipCalc {
             self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: self.view.frame.width , y: 0)
         }
         
         UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
             
             self.keypadStuffView.transform = CGAffineTransform(translationX: -self.view.frame.width , y: 0)
-            if self.isModeTipCalc {
+            if varAmountsObject.userPrefs.isModeTipCalc {
                 self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: 0, y: 0)
             }
             
@@ -1278,7 +1275,7 @@ class MainPage: UIViewController {
         
         moreOrLessPerPersonLabel.isHidden = true
         
-        if varAmountsObject.numberOfPeoplePaying > 1 {
+        if varAmountsObject.tipModel.partySize > 1 {
         
             totalAmountPerPersonTitleLabel.isHidden = false
             
@@ -1547,7 +1544,7 @@ class MainPage: UIViewController {
     
     @IBAction func coinsImageWasTapped(_ recognizer:UITapGestureRecognizer) {
         
-        if varAmountsObject.moreOrLessPerPerson != 0.0 {
+        if varAmountsObject.tipModel.moreOrLessPerPerson != 0.0 {
             
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
             
@@ -1563,7 +1560,7 @@ class MainPage: UIViewController {
                 
             })
             
-            var hold = varAmountsObject.moreOrLessPerPerson
+            var hold = varAmountsObject.tipModel.moreOrLessPerPerson
             
             if round(hold) == 0 {
                 
@@ -1644,7 +1641,7 @@ class MainPage: UIViewController {
                 
                 varAmountsObject.resetValues()
                 
-                self.venueSelectionLabelOutlet.text = venueName(for: varAmountsObject.selectedVenue)
+                self.venueSelectionLabelOutlet.text = venueName(for: varAmountsObject.tipModel.selectedVenue)
                 
                 self.updateFieldValues()
                 

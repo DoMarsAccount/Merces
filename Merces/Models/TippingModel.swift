@@ -33,76 +33,102 @@ enum EditableTextFields {
 
 class TippingModel {
     
-    var subtotal: String
-    var taxAmount: String
-    var tip: String
-    var total: String
-    var totalPerPerson: String
+    let numberFormattingObject = NumberFormattingClass()
     
-    var partySize: String
-    var venue: VenueType
-    var tipRate: String
+    var subtotal: Double
+    var taxAmount: Double
+    var tipAmount: Double
+    var tipRate: Double
+    var partySize: Int
+    
+    var totalAmount: Double
+    var totalAmountPerPerson: Double
+    
+    var selectedVenue: VenueType
     var service: ServiceQuality
     
-    private var tipAmount: Double
-    private var totalAmount: Double
-    private var totalAmountPerPerson: Double
+    var displayedTotalAmountPerPerson: Double
+    var moreOrLessPerPerson: Double
     
     init() {
-        subtotal = "0.00"
-        taxAmount = "0.00"
+        self.subtotal = 0.00
+        self.taxAmount = 0.00
+        self.tipAmount = 0.0
+        self.tipRate = 0.00
+        self.partySize = 1
         
-        partySize = "1"
-        venue = .quick
-        tipRate = "0.00"
-        service = .Average
+        self.totalAmount = 0.0
+        self.totalAmountPerPerson = 0.0
         
-        tipAmount = 0.0; tip = "0.00"
-        totalAmount = 0.0; total = "0.00"
-        totalAmountPerPerson = 0.0; totalPerPerson = "0.00"
+        self.selectedVenue = .quick
+        self.service = .Average
+        
+        self.displayedTotalAmountPerPerson = 0.0
+        self.moreOrLessPerPerson = 0.00
     }
     
     func resetValues() {
-        subtotal = "0.00"
-        taxAmount = "0.00"
+        self.subtotal = 0.00
+        self.taxAmount = 0.00
+        self.tipAmount = 0.0
+        self.tipRate = 0.00
+        self.partySize = 1
         
-        partySize = "1"
-        venue = .quick
-        tipRate = "0.00"
-        service = .Average
+        self.totalAmount = 0.0
+        self.totalAmountPerPerson = 0.0
         
-        tipAmount = 0.0; tip = "0.00"
-        totalAmount = 0.0; total = "0.00"
-        totalAmountPerPerson = 0.0; totalPerPerson = "0.00"
+        self.selectedVenue = .quick
+        self.service = .Average
+        
+        self.displayedTotalAmountPerPerson = 0.0
+        self.moreOrLessPerPerson = 0.00
     }
     
-    func computeValues() {
-        tipAmount = (mUserDefaults!.bool(forKey: "tipIncludeTaxSwitchOnOff") ? (subtotal.toDouble() + taxAmount.toDouble()) * tipRate.toDouble() : subtotal.toDouble() * tipRate.toDouble())
+    /// Replaces the updateValues method formerly found in VariableAmountsClass
+    func computeTippingValues() -> (formattedBillAmount: String, formattedTaxAmount: String, formattedTipRate: String, numberOfPeoplePaying: String, tipAmount: String, totalAmount: String, totalAmountPerPerson: String) {
         
-        totalAmount = subtotal.toDouble() + tipAmount + taxAmount.toDouble()
+        tipAmount = (mUserDefaults!.bool(forKey: "tipIncludeTaxSwitchOnOff") ? (subtotal + taxAmount) * tipRate : subtotal * tipRate)
         
-        totalAmountPerPerson = totalAmount / partySize.toDouble()
+        totalAmount = subtotal + tipAmount + taxAmount
+        
+        totalAmountPerPerson = totalAmount / Double(partySize)
         
         if mUserDefaults!.bool(forKey: "roundTipAmountSwitchOnOff") {
-            
             tipAmount = ceil(tipAmount)
             
-            totalAmount = subtotal.toDouble() + tipAmount + taxAmount.toDouble()
+            totalAmount = subtotal + tipAmount + taxAmount
             
-            totalAmountPerPerson = totalAmount / Double(partySize.toDouble())
-            
+            totalAmountPerPerson = totalAmount / Double(partySize)
         }
         
         if mUserDefaults!.bool(forKey: "roundTotalAmountSwitchOnOff") {
+            totalAmount = ceil(subtotal + tipAmount + taxAmount)
             
-            totalAmount = ceil(subtotal.toDouble() + tipAmount + taxAmount.toDouble())
-            
-            totalAmountPerPerson = ceil(totalAmount / partySize.toDouble())
-            
+            totalAmountPerPerson = ceil(totalAmount / Double(partySize))
         }
         
-        self.tip = "\(tipAmount)"
-        self.total = "\(totalAmount)"
-        self.totalPerPerson = "\(totalAmountPerPerson)"
+        // Checks for repeating decimal in the tip per person
+        // if value is > 0, it will be rounded upward, meaning not all need to pay "extra"
+        // else value is rounded down, meaning some need to pay a little more
+        
+        if ("$\(totalAmountPerPerson.roundTo(places: 2))" == numberFormattingObject.roundForCurrency(number: totalAmountPerPerson)) && ("$\(totalAmountPerPerson.roundTo(places: 2) * Double(partySize))" == numberFormattingObject.roundForCurrency(number: totalAmount)){
+            
+            moreOrLessPerPerson = 0
+            
+        } else if partySize > 1 {
+            moreOrLessPerPerson = ((totalAmountPerPerson * Double(partySize)) - (totalAmountPerPerson.roundTo(places: 2) * Double(partySize))) * 100
+            
+        } else {
+            moreOrLessPerPerson = 0
+        }
+        
+        return (numberFormattingObject.roundForCurrency(number: subtotal), numberFormattingObject.roundForCurrency(number: taxAmount), numberFormattingObject.roundForPercentWithDecimalPlace(tipRate),"\(partySize)", numberFormattingObject.roundForCurrency(number: tipAmount), numberFormattingObject.roundForCurrency(number: totalAmount), numberFormattingObject.roundForCurrency(number: totalAmountPerPerson))
+    }
+    
+    func computeShoppingValues() -> (formattedBillAmount: String, formattedTaxAmount: String, formattedTotalAmount: String) {
+        
+        totalAmount = subtotal + taxAmount
+        
+        return (numberFormattingObject.roundForCurrency(number: subtotal), numberFormattingObject.roundForCurrency(number: taxAmount), numberFormattingObject.roundForCurrency(number: totalAmount))
     }
 }

@@ -17,7 +17,8 @@ class UserPreferences {
     var subtotalIsPostTax: Bool
     var useDynamicText: Bool
     
-    var localSalesTax: Double
+    var isModeTipCalc: Bool = true
+    var localSalesTax: Double = (mUserDefaults?.double(forKey: "userLocalSalesTax"))!
     
     init() {
         tipIncludeTax = mUserDefaults!.bool(forKey: "tipIncludeTaxSwitchOnOff")
@@ -25,7 +26,7 @@ class UserPreferences {
         roundTotalAmount = mUserDefaults!.bool(forKey: "roundTotalAmountSwitchOnOff")
         subtotalIsPostTax = mUserDefaults!.bool(forKey: "subtotalIsPostTaxSwitchOnOff")
         useDynamicText = mUserDefaults!.bool(forKey: "useDynamicText")
-        
+
         localSalesTax = mUserDefaults!.double(forKey: "userLocalSalesTax")
     }
     
