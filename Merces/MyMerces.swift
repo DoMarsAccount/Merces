@@ -58,9 +58,6 @@ class MyMerces: UIViewController {
     var arrayOfButtonsPressedForAverageTip: [String] = []
     var arrayOfButtonsPressedForGreatTip: [String] = []
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -80,15 +77,11 @@ class MyMerces: UIViewController {
     }
     
     @objc func preferredContentSizeChanged(_ notification: Notification) {
-        
         updateFieldValues()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
         updateColorValues()
-        
     }
     
     
@@ -306,9 +299,7 @@ class MyMerces: UIViewController {
     }
     
     func updateUserTipRates(_ arrayOfButtonsPressed: [String], tipRateToEdit: Int) {
-        
         userDefinedTipRatings(arrayOfButtonsPressed, venueToEdit: venueValueToEdit, tipRateToEdit: tipRateToEdit)
-        
     }
     
     func updateFieldValues() {
@@ -603,12 +594,10 @@ class MyMerces: UIViewController {
     
     
     func emptyArraysOfButtonsPressed() {
-        
         arrayOfButtonsPressedForLocalSalesTax = []
         arrayOfButtonsPressedForPoorTip = []
         arrayOfButtonsPressedForAverageTip = []
         arrayOfButtonsPressedForGreatTip = []
-        
     }
 
 }

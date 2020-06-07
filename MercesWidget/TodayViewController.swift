@@ -121,11 +121,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         /* ------------ Display Quick Venue ------------- */
         
-        varAmountsObject.tipModel.selectedVenue = .quick
+        varAmountsObject.calcModel.selectedVenue = .quick
         
-        varAmountsObject.tipRateArray = tipRates(for: varAmountsObject.tipModel.selectedVenue)
+        varAmountsObject.tipRateArray = tipRates(for: varAmountsObject.calcModel.selectedVenue)
         
-        varAmountsObject.tipModel.tipRate = varAmountsObject.tipRateArray[1]
+        varAmountsObject.calcModel.tipRate = varAmountsObject.tipRateArray[1]
         
     }
     
@@ -165,7 +165,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                 
             }
             
-            if varAmountsObject.tipModel.partySize > 1 {
+            if varAmountsObject.calcModel.partySize > 1 {
                 
                 tipAmountTrailingConstraint.priority = UILayoutPriority(rawValue: 990)
                 
@@ -433,7 +433,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         scaleViews(editedViewsTag: amountIndexer)
         
-        if varAmountsObject.tipModel.partySize > 1 {
+        if varAmountsObject.calcModel.partySize > 1 {
             
             tipAmountTrailingConstraint.priority = UILayoutPriority(rawValue: 990)
             

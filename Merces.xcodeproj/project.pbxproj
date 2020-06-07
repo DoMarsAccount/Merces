@@ -13,10 +13,8 @@
 		04E012772489628A009FAEEB /* ReceiptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E012722489628A009FAEEB /* ReceiptModel.swift */; };
 		04E012782489628A009FAEEB /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E012732489628A009FAEEB /* UserPreferences.swift */; };
 		04E012792489628A009FAEEB /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E012732489628A009FAEEB /* UserPreferences.swift */; };
-		04E0127A2489628A009FAEEB /* TippingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E012742489628A009FAEEB /* TippingModel.swift */; };
-		04E0127B2489628A009FAEEB /* TippingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E012742489628A009FAEEB /* TippingModel.swift */; };
-		04E0127C2489628A009FAEEB /* ShoppingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E012752489628A009FAEEB /* ShoppingModel.swift */; };
-		04E0127D2489628A009FAEEB /* ShoppingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E012752489628A009FAEEB /* ShoppingModel.swift */; };
+		04E0127A2489628A009FAEEB /* CalculationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E012742489628A009FAEEB /* CalculationsModel.swift */; };
+		04E0127B2489628A009FAEEB /* CalculationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E012742489628A009FAEEB /* CalculationsModel.swift */; };
 		04E0127E248962B5009FAEEB /* Venues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0126F248961F0009FAEEB /* Venues.swift */; };
 		78B3D1EF1F6A05FF009C8051 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78B3D1F11F6A05FF009C8051 /* Main.storyboard */; };
 		7D1DEE16862D475BCA4F1E29 /* Pods_Merces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F251037667992C1F444B6F5B /* Pods_Merces.framework */; };
@@ -98,8 +96,7 @@
 		04E0126F248961F0009FAEEB /* Venues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venues.swift; sourceTree = "<group>"; };
 		04E012722489628A009FAEEB /* ReceiptModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReceiptModel.swift; path = Models/ReceiptModel.swift; sourceTree = "<group>"; };
 		04E012732489628A009FAEEB /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
-		04E012742489628A009FAEEB /* TippingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TippingModel.swift; path = Models/TippingModel.swift; sourceTree = "<group>"; };
-		04E012752489628A009FAEEB /* ShoppingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShoppingModel.swift; path = Models/ShoppingModel.swift; sourceTree = "<group>"; };
+		04E012742489628A009FAEEB /* CalculationsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalculationsModel.swift; path = Models/CalculationsModel.swift; sourceTree = "<group>"; };
 		0C2A782DD83BB0614F1593B5 /* Pods-Merces WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Merces WatchKit Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Merces WatchKit Extension/Pods-Merces WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		114411A3AA1179BD7CD421B4 /* Pods-Merces WatchKit App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Merces WatchKit App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Merces WatchKit App/Pods-Merces WatchKit App.release.xcconfig"; sourceTree = "<group>"; };
 		22E19BF2E33EE889A46B7EB5 /* libPods-Merces WatchKit Extension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Merces WatchKit Extension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -224,8 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				04E012722489628A009FAEEB /* ReceiptModel.swift */,
-				04E012752489628A009FAEEB /* ShoppingModel.swift */,
-				04E012742489628A009FAEEB /* TippingModel.swift */,
+				04E012742489628A009FAEEB /* CalculationsModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -684,12 +680,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3FD0FB41EC3DB3600763ED2 /* VariableAmountsClass.swift in Sources */,
-				04E0127D2489628A009FAEEB /* ShoppingModel.swift in Sources */,
 				04E012792489628A009FAEEB /* UserPreferences.swift in Sources */,
 				E3FD0FB21EC3DB3600763ED2 /* ColoringAndThemes.swift in Sources */,
 				E3AB12251E2DC1DF0021C889 /* TodayViewController.swift in Sources */,
 				E3AB12371E2DC25F0021C889 /* SpringAnimation.swift in Sources */,
-				04E0127B2489628A009FAEEB /* TippingModel.swift in Sources */,
+				04E0127B2489628A009FAEEB /* CalculationsModel.swift in Sources */,
 				04E0127E248962B5009FAEEB /* Venues.swift in Sources */,
 				04E012772489628A009FAEEB /* ReceiptModel.swift in Sources */,
 				E3FD0FB01EC3DB3600763ED2 /* AppleWatchColors.swift in Sources */,
@@ -708,14 +703,13 @@
 				E3AB120C1E2DBE950021C889 /* MyMerces.swift in Sources */,
 				E3FD0FB11EC3DB3600763ED2 /* ColoringAndThemes.swift in Sources */,
 				E33460B11E32F23D00D467C6 /* ThemesViewController.swift in Sources */,
-				04E0127C2489628A009FAEEB /* ShoppingModel.swift in Sources */,
 				E3AB12091E2DBE950021C889 /* MainPage.swift in Sources */,
 				04E012782489628A009FAEEB /* UserPreferences.swift in Sources */,
 				E3B4B2BA1ABB2CF7002A6C16 /* AppDelegate.swift in Sources */,
 				E3FD0FAF1EC3DB3600763ED2 /* AppleWatchColors.swift in Sources */,
 				E3AB120E1E2DBE950021C889 /* InAppPurchasePage.swift in Sources */,
 				E33460AB1E32EF2300D467C6 /* ThemesCollectionViewCell.swift in Sources */,
-				04E0127A2489628A009FAEEB /* TippingModel.swift in Sources */,
+				04E0127A2489628A009FAEEB /* CalculationsModel.swift in Sources */,
 				E3B4B2DB1ABB2D62002A6C16 /* BlurView.swift in Sources */,
 				E3B4B2DC1ABB2D62002A6C16 /* SpringAnimation.swift in Sources */,
 				04E012762489628A009FAEEB /* ReceiptModel.swift in Sources */,
