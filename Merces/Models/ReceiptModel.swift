@@ -9,18 +9,13 @@
 import Foundation
 
 class ReceiptModel {
-    var subtotal: Double
-    var taxAmount: Double
+    var name: String
+    var time: TimeInterval
+    let savedCalculations: CalculationsModel
     
-    var partySize: Int
-    var venue: VenueType
-    var tipRate: Double
-    
-    init(billAmt: Double, taxAmt: Double, numPeople: Int, venue: VenueType, tip: Double) {
-        self.subtotal = billAmt
-        self.taxAmount = taxAmt
-        self.partySize = numPeople
-        self.venue = venue
-        self.tipRate = tip
+    init(calculations: CalculationsModel) {
+        name = "Lorem Ipsum"
+        time = 5.0
+        savedCalculations = calculations
     }
 }

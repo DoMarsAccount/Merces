@@ -416,7 +416,7 @@ class MainPage: UIViewController {
         
         self.updateFieldValues()
         
-        checkTotalAmountPerPersonValue()
+        self.checkTotalAmountPerPersonValue()
         
     }
     

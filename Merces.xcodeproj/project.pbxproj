@@ -16,6 +16,18 @@
 		04E0127A2489628A009FAEEB /* CalculationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E012742489628A009FAEEB /* CalculationsModel.swift */; };
 		04E0127B2489628A009FAEEB /* CalculationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E012742489628A009FAEEB /* CalculationsModel.swift */; };
 		04E0127E248962B5009FAEEB /* Venues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0126F248961F0009FAEEB /* Venues.swift */; };
+		04EF6D8A248D3451009CEF03 /* Merces_watchOS WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 04EF6D89248D3451009CEF03 /* Merces_watchOS WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		04EF6D90248D3451009CEF03 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04EF6D8E248D3451009CEF03 /* Interface.storyboard */; };
+		04EF6D92248D3452009CEF03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04EF6D91248D3452009CEF03 /* Assets.xcassets */; };
+		04EF6D99248D3452009CEF03 /* Merces_watchOS WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 04EF6D98248D3452009CEF03 /* Merces_watchOS WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		04EF6D9E248D3452009CEF03 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6D9D248D3452009CEF03 /* ContentView.swift */; };
+		04EF6DA0248D3452009CEF03 /* HostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6D9F248D3452009CEF03 /* HostingController.swift */; };
+		04EF6DA2248D3452009CEF03 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6DA1248D3452009CEF03 /* ExtensionDelegate.swift */; };
+		04EF6DA4248D3452009CEF03 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6DA3248D3452009CEF03 /* NotificationController.swift */; };
+		04EF6DA6248D3452009CEF03 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6DA5248D3452009CEF03 /* NotificationView.swift */; };
+		04EF6DA8248D3452009CEF03 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6DA7248D3452009CEF03 /* ComplicationController.swift */; };
+		04EF6DAA248D3453009CEF03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04EF6DA9248D3453009CEF03 /* Assets.xcassets */; };
+		04EF6DAD248D3453009CEF03 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04EF6DAC248D3453009CEF03 /* Preview Assets.xcassets */; };
 		78B3D1EF1F6A05FF009C8051 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78B3D1F11F6A05FF009C8051 /* Main.storyboard */; };
 		7D1DEE16862D475BCA4F1E29 /* Pods_Merces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F251037667992C1F444B6F5B /* Pods_Merces.framework */; };
 		E33460AB1E32EF2300D467C6 /* ThemesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33460AA1E32EF2300D467C6 /* ThemesCollectionViewCell.swift */; };
@@ -52,6 +64,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		04EF6D8B248D3451009CEF03 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E3B4B2AC1ABB2CF7002A6C16 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04EF6D88248D3451009CEF03;
+			remoteInfo = "Merces_watchOS WatchKit App";
+		};
+		04EF6D9A248D3452009CEF03 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E3B4B2AC1ABB2CF7002A6C16 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04EF6D97248D3452009CEF03;
+			remoteInfo = "Merces_watchOS WatchKit Extension";
+		};
 		E3AB122A1E2DC1DF0021C889 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E3B4B2AC1ABB2CF7002A6C16 /* Project object */;
@@ -69,6 +95,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		04EF6DB3248D3453009CEF03 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				04EF6D99248D3452009CEF03 /* Merces_watchOS WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04EF6DB7248D3453009CEF03 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				04EF6D8A248D3451009CEF03 /* Merces_watchOS WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E3AB12301E2DC1DF0021C889 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -97,6 +145,22 @@
 		04E012722489628A009FAEEB /* ReceiptModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReceiptModel.swift; path = Models/ReceiptModel.swift; sourceTree = "<group>"; };
 		04E012732489628A009FAEEB /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		04E012742489628A009FAEEB /* CalculationsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalculationsModel.swift; path = Models/CalculationsModel.swift; sourceTree = "<group>"; };
+		04EF6D86248D3451009CEF03 /* Merces_watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Merces_watchOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04EF6D89248D3451009CEF03 /* Merces_watchOS WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Merces_watchOS WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		04EF6D8F248D3451009CEF03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		04EF6D91248D3452009CEF03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		04EF6D93248D3452009CEF03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04EF6D98248D3452009CEF03 /* Merces_watchOS WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Merces_watchOS WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		04EF6D9D248D3452009CEF03 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		04EF6D9F248D3452009CEF03 /* HostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingController.swift; sourceTree = "<group>"; };
+		04EF6DA1248D3452009CEF03 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		04EF6DA3248D3452009CEF03 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		04EF6DA5248D3452009CEF03 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		04EF6DA7248D3452009CEF03 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		04EF6DA9248D3453009CEF03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		04EF6DAC248D3453009CEF03 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		04EF6DAE248D3453009CEF03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04EF6DAF248D3453009CEF03 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		0C2A782DD83BB0614F1593B5 /* Pods-Merces WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Merces WatchKit Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Merces WatchKit Extension/Pods-Merces WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		114411A3AA1179BD7CD421B4 /* Pods-Merces WatchKit App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Merces WatchKit App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Merces WatchKit App/Pods-Merces WatchKit App.release.xcconfig"; sourceTree = "<group>"; };
 		22E19BF2E33EE889A46B7EB5 /* libPods-Merces WatchKit Extension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Merces WatchKit Extension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,6 +241,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		04EF6D95248D3452009CEF03 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E3AB121D1E2DC1DF0021C889 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -224,6 +295,41 @@
 				04E012742489628A009FAEEB /* CalculationsModel.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		04EF6D8D248D3451009CEF03 /* Merces_watchOS WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				04EF6D8E248D3451009CEF03 /* Interface.storyboard */,
+				04EF6D91248D3452009CEF03 /* Assets.xcassets */,
+				04EF6D93248D3452009CEF03 /* Info.plist */,
+			);
+			path = "Merces_watchOS WatchKit App";
+			sourceTree = "<group>";
+		};
+		04EF6D9C248D3452009CEF03 /* Merces_watchOS WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				04EF6D9D248D3452009CEF03 /* ContentView.swift */,
+				04EF6D9F248D3452009CEF03 /* HostingController.swift */,
+				04EF6DA1248D3452009CEF03 /* ExtensionDelegate.swift */,
+				04EF6DA3248D3452009CEF03 /* NotificationController.swift */,
+				04EF6DA5248D3452009CEF03 /* NotificationView.swift */,
+				04EF6DA7248D3452009CEF03 /* ComplicationController.swift */,
+				04EF6DA9248D3453009CEF03 /* Assets.xcassets */,
+				04EF6DAE248D3453009CEF03 /* Info.plist */,
+				04EF6DAF248D3453009CEF03 /* PushNotificationPayload.apns */,
+				04EF6DAB248D3453009CEF03 /* Preview Content */,
+			);
+			path = "Merces_watchOS WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		04EF6DAB248D3453009CEF03 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				04EF6DAC248D3453009CEF03 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		5202330EB4EFFFB5CEA2B4DC /* Frameworks */ = {
@@ -370,6 +476,8 @@
 				E38D63C41ACB323E0060EE81 /* Merces WatchKit Extension */,
 				E38D63D11ACB323F0060EE81 /* Merces WatchKit App */,
 				E3AB12231E2DC1DF0021C889 /* MercesWidget */,
+				04EF6D8D248D3451009CEF03 /* Merces_watchOS WatchKit App */,
+				04EF6D9C248D3452009CEF03 /* Merces_watchOS WatchKit Extension */,
 				E3B4B2B51ABB2CF7002A6C16 /* Products */,
 				E3D43B161ACB4D7C00C13D06 /* Bridging Headers */,
 				6EDF787E5C3BE443255DB696 /* Pods */,
@@ -383,6 +491,9 @@
 				E3B4B2B41ABB2CF7002A6C16 /* Merces.app */,
 				E3B4B2C91ABB2CF7002A6C16 /* MercesTests.xctest */,
 				E3AB12201E2DC1DF0021C889 /* MercesWidget.appex */,
+				04EF6D86248D3451009CEF03 /* Merces_watchOS.app */,
+				04EF6D89248D3451009CEF03 /* Merces_watchOS WatchKit App.app */,
+				04EF6D98248D3452009CEF03 /* Merces_watchOS WatchKit Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -460,6 +571,57 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		04EF6D85248D3451009CEF03 /* Merces_watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04EF6DB8248D3453009CEF03 /* Build configuration list for PBXNativeTarget "Merces_watchOS" */;
+			buildPhases = (
+				04EF6D84248D3451009CEF03 /* Resources */,
+				04EF6DB7248D3453009CEF03 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04EF6D8C248D3451009CEF03 /* PBXTargetDependency */,
+			);
+			name = Merces_watchOS;
+			productName = Merces_watchOS;
+			productReference = 04EF6D86248D3451009CEF03 /* Merces_watchOS.app */;
+			productType = "com.apple.product-type.application.watchapp2-container";
+		};
+		04EF6D88248D3451009CEF03 /* Merces_watchOS WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04EF6DB4248D3453009CEF03 /* Build configuration list for PBXNativeTarget "Merces_watchOS WatchKit App" */;
+			buildPhases = (
+				04EF6D87248D3451009CEF03 /* Resources */,
+				04EF6DB3248D3453009CEF03 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04EF6D9B248D3452009CEF03 /* PBXTargetDependency */,
+			);
+			name = "Merces_watchOS WatchKit App";
+			productName = "Merces_watchOS WatchKit App";
+			productReference = 04EF6D89248D3451009CEF03 /* Merces_watchOS WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		04EF6D97248D3452009CEF03 /* Merces_watchOS WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04EF6DB0248D3453009CEF03 /* Build configuration list for PBXNativeTarget "Merces_watchOS WatchKit Extension" */;
+			buildPhases = (
+				04EF6D94248D3452009CEF03 /* Sources */,
+				04EF6D95248D3452009CEF03 /* Frameworks */,
+				04EF6D96248D3452009CEF03 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Merces_watchOS WatchKit Extension";
+			productName = "Merces_watchOS WatchKit Extension";
+			productReference = 04EF6D98248D3452009CEF03 /* Merces_watchOS WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		E3AB121F1E2DC1DF0021C889 /* MercesWidget */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E3AB122D1E2DC1DF0021C889 /* Build configuration list for PBXNativeTarget "MercesWidget" */;
@@ -525,10 +687,25 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0700;
-				LastSwiftUpdateCheck = 0820;
+				LastSwiftUpdateCheck = 1150;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = DoMarsToyBox;
 				TargetAttributes = {
+					04EF6D85248D3451009CEF03 = {
+						CreatedOnToolsVersion = 11.5;
+						DevelopmentTeam = NS4T6US98M;
+						ProvisioningStyle = Automatic;
+					};
+					04EF6D88248D3451009CEF03 = {
+						CreatedOnToolsVersion = 11.5;
+						DevelopmentTeam = NS4T6US98M;
+						ProvisioningStyle = Automatic;
+					};
+					04EF6D97248D3452009CEF03 = {
+						CreatedOnToolsVersion = 11.5;
+						DevelopmentTeam = NS4T6US98M;
+						ProvisioningStyle = Automatic;
+					};
 					E3AB121F1E2DC1DF0021C889 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = NS4T6US98M;
@@ -580,11 +757,39 @@
 				E3B4B2B31ABB2CF7002A6C16 /* Merces */,
 				E3B4B2C81ABB2CF7002A6C16 /* MercesTests */,
 				E3AB121F1E2DC1DF0021C889 /* MercesWidget */,
+				04EF6D85248D3451009CEF03 /* Merces_watchOS */,
+				04EF6D88248D3451009CEF03 /* Merces_watchOS WatchKit App */,
+				04EF6D97248D3452009CEF03 /* Merces_watchOS WatchKit Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		04EF6D84248D3451009CEF03 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04EF6D87248D3451009CEF03 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04EF6D92248D3452009CEF03 /* Assets.xcassets in Resources */,
+				04EF6D90248D3451009CEF03 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04EF6D96248D3452009CEF03 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04EF6DAD248D3453009CEF03 /* Preview Assets.xcassets in Resources */,
+				04EF6DAA248D3453009CEF03 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E3AB121E1E2DC1DF0021C889 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -675,6 +880,19 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		04EF6D94248D3452009CEF03 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04EF6DA0248D3452009CEF03 /* HostingController.swift in Sources */,
+				04EF6D9E248D3452009CEF03 /* ContentView.swift in Sources */,
+				04EF6DA4248D3452009CEF03 /* NotificationController.swift in Sources */,
+				04EF6DA2248D3452009CEF03 /* ExtensionDelegate.swift in Sources */,
+				04EF6DA6248D3452009CEF03 /* NotificationView.swift in Sources */,
+				04EF6DA8248D3452009CEF03 /* ComplicationController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E3AB121C1E2DC1DF0021C889 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -730,6 +948,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		04EF6D8C248D3451009CEF03 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04EF6D88248D3451009CEF03 /* Merces_watchOS WatchKit App */;
+			targetProxy = 04EF6D8B248D3451009CEF03 /* PBXContainerItemProxy */;
+		};
+		04EF6D9B248D3452009CEF03 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04EF6D97248D3452009CEF03 /* Merces_watchOS WatchKit Extension */;
+			targetProxy = 04EF6D9A248D3452009CEF03 /* PBXContainerItemProxy */;
+		};
 		E3AB122B1E2DC1DF0021C889 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E3AB121F1E2DC1DF0021C889 /* MercesWidget */;
@@ -743,6 +971,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		04EF6D8E248D3451009CEF03 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04EF6D8F248D3451009CEF03 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		78B3D1F11F6A05FF009C8051 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -782,6 +1018,170 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		04EF6DB1248D3453009CEF03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_ASSET_PATHS = "\"Merces_watchOS WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = NS4T6US98M;
+				ENABLE_PREVIEWS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Merces_watchOS WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.domar.Merces-watchOS.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.2;
+			};
+			name = Debug;
+		};
+		04EF6DB2248D3453009CEF03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_ASSET_PATHS = "\"Merces_watchOS WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = NS4T6US98M;
+				ENABLE_PREVIEWS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Merces_watchOS WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.domar.Merces-watchOS.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.2;
+			};
+			name = Release;
+		};
+		04EF6DB5248D3453009CEF03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = NS4T6US98M;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IBSC_MODULE = Merces_watchOS_WatchKit_Extension;
+				INFOPLIST_FILE = "Merces_watchOS WatchKit App/Info.plist";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.domar.Merces-watchOS.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.2;
+			};
+			name = Debug;
+		};
+		04EF6DB6248D3453009CEF03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = NS4T6US98M;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IBSC_MODULE = Merces_watchOS_WatchKit_Extension;
+				INFOPLIST_FILE = "Merces_watchOS WatchKit App/Info.plist";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.domar.Merces-watchOS.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.2;
+			};
+			name = Release;
+		};
+		04EF6DB9248D3453009CEF03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = NS4T6US98M;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.domar.Merces-watchOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		04EF6DBA248D3453009CEF03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = NS4T6US98M;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.domar.Merces-watchOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		E3AB122E1E2DC1DF0021C889 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1014,6 +1414,33 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		04EF6DB0248D3453009CEF03 /* Build configuration list for PBXNativeTarget "Merces_watchOS WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04EF6DB1248D3453009CEF03 /* Debug */,
+				04EF6DB2248D3453009CEF03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04EF6DB4248D3453009CEF03 /* Build configuration list for PBXNativeTarget "Merces_watchOS WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04EF6DB5248D3453009CEF03 /* Debug */,
+				04EF6DB6248D3453009CEF03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04EF6DB8248D3453009CEF03 /* Build configuration list for PBXNativeTarget "Merces_watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04EF6DB9248D3453009CEF03 /* Debug */,
+				04EF6DBA248D3453009CEF03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E3AB122D1E2DC1DF0021C889 /* Build configuration list for PBXNativeTarget "MercesWidget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
