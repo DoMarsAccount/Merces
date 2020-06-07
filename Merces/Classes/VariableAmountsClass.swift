@@ -8,12 +8,13 @@
 
 import UIKit
 
+let userPrefs = UserPreferences()
+
 class VariableAmountsClass
 {
     /* Objects */
     let numberFormattingObject = NumberFormattingClass()
     let tipModel = TippingModel()
-    let userPrefs = UserPreferences()
     
     /* Variables */
     
@@ -28,38 +29,21 @@ class VariableAmountsClass
     
     /* Functions */
     
-    func calculate(_ arrayOfPressedButtonValues: [String], activeField: EditableTextFields){
-        
-        var inputAmount = 0.00
-        
-        if !arrayOfPressedButtonValues.isEmpty {
-            
-            inputAmount = NumberFormatter().number(from: arrayOfPressedButtonValues.joined(separator: "")) as! Double * 0.01
-            
-        } else {
-            
-            inputAmount = 0.00
-            
-        }
-        
-        checkResponderStatus(inputAmount, activeField: activeField)
-    }
-    
-    func display(_ arrayOfPressedButtonValues: [String], activeField: EditableTextFields) {
-        
-        var inputAmount = 1.0
+    func processInput(_ arrayOfPressedButtonValues: [String], activeField: EditableTextFields) {
+        var inputAmount = 0.0
         
         if !arrayOfPressedButtonValues.isEmpty {
-            inputAmount = NumberFormatter().number(from: arrayOfPressedButtonValues.joined(separator: "")) as! Double * 0.01
-            
-        } else {
-            inputAmount = 1.0
-        }
-        
-        if inputAmount == 0.0 {
-            inputAmount = 1.0
-        }
-        
+                
+           inputAmount = NumberFormatter().number(from: arrayOfPressedButtonValues.joined(separator: "")) as! Double * 0.01
+           
+       } else {
+           switch activeField {
+           case .numPeople:
+               inputAmount = 1.0
+           default:
+               inputAmount = 0.0
+           }
+       }
         checkResponderStatus(inputAmount, activeField: activeField)
     }
     
@@ -80,8 +64,14 @@ class VariableAmountsClass
                 tipModel.partySize = 0
                 
             } else {
+                
                 if inputAmount != 1 {
-                    tipModel.partySize = Int(inputAmount * 100)
+
+                    if inputAmount == 0.0 { // shouldn't be possible, but just in case!
+                        tipModel.partySize = 1
+                    } else {
+                        tipModel.partySize = Int(inputAmount * 100)
+                    }
                     
                 } else {
                     tipModel.partySize = Int(inputAmount)

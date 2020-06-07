@@ -265,25 +265,25 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                 // Bill Amount
                 varAmountsObject.arrayOfButtonsPressedForBillAmountAsString.append(buttonTitle)
                 
-                varAmountsObject.calculate(varAmountsObject.arrayOfButtonsPressedForBillAmountAsString, activeField: .subtotal)
+                varAmountsObject.processInput(varAmountsObject.arrayOfButtonsPressedForBillAmountAsString, activeField: .subtotal)
                 
             } else if self.amountIndexer == 4 {
                 // Tip Rate
                 varAmountsObject.arrayOfButtonsPressedForTipRateAsString.append(buttonTitle)
                 
-                varAmountsObject.calculate(varAmountsObject.arrayOfButtonsPressedForTipRateAsString, activeField: .tipRate)
+                varAmountsObject.processInput(varAmountsObject.arrayOfButtonsPressedForTipRateAsString, activeField: .tipRate)
                 
             } else if self.amountIndexer == 2 {
                 // Sales Tax
                 varAmountsObject.arrayOfButtonsPressedForTaxAmountAsString.append(buttonTitle)
                 
-                varAmountsObject.calculate(varAmountsObject.arrayOfButtonsPressedForTaxAmountAsString, activeField: .salesTax)
+                varAmountsObject.processInput(varAmountsObject.arrayOfButtonsPressedForTaxAmountAsString, activeField: .salesTax)
                 
             } else if self.amountIndexer == 3 {
                 // # of people
                 varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.append(buttonTitle)
                 
-                varAmountsObject.calculate(varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString, activeField: .numPeople)
+                varAmountsObject.processInput(varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString, activeField: .numPeople)
                 
             }
             
@@ -304,7 +304,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                     
                 }
                 
-                varAmountsObject.calculate(varAmountsObject.arrayOfButtonsPressedForBillAmountAsString, activeField: .subtotal)
+                varAmountsObject.processInput(varAmountsObject.arrayOfButtonsPressedForBillAmountAsString, activeField: .subtotal)
                 
             } else if self.amountIndexer == 4 {
                 // Tip Rate
@@ -314,7 +314,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                     
                 }
                 
-                varAmountsObject.calculate(varAmountsObject.arrayOfButtonsPressedForTipRateAsString, activeField: .tipRate)
+                varAmountsObject.processInput(varAmountsObject.arrayOfButtonsPressedForTipRateAsString, activeField: .tipRate)
                 
             }  else if self.amountIndexer == 2 {
                 // Sales Tax
@@ -324,7 +324,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                     
                 }
                 
-                varAmountsObject.calculate(varAmountsObject.arrayOfButtonsPressedForTaxAmountAsString, activeField: .salesTax)
+                varAmountsObject.processInput(varAmountsObject.arrayOfButtonsPressedForTaxAmountAsString, activeField: .salesTax)
                 
             } else if self.amountIndexer == 3 {
                 // # of people
@@ -333,7 +333,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                     varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.removeLast()
                     
                 }
-                varAmountsObject.display(varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString, activeField: .numPeople)
+                varAmountsObject.processInput(varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString, activeField: .numPeople)
                 
             }
             
@@ -347,7 +347,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         // Here to smooth out effects of "Subtotal is Post Tax switch"
         
-        varAmountsObject.calculate(varAmountsObject.arrayOfButtonsPressedForBillAmountAsString, activeField: .subtotal)
+        varAmountsObject.processInput(varAmountsObject.arrayOfButtonsPressedForBillAmountAsString, activeField: .subtotal)
         
         self.subtotalDisplayOutlet.text = varAmountsObject.updateValues().formattedBillAmount
         
@@ -366,7 +366,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                     
                     self.amountIndexer += 1
                     
-                    if (varAmountsObject.userPrefs.localSalesTax != 0.0) && (self.amountIndexer == 2) {
+                    if (userPrefs.localSalesTax != 0.0) && (self.amountIndexer == 2) {
                         
                         self.amountIndexer += 1
                         
@@ -479,7 +479,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         keypadViewOutlet.backgroundColor = UIColor.black
         
-        if varAmountsObject.userPrefs.localSalesTax != 0.0 {
+        if userPrefs.localSalesTax != 0.0 {
             
             salesTaxDisplayOutlet.backgroundColor = grandTotalDisplayOutlet.backgroundColor
             

@@ -31,7 +31,7 @@ class UserPreferences {
     }
     
     func checkForDynamicType(preferredFontSize: CGFloat) -> UIFont {
-        if UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.bool(forKey: "useDynamicText") == true {
+        if mUserDefaults?.bool(forKey: "useDynamicText") == true {
             return UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
         } else {
             return UIFont(name: "HelveticaNeue-CondensedBold", size: preferredFontSize)!

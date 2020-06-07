@@ -75,19 +75,13 @@ class MyMerces: UIViewController {
             name: NSNotification.Name.UIContentSizeCategoryDidChange,
             object: nil)
         
-        mUserDefaults?.set(varAmountsObject.userPrefs.localSalesTax, forKey: "userLocalSalesTax")
+        mUserDefaults?.set(userPrefs.localSalesTax, forKey: "userLocalSalesTax")
         
     }
     
     @objc func preferredContentSizeChanged(_ notification: Notification) {
         
         updateFieldValues()
-        
-    }
-    
-    func checkForDynamicType(_ preferredFontSize: CGFloat) -> UIFont {
-        
-        return UserDefaults(suiteName: "group.DoMarsToyBox.Merces")!.bool(forKey: "useDynamicText") ? UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline): UIFont(name: "HelveticaNeue-CondensedBold", size: preferredFontSize)!
         
     }
     
@@ -224,7 +218,7 @@ class MyMerces: UIViewController {
             
         }
         
-        mUserDefaults?.set(varAmountsObject.userPrefs.localSalesTax, forKey: "userLocalSalesTax")
+        mUserDefaults?.set(userPrefs.localSalesTax, forKey: "userLocalSalesTax")
         
     }
     
@@ -307,7 +301,7 @@ class MyMerces: UIViewController {
             activeField = .none
         }
         
-        varAmountsObject.calculate(arrayOfButtonsPressed, activeField: activeField)
+        varAmountsObject.processInput(arrayOfButtonsPressed, activeField: activeField)
         
     }
     
@@ -319,44 +313,29 @@ class MyMerces: UIViewController {
     
     func updateFieldValues() {
         
-        
         for headerLabels in collectionHeaderLabels {
-            
-            headerLabels.font = checkForDynamicType(20)
-            
+            headerLabels.font = userPrefs.checkForDynamicType(preferredFontSize: 20)
         }
         
         for inputFields in collectionInputFieldLabels {
-            
-            inputFields.font = checkForDynamicType(24)
-            
+            inputFields.font = userPrefs.checkForDynamicType(preferredFontSize: 24)
         }
         
         for keypadButtons in collectionKeypadButtons {
-            
-            keypadButtons.titleLabel?.font = checkForDynamicType(28)
-            
+            keypadButtons.titleLabel?.font = userPrefs.checkForDynamicType(preferredFontSize: 28)
         }
-        
         
         if venueSegmentedControlOutlet.selectedSegmentIndex == -1 {
-            
             venueSegmentedControlOutlet.selectedSegmentIndex = 2
-            
         }
         
-        
-        if varAmountsObject.userPrefs.localSalesTax == 0.00 {
-            
+        if userPrefs.localSalesTax == 0.00 {
             localSalesTaxOutlet.text = "0.000%"
-            
         } else {
-            
-            localSalesTaxOutlet.text = "\(nmbrFormatter.roundForPercentWithThreeDecimalPlaces(number: varAmountsObject.userPrefs.localSalesTax))"
-            
+            localSalesTaxOutlet.text = "\(nmbrFormatter.roundForPercentWithThreeDecimalPlaces(number: userPrefs.localSalesTax))"
         }
         
-        mUserDefaults?.set(varAmountsObject.userPrefs.localSalesTax, forKey: "userLocalSalesTax")
+        mUserDefaults?.set(userPrefs.localSalesTax, forKey: "userLocalSalesTax")
         
         editTipPresets()
         

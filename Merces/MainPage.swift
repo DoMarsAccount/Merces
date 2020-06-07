@@ -160,7 +160,7 @@ class MainPage: UIViewController {
         
         var haveShownSetupAlert = UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.bool(forKey: "setupAlertShown")
         
-        mUserDefaults?.set(varAmountsObject.userPrefs.localSalesTax, forKey: "userLocalSalesTax")
+        mUserDefaults?.set(userPrefs.localSalesTax, forKey: "userLocalSalesTax")
         
         /* ------------ Accessibility/ Dynamic Type ------------- */
         
@@ -240,7 +240,7 @@ class MainPage: UIViewController {
     
     @IBAction func modeSwitchButtonPressed(_ sender: UIBarButtonItem) {
         
-        if varAmountsObject.userPrefs.isModeTipCalc {
+        if userPrefs.isModeTipCalc {
             
             self.modeSwitchOutlet.isEnabled = false
             self.modeSwitchOutlet.image = UIImage(named: "shopping_bag")
@@ -273,7 +273,7 @@ class MainPage: UIViewController {
                         
                     }, completion: { finished in
                         
-                        varAmountsObject.userPrefs.isModeTipCalc = false
+                        userPrefs.isModeTipCalc = false
                         
                         self.modeSwitchOutlet.isEnabled = true
                         
@@ -317,7 +317,7 @@ class MainPage: UIViewController {
                         
                         self.modeSwitchOutlet.isEnabled = true
                         
-                        varAmountsObject.userPrefs.isModeTipCalc = true
+                        userPrefs.isModeTipCalc = true
                         
                     })
                     
@@ -639,16 +639,9 @@ class MainPage: UIViewController {
     
     /* ------------------ Updating Values and Views -------------------- */
     
-    
+    /// Call this method whenever the user presses a button
     func calculate(_ arrayOfButtonsPressed: [String], activeField: EditableTextFields) {
-        
-        if activeField == .numPeople {
-            varAmountsObject.display(arrayOfButtonsPressed, activeField: activeField)
-            
-        } else {
-            varAmountsObject.calculate(arrayOfButtonsPressed, activeField: activeField)
-            
-        }
+        varAmountsObject.processInput(arrayOfButtonsPressed, activeField: activeField)
         updateFieldValues()
     }
     
@@ -975,7 +968,7 @@ class MainPage: UIViewController {
             
         }
         
-        if varAmountsObject.userPrefs.localSalesTax != 0.0 {
+        if userPrefs.localSalesTax != 0.0 {
         
             taxAmountMaskOutlet.isEnabled = false
             
@@ -1014,7 +1007,7 @@ class MainPage: UIViewController {
             
             keypadStuffView.isHidden = false; keypadStuffView.alpha = 1.0
             
-            if varAmountsObject.userPrefs.isModeTipCalc {
+            if userPrefs.isModeTipCalc {
                 totaledAmountsStuffView.transform = CGAffineTransform(translationX: -self.view.frame.width , y: 0)
             }
             
@@ -1024,7 +1017,7 @@ class MainPage: UIViewController {
                 
                 self.venuesStuffView.transform = CGAffineTransform(translationX: (self.view.frame.width + self.view.frame.width), y: 0)
                 
-                if varAmountsObject.userPrefs.isModeTipCalc {
+                if userPrefs.isModeTipCalc {
                     self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: self.view.frame.width , y: 0)
                 }
                 
@@ -1034,7 +1027,7 @@ class MainPage: UIViewController {
                     
                     self.venuesStuffView.alpha = 0.0
                     
-                    if varAmountsObject.userPrefs.isModeTipCalc {
+                    if userPrefs.isModeTipCalc {
                         self.totaledAmountsStuffView.alpha = 0.0
                     }
             })
@@ -1053,7 +1046,7 @@ class MainPage: UIViewController {
             
             UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
                 
-                if varAmountsObject.userPrefs.isModeTipCalc {
+                if userPrefs.isModeTipCalc {
                     self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: self.view.frame.width , y: 0)
                 }
                 
@@ -1062,7 +1055,7 @@ class MainPage: UIViewController {
                 
                 }, completion: { finished in
                     
-                    if varAmountsObject.userPrefs.isModeTipCalc {
+                    if userPrefs.isModeTipCalc {
                         self.totaledAmountsStuffView.alpha = 0.0
                     }
                     
@@ -1082,14 +1075,14 @@ class MainPage: UIViewController {
         
         // In case user switched from Venue selector to keypad, 
         // Make sure Totaled Amount View is in correct spot for anim.
-        if varAmountsObject.userPrefs.isModeTipCalc {
+        if userPrefs.isModeTipCalc {
             self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: self.view.frame.width , y: 0)
         }
         
         UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
             
             self.keypadStuffView.transform = CGAffineTransform(translationX: -self.view.frame.width , y: 0)
-            if varAmountsObject.userPrefs.isModeTipCalc {
+            if userPrefs.isModeTipCalc {
                 self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: 0, y: 0)
             }
             
