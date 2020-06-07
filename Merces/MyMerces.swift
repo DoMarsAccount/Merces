@@ -50,9 +50,7 @@ class MyMerces: UIViewController {
     
     @IBOutlet var greatRatingTextFieldOutlet: UITextField!
     
-    
-    
-    var venueValueToEdit = "Quick"
+    var venueValueToEdit: VenueType = .quick
     var translatedVenueValueToEdit = "Quick"
     
     var arrayOfButtonsPressedForLocalSalesTax: [String] = []
@@ -299,7 +297,7 @@ class MyMerces: UIViewController {
     
     func updateUserTipRates(_ arrayOfButtonsPressed: [String], tipRateToEdit: Int) {
         
-        varAmountsObject.userDefinedTipRatings(arrayOfButtonsPressed, venueToEdit: venueValueToEdit, tipRateToEdit: tipRateToEdit)
+        userDefinedTipRatings(arrayOfButtonsPressed, venueToEdit: venueValueToEdit, tipRateToEdit: tipRateToEdit)
         
     }
     
@@ -562,90 +560,42 @@ class MyMerces: UIViewController {
         5 = Delivery
         */
         
-        
-        
         switch venueSegmentedControlOutlet.selectedSegmentIndex {
             
         case 0:
-            
-            venueValueToEdit = "Dining"
-            
+            venueValueToEdit = .dining
             translatedVenueValueToEdit = NSLocalizedString("Dining", comment: "Dining")
             
-            poorRatingTextFieldOutlet.text = "\(nmbrFormatter.roundForPercentWithDecimalPlace(varAmountsObject.diningTipArray[0]))"
-            
-            averageRatingTextFieldOutlet.text = "\(nmbrFormatter.roundForPercentWithDecimalPlace(varAmountsObject.diningTipArray[1]))"
-            
-            greatRatingTextFieldOutlet.text = "\(nmbrFormatter.roundForPercentWithDecimalPlace(varAmountsObject.diningTipArray[2]))"
-            
-            
         case 1:
-            
-            venueValueToEdit = "Bar"
-            
+            venueValueToEdit = .bar
             translatedVenueValueToEdit = NSLocalizedString("Bar", comment: "Bar")
             
-            poorRatingTextFieldOutlet.text = "\(nmbrFormatter.roundForPercentWithDecimalPlace(varAmountsObject.barTipArray[0]))"
-            
-            averageRatingTextFieldOutlet.text = "\(nmbrFormatter.roundForPercentWithDecimalPlace(varAmountsObject.barTipArray[1]))"
-            
-            greatRatingTextFieldOutlet.text = "\(nmbrFormatter.roundForPercentWithDecimalPlace(varAmountsObject.barTipArray[2]))"
-            
         case 2:
-            
-            venueValueToEdit = "Quick"
-            
+            venueValueToEdit = .quick
             translatedVenueValueToEdit = "Quick"
             
-            poorRatingTextFieldOutlet.text = "\(nmbrFormatter.roundForPercentWithDecimalPlace(varAmountsObject.quickTipArray[0]))"
-            
-            averageRatingTextFieldOutlet.text = "\(nmbrFormatter.roundForPercentWithDecimalPlace(varAmountsObject.quickTipArray[1]))"
-            
-            greatRatingTextFieldOutlet.text = "\(nmbrFormatter.roundForPercentWithDecimalPlace(varAmountsObject.quickTipArray[2]))"
-            
         case 3:
-            
-            venueValueToEdit = "Taxi"
-            
+            venueValueToEdit = .taxi
             translatedVenueValueToEdit = NSLocalizedString("Taxi", comment: "Taxi")
             
-            poorRatingTextFieldOutlet.text = "\(nmbrFormatter.roundForPercentWithDecimalPlace(varAmountsObject.taxiTipArray[0]))"
-            
-            averageRatingTextFieldOutlet.text = "\(nmbrFormatter.roundForPercentWithDecimalPlace(varAmountsObject.taxiTipArray[1]))"
-            
-            greatRatingTextFieldOutlet.text = "\(nmbrFormatter.roundForPercentWithDecimalPlace(varAmountsObject.taxiTipArray[2]))"
-            
         case 4:
-            
-            venueValueToEdit = "Salon"
-            
+            venueValueToEdit = .salon
             translatedVenueValueToEdit = NSLocalizedString("Salon", comment: "Salon")
             
-            poorRatingTextFieldOutlet.text = "\(nmbrFormatter.roundForPercentWithDecimalPlace(varAmountsObject.salonTipArray[0]))"
-            
-            averageRatingTextFieldOutlet.text = "\(nmbrFormatter.roundForPercentWithDecimalPlace(varAmountsObject.salonTipArray[1]))"
-            
-            greatRatingTextFieldOutlet.text = "\(nmbrFormatter.roundForPercentWithDecimalPlace(varAmountsObject.salonTipArray[2]))"
-            
         case 5:
-            
-            venueValueToEdit = "Delivery"
-            
+            venueValueToEdit = .delivery
             translatedVenueValueToEdit = NSLocalizedString("Delivery", comment: "Delivery")
             
-            poorRatingTextFieldOutlet.text = "\(nmbrFormatter.roundForPercentWithDecimalPlace(varAmountsObject.deliveryTipArray[0]))"
-            
-            averageRatingTextFieldOutlet.text = "\(nmbrFormatter.roundForPercentWithDecimalPlace(varAmountsObject.deliveryTipArray[1]))"
-            
-            greatRatingTextFieldOutlet.text = "\(nmbrFormatter.roundForPercentWithDecimalPlace(varAmountsObject.deliveryTipArray[2]))"
-            
-            
         default:
-            
-            venueValueToEdit = "None"
+            venueValueToEdit = .none
             
         }
         
+        poorRatingTextFieldOutlet.text = "\(nmbrFormatter.roundForPercentWithDecimalPlace(tipRates(for: venueValueToEdit)[0]))"
+        
+        averageRatingTextFieldOutlet.text = "\(nmbrFormatter.roundForPercentWithDecimalPlace(tipRates(for: venueValueToEdit)[1]))"
+        
+        greatRatingTextFieldOutlet.text = "\(nmbrFormatter.roundForPercentWithDecimalPlace(tipRates(for: venueValueToEdit)[2]))"
         
         
         

@@ -13,10 +13,10 @@ class ReceiptModel {
     var taxAmount: Double
     
     var partySize: Int
-    var venue: Venue
+    var venue: VenueType
     var tipRate: Double
     
-    init(billAmt: Double, taxAmt: Double, numPeople: Int, venue: Venue, tip: Double) {
+    init(billAmt: Double, taxAmt: Double, numPeople: Int, venue: VenueType, tip: Double) {
         self.subtotal = billAmt
         self.taxAmount = taxAmt
         self.partySize = numPeople

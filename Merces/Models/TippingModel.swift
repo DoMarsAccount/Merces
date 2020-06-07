@@ -23,7 +23,7 @@ class TippingModel {
     var totalPerPerson: String
     
     var partySize: String
-    var venue: Venue
+    var venue: VenueType
     var tipRate: String
     var service: ServiceQuality
     
@@ -36,7 +36,7 @@ class TippingModel {
         taxAmount = "0.00"
         
         partySize = "1"
-        venue = venues[0]
+        venue = .quick
         tipRate = "0.00"
         service = .Average
         
@@ -50,7 +50,7 @@ class TippingModel {
         taxAmount = "0.00"
         
         partySize = "1"
-        venue = venues[0]
+        venue = .quick
         tipRate = "0.00"
         service = .Average
         

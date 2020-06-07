@@ -8,19 +8,88 @@
 
 import Foundation
 
-struct Venue {
-    var name: String
-    var tipRates: [Double]
+enum VenueType {
+    case quick
+    case bar
+    case dining
+    case salon
+    case taxi
+    case delivery
+    case none
 }
 
-var venues: [Venue] = [
-    Venue(name: "Quick", tipRates: mUserDefaults?.array(forKey: "quickTipArray") as! [Double]),
-    Venue(name: "Bar", tipRates: mUserDefaults?.array(forKey: "barTipArray") as! [Double]),
-    Venue(name: "Dining", tipRates: mUserDefaults?.array(forKey: "diningTipArray") as! [Double]),
-    Venue(name: "Salon", tipRates: mUserDefaults?.array(forKey: "salonTipArray") as! [Double]),
-    Venue(name: "Taxi", tipRates: mUserDefaults?.array(forKey: "taxiTipArray") as! [Double]),
-    Venue(name: "Delivery", tipRates: mUserDefaults?.array(forKey: "deliveryTipArray") as! [Double])
-]
+func venueName(for venue: VenueType) -> String {
+    switch venue {
+    case .quick:
+        return "Quick"
+    case .bar:
+        return NSLocalizedString("Bar", comment: "Bar")
+    case .dining:
+        return NSLocalizedString("Dining", comment:"Dining")
+    case .salon:
+        return NSLocalizedString("Salon", comment:"Salon")
+    case .taxi:
+        return NSLocalizedString("Taxi", comment:"Taxi")
+    case .delivery:
+        return NSLocalizedString("Delivery", comment:"Delivery")
+    case .none:
+        return "None"
+    }
+}
 
-var selectedVenue = "Quick"
+func tipRates(for venue: VenueType) -> [Double] {
+    switch venue {
+    case .quick:
+        return mUserDefaults?.array(forKey: "quickTipArray") as! [Double]
+    case .bar:
+        return mUserDefaults?.array(forKey: "barTipArray") as! [Double]
+    case .dining:
+        return mUserDefaults?.array(forKey: "diningTipArray") as! [Double]
+    case .salon:
+        return mUserDefaults?.array(forKey: "salonTipArray") as! [Double]
+    case .taxi:
+        return mUserDefaults?.array(forKey: "taxiTipArray") as! [Double]
+    case .delivery:
+        return mUserDefaults?.array(forKey: "deliveryTipArray") as! [Double]
+    case .none:
+        return [0.0, 0.0, 0.0]
+    }
+}
 
+/// Update the user's Tip Ratings stored in NSUserDefaults
+func userDefinedTipRatings (_ arrayOfPressedButtonValues: [String], venueToEdit: VenueType, tipRateToEdit: Int) {
+    
+    var inputAmount = 0.00
+    if !arrayOfPressedButtonValues.isEmpty {
+        inputAmount = NumberFormatter().number(from: arrayOfPressedButtonValues.joined(separator: "")) as! Double * 0.01
+    }
+
+    /*
+     0 = Poor
+     1 = Average
+     2 = Great
+     */
+    
+    if tipRateToEdit >= 0 && tipRateToEdit <= 2 {
+        
+        var venueArray: [Double] = tipRates(for: venueToEdit)
+        venueArray[tipRateToEdit] = inputAmount * 0.01
+        
+        switch venueToEdit {
+        case .quick:
+            mUserDefaults?.setValue(venueArray, forKey: "quickTipArray")
+        case .bar:
+            mUserDefaults?.setValue(venueArray, forKey: "barTipArray")
+        case .dining:
+            mUserDefaults?.setValue(venueArray, forKey: "diningTipArray")
+        case .salon:
+            mUserDefaults?.setValue(venueArray, forKey: "salonTipArray")
+        case .taxi:
+            mUserDefaults?.setValue(venueArray, forKey: "taxiTipArray")
+        case .delivery:
+            mUserDefaults?.setValue(venueArray, forKey: "deliveryTipArray")
+        case .none: // should never use this case
+            return
+        }
+    }
+}

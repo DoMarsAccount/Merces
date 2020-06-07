@@ -19,33 +19,13 @@ class VariableAmountsClass
     
     var totalAmount = 0.00, totalAmountPerPerson = 0.00, tipAmount = 0.0, billAmount = 0.00, tipRate = 0.0, taxAmount = 0.00, displayedTotalAmountPerPerson = 0.0,moreOrLessPerPerson = 0.00
     
-    var localSalesTax = (UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.double(forKey: "userLocalSalesTax"))!
+    var localSalesTax: Double = (mUserDefaults?.double(forKey: "userLocalSalesTax"))!
     
     var numberOfPeoplePaying = 1
     
-    var selectedVenue = "Quick"
+    var selectedVenue: VenueType = .quick
     
-    // Individual Venue w/ Tip Dictionary
-    
-    var quickTipArray = (UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.array(forKey: "quickTipArray")) as! [Double]
-    
-    var barTipArray = (UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.array(forKey: "barTipArray")) as! [Double]
-    
-    //var casinoTipArray = (NSUserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.arrayForKey("casinoTipArray")) as [Double]
-    
-    var diningTipArray = (UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.array(forKey: "diningTipArray")) as! [Double]
-    
-    var salonTipArray = (UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.array(forKey: "salonTipArray")) as! [Double]
-    
-    var taxiTipArray = (UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.array(forKey: "taxiTipArray")) as! [Double]
-    
-    var deliveryTipArray = (UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.array(forKey: "deliveryTipArray")) as! [Double]
-    
-    
-    var venuesAndTipsDictionary: [String: [Double]]!
-    
-    
-    var tipRateArray = (UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.array(forKey: "quickTipArray"))as! [Double]
+    var tipRateArray = mUserDefaults?.array(forKey: "quickTipArray") as! [Double]
     
     var arrayOfButtonsPressedForBillAmountAsString: [String] = []
     var arrayOfButtonsPressedForTaxAmountAsString: [String] = []
@@ -53,13 +33,6 @@ class VariableAmountsClass
     var arrayOfButtonsPressedForNumberOfPeoplePayingAsString: [String] = []
     
     var firstResponderTag = 0
-    
-    init() {
-        
-        venuesAndTipsDictionary = [/*"None": [0.0, 0.0, 0.0],*/ "Quick": quickTipArray, NSLocalizedString("Bar", comment: "Bar"): barTipArray, /*"Casino": casinoTipArray,*/ NSLocalizedString("Dining", comment: "Dining"): diningTipArray, NSLocalizedString("Salon", comment: "Salon"): salonTipArray, NSLocalizedString("Taxi", comment: "Taxi"): taxiTipArray, NSLocalizedString("Delivery", comment: "Delivery"): deliveryTipArray]
-        
-    }
-    
     
     /* Functions */
     
@@ -101,70 +74,6 @@ class VariableAmountsClass
         }
         
         checkResponderStatus(inputAmount, firstResponderTag: sentFirstResponderTag)
-        
-    }
-    
-    func userDefinedTipRatings (_ arrayOfPressedButtonValues: [String], venueToEdit: String, tipRateToEdit: Int) {
-        
-        var inputAmount = 0.00
-        
-        if !arrayOfPressedButtonValues.isEmpty {
-            
-            inputAmount = NumberFormatter().number(from: arrayOfPressedButtonValues.joined(separator: "")) as! Double * 0.01
-            
-        } else {
-            
-            inputAmount = 0.00
-            
-        }
-        
-        
-        // 0 = Poor
-        // 1 = Average
-        // 2 = Great
-        
-        if tipRateToEdit >= 0 && tipRateToEdit <= 2 {
-            
-            if venueToEdit == "Dining" {
-                
-                diningTipArray[tipRateToEdit] = inputAmount * 0.01
-                
-            } else if venueToEdit == "Bar" {
-                
-                barTipArray[tipRateToEdit] = inputAmount * 0.01
-                
-            } else if venueToEdit == "Quick" {
-                
-                quickTipArray[tipRateToEdit] = inputAmount * 0.01
-                
-            } else if venueToEdit == "Taxi" {
-                
-                taxiTipArray[tipRateToEdit] = inputAmount * 0.01
-                
-            } else if venueToEdit == "Salon" {
-                
-                salonTipArray[tipRateToEdit] = inputAmount * 0.01
-                
-            } /*else if venueToEdit == "Casino" {
-                 
-                 casinoTipArray[tipRateToEdit] = inputAmount * 0.01
-                 
-             }*/ else if venueToEdit == "Delivery" {
-                
-                deliveryTipArray[tipRateToEdit] = inputAmount * 0.01
-                
-            }
-            
-        }
-        
-        
-        UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.setValue(diningTipArray, forKey: "diningTipArray")
-        UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.setValue(barTipArray, forKey: "barTipArray")
-        UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.setValue(taxiTipArray, forKey: "taxiTipArray")
-        UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.setValue(salonTipArray, forKey: "salonTipArray")
-        //NSUserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.setValue(casinoTipArray, forKey: "casinoTipArray")
-        UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.setValue(quickTipArray, forKey: "quickTipArray")
-        UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.setValue(deliveryTipArray, forKey: "deliveryTipArray")
         
     }
     
@@ -244,9 +153,6 @@ class VariableAmountsClass
     
     func updateValues() -> (formattedBillAmount: String, formattedTaxAmount: String, formattedTipRate: String, numberOfPeoplePaying: String, tipAmount: String, totalAmount: String, totalAmountPerPerson: String) {
         
-        venuesAndTipsDictionary = [/*"None": [0.0, 0.0, 0.0],*/ "Quick": quickTipArray, NSLocalizedString("Bar", comment: "Bar"): barTipArray, /*"Casino": casinoTipArray,*/ NSLocalizedString("Dining", comment: "Dining"): diningTipArray, NSLocalizedString("Salon", comment: "Salon"): salonTipArray, NSLocalizedString("Taxi", comment: "Taxi"): taxiTipArray, NSLocalizedString("Delivery", comment: "Delivery"): deliveryTipArray]
-        
-        
         tipAmount = (UserDefaults(suiteName: "group.DoMarsToyBox.Merces")!.bool(forKey: "tipIncludeTaxSwitchOnOff") ? (billAmount + taxAmount) * tipRate : billAmount * tipRate)
         
         
@@ -318,9 +224,9 @@ class VariableAmountsClass
         
         taxAmount = 0.00
         
-        selectedVenue = "Quick"
+        selectedVenue = .quick
         
-        tipRateArray = venuesAndTipsDictionary[selectedVenue]!
+        tipRateArray = tipRates(for: self.selectedVenue)
         
         arrayOfButtonsPressedForBillAmountAsString = []
         arrayOfButtonsPressedForTaxAmountAsString = []

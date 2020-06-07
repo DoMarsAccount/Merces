@@ -183,13 +183,13 @@ class MainPage: UIViewController {
         
         /* ------------ Display Quick Venue ------------- */
         
-        varAmountsObject.selectedVenue = "Quick"
+        varAmountsObject.selectedVenue = .quick
         
-        varAmountsObject.tipRateArray = varAmountsObject.venuesAndTipsDictionary[varAmountsObject.selectedVenue]!
+        varAmountsObject.tipRateArray = tipRates(for: varAmountsObject.selectedVenue)
         
         varAmountsObject.tipRate = varAmountsObject.tipRateArray[1]
         
-        venueSelectionLabelOutlet.text = varAmountsObject.selectedVenue
+        venueSelectionLabelOutlet.text = venueName(for: varAmountsObject.selectedVenue)
         
         serviceRatingLabelOutlet.selectedSegmentIndex = 1
         
@@ -200,7 +200,7 @@ class MainPage: UIViewController {
         /* ------------ Intro -------------- */
         
         
-        if haveShownSetupAlert == false && varAmountsObject.quickTipArray[1] == 0 {
+        if haveShownSetupAlert == false && tipRates(for: .quick)[1] == 0 {
             
             let alertTitle = NSLocalizedString("WelcomeToMerces", comment: "welcome message")
             let alertMessage = NSLocalizedString("IdealExperience", comment: "best use case")
@@ -244,7 +244,7 @@ class MainPage: UIViewController {
         
         updateColorValues()
         
-        varAmountsObject.tipRateArray = varAmountsObject.venuesAndTipsDictionary[varAmountsObject.selectedVenue]!
+        varAmountsObject.tipRateArray = tipRates(for: varAmountsObject.selectedVenue)
         
         updateFieldValues()
         
@@ -500,57 +500,45 @@ class MainPage: UIViewController {
     }
     
     @IBAction func venueSelected(_ sender: UIButton) {
-        
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
         
         /*
-        
         10 = Bar
         11 = Dining
         12 = Taxi
         13 = Quick
         14 = Salon
         15 = Delivery
-        
         */
-        
         switch sender.tag {
-            
         case 10:
-            
-            varAmountsObject.selectedVenue = NSLocalizedString("Bar", comment: "Bar")
+            varAmountsObject.selectedVenue = .bar
             
         case 11:
-            
-            varAmountsObject.selectedVenue = NSLocalizedString("Dining", comment:"Dining")
+            varAmountsObject.selectedVenue = .dining
             
         case 12:
-            
-            varAmountsObject.selectedVenue = NSLocalizedString("Taxi", comment:"Taxi")
+            varAmountsObject.selectedVenue = .taxi
             
         case 13:
-            
-            varAmountsObject.selectedVenue = "Quick"
+            varAmountsObject.selectedVenue = .quick
             
         case 14:
-            
-            varAmountsObject.selectedVenue = NSLocalizedString("Salon", comment:"Salon")
+            varAmountsObject.selectedVenue = .salon
             
         case 15:
-            
-            varAmountsObject.selectedVenue = NSLocalizedString("Delivery", comment:"Delivery")
+            varAmountsObject.selectedVenue = .delivery
             
         default:
-            
-            varAmountsObject.selectedVenue = "None"
+            varAmountsObject.selectedVenue = .none
             
         }
         
         unscaleViewsWithSpring(); venueSelectorDisappear()
         
-        varAmountsObject.tipRateArray = varAmountsObject.venuesAndTipsDictionary[varAmountsObject.selectedVenue]!
+        varAmountsObject.tipRateArray = tipRates(for: varAmountsObject.selectedVenue)
         
-        venueSelectionLabelOutlet.text = varAmountsObject.selectedVenue
+        venueSelectionLabelOutlet.text = venueName(for: varAmountsObject.selectedVenue)
         
         serviceRatingLabelOutlet.selectedSegmentIndex = 1
         
@@ -650,21 +638,9 @@ class MainPage: UIViewController {
         // Here because it means user selection is done
         varAmountsObject.updateSubtotalForPostTaxDesired()
         
-        varAmountsObject.tipRateArray = varAmountsObject.venuesAndTipsDictionary[varAmountsObject.selectedVenue]!
+        varAmountsObject.tipRateArray = tipRates(for: varAmountsObject.selectedVenue)
         
-        if sender.selectedSegmentIndex == 0 {
-            
-            varAmountsObject.tipRate = varAmountsObject.tipRateArray[0]
-            
-        } else if sender.selectedSegmentIndex == 2{
-            
-            varAmountsObject.tipRate = varAmountsObject.tipRateArray[2]
-            
-        } else {
-            
-            varAmountsObject.tipRate = varAmountsObject.tipRateArray[1]
-            
-        }
+        varAmountsObject.tipRate = varAmountsObject.tipRateArray[sender.selectedSegmentIndex]
         
         updateFieldValues()
         
@@ -831,7 +807,7 @@ class MainPage: UIViewController {
         
         tipRateTextFieldOutlet.text = varAmountsObject.updateValues().formattedTipRate
         
-        venueSelectionLabelOutlet.text = varAmountsObject.selectedVenue
+        venueSelectionLabelOutlet.text = venueName(for: varAmountsObject.selectedVenue)
         
         
         numberOfPeoplePayingTextFieldOutlet.text = varAmountsObject.updateValues().numberOfPeoplePaying
@@ -1681,7 +1657,7 @@ class MainPage: UIViewController {
                 
                 varAmountsObject.resetValues()
                 
-                self.venueSelectionLabelOutlet.text = varAmountsObject.selectedVenue
+                self.venueSelectionLabelOutlet.text = venueName(for: varAmountsObject.selectedVenue)
                 
                 self.updateFieldValues()
                 

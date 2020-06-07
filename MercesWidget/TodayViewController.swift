@@ -121,9 +121,9 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         /* ------------ Display Quick Venue ------------- */
         
-        varAmountsObject.selectedVenue = "Quick"
+        varAmountsObject.selectedVenue = .quick
         
-        varAmountsObject.tipRateArray = varAmountsObject.venuesAndTipsDictionary[varAmountsObject.selectedVenue]!
+        varAmountsObject.tipRateArray = tipRates(for: varAmountsObject.selectedVenue)
         
         varAmountsObject.tipRate = varAmountsObject.tipRateArray[1]
         
