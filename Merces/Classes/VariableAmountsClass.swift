@@ -17,13 +17,30 @@ class VariableAmountsClass
     let calcModel = CalculationsModel()
     
     /* Variables */
+    var tipRateArray: [Double]
     
-    var tipRateArray = mUserDefaults?.array(forKey: "quickTipArray") as! [Double]
+    var arrayOfButtonsPressedForBillAmountAsString: [String] {
+        didSet {
+            processInput(self.arrayOfButtonsPressedForBillAmountAsString, activeField: .subtotal)
+        }
+    }
     
-    var arrayOfButtonsPressedForBillAmountAsString: [String] = []
-    var arrayOfButtonsPressedForTaxAmountAsString: [String] = []
-    var arrayOfButtonsPressedForTipRateAsString: [String] = []
-    var arrayOfButtonsPressedForNumberOfPeoplePayingAsString: [String] = []
+    var arrayOfButtonsPressedForTaxAmountAsString: [String]
+    var arrayOfButtonsPressedForTipRateAsString: [String]
+    var arrayOfButtonsPressedForNumberOfPeoplePayingAsString: [String]
+    
+    init() {
+        if let tipArray = mUserDefaults?.array(forKey: "quickTipArray") {
+            tipRateArray = tipArray as! [Double]
+        } else {
+            tipRateArray = [0.0, 0.0, 0.0]
+        }
+        
+        arrayOfButtonsPressedForBillAmountAsString = []
+        arrayOfButtonsPressedForTaxAmountAsString = []
+        arrayOfButtonsPressedForTipRateAsString = []
+        arrayOfButtonsPressedForNumberOfPeoplePayingAsString = []
+    }
     
     var firstResponderTag = 0
     

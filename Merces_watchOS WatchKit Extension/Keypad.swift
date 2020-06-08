@@ -13,7 +13,36 @@ struct KeypadButton: View {
     
     var body: some View {
         Button(action: {
-            print(self.text)
+            varAmts.arrayOfButtonsPressedForBillAmountAsString.append(self.text)
+        }) {
+            Text(self.text)
+        }
+        .cornerRadius(0)
+    }
+}
+
+struct KeypadDeleteButton: View {
+    @Binding var text: String
+    
+    var body: some View {
+        Button(action: {
+            if !varAmts.arrayOfButtonsPressedForBillAmountAsString.isEmpty {
+                varAmts.arrayOfButtonsPressedForBillAmountAsString.removeLast()
+            }
+        }) {
+            Text(self.text)
+        }
+        .cornerRadius(0)
+    }
+}
+
+struct KeypadDoneButton: View {
+    @Binding var text: String
+    @Binding var isPresented: Bool
+    
+    var body: some View {
+        Button(action: {
+            self.isPresented.toggle()
         }) {
             Text(self.text)
         }
@@ -22,12 +51,14 @@ struct KeypadButton: View {
 }
 
 struct Keypad: View {
-    @Binding var text: String
+    @Binding var value: Double
+    @Binding var isPresented: Bool
+    
     var body: some View {
         GeometryReader { geometry in
             VStack (spacing: 1) {
                 Spacer()
-                Text(self.text)
+                Text(nForm.roundForCurrency(number: self.value))
                     .frame(width: geometry.size.width)
                     .multilineTextAlignment(.trailing)
                 
@@ -47,12 +78,12 @@ struct Keypad: View {
                     KeypadButton(text: .constant("9"))
                 }
                 HStack (spacing: 1) {
-                    KeypadButton(text: .constant("⏎"))
+                    KeypadDoneButton(text: .constant("⏎"), isPresented: self.$isPresented)
                     KeypadButton(text: .constant("0"))
-                    KeypadButton(text: .constant("⌫"))
+                    KeypadDeleteButton(text: .constant("⌫"))
                 }
             }
-            .frame(width: geometry.size.width, height: geometry.size.height + 65)
+            .frame(width: geometry.size.width, height: geometry.size.height + 85)
             .edgesIgnoringSafeArea([.leading, .trailing, .bottom])
         }
     }
@@ -60,6 +91,6 @@ struct Keypad: View {
 
 struct Keypad_Previews: PreviewProvider {
     static var previews: some View {
-        Keypad(text: .constant("$0.00"))
+        Keypad(value: .constant(0.00), isPresented: .constant(false))
     }
 }

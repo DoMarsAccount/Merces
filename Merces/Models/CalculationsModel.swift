@@ -64,6 +64,19 @@ class CalculationsModel: ObservableObject {
     var displayedTotalAmountPerPerson: Double
     var moreOrLessPerPerson: Double
     
+    /* watchOS Specific values*/
+    @Published var dollarsPlace: Double {
+        didSet {
+            _ = computeTippingValues()
+        }
+    }
+    
+    @Published var centsPlace: Double {
+        didSet {
+            _ = computeTippingValues()
+        }
+    }
+    
     init() {
         self.subtotal = 0.00
         self.taxAmount = 0.00
@@ -79,6 +92,9 @@ class CalculationsModel: ObservableObject {
         
         self.displayedTotalAmountPerPerson = 0.0
         self.moreOrLessPerPerson = 0.00
+        
+        self.dollarsPlace = 0.0
+        self.centsPlace = 0.0
     }
     
     func resetValues() {
@@ -96,12 +112,17 @@ class CalculationsModel: ObservableObject {
         
         self.displayedTotalAmountPerPerson = 0.0
         self.moreOrLessPerPerson = 0.00
+        
+        self.dollarsPlace = 0.0
+        self.centsPlace = 0.0
     }
     
     /// Replaces the updateValues method formerly found in VariableAmountsClass
     func computeTippingValues() -> (formattedBillAmount: String, formattedTaxAmount: String, formattedTipRate: String, numberOfPeoplePaying: String, tipAmount: String, totalAmount: String, totalAmountPerPerson: String) {
         
         self.objectWillChange.send()
+        
+//        subtotal = (dollarsPlace * 1) + (centsPlace * 0.1)
         
         tipAmount = (mUserDefaults!.bool(forKey: "tipIncludeTaxSwitchOnOff") ? (subtotal + taxAmount) * (tipRate * 0.01) : subtotal * (tipRate * 0.01))
         

@@ -12,14 +12,13 @@ struct EditableIntegerValueView: View {
     @Binding var title: String
     @Binding var value: Double
     @State private var isFocused: Bool = false
-    @EnvironmentObject var wCalcModel: CalculationsModel
+    
     var body: some View {
         GeometryReader { geo in
             HStack {
                 Text("\(self.title) \(Int(self.value))")
                     .focusable(true, onFocusChange: { (didChange) in
                         self.isFocused = didChange
-                        _ = self.wCalcModel.computeTippingValues()
                     })
                     .digitalCrownRotation(self.$value, from: 0.0, through: 100.0, by: 1.0, sensitivity: .medium, isContinuous: true, isHapticFeedbackEnabled: true)
             }
@@ -35,7 +34,6 @@ struct EditableCurrencyValueView: View {
     @Binding var title: String
     @Binding var value: Double
     @State private var isFocused: Bool = false
-    @EnvironmentObject var wCalcModel: CalculationsModel
     
     var body: some View {
         GeometryReader { geo in
@@ -43,7 +41,6 @@ struct EditableCurrencyValueView: View {
                 Text("\(self.title) \(nForm.roundForCurrency(number: self.value))")
                     .focusable(true, onFocusChange: { (didChange) in
                         self.isFocused = didChange
-                        _ = self.wCalcModel.computeTippingValues()
                     })
                     .digitalCrownRotation(self.$value, from: 0.0, through: 101.0, by: 1.0, sensitivity: .medium, isContinuous: true, isHapticFeedbackEnabled: true)
             }
@@ -59,20 +56,35 @@ struct EditablePercentageValueView: View {
     @Binding var title: String
     @Binding var value: Double
     @State private var isFocused: Bool = false
-    @EnvironmentObject var wCalcModel: CalculationsModel
+    
     var body: some View {
         GeometryReader { geo in
             HStack {
                 Text("\(self.title) \(nForm.roundForPercentWithTwoDecimalPlaces(self.value * 0.01))")
                     .focusable(true, onFocusChange: { (didChange) in
                         self.isFocused = didChange
-                        _ = self.wCalcModel.computeTippingValues()
                     })
                     .digitalCrownRotation(self.$value, from: 0.0, through: 100.01, by: 0.25, sensitivity: .medium, isContinuous: true, isHapticFeedbackEnabled: true)
             }
             .padding([.leading, .trailing])
             .frame(width: geo.size.width)
             .border(self.isFocused ? Color.green : Color.gray, width: 2.5)
+            .cornerRadius(2.5)
+        }
+    }
+}
+
+struct EditableSubtotalValueView: View {
+    @Binding var value: Double
+    
+    var body: some View {
+        GeometryReader { geo in
+            HStack {
+                Text(nForm.roundForCurrency(number: self.value))
+            }
+            .padding([.leading, .trailing])
+            .frame(width: geo.size.width)
+            .border(Color.gray, width: 2.5)
             .cornerRadius(2.5)
         }
     }

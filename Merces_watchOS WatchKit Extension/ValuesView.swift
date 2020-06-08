@@ -9,19 +9,19 @@
 import SwiftUI
 
 struct ValuesView: View {
-//    @State var wholeNumbersPlace: Double = 0.0
-//    @State var decimalNumbersPlace: Double = 0.0
     
     @EnvironmentObject var wCalcModel: CalculationsModel
+    @State private var isPresented: Bool = false
     
     var body: some View {
         VStack(spacing: 0) {
-            Spacer()
-            StaticCurrencyValueView(title: .constant("Subtotal:"), value: self.$wCalcModel.subtotal)
             
-            HStack {
-                EditableIntegerValueView(title: .constant("$"), value: self.$wCalcModel.subtotal)
-//                EditableIntegerValueView(title: .constant("."), value: self.$decimalNumbersPlace)
+            EditableSubtotalValueView(value: self.$wCalcModel.subtotal)
+            .onTapGesture {
+                self.isPresented.toggle()
+            }
+            .sheet(isPresented: self.$isPresented) {
+                Keypad(value: self.$wCalcModel.subtotal, isPresented: self.$isPresented)
             }
             
             StaticCurrencyValueView(title: .constant("Sales Tax:"), value: self.$wCalcModel.taxAmount)
