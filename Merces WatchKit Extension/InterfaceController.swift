@@ -8,7 +8,7 @@
 
 import WatchKit
 import Foundation
-import ChameleonFramework
+//import ChameleonFramework
 
 /* Objects */
 
@@ -17,8 +17,6 @@ let coloringThemes = ColoringAndThemes()
 let varAmountsObject = VariableAmountsClass()
 
 let watchNmbrFormattingObject = NumberFormattingClass()
-
-let MMObject = MMWormhole(applicationGroupIdentifier: "group.DoMarsToyBox.Merces", optionalDirectory: "wormhole")
 
 
 /* Etc */

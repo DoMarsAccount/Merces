@@ -19,9 +19,9 @@ class PopToRootControllerInterfaceController: WKInterfaceController {
         
         if let passedChosenServiceRating = context as? Double {
                 
-            varAmountsObject.tipRate = passedChosenServiceRating
+            varAmountsObject.calcModel.tipRate = passedChosenServiceRating
             
-            MMObject.passMessageObject(["chosenServiceRating": passedChosenServiceRating], identifier: "updateiPhoneView")
+//            MMObject.passMessageObject(["chosenServiceRating": passedChosenServiceRating], identifier: "updateiPhoneView")
             
                 
             popToRootController()

@@ -33,8 +33,6 @@ enum EditableTextFields {
 
 class CalculationsModel {
     
-    let numberFormattingObject = NumberFormattingClass()
-    
     var subtotal: Double
     var taxAmount: Double
     var tipAmount: Double
@@ -111,7 +109,7 @@ class CalculationsModel {
         // if value is > 0, it will be rounded upward, meaning not all need to pay "extra"
         // else value is rounded down, meaning some need to pay a little more
         
-        if ("$\(totalAmountPerPerson.roundTo(places: 2))" == numberFormattingObject.roundForCurrency(number: totalAmountPerPerson)) && ("$\(totalAmountPerPerson.roundTo(places: 2) * Double(partySize))" == numberFormattingObject.roundForCurrency(number: totalAmount)){
+        if ("$\(totalAmountPerPerson.roundTo(places: 2))" == nForm.roundForCurrency(number: totalAmountPerPerson)) && ("$\(totalAmountPerPerson.roundTo(places: 2) * Double(partySize))" == nForm.roundForCurrency(number: totalAmount)){
             
             moreOrLessPerPerson = 0
             
@@ -122,13 +120,13 @@ class CalculationsModel {
             moreOrLessPerPerson = 0
         }
         
-        return (numberFormattingObject.roundForCurrency(number: subtotal), numberFormattingObject.roundForCurrency(number: taxAmount), numberFormattingObject.roundForPercentWithDecimalPlace(tipRate),"\(partySize)", numberFormattingObject.roundForCurrency(number: tipAmount), numberFormattingObject.roundForCurrency(number: totalAmount), numberFormattingObject.roundForCurrency(number: totalAmountPerPerson))
+        return (nForm.roundForCurrency(number: subtotal), nForm.roundForCurrency(number: taxAmount), nForm.roundForPercentWithTwoDecimalPlaces(tipRate),"\(partySize)", nForm.roundForCurrency(number: tipAmount), nForm.roundForCurrency(number: totalAmount), nForm.roundForCurrency(number: totalAmountPerPerson))
     }
     
     func computeShoppingValues() -> (formattedBillAmount: String, formattedTaxAmount: String, formattedTotalAmount: String) {
         
         totalAmount = subtotal + taxAmount
         
-        return (numberFormattingObject.roundForCurrency(number: subtotal), numberFormattingObject.roundForCurrency(number: taxAmount), numberFormattingObject.roundForCurrency(number: totalAmount))
+        return (nForm.roundForCurrency(number: subtotal), nForm.roundForCurrency(number: taxAmount), nForm.roundForCurrency(number: totalAmount))
     }
 }

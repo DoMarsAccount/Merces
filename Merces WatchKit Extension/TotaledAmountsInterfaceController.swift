@@ -47,19 +47,19 @@ class TotaledAmountsInterfaceController: WKInterfaceController {
     
     func updateColorValues() {
         
-        totaledTipAmount.setAttributedText(NSAttributedString(string: varAmountsObject.updateValues().tipAmount, attributes: [NSForegroundColorAttributeName: coloringThemes.textColor2]))
+        totaledTipAmount.setAttributedText(NSAttributedString(string: varAmountsObject.updateValues().tipAmount, attributes: [NSAttributedString.Key.foregroundColor: coloringThemes.textColor2]))
         
-        totaledTotalAmount.setAttributedText(NSAttributedString(string: varAmountsObject.updateValues().totalAmount, attributes: [NSForegroundColorAttributeName: coloringThemes.textColor2]))
+        totaledTotalAmount.setAttributedText(NSAttributedString(string: varAmountsObject.updateValues().totalAmount, attributes: [NSAttributedString.Key.foregroundColor: coloringThemes.textColor2]))
         
-        totaledTotalPerPerson.setAttributedText(NSAttributedString(string: varAmountsObject.updateValues().totalAmountPerPerson, attributes: [NSForegroundColorAttributeName: coloringThemes.textColor2]))
+        totaledTotalPerPerson.setAttributedText(NSAttributedString(string: varAmountsObject.updateValues().totalAmountPerPerson, attributes: [NSAttributedString.Key.foregroundColor: coloringThemes.textColor2]))
         
         
         
-        totalAmountHeadlineOutlet.setAttributedText(NSAttributedString(string: "Grand Total: ", attributes: [NSForegroundColorAttributeName: UIColor.white]))
+        totalAmountHeadlineOutlet.setAttributedText(NSAttributedString(string: "Grand Total: ", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]))
         
-        totalAmountPerPersonHeadlineOutlet.setAttributedText(NSAttributedString(string: "Total Amount (per person):", attributes: [NSForegroundColorAttributeName: UIColor.white]))
+        totalAmountPerPersonHeadlineOutlet.setAttributedText(NSAttributedString(string: "Total Amount (per person):", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]))
         
-        tipAmountHeadlineOutlet.setAttributedText(NSAttributedString(string: "Tip Amount:", attributes: [NSForegroundColorAttributeName: UIColor.white]))
+        tipAmountHeadlineOutlet.setAttributedText(NSAttributedString(string: "Tip Amount:", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]))
         
     }
 

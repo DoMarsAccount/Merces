@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="15702" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ND5-dC-Eyu">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16097" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ND5-dC-Eyu">
     <device id="watch38"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="15501"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="16012"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
@@ -234,7 +234,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="653" y="-189"/>
+            <point key="canvasLocation" x="653" y="-245"/>
         </scene>
         <!--SettingsController-->
         <scene sceneID="wWS-Wb-ZXE">
@@ -514,12 +514,12 @@
             <point key="canvasLocation" x="861" y="709"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="cogwheel" width="24" height="24"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="OPv-5J-L2n"/>
         <segue reference="sko-nu-GVg"/>
         <segue reference="XIo-m7-ycD"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="cogwheel" width="24" height="24"/>
+    </resources>
 </document>

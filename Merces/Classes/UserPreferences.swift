@@ -32,7 +32,7 @@ class UserPreferences {
     
     func checkForDynamicType(preferredFontSize: CGFloat) -> UIFont {
         if mUserDefaults?.bool(forKey: "useDynamicText") == true {
-            return UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
+            return UIFont.preferredFont(forTextStyle: UIFont.TextStyle.headline)
         } else {
             return UIFont(name: "HelveticaNeue-CondensedBold", size: preferredFontSize)!
         }

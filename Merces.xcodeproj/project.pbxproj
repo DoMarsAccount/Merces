@@ -17,17 +17,28 @@
 		04E0127B2489628A009FAEEB /* CalculationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E012742489628A009FAEEB /* CalculationsModel.swift */; };
 		04E0127E248962B5009FAEEB /* Venues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0126F248961F0009FAEEB /* Venues.swift */; };
 		04EF6D8A248D3451009CEF03 /* Merces_watchOS WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 04EF6D89248D3451009CEF03 /* Merces_watchOS WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		04EF6D90248D3451009CEF03 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04EF6D8E248D3451009CEF03 /* Interface.storyboard */; };
 		04EF6D92248D3452009CEF03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04EF6D91248D3452009CEF03 /* Assets.xcassets */; };
 		04EF6D99248D3452009CEF03 /* Merces_watchOS WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 04EF6D98248D3452009CEF03 /* Merces_watchOS WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		04EF6D9E248D3452009CEF03 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6D9D248D3452009CEF03 /* ContentView.swift */; };
 		04EF6DA0248D3452009CEF03 /* HostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6D9F248D3452009CEF03 /* HostingController.swift */; };
 		04EF6DA2248D3452009CEF03 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6DA1248D3452009CEF03 /* ExtensionDelegate.swift */; };
-		04EF6DA4248D3452009CEF03 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6DA3248D3452009CEF03 /* NotificationController.swift */; };
 		04EF6DA6248D3452009CEF03 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6DA5248D3452009CEF03 /* NotificationView.swift */; };
 		04EF6DA8248D3452009CEF03 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6DA7248D3452009CEF03 /* ComplicationController.swift */; };
 		04EF6DAA248D3453009CEF03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04EF6DA9248D3453009CEF03 /* Assets.xcassets */; };
 		04EF6DAD248D3453009CEF03 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04EF6DAC248D3453009CEF03 /* Preview Assets.xcassets */; };
+		04EF6DC8248D367F009CEF03 /* ColoringAndThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD0FAD1EC3DB3600763ED2 /* ColoringAndThemes.swift */; };
+		04EF6DC9248D3683009CEF03 /* VariableAmountsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD0FAE1EC3DB3600763ED2 /* VariableAmountsClass.swift */; };
+		04EF6DCA248D36CC009CEF03 /* AppleWatchColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD0FAC1EC3DB3600763ED2 /* AppleWatchColors.swift */; };
+		04EF6DCB248D36D4009CEF03 /* NumberFormattingClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD0FA91EC3DB1A00763ED2 /* NumberFormattingClass.swift */; };
+		04EF6DCC248D36D8009CEF03 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E012732489628A009FAEEB /* UserPreferences.swift */; };
+		04EF6DCD248D36DB009CEF03 /* Venues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0126F248961F0009FAEEB /* Venues.swift */; };
+		04EF6DCE248D45BB009CEF03 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6DA3248D3452009CEF03 /* NotificationController.swift */; };
+		04EF6DCF248D45E6009CEF03 /* CalculationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E012742489628A009FAEEB /* CalculationsModel.swift */; };
+		04EF6DD0248D460A009CEF03 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04EF6D8E248D3451009CEF03 /* Interface.storyboard */; };
+		04EF6DD2248E72DF009CEF03 /* Keypad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6DD1248E72DF009CEF03 /* Keypad.swift */; };
+		04EF6DD4248E73E6009CEF03 /* ValuesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6DD3248E73E6009CEF03 /* ValuesView.swift */; };
+		04EF6DD6248E859C009CEF03 /* StaticValueViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6DD5248E859C009CEF03 /* StaticValueViews.swift */; };
+		04EF6DD8248E8665009CEF03 /* EditableValueViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6DD7248E8665009CEF03 /* EditableValueViews.swift */; };
 		78B3D1EF1F6A05FF009C8051 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78B3D1F11F6A05FF009C8051 /* Main.storyboard */; };
 		7D1DEE16862D475BCA4F1E29 /* Pods_Merces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F251037667992C1F444B6F5B /* Pods_Merces.framework */; };
 		E33460AB1E32EF2300D467C6 /* ThemesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33460AA1E32EF2300D467C6 /* ThemesCollectionViewCell.swift */; };
@@ -161,6 +172,10 @@
 		04EF6DAC248D3453009CEF03 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		04EF6DAE248D3453009CEF03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04EF6DAF248D3453009CEF03 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		04EF6DD1248E72DF009CEF03 /* Keypad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keypad.swift; sourceTree = "<group>"; };
+		04EF6DD3248E73E6009CEF03 /* ValuesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuesView.swift; sourceTree = "<group>"; };
+		04EF6DD5248E859C009CEF03 /* StaticValueViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticValueViews.swift; sourceTree = "<group>"; };
+		04EF6DD7248E8665009CEF03 /* EditableValueViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableValueViews.swift; sourceTree = "<group>"; };
 		0C2A782DD83BB0614F1593B5 /* Pods-Merces WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Merces WatchKit Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Merces WatchKit Extension/Pods-Merces WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		114411A3AA1179BD7CD421B4 /* Pods-Merces WatchKit App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Merces WatchKit App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Merces WatchKit App/Pods-Merces WatchKit App.release.xcconfig"; sourceTree = "<group>"; };
 		22E19BF2E33EE889A46B7EB5 /* libPods-Merces WatchKit Extension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Merces WatchKit Extension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -316,6 +331,10 @@
 				04EF6DA3248D3452009CEF03 /* NotificationController.swift */,
 				04EF6DA5248D3452009CEF03 /* NotificationView.swift */,
 				04EF6DA7248D3452009CEF03 /* ComplicationController.swift */,
+				04EF6DD1248E72DF009CEF03 /* Keypad.swift */,
+				04EF6DD3248E73E6009CEF03 /* ValuesView.swift */,
+				04EF6DD5248E859C009CEF03 /* StaticValueViews.swift */,
+				04EF6DD7248E8665009CEF03 /* EditableValueViews.swift */,
 				04EF6DA9248D3453009CEF03 /* Assets.xcassets */,
 				04EF6DAE248D3453009CEF03 /* Info.plist */,
 				04EF6DAF248D3453009CEF03 /* PushNotificationPayload.apns */,
@@ -776,8 +795,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04EF6DD0248D460A009CEF03 /* Interface.storyboard in Resources */,
 				04EF6D92248D3452009CEF03 /* Assets.xcassets in Resources */,
-				04EF6D90248D3451009CEF03 /* Interface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -884,12 +903,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04EF6DC8248D367F009CEF03 /* ColoringAndThemes.swift in Sources */,
+				04EF6DC9248D3683009CEF03 /* VariableAmountsClass.swift in Sources */,
+				04EF6DCA248D36CC009CEF03 /* AppleWatchColors.swift in Sources */,
+				04EF6DCD248D36DB009CEF03 /* Venues.swift in Sources */,
+				04EF6DD6248E859C009CEF03 /* StaticValueViews.swift in Sources */,
+				04EF6DCF248D45E6009CEF03 /* CalculationsModel.swift in Sources */,
+				04EF6DCB248D36D4009CEF03 /* NumberFormattingClass.swift in Sources */,
 				04EF6DA0248D3452009CEF03 /* HostingController.swift in Sources */,
+				04EF6DD4248E73E6009CEF03 /* ValuesView.swift in Sources */,
+				04EF6DCE248D45BB009CEF03 /* NotificationController.swift in Sources */,
 				04EF6D9E248D3452009CEF03 /* ContentView.swift in Sources */,
-				04EF6DA4248D3452009CEF03 /* NotificationController.swift in Sources */,
 				04EF6DA2248D3452009CEF03 /* ExtensionDelegate.swift in Sources */,
 				04EF6DA6248D3452009CEF03 /* NotificationView.swift in Sources */,
+				04EF6DD2248E72DF009CEF03 /* Keypad.swift in Sources */,
+				04EF6DD8248E8665009CEF03 /* EditableValueViews.swift in Sources */,
 				04EF6DA8248D3452009CEF03 /* ComplicationController.swift in Sources */,
+				04EF6DCC248D36D8009CEF03 /* UserPreferences.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

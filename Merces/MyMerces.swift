@@ -577,11 +577,11 @@ class MyMerces: UIViewController {
             
         }
         
-        poorRatingTextFieldOutlet.text = "\(nmbrFormatter.roundForPercentWithDecimalPlace(tipRates(for: venueValueToEdit)[0]))"
+        poorRatingTextFieldOutlet.text = "\(nmbrFormatter.roundForPercentWithTwoDecimalPlaces(tipRates(for: venueValueToEdit)[0]))"
         
-        averageRatingTextFieldOutlet.text = "\(nmbrFormatter.roundForPercentWithDecimalPlace(tipRates(for: venueValueToEdit)[1]))"
+        averageRatingTextFieldOutlet.text = "\(nmbrFormatter.roundForPercentWithTwoDecimalPlaces(tipRates(for: venueValueToEdit)[1]))"
         
-        greatRatingTextFieldOutlet.text = "\(nmbrFormatter.roundForPercentWithDecimalPlace(tipRates(for: venueValueToEdit)[2]))"
+        greatRatingTextFieldOutlet.text = "\(nmbrFormatter.roundForPercentWithTwoDecimalPlaces(tipRates(for: venueValueToEdit)[2]))"
         
         
         

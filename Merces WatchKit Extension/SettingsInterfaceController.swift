@@ -99,7 +99,7 @@ class SettingsInterfaceController: WKInterfaceController {
     @IBAction func tipIncludesTaxSwitchAction(_ value: Bool) {
         
         
-        MMObject.passMessageObject(["tipIncludesTaxSwitchChanged":value], identifier: "updateiPhoneSettings")
+//        MMObject.passMessageObject(["tipIncludesTaxSwitchChanged":value], identifier: "updateiPhoneSettings")
             
         
         tipIncludesTaxSwitchState = value
@@ -109,7 +109,7 @@ class SettingsInterfaceController: WKInterfaceController {
     
     @IBAction func roundUpTotalAmountSwitchAction(_ value: Bool) {
         
-        MMObject.passMessageObject(["totalAmountSwitchChanged":value], identifier: "updateiPhoneSettings")
+//        MMObject.passMessageObject(["totalAmountSwitchChanged":value], identifier: "updateiPhoneSettings")
         
         totalAmountSwitchState = value
         
@@ -119,7 +119,7 @@ class SettingsInterfaceController: WKInterfaceController {
     
     @IBAction func roundUpTipAmountSwitchAction(_ value: Bool) {
         
-        MMObject.passMessageObject(["tipAmountSwitchChanged":value], identifier: "updateiPhoneSettings")
+//        MMObject.passMessageObject(["tipAmountSwitchChanged":value], identifier: "updateiPhoneSettings")
             
         tipAmountSwitchState = value
         
@@ -129,15 +129,15 @@ class SettingsInterfaceController: WKInterfaceController {
     
     func updateColorValues() {
     
-        generalHeadlineOutlet.setAttributedText(NSAttributedString(string: NSLocalizedString("General", comment: "General"), attributes: [NSForegroundColorAttributeName: UIColor.white]))
+        generalHeadlineOutlet.setAttributedText(NSAttributedString(string: NSLocalizedString("General", comment: "General"), attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]))
         
-        roundUpToNearestDollarHeadlineOutlet.setAttributedText(NSAttributedString(string: NSLocalizedString("RoundUp", comment: "Round Up to Nearest Dollar"), attributes: [NSForegroundColorAttributeName: UIColor.white]))
+        roundUpToNearestDollarHeadlineOutlet.setAttributedText(NSAttributedString(string: NSLocalizedString("RoundUp", comment: "Round Up to Nearest Dollar"), attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]))
         
         
         
         themesButtonOutlet.setBackgroundColor(coloringThemes.getMainColorForWatch())
         
-        themesButtonOutlet.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Themes", comment: "Themes"), attributes: [NSForegroundColorAttributeName: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColorForWatch(), isFlat: true)]))
+        themesButtonOutlet.setAttributedTitle(NSAttributedString(string: NSLocalizedString("Themes", comment: "Themes"), attributes: [NSAttributedString.Key.foregroundColor: UIColor()]))
         
     }
     

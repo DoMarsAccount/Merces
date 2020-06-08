@@ -13,7 +13,6 @@ let userPrefs = UserPreferences()
 class VariableAmountsClass
 {
     /* Objects */
-    let numberFormattingObject = NumberFormattingClass()
     let calcModel = CalculationsModel()
     
     /* Variables */
@@ -134,8 +133,6 @@ class VariableAmountsClass
         arrayOfButtonsPressedForTaxAmountAsString = []
         arrayOfButtonsPressedForTipRateAsString = []
         arrayOfButtonsPressedForNumberOfPeoplePayingAsString = []
-        
-       
     }
     
     func updateSubtotalForPostTaxDesired() {

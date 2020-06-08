@@ -9,8 +9,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var value: Double = 5.0
+    @State var value2: Double = 1.0
+    
     var body: some View {
-        Text("Hello, World!")
+        ValuesView()
     }
 }
 
