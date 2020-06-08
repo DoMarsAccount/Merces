@@ -10,8 +10,6 @@
 import UIKit
 import ChameleonFramework
 
-let varAmountsObject = VariableAmountsClass()
-
 let coloringThemes = ColoringAndThemes()
 
 @available(iOS 10.0, *)
@@ -170,13 +168,13 @@ class MainPage: UIViewController {
         
         /* ------------ Display Quick Venue ------------- */
         
-        varAmountsObject.calcModel.selectedVenue = .quick
+        varAmts.calcModel.selectedVenue = .quick
         
-        varAmountsObject.tipRateArray = tipRates(for: varAmountsObject.calcModel.selectedVenue)
+        varAmts.tipRateArray = tipRates(for: varAmts.calcModel.selectedVenue)
         
-        varAmountsObject.calcModel.tipRate = varAmountsObject.tipRateArray[1]
+        varAmts.calcModel.tipRate = varAmts.tipRateArray[1]
         
-        venueSelectionLabelOutlet.text = venueName(for: varAmountsObject.calcModel.selectedVenue)
+        venueSelectionLabelOutlet.text = venueName(for: varAmts.calcModel.selectedVenue)
         
         serviceRatingLabelOutlet.selectedSegmentIndex = 1
         
@@ -227,7 +225,7 @@ class MainPage: UIViewController {
         
         updateColorValues()
         
-        varAmountsObject.tipRateArray = tipRates(for: varAmountsObject.calcModel.selectedVenue)
+        varAmts.tipRateArray = tipRates(for: varAmts.calcModel.selectedVenue)
         
         updateFieldValues()
         
@@ -334,24 +332,24 @@ class MainPage: UIViewController {
             
             switch self.userEditingThisField {
             case .subtotal:
-                varAmountsObject.arrayOfButtonsPressedForBillAmountAsString.append(buttonTitle)
+                varAmts.arrayOfButtonsPressedForBillAmountAsString.append(buttonTitle)
                 
-                self.calculate(varAmountsObject.arrayOfButtonsPressedForBillAmountAsString, activeField: self.userEditingThisField)
+                self.calculate(varAmts.arrayOfButtonsPressedForBillAmountAsString, activeField: self.userEditingThisField)
                 
             case .salesTax:
-                varAmountsObject.arrayOfButtonsPressedForTaxAmountAsString.append(buttonTitle)
+                varAmts.arrayOfButtonsPressedForTaxAmountAsString.append(buttonTitle)
                 
-                self.calculate(varAmountsObject.arrayOfButtonsPressedForTaxAmountAsString, activeField: self.userEditingThisField)
+                self.calculate(varAmts.arrayOfButtonsPressedForTaxAmountAsString, activeField: self.userEditingThisField)
                 
             case .tipRate:
-                varAmountsObject.arrayOfButtonsPressedForTipRateAsString.append(buttonTitle)
+                varAmts.arrayOfButtonsPressedForTipRateAsString.append(buttonTitle)
                 
-                self.calculate(varAmountsObject.arrayOfButtonsPressedForTipRateAsString, activeField: self.userEditingThisField)
+                self.calculate(varAmts.arrayOfButtonsPressedForTipRateAsString, activeField: self.userEditingThisField)
                 
             case .numPeople:
-                varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.append(buttonTitle)
+                varAmts.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.append(buttonTitle)
                 
-                self.calculate(varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString, activeField: self.userEditingThisField)
+                self.calculate(varAmts.arrayOfButtonsPressedForNumberOfPeoplePayingAsString, activeField: self.userEditingThisField)
                 
             default:
                 return
@@ -370,32 +368,32 @@ class MainPage: UIViewController {
             
             switch self.userEditingThisField {
             case .subtotal:
-                if !varAmountsObject.arrayOfButtonsPressedForBillAmountAsString.isEmpty {
-                    varAmountsObject.arrayOfButtonsPressedForBillAmountAsString.removeLast()
+                if !varAmts.arrayOfButtonsPressedForBillAmountAsString.isEmpty {
+                    varAmts.arrayOfButtonsPressedForBillAmountAsString.removeLast()
                 }
                 
-                self.calculate(varAmountsObject.arrayOfButtonsPressedForBillAmountAsString, activeField: self.userEditingThisField)
+                self.calculate(varAmts.arrayOfButtonsPressedForBillAmountAsString, activeField: self.userEditingThisField)
                 
             case .salesTax:
-                if !varAmountsObject.arrayOfButtonsPressedForTaxAmountAsString.isEmpty {
-                    varAmountsObject.arrayOfButtonsPressedForTaxAmountAsString.removeLast()
+                if !varAmts.arrayOfButtonsPressedForTaxAmountAsString.isEmpty {
+                    varAmts.arrayOfButtonsPressedForTaxAmountAsString.removeLast()
                 }
                 
-                self.calculate(varAmountsObject.arrayOfButtonsPressedForTaxAmountAsString, activeField: self.userEditingThisField)
+                self.calculate(varAmts.arrayOfButtonsPressedForTaxAmountAsString, activeField: self.userEditingThisField)
                 
             case .tipRate:
-                if !varAmountsObject.arrayOfButtonsPressedForTipRateAsString.isEmpty {
-                    varAmountsObject.arrayOfButtonsPressedForTipRateAsString.removeLast()
+                if !varAmts.arrayOfButtonsPressedForTipRateAsString.isEmpty {
+                    varAmts.arrayOfButtonsPressedForTipRateAsString.removeLast()
                 }
                 
-                self.calculate(varAmountsObject.arrayOfButtonsPressedForTipRateAsString, activeField: self.userEditingThisField)
+                self.calculate(varAmts.arrayOfButtonsPressedForTipRateAsString, activeField: self.userEditingThisField)
                 
             case .numPeople:
-                if !varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.isEmpty {
-                    varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.removeLast()
+                if !varAmts.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.isEmpty {
+                    varAmts.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.removeLast()
                 }
                 
-                self.calculate(varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString, activeField: self.userEditingThisField)
+                self.calculate(varAmts.arrayOfButtonsPressedForNumberOfPeoplePayingAsString, activeField: self.userEditingThisField)
                 
             default:
                 return
@@ -422,7 +420,7 @@ class MainPage: UIViewController {
     
     func checkTotalAmountPerPersonValue() {
         
-        if varAmountsObject.calcModel.moreOrLessPerPerson != 0.0 {
+        if varAmts.calcModel.moreOrLessPerPerson != 0.0 {
             
             if moreOrLessPerPersonLabel.isHidden != true {
                 
@@ -436,7 +434,7 @@ class MainPage: UIViewController {
             
             coinsImageOutlet.isHidden = false
             
-            var hold = varAmountsObject.calcModel.moreOrLessPerPerson
+            var hold = varAmts.calcModel.moreOrLessPerPerson
             
             // $0.09 / 2 yields odd result
             
@@ -467,7 +465,7 @@ class MainPage: UIViewController {
             
             moreOrLessPerPersonLabel.isHidden = true
             
-            if varAmountsObject.calcModel.partySize != 1 {
+            if varAmts.calcModel.partySize != 1 {
             
                 totalAmountPerPersonTitleLabel.isHidden = false
                 
@@ -494,37 +492,37 @@ class MainPage: UIViewController {
         */
         switch sender.tag {
         case 10:
-            varAmountsObject.calcModel.selectedVenue = .bar
+            varAmts.calcModel.selectedVenue = .bar
             
         case 11:
-            varAmountsObject.calcModel.selectedVenue = .dining
+            varAmts.calcModel.selectedVenue = .dining
             
         case 12:
-            varAmountsObject.calcModel.selectedVenue = .taxi
+            varAmts.calcModel.selectedVenue = .taxi
             
         case 13:
-            varAmountsObject.calcModel.selectedVenue = .quick
+            varAmts.calcModel.selectedVenue = .quick
             
         case 14:
-            varAmountsObject.calcModel.selectedVenue = .salon
+            varAmts.calcModel.selectedVenue = .salon
             
         case 15:
-            varAmountsObject.calcModel.selectedVenue = .delivery
+            varAmts.calcModel.selectedVenue = .delivery
             
         default:
-            varAmountsObject.calcModel.selectedVenue = .none
+            varAmts.calcModel.selectedVenue = .none
             
         }
         
         unscaleViewsWithSpring(); venueSelectorDisappear()
         
-        varAmountsObject.tipRateArray = tipRates(for: varAmountsObject.calcModel.selectedVenue)
+        varAmts.tipRateArray = tipRates(for: varAmts.calcModel.selectedVenue)
         
-        venueSelectionLabelOutlet.text = venueName(for: varAmountsObject.calcModel.selectedVenue)
+        venueSelectionLabelOutlet.text = venueName(for: varAmts.calcModel.selectedVenue)
         
         serviceRatingLabelOutlet.selectedSegmentIndex = 1
         
-        varAmountsObject.calcModel.tipRate = varAmountsObject.tipRateArray[serviceRatingLabelOutlet.selectedSegmentIndex]
+        varAmts.calcModel.tipRate = varAmts.tipRateArray[serviceRatingLabelOutlet.selectedSegmentIndex]
         
         updateFieldValues()
         
@@ -541,15 +539,15 @@ class MainPage: UIViewController {
         
         userEditingThisField = .subtotal
         
-        varAmountsObject.firstResponderTag = billAmountTextFieldOutlet.tag
+        varAmts.firstResponderTag = billAmountTextFieldOutlet.tag
         
         scaleViewsWithSpring(billAmountTextFieldOutlet.tag)
         
         // Here to smooth out effects of "Subtotal is Post Tax switch"
         
-        self.calculate(varAmountsObject.arrayOfButtonsPressedForBillAmountAsString, activeField: self.userEditingThisField)
+        self.calculate(varAmts.arrayOfButtonsPressedForBillAmountAsString, activeField: self.userEditingThisField)
         
-        billAmountTextFieldOutlet.text = varAmountsObject.updateValues().formattedBillAmount
+        billAmountTextFieldOutlet.text = varAmts.updateValues().formattedBillAmount
         
     }
     
@@ -561,7 +559,7 @@ class MainPage: UIViewController {
         
         userEditingThisField = .salesTax
         
-        varAmountsObject.firstResponderTag = taxAmountTextFieldOutlet.tag
+        varAmts.firstResponderTag = taxAmountTextFieldOutlet.tag
         
         scaleViewsWithSpring(taxAmountTextFieldOutlet.tag)
         
@@ -575,7 +573,7 @@ class MainPage: UIViewController {
         
         userEditingThisField = .numPeople
         
-        varAmountsObject.firstResponderTag = numberOfPeoplePayingTextFieldOutlet.tag
+        varAmts.firstResponderTag = numberOfPeoplePayingTextFieldOutlet.tag
         
         scaleViewsWithSpring(numberOfPeoplePayingTextFieldOutlet.tag)
         
@@ -589,7 +587,7 @@ class MainPage: UIViewController {
         
         userEditingThisField = .tipRate
         
-        varAmountsObject.firstResponderTag = tipRateTextFieldOutlet.tag
+        varAmts.firstResponderTag = tipRateTextFieldOutlet.tag
         
         scaleViewsWithSpring(tipRateTextFieldOutlet.tag)
         
@@ -615,14 +613,14 @@ class MainPage: UIViewController {
         
         // Here to smooth out effects of "Subtotal Post Tax"
         // means user selection is in place
-        self.calculate(varAmountsObject.arrayOfButtonsPressedForBillAmountAsString, activeField: .subtotal)
+        self.calculate(varAmts.arrayOfButtonsPressedForBillAmountAsString, activeField: .subtotal)
         
         // Here because it means user selection is done
-        varAmountsObject.updateSubtotalForPostTaxDesired()
+        varAmts.updateSubtotalForPostTaxDesired()
         
-        varAmountsObject.tipRateArray = tipRates(for: varAmountsObject.calcModel.selectedVenue)
+        varAmts.tipRateArray = tipRates(for: varAmts.calcModel.selectedVenue)
         
-        varAmountsObject.calcModel.tipRate = varAmountsObject.tipRateArray[sender.selectedSegmentIndex]
+        varAmts.calcModel.tipRate = varAmts.tipRateArray[sender.selectedSegmentIndex]
         
         updateFieldValues()
         
@@ -635,7 +633,7 @@ class MainPage: UIViewController {
     
     /// Call this method whenever the user presses a button
     func calculate(_ arrayOfButtonsPressed: [String], activeField: EditableTextFields) {
-        varAmountsObject.processInput(arrayOfButtonsPressed, activeField: activeField)
+        varAmts.processInput(arrayOfButtonsPressed, activeField: activeField)
         updateFieldValues()
     }
     
@@ -646,7 +644,7 @@ class MainPage: UIViewController {
         // noTipSplitPersonViewConstraint
         //
         
-        if varAmountsObject.calcModel.tipRate == 0.00 {
+        if varAmts.calcModel.tipRate == 0.00 {
             
             // hide tip amount section
             
@@ -679,7 +677,7 @@ class MainPage: UIViewController {
             
         }
         
-        if varAmountsObject.calcModel.partySize == 1 {
+        if varAmts.calcModel.partySize == 1 {
             
             // hide total per person section
             
@@ -694,7 +692,7 @@ class MainPage: UIViewController {
             
             // show total per person
             
-            if (varAmountsObject.calcModel.tipRate != 0.00) {
+            if (varAmts.calcModel.tipRate != 0.00) {
                 // show all three sections
                 
                 noTipSplitPersonViewConstraint.priority = UILayoutPriority(rawValue: 970)
@@ -759,31 +757,31 @@ class MainPage: UIViewController {
         
         /* ----- Value Output ---- */
         
-        billAmountTextFieldOutlet.text = varAmountsObject.updateValues().formattedBillAmount
+        billAmountTextFieldOutlet.text = varAmts.updateValues().formattedBillAmount
         
-        taxAmountTextFieldOutlet.text = varAmountsObject.updateValues().formattedTaxAmount
+        taxAmountTextFieldOutlet.text = varAmts.updateValues().formattedTaxAmount
         
-        numberOfPeoplePayingTextFieldOutlet.text = varAmountsObject.updateValues().numberOfPeoplePaying
+        numberOfPeoplePayingTextFieldOutlet.text = varAmts.updateValues().numberOfPeoplePaying
         
-        tipRateTextFieldOutlet.text = varAmountsObject.updateValues().formattedTipRate
+        tipRateTextFieldOutlet.text = varAmts.updateValues().formattedTipRate
         
-        venueSelectionLabelOutlet.text = venueName(for: varAmountsObject.calcModel.selectedVenue)
-        
-        
-        numberOfPeoplePayingTextFieldOutlet.text = varAmountsObject.updateValues().numberOfPeoplePaying
-        
-        tipAmountLabelOutlet.text = varAmountsObject.updateValues().tipAmount
+        venueSelectionLabelOutlet.text = venueName(for: varAmts.calcModel.selectedVenue)
         
         
-        totalAmountLabelOutlet.text = varAmountsObject.updateValues().totalAmount
+        numberOfPeoplePayingTextFieldOutlet.text = varAmts.updateValues().numberOfPeoplePaying
         
-        totalAmountPerPersonLabelOutlet.text = varAmountsObject.updateValues().totalAmountPerPerson
+        tipAmountLabelOutlet.text = varAmts.updateValues().tipAmount
         
-        if varAmountsObject.calcModel.moreOrLessPerPerson < 0 {
+        
+        totalAmountLabelOutlet.text = varAmts.updateValues().totalAmount
+        
+        totalAmountPerPersonLabelOutlet.text = varAmts.updateValues().totalAmountPerPerson
+        
+        if varAmts.calcModel.moreOrLessPerPerson < 0 {
             
             coinsImageOutlet.image = UIImage(named: "coins-green")
             
-        } else if varAmountsObject.calcModel.moreOrLessPerPerson > 0 {
+        } else if varAmts.calcModel.moreOrLessPerPerson > 0 {
             
             coinsImageOutlet.image = UIImage(named: "coins-red")
             
@@ -1157,7 +1155,7 @@ class MainPage: UIViewController {
         
         // Here to smooth out effects of "Subtotal Post Tax"
         // means user selection is in place
-        self.calculate(varAmountsObject.arrayOfButtonsPressedForBillAmountAsString, activeField: .subtotal)
+        self.calculate(varAmts.arrayOfButtonsPressedForBillAmountAsString, activeField: .subtotal)
         
         for textFields in collectionInputFieldLabels {
             
@@ -1207,7 +1205,7 @@ class MainPage: UIViewController {
     func unscaleViewsWithSpring() {
         
         // Here because it means user selection is done
-        varAmountsObject.updateSubtotalForPostTaxDesired()
+        varAmts.updateSubtotalForPostTaxDesired()
         
         for textFields in collectionInputFieldLabels {
             
@@ -1243,7 +1241,7 @@ class MainPage: UIViewController {
         
         moreOrLessPerPersonLabel.isHidden = true
         
-        if varAmountsObject.calcModel.partySize > 1 {
+        if varAmts.calcModel.partySize > 1 {
         
             totalAmountPerPersonTitleLabel.isHidden = false
             
@@ -1512,7 +1510,7 @@ class MainPage: UIViewController {
     
     @IBAction func coinsImageWasTapped(_ recognizer:UITapGestureRecognizer) {
         
-        if varAmountsObject.calcModel.moreOrLessPerPerson != 0.0 {
+        if varAmts.calcModel.moreOrLessPerPerson != 0.0 {
             
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
             
@@ -1528,7 +1526,7 @@ class MainPage: UIViewController {
                 
             })
             
-            var hold = varAmountsObject.calcModel.moreOrLessPerPerson
+            var hold = varAmts.calcModel.moreOrLessPerPerson
             
             if round(hold) == 0 {
                 
@@ -1607,9 +1605,9 @@ class MainPage: UIViewController {
             
             alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: "Yes"), style: UIAlertActionStyle.destructive, handler: { (_) in
                 
-                varAmountsObject.resetValues()
+                varAmts.resetValues()
                 
-                self.venueSelectionLabelOutlet.text = venueName(for: varAmountsObject.calcModel.selectedVenue)
+                self.venueSelectionLabelOutlet.text = venueName(for: varAmts.calcModel.selectedVenue)
                 
                 self.updateFieldValues()
                 

@@ -11,9 +11,10 @@ import SwiftUI
 struct ContentView: View {
     @State var value: Double = 5.0
     @State var value2: Double = 1.0
+    @ObservedObject var wCalcModel = CalculationsModel()
     
     var body: some View {
-        ValuesView()
+        ValuesView().environmentObject(wCalcModel)
     }
 }
 

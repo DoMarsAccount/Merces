@@ -8,6 +8,13 @@
 
 import Foundation
 
+extension Int {
+    var double: Double {
+        get { Double(self) }
+        set { self = Int(newValue) }
+    }
+}
+
 extension Double {
     /// Rounds the double to decimal places value
     func roundTo(places:Int) -> Double {

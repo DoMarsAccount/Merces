@@ -9,6 +9,7 @@
 import UIKit
 
 let userPrefs = UserPreferences()
+let varAmts = VariableAmountsClass()
 
 class VariableAmountsClass
 {
@@ -78,7 +79,7 @@ class VariableAmountsClass
             }
             
         case .tipRate:
-            calcModel.tipRate = inputAmount * 0.01
+            calcModel.tipRate = inputAmount
             
         case .venue:
             userPrefs.localSalesTax = inputAmount * 0.001

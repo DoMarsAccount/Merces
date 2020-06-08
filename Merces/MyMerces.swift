@@ -294,7 +294,7 @@ class MyMerces: UIViewController {
             activeField = .none
         }
         
-        varAmountsObject.processInput(arrayOfButtonsPressed, activeField: activeField)
+        varAmts.processInput(arrayOfButtonsPressed, activeField: activeField)
         
     }
     

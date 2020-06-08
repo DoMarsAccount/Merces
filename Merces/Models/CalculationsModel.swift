@@ -31,16 +31,32 @@ enum EditableTextFields {
  * 5 = Sales Tax
  */
 
-class CalculationsModel {
+class CalculationsModel: ObservableObject {
     
-    var subtotal: Double
-    var taxAmount: Double
-    var tipAmount: Double
-    var tipRate: Double
-    var partySize: Int
+    @Published var subtotal: Double {
+           didSet {
+               _ = computeTippingValues()
+           }
+       }
+    @Published var taxAmount: Double {
+           didSet {
+               _ = computeTippingValues()
+           }
+       }
+    @Published var tipRate: Double {
+        didSet {
+            _ = computeTippingValues()
+        }
+    }
+    @Published var partySize: Int {
+        didSet {
+            _ = computeTippingValues()
+        }
+    }
     
-    var totalAmount: Double
-    var totalAmountPerPerson: Double
+    @Published var tipAmount: Double
+    @Published var totalAmount: Double
+    @Published var totalAmountPerPerson: Double
     
     var selectedVenue: VenueType
     var service: ServiceQuality
@@ -52,9 +68,9 @@ class CalculationsModel {
         self.subtotal = 0.00
         self.taxAmount = 0.00
         self.tipAmount = 0.0
-        self.tipRate = 0.00
         self.partySize = 1
         
+        self.tipRate = 0.00
         self.totalAmount = 0.0
         self.totalAmountPerPerson = 0.0
         
@@ -68,10 +84,10 @@ class CalculationsModel {
     func resetValues() {
         self.subtotal = 0.00
         self.taxAmount = 0.00
-        self.tipAmount = 0.0
         self.tipRate = 0.00
         self.partySize = 1
         
+        self.tipAmount = 0.0
         self.totalAmount = 0.0
         self.totalAmountPerPerson = 0.0
         
@@ -85,7 +101,9 @@ class CalculationsModel {
     /// Replaces the updateValues method formerly found in VariableAmountsClass
     func computeTippingValues() -> (formattedBillAmount: String, formattedTaxAmount: String, formattedTipRate: String, numberOfPeoplePaying: String, tipAmount: String, totalAmount: String, totalAmountPerPerson: String) {
         
-        tipAmount = (mUserDefaults!.bool(forKey: "tipIncludeTaxSwitchOnOff") ? (subtotal + taxAmount) * tipRate : subtotal * tipRate)
+        self.objectWillChange.send()
+        
+        tipAmount = (mUserDefaults!.bool(forKey: "tipIncludeTaxSwitchOnOff") ? (subtotal + taxAmount) * (tipRate * 0.01) : subtotal * (tipRate * 0.01))
         
         totalAmount = subtotal + tipAmount + taxAmount
         
