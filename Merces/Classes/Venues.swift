@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum VenueType {
+enum VenueType: CaseIterable, Hashable, Identifiable {
     case quick
     case bar
     case dining
@@ -16,9 +16,16 @@ enum VenueType {
     case taxi
     case delivery
     case none
+    
+    var name: String {
+        return "\(self)".map {
+            $0.isUppercase ? " \($0)" : "\($0)" }.joined().capitalized
+    }
+    
+    var id: VenueType { self }
 }
 
-func venueName(for venue: VenueType) -> String {
+func localizedName(for venue: VenueType) -> String {
     switch venue {
     case .quick:
         return "Quick"

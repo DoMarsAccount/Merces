@@ -9,12 +9,24 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var value: Double = 5.0
-    @State var value2: Double = 1.0
     @ObservedObject var wCalcModel = varAmts.calcModel
     
     var body: some View {
         ValuesView().environmentObject(wCalcModel)
+//        .contextMenu {
+//            ScrollView (.vertical) {
+//                VStack {
+//                    ForEach(VenueType.allCases) { venue in
+//                        if venue.name == varAmts.calcModel.selectedVenue.name {
+//                            Text("\(venue.name)")
+//                                .background(Color.blue)
+//                        } else {
+//                            Text("\(venue.name)")
+//                        }
+//                    }
+//                }
+//            }
+//        }
     }
 }
 

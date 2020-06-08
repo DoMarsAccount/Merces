@@ -174,7 +174,7 @@ class MainPage: UIViewController {
         
         varAmts.calcModel.tipRate = varAmts.tipRateArray[1]
         
-        venueSelectionLabelOutlet.text = venueName(for: varAmts.calcModel.selectedVenue)
+        venueSelectionLabelOutlet.text = localizedName(for: varAmts.calcModel.selectedVenue)
         
         serviceRatingLabelOutlet.selectedSegmentIndex = 1
         
@@ -518,7 +518,7 @@ class MainPage: UIViewController {
         
         varAmts.tipRateArray = tipRates(for: varAmts.calcModel.selectedVenue)
         
-        venueSelectionLabelOutlet.text = venueName(for: varAmts.calcModel.selectedVenue)
+        venueSelectionLabelOutlet.text = localizedName(for: varAmts.calcModel.selectedVenue)
         
         serviceRatingLabelOutlet.selectedSegmentIndex = 1
         
@@ -765,7 +765,7 @@ class MainPage: UIViewController {
         
         tipRateTextFieldOutlet.text = varAmts.updateValues().formattedTipRate
         
-        venueSelectionLabelOutlet.text = venueName(for: varAmts.calcModel.selectedVenue)
+        venueSelectionLabelOutlet.text = localizedName(for: varAmts.calcModel.selectedVenue)
         
         
         numberOfPeoplePayingTextFieldOutlet.text = varAmts.updateValues().numberOfPeoplePaying
@@ -1238,7 +1238,6 @@ class MainPage: UIViewController {
         self.coinsImageOutlet.isHidden = true
         
         // if user is looking at MOLPP message, change back
-        
         moreOrLessPerPersonLabel.isHidden = true
         
         if varAmts.calcModel.partySize > 1 {
@@ -1607,7 +1606,7 @@ class MainPage: UIViewController {
                 
                 varAmts.resetValues()
                 
-                self.venueSelectionLabelOutlet.text = venueName(for: varAmts.calcModel.selectedVenue)
+                self.venueSelectionLabelOutlet.text = localizedName(for: varAmts.calcModel.selectedVenue)
                 
                 self.updateFieldValues()
                 

@@ -83,7 +83,7 @@ struct Keypad: View {
                     KeypadDeleteButton(text: .constant("⌫"))
                 }
             }
-            .frame(width: geometry.size.width, height: geometry.size.height + 85)
+            .frame(width: geometry.size.width, height: geometry.size.height + 80)
             .edgesIgnoringSafeArea([.leading, .trailing, .bottom])
         }
     }
