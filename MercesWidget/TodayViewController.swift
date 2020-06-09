@@ -196,7 +196,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         for keypadButtons in collectionKeypadButtons {
             
-            keypadButtons.setTitleColor(UIColor.white, for: UIControlState.normal)
+            keypadButtons.setTitleColor(UIColor.white, for: UIControl.State.normal)
             
             keypadButtons.layer.borderWidth = 0.5
             

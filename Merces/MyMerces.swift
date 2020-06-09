@@ -69,7 +69,7 @@ class MyMerces: UIViewController {
         
         NotificationCenter.default.addObserver(self,
             selector: #selector(MyMerces.preferredContentSizeChanged(_:)),
-            name: NSNotification.Name.UIContentSizeCategoryDidChange,
+            name: UIContentSizeCategory.didChangeNotification,
             object: nil)
         
         mUserDefaults?.set(userPrefs.localSalesTax, forKey: "userLocalSalesTax")
@@ -337,7 +337,7 @@ class MyMerces: UIViewController {
         /* ------------ Navigation Bar Coloring ------------- */
         self.navigationController?.navigationBar.barTintColor = coloringThemes.getMainColor()
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true) ]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true) ]
         
         self.navigationController?.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)
         

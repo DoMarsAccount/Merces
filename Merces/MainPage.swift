@@ -163,7 +163,7 @@ class MainPage: UIViewController {
         
         NotificationCenter.default.addObserver(self,
             selector: #selector(MainPage.preferredContentSizeChanged(_:)),
-            name: NSNotification.Name.UIContentSizeCategoryDidChange,
+            name: UIContentSizeCategory.didChangeNotification,
             object: nil)
         
         /* ------------ Display Quick Venue ------------- */
@@ -190,9 +190,9 @@ class MainPage: UIViewController {
             let alertTitle = NSLocalizedString("WelcomeToMerces", comment: "welcome message")
             let alertMessage = NSLocalizedString("IdealExperience", comment: "best use case")
               
-            let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertController.Style.alert)
             
-            alert.addAction(UIAlertAction(title: NSLocalizedString("TakeToMyMerces", comment: "Take me to My Merces"), style: UIAlertActionStyle.default, handler: { (_) in
+            alert.addAction(UIAlertAction(title: NSLocalizedString("TakeToMyMerces", comment: "Take me to My Merces"), style: UIAlertAction.Style.default, handler: { (_) in
                 
                 let myMercesViewController = self.storyboard?.instantiateViewController(withIdentifier: "MyMerces") as! MyMerces
                 
@@ -200,7 +200,7 @@ class MainPage: UIViewController {
                 
             }))
             
-            alert.addAction(UIAlertAction(title: NSLocalizedString("DoItLater", comment: "I'll do it later"), style: UIAlertActionStyle.cancel, handler: { (_) in
+            alert.addAction(UIAlertAction(title: NSLocalizedString("DoItLater", comment: "I'll do it later"), style: UIAlertAction.Style.cancel, handler: { (_) in
                 
                 
                 
@@ -239,7 +239,7 @@ class MainPage: UIViewController {
             self.modeSwitchOutlet.image = UIImage(named: "shopping_bag")
             
             // move center view left
-            UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+            UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIView.AnimationOptions.beginFromCurrentState, animations: {
                 
                 self.venueAndServiceStuffView.transform = CGAffineTransform(translationX: -self.venueAndServiceStuffView.frame.width - 8, y: 0)
                 
@@ -249,7 +249,7 @@ class MainPage: UIViewController {
                 self.venueAndServiceStuffView.alpha = 0.0
                 
                 // move bottom view up
-                UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+                UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIView.AnimationOptions.beginFromCurrentState, animations: {
                     
                     self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: 0, y: -self.venueAndServiceStuffView.frame.height - 8)
                     
@@ -257,7 +257,7 @@ class MainPage: UIViewController {
                 }, completion: { finished in
                     
                     // move keypad view right
-                    UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+                    UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIView.AnimationOptions.beginFromCurrentState, animations: {
                         
                         self.keypadStuffView.alpha = 1
                         
@@ -284,13 +284,13 @@ class MainPage: UIViewController {
             
             /* move back*/
             
-            UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+            UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIView.AnimationOptions.beginFromCurrentState, animations: {
                
                 self.keypadStuffView.transform = CGAffineTransform(translationX: -self.keypadStuffView.frame.width - 8, y: 0)
                 
             }, completion: { finished in
             
-                UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+                UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIView.AnimationOptions.beginFromCurrentState, animations: {
                     
                     //self.keypadStuffView.alpha = 0.0
                     
@@ -298,7 +298,7 @@ class MainPage: UIViewController {
                     
                 }, completion: { finished in
                     
-                    UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+                    UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIView.AnimationOptions.beginFromCurrentState, animations: {
                         
                         self.venueAndServiceStuffView.alpha = 1.0
                         
@@ -805,7 +805,7 @@ class MainPage: UIViewController {
         
         
         // Title Coloring
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)]
         
         
         // Back Button Coloring
@@ -816,7 +816,8 @@ class MainPage: UIViewController {
         serviceRatingLabelOutlet.tintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getViewBackgroundColor(), isFlat: true)
         //UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor, isFlat: true)
         
-        serviceRatingLabelOutlet.layer.borderColor = self.view.backgroundColor?.cgColor
+//        serviceRatingLabelOutlet.layer.borderColor = self.view.backgroundColor?.cgColor
+        serviceRatingLabelOutlet.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor!, isFlat: true).cgColor
        
         
         for sectionHeader in collectionSectionHeaderLabels {
@@ -986,7 +987,7 @@ class MainPage: UIViewController {
             
             keypadStuffView.transform = CGAffineTransform(translationX: (-self.view.frame.width - self.view.frame.width) , y: 0)
             
-            UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+            UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIView.AnimationOptions.beginFromCurrentState, animations: {
                 
                 self.venuesStuffView.transform = CGAffineTransform(translationX: (self.view.frame.width + self.view.frame.width), y: 0)
                 
@@ -1017,7 +1018,7 @@ class MainPage: UIViewController {
             keypadStuffView.transform = CGAffineTransform(translationX: -self.view.frame.width, y: 0)
             
             
-            UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+            UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIView.AnimationOptions.beginFromCurrentState, animations: {
                 
                 if userPrefs.isModeTipCalc {
                     self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: self.view.frame.width , y: 0)
@@ -1052,7 +1053,7 @@ class MainPage: UIViewController {
             self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: self.view.frame.width , y: 0)
         }
         
-        UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+        UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIView.AnimationOptions.beginFromCurrentState, animations: {
             
             self.keypadStuffView.transform = CGAffineTransform(translationX: -self.view.frame.width , y: 0)
             if userPrefs.isModeTipCalc {
@@ -1081,7 +1082,7 @@ class MainPage: UIViewController {
             
             venuesStuffView.transform = CGAffineTransform(translationX: (self.view.frame.width + self.view.frame.width) , y: 0)
             
-            UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+            UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIView.AnimationOptions.beginFromCurrentState, animations: {
                 
                 self.keypadStuffView.transform = CGAffineTransform(translationX: (-self.view.frame.width - self.view.frame.width) , y: 0)
                 
@@ -1107,7 +1108,7 @@ class MainPage: UIViewController {
             
             //venuesStuffView.transform = CGAffineTransform(translationX: 0, y: 200)
             
-            UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+            UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIView.AnimationOptions.beginFromCurrentState, animations: {
                 
                 self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: -self.view.frame.width, y: 0)
                 
@@ -1135,7 +1136,7 @@ class MainPage: UIViewController {
         // Make sure Totaled Amount View is in correct spot for anim.
         self.totaledAmountsStuffView.transform = CGAffineTransform(translationX: -self.view.frame.width, y: 0)
         
-        UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+        UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.7, options: UIView.AnimationOptions.beginFromCurrentState, animations: {
             
             self.venuesStuffView.transform = CGAffineTransform(translationX: self.view.frame.width , y: 0)
             
@@ -1586,7 +1587,7 @@ class MainPage: UIViewController {
     
     /* -------------------------------- Alert View Stuff ------------------------------ */
     
-    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         
         if motion == .motionShake {
             
@@ -1594,15 +1595,15 @@ class MainPage: UIViewController {
             
             let alertTitle = NSLocalizedString("JustToBeSafe", comment: "safety check")
             let alertMessage = NSLocalizedString("WantToClearValues", comment: "safety message")
-            let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertController.Style.alert)
             
-            alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: "No"), style: UIAlertActionStyle.default, handler: { (_) in
+            alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: "No"), style: UIAlertAction.Style.default, handler: { (_) in
                 
                 
                 
             }))
             
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: "Yes"), style: UIAlertActionStyle.destructive, handler: { (_) in
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: "Yes"), style: UIAlertAction.Style.destructive, handler: { (_) in
                 
                 varAmts.resetValues()
                 

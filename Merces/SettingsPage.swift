@@ -60,7 +60,7 @@ class SettingsPage: UITableViewController {
         
         NotificationCenter.default.addObserver(self,
             selector: #selector(SettingsPage.preferredContentSizeChanged(_:)),
-            name: NSNotification.Name.UIContentSizeCategoryDidChange,
+            name: UIContentSizeCategory.didChangeNotification,
             object: nil)
         
         
@@ -78,7 +78,7 @@ class SettingsPage: UITableViewController {
         
         for settingsHeadline in collectionSettingsInformation {
             
-            settingsHeadline.font = UserDefaults(suiteName: "group.DoMarsToyBox.Merces")!.bool(forKey: "useDynamicText") ? UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline) : UIFont(name: "HelveticaNeue-Bold", size: 16)
+            settingsHeadline.font = UserDefaults(suiteName: "group.DoMarsToyBox.Merces")!.bool(forKey: "useDynamicText") ? UIFont.preferredFont(forTextStyle: UIFont.TextStyle.headline) : UIFont(name: "HelveticaNeue-Bold", size: 16)
             
         }
         
@@ -150,7 +150,7 @@ class SettingsPage: UITableViewController {
             
         } else {
         
-            UIApplication.shared.open(URL(string: "https://itunes.apple.com/us/app/merces-personal-tip-calculator/id978591776?ls=1&mt=8")!, options: [:], completionHandler: nil)
+            UIApplication.shared.open(URL(string: "https://itunes.apple.com/us/app/merces-personal-tip-calculator/id978591776?ls=1&mt=8")!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
 
         }
     }
@@ -161,7 +161,7 @@ class SettingsPage: UITableViewController {
         /* ------------ Navigation Bar Coloring ------------- */
         self.navigationController?.navigationBar.barTintColor = coloringThemes.getMainColor()
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)]
         
         self.navigationController?.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)
         
@@ -223,4 +223,9 @@ class SettingsPage: UITableViewController {
     }
     
     
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

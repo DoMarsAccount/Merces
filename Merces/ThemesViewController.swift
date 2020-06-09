@@ -169,7 +169,7 @@ class ThemesViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         if UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.bool(forKey: "useDynamicText") == true {
             
-            return UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
+            return UIFont.preferredFont(forTextStyle: UIFont.TextStyle.headline)
             
             
             
@@ -196,7 +196,7 @@ class ThemesViewController: UIViewController, UICollectionViewDataSource, UIColl
         self.view.backgroundColor = coloringThemes.getBackgroundColor()
         
         // Title Coloring
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)]
         
         
         // Back Button Coloring

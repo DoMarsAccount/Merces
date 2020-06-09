@@ -22,7 +22,7 @@ class ThemesPage: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         
         updateColorValues()
         
@@ -62,7 +62,7 @@ class ThemesPage: UITableViewController {
         
         if UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.bool(forKey: "useDynamicText") == true {
             
-            cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
+            cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.headline)
             
         } else {
             
@@ -74,7 +74,7 @@ class ThemesPage: UITableViewController {
     }
     
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         
         
@@ -85,9 +85,9 @@ class ThemesPage: UITableViewController {
         
         if haveShownColorAlert == false {
         
-            let alert = UIAlertController(title: NSLocalizedString("Whoops", comment: "Whoops"), message: NSLocalizedString("Don't tap. Swipe!", comment: "Don't tap the glass/ screen. Instead, swipe to the left."), preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: NSLocalizedString("Whoops", comment: "Whoops"), message: NSLocalizedString("Don't tap. Swipe!", comment: "Don't tap the glass/ screen. Instead, swipe to the left."), preferredStyle: UIAlertController.Style.alert)
             
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Okay", comment: "Ok"), style: UIAlertActionStyle.default, handler: { (_) in
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Okay", comment: "Ok"), style: UIAlertAction.Style.default, handler: { (_) in
                 
                 UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.set(true, forKey: "changeColorAlertShown")
                 
@@ -123,7 +123,7 @@ class ThemesPage: UITableViewController {
             
         })
         
-        UIButton.appearance().setTitleColor(UIColor.black, for: UIControlState())
+        UIButton.appearance().setTitleColor(UIColor.black, for: UIControl.State())
         
         setMainColorAction.backgroundColor = coloringThemes.getMainColor()
         
@@ -162,7 +162,7 @@ class ThemesPage: UITableViewController {
         self.view.backgroundColor = coloringThemes.getBackgroundColor()
         
         // Title Coloring
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)]
         
         
         // Back Button Coloring
