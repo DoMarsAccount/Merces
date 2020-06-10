@@ -103,7 +103,8 @@ class CalculationsModel: ObservableObject {
         
         self.objectWillChange.send()
         
-        tipAmount = (mUserDefaults!.bool(forKey: "tipIncludeTaxSwitchOnOff") ? (subtotal + taxAmount) * (tipRate * 0.01) : subtotal * (tipRate * 0.01))
+        tipAmount = (mUserDefaults!.bool(forKey: "tipIncludeTaxSwitchOnOff") ? (subtotal + taxAmount) * (tipRate) : subtotal * (tipRate))
+        print(tipAmount)
         
         totalAmount = subtotal + tipAmount + taxAmount
         

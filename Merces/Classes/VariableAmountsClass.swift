@@ -96,7 +96,7 @@ class VariableAmountsClass
             }
             
         case .tipRate:
-            calcModel.tipRate = inputAmount
+            calcModel.tipRate = inputAmount * 0.01
             
         case .venue:
             userPrefs.localSalesTax = inputAmount * 0.001

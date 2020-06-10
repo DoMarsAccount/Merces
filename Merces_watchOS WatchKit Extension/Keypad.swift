@@ -84,6 +84,7 @@ struct Keypad: View {
                 }
             }
             .frame(width: geometry.size.width, height: geometry.size.height + 80)
+//            .foregroundColor(.green)
             .edgesIgnoringSafeArea([.leading, .trailing, .bottom])
         }
     }

@@ -20,7 +20,7 @@ struct EditableIntegerValueView: View {
                     .focusable(true, onFocusChange: { (didChange) in
                         self.isFocused = didChange
                     })
-                    .digitalCrownRotation(self.$value, from: 1.0, through: 100.0, by: 1.0, sensitivity: .medium, isContinuous: true, isHapticFeedbackEnabled: true)
+                    .digitalCrownRotation(self.$value, from: 1.0, through: 100.0, by: 1.0, sensitivity: .medium, isContinuous: false, isHapticFeedbackEnabled: true)
             }
             .padding([.leading, .trailing])
             .frame(width: geo.size.width)
@@ -42,7 +42,7 @@ struct EditableCurrencyValueView: View {
                     .focusable(true, onFocusChange: { (didChange) in
                         self.isFocused = didChange
                     })
-                    .digitalCrownRotation(self.$value, from: 0.0, through: 101.0, by: 1.0, sensitivity: .medium, isContinuous: true, isHapticFeedbackEnabled: true)
+                    .digitalCrownRotation(self.$value, from: 0.0, through: 101.0, by: 1.0, sensitivity: .medium, isContinuous: false, isHapticFeedbackEnabled: true)
             }
             .padding([.leading, .trailing])
             .frame(width: geo.size.width)
@@ -60,11 +60,11 @@ struct EditablePercentageValueView: View {
     var body: some View {
         GeometryReader { geo in
             HStack {
-                Text("\(self.title) \(nForm.roundForPercentWithTwoDecimalPlaces(self.value * 0.01))")
+                Text("\(self.title) \(nForm.roundForPercentWithTwoDecimalPlaces(self.value))")
                     .focusable(true, onFocusChange: { (didChange) in
                         self.isFocused = didChange
                     })
-                    .digitalCrownRotation(self.$value, from: 0.0, through: 100.01, by: 0.25, sensitivity: .medium, isContinuous: true, isHapticFeedbackEnabled: true)
+                    .digitalCrownRotation(self.$value, from: 0.0, through: 1.000, by: 0.01, sensitivity: .medium, isContinuous: false, isHapticFeedbackEnabled: true)
             }
             .padding([.leading, .trailing])
             .frame(width: geo.size.width)
