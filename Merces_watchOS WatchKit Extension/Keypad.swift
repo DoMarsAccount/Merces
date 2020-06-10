@@ -19,7 +19,7 @@ struct KeypadButton: View {
                 varAmts.arrayOfButtonsPressedForBillAmountAsString.append(self.text)
             case .salesTax:
                 varAmts.arrayOfButtonsPressedForTaxAmountAsString.append(self.text)
-            case .numPeople:
+            case .partySize:
                 varAmts.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.append(self.text)
             case .tipRate:
                 varAmts.arrayOfButtonsPressedForTipRateAsString.append(self.text)
@@ -48,7 +48,7 @@ struct KeypadDeleteButton: View {
                 if (!varAmts.arrayOfButtonsPressedForTaxAmountAsString.isEmpty) {
                     varAmts.arrayOfButtonsPressedForTaxAmountAsString.removeLast()
                 }
-            case .numPeople:
+            case .partySize:
                 if (!varAmts.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.isEmpty) {
                     varAmts.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.removeLast()
                 }
@@ -93,7 +93,7 @@ struct Keypad: View {
                 HStack {
                     Text("\(self.activeField.name):")
                     
-                    if (self.activeField == EditableTextFields.numPeople) {
+                    if (self.activeField == EditableTextFields.partySize) {
                         Text(nForm.formatIntegerNumbers(Int(self.value)))
                         .multilineTextAlignment(.trailing)
                     } else if (self.activeField == EditableTextFields.tipRate) {

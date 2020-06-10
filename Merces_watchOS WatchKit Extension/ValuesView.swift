@@ -53,7 +53,7 @@ struct ValuesView: View {
                         self.isPartySizeKeypadPresented.toggle()
                     }
                     .sheet(isPresented: self.$isPartySizeKeypadPresented) {
-                        Keypad(value: self.$wCalcModel.partySize.double, isPresented: self.$isPartySizeKeypadPresented, activeField: .constant(.numPeople))
+                        Keypad(value: self.$wCalcModel.partySize.double, isPresented: self.$isPartySizeKeypadPresented, activeField: .constant(.partySize))
                     }
                 
                 

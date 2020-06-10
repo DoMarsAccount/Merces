@@ -17,7 +17,7 @@ enum ServiceQuality {
 enum EditableTextFields: CaseIterable, Hashable, Identifiable {
     case subtotal
     case salesTax
-    case numPeople
+    case partySize
     case tipRate
     case venue
     case none

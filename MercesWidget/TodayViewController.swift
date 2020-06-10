@@ -283,7 +283,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                 // # of people
                 varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.append(buttonTitle)
                 
-                varAmountsObject.processInput(varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString, activeField: .numPeople)
+                varAmountsObject.processInput(varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString, activeField: .partySize)
                 
             }
             
@@ -333,7 +333,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                     varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.removeLast()
                     
                 }
-                varAmountsObject.processInput(varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString, activeField: .numPeople)
+                varAmountsObject.processInput(varAmountsObject.arrayOfButtonsPressedForNumberOfPeoplePayingAsString, activeField: .partySize)
                 
             }
             

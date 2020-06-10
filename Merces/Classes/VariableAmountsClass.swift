@@ -36,7 +36,7 @@ class VariableAmountsClass
     }
     var arrayOfButtonsPressedForNumberOfPeoplePayingAsString: [String] {
         didSet {
-            processInput(self.arrayOfButtonsPressedForNumberOfPeoplePayingAsString, activeField: .numPeople)
+            processInput(self.arrayOfButtonsPressedForNumberOfPeoplePayingAsString, activeField: .partySize)
         }
     }
     
@@ -65,7 +65,7 @@ class VariableAmountsClass
            
        } else {
            switch activeField {
-           case .numPeople:
+           case .partySize:
                inputAmount = 1.0
            default:
                inputAmount = 0.0
@@ -85,7 +85,7 @@ class VariableAmountsClass
             calcModel.taxAmount = inputAmount
             useTaxAmount(true)
             
-        case .numPeople:
+        case .partySize:
             if inputAmount >= 2147483647 {
                 arrayOfButtonsPressedForNumberOfPeoplePayingAsString = []
                 calcModel.partySize = 0
