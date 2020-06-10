@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-let viewHeight: CGFloat = 60
+let viewHeight: CGFloat = 50
 
 enum CardStyles {
     case currency
@@ -18,24 +18,28 @@ enum CardStyles {
 
 struct CurrencyCardStyle: ViewModifier {
     @Binding var value: Double
-    var hasBackground: Bool = false
+    var backgroundColor: Color = .black
     
     func body(content: Content) -> some View {
         GeometryReader { geo in
             VStack {
                 HStack {
-                    content.font(.headline).padding(.top)
+                    content
+                        .font(.subheadline)
+                        .padding()
+                        .minimumScaleFactor(0.3)
+                    
                     Spacer()
+                    
+                    Text(nForm.roundForCurrency(number: self.value))
+                        .padding()
+                        .font(.system(.headline, design: .rounded))
+                        .minimumScaleFactor(0.8)
                 }
-                Text(nForm.roundForCurrency(number: self.value))
-                    .padding()
-                    .font(.system(size: 24, weight: .semibold, design: .default))
-                    .minimumScaleFactor(0.5)
             }
-            .padding([.leading, .trailing])
             .frame(width: geo.size.width, height: viewHeight)
-            .background(self.hasBackground ? Color.secondary : .black)
-            .border(Color.secondary, width: 2.5)
+            .background(self.backgroundColor)
+            .border(self.backgroundColor, width: 2.5)
             .cornerRadius(2.5)
         }
     }
@@ -43,24 +47,29 @@ struct CurrencyCardStyle: ViewModifier {
 
 struct PercentageCardStyle: ViewModifier {
     @Binding var value: Double
-    var hasBackground: Bool = false
+    var backgroundColor: Color = .black
     
     func body(content: Content) -> some View {
         GeometryReader { geo in
             VStack {
                 HStack {
-                    content.font(.headline).padding(.top)
+                    content
+                        .font(.subheadline)
+                        .padding()
+                        .minimumScaleFactor(0.3)
+                    
                     Spacer()
+                    
+                    Text(nForm.roundForPercentWithTwoDecimalPlaces(self.value))
+                        .padding()
+                        .font(.system(.headline, design: .rounded))
+                        .minimumScaleFactor(0.8)
                 }
-                Text(nForm.roundForPercentWithTwoDecimalPlaces(self.value))
-                    .padding()
-                    .font(.system(size: 24, weight: .semibold, design: .default))
-                    .minimumScaleFactor(0.5)
+                
             }
-            .padding([.leading, .trailing])
             .frame(width: geo.size.width, height: viewHeight)
-            .background(self.hasBackground ? Color.secondary : .black)
-            .border(Color.secondary, width: 2.5)
+            .background(self.backgroundColor)
+            .border(self.backgroundColor, width: 2.5)
             .cornerRadius(2.5)
         }
     }
@@ -68,38 +77,42 @@ struct PercentageCardStyle: ViewModifier {
 
 struct IntegerCardStyle: ViewModifier {
     @Binding var value: Double
-    var hasBackground: Bool = false
+    var backgroundColor: Color = .black
     
     func body(content: Content) -> some View {
         GeometryReader { geo in
             VStack {
                 HStack {
-                    content.font(.headline).padding(.top)
+                    content
+                        .font(.subheadline)
+                        .padding()
+                        .minimumScaleFactor(0.3)
+                    
                     Spacer()
+                
+                    Text(nForm.formatIntegerNumbers(Int(self.value)))
+                        .padding()
+                        .font(.system(.headline, design: .rounded))
+                        .minimumScaleFactor(0.8)
                 }
-                Text(nForm.formatIntegerNumbers(Int(self.value)))
-                    .padding()
-                    .font(.system(size: 24, weight: .semibold, design: .default))
-                    .minimumScaleFactor(0.5)
             }
-            .padding([.leading, .trailing])
             .frame(width: geo.size.width, height: viewHeight)
-            .background(self.hasBackground ? Color.secondary : .black)
-            .border(Color.secondary, width: 2.5)
+            .background(self.backgroundColor)
+            .border(self.backgroundColor, width: 2.5)
             .cornerRadius(2.5)
         }
     }
 }
 
 extension View {
-    func cardStyled(value: Binding<Double>, style: CardStyles, hasBackground: Bool = false) -> some View {
+    func cardStyled(value: Binding<Double>, style: CardStyles, backgroundColor: Color = .black) -> some View {
         Group {
             if (style == .currency) {
-                self.modifier(CurrencyCardStyle(value: value, hasBackground: hasBackground))
+                self.modifier(CurrencyCardStyle(value: value, backgroundColor: backgroundColor))
             } else if (style == .percentage) {
-                self.modifier(PercentageCardStyle(value: value, hasBackground: hasBackground))
+                self.modifier(PercentageCardStyle(value: value, backgroundColor: backgroundColor))
             } else {
-                self.modifier(IntegerCardStyle(value: value, hasBackground: hasBackground))
+                self.modifier(IntegerCardStyle(value: value, backgroundColor: backgroundColor))
             }
         }
     }
@@ -107,6 +120,6 @@ extension View {
 
 struct CardStylings_Previews: PreviewProvider {
     static var previews: some View {
-        Text("Subtotal").cardStyled(value: .constant(0.00), style: .currency)
+        Text("Subtotal").cardStyled(value: .constant(999.99), style: .currency)
     }
 }

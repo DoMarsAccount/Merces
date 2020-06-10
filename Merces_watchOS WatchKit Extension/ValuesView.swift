@@ -18,10 +18,10 @@ struct ValuesView: View {
     
     var body: some View {
         ScrollView(.vertical) {
-            VStack(spacing: 80) {
+            VStack(spacing: viewHeight) {
                 
-                Text("Subtotal:")
-                    .cardStyled(value: self.$wCalcModel.subtotal, style: .currency)
+                Text("Subtotal")
+                    .cardStyled(value: self.$wCalcModel.subtotal, style: .currency, backgroundColor: .green)
                     .onTapGesture {
                         self.isSubtotalKeypadPresented.toggle()
                     }
@@ -29,8 +29,8 @@ struct ValuesView: View {
                         Keypad(value: self.$wCalcModel.subtotal, isPresented: self.$isSubtotalKeypadPresented, activeField: .constant(.subtotal))
                     }
                 
-                Text("Tax:")
-                    .cardStyled(value: self.$wCalcModel.taxAmount, style: .currency)
+                Text("Tax")
+                    .cardStyled(value: self.$wCalcModel.taxAmount, style: .currency, backgroundColor: .blue)
                     .onTapGesture {
                         self.isTaxAmountKeypadPresented.toggle()
                     }
@@ -38,41 +38,41 @@ struct ValuesView: View {
                         Keypad(value: self.$wCalcModel.taxAmount, isPresented: self.$isTaxAmountKeypadPresented, activeField: .constant(.salesTax))
                     }
                 
-                HStack {
-                    Text("For")
-                        .cardStyled(value: self.$wCalcModel.partySize.double, style: .integer)
-                        .onTapGesture {
-                            self.isPartySizeKeypadPresented.toggle()
-                        }
-                        .sheet(isPresented: self.$isPartySizeKeypadPresented) {
-                            Keypad(value: self.$wCalcModel.partySize.double, isPresented: self.$isPartySizeKeypadPresented, activeField: .constant(.numPeople))
-                        }
-                    
-                    Text("Tip Rate")
-                        .cardStyled(value: self.$wCalcModel.tipRate, style: .percentage)
-                        .onTapGesture {
-                            self.isTipRateKeypadPresented.toggle()
-                        }
-                        .sheet(isPresented: self.$isTipRateKeypadPresented) {
-                            Keypad(value: self.$wCalcModel.tipRate, isPresented: self.$isTipRateKeypadPresented, activeField: .constant(.tipRate))
-                        }
-                }
+                Text("Tip %")
+                    .cardStyled(value: self.$wCalcModel.tipRate, style: .percentage, backgroundColor: .purple)
+                    .onTapGesture {
+                        self.isTipRateKeypadPresented.toggle()
+                    }
+                    .sheet(isPresented: self.$isTipRateKeypadPresented) {
+                        Keypad(value: self.$wCalcModel.tipRate, isPresented: self.$isTipRateKeypadPresented, activeField: .constant(.tipRate))
+                    }
+                
+                Text("Party Size")
+                    .cardStyled(value: self.$wCalcModel.partySize.double, style: .integer, backgroundColor: .orange)
+                    .onTapGesture {
+                        self.isPartySizeKeypadPresented.toggle()
+                    }
+                    .sheet(isPresented: self.$isPartySizeKeypadPresented) {
+                        Keypad(value: self.$wCalcModel.partySize.double, isPresented: self.$isPartySizeKeypadPresented, activeField: .constant(.numPeople))
+                    }
+                
+                
                 
                 Text("Tip:")
-                    .cardStyled(value: self.$wCalcModel.tipAmount, style: .currency, hasBackground: true)
+                    .cardStyled(value: self.$wCalcModel.tipAmount, style: .currency, backgroundColor: .secondary)
                 
                 if (self.wCalcModel.partySize != 1) {
                     Text("Per Person:")
-                        .cardStyled(value: self.$wCalcModel.totalAmountPerPerson, style: .currency, hasBackground: true)
+                        .cardStyled(value: self.$wCalcModel.totalAmountPerPerson, style: .currency, backgroundColor: .secondary)
                 }
                 
                 Text("Total:")
-                    .cardStyled(value: self.$wCalcModel.totalAmount, style: .currency, hasBackground: true)
+                    .cardStyled(value: self.$wCalcModel.totalAmount, style: .currency, backgroundColor: .secondary)
                 
                 Spacer()
                 
             }
-//            .edgesIgnoringSafeArea([.leading, .trailing, .bottom])
+            .edgesIgnoringSafeArea([.leading, .trailing, .bottom])
         }
     }
 }
