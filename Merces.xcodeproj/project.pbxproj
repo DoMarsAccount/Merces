@@ -11,6 +11,7 @@
 		047584B2248F399000CA9326 /* defaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3AB12181E2DBF210021C889 /* defaultPreferences.plist */; };
 		047584B3248F399400CA9326 /* defaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3AB12181E2DBF210021C889 /* defaultPreferences.plist */; };
 		0480B37524910E4600036864 /* WatchDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0480B37424910E4600036864 /* WatchDataHandler.swift */; };
+		0480B3772491637100036864 /* CardStylings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0480B3762491637100036864 /* CardStylings.swift */; };
 		04E01270248961F0009FAEEB /* Venues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0126F248961F0009FAEEB /* Venues.swift */; };
 		04E012762489628A009FAEEB /* ReceiptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E012722489628A009FAEEB /* ReceiptModel.swift */; };
 		04E012772489628A009FAEEB /* ReceiptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E012722489628A009FAEEB /* ReceiptModel.swift */; };
@@ -157,6 +158,7 @@
 
 /* Begin PBXFileReference section */
 		0480B37424910E4600036864 /* WatchDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchDataHandler.swift; sourceTree = "<group>"; };
+		0480B3762491637100036864 /* CardStylings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStylings.swift; sourceTree = "<group>"; };
 		04E0126F248961F0009FAEEB /* Venues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venues.swift; sourceTree = "<group>"; };
 		04E012722489628A009FAEEB /* ReceiptModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReceiptModel.swift; path = Models/ReceiptModel.swift; sourceTree = "<group>"; };
 		04E012732489628A009FAEEB /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 				04EF6DD3248E73E6009CEF03 /* ValuesView.swift */,
 				04EF6DD9248E9A4D009CEF03 /* SettingsPage.swift */,
 				04EF6DD5248E859C009CEF03 /* StaticValueViews.swift */,
+				0480B3762491637100036864 /* CardStylings.swift */,
 				04EF6DD7248E8665009CEF03 /* EditableValueViews.swift */,
 				0480B37424910E4600036864 /* WatchDataHandler.swift */,
 				04EF6DA9248D3453009CEF03 /* Assets.xcassets */,
@@ -918,6 +921,7 @@
 				04EF6DC9248D3683009CEF03 /* VariableAmountsClass.swift in Sources */,
 				04EF6DCA248D36CC009CEF03 /* AppleWatchColors.swift in Sources */,
 				04EF6DCD248D36DB009CEF03 /* Venues.swift in Sources */,
+				0480B3772491637100036864 /* CardStylings.swift in Sources */,
 				04EF6DD6248E859C009CEF03 /* StaticValueViews.swift in Sources */,
 				04EF6DCF248D45E6009CEF03 /* CalculationsModel.swift in Sources */,
 				04EF6DCB248D36D4009CEF03 /* NumberFormattingClass.swift in Sources */,

@@ -19,7 +19,7 @@ struct KeypadEditableIntegerValueView: View {
                 Text("\(self.title) \(Int(self.value))")
             }
             .padding([.leading, .trailing])
-            .frame(width: geo.size.width)
+            .frame(width: geo.size.width, height: viewHeight)
             .border(Color.gray, width: 2.5)
             .cornerRadius(2.5)
         }
@@ -32,11 +32,20 @@ struct KeypadEditableCurrencyValueView: View {
     
     var body: some View {
         GeometryReader { geo in
-            HStack {
-                Text("\(self.title) \(nForm.roundForCurrency(number: self.value))")
+            VStack {
+                HStack {
+                    Text("\(self.title)")
+                        .padding(.top)
+                        .font(.headline)
+                    Spacer()
+                }
+                Text(nForm.roundForCurrency(number: self.value))
+                    .padding()
+                    .font(.system(size: 24, weight: .semibold, design: .default))
+                    .minimumScaleFactor(0.5)
             }
             .padding([.leading, .trailing])
-            .frame(width: geo.size.width)
+            .frame(width: geo.size.width, height: viewHeight)
             .border(Color.gray, width: 2.5)
             .cornerRadius(2.5)
         }
@@ -53,7 +62,7 @@ struct KeypadEditablePercentageValueView: View {
                 Text("\(self.title) \(nForm.roundForPercentWithTwoDecimalPlaces(self.value))")
             }
             .padding([.leading, .trailing])
-            .frame(width: geo.size.width)
+            .frame(width: geo.size.width, height: viewHeight)
             .border(Color.gray, width: 2.5)
             .cornerRadius(2.5)
         }
@@ -130,8 +139,13 @@ struct dCrownEditablePercentageValueView: View {
 // MARK: - Previews
 struct EditableValueViews_Previews: PreviewProvider {
     static var previews: some View {
-        VStack {
-            dCrownEditableIntegerValueView(title: .constant("Party of"), value: .constant(1))
+        ScrollView(.vertical) {
+            VStack(spacing: 80) {
+//                KeypadEditableCurrencyValueView(title: .constant("Subtotal: "), value: .constant(0.00))
+//
+//                KeypadEditableCurrencyValueView(title: .constant("Tax: "), value: .constant(0.00))
+                KeypadEditableIntegerValueView(title: .constant("Subtotal: "), value: .constant(0.00))
+            }
         }
     }
 }

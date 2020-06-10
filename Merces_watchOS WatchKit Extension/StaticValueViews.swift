@@ -14,12 +14,19 @@ struct StaticCurrencyValueView: View {
     
     var body: some View {
         GeometryReader { geo in
-            HStack {
-                Text("\(self.title) \(nForm.roundForCurrency(number: self.value))")
-                
+            VStack {
+                HStack {
+                    Text("\(self.title)")
+                        .font(.headline)
+                    Spacer()
+                }
+                Text(nForm.roundForCurrency(number: self.value))
+                    .padding()
+                    .font(.system(size: 24, weight: .semibold, design: .default))
+                    .minimumScaleFactor(0.5)
             }
             .padding([.leading, .trailing])
-            .frame(width: geo.size.width)
+            .frame(width: geo.size.width, height: viewHeight)
             .background(Color.secondary)
             .border(Color.secondary, width: 2.5)
             .cornerRadius(2.5)
@@ -33,12 +40,20 @@ struct StaticPercentageValueView: View {
     
     var body: some View {
         GeometryReader { geo in
-            HStack {
-                Text("\(self.title) \(nForm.roundForPercentWithTwoDecimalPlaces(self.value))")
+            VStack {
+                HStack {
+                    Text("\(self.title)")
+                        .font(.headline)
+                    Spacer()
+                }
+                Text(nForm.roundForPercentWithTwoDecimalPlaces(self.value))
+                    .padding()
+                    .font(.system(size: 24, weight: .semibold, design: .default))
+                    .minimumScaleFactor(0.5)
                 
             }
             .padding([.leading, .trailing])
-            .frame(width: geo.size.width)
+            .frame(width: geo.size.width, height: viewHeight)
             .background(Color.secondary)
             .border(Color.secondary, width: 2.5)
             .cornerRadius(2.5)
@@ -48,10 +63,13 @@ struct StaticPercentageValueView: View {
 
 struct StaticValueViews_Previews: PreviewProvider {
     static var previews: some View {
-        VStack {
-            StaticCurrencyValueView(title: .constant("Subtotal"), value: .constant(4.20))
-            
-            StaticPercentageValueView(title: .constant("Tip"), value: .constant(0.042))
+        ScrollView {
+            VStack(spacing: viewHeight) {
+                StaticCurrencyValueView(title: .constant("Subtotal"), value: .constant(4.20))
+                
+                StaticPercentageValueView(title: .constant("Tip"), value: .constant(0.042))
+            }
         }
     }
 }
+
