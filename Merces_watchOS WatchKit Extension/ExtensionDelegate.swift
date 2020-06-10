@@ -7,8 +7,11 @@
 //
 
 import WatchKit
+import WatchConnectivity
 
-class ExtensionDelegate: NSObject, WKExtensionDelegate {
+let watchUserDefaults = (UserDefaults(suiteName: "group.DoMarsToyBox.Merces"))
+
+class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
 
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
@@ -50,6 +53,17 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
                 // make sure to complete unhandled task types
                 task.setTaskCompletedWithSnapshot(false)
             }
+        }
+    }
+    
+    // MARK: - WCDelegate Methods
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        // convert session.receivedApplicationContext into a usable .plist or NSUserDefaults value
+        watchUserDefaults?.register(defaults: session.receivedApplicationContext)
+        
+        if let defaults = watchUserDefaults {
+            print(defaults.double(forKey: "userLocalSalesTax"))
         }
     }
 

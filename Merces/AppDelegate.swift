@@ -14,9 +14,10 @@
 //  Copyright © 2016 Donovan McCray. All rights reserved.
 //
 import UIKit
+import WatchConnectivity
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     
     // MARK: - Types
     
@@ -91,10 +92,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
         guard let shortcut = launchedShortcutItem else { return }
-        
-        var _ = handleShortcut(shortcutItem: shortcut)
-        
+        _ = handleShortcut(shortcutItem: shortcut)
         launchedShortcutItem = nil
+        
+        if (WCSession.isSupported()) {
+            let session = WCSession.default
+            session.delegate = self
+            session.activate()
+        }
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
@@ -133,6 +138,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
     }
+    
+    // MARK: - WCDelegate Methods
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        
+    }
+    
+    func sessionWatchStateDidChange(_ session: WCSession) {
+        // Called when the watch gets paired with the phone
+        if session.isWatchAppInstalled {
+            // session.watchDirectoryURL is guaranteed non-nil when the app is installed
+            // path to directory on the watch
+            // the lifetime of this directory is tied to the watchAppInstalled property
+            do {
+//                let defaultPrefsFile = Bundle.main.path(forResource: "defaultPreferences", ofType: "plist")
+//                let defaultPreferences = NSDictionary(contentsOfFile: defaultPrefsFile!)
+//                UserDefaults(suiteName:"group.DoMarsToyBox.Merces")?.register(defaults: defaultPreferences! as! [String : AnyObject])
+                
+                try session.updateApplicationContext((mUserDefaults?.dictionaryRepresentation())!)
+            } catch {
+                
+            }
+            
+            // session.isComplicationEnabled
+        }
+    }
+    
     
     
 }
