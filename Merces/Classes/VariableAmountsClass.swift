@@ -24,10 +24,21 @@ class VariableAmountsClass
             processInput(self.arrayOfButtonsPressedForBillAmountAsString, activeField: .subtotal)
         }
     }
-    
-    var arrayOfButtonsPressedForTaxAmountAsString: [String]
-    var arrayOfButtonsPressedForTipRateAsString: [String]
-    var arrayOfButtonsPressedForNumberOfPeoplePayingAsString: [String]
+    var arrayOfButtonsPressedForTaxAmountAsString: [String] {
+        didSet {
+            processInput(self.arrayOfButtonsPressedForTaxAmountAsString, activeField: .salesTax)
+        }
+    }
+    var arrayOfButtonsPressedForTipRateAsString: [String] {
+        didSet {
+            processInput(self.arrayOfButtonsPressedForTipRateAsString, activeField: .tipRate)
+        }
+    }
+    var arrayOfButtonsPressedForNumberOfPeoplePayingAsString: [String] {
+        didSet {
+            processInput(self.arrayOfButtonsPressedForNumberOfPeoplePayingAsString, activeField: .numPeople)
+        }
+    }
     
     init() {
         if let tipArray = mUserDefaults?.array(forKey: "quickTipArray") {

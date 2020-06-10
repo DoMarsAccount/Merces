@@ -14,13 +14,20 @@ enum ServiceQuality {
     case Great
 }
 
-enum EditableTextFields {
+enum EditableTextFields: CaseIterable, Hashable, Identifiable {
     case subtotal
     case salesTax
     case numPeople
     case tipRate
     case venue
     case none
+    
+    var name: String {
+        return "\(self)".map {
+            $0.isUppercase ? " \($0)" : "\($0)" }.joined().capitalized
+    }
+    
+    var id: EditableTextFields { self }
 }
 
 /* First Responder Tags
@@ -104,7 +111,6 @@ class CalculationsModel: ObservableObject {
         self.objectWillChange.send()
         
         tipAmount = (mUserDefaults!.bool(forKey: "tipIncludeTaxSwitchOnOff") ? (subtotal + taxAmount) * (tipRate) : subtotal * (tipRate))
-        print(tipAmount)
         
         totalAmount = subtotal + tipAmount + taxAmount
         

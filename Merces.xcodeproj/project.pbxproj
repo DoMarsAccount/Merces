@@ -10,6 +10,7 @@
 		00A610FC15D4ED252C737DC1 /* libPods-MercesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA7BA650B3FB6048042FC4C9 /* libPods-MercesTests.a */; };
 		047584B2248F399000CA9326 /* defaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3AB12181E2DBF210021C889 /* defaultPreferences.plist */; };
 		047584B3248F399400CA9326 /* defaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3AB12181E2DBF210021C889 /* defaultPreferences.plist */; };
+		0480B37524910E4600036864 /* WatchDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0480B37424910E4600036864 /* WatchDataHandler.swift */; };
 		04E01270248961F0009FAEEB /* Venues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0126F248961F0009FAEEB /* Venues.swift */; };
 		04E012762489628A009FAEEB /* ReceiptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E012722489628A009FAEEB /* ReceiptModel.swift */; };
 		04E012772489628A009FAEEB /* ReceiptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E012722489628A009FAEEB /* ReceiptModel.swift */; };
@@ -155,6 +156,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0480B37424910E4600036864 /* WatchDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchDataHandler.swift; sourceTree = "<group>"; };
 		04E0126F248961F0009FAEEB /* Venues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venues.swift; sourceTree = "<group>"; };
 		04E012722489628A009FAEEB /* ReceiptModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReceiptModel.swift; path = Models/ReceiptModel.swift; sourceTree = "<group>"; };
 		04E012732489628A009FAEEB /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
@@ -340,6 +342,7 @@
 				04EF6DD9248E9A4D009CEF03 /* SettingsPage.swift */,
 				04EF6DD5248E859C009CEF03 /* StaticValueViews.swift */,
 				04EF6DD7248E8665009CEF03 /* EditableValueViews.swift */,
+				0480B37424910E4600036864 /* WatchDataHandler.swift */,
 				04EF6DA9248D3453009CEF03 /* Assets.xcassets */,
 				04EF6DAE248D3453009CEF03 /* Info.plist */,
 				04EF6DAF248D3453009CEF03 /* PushNotificationPayload.apns */,
@@ -926,6 +929,7 @@
 				04EF6DA2248D3452009CEF03 /* ExtensionDelegate.swift in Sources */,
 				04EF6DA6248D3452009CEF03 /* NotificationView.swift in Sources */,
 				04EF6DD2248E72DF009CEF03 /* Keypad.swift in Sources */,
+				0480B37524910E4600036864 /* WatchDataHandler.swift in Sources */,
 				04EF6DD8248E8665009CEF03 /* EditableValueViews.swift in Sources */,
 				04EF6DA8248D3452009CEF03 /* ComplicationController.swift in Sources */,
 				04EF6DCC248D36D8009CEF03 /* UserPreferences.swift in Sources */,

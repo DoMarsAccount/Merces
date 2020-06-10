@@ -155,7 +155,7 @@ class MainPage: UIViewController {
         
         UserDefaults(suiteName:"group.DoMarsToyBox.Merces")?.register(defaults: defaultPreferences! as! [String : AnyObject])
         
-        var haveShownSetupAlert = UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.bool(forKey: "setupAlertShown")
+        var haveShownSetupAlert = mUserDefaults?.bool(forKey: "setupAlertShown")
         
         mUserDefaults?.set(userPrefs.localSalesTax, forKey: "userLocalSalesTax")
         

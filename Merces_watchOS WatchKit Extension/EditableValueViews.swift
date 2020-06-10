@@ -8,7 +8,61 @@
 
 import SwiftUI
 
-struct EditableIntegerValueView: View {
+// MARK: - Keypad.swift
+struct KeypadEditableIntegerValueView: View {
+    @Binding var title: String
+    @Binding var value: Double
+    
+    var body: some View {
+        GeometryReader { geo in
+            HStack {
+                Text("\(self.title) \(Int(self.value))")
+            }
+            .padding([.leading, .trailing])
+            .frame(width: geo.size.width)
+            .border(Color.gray, width: 2.5)
+            .cornerRadius(2.5)
+        }
+    }
+}
+
+struct KeypadEditableCurrencyValueView: View {
+    @Binding var title: String
+    @Binding var value: Double
+    
+    var body: some View {
+        GeometryReader { geo in
+            HStack {
+                Text("\(self.title) \(nForm.roundForCurrency(number: self.value))")
+            }
+            .padding([.leading, .trailing])
+            .frame(width: geo.size.width)
+            .border(Color.gray, width: 2.5)
+            .cornerRadius(2.5)
+        }
+    }
+}
+
+struct KeypadEditablePercentageValueView: View {
+    @Binding var title: String
+    @Binding var value: Double
+    
+    var body: some View {
+        GeometryReader { geo in
+            HStack {
+                Text("\(self.title) \(nForm.roundForPercentWithTwoDecimalPlaces(self.value))")
+            }
+            .padding([.leading, .trailing])
+            .frame(width: geo.size.width)
+            .border(Color.gray, width: 2.5)
+            .cornerRadius(2.5)
+        }
+    }
+}
+
+// MARK: - Digital Crown
+
+struct dCrownEditableIntegerValueView: View {
     @Binding var title: String
     @Binding var value: Double
     @State private var isFocused: Bool = false
@@ -30,7 +84,7 @@ struct EditableIntegerValueView: View {
     }
 }
 
-struct EditableCurrencyValueView: View {
+struct dCrownEditableCurrencyValueView: View {
     @Binding var title: String
     @Binding var value: Double
     @State private var isFocused: Bool = false
@@ -52,7 +106,7 @@ struct EditableCurrencyValueView: View {
     }
 }
 
-struct EditablePercentageValueView: View {
+struct dCrownEditablePercentageValueView: View {
     @Binding var title: String
     @Binding var value: Double
     @State private var isFocused: Bool = false
@@ -64,7 +118,7 @@ struct EditablePercentageValueView: View {
                     .focusable(true, onFocusChange: { (didChange) in
                         self.isFocused = didChange
                     })
-                    .digitalCrownRotation(self.$value, from: 0.0, through: 1.000, by: 0.01, sensitivity: .medium, isContinuous: false, isHapticFeedbackEnabled: true)
+                    .digitalCrownRotation(self.$value, from: 0.0, through: 1.000, by: 0.01, sensitivity: .low, isContinuous: false, isHapticFeedbackEnabled: true)
             }
             .padding([.leading, .trailing])
             .frame(width: geo.size.width)
@@ -73,27 +127,11 @@ struct EditablePercentageValueView: View {
         }
     }
 }
-
-struct EditableSubtotalValueView: View {
-    @Binding var value: Double
-    
-    var body: some View {
-        GeometryReader { geo in
-            HStack {
-                Text(nForm.roundForCurrency(number: self.value))
-            }
-            .padding([.leading, .trailing])
-            .frame(width: geo.size.width)
-            .border(Color.gray, width: 2.5)
-            .cornerRadius(2.5)
-        }
-    }
-}
-
+// MARK: - Previews
 struct EditableValueViews_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            EditableIntegerValueView(title: .constant("Party of"), value: .constant(1))
+            dCrownEditableIntegerValueView(title: .constant("Party of"), value: .constant(1))
         }
     }
 }

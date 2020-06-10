@@ -11,25 +11,46 @@ import SwiftUI
 struct ValuesView: View {
     
     @EnvironmentObject var wCalcModel: CalculationsModel
-    @State private var isPresented: Bool = false
+    @State private var isSubtotalKeypadPresented: Bool = false
+    @State private var isTaxAmountKeypadPresented: Bool = false
+    @State private var isPartySizeKeypadPresented: Bool = false
+    @State private var isTipRateKeypadPresented: Bool = false
     
     var body: some View {
         VStack(spacing: 0) {
             
-            EditableSubtotalValueView(value: self.$wCalcModel.subtotal)
+            KeypadEditableCurrencyValueView(title: .constant("Subtotal:"), value: self.$wCalcModel.subtotal)
             .onTapGesture {
-                self.isPresented.toggle()
+                self.isSubtotalKeypadPresented.toggle()
             }
-            .sheet(isPresented: self.$isPresented) {
-                Keypad(value: self.$wCalcModel.subtotal, isPresented: self.$isPresented)
+            .sheet(isPresented: self.$isSubtotalKeypadPresented) {
+                Keypad(value: self.$wCalcModel.subtotal, isPresented: self.$isSubtotalKeypadPresented, activeField: .constant(.subtotal))
             }
             
-            StaticCurrencyValueView(title: .constant("Sales Tax:"), value: self.$wCalcModel.taxAmount)
+            KeypadEditableCurrencyValueView(title: .constant("Tax:"), value: self.$wCalcModel.taxAmount)
+            .onTapGesture {
+                self.isTaxAmountKeypadPresented.toggle()
+            }
+            .sheet(isPresented: self.$isTaxAmountKeypadPresented) {
+                Keypad(value: self.$wCalcModel.taxAmount, isPresented: self.$isTaxAmountKeypadPresented, activeField: .constant(.salesTax))
+            }
             
             HStack {
-                EditableIntegerValueView(title: .constant("For"), value: self.$wCalcModel.partySize.double)
-                            
-                EditablePercentageValueView(title: .constant(""), value: self.$wCalcModel.tipRate)
+                KeypadEditableIntegerValueView(title: .constant("For"), value: self.$wCalcModel.partySize.double)
+                .onTapGesture {
+                    self.isPartySizeKeypadPresented.toggle()
+                }
+                .sheet(isPresented: self.$isPartySizeKeypadPresented) {
+                    Keypad(value: self.$wCalcModel.partySize.double, isPresented: self.$isPartySizeKeypadPresented, activeField: .constant(.numPeople))
+                }
+                
+                KeypadEditablePercentageValueView(title: .constant(""), value: self.$wCalcModel.tipRate)
+                .onTapGesture {
+                    self.isTipRateKeypadPresented.toggle()
+                }
+                .sheet(isPresented: self.$isTipRateKeypadPresented) {
+                    Keypad(value: self.$wCalcModel.tipRate, isPresented: self.$isTipRateKeypadPresented, activeField: .constant(.tipRate))
+                }
             }
             
             StaticCurrencyValueView(title: .constant("Tip: "), value: self.$wCalcModel.tipAmount)

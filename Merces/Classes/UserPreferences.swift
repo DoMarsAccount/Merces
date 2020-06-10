@@ -37,4 +37,6 @@ class UserPreferences {
             return UIFont(name: "HelveticaNeue-CondensedBold", size: preferredFontSize)!
         }
     }
+    
+    
 }
