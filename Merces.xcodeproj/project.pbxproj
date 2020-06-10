@@ -20,9 +20,9 @@
 		04E0127A2489628A009FAEEB /* CalculationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E012742489628A009FAEEB /* CalculationsModel.swift */; };
 		04E0127B2489628A009FAEEB /* CalculationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E012742489628A009FAEEB /* CalculationsModel.swift */; };
 		04E0127E248962B5009FAEEB /* Venues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0126F248961F0009FAEEB /* Venues.swift */; };
-		04EF6D8A248D3451009CEF03 /* Merces_watchOS WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 04EF6D89248D3451009CEF03 /* Merces_watchOS WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		04EF6D8A248D3451009CEF03 /* Merces.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 04EF6D89248D3451009CEF03 /* Merces.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		04EF6D92248D3452009CEF03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04EF6D91248D3452009CEF03 /* Assets.xcassets */; };
-		04EF6D99248D3452009CEF03 /* Merces_watchOS WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 04EF6D98248D3452009CEF03 /* Merces_watchOS WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		04EF6D99248D3452009CEF03 /* Merces.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 04EF6D98248D3452009CEF03 /* Merces.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		04EF6D9E248D3452009CEF03 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6D9D248D3452009CEF03 /* ContentView.swift */; };
 		04EF6DA0248D3452009CEF03 /* HostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6D9F248D3452009CEF03 /* HostingController.swift */; };
 		04EF6DA2248D3452009CEF03 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6DA1248D3452009CEF03 /* ExtensionDelegate.swift */; };
@@ -117,7 +117,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				04EF6D99248D3452009CEF03 /* Merces_watchOS WatchKit Extension.appex in Embed App Extensions */,
+				04EF6D99248D3452009CEF03 /* Merces.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -128,7 +128,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				04EF6D8A248D3451009CEF03 /* Merces_watchOS WatchKit App.app in Embed Watch Content */,
+				04EF6D8A248D3451009CEF03 /* Merces.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -159,16 +159,18 @@
 /* Begin PBXFileReference section */
 		0480B37424910E4600036864 /* WatchDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchDataHandler.swift; sourceTree = "<group>"; };
 		0480B3762491637100036864 /* CardStylings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStylings.swift; sourceTree = "<group>"; };
+		0480B37824917F5F00036864 /* Merces.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Merces.entitlements; sourceTree = "<group>"; };
+		0480B37924917F7F00036864 /* Merces.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Merces.entitlements; sourceTree = "<group>"; };
 		04E0126F248961F0009FAEEB /* Venues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venues.swift; sourceTree = "<group>"; };
 		04E012722489628A009FAEEB /* ReceiptModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReceiptModel.swift; path = Models/ReceiptModel.swift; sourceTree = "<group>"; };
 		04E012732489628A009FAEEB /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		04E012742489628A009FAEEB /* CalculationsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalculationsModel.swift; path = Models/CalculationsModel.swift; sourceTree = "<group>"; };
 		04EF6D86248D3451009CEF03 /* Merces_watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Merces_watchOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		04EF6D89248D3451009CEF03 /* Merces_watchOS WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Merces_watchOS WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		04EF6D89248D3451009CEF03 /* Merces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Merces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04EF6D8F248D3451009CEF03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		04EF6D91248D3452009CEF03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04EF6D93248D3452009CEF03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		04EF6D98248D3452009CEF03 /* Merces_watchOS WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Merces_watchOS WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		04EF6D98248D3452009CEF03 /* Merces.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Merces.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		04EF6D9D248D3452009CEF03 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		04EF6D9F248D3452009CEF03 /* HostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingController.swift; sourceTree = "<group>"; };
 		04EF6DA1248D3452009CEF03 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 		04EF6D8D248D3451009CEF03 /* Merces_watchOS WatchKit App */ = {
 			isa = PBXGroup;
 			children = (
+				0480B37924917F7F00036864 /* Merces.entitlements */,
 				04EF6D8E248D3451009CEF03 /* Interface.storyboard */,
 				04EF6D91248D3452009CEF03 /* Assets.xcassets */,
 				04EF6D93248D3452009CEF03 /* Info.plist */,
@@ -333,6 +336,7 @@
 		04EF6D9C248D3452009CEF03 /* Merces_watchOS WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				0480B37824917F5F00036864 /* Merces.entitlements */,
 				04EF6D9D248D3452009CEF03 /* ContentView.swift */,
 				04EF6D9F248D3452009CEF03 /* HostingController.swift */,
 				04EF6DA1248D3452009CEF03 /* ExtensionDelegate.swift */,
@@ -522,8 +526,8 @@
 				E3B4B2C91ABB2CF7002A6C16 /* MercesTests.xctest */,
 				E3AB12201E2DC1DF0021C889 /* MercesWidget.appex */,
 				04EF6D86248D3451009CEF03 /* Merces_watchOS.app */,
-				04EF6D89248D3451009CEF03 /* Merces_watchOS WatchKit App.app */,
-				04EF6D98248D3452009CEF03 /* Merces_watchOS WatchKit Extension.appex */,
+				04EF6D89248D3451009CEF03 /* Merces.app */,
+				04EF6D98248D3452009CEF03 /* Merces.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -632,7 +636,7 @@
 			);
 			name = "Merces_watchOS WatchKit App";
 			productName = "Merces_watchOS WatchKit App";
-			productReference = 04EF6D89248D3451009CEF03 /* Merces_watchOS WatchKit App.app */;
+			productReference = 04EF6D89248D3451009CEF03 /* Merces.app */;
 			productType = "com.apple.product-type.application.watchapp2";
 		};
 		04EF6D97248D3452009CEF03 /* Merces_watchOS WatchKit Extension */ = {
@@ -649,7 +653,7 @@
 			);
 			name = "Merces_watchOS WatchKit Extension";
 			productName = "Merces_watchOS WatchKit Extension";
-			productReference = 04EF6D98248D3452009CEF03 /* Merces_watchOS WatchKit Extension.appex */;
+			productReference = 04EF6D98248D3452009CEF03 /* Merces.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
 		E3AB121F1E2DC1DF0021C889 /* MercesWidget */ = {
@@ -1075,6 +1079,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "Merces_watchOS WatchKit Extension/Merces.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_ASSET_PATHS = "\"Merces_watchOS WatchKit Extension/Preview Content\"";
@@ -1086,7 +1091,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.domar.Merces-watchOS.watchkitapp.watchkitextension";
-				PRODUCT_NAME = "${TARGET_NAME}";
+				PRODUCT_NAME = Merces;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -1106,6 +1111,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "Merces_watchOS WatchKit Extension/Merces.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Merces_watchOS WatchKit Extension/Preview Content\"";
@@ -1116,7 +1122,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.domar.Merces-watchOS.watchkitapp.watchkitextension";
-				PRODUCT_NAME = "${TARGET_NAME}";
+				PRODUCT_NAME = Merces;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1136,6 +1142,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "Merces_watchOS WatchKit App/Merces.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = NS4T6US98M;
@@ -1145,7 +1152,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.domar.Merces-watchOS.watchkitapp";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Merces;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -1166,6 +1173,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "Merces_watchOS WatchKit App/Merces.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = NS4T6US98M;
@@ -1174,7 +1182,7 @@
 				INFOPLIST_FILE = "Merces_watchOS WatchKit App/Info.plist";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.domar.Merces-watchOS.watchkitapp";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Merces;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
