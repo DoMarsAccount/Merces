@@ -20,47 +20,54 @@ struct ValuesView: View {
         ScrollView(.vertical) {
             VStack(spacing: 80) {
                 
-                KeypadEditableCurrencyValueView(title: .constant("Subtotal:"), value: self.$wCalcModel.subtotal)
-                .onTapGesture {
-                    self.isSubtotalKeypadPresented.toggle()
-                }
-                .sheet(isPresented: self.$isSubtotalKeypadPresented) {
-                    Keypad(value: self.$wCalcModel.subtotal, isPresented: self.$isSubtotalKeypadPresented, activeField: .constant(.subtotal))
-                }
+                Text("Subtotal:")
+                    .cardStyled(value: self.$wCalcModel.subtotal, style: .currency)
+                    .onTapGesture {
+                        self.isSubtotalKeypadPresented.toggle()
+                    }
+                    .sheet(isPresented: self.$isSubtotalKeypadPresented) {
+                        Keypad(value: self.$wCalcModel.subtotal, isPresented: self.$isSubtotalKeypadPresented, activeField: .constant(.subtotal))
+                    }
                 
-                KeypadEditableCurrencyValueView(title: .constant("Tax:"), value: self.$wCalcModel.taxAmount)
-                .onTapGesture {
-                    self.isTaxAmountKeypadPresented.toggle()
-                }
-                .sheet(isPresented: self.$isTaxAmountKeypadPresented) {
-                    Keypad(value: self.$wCalcModel.taxAmount, isPresented: self.$isTaxAmountKeypadPresented, activeField: .constant(.salesTax))
-                }
+                Text("Tax:")
+                    .cardStyled(value: self.$wCalcModel.taxAmount, style: .currency)
+                    .onTapGesture {
+                        self.isTaxAmountKeypadPresented.toggle()
+                    }
+                    .sheet(isPresented: self.$isTaxAmountKeypadPresented) {
+                        Keypad(value: self.$wCalcModel.taxAmount, isPresented: self.$isTaxAmountKeypadPresented, activeField: .constant(.salesTax))
+                    }
                 
                 HStack {
-                    KeypadEditableIntegerValueView(title: .constant("For"), value: self.$wCalcModel.partySize.double)
-                    .onTapGesture {
-                        self.isPartySizeKeypadPresented.toggle()
-                    }
-                    .sheet(isPresented: self.$isPartySizeKeypadPresented) {
-                        Keypad(value: self.$wCalcModel.partySize.double, isPresented: self.$isPartySizeKeypadPresented, activeField: .constant(.numPeople))
-                    }
+                    Text("For")
+                        .cardStyled(value: self.$wCalcModel.partySize.double, style: .integer)
+                        .onTapGesture {
+                            self.isPartySizeKeypadPresented.toggle()
+                        }
+                        .sheet(isPresented: self.$isPartySizeKeypadPresented) {
+                            Keypad(value: self.$wCalcModel.partySize.double, isPresented: self.$isPartySizeKeypadPresented, activeField: .constant(.numPeople))
+                        }
                     
-                    KeypadEditablePercentageValueView(title: .constant(""), value: self.$wCalcModel.tipRate)
-                    .onTapGesture {
-                        self.isTipRateKeypadPresented.toggle()
-                    }
-                    .sheet(isPresented: self.$isTipRateKeypadPresented) {
-                        Keypad(value: self.$wCalcModel.tipRate, isPresented: self.$isTipRateKeypadPresented, activeField: .constant(.tipRate))
-                    }
+                    Text("Tip Rate")
+                        .cardStyled(value: self.$wCalcModel.tipRate, style: .percentage)
+                        .onTapGesture {
+                            self.isTipRateKeypadPresented.toggle()
+                        }
+                        .sheet(isPresented: self.$isTipRateKeypadPresented) {
+                            Keypad(value: self.$wCalcModel.tipRate, isPresented: self.$isTipRateKeypadPresented, activeField: .constant(.tipRate))
+                        }
                 }
                 
-                StaticCurrencyValueView(title: .constant("Tip: "), value: self.$wCalcModel.tipAmount)
+                Text("Tip:")
+                    .cardStyled(value: self.$wCalcModel.tipAmount, style: .currency, hasBackground: true)
                 
                 if (self.wCalcModel.partySize != 1) {
-                    StaticCurrencyValueView(title: .constant("Per person"), value: self.$wCalcModel.totalAmountPerPerson)
+                    Text("Per Person:")
+                        .cardStyled(value: self.$wCalcModel.totalAmountPerPerson, style: .currency, hasBackground: true)
                 }
                 
-                StaticCurrencyValueView(title: .constant("Total: "), value: self.$wCalcModel.totalAmount)
+                Text("Total:")
+                    .cardStyled(value: self.$wCalcModel.totalAmount, style: .currency, hasBackground: true)
                 
                 Spacer()
                 

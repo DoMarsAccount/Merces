@@ -18,6 +18,7 @@ enum CardStyles {
 
 struct CurrencyCardStyle: ViewModifier {
     @Binding var value: Double
+    var hasBackground: Bool = false
     
     func body(content: Content) -> some View {
         GeometryReader { geo in
@@ -33,7 +34,8 @@ struct CurrencyCardStyle: ViewModifier {
             }
             .padding([.leading, .trailing])
             .frame(width: geo.size.width, height: viewHeight)
-            .border(Color.gray, width: 2.5)
+            .background(self.hasBackground ? Color.secondary : .black)
+            .border(Color.secondary, width: 2.5)
             .cornerRadius(2.5)
         }
     }
@@ -41,6 +43,7 @@ struct CurrencyCardStyle: ViewModifier {
 
 struct PercentageCardStyle: ViewModifier {
     @Binding var value: Double
+    var hasBackground: Bool = false
     
     func body(content: Content) -> some View {
         GeometryReader { geo in
@@ -56,7 +59,8 @@ struct PercentageCardStyle: ViewModifier {
             }
             .padding([.leading, .trailing])
             .frame(width: geo.size.width, height: viewHeight)
-            .border(Color.gray, width: 2.5)
+            .background(self.hasBackground ? Color.secondary : .black)
+            .border(Color.secondary, width: 2.5)
             .cornerRadius(2.5)
         }
     }
@@ -64,6 +68,7 @@ struct PercentageCardStyle: ViewModifier {
 
 struct IntegerCardStyle: ViewModifier {
     @Binding var value: Double
+    var hasBackground: Bool = false
     
     func body(content: Content) -> some View {
         GeometryReader { geo in
@@ -79,21 +84,22 @@ struct IntegerCardStyle: ViewModifier {
             }
             .padding([.leading, .trailing])
             .frame(width: geo.size.width, height: viewHeight)
-            .border(Color.gray, width: 2.5)
+            .background(self.hasBackground ? Color.secondary : .black)
+            .border(Color.secondary, width: 2.5)
             .cornerRadius(2.5)
         }
     }
 }
 
 extension View {
-    func cardStyled(value: Binding<Double>, style: CardStyles) -> some View {
+    func cardStyled(value: Binding<Double>, style: CardStyles, hasBackground: Bool = false) -> some View {
         Group {
             if (style == .currency) {
-                self.modifier(CurrencyCardStyle(value: value))
+                self.modifier(CurrencyCardStyle(value: value, hasBackground: hasBackground))
             } else if (style == .percentage) {
-                self.modifier(PercentageCardStyle(value: value))
+                self.modifier(PercentageCardStyle(value: value, hasBackground: hasBackground))
             } else {
-                self.modifier(IntegerCardStyle(value: value))
+                self.modifier(IntegerCardStyle(value: value, hasBackground: hasBackground))
             }
         }
     }
