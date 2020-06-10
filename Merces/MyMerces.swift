@@ -285,7 +285,7 @@ class MyMerces: UIViewController {
         case 2:
             activeField = .salesTax
         case 3:
-            activeField = .numPeople
+            activeField = .partySize
         case 4:
             activeField = .tipRate
         case 5:

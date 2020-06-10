@@ -192,7 +192,7 @@
 "nex-qO-Ef0.title" = "Color Picker";
 
 /* Class = "UILabel"; text = "# of people"; ObjectID = "ni0-8K-BUD"; */
-"ni0-8K-BUD.text" = "# of people";
+"ni0-8K-BUD.text" = "Party Size";
 
 /* Class = "UITableViewSection"; headerTitle = "Accessibility"; ObjectID = "pt0-cm-Ljf"; */
 "pt0-cm-Ljf.headerTitle" = "Accessibility";
@@ -246,7 +246,7 @@
 "wZE-VW-WW6.normalTitle" = "8";
 
 /* Class = "UILabel"; text = "Tip Rate"; ObjectID = "wjv-bx-gpi"; */
-"wjv-bx-gpi.text" = "Tip Rate";
+"wjv-bx-gpi.text" = "Tip %";
 
 /* Class = "UILabel"; text = "Grand Total"; ObjectID = "xcb-eo-RkH"; */
 "xcb-eo-RkH.text" = "Grand Total";

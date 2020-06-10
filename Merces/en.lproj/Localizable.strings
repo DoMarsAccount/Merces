@@ -16,8 +16,8 @@
 
 "Subtotal" = "Subtotal";
 "SalesTax" = "Sales Tax";
-"TipRate" = "Tip Rate";
-"NumberOfPeople" = "# of People";
+"TipRate" = "Tip %";
+"NumberOfPeople" = "Party Size";
 "VenueAndService" = "Venue and Service";
 "TotaledAmounts" = "Totaled Amounts";
 

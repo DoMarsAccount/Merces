@@ -346,7 +346,7 @@ class MainPage: UIViewController {
                 
                 self.calculate(varAmts.arrayOfButtonsPressedForTipRateAsString, activeField: self.userEditingThisField)
                 
-            case .numPeople:
+            case .partySize:
                 varAmts.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.append(buttonTitle)
                 
                 self.calculate(varAmts.arrayOfButtonsPressedForNumberOfPeoplePayingAsString, activeField: self.userEditingThisField)
@@ -388,7 +388,7 @@ class MainPage: UIViewController {
                 
                 self.calculate(varAmts.arrayOfButtonsPressedForTipRateAsString, activeField: self.userEditingThisField)
                 
-            case .numPeople:
+            case .partySize:
                 if !varAmts.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.isEmpty {
                     varAmts.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.removeLast()
                 }
@@ -571,7 +571,7 @@ class MainPage: UIViewController {
         
         keypadAppear()
         
-        userEditingThisField = .numPeople
+        userEditingThisField = .partySize
         
         varAmts.firstResponderTag = numberOfPeoplePayingTextFieldOutlet.tag
         
