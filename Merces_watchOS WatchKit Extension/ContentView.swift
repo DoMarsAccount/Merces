@@ -9,24 +9,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var wCalcModel = varAmts.calcModel
+//    @ObservedObject var wCalcModel = varAmts.calcModel
+    @State private var isActive: Bool = false
     
     var body: some View {
-        ValuesView().environmentObject(wCalcModel)
-//        .contextMenu {
-//            ScrollView (.vertical) {
-//                VStack {
-//                    ForEach(VenueType.allCases) { venue in
-//                        if venue.name == varAmts.calcModel.selectedVenue.name {
-//                            Text("\(venue.name)")
-//                                .background(Color.blue)
-//                        } else {
-//                            Text("\(venue.name)")
-//                        }
-//                    }
-//                }
-//            }
-//        }
+        
+        ValuesView().environmentObject(varAmts.calcModel)
+            .contextMenu {
+                NavigationLink(destination: SettingsPage().environmentObject(userPrefs), isActive: self.$isActive) {
+                    HStack {
+                        Image(systemName: "gear")
+                        Text("Settings").font(.headline)
+                    }
+                }
+                
+            }
     }
 }
 
