@@ -168,17 +168,17 @@ class VariableAmountsClass
         arrayOfButtonsPressedForNumberOfPeoplePayingAsString = []
     }
     
-//    func updateSubtotalForPostTaxDesired() {
-//        
-//        // Here because adjusted amount should only be displayed once
-//        // user is done editing
-//        if UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.bool(forKey: "subtotalIsPostTaxSwitchOnOff") == true {
-//            calcModel.subtotal = calcModel.subtotal / (1 + userPrefs.localSalesTax)
-//            calcModel.taxAmount = calcModel.subtotal * userPrefs.localSalesTax
-//        }
-//        
-//        // MUST be followed by a call to updateValues()
-//        
-//    }
+    func updateSubtotalForPostTaxDesired() {
+        
+        // Here because adjusted amount should only be displayed once
+        // user is done editing
+        if mUserDefaults?.bool(forKey: "subtotalIsPostTaxSwitchOnOff") == true {
+            calcModel.subtotal = calcModel.subtotal / (1 + userPrefs.localSalesTax)
+            calcModel.taxAmount = calcModel.subtotal * userPrefs.localSalesTax
+        }
+        
+        // MUST be followed by a call to updateValues()
+        
+    }
     
 }

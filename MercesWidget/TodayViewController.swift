@@ -377,7 +377,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                     varAmountsObject.firstResponderTag = self.amountIndexer
                     
                     
-                    varAmountsObject.updateSubtotalForPostTaxDesired()
+//                    varAmountsObject.updateSubtotalForPostTaxDesired()
                     
                 } else {
                     
