@@ -19,7 +19,7 @@ enum EditableTextFields: CaseIterable, Hashable, Identifiable {
     case salesTax
     case partySize
     case tipRate
-    case localSalesTax
+    case localTax
     case none
     
     var name: String {

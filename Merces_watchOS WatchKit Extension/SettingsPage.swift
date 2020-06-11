@@ -53,7 +53,7 @@ struct MyMerces: View {
                 self.isKeypadPresented.toggle()
             }
             .sheet(isPresented: self.$isKeypadPresented) {
-                Keypad(value: self.$preferences.localSalesTax, isPresented: self.$isKeypadPresented, activeField: .constant(.localSalesTax))
+                Keypad(value: self.$preferences.localSalesTax, isPresented: self.$isKeypadPresented, activeField: .constant(.localTax))
             }
     }
 }

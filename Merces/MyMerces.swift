@@ -289,7 +289,7 @@ class MyMerces: UIViewController {
         case 4:
             activeField = .tipRate
         case 5:
-            activeField = .localSalesTax
+            activeField = .localTax
         default:
             activeField = .none
         }

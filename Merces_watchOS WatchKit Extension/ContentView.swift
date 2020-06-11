@@ -14,7 +14,8 @@ struct ContentView: View {
     
     var body: some View {
         
-        ValuesView().environmentObject(varAmts.calcModel)
+        ValuesView()
+            .environmentObject(varAmts.calcModel)
             .contextMenu {
                 NavigationLink(destination: SettingsPage().environmentObject(userPrefs), isActive: self.$isActive) {
                     HStack {
@@ -24,6 +25,9 @@ struct ContentView: View {
                 }
                 
             }
+        .onAppear {
+            _ = varAmts.calcModel.computeTippingValues()
+        }
     }
 }
 

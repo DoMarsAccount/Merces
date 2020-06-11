@@ -40,7 +40,7 @@ class VariableAmountsClass
     }
     var arrayOfButtonsPressedForLocalSalesTax: [String] = [] {
         didSet {
-            processInput(self.arrayOfButtonsPressedForLocalSalesTax, activeField: .localSalesTax)
+            processInput(self.arrayOfButtonsPressedForLocalSalesTax, activeField: .localTax)
         }
     }
     
@@ -114,7 +114,7 @@ class VariableAmountsClass
         case .tipRate:
             calcModel.tipRate = inputAmount * 0.01
             
-        case .localSalesTax:
+        case .localTax:
             userPrefs.localSalesTax = inputAmount * 0.001
             
         default:
@@ -139,25 +139,16 @@ class VariableAmountsClass
     func updateValues() -> (formattedBillAmount: String, formattedTaxAmount: String, formattedTipRate: String, numberOfPeoplePaying: String, tipAmount: String, totalAmount: String, totalAmountPerPerson: String) {
         
         return calcModel.computeTippingValues()
-        
     }
     
     func resetValues() {
-        
         calcModel.partySize = 1
-        
         calcModel.totalAmount = 0.00
-        
         calcModel.totalAmountPerPerson = 0.00
-        
         calcModel.tipAmount = 0.0
-        
         calcModel.subtotal = 0.00
-        
         calcModel.tipRate = 0.0
-        
         calcModel.taxAmount = 0.00
-        
         calcModel.selectedVenue = .quick
         
         tipRateArray = tipRates(for: self.calcModel.selectedVenue)
@@ -168,6 +159,7 @@ class VariableAmountsClass
         arrayOfButtonsPressedForNumberOfPeoplePayingAsString = []
     }
     
+    /// MUST be followed by a call to updateValues()
     func updateSubtotalForPostTaxDesired() {
         
         // Here because adjusted amount should only be displayed once
@@ -176,9 +168,6 @@ class VariableAmountsClass
             calcModel.subtotal = calcModel.subtotal / (1 + userPrefs.localSalesTax)
             calcModel.taxAmount = calcModel.subtotal * userPrefs.localSalesTax
         }
-        
-        // MUST be followed by a call to updateValues()
-        
     }
     
 }

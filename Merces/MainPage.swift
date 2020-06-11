@@ -778,17 +778,11 @@ class MainPage: UIViewController {
         totalAmountPerPersonLabelOutlet.text = varAmts.updateValues().totalAmountPerPerson
         
         if varAmts.calcModel.moreOrLessPerPerson < 0 {
-            
             coinsImageOutlet.image = UIImage(named: "coins-green")
-            
         } else if varAmts.calcModel.moreOrLessPerPerson > 0 {
-            
             coinsImageOutlet.image = UIImage(named: "coins-red")
-            
         } else {
-            
             coinsImageOutlet.isHidden = true
-            
         }
     }
 

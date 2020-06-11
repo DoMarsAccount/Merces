@@ -23,7 +23,7 @@ struct KeypadButton: View {
                 varAmts.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.append(self.text)
             case .tipRate:
                 varAmts.arrayOfButtonsPressedForTipRateAsString.append(self.text)
-            case .localSalesTax:
+            case .localTax:
                 varAmts.arrayOfButtonsPressedForLocalSalesTax.append(self.text)
             default:
                 break
@@ -58,7 +58,7 @@ struct KeypadDeleteButton: View {
                 if (!varAmts.arrayOfButtonsPressedForTipRateAsString.isEmpty) {
                     varAmts.arrayOfButtonsPressedForTipRateAsString.removeLast()
                 }
-            case .localSalesTax:
+            case .localTax:
                 if (!varAmts.arrayOfButtonsPressedForLocalSalesTax.isEmpty) {
                     varAmts.arrayOfButtonsPressedForLocalSalesTax.removeLast()
                 }
@@ -98,6 +98,8 @@ struct Keypad: View {
                 
                 HStack {
                     Text("\(self.activeField.name):")
+                        .minimumScaleFactor(0.5)
+                        .multilineTextAlignment(.leading)
                     
                     if (self.activeField == EditableTextFields.partySize) {
                         Text(nForm.formatIntegerNumbers(Int(self.value)))
@@ -105,8 +107,9 @@ struct Keypad: View {
                     } else if (self.activeField == EditableTextFields.tipRate) {
                         Text(nForm.roundForPercentWithTwoDecimalPlaces(self.value))
                             .multilineTextAlignment(.trailing)
-                    } else if (self.activeField == EditableTextFields.localSalesTax) {
+                    } else if (self.activeField == EditableTextFields.localTax) {
                         Text(nForm.roundForPercentWithThreeDecimalPlaces(number: self.value))
+                            .minimumScaleFactor(0.8)
                             .multilineTextAlignment(.trailing)
                     } else {
                         Text(nForm.roundForCurrency(number: self.value))
@@ -144,6 +147,6 @@ struct Keypad: View {
 
 struct Keypad_Previews: PreviewProvider {
     static var previews: some View {
-        Keypad(value: .constant(0.00), isPresented: .constant(false), activeField: .constant(.tipRate))
+        Keypad(value: .constant(0.00), isPresented: .constant(false), activeField: .constant(.localTax))
     }
 }
