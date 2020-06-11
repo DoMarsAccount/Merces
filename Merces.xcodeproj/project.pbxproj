@@ -55,7 +55,6 @@
 		E3AB120A1E2DBE950021C889 /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12021E2DBE950021C889 /* SettingsPage.swift */; };
 		E3AB120B1E2DBE950021C889 /* OptimalUsagePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12031E2DBE950021C889 /* OptimalUsagePage.swift */; };
 		E3AB120C1E2DBE950021C889 /* MyMerces.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12041E2DBE950021C889 /* MyMerces.swift */; };
-		E3AB120D1E2DBE950021C889 /* ThemesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12051E2DBE950021C889 /* ThemesPage.swift */; };
 		E3AB120E1E2DBE950021C889 /* InAppPurchasePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12061E2DBE950021C889 /* InAppPurchasePage.swift */; };
 		E3AB12191E2DBF210021C889 /* defaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3AB12181E2DBF210021C889 /* defaultPreferences.plist */; };
 		E3AB12221E2DC1DF0021C889 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3AB12211E2DC1DF0021C889 /* NotificationCenter.framework */; };
@@ -239,7 +238,6 @@
 		E3AB12021E2DBE950021C889 /* SettingsPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsPage.swift; path = Merces/SettingsPage.swift; sourceTree = "<group>"; };
 		E3AB12031E2DBE950021C889 /* OptimalUsagePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OptimalUsagePage.swift; path = Merces/OptimalUsagePage.swift; sourceTree = "<group>"; };
 		E3AB12041E2DBE950021C889 /* MyMerces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyMerces.swift; path = Merces/MyMerces.swift; sourceTree = "<group>"; };
-		E3AB12051E2DBE950021C889 /* ThemesPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThemesPage.swift; path = Merces/ThemesPage.swift; sourceTree = "<group>"; };
 		E3AB12061E2DBE950021C889 /* InAppPurchasePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InAppPurchasePage.swift; path = Merces/InAppPurchasePage.swift; sourceTree = "<group>"; };
 		E3AB12181E2DBF210021C889 /* defaultPreferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaultPreferences.plist; sourceTree = "<group>"; };
 		E3AB12201E2DC1DF0021C889 /* MercesWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MercesWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -404,7 +402,6 @@
 				E3AB12021E2DBE950021C889 /* SettingsPage.swift */,
 				E3AB12031E2DBE950021C889 /* OptimalUsagePage.swift */,
 				E3AB12041E2DBE950021C889 /* MyMerces.swift */,
-				E3AB12051E2DBE950021C889 /* ThemesPage.swift */,
 				E33460B21E33EFB000D467C6 /* Themes Page */,
 				E3AB12061E2DBE950021C889 /* InAppPurchasePage.swift */,
 			);
@@ -971,7 +968,6 @@
 			files = (
 				E3FD0FB31EC3DB3600763ED2 /* VariableAmountsClass.swift in Sources */,
 				E3AB12081E2DBE950021C889 /* NavigationController.swift in Sources */,
-				E3AB120D1E2DBE950021C889 /* ThemesPage.swift in Sources */,
 				04E01270248961F0009FAEEB /* Venues.swift in Sources */,
 				E3AB120C1E2DBE950021C889 /* MyMerces.swift in Sources */,
 				E3FD0FB11EC3DB3600763ED2 /* ColoringAndThemes.swift in Sources */,

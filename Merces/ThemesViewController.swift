@@ -27,8 +27,6 @@ class ThemesViewController: UIViewController, UICollectionViewDataSource, UIColl
     @IBOutlet var themesBackgroundCollectionView: UICollectionView!
     @IBOutlet var themesViewCollectionView: UICollectionView!
     
-    
-    
     let reuseIdentifier = "cell"
 
     override func viewDidLoad() {
@@ -37,27 +35,18 @@ class ThemesViewController: UIViewController, UICollectionViewDataSource, UIColl
         // Do any additional setup after loading the view.
         
         for collectionView in collectionThemesCollectionViews {
-            
             collectionView.layer.cornerRadius = 5
-            
             collectionView.layer.borderWidth = 1
-            
             collectionView.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor!, isFlat: true).cgColor
-            
         }
         
         for themesLabel in collectionThemesLabels {
-            
             themesLabel.layer.cornerRadius = 2
-            
             themesLabel.layer.borderWidth = 4
-            
             themesLabel.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor!, isFlat: true).cgColor
-            
         }
-        
+            
         updateColorValues()
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -122,9 +111,7 @@ class ThemesViewController: UIViewController, UICollectionViewDataSource, UIColl
                 themesViewLabel.text = "View Color: \(coloringThemes.arrayOfAllColorNames[indexPath.item])"
                 
             }
-            
         }
-        
         return cell
     }
     
@@ -152,17 +139,12 @@ class ThemesViewController: UIViewController, UICollectionViewDataSource, UIColl
             themesViewLabel.text = "View Color: \(coloringThemes.arrayOfAllColorNames[indexPath.item])"
             
         }
-        
         collectionView.reloadData()
-        
         self.updateColorValues()
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        
         collectionView.reloadData()
-        
     }
     
     func checkForDynamicType(_ preferredFontSize: CGFloat) -> UIFont {
@@ -170,18 +152,12 @@ class ThemesViewController: UIViewController, UICollectionViewDataSource, UIColl
         if UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.bool(forKey: "useDynamicText") == true {
             
             return UIFont.preferredFont(forTextStyle: UIFont.TextStyle.headline)
-            
-            
-            
         } else {
             
             return UIFont(name: "HelveticaNeue-CondensedBold", size: preferredFontSize)!
             
         }
-        
     }
-    
-    
 
     func updateColorValues() {
         
@@ -196,7 +172,7 @@ class ThemesViewController: UIViewController, UICollectionViewDataSource, UIColl
         self.view.backgroundColor = coloringThemes.getBackgroundColor()
         
         // Title Coloring
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)!]
         
         
         // Back Button Coloring
@@ -229,9 +205,6 @@ class ThemesViewController: UIViewController, UICollectionViewDataSource, UIColl
             themesLabel.font = checkForDynamicType(24)
             
         }
-        
-        
-        
         
     }
 
