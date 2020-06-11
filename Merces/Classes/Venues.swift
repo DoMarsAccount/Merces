@@ -8,6 +8,19 @@
 
 import Foundation
 
+enum ServiceQuality: CaseIterable, Hashable, Identifiable {
+    case Poor
+    case Average
+    case Great
+    
+    var name: String {
+        return "\(self)".map {
+            $0.isUppercase ? " \($0)" : "\($0)" }.joined().capitalized
+    }
+    
+    var id: ServiceQuality { self }
+}
+
 enum VenueType: CaseIterable, Hashable, Identifiable {
     case quick
     case bar
@@ -60,6 +73,17 @@ func tipRates(for venue: VenueType) -> [Double] {
         return mUserDefaults?.array(forKey: "deliveryTipArray") as! [Double]
     case .none:
         return [0.0, 0.0, 0.0]
+    }
+}
+
+func tipRate(for venue: VenueType, service: ServiceQuality) -> Double {
+    switch service {
+    case .Poor:
+        return tipRates(for: venue)[0]
+    case .Average:
+        return tipRates(for: venue)[1]
+    case .Great:
+        return tipRates(for: venue)[2]
     }
 }
 

@@ -272,8 +272,6 @@ class MyMerces: UIViewController {
         
     }
     
-    
-    
     /* ------------------ Updating Values and Views -------------------- */
     
     func calculate(_ arrayOfButtonsPressed: [String], firstResponderValue: Int) {

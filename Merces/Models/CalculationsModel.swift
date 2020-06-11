@@ -8,12 +8,6 @@
 
 import Foundation
 
-enum ServiceQuality {
-    case Poor
-    case Average
-    case Great
-}
-
 enum EditableTextFields: CaseIterable, Hashable, Identifiable {
     case subtotal
     case salesTax
@@ -57,8 +51,8 @@ class CalculationsModel: ObservableObject {
     @Published var totalAmount: Double
     @Published var totalAmountPerPerson: Double
     
-    var selectedVenue: VenueType
-    var service: ServiceQuality
+    @Published var selectedVenue: VenueType
+    @Published var service: ServiceQuality
     
     var displayedTotalAmountPerPerson: Double
     var moreOrLessPerPerson: Double
@@ -74,7 +68,7 @@ class CalculationsModel: ObservableObject {
         
         self.selectedVenue = .quick
         self.service = .Average
-        self.tipRate = 0.00
+        self.tipRate = tipRates(for: .quick)[1]
         
         self.displayedTotalAmountPerPerson = 0.0
         self.moreOrLessPerPerson = 0.00
@@ -91,7 +85,7 @@ class CalculationsModel: ObservableObject {
         
         self.selectedVenue = .quick
         self.service = .Average
-        self.tipAmount = 0.0
+        self.tipRate = tipRates(for: self.selectedVenue)[1]
         
         self.displayedTotalAmountPerPerson = 0.0
         self.moreOrLessPerPerson = 0.00

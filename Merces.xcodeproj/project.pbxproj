@@ -12,6 +12,7 @@
 		047584B3248F399400CA9326 /* defaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3AB12181E2DBF210021C889 /* defaultPreferences.plist */; };
 		0480B37524910E4600036864 /* WatchDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0480B37424910E4600036864 /* WatchDataHandler.swift */; };
 		0480B3772491637100036864 /* CardStylings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0480B3762491637100036864 /* CardStylings.swift */; };
+		049C69692491CAE600273450 /* VenuesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049C69682491CAE600273450 /* VenuesView.swift */; };
 		04E01270248961F0009FAEEB /* Venues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0126F248961F0009FAEEB /* Venues.swift */; };
 		04E012762489628A009FAEEB /* ReceiptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E012722489628A009FAEEB /* ReceiptModel.swift */; };
 		04E012772489628A009FAEEB /* ReceiptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E012722489628A009FAEEB /* ReceiptModel.swift */; };
@@ -161,6 +162,7 @@
 		0480B3762491637100036864 /* CardStylings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStylings.swift; sourceTree = "<group>"; };
 		0480B37824917F5F00036864 /* Merces.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Merces.entitlements; sourceTree = "<group>"; };
 		0480B37924917F7F00036864 /* Merces.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Merces.entitlements; sourceTree = "<group>"; };
+		049C69682491CAE600273450 /* VenuesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuesView.swift; sourceTree = "<group>"; };
 		04E0126F248961F0009FAEEB /* Venues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venues.swift; sourceTree = "<group>"; };
 		04E012722489628A009FAEEB /* ReceiptModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReceiptModel.swift; path = Models/ReceiptModel.swift; sourceTree = "<group>"; };
 		04E012732489628A009FAEEB /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 				0480B3762491637100036864 /* CardStylings.swift */,
 				04EF6DD7248E8665009CEF03 /* EditableValueViews.swift */,
 				0480B37424910E4600036864 /* WatchDataHandler.swift */,
+				049C69682491CAE600273450 /* VenuesView.swift */,
 				04EF6DA9248D3453009CEF03 /* Assets.xcassets */,
 				04EF6DAE248D3453009CEF03 /* Info.plist */,
 				04EF6DAF248D3453009CEF03 /* PushNotificationPayload.apns */,
@@ -937,6 +940,7 @@
 				04EF6DA2248D3452009CEF03 /* ExtensionDelegate.swift in Sources */,
 				04EF6DA6248D3452009CEF03 /* NotificationView.swift in Sources */,
 				04EF6DD2248E72DF009CEF03 /* Keypad.swift in Sources */,
+				049C69692491CAE600273450 /* VenuesView.swift in Sources */,
 				0480B37524910E4600036864 /* WatchDataHandler.swift in Sources */,
 				04EF6DD8248E8665009CEF03 /* EditableValueViews.swift in Sources */,
 				04EF6DA8248D3452009CEF03 /* ComplicationController.swift in Sources */,
