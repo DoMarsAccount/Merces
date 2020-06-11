@@ -10,7 +10,11 @@ import SwiftUI
 
 struct VenuesView: View {
     @EnvironmentObject var wCalcModel: CalculationsModel
-    @State private var isActive: Bool = false
+    @State private var isActive: Bool = false {
+        didSet {
+            venueEditor.resetTipAmount()
+        }
+    }
     @ObservedObject var venueEditor = UserPreferences.sharedInstance.venueEditor
     
     var body: some View {

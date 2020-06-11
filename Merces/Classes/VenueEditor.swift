@@ -57,6 +57,7 @@ func localizedName(for venue: VenueType) -> String {
     }
 }
 
+/// Returns the array of tip rates for the given Venue
 func tipRates(for venue: VenueType) -> [Double] {
     switch venue {
     case .quick:
@@ -127,9 +128,12 @@ class VenueEditor: ObservableObject {
     @Published var activeField: EditableTextFields
     @Published var tipAmount: Double {
         didSet {
-            self.changeTipRating(for: self.selectedVenue, quality: self.service, newRating: self.tipAmount)
+            if (!shouldReset) {
+                self.changeTipRating(for: self.selectedVenue, quality: self.service, newRating: self.tipAmount)
+            }
         }
     }
+    private var shouldReset: Bool = false
     
     init() {
         selectedVenue = .quick
@@ -172,6 +176,12 @@ class VenueEditor: ObservableObject {
             break
         }
         
+    }
+    
+    func resetTipAmount() {
+        self.shouldReset = true
+        self.tipAmount = 0.0
+        self.shouldReset = false
     }
     
 }

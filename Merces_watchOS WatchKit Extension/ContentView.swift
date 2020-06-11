@@ -13,21 +13,20 @@ struct ContentView: View {
     @State private var isActive: Bool = false
     
     var body: some View {
-        VenuesView().environmentObject(varAmts.calcModel)
-//        ValuesView()
-//            .environmentObject(varAmts.calcModel)
-//            .contextMenu {
-//                NavigationLink(destination: SettingsPage().environmentObject(userPrefs), isActive: self.$isActive) {
-//                    HStack {
-//                        Image(systemName: "gear")
-//                        Text("Settings").font(.headline)
-//                    }
-//                }
-//                
-//            }
-//        .onAppear {
-//            _ = varAmts.calcModel.computeTippingValues()
-//        }
+        ValuesView()
+            .environmentObject(varAmts.calcModel)
+            .contextMenu {
+                NavigationLink(destination: SettingsPage().environmentObject(UserPreferences.sharedInstance), isActive: self.$isActive) {
+                    HStack {
+                        Image(systemName: "gear")
+                        Text("Settings").font(.headline)
+                    }
+                }
+                
+            }
+        .onAppear {
+            _ = varAmts.calcModel.computeTippingValues()
+        }
     }
 }
 

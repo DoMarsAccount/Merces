@@ -47,14 +47,18 @@ struct MyMerces: View {
     @State private var isKeypadPresented: Bool = false
     
     var body: some View {
-        Text("Local Sales Tax Rate")
-            .cardStyled(value: self.$preferences.localSalesTax, style: .percentage, backgroundColor: .pink)
-            .onTapGesture {
-                self.isKeypadPresented.toggle()
+        VStack {
+            Text("Local Sales Tax Rate")
+                .cardStyled(value: self.$preferences.localSalesTax, style: .percentage, backgroundColor: .pink)
+                .onTapGesture {
+                    self.isKeypadPresented.toggle()
+                }
+                .sheet(isPresented: self.$isKeypadPresented) {
+                    Keypad(value: self.$preferences.localSalesTax, isPresented: self.$isKeypadPresented, activeField: .constant(.localTax))
             }
-            .sheet(isPresented: self.$isKeypadPresented) {
-                Keypad(value: self.$preferences.localSalesTax, isPresented: self.$isKeypadPresented, activeField: .constant(.localTax))
-            }
+            
+            VenuesView().padding([.top])
+        }
     }
 }
 
