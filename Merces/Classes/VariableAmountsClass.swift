@@ -115,7 +115,7 @@ class VariableAmountsClass
             calcModel.tipRate = inputAmount * 0.01
             
         case .localTax:
-            userPrefs.localSalesTax = inputAmount * 0.001
+            UserPreferences.sharedInstance.localSalesTax = inputAmount * 0.001
             
         default:
             break
@@ -124,10 +124,10 @@ class VariableAmountsClass
     }
     
     func useTaxAmount(_ doEditTaxAmount: Bool) {
-        var locallyCalculatedTaxAmount = calcModel.subtotal * userPrefs.localSalesTax
+        var locallyCalculatedTaxAmount = calcModel.subtotal * UserPreferences.sharedInstance.localSalesTax
         
         if mUserDefaults?.double(forKey: "userLocalSalesTax") != 0.0 {
-            locallyCalculatedTaxAmount = calcModel.subtotal * userPrefs.localSalesTax
+            locallyCalculatedTaxAmount = calcModel.subtotal * UserPreferences.sharedInstance.localSalesTax
         }
         
         if doEditTaxAmount != true {
@@ -165,8 +165,8 @@ class VariableAmountsClass
         // Here because adjusted amount should only be displayed once
         // user is done editing
         if mUserDefaults?.bool(forKey: "subtotalIsPostTaxSwitchOnOff") == true {
-            calcModel.subtotal = calcModel.subtotal / (1 + userPrefs.localSalesTax)
-            calcModel.taxAmount = calcModel.subtotal * userPrefs.localSalesTax
+            calcModel.subtotal = calcModel.subtotal / (1 + UserPreferences.sharedInstance.localSalesTax)
+            calcModel.taxAmount = calcModel.subtotal * UserPreferences.sharedInstance.localSalesTax
         }
     }
     

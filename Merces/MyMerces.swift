@@ -72,7 +72,7 @@ class MyMerces: UIViewController {
             name: UIContentSizeCategory.didChangeNotification,
             object: nil)
         
-        mUserDefaults?.set(userPrefs.localSalesTax, forKey: "userLocalSalesTax")
+        mUserDefaults?.set(UserPreferences.sharedInstance.localSalesTax, forKey: "userLocalSalesTax")
         
     }
     
@@ -211,7 +211,7 @@ class MyMerces: UIViewController {
             
         }
         
-        mUserDefaults?.set(userPrefs.localSalesTax, forKey: "userLocalSalesTax")
+        mUserDefaults?.set(UserPreferences.sharedInstance.localSalesTax, forKey: "userLocalSalesTax")
         
     }
     
@@ -301,30 +301,29 @@ class MyMerces: UIViewController {
     }
     
     func updateFieldValues() {
-        
         for headerLabels in collectionHeaderLabels {
-            headerLabels.font = userPrefs.checkForDynamicType(preferredFontSize: 20)
+            headerLabels.font = UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 20)
         }
         
         for inputFields in collectionInputFieldLabels {
-            inputFields.font = userPrefs.checkForDynamicType(preferredFontSize: 24)
+            inputFields.font = UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 24)
         }
         
         for keypadButtons in collectionKeypadButtons {
-            keypadButtons.titleLabel?.font = userPrefs.checkForDynamicType(preferredFontSize: 28)
+            keypadButtons.titleLabel?.font = UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 28)
         }
         
         if venueSegmentedControlOutlet.selectedSegmentIndex == -1 {
             venueSegmentedControlOutlet.selectedSegmentIndex = 2
         }
         
-        if userPrefs.localSalesTax == 0.00 {
+        if UserPreferences.sharedInstance.localSalesTax == 0.00 {
             localSalesTaxOutlet.text = "0.000%"
         } else {
-            localSalesTaxOutlet.text = "\(nmbrFormatter.roundForPercentWithThreeDecimalPlaces(number: userPrefs.localSalesTax))"
+            localSalesTaxOutlet.text = "\(nmbrFormatter.roundForPercentWithThreeDecimalPlaces(number: UserPreferences.sharedInstance.localSalesTax))"
         }
         
-        mUserDefaults?.set(userPrefs.localSalesTax, forKey: "userLocalSalesTax")
+        mUserDefaults?.set(UserPreferences.sharedInstance.localSalesTax, forKey: "userLocalSalesTax")
         
         editTipPresets()
         

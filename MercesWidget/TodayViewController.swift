@@ -366,7 +366,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                     
                     self.amountIndexer += 1
                     
-                    if (userPrefs.localSalesTax != 0.0) && (self.amountIndexer == 2) {
+                    if (UserPreferences.sharedInstance.localSalesTax != 0.0) && (self.amountIndexer == 2) {
                         
                         self.amountIndexer += 1
                         
@@ -479,7 +479,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         keypadViewOutlet.backgroundColor = UIColor.black
         
-        if userPrefs.localSalesTax != 0.0 {
+        if UserPreferences.sharedInstance.localSalesTax != 0.0 {
             
             salesTaxDisplayOutlet.backgroundColor = grandTotalDisplayOutlet.backgroundColor
             

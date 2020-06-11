@@ -72,6 +72,6 @@ struct SettingsRow: View {
 struct SettingsPage_Previews: PreviewProvider {
     static var previews: some View {
 //        SettingsPage().environmentObject(userPrefs)
-        MyMerces().environmentObject(userPrefs)
+        MyMerces().environmentObject(UserPreferences.sharedInstance)
     }
 }

@@ -9,9 +9,10 @@
 import UIKit
 
 let mUserDefaults = (UserDefaults(suiteName: "group.DoMarsToyBox.Merces"))
-let userPrefs = UserPreferences()
 
 class UserPreferences: ObservableObject {
+    static let sharedInstance = UserPreferences()
+    
     @Published var tipIncludeTax: Bool {
         didSet {
             updatePreferences()

@@ -101,19 +101,19 @@ class CalculationsModel: ObservableObject {
 //            taxAmount = subtotal * userPrefs.localSalesTax
 //        }
         
-        tipAmount = (userPrefs.tipIncludeTax ? (subtotal + taxAmount) * (tipRate) : subtotal * (tipRate))
+        tipAmount = (UserPreferences.sharedInstance.tipIncludeTax ? (subtotal + taxAmount) * (tipRate) : subtotal * (tipRate))
         
         totalAmount = subtotal + tipAmount + taxAmount
         
         totalAmountPerPerson = totalAmount / Double(partySize)
         
-        if userPrefs.roundTipAmount {
+        if UserPreferences.sharedInstance.roundTipAmount {
             tipAmount = ceil(tipAmount)
             totalAmount = subtotal + tipAmount + taxAmount
             totalAmountPerPerson = totalAmount / Double(partySize)
         }
         
-        if userPrefs.roundTotalAmount {
+        if UserPreferences.sharedInstance.roundTotalAmount {
             totalAmount = ceil(subtotal + tipAmount + taxAmount)
             totalAmountPerPerson = ceil(totalAmount / Double(partySize))
         }

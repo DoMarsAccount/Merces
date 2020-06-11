@@ -29,6 +29,7 @@ class SettingsPage: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let userPrefs = UserPreferences.sharedInstance
         totalAmountSwitch.isOn = userPrefs.roundTotalAmount
         subtotalPostTaxSwitch.isOn = userPrefs.subtotalIsPostTax
         tipAmountSwitch.isOn = userPrefs.roundTipAmount
@@ -53,7 +54,7 @@ class SettingsPage: UITableViewController {
     
     func checkForDynamicType() {
         for settingsHeadline in collectionSettingsInformation {
-            settingsHeadline.font = userPrefs.useDynamicText ? UIFont.preferredFont(forTextStyle: UIFont.TextStyle.headline) : UIFont(name: "HelveticaNeue-Bold", size: 16)
+            settingsHeadline.font = UserPreferences.sharedInstance.useDynamicText ? UIFont.preferredFont(forTextStyle: UIFont.TextStyle.headline) : UIFont(name: "HelveticaNeue-Bold", size: 16)
         }
     }
     
@@ -63,6 +64,7 @@ class SettingsPage: UITableViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
+        let userPrefs = UserPreferences.sharedInstance
         userPrefs.roundTotalAmount = totalAmountSwitch.isOn
         userPrefs.roundTipAmount = tipAmountSwitch.isOn
         userPrefs.tipIncludeTax = tipIncludesTaxSwitch.isOn
@@ -78,23 +80,23 @@ class SettingsPage: UITableViewController {
     }
     
     @IBAction func totalAmountSwitchAction(_ sender: UISwitch) {
-        userPrefs.roundTotalAmount = sender.isOn
+        UserPreferences.sharedInstance.roundTotalAmount = sender.isOn
     }
     
     @IBAction func tipAmountSwitchAction(_ sender: UISwitch) {
-        userPrefs.roundTipAmount = sender.isOn
+        UserPreferences.sharedInstance.roundTipAmount = sender.isOn
     }
     
     @IBAction func tipIncludesTaxSwitchAction(_ sender: UISwitch) {
-        userPrefs.tipIncludeTax = sender.isOn
+        UserPreferences.sharedInstance.tipIncludeTax = sender.isOn
     }
     
     @IBAction func isSubtotalPostTaxSwitchAction(_ sender: UISwitch) {
-        userPrefs.subtotalIsPostTax = sender.isOn
+        UserPreferences.sharedInstance.subtotalIsPostTax = sender.isOn
     }
     
     @IBAction func useDynamicTypeSwitchAction(_ sender: UISwitch) {
-        userPrefs.useDynamicText = sender.isOn
+        UserPreferences.sharedInstance.useDynamicText = sender.isOn
         checkForDynamicType()
     }
     

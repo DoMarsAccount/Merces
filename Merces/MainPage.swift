@@ -157,7 +157,7 @@ class MainPage: UIViewController {
         
         var haveShownSetupAlert = mUserDefaults?.bool(forKey: "setupAlertShown")
         
-        mUserDefaults?.set(userPrefs.localSalesTax, forKey: "userLocalSalesTax")
+        mUserDefaults?.set(UserPreferences.sharedInstance.localSalesTax, forKey: "userLocalSalesTax")
         
         /* ------------ Accessibility/ Dynamic Type ------------- */
         
@@ -233,7 +233,7 @@ class MainPage: UIViewController {
     
     @IBAction func modeSwitchButtonPressed(_ sender: UIBarButtonItem) {
         
-        if userPrefs.isModeTipCalc {
+        if UserPreferences.sharedInstance.isModeTipCalc {
             
             self.modeSwitchOutlet.isEnabled = false
             self.modeSwitchOutlet.image = UIImage(named: "shopping_bag")
@@ -262,20 +262,15 @@ class MainPage: UIViewController {
                         self.keypadStuffView.alpha = 1
                         
                         self.keypadStuffView.transform = CGAffineTransform(translationX: 0, y: 0)
-                        
-                        
+                    
                     }, completion: { finished in
-                        
-                        userPrefs.isModeTipCalc = false
+                        UserPreferences.sharedInstance.isModeTipCalc = false
                         
                         self.modeSwitchOutlet.isEnabled = true
                         
                     })
-                    
                 })
-                
             })
-            
             
         } else {
             
@@ -304,13 +299,10 @@ class MainPage: UIViewController {
                         
                         self.venueAndServiceStuffView.transform = CGAffineTransform(translationX: 0, y: 0)
                         
-                        
                     }, completion: { finished in
-                        
                         self.modeSwitchOutlet.isEnabled = true
                         
-                        userPrefs.isModeTipCalc = true
-                        
+                        UserPreferences.sharedInstance.isModeTipCalc = true
                     })
                     
                 })
@@ -728,7 +720,7 @@ class MainPage: UIViewController {
     }
     
     func updateFieldValues() {
-        
+        let userPrefs = UserPreferences.sharedInstance
         for sectionHeader in collectionSectionHeaderLabels {
             sectionHeader.font = userPrefs.checkForDynamicType(preferredFontSize: 20)
         }
@@ -944,7 +936,7 @@ class MainPage: UIViewController {
             
         }
         
-        if userPrefs.localSalesTax != 0.0 {
+        if UserPreferences.sharedInstance.localSalesTax != 0.0 {
         
             taxAmountMaskOutlet.isEnabled = false
             
@@ -966,7 +958,7 @@ class MainPage: UIViewController {
     /* ------------------------ Input Fields Appear & Dissapear ------------------ */
     
     func keypadAppear() {
-        
+        let userPrefs = UserPreferences.sharedInstance
         if venueSelectorIsUp == true {
             
             venueSelectorIsUp = false; venuesStuffView.alpha = 1.0
@@ -1036,7 +1028,7 @@ class MainPage: UIViewController {
     }
     
     func keypadDisappear() {
-        
+        let userPrefs = UserPreferences.sharedInstance
         keypadIsUp = false; keypadStuffView.alpha = 1.0
         
         totaledAmountsStuffView.isHidden = false; totaledAmountsStuffView.alpha = 1.0
