@@ -23,6 +23,8 @@ struct KeypadButton: View {
                 varAmts.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.append(self.text)
             case .tipRate:
                 varAmts.arrayOfButtonsPressedForTipRateAsString.append(self.text)
+            case .localSalesTax:
+                varAmts.arrayOfButtonsPressedForLocalSalesTax.append(self.text)
             default:
                 break
             }
@@ -55,6 +57,10 @@ struct KeypadDeleteButton: View {
             case .tipRate:
                 if (!varAmts.arrayOfButtonsPressedForTipRateAsString.isEmpty) {
                     varAmts.arrayOfButtonsPressedForTipRateAsString.removeLast()
+                }
+            case .localSalesTax:
+                if (!varAmts.arrayOfButtonsPressedForLocalSalesTax.isEmpty) {
+                    varAmts.arrayOfButtonsPressedForLocalSalesTax.removeLast()
                 }
             default:
                 break
@@ -95,14 +101,16 @@ struct Keypad: View {
                     
                     if (self.activeField == EditableTextFields.partySize) {
                         Text(nForm.formatIntegerNumbers(Int(self.value)))
-                        .multilineTextAlignment(.trailing)
+                            .multilineTextAlignment(.trailing)
                     } else if (self.activeField == EditableTextFields.tipRate) {
                         Text(nForm.roundForPercentWithTwoDecimalPlaces(self.value))
-                        .multilineTextAlignment(.trailing)
-                        
+                            .multilineTextAlignment(.trailing)
+                    } else if (self.activeField == EditableTextFields.localSalesTax) {
+                        Text(nForm.roundForPercentWithThreeDecimalPlaces(number: self.value))
+                            .multilineTextAlignment(.trailing)
                     } else {
                         Text(nForm.roundForCurrency(number: self.value))
-                        .multilineTextAlignment(.trailing)
+                            .multilineTextAlignment(.trailing)
                     }
                 }
                 

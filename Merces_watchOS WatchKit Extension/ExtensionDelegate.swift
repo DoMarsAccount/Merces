@@ -15,6 +15,11 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
 
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
+        let defaultPrefsFile = Bundle.main.path(forResource: "defaultPreferences", ofType: "plist")
+        
+        let defaultPreferences = NSDictionary(contentsOfFile: defaultPrefsFile!)
+        
+        UserDefaults(suiteName:"group.DoMarsToyBox.Merces")?.register(defaults: defaultPreferences! as! [String : AnyObject])
     }
 
     func applicationDidBecomeActive() {

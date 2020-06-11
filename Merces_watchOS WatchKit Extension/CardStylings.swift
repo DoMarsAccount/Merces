@@ -71,6 +71,7 @@ struct PercentageCardStyle: ViewModifier {
             .background(self.backgroundColor)
             .border(self.backgroundColor, width: 2.5)
             .cornerRadius(2.5)
+            
         }
     }
 }

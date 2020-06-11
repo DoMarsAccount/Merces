@@ -17,8 +17,6 @@ class SettingsPage: UITableViewController {
     @IBOutlet var useDynamicText: UISwitch!
     @IBOutlet var subtotalPostTaxSwitch: UISwitch!
     
-    
-    
     /* ------- Collection Outlets ------ */
     
     //Headlines
@@ -28,31 +26,14 @@ class SettingsPage: UITableViewController {
     
     @IBOutlet var collectionSwitches: [UISwitch]!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let roundTotalAmountOnOff = UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.bool(forKey: "roundTotalAmountSwitchOnOff")
-        
-        totalAmountSwitch.isOn = roundTotalAmountOnOff!
-        
-        let subtotalIsPostTaxSwitchOnOff = UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.bool(forKey: "subtotalIsPostTaxSwitchOnOff")
-        
-        subtotalPostTaxSwitch.isOn = subtotalIsPostTaxSwitchOnOff!
-        
-        let roundTipAmountOnOff = UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.bool(forKey: "roundTipAmountSwitchOnOff")
-        
-        tipAmountSwitch.isOn = roundTipAmountOnOff!
-        
-        let tipIncludesTaxOnOff = UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.bool(forKey: "tipIncludeTaxSwitchOnOff")
-        
-        tipIncludesTaxSwitch.isOn = tipIncludesTaxOnOff!
-        
-        
-        let userWantsDynamicText = UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.bool(forKey: "useDynamicText")
-        
-        useDynamicText.isOn = userWantsDynamicText!
-        
+        totalAmountSwitch.isOn = userPrefs.roundTotalAmount
+        subtotalPostTaxSwitch.isOn = userPrefs.subtotalIsPostTax
+        tipAmountSwitch.isOn = userPrefs.roundTipAmount
+        tipIncludesTaxSwitch.isOn = userPrefs.tipIncludeTax
+        useDynamicText.isOn = userPrefs.useDynamicText
         
         /* Dynamic Type Support */
         
@@ -63,46 +44,29 @@ class SettingsPage: UITableViewController {
             name: UIContentSizeCategory.didChangeNotification,
             object: nil)
         
-        
         updateColorValues()
     }
     
     @objc func preferredContentSizeChanged(_ notification: Notification) {
-        
         checkForDynamicType()
-        
     }
     
     func checkForDynamicType() {
-        
-        
         for settingsHeadline in collectionSettingsInformation {
-            
-            settingsHeadline.font = UserDefaults(suiteName: "group.DoMarsToyBox.Merces")!.bool(forKey: "useDynamicText") ? UIFont.preferredFont(forTextStyle: UIFont.TextStyle.headline) : UIFont(name: "HelveticaNeue-Bold", size: 16)
-            
+            settingsHeadline.font = userPrefs.useDynamicText ? UIFont.preferredFont(forTextStyle: UIFont.TextStyle.headline) : UIFont(name: "HelveticaNeue-Bold", size: 16)
         }
-        
     }
     
-    
-    
     override func viewDidAppear(_ animated: Bool) {
-        
         updateColorValues()
-        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
-        
-        UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.set(totalAmountSwitch.isOn, forKey: "roundTotalAmountSwitchOnOff")
-        
-        UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.set(tipAmountSwitch.isOn, forKey: "roundTipAmountSwitchOnOff")
-        
-        UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.set(tipIncludesTaxSwitch.isOn, forKey: "tipIncludeTaxSwitchOnOff")
-        
-        UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.set(subtotalPostTaxSwitch.isOn, forKey: "subtotalIsPostTaxSwitchOnOff")
-        
+        userPrefs.roundTotalAmount = totalAmountSwitch.isOn
+        userPrefs.roundTipAmount = tipAmountSwitch.isOn
+        userPrefs.tipIncludeTax = tipIncludesTaxSwitch.isOn
+        userPrefs.subtotalIsPostTax = subtotalPostTaxSwitch.isOn
     }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -113,48 +77,34 @@ class SettingsPage: UITableViewController {
         return 50
     }
     
-    
-    
     @IBAction func totalAmountSwitchAction(_ sender: UISwitch) {
-        
-        //MMObject.passMessageObject(["totalAmountSwitchChanged":self.totalAmountSwitch.on], identifier: "updateiWatchSettings")
-        
+        userPrefs.roundTotalAmount = sender.isOn
     }
     
     @IBAction func tipAmountSwitchAction(_ sender: UISwitch) {
-        
-        //MMObject.passMessageObject(["tipAmountSwitchChanged": self.tipAmountSwitch.on], identifier: "updateiWatchSettings")
-        
+        userPrefs.roundTipAmount = sender.isOn
     }
     
     @IBAction func tipIncludesTaxSwitchAction(_ sender: UISwitch) {
-        
-        //MMObject.passMessageObject(["tipIncludesTaxSwitchChanged": self.tipIncludesTaxSwitch.on], identifier: "updateiWatchSettings")
-        
+        userPrefs.tipIncludeTax = sender.isOn
+    }
+    
+    @IBAction func isSubtotalPostTaxSwitchAction(_ sender: UISwitch) {
+        userPrefs.subtotalIsPostTax = sender.isOn
     }
     
     @IBAction func useDynamicTypeSwitchAction(_ sender: UISwitch) {
-        
-        UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.set(sender.isOn, forKey: "useDynamicText")
-        
+        userPrefs.useDynamicText = sender.isOn
         checkForDynamicType()
-        
     }
-    
     
     @IBAction func userWantsToRateButtonPressed(_ sender: AnyObject) {
-        
         if #available(iOS 10.3, *) {
-            
             SKStoreReviewController.requestReview()
-            
         } else {
-        
             UIApplication.shared.open(URL(string: "https://itunes.apple.com/us/app/merces-personal-tip-calculator/id978591776?ls=1&mt=8")!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
-
         }
     }
-    
     
     func updateColorValues() {
         
@@ -170,22 +120,15 @@ class SettingsPage: UITableViewController {
         
         
         for tableViewCell in collectionTableViewCell {
-            
             tableViewCell.backgroundColor = coloringThemes.getViewBackgroundColor()
-            
         }
         
         for settingsHeaders in collectionSettingsInformation {
-            
             settingsHeaders.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getViewBackgroundColor(), isFlat: true)
-        
         }
         
         for switches in collectionSwitches {
-            
             switches.onTintColor = coloringThemes.getMainColor()
-            
-            //switches.tintColor =  coloringThemes.getMainColor()
             
             if coloringThemes.getMainColor() == coloringThemes.getViewBackgroundColor() {
                 
@@ -194,11 +137,7 @@ class SettingsPage: UITableViewController {
                 switches.tintColor =  UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)
                 
             }
-            
         }
-        
-        
-        
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -208,8 +147,6 @@ class SettingsPage: UITableViewController {
         header.tintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getBackgroundColor(), isFlat: true)
         
         header.textLabel!.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getBackgroundColor(), isFlat: true)
-        
-        
     }
     
     override func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
@@ -219,10 +156,7 @@ class SettingsPage: UITableViewController {
         footer.tintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getBackgroundColor(), isFlat: true)
         
         footer.textLabel?.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getBackgroundColor(), isFlat: true)
-        
     }
-    
-    
 }
 
 // Helper function inserted by Swift 4.2 migrator.

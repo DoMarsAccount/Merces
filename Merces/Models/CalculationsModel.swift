@@ -19,7 +19,7 @@ enum EditableTextFields: CaseIterable, Hashable, Identifiable {
     case salesTax
     case partySize
     case tipRate
-    case venue
+    case localSalesTax
     case none
     
     var name: String {
@@ -29,14 +29,6 @@ enum EditableTextFields: CaseIterable, Hashable, Identifiable {
     
     var id: EditableTextFields { self }
 }
-
-/* First Responder Tags
- * 1 = Subtotal / Bill Amount
- * 2 = Sales Tax / Tax Amount
- * 3 = Number of People Paying
- * 4 = Tip Rate
- * 5 = Sales Tax
- */
 
 class CalculationsModel: ObservableObject {
     
@@ -110,23 +102,25 @@ class CalculationsModel: ObservableObject {
         
         self.objectWillChange.send()
         
-        tipAmount = (mUserDefaults!.bool(forKey: "tipIncludeTaxSwitchOnOff") ? (subtotal + taxAmount) * (tipRate) : subtotal * (tipRate))
+//        if userPrefs.subtotalIsPostTax {
+//            subtotal = subtotal / (1 + userPrefs.localSalesTax)
+//            taxAmount = subtotal * userPrefs.localSalesTax
+//        }
+        
+        tipAmount = (userPrefs.tipIncludeTax ? (subtotal + taxAmount) * (tipRate) : subtotal * (tipRate))
         
         totalAmount = subtotal + tipAmount + taxAmount
         
         totalAmountPerPerson = totalAmount / Double(partySize)
         
-        if mUserDefaults!.bool(forKey: "roundTipAmountSwitchOnOff") {
+        if userPrefs.roundTipAmount {
             tipAmount = ceil(tipAmount)
-            
             totalAmount = subtotal + tipAmount + taxAmount
-            
             totalAmountPerPerson = totalAmount / Double(partySize)
         }
         
-        if mUserDefaults!.bool(forKey: "roundTotalAmountSwitchOnOff") {
+        if userPrefs.roundTotalAmount {
             totalAmount = ceil(subtotal + tipAmount + taxAmount)
-            
             totalAmountPerPerson = ceil(totalAmount / Double(partySize))
         }
         

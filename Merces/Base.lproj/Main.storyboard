@@ -1274,6 +1274,9 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fnz-QT-yPp">
                                                     <rect key="frame" x="310" y="9" width="51" height="31"/>
                                                     <color key="onTintColor" red="0.51542294030000002" green="0.60457563400000003" blue="0.4471997023" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <action selector="isSubtotalPostTaxSwitchAction:" destination="Ugb-pZ-gEj" eventType="valueChanged" id="yG8-lm-M0r"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>

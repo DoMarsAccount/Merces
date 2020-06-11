@@ -8,7 +8,6 @@
 
 import UIKit
 
-let userPrefs = UserPreferences()
 let varAmts = VariableAmountsClass()
 
 class VariableAmountsClass
@@ -39,6 +38,11 @@ class VariableAmountsClass
             processInput(self.arrayOfButtonsPressedForNumberOfPeoplePayingAsString, activeField: .partySize)
         }
     }
+    var arrayOfButtonsPressedForLocalSalesTax: [String] = [] {
+        didSet {
+            processInput(self.arrayOfButtonsPressedForLocalSalesTax, activeField: .localSalesTax)
+        }
+    }
     
     init() {
         if let tipArray = mUserDefaults?.array(forKey: "quickTipArray") {
@@ -51,6 +55,7 @@ class VariableAmountsClass
         arrayOfButtonsPressedForTaxAmountAsString = []
         arrayOfButtonsPressedForTipRateAsString = []
         arrayOfButtonsPressedForNumberOfPeoplePayingAsString = []
+        arrayOfButtonsPressedForLocalSalesTax = []
     }
     
     var firstResponderTag = 0
@@ -109,7 +114,7 @@ class VariableAmountsClass
         case .tipRate:
             calcModel.tipRate = inputAmount * 0.01
             
-        case .venue:
+        case .localSalesTax:
             userPrefs.localSalesTax = inputAmount * 0.001
             
         default:
@@ -122,7 +127,6 @@ class VariableAmountsClass
         var locallyCalculatedTaxAmount = calcModel.subtotal * userPrefs.localSalesTax
         
         if mUserDefaults?.double(forKey: "userLocalSalesTax") != 0.0 {
-            
             locallyCalculatedTaxAmount = calcModel.subtotal * userPrefs.localSalesTax
         }
         
@@ -164,20 +168,17 @@ class VariableAmountsClass
         arrayOfButtonsPressedForNumberOfPeoplePayingAsString = []
     }
     
-    func updateSubtotalForPostTaxDesired() {
-        
-        // Here because adjusted amount should only be displayed once
-        // user is done editing
-        if UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.bool(forKey: "subtotalIsPostTaxSwitchOnOff") == true {
-            
-            calcModel.subtotal = calcModel.subtotal / (1 + userPrefs.localSalesTax)
-            
-            calcModel.taxAmount = calcModel.subtotal * userPrefs.localSalesTax
-            
-        }
-        
-        // MUST be followed by a call to updateValues()
-        
-    }
+//    func updateSubtotalForPostTaxDesired() {
+//        
+//        // Here because adjusted amount should only be displayed once
+//        // user is done editing
+//        if UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.bool(forKey: "subtotalIsPostTaxSwitchOnOff") == true {
+//            calcModel.subtotal = calcModel.subtotal / (1 + userPrefs.localSalesTax)
+//            calcModel.taxAmount = calcModel.subtotal * userPrefs.localSalesTax
+//        }
+//        
+//        // MUST be followed by a call to updateValues()
+//        
+//    }
     
 }

@@ -599,7 +599,7 @@ class MainPage: UIViewController {
         
         venueSelectorAppear()
         
-        userEditingThisField = .venue
+        userEditingThisField = .none
         
         scaleViewsWithSpring(venueSelectionLabelOutlet.tag)
         
@@ -616,7 +616,7 @@ class MainPage: UIViewController {
         self.calculate(varAmts.arrayOfButtonsPressedForBillAmountAsString, activeField: .subtotal)
         
         // Here because it means user selection is done
-        varAmts.updateSubtotalForPostTaxDesired()
+//        varAmts.updateSubtotalForPostTaxDesired()
         
         varAmts.tipRateArray = tipRates(for: varAmts.calcModel.selectedVenue)
         
@@ -805,7 +805,7 @@ class MainPage: UIViewController {
         
         
         // Title Coloring
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)!]
         
         
         // Back Button Coloring
@@ -1206,7 +1206,7 @@ class MainPage: UIViewController {
     func unscaleViewsWithSpring() {
         
         // Here because it means user selection is done
-        varAmts.updateSubtotalForPostTaxDesired()
+//        varAmts.updateSubtotalForPostTaxDesired()
         
         for textFields in collectionInputFieldLabels {
             

@@ -9,16 +9,42 @@
 import UIKit
 
 let mUserDefaults = (UserDefaults(suiteName: "group.DoMarsToyBox.Merces"))
+let userPrefs = UserPreferences()
 
-class UserPreferences {
-    var tipIncludeTax: Bool
-    var roundTipAmount: Bool
-    var roundTotalAmount: Bool
-    var subtotalIsPostTax: Bool
-    var useDynamicText: Bool
+class UserPreferences: ObservableObject {
+    @Published var tipIncludeTax: Bool {
+        didSet {
+            updatePreferences()
+        }
+    }
+    @Published var roundTipAmount: Bool {
+           didSet {
+               updatePreferences()
+           }
+       }
+    @Published var roundTotalAmount: Bool {
+           didSet {
+               updatePreferences()
+           }
+       }
+    @Published var subtotalIsPostTax: Bool {
+           didSet {
+               updatePreferences()
+           }
+       }
+    @Published var useDynamicText: Bool {
+           didSet {
+               updatePreferences()
+           }
+       }
+    
+    @Published var localSalesTax: Double {
+        didSet {
+            updatePreferences()
+        }
+    }
     
     var isModeTipCalc: Bool = true
-    var localSalesTax: Double = (mUserDefaults?.double(forKey: "userLocalSalesTax"))!
     
     init() {
         tipIncludeTax = mUserDefaults!.bool(forKey: "tipIncludeTaxSwitchOnOff")
@@ -26,8 +52,16 @@ class UserPreferences {
         roundTotalAmount = mUserDefaults!.bool(forKey: "roundTotalAmountSwitchOnOff")
         subtotalIsPostTax = mUserDefaults!.bool(forKey: "subtotalIsPostTaxSwitchOnOff")
         useDynamicText = mUserDefaults!.bool(forKey: "useDynamicText")
-
         localSalesTax = mUserDefaults!.double(forKey: "userLocalSalesTax")
+    }
+    
+    func updatePreferences() {
+        mUserDefaults!.set(tipIncludeTax, forKey: "tipIncludeTaxSwitchOnOff")
+        mUserDefaults!.set(roundTipAmount, forKey: "roundTipAmountSwitchOnOff")
+        mUserDefaults!.set(roundTotalAmount, forKey: "roundTotalAmountSwitchOnOff")
+        mUserDefaults!.set(subtotalIsPostTax, forKey: "subtotalIsPostTaxSwitchOnOff")
+        mUserDefaults!.set(useDynamicText, forKey: "useDynamicText")
+        mUserDefaults!.set(localSalesTax, forKey: "userLocalSalesTax")
     }
     
     func checkForDynamicType(preferredFontSize: CGFloat) -> UIFont {
@@ -37,6 +71,4 @@ class UserPreferences {
             return UIFont(name: "HelveticaNeue-CondensedBold", size: preferredFontSize)!
         }
     }
-    
-    
 }
