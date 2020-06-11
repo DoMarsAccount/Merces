@@ -8,12 +8,32 @@
 
 import UIKit
 
+enum EditableTextFields: CaseIterable, Hashable, Identifiable {
+    case subtotal
+    case salesTax
+    case partySize
+    case tipRate
+    case localTax
+    case poorTip
+    case averageTip
+    case greatTip
+    case none
+    
+    var name: String {
+        return "\(self)".map {
+            $0.isUppercase ? " \($0)" : "\($0)" }.joined().capitalized
+    }
+    
+    var id: EditableTextFields { self }
+}
+
 let varAmts = VariableAmountsClass()
 
 class VariableAmountsClass
 {
     /* Objects */
     let calcModel = CalculationsModel()
+    let venueEditor = UserPreferences.sharedInstance.venueEditor
     
     /* Variables */
     var tipRateArray: [Double]
@@ -38,9 +58,25 @@ class VariableAmountsClass
             processInput(self.arrayOfButtonsPressedForNumberOfPeoplePayingAsString, activeField: .partySize)
         }
     }
-    var arrayOfButtonsPressedForLocalSalesTax: [String] = [] {
+    var arrayOfButtonsPressedForLocalSalesTax: [String] {
         didSet {
             processInput(self.arrayOfButtonsPressedForLocalSalesTax, activeField: .localTax)
+        }
+    }
+    
+    var arrayOfButtonsPressedForPoorTip: [String] {
+        didSet {
+            userDefinedTipRatings(self.arrayOfButtonsPressedForPoorTip, venueToEdit: self.venueEditor.selectedVenue, tipRateToEdit: 0)
+        }
+    }
+    var arrayOfButtonsPressedForAverageTip: [String] {
+        didSet {
+            userDefinedTipRatings(self.arrayOfButtonsPressedForAverageTip, venueToEdit: self.venueEditor.selectedVenue, tipRateToEdit: 1)
+        }
+    }
+    var arrayOfButtonsPressedForGreatTip: [String] {
+        didSet {
+            userDefinedTipRatings(self.arrayOfButtonsPressedForGreatTip, venueToEdit: self.venueEditor.selectedVenue, tipRateToEdit: 2)
         }
     }
     
@@ -56,6 +92,10 @@ class VariableAmountsClass
         arrayOfButtonsPressedForTipRateAsString = []
         arrayOfButtonsPressedForNumberOfPeoplePayingAsString = []
         arrayOfButtonsPressedForLocalSalesTax = []
+        
+        arrayOfButtonsPressedForPoorTip = []
+        arrayOfButtonsPressedForAverageTip = []
+        arrayOfButtonsPressedForGreatTip = []
     }
     
     var firstResponderTag = 0
@@ -157,6 +197,10 @@ class VariableAmountsClass
         arrayOfButtonsPressedForTaxAmountAsString = []
         arrayOfButtonsPressedForTipRateAsString = []
         arrayOfButtonsPressedForNumberOfPeoplePayingAsString = []
+        
+        arrayOfButtonsPressedForPoorTip = []
+        arrayOfButtonsPressedForAverageTip = []
+        arrayOfButtonsPressedForGreatTip = []
     }
     
     /// MUST be followed by a call to updateValues()

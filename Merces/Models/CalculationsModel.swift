@@ -8,22 +8,6 @@
 
 import Foundation
 
-enum EditableTextFields: CaseIterable, Hashable, Identifiable {
-    case subtotal
-    case salesTax
-    case partySize
-    case tipRate
-    case localTax
-    case none
-    
-    var name: String {
-        return "\(self)".map {
-            $0.isUppercase ? " \($0)" : "\($0)" }.joined().capitalized
-    }
-    
-    var id: EditableTextFields { self }
-}
-
 class CalculationsModel: ObservableObject {
     
     @Published var subtotal: Double {

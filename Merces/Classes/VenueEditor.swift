@@ -87,26 +87,75 @@ func tipRate(for venue: VenueType, service: ServiceQuality) -> Double {
     }
 }
 
-/// Update the user's Tip Ratings stored in NSUserDefaults
+/// Wrapper around VenueEditor that update the user's Tip Ratings stored in UserDefaults
 func userDefinedTipRatings (_ arrayOfPressedButtonValues: [String], venueToEdit: VenueType, tipRateToEdit: Int) {
+    
+    let venueEditor = UserPreferences.sharedInstance.venueEditor
     
     var inputAmount = 0.00
     if !arrayOfPressedButtonValues.isEmpty {
         inputAmount = NumberFormatter().number(from: arrayOfPressedButtonValues.joined(separator: "")) as! Double * 0.01
     }
+    venueEditor.selectedVenue = venueToEdit
+    switch tipRateToEdit {
+    case 0:
+        venueEditor.service = .Poor
+    case 1:
+        venueEditor.service = .Average
+    case 2:
+        venueEditor.service = .Great
+    default:
+        break
+    }
+    venueEditor.tipAmount = inputAmount * 0.01
+}
 
-    /*
-     0 = Poor
-     1 = Average
-     2 = Great
-     */
+class VenueEditor: ObservableObject {
+    @Published var selectedVenue: VenueType
+    @Published var service: ServiceQuality {
+        didSet {
+            switch self.service {
+            case .Poor:
+                self.activeField = .poorTip
+            case .Average:
+                self.activeField = .averageTip
+            case .Great:
+                self.activeField = .greatTip
+            }
+        }
+    }
+    @Published var activeField: EditableTextFields
+    @Published var tipAmount: Double {
+        didSet {
+            self.changeTipRating(for: self.selectedVenue, quality: self.service, newRating: self.tipAmount)
+        }
+    }
     
-    if tipRateToEdit >= 0 && tipRateToEdit <= 2 {
+    init() {
+        selectedVenue = .quick
+        service = .Average
+        activeField = .averageTip
         
-        var venueArray: [Double] = tipRates(for: venueToEdit)
-        venueArray[tipRateToEdit] = inputAmount * 0.01
+        tipAmount = tipRate(for: .quick, service: .Average)
+    }
+    
+    /// Update the tip rating for the given venue and quality in UserDefaults
+    func changeTipRating(for venue: VenueType, quality: ServiceQuality, newRating: Double) {
         
-        switch venueToEdit {
+        var index: Int = 0
+        switch quality {
+        case .Poor:
+            index = 0
+        case .Average:
+            index = 1
+        case .Great:
+            index = 2
+        }
+        
+        var venueArray = tipRates(for: venue)
+        venueArray[index] = newRating //* 0.01
+        
+        switch venue {
         case .quick:
             mUserDefaults?.setValue(venueArray, forKey: "quickTipArray")
         case .bar:
@@ -119,26 +168,10 @@ func userDefinedTipRatings (_ arrayOfPressedButtonValues: [String], venueToEdit:
             mUserDefaults?.setValue(venueArray, forKey: "taxiTipArray")
         case .delivery:
             mUserDefaults?.setValue(venueArray, forKey: "deliveryTipArray")
-        case .none: // should never use this case
-            return
+        default:
+            break
         }
-    }
-}
-
-class VenueEditor: ObservableObject {
-    @Published var selectedVenue: VenueType
-    @Published var service: ServiceQuality
-    
-    @Published var poorTipAmount: Double
-    @Published var averageTipAmount: Double
-    @Published var greatTipAmount: Double
-    
-    init() {
-        selectedVenue = .quick
-        service = .Average
         
-        poorTipAmount = 0.0
-        averageTipAmount = 0.0
-        greatTipAmount = 0.0
     }
+    
 }

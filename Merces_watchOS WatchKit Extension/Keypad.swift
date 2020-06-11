@@ -25,6 +25,12 @@ struct KeypadButton: View {
                 varAmts.arrayOfButtonsPressedForTipRateAsString.append(self.text)
             case .localTax:
                 varAmts.arrayOfButtonsPressedForLocalSalesTax.append(self.text)
+            case .poorTip:
+                varAmts.arrayOfButtonsPressedForPoorTip.append(self.text)
+            case .averageTip:
+                varAmts.arrayOfButtonsPressedForAverageTip.append(self.text)
+            case .greatTip:
+                varAmts.arrayOfButtonsPressedForGreatTip.append(self.text)
             default:
                 break
             }
@@ -61,6 +67,18 @@ struct KeypadDeleteButton: View {
             case .localTax:
                 if (!varAmts.arrayOfButtonsPressedForLocalSalesTax.isEmpty) {
                     varAmts.arrayOfButtonsPressedForLocalSalesTax.removeLast()
+                }
+            case .poorTip:
+                if (!varAmts.arrayOfButtonsPressedForPoorTip.isEmpty) {
+                    varAmts.arrayOfButtonsPressedForPoorTip.removeLast()
+                }
+            case .averageTip:
+                if (!varAmts.arrayOfButtonsPressedForAverageTip.isEmpty) {
+                    varAmts.arrayOfButtonsPressedForAverageTip.removeLast()
+                }
+            case .greatTip:
+                if (!varAmts.arrayOfButtonsPressedForGreatTip.isEmpty) {
+                    varAmts.arrayOfButtonsPressedForGreatTip.removeLast()
                 }
             default:
                 break
@@ -104,16 +122,19 @@ struct Keypad: View {
                     if (self.activeField == EditableTextFields.partySize) {
                         Text(nForm.formatIntegerNumbers(Int(self.value)))
                             .multilineTextAlignment(.trailing)
-                    } else if (self.activeField == EditableTextFields.tipRate) {
-                        Text(nForm.roundForPercentWithTwoDecimalPlaces(self.value))
-                            .multilineTextAlignment(.trailing)
+                        
+                    } else if (self.activeField == EditableTextFields.subtotal || self.activeField == EditableTextFields.salesTax) {
+                        Text(nForm.roundForCurrency(number: self.value))
+                        .multilineTextAlignment(.trailing)
+                        
                     } else if (self.activeField == EditableTextFields.localTax) {
                         Text(nForm.roundForPercentWithThreeDecimalPlaces(number: self.value))
                             .minimumScaleFactor(0.8)
                             .multilineTextAlignment(.trailing)
+                        
                     } else {
-                        Text(nForm.roundForCurrency(number: self.value))
-                            .multilineTextAlignment(.trailing)
+                        Text(nForm.roundForPercentWithTwoDecimalPlaces(self.value))
+                        .multilineTextAlignment(.trailing)
                     }
                 }
                 
@@ -139,7 +160,6 @@ struct Keypad: View {
                 }
             }
             .frame(width: geometry.size.width, height: geometry.size.height + 80)
-//            .foregroundColor(.green)
             .edgesIgnoringSafeArea([.leading, .trailing, .bottom])
         }
     }

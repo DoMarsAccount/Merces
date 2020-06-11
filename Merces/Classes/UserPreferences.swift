@@ -12,6 +12,7 @@ let mUserDefaults = (UserDefaults(suiteName: "group.DoMarsToyBox.Merces"))
 
 class UserPreferences: ObservableObject {
     static let sharedInstance = UserPreferences()
+    let venueEditor = VenueEditor()
     
     @Published var tipIncludeTax: Bool {
         didSet {
