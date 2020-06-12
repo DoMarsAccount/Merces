@@ -13,6 +13,7 @@ struct ContentView: View {
     @ObservedObject var wCalcModel: CalculationsModel = varAmts.calcModel
     var body: some View {
         ValuesView()
+            .navigationBarTitle("Merces")
             .environmentObject(wCalcModel)
             .contextMenu {
                 NavigationLink(destination: SettingsPage().environmentObject(UserPreferences.sharedInstance), isActive: self.$isActive) {
@@ -23,10 +24,10 @@ struct ContentView: View {
                 }
                 
             }
-        .onAppear {
-            self.wCalcModel.tipRate = currentTipRate(for: self.wCalcModel.selectedVenue, service: self.wCalcModel.service)
-            _ = self.wCalcModel.computeTippingValues()
-        }
+            .onAppear {
+                self.wCalcModel.tipRate = currentTipRate(for: self.wCalcModel.selectedVenue, service: self.wCalcModel.service)
+                _ = self.wCalcModel.computeTippingValues()
+            }
     }
 }
 
