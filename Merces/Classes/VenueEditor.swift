@@ -131,6 +131,7 @@ class VenueEditor: ObservableObject {
             if (!shouldReset) {
                 self.changeTipRating(for: self.selectedVenue, quality: self.service, newRating: self.tipAmount)
             }
+            
         }
     }
     private var shouldReset: Bool = false
@@ -175,7 +176,6 @@ class VenueEditor: ObservableObject {
         default:
             break
         }
-        
     }
     
     func resetTipAmount() {

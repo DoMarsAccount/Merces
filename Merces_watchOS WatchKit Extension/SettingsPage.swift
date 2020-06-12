@@ -32,12 +32,12 @@ struct SettingsPage: View {
             
             Section(header: Text("Round Up to Nearest Dollar").font(.headline)) {
                 SettingsRow(text: .constant("Tip Amount"), isEnabled: self.$preferences.roundTipAmount)
-                SettingsRow(text: .constant("Grand Total"), isEnabled: self.$preferences.roundTotalAmount)
+//                SettingsRow(text: .constant("Grand Total"), isEnabled: self.$preferences.roundTotalAmount)
             }
             
-            Section(header: Text("Accessibility").font(.headline)) {
-                SettingsRow(text: .constant("Use System Text Size"), isEnabled: self.$preferences.useDynamicText)
-            }
+//            Section(header: Text("Accessibility").font(.headline)) {
+//                SettingsRow(text: .constant("Use System Text Size"), isEnabled: self.$preferences.useDynamicText)
+//            }
         }
     }
 }
@@ -47,17 +47,18 @@ struct MyMerces: View {
     @State private var isKeypadPresented: Bool = false
     
     var body: some View {
-        VStack {
-            Text("Local Sales Tax Rate")
-                .cardStyled(value: self.$preferences.localSalesTax, style: .percentage, backgroundColor: .pink)
-                .onTapGesture {
-                    self.isKeypadPresented.toggle()
+        ScrollView(.vertical) {
+            VStack(spacing: viewHeight) {
+                Text("Local Sales Tax Rate")
+                    .cardStyled(value: self.$preferences.localSalesTax, style: .percentage, backgroundColor: .pink)
+                    .onTapGesture {
+                        self.isKeypadPresented.toggle()
+                    }
+                    .sheet(isPresented: self.$isKeypadPresented) {
+                        Keypad(value: self.$preferences.localSalesTax, isPresented: self.$isKeypadPresented, activeField: .constant(.localTax))
                 }
-                .sheet(isPresented: self.$isKeypadPresented) {
-                    Keypad(value: self.$preferences.localSalesTax, isPresented: self.$isKeypadPresented, activeField: .constant(.localTax))
+                VenuesView().padding([.top])
             }
-            
-            VenuesView().padding([.top])
         }
     }
 }
