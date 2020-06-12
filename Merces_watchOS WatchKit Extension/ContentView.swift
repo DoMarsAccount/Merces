@@ -23,6 +23,15 @@ struct ContentView: View {
                     }
                 }
                 
+                Button(action: {
+                    self.wCalcModel.resetValues()
+                }) {
+                    HStack {
+                        Image(systemName: "xmark")
+                        Text("Clear Values").font(.headline)
+                    }
+                }
+                
             }
             .onAppear {
                 self.wCalcModel.tipRate = currentTipRate(for: self.wCalcModel.selectedVenue, service: self.wCalcModel.service)
