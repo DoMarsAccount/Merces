@@ -15,7 +15,7 @@ struct DetailedTipRateView: View {
     
     var body: some View {
         GeometryReader { geo in
-//            ScrollView(.vertical) {
+            ScrollView(.vertical) {
                 VStack(spacing: 10) {
                     VStack {
                         Text("Tip %").font(.headline)
@@ -49,7 +49,7 @@ struct DetailedTipRateView: View {
                         }
                     }.frame(height: viewHeight)
                 }
-//            }
+            }
         }
     }
 }
