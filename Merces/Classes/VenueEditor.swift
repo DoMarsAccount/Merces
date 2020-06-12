@@ -77,7 +77,7 @@ func tipRates(for venue: VenueType) -> [Double] {
     }
 }
 
-func tipRate(for venue: VenueType, service: ServiceQuality) -> Double {
+func currentTipRate(for venue: VenueType, service: ServiceQuality) -> Double {
     switch service {
     case .Poor:
         return tipRates(for: venue)[0]
@@ -141,7 +141,7 @@ class VenueEditor: ObservableObject {
         service = .Average
         activeField = .averageTip
         
-        tipAmount = tipRate(for: .quick, service: .Average)
+        tipAmount = currentTipRate(for: .quick, service: .Average)
     }
     
     /// Update the tip rating for the given venue and quality in UserDefaults

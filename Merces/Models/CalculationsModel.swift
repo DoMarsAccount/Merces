@@ -35,8 +35,16 @@ class CalculationsModel: ObservableObject {
     @Published var totalAmount: Double
     @Published var totalAmountPerPerson: Double
     
-    @Published var selectedVenue: VenueType
-    @Published var service: ServiceQuality
+    @Published var selectedVenue: VenueType {
+        didSet {
+            tipRate = currentTipRate(for: selectedVenue, service: service)
+        }
+    }
+    @Published var service: ServiceQuality {
+        didSet {
+            tipRate = currentTipRate(for: selectedVenue, service: service)
+        }
+    }
     
     var displayedTotalAmountPerPerson: Double
     var moreOrLessPerPerson: Double
@@ -126,4 +134,5 @@ class CalculationsModel: ObservableObject {
         
         return (nForm.roundForCurrency(number: subtotal), nForm.roundForCurrency(number: taxAmount), nForm.roundForCurrency(number: totalAmount))
     }
+
 }

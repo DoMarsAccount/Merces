@@ -33,7 +33,7 @@ struct VenuesView: View {
                 
                 VStack {
                     Text("Tip %").font(.headline)
-                    Text(nForm.roundForPercentWithTwoDecimalPlaces(tipRate(for: self.venueEditor.selectedVenue, service: self.venueEditor.service)))
+                    Text(nForm.roundForPercentWithTwoDecimalPlaces(currentTipRate(for: self.venueEditor.selectedVenue, service: self.venueEditor.service)))
                 }
                 .padding([.leading, .trailing])
                 .frame(height: viewHeight)

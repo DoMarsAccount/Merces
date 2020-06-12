@@ -15,8 +15,10 @@ struct ValuesView: View {
     @State private var isTaxAmountKeypadPresented: Bool = false
     @State private var isPartySizeKeypadPresented: Bool = false
     @State private var isTipRateKeypadPresented: Bool = false
+    @State private var isDetailedTipRateViewPresented: Bool = false
     
     var body: some View {
+        
         GeometryReader { geo in
             ScrollView(.vertical) {
                 VStack(spacing: viewHeight) {
@@ -44,12 +46,19 @@ struct ValuesView: View {
                     HStack {
                         Text("Tip %")
                             .vCardStyled(value: self.$wCalcModel.tipRate, style: .percentage, backgroundColor: .purple)
+//                            .onTapGesture {
+//                                self.isTipRateKeypadPresented.toggle()
+//                            }
+//                            .sheet(isPresented: self.$isTipRateKeypadPresented) {
+//                                Keypad(value: self.$wCalcModel.tipRate, isPresented: self.$isTipRateKeypadPresented, activeField: .constant(.tipRate))
+//                            }
                             .onTapGesture {
-                                self.isTipRateKeypadPresented.toggle()
+                                self.isDetailedTipRateViewPresented.toggle()
                             }
-                            .sheet(isPresented: self.$isTipRateKeypadPresented) {
-                                Keypad(value: self.$wCalcModel.tipRate, isPresented: self.$isTipRateKeypadPresented, activeField: .constant(.tipRate))
-                        }
+                            .sheet(isPresented: self.$isDetailedTipRateViewPresented) {
+                                DetailedTipRateView(isActive: self.$isDetailedTipRateViewPresented).environmentObject(self.wCalcModel)
+                            }
+                        
                         
                         Text("Party of")
                         .vCardStyled(value: self.$wCalcModel.partySize.double, style: .integer, backgroundColor: .orange)

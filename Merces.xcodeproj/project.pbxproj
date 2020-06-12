@@ -21,6 +21,7 @@
 		04E0127A2489628A009FAEEB /* CalculationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E012742489628A009FAEEB /* CalculationsModel.swift */; };
 		04E0127B2489628A009FAEEB /* CalculationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E012742489628A009FAEEB /* CalculationsModel.swift */; };
 		04E0127E248962B5009FAEEB /* VenueEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0126F248961F0009FAEEB /* VenueEditor.swift */; };
+		04E19BAB2493210500994668 /* DetailedTipRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E19BAA2493210500994668 /* DetailedTipRateView.swift */; };
 		04EF6D8A248D3451009CEF03 /* Merces_watchOS WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 04EF6D89248D3451009CEF03 /* Merces_watchOS WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		04EF6D92248D3452009CEF03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04EF6D91248D3452009CEF03 /* Assets.xcassets */; };
 		04EF6D99248D3452009CEF03 /* Merces_watchOS WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 04EF6D98248D3452009CEF03 /* Merces_watchOS WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -166,6 +167,7 @@
 		04E012722489628A009FAEEB /* ReceiptModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReceiptModel.swift; path = Models/ReceiptModel.swift; sourceTree = "<group>"; };
 		04E012732489628A009FAEEB /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		04E012742489628A009FAEEB /* CalculationsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalculationsModel.swift; path = Models/CalculationsModel.swift; sourceTree = "<group>"; };
+		04E19BAA2493210500994668 /* DetailedTipRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTipRateView.swift; sourceTree = "<group>"; };
 		04EF6D86248D3451009CEF03 /* Merces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Merces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04EF6D89248D3451009CEF03 /* Merces_watchOS WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Merces_watchOS WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04EF6D8F248D3451009CEF03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 				04EF6DA7248D3452009CEF03 /* ComplicationController.swift */,
 				04EF6DD1248E72DF009CEF03 /* Keypad.swift */,
 				04EF6DD3248E73E6009CEF03 /* ValuesView.swift */,
+				04E19BAA2493210500994668 /* DetailedTipRateView.swift */,
 				04EF6DD9248E9A4D009CEF03 /* SettingsPage.swift */,
 				04EF6DD5248E859C009CEF03 /* StaticValueViews.swift */,
 				0480B3762491637100036864 /* CardStylings.swift */,
@@ -935,6 +938,7 @@
 				04EF6DCE248D45BB009CEF03 /* NotificationController.swift in Sources */,
 				04EF6D9E248D3452009CEF03 /* ContentView.swift in Sources */,
 				04EF6DA2248D3452009CEF03 /* ExtensionDelegate.swift in Sources */,
+				04E19BAB2493210500994668 /* DetailedTipRateView.swift in Sources */,
 				04EF6DA6248D3452009CEF03 /* NotificationView.swift in Sources */,
 				04EF6DD2248E72DF009CEF03 /* Keypad.swift in Sources */,
 				049C69692491CAE600273450 /* VenuesView.swift in Sources */,

@@ -9,12 +9,11 @@
 import SwiftUI
 
 struct ContentView: View {
-//    @ObservedObject var wCalcModel = varAmts.calcModel
     @State private var isActive: Bool = false
-    
+    @ObservedObject var wCalcModel: CalculationsModel = varAmts.calcModel
     var body: some View {
         ValuesView()
-            .environmentObject(varAmts.calcModel)
+            .environmentObject(wCalcModel)
             .contextMenu {
                 NavigationLink(destination: SettingsPage().environmentObject(UserPreferences.sharedInstance), isActive: self.$isActive) {
                     HStack {
@@ -25,7 +24,8 @@ struct ContentView: View {
                 
             }
         .onAppear {
-            _ = varAmts.calcModel.computeTippingValues()
+            self.wCalcModel.tipRate = currentTipRate(for: self.wCalcModel.selectedVenue, service: self.wCalcModel.service)
+            _ = self.wCalcModel.computeTippingValues()
         }
     }
 }
