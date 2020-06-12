@@ -11,18 +11,21 @@ import SwiftUI
 struct ContentView: View {
     @State private var isActive: Bool = false
     @ObservedObject var wCalcModel: CalculationsModel = varAmts.calcModel
+    @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
+    
     var body: some View {
+//        SetupAlertView()
         ValuesView()
             .navigationBarTitle("Merces")
             .environmentObject(wCalcModel)
             .contextMenu {
-                NavigationLink(destination: SettingsPage().environmentObject(UserPreferences.sharedInstance), isActive: self.$isActive) {
+                NavigationLink(destination: SettingsPage().environmentObject(userPrefs), isActive: self.$isActive) {
                     HStack {
                         Image(systemName: "gear")
                         Text("Settings").font(.headline)
                     }
                 }
-                
+
                 Button(action: {
                     self.wCalcModel.resetValues()
                 }) {
@@ -31,7 +34,7 @@ struct ContentView: View {
                         Text("Clear Values").font(.headline)
                     }
                 }
-                
+
             }
             .onAppear {
                 self.wCalcModel.tipRate = currentTipRate(for: self.wCalcModel.selectedVenue, service: self.wCalcModel.service)

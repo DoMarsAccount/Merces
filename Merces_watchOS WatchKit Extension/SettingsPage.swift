@@ -32,7 +32,7 @@ struct SettingsPage: View {
             
             Section(header: Text("Round Up to Nearest Dollar").font(.headline)) {
                 SettingsRow(text: .constant("Tip Amount"), isEnabled: self.$preferences.roundTipAmount)
-//                SettingsRow(text: .constant("Grand Total"), isEnabled: self.$preferences.roundTotalAmount)
+                SettingsRow(text: .constant("Grand Total"), isEnabled: self.$preferences.roundTotalAmount)
             }
             
 //            Section(header: Text("Accessibility").font(.headline)) {

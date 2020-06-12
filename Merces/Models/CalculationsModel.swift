@@ -94,9 +94,7 @@ class CalculationsModel: ObservableObject {
 //        }
         
         tipAmount = (UserPreferences.sharedInstance.tipIncludeTax ? (subtotal + taxAmount) * (tipRate) : subtotal * (tipRate))
-        
         totalAmount = subtotal + tipAmount + taxAmount
-        
         totalAmountPerPerson = totalAmount / Double(partySize)
         
         if UserPreferences.sharedInstance.roundTipAmount {
@@ -105,9 +103,10 @@ class CalculationsModel: ObservableObject {
             totalAmountPerPerson = totalAmount / Double(partySize)
         }
         
-        if UserPreferences.sharedInstance.roundTotalAmount {
-            totalAmount = ceil(subtotal + tipAmount + taxAmount)
-            totalAmountPerPerson = ceil(totalAmount / Double(partySize))
+        if UserPreferences.sharedInstance.roundTotalAmount {let difference = ceil(subtotal + tipAmount + taxAmount) - totalAmount
+            tipAmount += difference // Add the required difference to the tipAmount so that totalAmount will be a round number
+            totalAmount = subtotal + tipAmount + taxAmount
+            totalAmountPerPerson = totalAmount / Double(partySize)
         }
         
         // Checks for repeating decimal in the tip per person

@@ -20,29 +20,39 @@ class UserPreferences: ObservableObject {
         }
     }
     @Published var roundTipAmount: Bool {
-           didSet {
-               updatePreferences()
-           }
-       }
+        willSet { // Ensures only one rounding behavior can be active at a time
+            if self.roundTotalAmount { self.roundTotalAmount.toggle() }
+        }
+        didSet {
+            updatePreferences()
+        }
+    }
     @Published var roundTotalAmount: Bool {
-           didSet {
-               updatePreferences()
-           }
-       }
+        willSet { // Ensures only one rounding behavior can be active at a time
+            if self.roundTipAmount { self.roundTipAmount.toggle() }
+        }
+        didSet {
+            updatePreferences()
+        }
+    }
     @Published var subtotalIsPostTax: Bool {
-           didSet {
-               updatePreferences()
-           }
-       }
+        didSet {
+            updatePreferences()
+        }
+    }
     @Published var useDynamicText: Bool {
-           didSet {
-               updatePreferences()
-           }
-       }
-    
+        didSet {
+            updatePreferences()
+        }
+    }
     @Published var localSalesTax: Double {
         didSet {
             updatePreferences()
+        }
+    }
+    @Published var didShowSetupAlert: Bool {
+        didSet {
+            mUserDefaults!.set(didShowSetupAlert, forKey: "setupAlertShown")
         }
     }
     
@@ -55,6 +65,7 @@ class UserPreferences: ObservableObject {
         subtotalIsPostTax = mUserDefaults!.bool(forKey: "subtotalIsPostTaxSwitchOnOff")
         useDynamicText = mUserDefaults!.bool(forKey: "useDynamicText")
         localSalesTax = mUserDefaults!.double(forKey: "userLocalSalesTax")
+        didShowSetupAlert = mUserDefaults!.bool(forKey: "setupAlertShown")
     }
     
     func updatePreferences() {

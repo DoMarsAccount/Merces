@@ -18,11 +18,9 @@ struct ValuesView: View {
     @State private var isDetailedTipRateViewPresented: Bool = false
     
     var body: some View {
-        
         GeometryReader { geo in
             ScrollView(.vertical) {
                 VStack(spacing: viewHeight) {
-                    
                     HStack {
                         Text("Subtotal")
                             .vCardStyled(value: self.$wCalcModel.subtotal, style: .currency, backgroundColor: .green)
@@ -69,8 +67,6 @@ struct ValuesView: View {
                             Keypad(value: self.$wCalcModel.partySize.double, isPresented: self.$isPartySizeKeypadPresented, activeField: .constant(.partySize))
                         }
                     }
-                    
-                    
                     
                     Text("Tip:")
                         .cardStyled(value: self.$wCalcModel.tipAmount, style: .currency, backgroundColor: .secondary)
