@@ -45,7 +45,7 @@ struct VenuesView: View {
                 }
                 .sheet(isPresented: self.$isActive) {
                     Keypad(value: self.$venueEditor.tipAmount, isPresented: self.$isActive, activeField: self.$venueEditor.activeField)
-                }
+                }.navigationBarTitle("Done")
                 
             }
             

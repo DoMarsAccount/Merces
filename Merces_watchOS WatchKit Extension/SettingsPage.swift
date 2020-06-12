@@ -56,7 +56,7 @@ struct MyMerces: View {
                     }
                     .sheet(isPresented: self.$isKeypadPresented) {
                         Keypad(value: self.$preferences.localSalesTax, isPresented: self.$isKeypadPresented, activeField: .constant(.localTax))
-                }
+                    }.navigationBarTitle("Done")
                 VenuesView().padding([.top])
             }
         }

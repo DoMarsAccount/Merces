@@ -31,7 +31,7 @@ struct ValuesView: View {
                             }
                             .sheet(isPresented: self.$isSubtotalKeypadPresented) {
                                 Keypad(value: self.$wCalcModel.subtotal, isPresented: self.$isSubtotalKeypadPresented, activeField: .constant(.subtotal))
-                        }
+                            }.navigationBarTitle("Done")
                         
                         Text("Tax")
                         .vCardStyled(value: self.$wCalcModel.taxAmount, style: .currency, backgroundColor: .blue)
@@ -40,7 +40,7 @@ struct ValuesView: View {
                         }
                         .sheet(isPresented: self.$isTaxAmountKeypadPresented) {
                             Keypad(value: self.$wCalcModel.taxAmount, isPresented: self.$isTaxAmountKeypadPresented, activeField: .constant(.salesTax))
-                        }
+                        }.navigationBarTitle("Done")
                     }
                 
                     HStack {
@@ -57,7 +57,7 @@ struct ValuesView: View {
                             }
                             .sheet(isPresented: self.$isDetailedTipRateViewPresented) {
                                 DetailedTipRateView(isActive: self.$isDetailedTipRateViewPresented).environmentObject(self.wCalcModel)
-                            }
+                            }.navigationBarTitle("Done")
                         
                         
                         Text("Party of")
@@ -67,7 +67,7 @@ struct ValuesView: View {
                         }
                         .sheet(isPresented: self.$isPartySizeKeypadPresented) {
                             Keypad(value: self.$wCalcModel.partySize.double, isPresented: self.$isPartySizeKeypadPresented, activeField: .constant(.partySize))
-                        }
+                        }.navigationBarTitle("Done")
                     }
                     
                     

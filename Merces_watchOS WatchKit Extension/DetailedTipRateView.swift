@@ -15,7 +15,7 @@ struct DetailedTipRateView: View {
     
     var body: some View {
         GeometryReader { geo in
-            ScrollView(.vertical) {
+//            ScrollView(.vertical) {
                 VStack(spacing: 10) {
                     VStack {
                         Text("Tip %").font(.headline)
@@ -31,7 +31,7 @@ struct DetailedTipRateView: View {
                     }
                     .sheet(isPresented: self.$presentKeypad) {
                         Keypad(value: self.$wCalcModel.tipRate, isPresented: self.$presentKeypad, activeField: .constant(.tipRate))
-                    }
+                    }.navigationBarTitle("Done")
                     
                     Picker(selection: self.$wCalcModel.service, label: Text("Service Level")
                             .font(.headline)
@@ -48,14 +48,8 @@ struct DetailedTipRateView: View {
                             Text(VenueType.allCases[index].name).tag(VenueType.allCases[index])
                         }
                     }.frame(height: viewHeight)
-                    
-                    Button(action: {
-                        self.isActive.toggle()
-                    }) {
-                        Text("Done")
-                    }
                 }
-            }
+//            }
         }
     }
 }
