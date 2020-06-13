@@ -6,76 +6,13 @@
 //  Copyright (c) 2015 DoMarsToyBox. All rights reserved.
 //
 
-import SwiftUI
+import UIKit
 import StoreKit
-
-struct SettingsRow: View {
-    @Binding var text: String
-    @Binding var isEnabled: Bool
-    
-    var body: some View {
-        Toggle(isOn: self.$isEnabled) {
-            Text(self.text)
-        }
-    }
-}
-
-struct Settings: View {
-    @EnvironmentObject var preferences: UserPreferences
-    @State private var isActive: Bool = false
-    
-    var body: some View {
-        Form {
-            Section(header: Text("General").font(.headline)) {
-//                NavigationLink(destination: MyMerces(), isActive: self.$isActive) {
-//                    Text("My Merces")
-//                }
-                SettingsRow(text: .constant("Tip Includes Tax"), isEnabled: self.$preferences.tipIncludeTax)
-                SettingsRow(text: .constant("Subtotal is Post Tax"), isEnabled: self.$preferences.subtotalIsPostTax)
-            }
-            
-            Section(header: Text("Round Up to Nearest Dollar").font(.headline)) {
-                SettingsRow(text: .constant("Tip Amount"), isEnabled: self.$preferences.roundTipAmount)
-                SettingsRow(text: .constant("Grand Total"), isEnabled: self.$preferences.roundTotalAmount)
-            }
-            
-            Section(header: Text("Accessibility").font(.headline)) {
-                SettingsRow(text: .constant("Use Your iPhone's Text Size"), isEnabled: self.$preferences.useDynamicText)
-            }
-            
-            Section(header: Text("Feedback").font(.headline)) {
-                Button(action: {
-                    
-                }) {
-                    Text("Leave a Rating")
-                        .foregroundColor(.primary)
-                        .onTapGesture {
-                            SKStoreReviewController.requestReview()
-                    }
-                }
-            }
-            
-            Section(header: Text("Support").font(.headline)) {
-                Text("Optimal Usage Guide")
-            }
-            
-            Section(header: Text("About").font(.headline)) {
-                Text("About Merces")
-            }
-        }
-        .background(Color.green)
-//        .foregroundColor(Color(coloringThemes.getBackgroundColor()))
-    }
-}
-
-struct SettingsPreview: PreviewProvider {
-    
-    static var previews: some View {
-        Settings().environmentObject(UserPreferences.sharedInstance)
-    }
-}
+import Combine
 
 class SettingsPage: UITableViewController {
+    
+    @Published var roundTotal = UserPreferences.sharedInstance.$roundTotalAmount
 
     @IBOutlet var totalAmountSwitch:UISwitch!
     @IBOutlet var tipAmountSwitch:UISwitch!
@@ -87,20 +24,29 @@ class SettingsPage: UITableViewController {
     
     //Headlines
     @IBOutlet var collectionSettingsInformation: [UILabel]!
-    
     @IBOutlet var collectionTableViewCell: [UITableViewCell]!
-    
     @IBOutlet var collectionSwitches: [UISwitch]!
+    
+    private var roundTotalAmountSubscriber: AnyCancellable?
+    private var roundTipAmountSubscriber: AnyCancellable?
+    private var subtotalPostTaxSubscriber: AnyCancellable?
+    private var tipIncludesTaxSubscriber: AnyCancellable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let userPrefs = UserPreferences.sharedInstance
+        
         totalAmountSwitch.isOn = userPrefs.roundTotalAmount
-        subtotalPostTaxSwitch.isOn = userPrefs.subtotalIsPostTax
         tipAmountSwitch.isOn = userPrefs.roundTipAmount
+        subtotalPostTaxSwitch.isOn = userPrefs.subtotalIsPostTax
         tipIncludesTaxSwitch.isOn = userPrefs.tipIncludeTax
         useDynamicText.isOn = userPrefs.useDynamicText
+        
+        roundTotalAmountSubscriber = userPrefs.$roundTotalAmount.assign(to: \.isOn, on: totalAmountSwitch)
+        roundTipAmountSubscriber = userPrefs.$roundTipAmount.assign(to: \.isOn, on: tipAmountSwitch)
+        subtotalPostTaxSubscriber = userPrefs.$subtotalIsPostTax.assign(to: \.isOn, on: subtotalPostTaxSwitch)
+        tipIncludesTaxSubscriber = userPrefs.$tipIncludeTax.assign(to: \.isOn, on: tipIncludesTaxSwitch)
         
         /* Dynamic Type Support */
         
@@ -130,11 +76,11 @@ class SettingsPage: UITableViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
-        let userPrefs = UserPreferences.sharedInstance
-        userPrefs.roundTotalAmount = totalAmountSwitch.isOn
-        userPrefs.roundTipAmount = tipAmountSwitch.isOn
-        userPrefs.tipIncludeTax = tipIncludesTaxSwitch.isOn
-        userPrefs.subtotalIsPostTax = subtotalPostTaxSwitch.isOn
+//        let userPrefs = UserPreferences.sharedInstance
+//        userPrefs.roundTotalAmount = totalAmountSwitch.isOn
+//        userPrefs.roundTipAmount = tipAmountSwitch.isOn
+//        userPrefs.tipIncludeTax = tipIncludesTaxSwitch.isOn
+//        userPrefs.subtotalIsPostTax = subtotalPostTaxSwitch.isOn
     }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
