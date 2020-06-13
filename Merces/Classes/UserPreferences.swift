@@ -50,9 +50,9 @@ class UserPreferences: ObservableObject {
             updatePreferences()
         }
     }
-    @Published var didShowSetupAlert: Bool {
+    @Published var shouldShowSetupAlert: Bool {
         didSet {
-            mUserDefaults!.set(didShowSetupAlert, forKey: "setupAlertShown")
+            mUserDefaults!.set(true, forKey: "setupAlertShown")
         }
     }
     
@@ -65,7 +65,7 @@ class UserPreferences: ObservableObject {
         subtotalIsPostTax = mUserDefaults!.bool(forKey: "subtotalIsPostTaxSwitchOnOff")
         useDynamicText = mUserDefaults!.bool(forKey: "useDynamicText")
         localSalesTax = mUserDefaults!.double(forKey: "userLocalSalesTax")
-        didShowSetupAlert = mUserDefaults!.bool(forKey: "setupAlertShown")
+        shouldShowSetupAlert = !mUserDefaults!.bool(forKey: "setupAlertShown")
     }
     
     func updatePreferences() {

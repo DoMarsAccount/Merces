@@ -12,9 +12,9 @@ struct ContentView: View {
     @State private var isActive: Bool = false
     @ObservedObject var wCalcModel: CalculationsModel = varAmts.calcModel
     @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
+    @State private var doesUserWantSetup: Bool = false
     
     var body: some View {
-//        SetupAlertView()
         ValuesView()
             .navigationBarTitle("Merces")
             .environmentObject(wCalcModel)
@@ -39,6 +39,10 @@ struct ContentView: View {
             .onAppear {
                 self.wCalcModel.tipRate = currentTipRate(for: self.wCalcModel.selectedVenue, service: self.wCalcModel.service)
                 _ = self.wCalcModel.computeTippingValues()
+            }
+            .modifier(SetupAlert(isActive: self.$userPrefs.shouldShowSetupAlert, doesUserWantSetup: self.$doesUserWantSetup))
+            .sheet(isPresented: self.$doesUserWantSetup) {
+                MyMerces().environmentObject(self.userPrefs)
             }
     }
 }
