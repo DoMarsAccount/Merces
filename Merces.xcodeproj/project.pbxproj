@@ -14,6 +14,7 @@
 		0480B37524910E4600036864 /* WatchDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0480B37424910E4600036864 /* WatchDataHandler.swift */; };
 		0480B3772491637100036864 /* CardStylings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0480B3762491637100036864 /* CardStylings.swift */; };
 		049C69692491CAE600273450 /* VenuesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049C69682491CAE600273450 /* VenuesView.swift */; };
+		04D5E83424958AE000883DE8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3B4B2C01ABB2CF7002A6C16 /* Images.xcassets */; };
 		04E01270248961F0009FAEEB /* VenueEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0126F248961F0009FAEEB /* VenueEditor.swift */; };
 		04E012762489628A009FAEEB /* ReceiptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E012722489628A009FAEEB /* ReceiptModel.swift */; };
 		04E012772489628A009FAEEB /* ReceiptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E012722489628A009FAEEB /* ReceiptModel.swift */; };
@@ -25,7 +26,6 @@
 		04E19BAB2493210500994668 /* DetailedTipRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E19BAA2493210500994668 /* DetailedTipRateView.swift */; };
 		04E19BAD2493CB4000994668 /* SetupAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E19BAC2493CB4000994668 /* SetupAlertView.swift */; };
 		04EF6D8A248D3451009CEF03 /* Merces.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 04EF6D89248D3451009CEF03 /* Merces.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		04EF6D92248D3452009CEF03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04EF6D91248D3452009CEF03 /* Assets.xcassets */; };
 		04EF6D99248D3452009CEF03 /* Merces_watchOS WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 04EF6D98248D3452009CEF03 /* Merces_watchOS WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		04EF6D9E248D3452009CEF03 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6D9D248D3452009CEF03 /* ContentView.swift */; };
 		04EF6DA0248D3452009CEF03 /* HostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6D9F248D3452009CEF03 /* HostingController.swift */; };
@@ -815,8 +815,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				04EF6DD0248D460A009CEF03 /* Interface.storyboard in Resources */,
+				04D5E83424958AE000883DE8 /* Images.xcassets in Resources */,
 				047584B3248F399400CA9326 /* defaultPreferences.plist in Resources */,
-				04EF6D92248D3452009CEF03 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
