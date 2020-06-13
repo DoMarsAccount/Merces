@@ -118,23 +118,28 @@ struct Keypad: View {
                     Text("\(self.activeField.name):")
                         .minimumScaleFactor(0.5)
                         .multilineTextAlignment(.leading)
+                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: subHeadlineTextSize)))
                     
                     if (self.activeField == EditableTextFields.partySize) {
                         Text(nForm.formatIntegerNumbers(Int(self.value)))
                             .multilineTextAlignment(.trailing)
+                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: subHeadlineTextSize)))
                         
                     } else if (self.activeField == EditableTextFields.subtotal || self.activeField == EditableTextFields.salesTax) {
                         Text(nForm.roundForCurrency(number: self.value))
                         .multilineTextAlignment(.trailing)
+                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: subHeadlineTextSize)))
                         
                     } else if (self.activeField == EditableTextFields.localTax) {
                         Text(nForm.roundForPercentWithThreeDecimalPlaces(number: self.value))
                             .minimumScaleFactor(0.8)
                             .multilineTextAlignment(.trailing)
+                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: subHeadlineTextSize)))
                         
                     } else {
                         Text(nForm.roundForPercentWithTwoDecimalPlaces(self.value))
                         .multilineTextAlignment(.trailing)
+                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: subHeadlineTextSize)))
                     }
                 }
                 

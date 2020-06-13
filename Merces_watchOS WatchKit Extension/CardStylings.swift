@@ -25,7 +25,7 @@ struct CurrencyCardStyle: ViewModifier {
         GeometryReader { geo in
             HStack {
                 content
-                    .font(.subheadline)
+                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: subHeadlineTextSize)))
                     .padding()
                     .minimumScaleFactor(0.3)
                 
@@ -33,7 +33,7 @@ struct CurrencyCardStyle: ViewModifier {
                 
                 Text(nForm.roundForCurrency(number: self.value))
                     .padding()
-                    .font(.system(.headline, design: .rounded))
+                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: title3TextSize)))
                     .minimumScaleFactor(0.8)
             }
             .frame(width: geo.size.width, height: viewHeight)
@@ -52,7 +52,7 @@ struct PercentageCardStyle: ViewModifier {
         GeometryReader { geo in
             HStack {
                 content
-                    .font(.subheadline)
+                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: subHeadlineTextSize)))
                     .padding()
                     .minimumScaleFactor(0.3)
                 
@@ -60,7 +60,7 @@ struct PercentageCardStyle: ViewModifier {
                 
                 Text(nForm.roundForPercentWithTwoDecimalPlaces(self.value))
                     .padding()
-                    .font(.system(.headline, design: .rounded))
+                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: title3TextSize)))
                     .minimumScaleFactor(0.8)
             }
             .frame(width: geo.size.width, height: viewHeight)
@@ -79,7 +79,7 @@ struct IntegerCardStyle: ViewModifier {
         GeometryReader { geo in
             HStack {
                 content
-                    .font(.subheadline)
+                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: subHeadlineTextSize)))
                     .padding()
                     .minimumScaleFactor(0.3)
                 
@@ -87,7 +87,7 @@ struct IntegerCardStyle: ViewModifier {
             
                 Text(nForm.formatIntegerNumbers(Int(self.value)))
                     .padding()
-                    .font(.system(.headline, design: .rounded))
+                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: title3TextSize)))
                     .minimumScaleFactor(0.8)
             }
             .frame(width: geo.size.width, height: viewHeight)
@@ -107,14 +107,11 @@ struct vCurrencyCardStyle: ViewModifier {
         GeometryReader { geo in
             VStack {
                 content
-                    .font(.subheadline)
-//                    .padding()
+                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: subHeadlineTextSize)))
                     .minimumScaleFactor(0.75)
                 
                 Text(nForm.roundForCurrency(number: self.value))
-//                    .padding()
-                    .font(.system(.headline, design: .rounded))
-//                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: headlineTextSize)))
                     .minimumScaleFactor(0.75)
             }
             .frame(width: geo.size.width, height: viewHeight)
@@ -133,13 +130,11 @@ struct vPercentageCardStyle: ViewModifier {
         GeometryReader { geo in
             VStack {
                 content
-                    .font(.subheadline)
-//                    .padding()
+                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: subHeadlineTextSize)))
                     .minimumScaleFactor(0.75)
                 
                 Text(nForm.roundForPercentWithTwoDecimalPlaces(self.value))
-//                    .padding()
-                    .font(.system(.headline, design: .rounded))
+                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: headlineTextSize)))
                     .minimumScaleFactor(0.75)
             }
             .frame(width: geo.size.width, height: viewHeight)
@@ -158,13 +153,11 @@ struct vIntegerCardStyle: ViewModifier {
         GeometryReader { geo in
             VStack {
                 content
-                    .font(.subheadline)
-//                    .padding()
+                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: subHeadlineTextSize)))
                     .minimumScaleFactor(0.75)
             
                 Text(nForm.formatIntegerNumbers(Int(self.value)))
-//                    .padding()
-                    .font(.system(.headline, design: .rounded))
+                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: headlineTextSize)))
                     .minimumScaleFactor(0.75)
             }
             .frame(width: geo.size.width, height: viewHeight)
