@@ -146,18 +146,6 @@ class ThemesViewController: UIViewController, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         collectionView.reloadData()
     }
-    
-    func checkForDynamicType(_ preferredFontSize: CGFloat) -> UIFont {
-        
-        if UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.bool(forKey: "useDynamicText") == true {
-            
-            return UIFont.preferredFont(forTextStyle: UIFont.TextStyle.headline)
-        } else {
-            
-            return UIFont(name: "HelveticaNeue-CondensedBold", size: preferredFontSize)!
-            
-        }
-    }
 
     func updateColorValues() {
         
@@ -202,7 +190,7 @@ class ThemesViewController: UIViewController, UICollectionViewDataSource, UIColl
             
             themesLabel.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor!, isFlat: true).cgColor
             
-            themesLabel.font = checkForDynamicType(24)
+            themesLabel.font = UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 24)
             
         }
         

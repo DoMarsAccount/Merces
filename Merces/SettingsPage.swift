@@ -66,7 +66,7 @@ class SettingsPage: UITableViewController {
     
     func checkForDynamicType() {
         for settingsHeadline in collectionSettingsInformation {
-            settingsHeadline.font = UserPreferences.sharedInstance.useDynamicText ? UIFont.preferredFont(forTextStyle: UIFont.TextStyle.headline) : UIFont(name: "HelveticaNeue-Bold", size: 16)
+            settingsHeadline.font = UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 16)
         }
     }
     
