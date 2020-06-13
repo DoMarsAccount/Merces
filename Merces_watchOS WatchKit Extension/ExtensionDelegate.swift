@@ -9,7 +9,7 @@
 import WatchKit
 import WatchConnectivity
 
-class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
+class ExtensionDelegate: NSObject, WKExtensionDelegate {
 
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
@@ -56,17 +56,6 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
                 // make sure to complete unhandled task types
                 task.setTaskCompletedWithSnapshot(false)
             }
-        }
-    }
-    
-    // MARK: - WCDelegate Methods
-    
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        // convert session.receivedApplicationContext into a usable .plist or NSUserDefaults value
-        mUserDefaults?.register(defaults: session.receivedApplicationContext)
-        
-        if let defaults = mUserDefaults {
-            print(defaults.double(forKey: "userLocalSalesTax"))
         }
     }
 
