@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00A610FC15D4ED252C737DC1 /* libPods-MercesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA7BA650B3FB6048042FC4C9 /* libPods-MercesTests.a */; };
+		0444E6D024953A49004793BF /* WatchStyleValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0444E6CF24953A49004793BF /* WatchStyleValues.swift */; };
 		047584B2248F399000CA9326 /* defaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3AB12181E2DBF210021C889 /* defaultPreferences.plist */; };
 		047584B3248F399400CA9326 /* defaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3AB12181E2DBF210021C889 /* defaultPreferences.plist */; };
 		0480B37524910E4600036864 /* WatchDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0480B37424910E4600036864 /* WatchDataHandler.swift */; };
@@ -157,6 +158,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0444E6CF24953A49004793BF /* WatchStyleValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStyleValues.swift; sourceTree = "<group>"; };
 		0480B37424910E4600036864 /* WatchDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchDataHandler.swift; sourceTree = "<group>"; };
 		0480B3762491637100036864 /* CardStylings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStylings.swift; sourceTree = "<group>"; };
 		0480B37824917F5F00036864 /* Merces.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Merces.entitlements; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 			isa = PBXGroup;
 			children = (
 				0480B37824917F5F00036864 /* Merces.entitlements */,
+				0444E6CF24953A49004793BF /* WatchStyleValues.swift */,
 				04EF6D9D248D3452009CEF03 /* ContentView.swift */,
 				04EF6D9F248D3452009CEF03 /* HostingController.swift */,
 				04EF6DA1248D3452009CEF03 /* ExtensionDelegate.swift */,
@@ -928,6 +931,7 @@
 				0480B3772491637100036864 /* CardStylings.swift in Sources */,
 				04EF6DCF248D45E6009CEF03 /* CalculationsModel.swift in Sources */,
 				04EF6DCB248D36D4009CEF03 /* NumberFormattingClass.swift in Sources */,
+				0444E6D024953A49004793BF /* WatchStyleValues.swift in Sources */,
 				04EF6DA0248D3452009CEF03 /* HostingController.swift in Sources */,
 				04EF6DD4248E73E6009CEF03 /* ValuesView.swift in Sources */,
 				04EF6DDA248E9A4D009CEF03 /* SettingsPage.swift in Sources */,

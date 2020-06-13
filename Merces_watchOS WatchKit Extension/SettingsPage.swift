@@ -8,6 +8,18 @@
 
 import SwiftUI
 
+struct SettingsRow: View {
+    @Binding var text: String
+    @Binding var isEnabled: Bool
+    
+    var body: some View {
+        Toggle(isOn: self.$isEnabled) {
+            Text(self.text)
+            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: headlineTextSize)))
+        }
+    }
+}
+
 struct SettingsPage: View {
     @EnvironmentObject var preferences: UserPreferences
     @State private var isActive: Bool = false
@@ -22,22 +34,27 @@ struct SettingsPage: View {
          */
         
         Form {
-            Section(header: Text("General").font(.headline)) {
+            Section(header: Text("General").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: headlineTextSize))))
+            {
                 NavigationLink(destination: MyMerces(), isActive: self.$isActive) {
                     Text("My Merces")
+                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: headlineTextSize)))
                 }
                 SettingsRow(text: .constant("Tip Includes Tax"), isEnabled: self.$preferences.tipIncludeTax)
                 SettingsRow(text: .constant("Subtotal is Post Tax"), isEnabled: self.$preferences.subtotalIsPostTax)
             }
             
-            Section(header: Text("Round Up to Nearest Dollar").font(.headline)) {
+            Section(header: Text("Round Up to Nearest Dollar").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: headlineTextSize))))
+            {
                 SettingsRow(text: .constant("Tip Amount"), isEnabled: self.$preferences.roundTipAmount)
                 SettingsRow(text: .constant("Grand Total"), isEnabled: self.$preferences.roundTotalAmount)
             }
             
-//            Section(header: Text("Accessibility").font(.headline)) {
-//                SettingsRow(text: .constant("Use System Text Size"), isEnabled: self.$preferences.useDynamicText)
-//            }
+            Section(header: Text("Accessibility")
+                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: headlineTextSize))))
+            {
+                SettingsRow(text: .constant("Use System Text Size"), isEnabled: self.$preferences.useDynamicText)
+            }
         }
     }
 }
@@ -63,20 +80,9 @@ struct MyMerces: View {
     }
 }
 
-struct SettingsRow: View {
-    @Binding var text: String
-    @Binding var isEnabled: Bool
-    
-    var body: some View {
-        Toggle(isOn: self.$isEnabled) {
-            Text(self.text)
-        }
-    }
-}
-
 struct SettingsPage_Previews: PreviewProvider {
     static var previews: some View {
-//        SettingsPage().environmentObject(userPrefs)
-        MyMerces().environmentObject(UserPreferences.sharedInstance)
+        SettingsPage().environmentObject(UserPreferences.sharedInstance)
+//        MyMerces().environmentObject(UserPreferences.sharedInstance)
     }
 }

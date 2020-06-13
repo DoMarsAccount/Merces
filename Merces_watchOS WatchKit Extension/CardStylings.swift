@@ -114,6 +114,7 @@ struct vCurrencyCardStyle: ViewModifier {
                 Text(nForm.roundForCurrency(number: self.value))
 //                    .padding()
                     .font(.system(.headline, design: .rounded))
+//                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                     .minimumScaleFactor(0.75)
             }
             .frame(width: geo.size.width, height: viewHeight)
