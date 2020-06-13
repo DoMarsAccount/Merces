@@ -23,7 +23,7 @@
 		04E0127E248962B5009FAEEB /* VenueEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0126F248961F0009FAEEB /* VenueEditor.swift */; };
 		04E19BAB2493210500994668 /* DetailedTipRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E19BAA2493210500994668 /* DetailedTipRateView.swift */; };
 		04E19BAD2493CB4000994668 /* SetupAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E19BAC2493CB4000994668 /* SetupAlertView.swift */; };
-		04EF6D8A248D3451009CEF03 /* Merces_watchOS WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 04EF6D89248D3451009CEF03 /* Merces_watchOS WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		04EF6D8A248D3451009CEF03 /* Merces.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 04EF6D89248D3451009CEF03 /* Merces.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		04EF6D92248D3452009CEF03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04EF6D91248D3452009CEF03 /* Assets.xcassets */; };
 		04EF6D99248D3452009CEF03 /* Merces_watchOS WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 04EF6D98248D3452009CEF03 /* Merces_watchOS WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		04EF6D9E248D3452009CEF03 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6D9D248D3452009CEF03 /* ContentView.swift */; };
@@ -44,8 +44,6 @@
 		04EF6DD0248D460A009CEF03 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04EF6D8E248D3451009CEF03 /* Interface.storyboard */; };
 		04EF6DD2248E72DF009CEF03 /* Keypad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6DD1248E72DF009CEF03 /* Keypad.swift */; };
 		04EF6DD4248E73E6009CEF03 /* ValuesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6DD3248E73E6009CEF03 /* ValuesView.swift */; };
-		04EF6DD6248E859C009CEF03 /* StaticValueViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6DD5248E859C009CEF03 /* StaticValueViews.swift */; };
-		04EF6DD8248E8665009CEF03 /* EditableValueViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6DD7248E8665009CEF03 /* EditableValueViews.swift */; };
 		04EF6DDA248E9A4D009CEF03 /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6DD9248E9A4D009CEF03 /* SettingsPage.swift */; };
 		78B3D1EF1F6A05FF009C8051 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78B3D1F11F6A05FF009C8051 /* Main.storyboard */; };
 		7D1DEE16862D475BCA4F1E29 /* Pods_Merces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F251037667992C1F444B6F5B /* Pods_Merces.framework */; };
@@ -130,7 +128,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				04EF6D8A248D3451009CEF03 /* Merces_watchOS WatchKit App.app in Embed Watch Content */,
+				04EF6D8A248D3451009CEF03 /* Merces.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -171,7 +169,7 @@
 		04E19BAA2493210500994668 /* DetailedTipRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTipRateView.swift; sourceTree = "<group>"; };
 		04E19BAC2493CB4000994668 /* SetupAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupAlertView.swift; sourceTree = "<group>"; };
 		04EF6D86248D3451009CEF03 /* Merces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Merces.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		04EF6D89248D3451009CEF03 /* Merces_watchOS WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Merces_watchOS WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		04EF6D89248D3451009CEF03 /* Merces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Merces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04EF6D8F248D3451009CEF03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		04EF6D91248D3452009CEF03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04EF6D93248D3452009CEF03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -188,8 +186,6 @@
 		04EF6DAF248D3453009CEF03 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		04EF6DD1248E72DF009CEF03 /* Keypad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keypad.swift; sourceTree = "<group>"; };
 		04EF6DD3248E73E6009CEF03 /* ValuesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuesView.swift; sourceTree = "<group>"; };
-		04EF6DD5248E859C009CEF03 /* StaticValueViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticValueViews.swift; sourceTree = "<group>"; };
-		04EF6DD7248E8665009CEF03 /* EditableValueViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableValueViews.swift; sourceTree = "<group>"; };
 		04EF6DD9248E9A4D009CEF03 /* SettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
 		0C2A782DD83BB0614F1593B5 /* Pods-Merces WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Merces WatchKit Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Merces WatchKit Extension/Pods-Merces WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		114411A3AA1179BD7CD421B4 /* Pods-Merces WatchKit App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Merces WatchKit App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Merces WatchKit App/Pods-Merces WatchKit App.release.xcconfig"; sourceTree = "<group>"; };
@@ -351,9 +347,7 @@
 				04EF6DD3248E73E6009CEF03 /* ValuesView.swift */,
 				04E19BAA2493210500994668 /* DetailedTipRateView.swift */,
 				04EF6DD9248E9A4D009CEF03 /* SettingsPage.swift */,
-				04EF6DD5248E859C009CEF03 /* StaticValueViews.swift */,
 				0480B3762491637100036864 /* CardStylings.swift */,
-				04EF6DD7248E8665009CEF03 /* EditableValueViews.swift */,
 				0480B37424910E4600036864 /* WatchDataHandler.swift */,
 				049C69682491CAE600273450 /* VenuesView.swift */,
 				04E19BAC2493CB4000994668 /* SetupAlertView.swift */,
@@ -532,7 +526,7 @@
 				E3B4B2C91ABB2CF7002A6C16 /* MercesTests.xctest */,
 				E3AB12201E2DC1DF0021C889 /* MercesWidget.appex */,
 				04EF6D86248D3451009CEF03 /* Merces.app */,
-				04EF6D89248D3451009CEF03 /* Merces_watchOS WatchKit App.app */,
+				04EF6D89248D3451009CEF03 /* Merces.app */,
 				04EF6D98248D3452009CEF03 /* Merces_watchOS WatchKit Extension.appex */,
 			);
 			name = Products;
@@ -642,7 +636,7 @@
 			);
 			name = "Merces_watchOS WatchKit App";
 			productName = "Merces_watchOS WatchKit App";
-			productReference = 04EF6D89248D3451009CEF03 /* Merces_watchOS WatchKit App.app */;
+			productReference = 04EF6D89248D3451009CEF03 /* Merces.app */;
 			productType = "com.apple.product-type.application.watchapp2";
 		};
 		04EF6D97248D3452009CEF03 /* Merces_watchOS WatchKit Extension */ = {
@@ -932,7 +926,6 @@
 				04EF6DCA248D36CC009CEF03 /* AppleWatchColors.swift in Sources */,
 				04EF6DCD248D36DB009CEF03 /* VenueEditor.swift in Sources */,
 				0480B3772491637100036864 /* CardStylings.swift in Sources */,
-				04EF6DD6248E859C009CEF03 /* StaticValueViews.swift in Sources */,
 				04EF6DCF248D45E6009CEF03 /* CalculationsModel.swift in Sources */,
 				04EF6DCB248D36D4009CEF03 /* NumberFormattingClass.swift in Sources */,
 				04EF6DA0248D3452009CEF03 /* HostingController.swift in Sources */,
@@ -947,7 +940,6 @@
 				04EF6DD2248E72DF009CEF03 /* Keypad.swift in Sources */,
 				049C69692491CAE600273450 /* VenuesView.swift in Sources */,
 				0480B37524910E4600036864 /* WatchDataHandler.swift in Sources */,
-				04EF6DD8248E8665009CEF03 /* EditableValueViews.swift in Sources */,
 				04EF6DA8248D3452009CEF03 /* ComplicationController.swift in Sources */,
 				04EF6DCC248D36D8009CEF03 /* UserPreferences.swift in Sources */,
 			);
@@ -1160,7 +1152,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.domar.Merces-watchOS.watchkitapp";
-				PRODUCT_NAME = "Merces_watchOS WatchKit App";
+				PRODUCT_NAME = Merces;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -1190,7 +1182,7 @@
 				INFOPLIST_FILE = "Merces_watchOS WatchKit App/Info.plist";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.domar.Merces-watchOS.watchkitapp";
-				PRODUCT_NAME = "Merces_watchOS WatchKit App";
+				PRODUCT_NAME = Merces;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;

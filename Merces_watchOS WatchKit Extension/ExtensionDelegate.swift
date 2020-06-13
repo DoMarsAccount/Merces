@@ -9,8 +9,6 @@
 import WatchKit
 import WatchConnectivity
 
-let watchUserDefaults = (UserDefaults(suiteName: "group.DoMarsToyBox.Merces"))
-
 class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
 
     func applicationDidFinishLaunching() {
@@ -65,9 +63,9 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         // convert session.receivedApplicationContext into a usable .plist or NSUserDefaults value
-        watchUserDefaults?.register(defaults: session.receivedApplicationContext)
+        mUserDefaults?.register(defaults: session.receivedApplicationContext)
         
-        if let defaults = watchUserDefaults {
+        if let defaults = mUserDefaults {
             print(defaults.double(forKey: "userLocalSalesTax"))
         }
     }
