@@ -30,6 +30,7 @@ struct ValuesView: View {
                             .sheet(isPresented: self.$isSubtotalKeypadPresented) {
                                 Keypad(value: self.$wCalcModel.subtotal, isPresented: self.$isSubtotalKeypadPresented, activeField: .constant(.subtotal))
                             }
+                            .accessibility(label: Text("Subtotal: \(nForm.roundForCurrency(number: self.wCalcModel.subtotal) )"))
                         
                         Text("Tax")
                         .vCardStyled(value: self.$wCalcModel.taxAmount, style: .currency, backgroundColor: .blue)
@@ -39,23 +40,19 @@ struct ValuesView: View {
                         .sheet(isPresented: self.$isTaxAmountKeypadPresented) {
                             Keypad(value: self.$wCalcModel.taxAmount, isPresented: self.$isTaxAmountKeypadPresented, activeField: .constant(.salesTax))
                         }
+                        .accessibility(label: Text("Tax: \(nForm.roundForCurrency(number: self.wCalcModel.taxAmount) )"))
                     }
                 
                     HStack {
                         Text("Tip %")
                             .vCardStyled(value: self.$wCalcModel.tipRate, style: .percentage, backgroundColor: .purple)
-//                            .onTapGesture {
-//                                self.isTipRateKeypadPresented.toggle()
-//                            }
-//                            .sheet(isPresented: self.$isTipRateKeypadPresented) {
-//                                Keypad(value: self.$wCalcModel.tipRate, isPresented: self.$isTipRateKeypadPresented, activeField: .constant(.tipRate))
-//                            }
                             .onTapGesture {
                                 self.isDetailedTipRateViewPresented.toggle()
                             }
                             .sheet(isPresented: self.$isDetailedTipRateViewPresented) {
                                 DetailedTipRateView(isActive: self.$isDetailedTipRateViewPresented).environmentObject(self.wCalcModel)
                             }
+                        .accessibility(label: Text("Tip Rate: \(nForm.roundForPercentWithTwoDecimalPlaces(self.wCalcModel.tipRate))"))
                         
                         
                         Text("Party of")
@@ -66,18 +63,22 @@ struct ValuesView: View {
                         .sheet(isPresented: self.$isPartySizeKeypadPresented) {
                             Keypad(value: self.$wCalcModel.partySize.double, isPresented: self.$isPartySizeKeypadPresented, activeField: .constant(.partySize))
                         }
+                        .accessibility(label: Text("Party Size: \(nForm.formatIntegerNumbers(self.wCalcModel.partySize))"))
                     }
                     
                     Text("Tip:")
                         .cardStyled(value: self.$wCalcModel.tipAmount, style: .currency, backgroundColor: .secondary)
+                        .accessibility(label: Text("Tip Amount: \(nForm.roundForCurrency(number: self.wCalcModel.tipAmount) )"))
                     
                     if (self.wCalcModel.partySize != 1) {
                         Text("Per Person:")
                             .cardStyled(value: self.$wCalcModel.totalAmountPerPerson, style: .currency, backgroundColor: .secondary)
+                            .accessibility(label: Text("Tip Amount Per Person: \(nForm.roundForCurrency(number: self.wCalcModel.totalAmountPerPerson) )"))
                     }
                     
                     Text("Total:")
                         .cardStyled(value: self.$wCalcModel.totalAmount, style: .currency, backgroundColor: .secondary)
+                        .accessibility(label: Text("Total: \(nForm.roundForCurrency(number: self.wCalcModel.totalAmount) )"))
                     
                     Spacer()
                     

@@ -36,6 +36,7 @@ struct KeypadButton: View {
             }
         }) {
             Text(self.text)
+                .accessibility(label: Text(self.text))
         }
         .cornerRadius(0)
     }
@@ -85,6 +86,7 @@ struct KeypadDeleteButton: View {
             }
         }) {
             Text(self.text)
+            .accessibility(label: Text("Delete"))
         }
         .cornerRadius(0)
     }
@@ -99,6 +101,7 @@ struct KeypadDoneButton: View {
             self.isPresented.toggle()
         }) {
             Text(self.text)
+            .accessibility(label: Text("Done"))
         }
         .cornerRadius(0)
     }

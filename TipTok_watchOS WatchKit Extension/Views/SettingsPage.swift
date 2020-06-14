@@ -16,6 +16,7 @@ struct SettingsRow: View {
         Toggle(isOn: self.$isEnabled) {
             Text(self.text)
             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: headlineTextSize)))
+                .accessibility(label: Text(self.text))
         }
     }
 }
@@ -34,24 +35,31 @@ struct SettingsPage: View {
          */
         
         Form {
-            Section(header: Text("General").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: headlineTextSize))))
+            Section(header: Text("General").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: headlineTextSize)))
+                .accessibility(label: Text("General"))
+                )
             {
                 NavigationLink(destination: MyMerces(), isActive: self.$isActive) {
                     Text("Personalize")
                         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: headlineTextSize)))
+                        .accessibility(label: Text("Personalize"))
                 }
                 SettingsRow(text: .constant("Tip Includes Tax"), isEnabled: self.$preferences.tipIncludeTax)
                 SettingsRow(text: .constant("Subtotal is Post Tax"), isEnabled: self.$preferences.subtotalIsPostTax)
             }
             
-            Section(header: Text("Round Up to Nearest Dollar").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: headlineTextSize))))
+            Section(header: Text("Round Up to Nearest Dollar").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: headlineTextSize)))
+                .accessibility(label: Text("Round Up to Nearest Dollar"))
+                )
             {
                 SettingsRow(text: .constant("Tip Amount"), isEnabled: self.$preferences.roundTipAmount)
                 SettingsRow(text: .constant("Grand Total"), isEnabled: self.$preferences.roundTotalAmount)
             }
             
             Section(header: Text("Accessibility")
-                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: headlineTextSize))))
+                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: headlineTextSize)))
+                .accessibility(label: Text("Accessibility"))
+                )
             {
                 SettingsRow(text: .constant("Use System Text Size"), isEnabled: self.$preferences.useDynamicText)
             }
@@ -74,6 +82,7 @@ struct MyMerces: View {
                     .sheet(isPresented: self.$isKeypadPresented) {
                         Keypad(value: self.$preferences.localSalesTax, isPresented: self.$isKeypadPresented, activeField: .constant(.localTax))
                     }.navigationBarTitle("Done")
+                    .accessibility(label: Text("Local Sales Tax Rate: \(nForm.roundForPercentWithThreeDecimalPlaces(number: self.preferences.localSalesTax))"))
                 VenuesView().padding([.top])
             }
         }
