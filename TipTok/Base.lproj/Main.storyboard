@@ -987,11 +987,6 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="TipTok" id="SEl-1C-Gsq">
-                        <barButtonItem key="leftBarButtonItem" enabled="NO" image="tipping" id="lAj-oU-2Yl">
-                            <connections>
-                                <action selector="modeSwitchButtonPressed:" destination="RXx-uf-TO6" id="p7m-iQ-TTM"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="cogwheel" id="UAj-Ti-1V1">
                             <connections>
                                 <segue destination="Ugb-pZ-gEj" kind="show" id="v7h-lB-nly"/>
@@ -1005,7 +1000,6 @@
                         <outlet property="gTotalDisplayConstraint" destination="gSN-90-Zu4" id="VcT-2l-J2D"/>
                         <outlet property="gTotalLabelConstraint" destination="GxB-Zn-Xpy" id="vbO-Fa-n8V"/>
                         <outlet property="keypadStuffView" destination="Iuf-Tg-UEb" id="GEM-uK-gfY"/>
-                        <outlet property="modeSwitchOutlet" destination="lAj-oU-2Yl" id="yZD-E7-SlT"/>
                         <outlet property="moreOrLessPerPersonLabel" destination="wQy-l6-gur" id="yuk-z7-gao"/>
                         <outlet property="noTipSplitPersonViewConstraint" destination="MDi-hd-HS6" id="aPp-AC-HPK"/>
                         <outlet property="noTipSplitPersonViewConstraint2" destination="P3W-au-Eqt" id="90X-g8-LgW"/>
@@ -2381,6 +2375,5 @@
         <image name="taxi" width="26" height="24"/>
         <image name="thumbs_down" width="24" height="21"/>
         <image name="thumbs_up" width="24" height="21"/>
-        <image name="tipping" width="27" height="24.5"/>
     </resources>
 </document>
