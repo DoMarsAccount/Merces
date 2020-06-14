@@ -85,51 +85,21 @@ class ThemesViewController: UIViewController, UICollectionViewDataSource, UIColl
                 themesLabel.text = "Main Color: \(TipTokColor.allCases[indexPath.item].name)"
             }
             
-//            if coloringThemes.arrayOfAllColors[indexPath.item] == coloringThemes.getMainColor() {
-//
-//                cell.layer.borderWidth = 3
-//
-//                cell.layer.borderColor = UIColor.green.cgColor
-//
-//                themesLabel.text = "Main Color: \(coloringThemes.arrayOfAllColorNames[indexPath.item])"
-//
-//            }
-            
         } else if collectionView == self.themesBackgroundCollectionView {
             
             if coloringThemes.uiColorValue(for: TipTokColor.allCases[indexPath.item]) == coloringThemes.getBackgroundColor() {
                 cell.layer.borderWidth = 3
                 cell.layer.borderColor = UIColor.green.cgColor
-                themesLabel.text = "Background Color: \(TipTokColor.allCases[indexPath.item].name)"
+                themesBackgroundLabel.text = "Background Color: \(TipTokColor.allCases[indexPath.item].name)"
             }
-            
-//            if coloringThemes.arrayOfAllColors[indexPath.item] == coloringThemes.getBackgroundColor() {
-//
-//                cell.layer.borderWidth = 3
-//
-//                cell.layer.borderColor = UIColor.green.cgColor
-//
-//                themesBackgroundLabel.text = "Background Color: \(coloringThemes.arrayOfAllColorNames[indexPath.item])"
-//
-//            }
             
         } else if collectionView == self.themesViewCollectionView {
             
             if coloringThemes.uiColorValue(for: TipTokColor.allCases[indexPath.item]) == coloringThemes.getViewBackgroundColor() {
                 cell.layer.borderWidth = 3
                 cell.layer.borderColor = UIColor.green.cgColor
-                themesLabel.text = "View Color: \(TipTokColor.allCases[indexPath.item].name)"
+                themesViewLabel.text = "View Color: \(TipTokColor.allCases[indexPath.item].name)"
             }
-            
-//            if coloringThemes.arrayOfAllColors[indexPath.item] == coloringThemes.getViewBackgroundColor() {
-//
-//                cell.layer.borderWidth = 3
-//
-//                cell.layer.borderColor = UIColor.green.cgColor
-//
-//                themesViewLabel.text = "View Color: \(coloringThemes.arrayOfAllColorNames[indexPath.item])"
-//
-//            }
         }
         return cell
     }
@@ -143,28 +113,16 @@ class ThemesViewController: UIViewController, UICollectionViewDataSource, UIColl
             
             UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.set(TipTokColor.allCases[indexPath.item].stringRepresentation, forKey: "phoneMainColor")
             themesLabel.text = "Main Color: \(TipTokColor.allCases[indexPath.item].name)"
-        
-//            UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.set("\(coloringThemes.arrayOfAllColors[indexPath.row])", forKey: "phoneMainColor")
-//
-//            themesLabel.text = "Main Color: \(coloringThemes.arrayOfAllColorNames[indexPath.item])"
             
         } else if collectionView == self.themesBackgroundCollectionView {
             
             UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.set(TipTokColor.allCases[indexPath.item].stringRepresentation, forKey: "phoneBackgroundColor")
             themesBackgroundLabel.text = "Background Color: \(TipTokColor.allCases[indexPath.item].name)"
             
-//            UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.set("\(coloringThemes.arrayOfAllColors[indexPath.row])", forKey: "phoneBackgroundColor")
-//
-//            themesBackgroundLabel.text = "Background Color: \(coloringThemes.arrayOfAllColorNames[indexPath.item])"
-            
         } else if collectionView == self.themesViewCollectionView {
             
             UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.set(TipTokColor.allCases[indexPath.item].stringRepresentation, forKey: "phoneViewBackgroundColor")
             themesViewLabel.text = "View Color: \(TipTokColor.allCases[indexPath.item].name)"
-            
-//            UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.set("\(coloringThemes.arrayOfAllColors[indexPath.row])", forKey: "phoneViewBackgroundColor")
-//
-//            themesViewLabel.text = "View Color: \(coloringThemes.arrayOfAllColorNames[indexPath.item])"
             
         }
         collectionView.reloadData()
