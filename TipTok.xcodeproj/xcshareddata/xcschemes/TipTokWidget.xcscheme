@@ -16,7 +16,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E3AB121F1E2DC1DF0021C889"
-               BuildableName = "TipTok.appex"
+               BuildableName = "TipTok Widget.appex"
                BlueprintName = "TipTokWidget"
                ReferencedContainer = "container:TipTok.xcodeproj">
             </BuildableReference>
