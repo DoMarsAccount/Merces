@@ -27,7 +27,8 @@ struct VenuesView: View {
                     .minimumScaleFactor(0.8)
                 ){
                     ForEach(0..<ServiceQuality.allCases.count) { index in
-                        Text(ServiceQuality.allCases[index].name).tag(ServiceQuality.allCases[index])
+                        Text(ServiceQuality.allCases[index].name)
+                            .tag(ServiceQuality.allCases[index])
                     }
                 }.frame(height: viewHeight)
                 
@@ -46,6 +47,7 @@ struct VenuesView: View {
                 .sheet(isPresented: self.$isActive) {
                     Keypad(value: self.$venueEditor.tipAmount, isPresented: self.$isActive, activeField: self.$venueEditor.activeField)
                 }.navigationBarTitle("Done")
+                .accessibility(label: Text("Tip Rate \(nForm.roundForPercentWithTwoDecimalPlaces(currentTipRate(for: self.venueEditor.selectedVenue, service: self.venueEditor.service)))"))
                 
             }
             

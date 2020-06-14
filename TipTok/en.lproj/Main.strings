@@ -50,8 +50,8 @@
 /* Class = "UITableViewController"; title = "Themes Page"; ObjectID = "E6h-s0-Dsb"; */
 "E6h-s0-Dsb.title" = "Themes Page";
 
-/* Class = "UILabel"; text = "Tip Includes Tax"; ObjectID = "EBB-bG-clT"; */
-"EBB-bG-clT.text" = "Tip Includes Tax";
+/* Class = "UILabel"; text = "Tip Includes Sales Tax"; ObjectID = "EBB-bG-clT"; */
+"EBB-bG-clT.text" = "Tip Includes Sales Tax";
 
 /* Class = "UILabel"; text = "Optimal Usage Guide"; ObjectID = "G09-eG-Zw2"; */
 "G09-eG-Zw2.text" = "Optimal Usage Guide";
