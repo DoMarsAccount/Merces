@@ -1,5 +1,5 @@
 # Uncomment this line to define a global platform for your project
-# platform :ios, '6.0'
+# platform :ios, '13.0'
 
 target 'TipTok' do
 use_frameworks!
@@ -12,4 +12,3 @@ end
 target 'TipTokTests' do
 
 end
-
