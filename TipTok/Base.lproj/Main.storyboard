@@ -13,7 +13,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Merces-->
+        <!--TipTok-->
         <scene sceneID="4OY-y7-vwP">
             <objects>
                 <viewController id="RXx-uf-TO6" customClass="MainPage" customModule="TipTok" customModuleProvider="target" sceneMemberID="viewController">
@@ -986,8 +986,8 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Merces" id="SEl-1C-Gsq">
-                        <barButtonItem key="leftBarButtonItem" image="tipping" id="lAj-oU-2Yl">
+                    <navigationItem key="navigationItem" title="TipTok" id="SEl-1C-Gsq">
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" image="tipping" id="lAj-oU-2Yl">
                             <connections>
                                 <action selector="modeSwitchButtonPressed:" destination="RXx-uf-TO6" id="p7m-iQ-TTM"/>
                             </connections>
@@ -1209,7 +1209,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="348" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Merces" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxj-Re-eJ6">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personalize" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxj-Re-eJ6">
                                                     <rect key="frame" x="16" y="3" width="332" height="44"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" red="0.24278497700000001" green="0.24613100290000001" blue="0.2496663928" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1407,7 +1407,7 @@
                                                         <action selector="userWantsToRateButtonPressed:" destination="Ugb-pZ-gEj" eventType="touchUpInside" id="bTa-Va-Ymg"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Rate Merces" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="naE-6i-zDf">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Rate TipTok" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="naE-6i-zDf">
                                                     <rect key="frame" x="16" y="0.0" width="359" height="50"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" red="0.24278497700000001" green="0.24613100290000001" blue="0.2496663928" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1466,7 +1466,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="348" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About Merces" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5s-2v-GjX">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About TipTok" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5s-2v-GjX">
                                                     <rect key="frame" x="8" y="0.0" width="341" height="50"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" red="0.24278497700000001" green="0.24613100290000001" blue="0.2496663928" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1596,7 +1596,7 @@
         <!--My Merces-->
         <scene sceneID="UDk-ze-tvB">
             <objects>
-                <viewController storyboardIdentifier="MyMerces" title="My Merces" id="SyW-Px-p1c" customClass="MyMerces" customModule="TipTok" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Personalize" title="My Merces" id="SyW-Px-p1c" customClass="MyMerces" customModule="TipTok" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lw0-P5-58B">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2078,7 +2078,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="My Merces" id="im6-RM-NlN">
+                    <navigationItem key="navigationItem" title="Personalize" id="im6-RM-NlN">
                         <barButtonItem key="rightBarButtonItem" image="sampler" id="r0L-QI-KYU">
                             <connections>
                                 <segue destination="q80-gz-cwg" kind="show" id="2me-6n-rhk"/>
@@ -2300,7 +2300,7 @@
             </objects>
             <point key="canvasLocation" x="4109.6000000000004" y="375.56221889055473"/>
         </scene>
-        <!--About Merces-->
+        <!--About TipTok-->
         <scene sceneID="SFj-w7-gj2">
             <objects>
                 <viewController id="Bb8-Sx-D3f" customClass="OptimalUsagePage" customModule="TipTok" customModuleProvider="target" sceneMemberID="viewController">
@@ -2312,7 +2312,8 @@
                                 <rect key="frame" x="0.0" y="188" width="375" height="479"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="Merces uses the following open-source components:  • Chameleon for iOS (by Vicc Alexander) • Glyphicons (by Jan Kovařík) ">
+                                    <fragment>
+                                        <string key="content">TipTok (formerly Merces) uses the following open-source components:  • Chameleon for iOS (by Vicc Alexander) • Glyphicons (by Jan Kovařík) </string>
                                         <attributes>
                                             <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="24" name="HelveticaNeue"/>
@@ -2339,7 +2340,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dFB-kJ-iLG"/>
                     </view>
-                    <navigationItem key="navigationItem" title="About Merces" id="INY-LI-eaH"/>
+                    <navigationItem key="navigationItem" title="About TipTok" id="INY-LI-eaH"/>
                     <connections>
                         <outlet property="textViewOutlet" destination="w5M-Kh-Gch" id="3OT-Jv-NCm"/>
                     </connections>
@@ -2351,7 +2352,7 @@
         <!--Navigation Controller-->
         <scene sceneID="pxv-WP-x4u">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MPh-RU-a5o" customClass="NavigationController" customModule="Merces" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MPh-RU-a5o" customClass="NavigationController" customModule="TipTok" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="K7F-4u-vaz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

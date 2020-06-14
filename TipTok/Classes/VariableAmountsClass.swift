@@ -1,6 +1,6 @@
 //
 //  VariableAmountsClass.swift
-//  merces
+//  TipTok
 //
 //  Created by Donovan McCray on 2/22/15.
 //  Copyright (c) 2015 DoMarsToyBox. All rights reserved.

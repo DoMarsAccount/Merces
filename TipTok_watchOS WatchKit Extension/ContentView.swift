@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  Merces_watchOS WatchKit Extension
+//  TipTok_watchOS WatchKit Extension
 //
 //  Created by Donovan McCray on 6/7/20.
 //  Copyright © 2020 DoMarsToyBox. All rights reserved.
@@ -16,7 +16,7 @@ struct ContentView: View {
     
     var body: some View {
         ValuesView()
-            .navigationBarTitle("Merces")
+            .navigationBarTitle("TipTok")
             .environmentObject(wCalcModel)
             .contextMenu {
                 NavigationLink(destination: SettingsPage().environmentObject(userPrefs), isActive: self.$isActive) {

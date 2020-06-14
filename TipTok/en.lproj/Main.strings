@@ -59,8 +59,8 @@
 /* Class = "UIButton"; normalTitle = "7"; ObjectID = "GCd-hy-8Rk"; */
 "GCd-hy-8Rk.normalTitle" = "7";
 
-/* Class = "UINavigationItem"; title = "About Merces"; ObjectID = "INY-LI-eaH"; */
-"INY-LI-eaH.title" = "About Merces";
+/* Class = "UINavigationItem"; title = "About TipTok"; ObjectID = "INY-LI-eaH"; */
+"INY-LI-eaH.title" = "About TipTok";
 
 /* Class = "UITableViewSection"; footerTitle = " "; ObjectID = "Ie9-7z-ngA"; */
 "Ie9-7z-ngA.footerTitle" = " ";
@@ -89,8 +89,8 @@
 /* Class = "UITextField"; text = "$0.00"; ObjectID = "LJ0-NW-PnP"; */
 "LJ0-NW-PnP.text" = "$0.00";
 
-/* Class = "UILabel"; text = "About Merces"; ObjectID = "P5s-2v-GjX"; */
-"P5s-2v-GjX.text" = "About Merces";
+/* Class = "UILabel"; text = "About TipTok"; ObjectID = "P5s-2v-GjX"; */
+"P5s-2v-GjX.text" = "About TipTok";
 
 /* Class = "UILabel"; text = "Use Your iPhone's Text Size"; ObjectID = "Px2-fB-09T"; */
 "Px2-fB-09T.text" = "Use Your iPhone's Text Size";
@@ -98,14 +98,14 @@
 /* Class = "UITableViewSection"; headerTitle = "Round Up to Nearest Dollar"; ObjectID = "QcI-ig-crr"; */
 "QcI-ig-crr.headerTitle" = "Round Up to Nearest Dollar";
 
-/* Class = "UINavigationItem"; title = "Merces"; ObjectID = "SEl-1C-Gsq"; */
-"SEl-1C-Gsq.title" = "Merces";
+/* Class = "UINavigationItem"; title = "TipTok"; ObjectID = "SEl-1C-Gsq"; */
+"SEl-1C-Gsq.title" = "TipTok";
 
 /* Class = "UITableViewSection"; headerTitle = "General"; ObjectID = "SNw-No-8yH"; */
 "SNw-No-8yH.headerTitle" = "General";
 
-/* Class = "UIViewController"; title = "My Merces"; ObjectID = "SyW-Px-p1c"; */
-"SyW-Px-p1c.title" = "My Merces";
+/* Class = "UIViewController"; title = "Personalize"; ObjectID = "SyW-Px-p1c"; */
+"SyW-Px-p1c.title" = "Personalize";
 
 /* Class = "UILabel"; text = "Main Color: "; ObjectID = "Tcr-Tc-0cC"; */
 "Tcr-Tc-0cC.text" = "Main Color: ";
@@ -170,8 +170,8 @@
 /* Class = "UITextField"; text = "1"; ObjectID = "hbo-d7-pDV"; */
 "hbo-d7-pDV.text" = "1";
 
-/* Class = "UINavigationItem"; title = "My Merces"; ObjectID = "im6-RM-NlN"; */
-"im6-RM-NlN.title" = "My Merces";
+/* Class = "UINavigationItem"; title = "Personalize "; ObjectID = "im6-RM-NlN"; */
+"im6-RM-NlN.title" = "Personalize";
 
 /* Class = "UILabel"; text = "Salon"; ObjectID = "jSc-2N-iVU"; */
 "jSc-2N-iVU.text" = "Salon";
@@ -197,8 +197,8 @@
 /* Class = "UITableViewSection"; headerTitle = "Accessibility"; ObjectID = "pt0-cm-Ljf"; */
 "pt0-cm-Ljf.headerTitle" = "Accessibility";
 
-/* Class = "UILabel"; text = "My Merces"; ObjectID = "pxj-Re-eJ6"; */
-"pxj-Re-eJ6.text" = "My Merces";
+/* Class = "UILabel"; text = "Personalize"; ObjectID = "pxj-Re-eJ6"; */
+"pxj-Re-eJ6.text" = "Personalize";
 
 /* Class = "UITextField"; placeholder = "Preferred Rate"; ObjectID = "qHz-r7-Yv1"; */
 "qHz-r7-Yv1.placeholder" = "Preferred Rate";

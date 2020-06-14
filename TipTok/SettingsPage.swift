@@ -1,6 +1,6 @@
 //
 //  SettingsPage.swift
-//  Merces
+//  TipTok
 //
 //  Created by Donovan McCray on 3/19/15.
 //  Copyright (c) 2015 DoMarsToyBox. All rights reserved.
@@ -113,11 +113,7 @@ class SettingsPage: UITableViewController {
     }
     
     @IBAction func userWantsToRateButtonPressed(_ sender: AnyObject) {
-        if #available(iOS 10.3, *) {
-            SKStoreReviewController.requestReview()
-        } else {
-            UIApplication.shared.open(URL(string: "https://itunes.apple.com/us/app/merces-personal-tip-calculator/id978591776?ls=1&mt=8")!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
-        }
+        SKStoreReviewController.requestReview()
     }
     
     func updateColorValues() {

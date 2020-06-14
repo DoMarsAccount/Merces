@@ -28,7 +28,7 @@
 			<key>UIApplicationShortcutItemIconFile</key>
 			<string>cogwheel</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>My Merces</string>
+			<string>Personalize</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>dom.Mercii.openMyMerces</string>
 			<key>UIApplicationShortcutItemUserInfo</key>

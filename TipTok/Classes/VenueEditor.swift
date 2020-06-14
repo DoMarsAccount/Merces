@@ -1,6 +1,6 @@
 //
 //  Venues.swift
-//  Merces_SwiftUI
+//  TipTok
 //
 //  Created by Donovan McCray on 6/1/20.
 //  Copyright © 2020 Donovan McCray. All rights reserved.

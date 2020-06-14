@@ -1,6 +1,6 @@
 //
 //  MercesTests.swift
-//  MercesTests
+//  TipTokTests
 //
 //  Created by Donovan McCray on 3/19/15.
 //  Copyright (c) 2015 DoMarsToyBox. All rights reserved.

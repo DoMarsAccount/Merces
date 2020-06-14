@@ -1,6 +1,6 @@
 /* 
   Localizable.strings
-  Merces
+  TipTok
 
   Created by Donovan McCray on 4/18/15.
   Copyright (c) 2015 DoMarsToyBox. All rights reserved.
@@ -31,9 +31,9 @@ GrandTotal = "총 합계";
 MainColor = "주요 색상";
 SecondaryColor = "보조 색상";
 
-WelcomeToMerces = "Merces에 오신 것을 환영합니다!";
-IdealExperience = "최상의 경험을 위해, 개인화먼저 내 Merces 설정.";
-TakeToMyMerces = "나를 내 Merces하기 위해 수행";
+WelcomeToMerces = "TipTok에 오신 것을 환영합니다!";
+IdealExperience = "최상의 경험을 위해, 개인화먼저 내 TipTok 설정.";
+TakeToMyMerces = "나를 내 TipTok하기 위해 수행";
 DoItLater = "나는 나중에 할 것";
 JustToBeSafe = "그냥 안전을 위해 ";
 WantToClearValues = "모든 값을 지우시겠습니까?";

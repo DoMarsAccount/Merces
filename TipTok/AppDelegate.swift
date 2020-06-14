@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  Merces
+//  TipTok
 //
 //  Created by Donovan McCray on 3/19/15.
 //  Copyright (c) 2015 DoMarsToyBox. All rights reserved.
@@ -112,9 +112,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         
         let rootView = self.window!.rootViewController as! NavigationController
         
-        if shortcutItem.localizedTitle == "My Merces" {
+        if shortcutItem.localizedTitle == "Personalize" {
             
-            let requestedViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MyMerces") as! MyMerces
+            let requestedViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Personalize") as! MyMerces
             
             rootView.pushViewController(requestedViewController, animated: true)
             

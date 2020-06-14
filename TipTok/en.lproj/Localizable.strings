@@ -1,6 +1,6 @@
 /*
  Localizable.strings
- Merces
+ TipTok
  
  Created by Donovan McCray on 4/18/15.
  Copyright (c) 2015 DoMarsToyBox. All rights reserved.
@@ -31,9 +31,9 @@
 "MainColor" = "Main Color";
 "SecondaryColor" = "Secondary Color";
 
-"WelcomeToMerces" = "Welcome to Merces!";
-"IdealExperience" = "For the best experience, personalize your My Merces settings first.";
-"TakeToMyMerces" = "Take me to My Merces";
+"WelcomeToMerces" = "Welcome to TipTok!";
+"IdealExperience" = "For the best experience, personalize your settings first.";
+"TakeToMyMerces" = "Okay";
 "DoItLater" = "I'll Do It Later";
 "JustToBeSafe" = "Just to be safe...";
 "WantToClearValues" = "Do you want to clear all values?";

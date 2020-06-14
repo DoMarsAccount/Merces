@@ -1,7 +1,7 @@
 
 //
 //  MainPage.swift
-//  Merces
+//  TipTok
 //
 //  Created by Donovan McCray on 3/19/15.
 //  Copyright (c) 2015 DoMarsToyBox. All rights reserved.
@@ -194,7 +194,7 @@ class MainPage: UIViewController {
             
             alert.addAction(UIAlertAction(title: NSLocalizedString("TakeToMyMerces", comment: "Take me to My Merces"), style: UIAlertAction.Style.default, handler: { (_) in
                 
-                let myMercesViewController = self.storyboard?.instantiateViewController(withIdentifier: "MyMerces") as! MyMerces
+                let myMercesViewController = self.storyboard?.instantiateViewController(withIdentifier: "Personalize") as! MyMerces
                 
                 self.navigationController?.pushViewController(myMercesViewController, animated: true)
                 

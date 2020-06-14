@@ -1,6 +1,6 @@
 /*
  Localizable.strings
- Merces
+ TipTok
  
  Created by Donovan McCray on 4/18/15.
  Copyright (c) 2015 DoMarsToyBox. All rights reserved.
@@ -31,9 +31,9 @@
 "MainColor" = "主色";
 "SecondaryColor" = "間色";
 
-"WelcomeToMerces" = "歡迎來到Merces！";
-"IdealExperience" = "為了獲得最佳的體驗，個性化你我的Merces設置第一。";
-"TakeToMyMerces" = "帶我去我的Merces";
+"WelcomeToMerces" = "歡迎來到TipTok！";
+"IdealExperience" = "為了獲得最佳的體驗，個性化你我的TipTok設置第一。";
+"TakeToMyMerces" = "帶我去我的TipTok";
 "DoItLater" = "我稍後將會去做";
 "JustToBeSafe" = "為了安全起見";
 "WantToClearValues" = "你想清除所有值？";

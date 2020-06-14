@@ -1,6 +1,6 @@
 //
 //  TodayViewController.swift
-//  MercesWidget
+//  TipTokWidget
 //
 //  Created by Donovan McCray on 1/16/17.
 //  Copyright © 2017 DoMarsToyBox. All rights reserved.

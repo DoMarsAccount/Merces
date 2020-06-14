@@ -1,6 +1,6 @@
 //
 //  SetupAlertView.swift
-//  Merces_watchOS WatchKit Extension
+//  TipTok_watchOS WatchKit Extension
 //
 //  Created by Donovan McCray on 6/12/20.
 //  Copyright © 2020 DoMarsToyBox. All rights reserved.
@@ -13,8 +13,8 @@ struct SetupAlert: ViewModifier {
     @Binding var doesUserWantSetup: Bool
     @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
     
-    let welcomeText: String = "Welcome to Merces!"
-    let message: String = "To save time later, please customize some settings now"
+    let welcomeText: String = "Welcome to TipTok!"
+    let message: String = "To save time later, please personalize some settings now"
     
     func body(content: Content) -> some View {
         

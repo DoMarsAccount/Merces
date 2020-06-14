@@ -1,6 +1,6 @@
 //
 //  ValuesView.swift
-//  Merces_watchOS WatchKit Extension
+//  TipTok_watchOS WatchKit Extension
 //
 //  Created by Donovan McCray on 6/8/20.
 //  Copyright © 2020 DoMarsToyBox. All rights reserved.

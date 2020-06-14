@@ -1,6 +1,6 @@
 //
 //  SettingsPage.swift
-//  Merces_watchOS WatchKit Extension
+//  TipTok_watchOS WatchKit Extension
 //
 //  Created by Donovan McCray on 6/8/20.
 //  Copyright © 2020 DoMarsToyBox. All rights reserved.
@@ -37,7 +37,7 @@ struct SettingsPage: View {
             Section(header: Text("General").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: headlineTextSize))))
             {
                 NavigationLink(destination: MyMerces(), isActive: self.$isActive) {
-                    Text("My Merces")
+                    Text("Personalize")
                         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: headlineTextSize)))
                 }
                 SettingsRow(text: .constant("Tip Includes Tax"), isEnabled: self.$preferences.tipIncludeTax)

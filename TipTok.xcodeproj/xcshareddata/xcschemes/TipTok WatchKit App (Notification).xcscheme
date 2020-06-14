@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "04EF6D88248D3451009CEF03"
-               BuildableName = "Merces.app"
-               BlueprintName = "Merces_watchOS WatchKit App"
-               ReferencedContainer = "container:Merces.xcodeproj">
+               BuildableName = "TipTok_watchOS WatchKit App.app"
+               BlueprintName = "TipTok_watchOS WatchKit App"
+               ReferencedContainer = "container:TipTok.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "04EF6D85248D3451009CEF03"
-               BuildableName = "Merces.app"
-               BlueprintName = "Merces_watchOS"
-               ReferencedContainer = "container:Merces.xcodeproj">
+               BuildableName = "TipTok_watchOS.app"
+               BlueprintName = "TipTok_watchOS"
+               ReferencedContainer = "container:TipTok.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -55,7 +55,7 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "8"
-      notificationPayloadFile = "Merces_watchOS WatchKit Extension/PushNotificationPayload.apns">
+      notificationPayloadFile = "TipTok_watchOS WatchKit Extension/PushNotificationPayload.apns">
       <RemoteRunnable
          runnableDebuggingMode = "2"
          BundleIdentifier = "com.apple.Carousel"
@@ -76,7 +76,7 @@
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES"
       launchAutomaticallySubstyle = "8"
-      notificationPayloadFile = "Merces_watchOS WatchKit Extension/PushNotificationPayload.apns">
+      notificationPayloadFile = "TipTok_watchOS WatchKit Extension/PushNotificationPayload.apns">
       <RemoteRunnable
          runnableDebuggingMode = "2"
          BundleIdentifier = "com.apple.Carousel"

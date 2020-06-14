@@ -24,7 +24,7 @@
                         <constraint firstAttribute="height" constant="64" id="xMa-0W-YUc"/>
                     </constraints>
                     <items>
-                        <navigationItem title="Merces" id="QXJ-WT-eH5"/>
+                        <navigationItem title="TipTok" id="QXJ-WT-eH5"/>
                     </items>
                 </navigationBar>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="82y-Ic-Kfk" userLabel="Subtotal">
