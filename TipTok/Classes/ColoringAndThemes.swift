@@ -10,6 +10,8 @@ import UIKit
 
 enum TipTokColor: CaseIterable, Hashable, Identifiable {
     case MercesGreen
+    case CrayolaRed
+    case SeaSerpent
     case White
     case Black
     case FadedBlue
@@ -121,6 +123,10 @@ class ColoringAndThemes {
             return appleWatchObject.modernBuckleBrightRed
         case .Brown:
             return appleWatchObject.modernBuckleBrown
+        case .CrayolaRed:
+            return UIColor(red: 0.933, green: 0.1137254902, blue: 0.3215686275, alpha: 1.0)
+        case .SeaSerpent:
+            return UIColor(red: 0.3019607843, green: 0.9098039216, blue: 0.9568627451, alpha: 1.0)
         }
     }
     
