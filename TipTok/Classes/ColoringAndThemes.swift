@@ -62,6 +62,62 @@ class ColoringAndThemes {
     
     var arrayOfAllColorNames: [String]!
     
+    enum TipTokColor {
+        case MercesGreen
+        case White
+        case Black
+        case FadedBlue
+        case LightGray
+        case Gold
+        case RoseGold
+        case CamoGreen
+        case Tan
+        case Purple
+        case Blue
+        case BurntOrange
+        case HotPink
+        case NeonGreen
+        case BrightRed
+        case Brown
+    }
+    
+    func uiColorValue(for TTColor: TipTokColor) -> UIColor {
+        switch TTColor {
+        case .MercesGreen:
+            return UIColor(red:0.42, green:0.67, blue:0.55, alpha:1.0)
+        case .White:
+            return .white
+        case .Black:
+            return .black
+        case .FadedBlue:
+            return appleWatchObject.leatherLoopBrightBlue
+        case .LightGray:
+            return appleBackgroundColor
+        case .Gold:
+            return appleWatchObject.gold
+        case .RoseGold:
+            return appleWatchObject.roseGold
+        case .CamoGreen:
+            return camoGreen
+        case .Tan:
+            return tan
+        case .Purple:
+            return fiveDollarBillPurple
+        case .Blue:
+            return hundredDollarBillBlue
+        case .BurntOrange:
+            return hundredDollarBillOrange
+        case .HotPink:
+            return appleMusicColor
+        case .NeonGreen:
+            return appleMessagesColor
+        case .BrightRed:
+            return appleWatchObject.modernBuckleBrightRed
+        case .Brown:
+            return appleWatchObject.modernBuckleBrown
+        }
+    }
+    
     
     /* Functions */
     
