@@ -8,6 +8,36 @@
 
 import UIKit
 
+enum TipTokColor: CaseIterable, Hashable, Identifiable {
+    case MercesGreen
+    case White
+    case Black
+    case FadedBlue
+    case LightGray
+    case Gold
+    case RoseGold
+    case CamoGreen
+    case Tan
+    case Purple
+    case Blue
+    case BurntOrange
+    case HotPink
+    case NeonGreen
+    case BrightRed
+    case Brown
+    
+    var name: String {
+        return "\(self)".map {
+            $0.isUppercase ? " \($0)" : "\($0)" }.joined().capitalized
+    }
+    
+    var stringRepresentation: String {
+        return "\(ColoringAndThemes().uiColorValue(for: self))"
+    }
+    
+    var id: TipTokColor { self }
+}
+
 class ColoringAndThemes {
     
     let appleWatchObject = AppleWatchColors()
@@ -62,24 +92,7 @@ class ColoringAndThemes {
     
     var arrayOfAllColorNames: [String]!
     
-    enum TipTokColor {
-        case MercesGreen
-        case White
-        case Black
-        case FadedBlue
-        case LightGray
-        case Gold
-        case RoseGold
-        case CamoGreen
-        case Tan
-        case Purple
-        case Blue
-        case BurntOrange
-        case HotPink
-        case NeonGreen
-        case BrightRed
-        case Brown
-    }
+    
     
     func uiColorValue(for TTColor: TipTokColor) -> UIColor {
         switch TTColor {
@@ -188,10 +201,10 @@ class ColoringAndThemes {
 //            return appIconGreen2
             
             case "UIExtendedSRGBColorSpace 0.42 0.67 0.55 1":
-            return appIconGreen3
+                return appIconGreen3
             
             case "UIExtendedSRGBColorSpace 0.04 0.85 0.57 1":
-            return appIconGreen4
+                return appIconGreen4
             
             case "UIExtendedSRGBColorSpace 0.549 0.627 0.49 1":
                 return camoGreen
