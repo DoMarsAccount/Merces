@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0830"
-   version = "1.3">
+   LastUpgradeVersion = "1150"
+   version = "2.0">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -14,9 +14,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E3B4B2B31ABB2CF7002A6C16"
+               BlueprintIdentifier = "04EF6D88248D3451009CEF03"
                BuildableName = "Merces.app"
-               BlueprintName = "Merces"
+               BlueprintName = "Merces_watchOS WatchKit App"
+               ReferencedContainer = "container:Merces.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "04EF6D85248D3451009CEF03"
+               BuildableName = "Merces.app"
+               BlueprintName = "Merces_watchOS"
                ReferencedContainer = "container:Merces.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,28 +42,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E3B4B2C81ABB2CF7002A6C16"
-               BuildableName = "MercesTests.xctest"
-               BlueprintName = "MercesTests"
-               ReferencedContainer = "container:Merces.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E3B4B2B31ABB2CF7002A6C16"
-            BuildableName = "Merces.app"
-            BlueprintName = "Merces"
-            ReferencedContainer = "container:Merces.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -60,36 +53,51 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      allowLocationSimulation = "YES"
+      launchAutomaticallySubstyle = "8"
+      notificationPayloadFile = "Merces_watchOS WatchKit Extension/PushNotificationPayload.apns">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/Merces_watchOS WatchKit App">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E3B4B2B31ABB2CF7002A6C16"
+            BlueprintIdentifier = "04EF6D88248D3451009CEF03"
             BuildableName = "Merces.app"
-            BlueprintName = "Merces"
+            BlueprintName = "Merces_watchOS WatchKit App"
             ReferencedContainer = "container:Merces.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
-      <AdditionalOptions>
-      </AdditionalOptions>
+      </RemoteRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      debugDocumentVersioning = "YES"
+      launchAutomaticallySubstyle = "8"
+      notificationPayloadFile = "Merces_watchOS WatchKit Extension/PushNotificationPayload.apns">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/Merces_watchOS WatchKit App">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E3B4B2B31ABB2CF7002A6C16"
+            BlueprintIdentifier = "04EF6D88248D3451009CEF03"
             BuildableName = "Merces.app"
-            BlueprintName = "Merces"
+            BlueprintName = "Merces_watchOS WatchKit App"
             ReferencedContainer = "container:Merces.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "04EF6D88248D3451009CEF03"
+            BuildableName = "Merces.app"
+            BlueprintName = "Merces_watchOS WatchKit App"
+            ReferencedContainer = "container:Merces.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

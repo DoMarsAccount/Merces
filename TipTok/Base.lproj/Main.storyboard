@@ -16,7 +16,7 @@
         <!--Merces-->
         <scene sceneID="4OY-y7-vwP">
             <objects>
-                <viewController id="RXx-uf-TO6" customClass="MainPage" customModule="Merces" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="RXx-uf-TO6" customClass="MainPage" customModule="TipTok" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a9O-XG-ggj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1099,7 +1099,7 @@
         <!--In App Purchase Page-->
         <scene sceneID="wg3-AC-EbO">
             <objects>
-                <viewController id="MeB-Y4-XmF" customClass="InAppPurchasePage" customModule="Merces" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="MeB-Y4-XmF" customClass="InAppPurchasePage" customModule="TipTok" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="J7b-Cz-DRm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1193,7 +1193,7 @@
         <!--Settings-->
         <scene sceneID="W8O-QE-nTr">
             <objects>
-                <tableViewController id="Ugb-pZ-gEj" customClass="SettingsPage" customModule="Merces" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Ugb-pZ-gEj" customClass="SettingsPage" customModule="TipTok" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="m0v-3z-sK4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1531,7 +1531,7 @@
         <!--Optimal Usage Guide-->
         <scene sceneID="KQV-bM-SfD">
             <objects>
-                <viewController id="Nf1-vc-brP" customClass="OptimalUsagePage" customModule="Merces" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Nf1-vc-brP" customClass="OptimalUsagePage" customModule="TipTok" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1jd-IH-Xog">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1596,7 +1596,7 @@
         <!--My Merces-->
         <scene sceneID="UDk-ze-tvB">
             <objects>
-                <viewController storyboardIdentifier="MyMerces" title="My Merces" id="SyW-Px-p1c" customClass="MyMerces" customModule="Merces" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyMerces" title="My Merces" id="SyW-Px-p1c" customClass="MyMerces" customModule="TipTok" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lw0-P5-58B">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2126,7 +2126,7 @@
         <!--Color Picker-->
         <scene sceneID="fV2-Ld-zbK">
             <objects>
-                <viewController storyboardIdentifier="ThemesPage" id="q80-gz-cwg" customClass="ThemesViewController" customModule="Merces" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ThemesPage" id="q80-gz-cwg" customClass="ThemesViewController" customModule="TipTok" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0C6-Zo-UC1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2147,7 +2147,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="aKc-5w-9WL" customClass="ThemesCollectionViewCell" customModule="Merces" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="aKc-5w-9WL" customClass="ThemesCollectionViewCell" customModule="TipTok" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="29" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -2186,7 +2186,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="tF9-ff-bn9" customClass="ThemesCollectionViewCell" customModule="Merces" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="tF9-ff-bn9" customClass="ThemesCollectionViewCell" customModule="TipTok" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="29" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -2225,7 +2225,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="gad-SG-z8O" customClass="ThemesCollectionViewCell" customModule="Merces" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="gad-SG-z8O" customClass="ThemesCollectionViewCell" customModule="TipTok" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="29" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -2303,7 +2303,7 @@
         <!--About Merces-->
         <scene sceneID="SFj-w7-gj2">
             <objects>
-                <viewController id="Bb8-Sx-D3f" customClass="OptimalUsagePage" customModule="Merces" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Bb8-Sx-D3f" customClass="OptimalUsagePage" customModule="TipTok" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Fd-vE-DK1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
