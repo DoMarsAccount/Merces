@@ -1,6 +1,0 @@
-framework module Pods_Merces {
-  umbrella header "Pods-Merces-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_MercesVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_MercesVersionString[];
+FOUNDATION_EXPORT double Pods_TipTokVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_TipTokVersionString[];
 
