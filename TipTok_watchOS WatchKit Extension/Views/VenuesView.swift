@@ -23,12 +23,14 @@ struct VenuesView: View {
             HStack {
                 Picker(selection: self.$venueEditor.service, label: Text("Service Level")
                         .font(.headline)
-                    .multilineTextAlignment(.leading)
-                    .minimumScaleFactor(0.8)
+                        .multilineTextAlignment(.leading)
+                        .minimumScaleFactor(0.8)
+                        .accessibility(label: Text("Service Level: \(self.venueEditor.service.name)"))
                 ){
                     ForEach(0..<ServiceQuality.allCases.count) { index in
                         Text(ServiceQuality.allCases[index].name)
                             .tag(ServiceQuality.allCases[index])
+                            .accessibility(value: Text("Service Level: \(ServiceQuality.allCases[index].name)"))
                     }
                 }.frame(height: viewHeight)
                 
@@ -51,9 +53,12 @@ struct VenuesView: View {
                 
             }
             
-            Picker(selection: self.$venueEditor.selectedVenue, label: Text("Venue").font(.headline)) {
+            Picker(selection: self.$venueEditor.selectedVenue, label: Text("Venue").font(.headline)
+                .accessibility(label: Text("Venue: \(self.venueEditor.selectedVenue.name)"))
+            ) {
                 ForEach(0..<VenueType.allCases.count) { index in
                     Text(VenueType.allCases[index].name).tag(VenueType.allCases[index])
+                        .accessibility(label: Text("Venue: \(VenueType.allCases[index].name)"))
                 }
             }.frame(height: viewHeight)
         
