@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+let highlightedScale: CGFloat = 1.3
+
 struct CurrencyView: View {
     @Binding var value: Double
     var body: some View {
@@ -53,6 +55,7 @@ struct MainPageTopSubview: View {
                 VStack {
                     Text("Subtotal")
                         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                        .scaleEffect(self.activeField == EditableTextFields.subtotal ? highlightedScale : 1.0)
                     CurrencyView(value: self.$calcModel.subtotal)
                 }.onTapGesture {
                     self.activeField = EditableTextFields.subtotal
@@ -62,6 +65,7 @@ struct MainPageTopSubview: View {
                     VStack {
                         Text("Sales Tax")
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                            .scaleEffect(self.activeField == EditableTextFields.salesTax ? highlightedScale : 1.0)
                         CurrencyView(value: self.$calcModel.taxAmount)
                     }.onTapGesture {
                         self.activeField = EditableTextFields.salesTax
@@ -70,6 +74,7 @@ struct MainPageTopSubview: View {
                     VStack {
                         Text("Party of")
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                            .scaleEffect(self.activeField == EditableTextFields.partySize ? highlightedScale : 1.0)
                         IntegerView(value: self.$calcModel.partySize)
                     }.onTapGesture {
                         self.activeField = EditableTextFields.partySize
@@ -94,7 +99,7 @@ struct MainPageMiddleSubview: View {
                     VStack {
                         Text("Venue")
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                        
+                            
 //                        VenuePicker()
                         
                         Text(self.calcModel.selectedVenue.name)
@@ -107,6 +112,7 @@ struct MainPageMiddleSubview: View {
                     VStack {
                         Text("Tip %")
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                            .scaleEffect(self.activeField == EditableTextFields.tipRate ? highlightedScale : 1.0)
                         PercentageView(value: self.$calcModel.tipRate)
                     }.onTapGesture {
                         self.activeField = EditableTextFields.tipRate
