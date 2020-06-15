@@ -28,7 +28,7 @@ struct ValuesView: View {
                                 self.isSubtotalKeypadPresented.toggle()
                             }
                             .sheet(isPresented: self.$isSubtotalKeypadPresented) {
-                                Keypad(value: self.$wCalcModel.subtotal, isPresented: self.$isSubtotalKeypadPresented, activeField: .constant(.subtotal))
+                                WatchKeypad(value: self.$wCalcModel.subtotal, isPresented: self.$isSubtotalKeypadPresented, activeField: .constant(.subtotal))
                             }
                             .accessibility(label: Text("Subtotal: \(nForm.roundForCurrency(number: self.wCalcModel.subtotal) )"))
                         
@@ -38,7 +38,7 @@ struct ValuesView: View {
                             self.isTaxAmountKeypadPresented.toggle()
                         }
                         .sheet(isPresented: self.$isTaxAmountKeypadPresented) {
-                            Keypad(value: self.$wCalcModel.taxAmount, isPresented: self.$isTaxAmountKeypadPresented, activeField: .constant(.salesTax))
+                            WatchKeypad(value: self.$wCalcModel.taxAmount, isPresented: self.$isTaxAmountKeypadPresented, activeField: .constant(.salesTax))
                         }
                         .accessibility(label: Text("Tax: \(nForm.roundForCurrency(number: self.wCalcModel.taxAmount) )"))
                     }
@@ -61,7 +61,7 @@ struct ValuesView: View {
                             self.isPartySizeKeypadPresented.toggle()
                         }
                         .sheet(isPresented: self.$isPartySizeKeypadPresented) {
-                            Keypad(value: self.$wCalcModel.partySize.double, isPresented: self.$isPartySizeKeypadPresented, activeField: .constant(.partySize))
+                            WatchKeypad(value: self.$wCalcModel.partySize.double, isPresented: self.$isPartySizeKeypadPresented, activeField: .constant(.partySize))
                         }
                         .accessibility(label: Text("Party Size: \(nForm.formatIntegerNumbers(self.wCalcModel.partySize))"))
                     }

@@ -30,7 +30,7 @@ struct DetailedTipRateView: View {
                         self.presentKeypad.toggle()
                     }
                     .sheet(isPresented: self.$presentKeypad) {
-                        Keypad(value: self.$wCalcModel.tipRate, isPresented: self.$presentKeypad, activeField: .constant(.tipRate))
+                        WatchKeypad(value: self.$wCalcModel.tipRate, isPresented: self.$presentKeypad, activeField: .constant(.tipRate))
                     }.navigationBarTitle("Done")
                     
                     Picker(selection: self.$wCalcModel.service, label: Text("Service Level")

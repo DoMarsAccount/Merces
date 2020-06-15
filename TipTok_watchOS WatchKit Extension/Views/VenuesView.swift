@@ -50,7 +50,7 @@ struct VenuesView: View {
                     self.isActive.toggle()
                 }
                 .sheet(isPresented: self.$isActive) {
-                    Keypad(value: self.$venueEditor.tipAmount, isPresented: self.$isActive, activeField: self.$venueEditor.activeField)
+                    WatchKeypad(value: self.$venueEditor.tipAmount, isPresented: self.$isActive, activeField: self.$venueEditor.activeField)
                 }.navigationBarTitle("Done")
                 .accessibility(label: Text("Tip Rate \(nForm.roundForPercentWithTwoDecimalPlaces(currentTipRate(for: self.venueEditor.selectedVenue, service: self.venueEditor.service)))"))
                 

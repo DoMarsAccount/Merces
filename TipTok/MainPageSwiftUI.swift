@@ -11,6 +11,7 @@ import SwiftUI
 struct MainPageSwiftUI: View {
     @State private var isSettingsActive: Bool = false
     @EnvironmentObject var userPrefs: UserPreferences
+    @State private var activeField: EditableTextFields = .none
     
     var body: some View {
         NavigationView {
@@ -21,7 +22,7 @@ struct MainPageSwiftUI: View {
             }
             .padding([.leading, .trailing])
             .navigationBarTitle(Text("TipTok").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                , displayMode: .inline)
+                , displayMode: .automatic)
             
             .navigationBarItems(trailing: NavigationLink(destination: Settings(), isActive: self.$isSettingsActive) {
                 Image(systemName: "gear")
