@@ -46,6 +46,7 @@ struct PercentageView: View {
 
 struct MainPageTopSubview: View {
     @ObservedObject var calcModel: CalculationsModel = varAmts.calcModel
+    @Binding var activeField: EditableTextFields
     var body: some View {
         GeometryReader { geo in
             VStack {
@@ -53,7 +54,8 @@ struct MainPageTopSubview: View {
                     Text("Subtotal")
                         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                     CurrencyView(value: self.$calcModel.subtotal)
-                    
+                }.onTapGesture {
+                    self.activeField = EditableTextFields.subtotal
                 }
                 
                 HStack {
@@ -61,12 +63,16 @@ struct MainPageTopSubview: View {
                         Text("Sales Tax")
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                         CurrencyView(value: self.$calcModel.taxAmount)
+                    }.onTapGesture {
+                        self.activeField = EditableTextFields.salesTax
                     }
                     
                     VStack {
                         Text("Party of")
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                         IntegerView(value: self.$calcModel.partySize)
+                    }.onTapGesture {
+                        self.activeField = EditableTextFields.partySize
                     }
                 }.padding(.top)
             }
@@ -80,6 +86,7 @@ struct MainPageTopSubview: View {
 
 struct MainPageMiddleSubview: View {
     @ObservedObject var calcModel: CalculationsModel = varAmts.calcModel
+    @Binding var activeField: EditableTextFields
     var body: some View {
         GeometryReader { geo in
             VStack {
@@ -101,6 +108,8 @@ struct MainPageMiddleSubview: View {
                         Text("Tip %")
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                         PercentageView(value: self.$calcModel.tipRate)
+                    }.onTapGesture {
+                        self.activeField = EditableTextFields.tipRate
                     }
                 }
                 
@@ -162,6 +171,6 @@ struct MainPageBottomSubview: View {
 
 struct MainPageSubviews_Previews: PreviewProvider {
     static var previews: some View {
-        MainPageTopSubview()
+        MainPageTopSubview(activeField: .constant(.none))
     }
 }

@@ -21,6 +21,8 @@
 		0480B3772491637100036864 /* CardStylings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0480B3762491637100036864 /* CardStylings.swift */; };
 		0487153C2497A72300DF33E5 /* MainPageSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0487153B2497A72300DF33E5 /* MainPageSubviews.swift */; };
 		048715432497AD5600DF33E5 /* KeypadButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048715422497AD5600DF33E5 /* KeypadButtons.swift */; };
+		048715452497AE4200DF33E5 /* Keypad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048715442497AE4200DF33E5 /* Keypad.swift */; };
+		048715482497B08700DF33E5 /* KeypadButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048715472497B08700DF33E5 /* KeypadButtons.swift */; };
 		049C69692491CAE600273450 /* VenuesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049C69682491CAE600273450 /* VenuesView.swift */; };
 		04D5E83424958AE000883DE8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3B4B2C01ABB2CF7002A6C16 /* Images.xcassets */; };
 		04E01270248961F0009FAEEB /* VenueEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0126F248961F0009FAEEB /* VenueEditor.swift */; };
@@ -177,6 +179,8 @@
 		0480B37924917F7F00036864 /* TipTok.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TipTok.entitlements; sourceTree = "<group>"; };
 		0487153B2497A72300DF33E5 /* MainPageSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageSubviews.swift; sourceTree = "<group>"; };
 		048715422497AD5600DF33E5 /* KeypadButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadButtons.swift; sourceTree = "<group>"; };
+		048715442497AE4200DF33E5 /* Keypad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keypad.swift; sourceTree = "<group>"; };
+		048715472497B08700DF33E5 /* KeypadButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadButtons.swift; sourceTree = "<group>"; };
 		049C69682491CAE600273450 /* VenuesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuesView.swift; sourceTree = "<group>"; };
 		04E0126F248961F0009FAEEB /* VenueEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueEditor.swift; sourceTree = "<group>"; };
 		04E012722489628A009FAEEB /* ReceiptModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReceiptModel.swift; path = Models/ReceiptModel.swift; sourceTree = "<group>"; };
@@ -334,6 +338,8 @@
 				04719F7D2497247100132EC8 /* PersonalizationPage.swift */,
 				04719F7F24972C4C00132EC8 /* ServiceQualityPicker.swift */,
 				04719F8124972FC800132EC8 /* VenuePicker.swift */,
+				048715442497AE4200DF33E5 /* Keypad.swift */,
+				048715472497B08700DF33E5 /* KeypadButtons.swift */,
 			);
 			name = SwiftUIViews;
 			sourceTree = "<group>";
@@ -939,10 +945,12 @@
 				E3FD0FB31EC3DB3600763ED2 /* VariableAmountsClass.swift in Sources */,
 				E3AB12081E2DBE950021C889 /* NavigationController.swift in Sources */,
 				04719F8024972C4C00132EC8 /* ServiceQualityPicker.swift in Sources */,
+				048715482497B08700DF33E5 /* KeypadButtons.swift in Sources */,
 				04719F7B2497234F00132EC8 /* SettingsPageSwiftUI.swift in Sources */,
 				04E01270248961F0009FAEEB /* VenueEditor.swift in Sources */,
 				E3AB120C1E2DBE950021C889 /* MyMerces.swift in Sources */,
 				E3FD0FB11EC3DB3600763ED2 /* ColoringAndThemes.swift in Sources */,
+				048715452497AE4200DF33E5 /* Keypad.swift in Sources */,
 				E33460B11E32F23D00D467C6 /* ThemesViewController.swift in Sources */,
 				0487153C2497A72300DF33E5 /* MainPageSubviews.swift in Sources */,
 				04719F7E2497247100132EC8 /* PersonalizationPage.swift in Sources */,

@@ -107,9 +107,3 @@ struct KeypadDoneButton: View {
         .cornerRadius(0)
     }
 }
-
-struct KeypadButtons_Previews: PreviewProvider {
-    static var previews: some View {
-        WatchKeypad(value: .constant(0.00), isPresented: .constant(false), activeField: .constant(.localTax))
-    }
-}

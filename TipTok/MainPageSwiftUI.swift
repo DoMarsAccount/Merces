@@ -16,9 +16,13 @@ struct MainPageSwiftUI: View {
     var body: some View {
         NavigationView {
             VStack {
-                MainPageTopSubview().padding(.top)
-                MainPageMiddleSubview()
-                MainPageBottomSubview().padding(.bottom)
+                MainPageTopSubview(activeField: self.$activeField).padding(.top)
+                MainPageMiddleSubview(activeField: self.$activeField)
+                if (self.activeField == .none) {
+                    MainPageBottomSubview().padding(.bottom)
+                } else {
+                    Keypad(activeField: self.$activeField)
+                }
             }
             .padding([.leading, .trailing])
             .navigationBarTitle(Text("TipTok").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
