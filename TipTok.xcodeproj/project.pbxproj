@@ -23,6 +23,7 @@
 		048715432497AD5600DF33E5 /* KeypadButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048715422497AD5600DF33E5 /* KeypadButtons.swift */; };
 		048715452497AE4200DF33E5 /* Keypad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048715442497AE4200DF33E5 /* Keypad.swift */; };
 		048715482497B08700DF33E5 /* KeypadButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048715472497B08700DF33E5 /* KeypadButtons.swift */; };
+		0487154A2497C15A00DF33E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048715492497C15A00DF33E5 /* SceneDelegate.swift */; };
 		049C69692491CAE600273450 /* VenuesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049C69682491CAE600273450 /* VenuesView.swift */; };
 		04D5E83424958AE000883DE8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3B4B2C01ABB2CF7002A6C16 /* Images.xcassets */; };
 		04E01270248961F0009FAEEB /* VenueEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0126F248961F0009FAEEB /* VenueEditor.swift */; };
@@ -181,6 +182,7 @@
 		048715422497AD5600DF33E5 /* KeypadButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadButtons.swift; sourceTree = "<group>"; };
 		048715442497AE4200DF33E5 /* Keypad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keypad.swift; sourceTree = "<group>"; };
 		048715472497B08700DF33E5 /* KeypadButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadButtons.swift; sourceTree = "<group>"; };
+		048715492497C15A00DF33E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		049C69682491CAE600273450 /* VenuesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuesView.swift; sourceTree = "<group>"; };
 		04E0126F248961F0009FAEEB /* VenueEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueEditor.swift; sourceTree = "<group>"; };
 		04E012722489628A009FAEEB /* ReceiptModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReceiptModel.swift; path = Models/ReceiptModel.swift; sourceTree = "<group>"; };
@@ -508,6 +510,7 @@
 			children = (
 				E3B4B3001ABBEC59002A6C16 /* TipTok.entitlements */,
 				E3B4B2B91ABB2CF7002A6C16 /* AppDelegate.swift */,
+				048715492497C15A00DF33E5 /* SceneDelegate.swift */,
 				04E0127F24896385009FAEEB /* Models */,
 				04E0126E24896179009FAEEB /* Classes */,
 				E3B4B2DD1ABB2D67002A6C16 /* Spring */,
@@ -957,6 +960,7 @@
 				E3AB12091E2DBE950021C889 /* MainPage.swift in Sources */,
 				04E012782489628A009FAEEB /* UserPreferences.swift in Sources */,
 				E3B4B2BA1ABB2CF7002A6C16 /* AppDelegate.swift in Sources */,
+				0487154A2497C15A00DF33E5 /* SceneDelegate.swift in Sources */,
 				E3FD0FAF1EC3DB3600763ED2 /* AppleWatchColors.swift in Sources */,
 				E3AB120E1E2DBE950021C889 /* InAppPurchasePage.swift in Sources */,
 				E33460AB1E32EF2300D467C6 /* ThemesCollectionViewCell.swift in Sources */,
