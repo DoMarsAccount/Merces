@@ -12,6 +12,11 @@
 		046C65022495B24D00B99784 /* defaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3AB12181E2DBF210021C889 /* defaultPreferences.plist */; };
 		046C65032495B24E00B99784 /* defaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3AB12181E2DBF210021C889 /* defaultPreferences.plist */; };
 		046C65042495B24F00B99784 /* defaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3AB12181E2DBF210021C889 /* defaultPreferences.plist */; };
+		04719F792497233C00132EC8 /* MainPageSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04719F782497233C00132EC8 /* MainPageSwiftUI.swift */; };
+		04719F7B2497234F00132EC8 /* SettingsPageSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04719F7A2497234F00132EC8 /* SettingsPageSwiftUI.swift */; };
+		04719F7E2497247100132EC8 /* PersonalizationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04719F7D2497247100132EC8 /* PersonalizationPage.swift */; };
+		04719F8024972C4C00132EC8 /* ServiceQualityPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04719F7F24972C4C00132EC8 /* ServiceQualityPicker.swift */; };
+		04719F8224972FC800132EC8 /* VenuePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04719F8124972FC800132EC8 /* VenuePicker.swift */; };
 		0480B37524910E4600036864 /* WatchDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0480B37424910E4600036864 /* WatchDataHandler.swift */; };
 		0480B3772491637100036864 /* CardStylings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0480B3762491637100036864 /* CardStylings.swift */; };
 		049C69692491CAE600273450 /* VenuesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049C69682491CAE600273450 /* VenuesView.swift */; };
@@ -159,6 +164,11 @@
 
 /* Begin PBXFileReference section */
 		0444E6CF24953A49004793BF /* WatchStyleValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStyleValues.swift; sourceTree = "<group>"; };
+		04719F782497233C00132EC8 /* MainPageSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageSwiftUI.swift; sourceTree = "<group>"; };
+		04719F7A2497234F00132EC8 /* SettingsPageSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageSwiftUI.swift; sourceTree = "<group>"; };
+		04719F7D2497247100132EC8 /* PersonalizationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizationPage.swift; sourceTree = "<group>"; };
+		04719F7F24972C4C00132EC8 /* ServiceQualityPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceQualityPicker.swift; sourceTree = "<group>"; };
+		04719F8124972FC800132EC8 /* VenuePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuePicker.swift; sourceTree = "<group>"; };
 		0480B37424910E4600036864 /* WatchDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchDataHandler.swift; sourceTree = "<group>"; };
 		0480B3762491637100036864 /* CardStylings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStylings.swift; sourceTree = "<group>"; };
 		0480B37824917F5F00036864 /* TipTok.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TipTok.entitlements; sourceTree = "<group>"; };
@@ -308,6 +318,18 @@
 				04E19BAC2493CB4000994668 /* SetupAlertView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		04719F7C2497235700132EC8 /* SwiftUIViews */ = {
+			isa = PBXGroup;
+			children = (
+				04719F782497233C00132EC8 /* MainPageSwiftUI.swift */,
+				04719F7A2497234F00132EC8 /* SettingsPageSwiftUI.swift */,
+				04719F7D2497247100132EC8 /* PersonalizationPage.swift */,
+				04719F7F24972C4C00132EC8 /* ServiceQualityPicker.swift */,
+				04719F8124972FC800132EC8 /* VenuePicker.swift */,
+			);
+			name = SwiftUIViews;
 			sourceTree = "<group>";
 		};
 		04E0126E24896179009FAEEB /* Classes */ = {
@@ -481,6 +503,7 @@
 				E3B4B2C01ABB2CF7002A6C16 /* Images.xcassets */,
 				E33460A91E32CC3000D467C6 /* ViewControllers */,
 				E3B4B2B71ABB2CF7002A6C16 /* Supporting Files */,
+				04719F7C2497235700132EC8 /* SwiftUIViews */,
 			);
 			path = TipTok;
 			sourceTree = "<group>";
@@ -908,10 +931,13 @@
 			files = (
 				E3FD0FB31EC3DB3600763ED2 /* VariableAmountsClass.swift in Sources */,
 				E3AB12081E2DBE950021C889 /* NavigationController.swift in Sources */,
+				04719F8024972C4C00132EC8 /* ServiceQualityPicker.swift in Sources */,
+				04719F7B2497234F00132EC8 /* SettingsPageSwiftUI.swift in Sources */,
 				04E01270248961F0009FAEEB /* VenueEditor.swift in Sources */,
 				E3AB120C1E2DBE950021C889 /* MyMerces.swift in Sources */,
 				E3FD0FB11EC3DB3600763ED2 /* ColoringAndThemes.swift in Sources */,
 				E33460B11E32F23D00D467C6 /* ThemesViewController.swift in Sources */,
+				04719F7E2497247100132EC8 /* PersonalizationPage.swift in Sources */,
 				E3AB12091E2DBE950021C889 /* MainPage.swift in Sources */,
 				04E012782489628A009FAEEB /* UserPreferences.swift in Sources */,
 				E3B4B2BA1ABB2CF7002A6C16 /* AppDelegate.swift in Sources */,
@@ -919,10 +945,12 @@
 				E3AB120E1E2DBE950021C889 /* InAppPurchasePage.swift in Sources */,
 				E33460AB1E32EF2300D467C6 /* ThemesCollectionViewCell.swift in Sources */,
 				04E0127A2489628A009FAEEB /* CalculationsModel.swift in Sources */,
+				04719F792497233C00132EC8 /* MainPageSwiftUI.swift in Sources */,
 				E3B4B2DB1ABB2D62002A6C16 /* BlurView.swift in Sources */,
 				E3B4B2DC1ABB2D62002A6C16 /* SpringAnimation.swift in Sources */,
 				04E012762489628A009FAEEB /* ReceiptModel.swift in Sources */,
 				E3AB120A1E2DBE950021C889 /* SettingsPage.swift in Sources */,
+				04719F8224972FC800132EC8 /* VenuePicker.swift in Sources */,
 				E3AB120B1E2DBE950021C889 /* OptimalUsagePage.swift in Sources */,
 				E3FD0FAA1EC3DB1A00763ED2 /* NumberFormattingClass.swift in Sources */,
 			);
