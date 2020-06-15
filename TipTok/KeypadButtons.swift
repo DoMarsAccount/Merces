@@ -96,6 +96,7 @@ struct KeypadDeleteButton: View {
                     .foregroundColor(.red)
                     .accessibility(label: Text("Delete"))
                     .scaledToFit()
+                    .padding()
             }
             .cornerRadius(0)
         }
