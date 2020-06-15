@@ -6,7 +6,7 @@
 //  Copyright © 2020 Donovan McCray. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
 enum ServiceQuality: CaseIterable, Hashable, Identifiable {
     case Poor
@@ -19,6 +19,17 @@ enum ServiceQuality: CaseIterable, Hashable, Identifiable {
     }
     
     var id: ServiceQuality { self }
+    
+    var image: Image {
+        switch self {
+        case .Poor:
+            return Image(systemName: "hand.thumbsdown.fill")
+        case .Average:
+            return Image(systemName: "hand.thumbsup.fill")
+        case .Great:
+            return Image(systemName: "heart.fill")
+        }
+    }
 }
 
 enum VenueType: CaseIterable, Hashable, Identifiable {

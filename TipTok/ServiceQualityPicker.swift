@@ -16,7 +16,8 @@ struct ServiceQualityPicker: View {
     var body: some View {
         Picker(selection: self.$calcModel.service, label: Text("Service Quality")) {
             ForEach(0..<ServiceQuality.allCases.count) { index in
-                Text(ServiceQuality.allCases[index].name)
+                ServiceQuality.allCases[index].image
+//                Text(ServiceQuality.allCases[index].name)
                     .tag(ServiceQuality.allCases[index])
                     .accessibility(value: Text("Service Level: \(ServiceQuality.allCases[index].name)"))
             }
