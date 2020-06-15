@@ -57,7 +57,6 @@ struct MainPageTopSubview: View {
                     CurrencyView(value: self.$calcModel.subtotal)
                     
                 }
-                .padding()
                 
                 HStack {
                     VStack {
@@ -65,16 +64,16 @@ struct MainPageTopSubview: View {
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                         CurrencyView(value: self.$calcModel.taxAmount)
                     }
-                    .padding(.leading)
                     
                     VStack {
                         Text("Party of")
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                         IntegerView(value: self.$calcModel.partySize)
-                    }.padding(.trailing)
-                }
+                    }
+                }.padding(.top)
             }
-            .frame(width: geo.size.width, height: viewHeight)
+            .padding()
+            .frame(width: geo.size.width, height: geo.size.height)
             .border(Color.primary, width: 2)
             .cornerRadius(2)
         }
@@ -96,23 +95,23 @@ struct MainPageMiddleSubview: View {
                             .border(Color.primary, width: 2)
                             .cornerRadius(2)
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-    //                    VenuePicker()
-                    }.padding(.leading)
+                    }
                     
                     VStack {
                         Text("Tip %")
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                         PercentageView(value: self.$calcModel.tipRate)
-                    }.padding(.trailing)
+                    }
                 }
                 
                 VStack {
                     Text("Service Level")
                         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                     ServiceQualityPicker()
-                }.padding()
+                }.padding(.top)
             }
-            .frame(width: geo.size.width, height: viewHeight)
+            .padding()
+            .frame(width: geo.size.width, height: geo.size.height)
             .border(Color.primary, width: 2)
             .cornerRadius(2)
         }
@@ -134,7 +133,7 @@ struct MainPageBottomSubview: View {
                         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                     CurrencyView(value: self.$calcModel.tipAmount)
                 }
-                .padding()
+                .padding(.top)
                 
                 if self.calcModel.partySize != 1 {
                     HStack {
@@ -142,7 +141,7 @@ struct MainPageBottomSubview: View {
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                         CurrencyView(value: self.$calcModel.totalAmountPerPerson)
                     }
-                    .padding()
+                    .padding(.top)
                 }
                 
                 HStack {
@@ -150,9 +149,10 @@ struct MainPageBottomSubview: View {
                         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                     CurrencyView(value: self.$calcModel.totalAmount)
                 }
-                .padding()
+                .padding(.top)
             }
-            .frame(width: geo.size.width, height: viewHeight)
+            .padding()
+            .frame(width: geo.size.width, height: geo.size.height)
             .border(Color.primary, width: 2)
             .cornerRadius(2)
         }
@@ -165,15 +165,15 @@ struct MainPageSwiftUI: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 32) {
+            VStack {
 //                Spacer()
-                MainPageTopSubview()
+                MainPageTopSubview().padding(.top)
                 MainPageMiddleSubview()
-                MainPageBottomSubview()
+                MainPageBottomSubview().padding(.bottom)
             }
-            .padding()
+            .padding([.leading, .trailing])
             .navigationBarTitle(Text("TipTok").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                , displayMode: .inline)
+                , displayMode: .automatic)
             
             .navigationBarItems(trailing: NavigationLink(destination: Settings(), isActive: self.$isSettingsActive) {
                 Image(systemName: "gear")
