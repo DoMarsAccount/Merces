@@ -53,7 +53,7 @@ class CalculationsModel: ObservableObject {
         self.subtotal = 0.00
         self.taxAmount = 0.00
         self.tipAmount = 0.0
-        self.partySize = 1
+        self.partySize = 2
         
         self.totalAmount = 0.0
         self.totalAmountPerPerson = 0.0

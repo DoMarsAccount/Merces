@@ -20,8 +20,8 @@ struct VenuePicker: View {
                         .accessibility(value: Text("Venue: \(VenueType.allCases[index].name)"))
                 }
             }
-            .pickerStyle(WheelPickerStyle())
-            .frame(width: 100, height: 50)
+            .pickerStyle(SegmentedPickerStyle())
+//            .frame(width: 100, height: 50)
         }
     }
 }

@@ -19,6 +19,7 @@
 		04719F8224972FC800132EC8 /* VenuePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04719F8124972FC800132EC8 /* VenuePicker.swift */; };
 		0480B37524910E4600036864 /* WatchDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0480B37424910E4600036864 /* WatchDataHandler.swift */; };
 		0480B3772491637100036864 /* CardStylings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0480B3762491637100036864 /* CardStylings.swift */; };
+		0487153C2497A72300DF33E5 /* MainPageSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0487153B2497A72300DF33E5 /* MainPageSubviews.swift */; };
 		049C69692491CAE600273450 /* VenuesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049C69682491CAE600273450 /* VenuesView.swift */; };
 		04D5E83424958AE000883DE8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3B4B2C01ABB2CF7002A6C16 /* Images.xcassets */; };
 		04E01270248961F0009FAEEB /* VenueEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0126F248961F0009FAEEB /* VenueEditor.swift */; };
@@ -173,6 +174,7 @@
 		0480B3762491637100036864 /* CardStylings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStylings.swift; sourceTree = "<group>"; };
 		0480B37824917F5F00036864 /* TipTok.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TipTok.entitlements; sourceTree = "<group>"; };
 		0480B37924917F7F00036864 /* TipTok.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TipTok.entitlements; sourceTree = "<group>"; };
+		0487153B2497A72300DF33E5 /* MainPageSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageSubviews.swift; sourceTree = "<group>"; };
 		049C69682491CAE600273450 /* VenuesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuesView.swift; sourceTree = "<group>"; };
 		04E0126F248961F0009FAEEB /* VenueEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueEditor.swift; sourceTree = "<group>"; };
 		04E012722489628A009FAEEB /* ReceiptModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReceiptModel.swift; path = Models/ReceiptModel.swift; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 		04719F7C2497235700132EC8 /* SwiftUIViews */ = {
 			isa = PBXGroup;
 			children = (
+				0487153B2497A72300DF33E5 /* MainPageSubviews.swift */,
 				04719F782497233C00132EC8 /* MainPageSwiftUI.swift */,
 				04719F7A2497234F00132EC8 /* SettingsPageSwiftUI.swift */,
 				04719F7D2497247100132EC8 /* PersonalizationPage.swift */,
@@ -937,6 +940,7 @@
 				E3AB120C1E2DBE950021C889 /* MyMerces.swift in Sources */,
 				E3FD0FB11EC3DB3600763ED2 /* ColoringAndThemes.swift in Sources */,
 				E33460B11E32F23D00D467C6 /* ThemesViewController.swift in Sources */,
+				0487153C2497A72300DF33E5 /* MainPageSubviews.swift in Sources */,
 				04719F7E2497247100132EC8 /* PersonalizationPage.swift in Sources */,
 				E3AB12091E2DBE950021C889 /* MainPage.swift in Sources */,
 				04E012782489628A009FAEEB /* UserPreferences.swift in Sources */,
