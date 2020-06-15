@@ -59,7 +59,7 @@ struct VenuesView: View {
             Picker(selection: self.$venueEditor.selectedVenue, label: Text("Venue").font(.headline)
                 .accessibility(label: Text("Venue: \(self.venueEditor.selectedVenue.name)"))
             ) {
-                ForEach(0..<VenueType.allCases.count) { index in
+                ForEach(1..<VenueType.allCases.count) { index in
                     Text(VenueType.allCases[index].name).tag(VenueType.allCases[index])
                         .accessibility(label: Text("Venue: \(VenueType.allCases[index].name)"))
                 }

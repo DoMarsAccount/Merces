@@ -47,6 +47,25 @@ enum VenueType: CaseIterable, Hashable, Identifiable {
     }
     
     var id: VenueType { self }
+    
+    var emoji: String {
+        switch self {
+        case .none:
+            return "\u{1F6AB}"
+        case .quick:
+            return "\u{23E9}"
+        case .bar:
+            return "\u{1F37A}"
+        case .dining:
+            return "\u{1F37D}"
+        case .salon:
+            return "\u{1F488}"
+        case .taxi:
+            return "\u{1F695}"
+        case .delivery:
+            return "\u{1F355}"
+        }
+    }
 }
 
 func localizedName(for venue: VenueType) -> String {
@@ -142,7 +161,25 @@ class VenueEditor: ObservableObject {
             if (!shouldReset) {
                 self.changeTipRating(for: self.selectedVenue, quality: self.service, newRating: self.tipAmount)
             }
-            
+        }
+    }
+    /* iOS Personalization Page Only*/
+    @Published var badServiceTipAmount: Double {
+        willSet { self.service = .Bad }
+        didSet {
+            self.changeTipRating(for: self.selectedVenue, quality: .Bad, newRating: self.badServiceTipAmount)
+        }
+    }
+    @Published var goodServiceTipAmount: Double {
+        willSet { self.service = .Good }
+        didSet {
+            self.changeTipRating(for: self.selectedVenue, quality: .Good, newRating: self.goodServiceTipAmount)
+        }
+    }
+    @Published var greatServiceTipAmount: Double {
+        willSet { self.service = .Great }
+        didSet {
+            self.changeTipRating(for: self.selectedVenue, quality: .Great, newRating: self.greatServiceTipAmount)
         }
     }
     private var shouldReset: Bool = false
@@ -153,6 +190,9 @@ class VenueEditor: ObservableObject {
         activeField = .averageTip
         
         tipAmount = currentTipRate(for: .quick, service: .Good)
+        badServiceTipAmount = currentTipRate(for: .quick, service: .Bad)
+        goodServiceTipAmount = currentTipRate(for: .quick, service: .Good)
+        greatServiceTipAmount = currentTipRate(for: .quick, service: .Great)
     }
     
     /// Update the tip rating for the given venue and quality in UserDefaults
@@ -193,6 +233,17 @@ class VenueEditor: ObservableObject {
         self.shouldReset = true
         self.tipAmount = 0.0
         self.shouldReset = false
+    }
+    
+    func currTipRate(for venue: VenueType, service: ServiceQuality) -> Double {
+        switch service {
+        case .Bad:
+            return tipRates(for: venue)[0]
+        case .Good:
+            return tipRates(for: venue)[1]
+        case .Great:
+            return tipRates(for: venue)[2]
+        }
     }
     
 }
