@@ -43,7 +43,6 @@ struct KeypadButton: View {
 }
 
 struct KeypadDeleteButton: View {
-    @Binding var text: String
     @Binding var activeField: EditableTextFields
     
     var body: some View {
@@ -85,23 +84,25 @@ struct KeypadDeleteButton: View {
                 break
             }
         }) {
-            Text(self.text)
-            .accessibility(label: Text("Delete"))
+            Image(systemName: "delete.left.fill")
+                .foregroundColor(.red)
+                .accessibility(label: Text("Delete"))
         }
         .cornerRadius(0)
     }
 }
 
 struct KeypadDoneButton: View {
-    @Binding var text: String
     @Binding var isPresented: Bool
     
     var body: some View {
         Button(action: {
             self.isPresented.toggle()
         }) {
-            Text(self.text)
-            .accessibility(label: Text("Done"))
+            Text("OK")
+                .font(.headline)
+                .foregroundColor(.green)
+                .accessibility(label: Text("Done"))
         }
         .cornerRadius(0)
     }
@@ -162,9 +163,9 @@ struct Keypad: View {
                     KeypadButton(text: .constant("9"), activeField: self.$activeField)
                 }
                 HStack (spacing: 1) {
-                    KeypadDoneButton(text: .constant("⏎"), isPresented: self.$isPresented)
+                    KeypadDoneButton(isPresented: self.$isPresented)
                     KeypadButton(text: .constant("0"), activeField: self.$activeField)
-                    KeypadDeleteButton(text: .constant("⌫"), activeField: self.$activeField)
+                    KeypadDeleteButton(activeField: self.$activeField)
                 }
             }
             .frame(width: geometry.size.width, height: geometry.size.height + 80)
