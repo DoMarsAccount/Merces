@@ -127,13 +127,14 @@ struct MainPageBottomSubview: View {
                     Text("Totaled Amounts")
                         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                 }
-                
-                HStack {
-                    Text("Tip Amount:")
-                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                    CurrencyView(value: self.$calcModel.tipAmount)
+                if self.calcModel.tipAmount != 0.0 {
+                    HStack {
+                        Text("Tip Amount:")
+                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                        CurrencyView(value: self.$calcModel.tipAmount)
+                    }
+    //                .padding(.top)
                 }
-//                .padding(.top)
                 
                 HStack {
                     Text("Grand Total:")
