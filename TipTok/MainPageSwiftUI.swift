@@ -14,6 +14,7 @@ struct CurrencyView: View {
     @Binding var value: Double
     var body: some View {
         Text(nForm.roundForCurrency(number: self.value))
+            .frame(minWidth: 0, maxWidth: .infinity)
             .padding()
             .border(Color.primary, width: 2)
             .cornerRadius(2)
@@ -25,6 +26,7 @@ struct IntegerView: View {
     @Binding var value: Int
     var body: some View {
         Text(nForm.formatIntegerNumbers(self.value))
+            .frame(minWidth: 0, maxWidth: .infinity)
             .padding()
             .border(Color.primary, width: 2)
             .cornerRadius(2)
@@ -36,6 +38,7 @@ struct PercentageView: View {
     @Binding var value: Double
     var body: some View {
         Text(nForm.roundForPercentWithTwoDecimalPlaces(self.value))
+            .frame(minWidth: 0, maxWidth: .infinity)
             .padding()
             .border(Color.primary, width: 2)
             .cornerRadius(2)
@@ -52,20 +55,23 @@ struct MainPageTopSubview: View {
                     Text("Subtotal")
                         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                     CurrencyView(value: self.$calcModel.subtotal)
-                }.padding()
+                    
+                }
+                .padding()
                 
                 HStack {
                     VStack {
                         Text("Sales Tax")
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                         CurrencyView(value: self.$calcModel.taxAmount)
-                    }.padding()
+                    }
+                    .padding(.leading)
                     
                     VStack {
                         Text("Party of")
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                         IntegerView(value: self.$calcModel.partySize)
-                    }.padding()
+                    }.padding(.trailing)
                 }
             }
             .frame(width: geo.size.width, height: viewHeight)
@@ -91,13 +97,13 @@ struct MainPageMiddleSubview: View {
                             .cornerRadius(2)
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
     //                    VenuePicker()
-                    }.padding()
+                    }.padding(.leading)
                     
                     VStack {
                         Text("Tip %")
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                         PercentageView(value: self.$calcModel.tipRate)
-                    }.padding()
+                    }.padding(.trailing)
                 }
                 
                 VStack {
@@ -128,6 +134,7 @@ struct MainPageBottomSubview: View {
                         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                     CurrencyView(value: self.$calcModel.tipAmount)
                 }
+                .padding()
                 
                 if self.calcModel.partySize != 1 {
                     HStack {
@@ -135,6 +142,7 @@ struct MainPageBottomSubview: View {
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                         CurrencyView(value: self.$calcModel.totalAmountPerPerson)
                     }
+                    .padding()
                 }
                 
                 HStack {
@@ -142,6 +150,7 @@ struct MainPageBottomSubview: View {
                         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                     CurrencyView(value: self.$calcModel.totalAmount)
                 }
+                .padding()
             }
             .frame(width: geo.size.width, height: viewHeight)
             .border(Color.primary, width: 2)
@@ -156,7 +165,7 @@ struct MainPageSwiftUI: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 8) {
+            VStack(spacing: 32) {
 //                Spacer()
                 MainPageTopSubview()
                 MainPageMiddleSubview()
@@ -180,5 +189,6 @@ struct MainPageSwiftUI: View {
 struct MainPageSwiftUI_Previews: PreviewProvider {
     static var previews: some View {
         MainPageSwiftUI().environmentObject(UserPreferences.sharedInstance)
+//        MainPageTopSubview()
     }
 }

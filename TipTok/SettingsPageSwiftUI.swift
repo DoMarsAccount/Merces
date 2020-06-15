@@ -25,7 +25,7 @@ struct Settings: View {
     @State private var isActive: Bool = false
     
     var body: some View {
-        NavigationView {
+//        NavigationView {
             Form {
                 Section(header: Text("General").font(.headline)) {
                     NavigationLink(destination: PersonalizationPage(), isActive: self.$isActive) {
@@ -64,7 +64,8 @@ struct Settings: View {
                     Text("About Merces")
                 }
             }
-        }
+        .navigationBarTitle(Text("Settings"))
+//        }
     }
 }
 
