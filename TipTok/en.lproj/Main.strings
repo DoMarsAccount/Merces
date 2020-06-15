@@ -143,8 +143,8 @@
 /* Class = "UIButton"; normalTitle = "9"; ObjectID = "aLN-nd-R53"; */
 "aLN-nd-R53.normalTitle" = "9";
 
-/* Class = "UILabel"; text = "Mid"; ObjectID = "b50-Yj-WGT"; */
-"b50-Yj-WGT.text" = "Mid";
+/* Class = "UILabel"; text = "Good"; ObjectID = "b50-Yj-WGT"; */
+"b50-Yj-WGT.text" = "Good";
 
 /* Class = "UILabel"; text = "Service Level"; ObjectID = "b8Z-yt-xAv"; */
 "b8Z-yt-xAv.text" = "Service Level";
@@ -155,8 +155,8 @@
 /* Class = "UINavigationItem"; title = "Settings"; ObjectID = "cqg-n6-Qaz"; */
 "cqg-n6-Qaz.title" = "Settings";
 
-/* Class = "UILabel"; text = "Low"; ObjectID = "e4w-y1-moW"; */
-"e4w-y1-moW.text" = "Low";
+/* Class = "UILabel"; text = "Bad"; ObjectID = "e4w-y1-moW"; */
+"e4w-y1-moW.text" = "Bad";
 
 /* Class = "UIButton"; normalTitle = "Purchase"; ObjectID = "f0w-aK-HhI"; */
 "f0w-aK-HhI.normalTitle" = "Purchase";
@@ -233,8 +233,8 @@
 /* Class = "UIButton"; normalTitle = "9"; ObjectID = "vcY-5k-BQF"; */
 "vcY-5k-BQF.normalTitle" = "9";
 
-/* Class = "UILabel"; text = "High"; ObjectID = "vfU-VY-gA1"; */
-"vfU-VY-gA1.text" = "High";
+/* Class = "UILabel"; text = "Great"; ObjectID = "vfU-VY-gA1"; */
+"vfU-VY-gA1.text" = "Great";
 
 /* Class = "UILabel"; text = "Delivery"; ObjectID = "wCO-qB-Lbh"; */
 "wCO-qB-Lbh.text" = "Delivery";

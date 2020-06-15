@@ -102,13 +102,13 @@ class MyMerces: UIViewController {
                 
                 self.calculate(self.arrayOfButtonsPressedForLocalSalesTax, firstResponderValue: 5)
                 
-            } else if self.userWantsToEditThisField == "Poor Service Rating" {
+            } else if self.userWantsToEditThisField == "Bad Service Rating" {
                 
                 self.arrayOfButtonsPressedForPoorTip.append(buttonTitle)
                 
                 self.updateUserTipRates(self.arrayOfButtonsPressedForPoorTip, tipRateToEdit: 0)
                 
-            } else if self.userWantsToEditThisField == "Average Service Rating" {
+            } else if self.userWantsToEditThisField == "Good Service Rating" {
                 
                 self.arrayOfButtonsPressedForAverageTip.append(buttonTitle)
                 
@@ -145,7 +145,7 @@ class MyMerces: UIViewController {
                 
                 self.calculate(self.arrayOfButtonsPressedForLocalSalesTax, firstResponderValue: 5)
                 
-            } else if self.userWantsToEditThisField == "Poor Service Rating" {
+            } else if self.userWantsToEditThisField == "Bad Service Rating" {
                 
                 if !self.arrayOfButtonsPressedForPoorTip.isEmpty {
                     
@@ -155,7 +155,7 @@ class MyMerces: UIViewController {
                 
                 self.updateUserTipRates(self.arrayOfButtonsPressedForPoorTip, tipRateToEdit: 0)
                 
-            } else if self.userWantsToEditThisField == "Average Service Rating" {
+            } else if self.userWantsToEditThisField == "Good Service Rating" {
                 
                 if !self.arrayOfButtonsPressedForAverageTip.isEmpty {
                     
@@ -197,11 +197,11 @@ class MyMerces: UIViewController {
             
             keypadDisappear()
             
-        } else if userWantsToEditThisField == "Poor Service Rating" {
+        } else if userWantsToEditThisField == "Bad Service Rating" {
             
             keypadDisappear()
             
-        } else if userWantsToEditThisField == "Average Service Rating" {
+        } else if userWantsToEditThisField == "Good Service Rating" {
             
             keypadDisappear()
             
@@ -242,7 +242,7 @@ class MyMerces: UIViewController {
         
         emptyArraysOfButtonsPressed()
         
-        userWantsToEditThisField = "Poor Service Rating"
+        userWantsToEditThisField = "Bad Service Rating"
         
         shrinkViewsNotBeingEdited(poorRatingTextFieldOutlet.tag)
         
@@ -254,7 +254,7 @@ class MyMerces: UIViewController {
         
         emptyArraysOfButtonsPressed()
         
-        userWantsToEditThisField = "Average Service Rating"
+        userWantsToEditThisField = "Good Service Rating"
         
         shrinkViewsNotBeingEdited(averageRatingTextFieldOutlet.tag)
         

@@ -9,8 +9,8 @@
 import SwiftUI
 
 enum ServiceQuality: CaseIterable, Hashable, Identifiable {
-    case Poor
-    case Average
+    case Bad
+    case Good
     case Great
     
     var name: String {
@@ -22,9 +22,9 @@ enum ServiceQuality: CaseIterable, Hashable, Identifiable {
     
     var image: Image {
         switch self {
-        case .Poor:
+        case .Bad:
             return Image(systemName: "hand.thumbsdown.fill")
-        case .Average:
+        case .Good:
             return Image(systemName: "hand.thumbsup.fill")
         case .Great:
             return Image(systemName: "heart.fill")
@@ -90,9 +90,9 @@ func tipRates(for venue: VenueType) -> [Double] {
 
 func currentTipRate(for venue: VenueType, service: ServiceQuality) -> Double {
     switch service {
-    case .Poor:
+    case .Bad:
         return tipRates(for: venue)[0]
-    case .Average:
+    case .Good:
         return tipRates(for: venue)[1]
     case .Great:
         return tipRates(for: venue)[2]
@@ -111,9 +111,9 @@ func userDefinedTipRatings (_ arrayOfPressedButtonValues: [String], venueToEdit:
     venueEditor.selectedVenue = venueToEdit
     switch tipRateToEdit {
     case 0:
-        venueEditor.service = .Poor
+        venueEditor.service = .Bad
     case 1:
-        venueEditor.service = .Average
+        venueEditor.service = .Good
     case 2:
         venueEditor.service = .Great
     default:
@@ -127,9 +127,9 @@ class VenueEditor: ObservableObject {
     @Published var service: ServiceQuality {
         didSet {
             switch self.service {
-            case .Poor:
+            case .Bad:
                 self.activeField = .poorTip
-            case .Average:
+            case .Good:
                 self.activeField = .averageTip
             case .Great:
                 self.activeField = .greatTip
@@ -149,10 +149,10 @@ class VenueEditor: ObservableObject {
     
     init() {
         selectedVenue = .quick
-        service = .Average
+        service = .Good
         activeField = .averageTip
         
-        tipAmount = currentTipRate(for: .quick, service: .Average)
+        tipAmount = currentTipRate(for: .quick, service: .Good)
     }
     
     /// Update the tip rating for the given venue and quality in UserDefaults
@@ -160,9 +160,9 @@ class VenueEditor: ObservableObject {
         
         var index: Int = 0
         switch quality {
-        case .Poor:
+        case .Bad:
             index = 0
-        case .Average:
+        case .Good:
             index = 1
         case .Great:
             index = 2

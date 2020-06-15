@@ -59,7 +59,7 @@ class CalculationsModel: ObservableObject {
         self.totalAmountPerPerson = 0.0
         
         self.selectedVenue = .quick
-        self.service = .Average
+        self.service = .Good
         self.tipRate = tipRates(for: .quick)[1]
         
         self.displayedTotalAmountPerPerson = 0.0
@@ -76,7 +76,7 @@ class CalculationsModel: ObservableObject {
         self.totalAmountPerPerson = 0.0
         
         self.selectedVenue = .quick
-        self.service = .Average
+        self.service = .Good
         self.tipRate = tipRates(for: self.selectedVenue)[1]
         
         self.displayedTotalAmountPerPerson = 0.0

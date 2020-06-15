@@ -28,9 +28,12 @@ struct VenuesView: View {
                         .accessibility(label: Text("Service Level: \(self.venueEditor.service.name)"))
                 ){
                     ForEach(0..<ServiceQuality.allCases.count) { index in
-                        Text(ServiceQuality.allCases[index].name)
-                            .tag(ServiceQuality.allCases[index])
-                            .accessibility(value: Text("Service Level: \(ServiceQuality.allCases[index].name)"))
+                        HStack {
+                            Text(ServiceQuality.allCases[index].name)
+                            ServiceQuality.allCases[index].image
+                        }
+                        .tag(ServiceQuality.allCases[index])
+                        .accessibility(value: Text("Service Level: \(ServiceQuality.allCases[index].name)"))
                     }
                 }.frame(height: viewHeight)
                 

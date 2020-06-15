@@ -39,7 +39,10 @@ struct DetailedTipRateView: View {
                         .minimumScaleFactor(0.8)
                     ){
                         ForEach(0..<ServiceQuality.allCases.count) { index in
-                            Text(ServiceQuality.allCases[index].name).tag(ServiceQuality.allCases[index])
+                            HStack {
+                                Text(ServiceQuality.allCases[index].name).tag(ServiceQuality.allCases[index])
+                                ServiceQuality.allCases[index].image
+                            }
                         }
                     }.frame(height: viewHeight)
                     
