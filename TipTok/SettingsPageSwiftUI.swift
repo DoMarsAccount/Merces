@@ -16,6 +16,7 @@ struct SettingsRow: View {
     var body: some View {
         Toggle(isOn: self.$isEnabled) {
             Text(self.text)
+                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
         }
     }
 }
@@ -27,24 +28,26 @@ struct Settings: View {
     var body: some View {
 //        NavigationView {
             Form {
-                Section(header: Text("General").font(.headline)) {
+                Section(header: Text("General").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
                     NavigationLink(destination: PersonalizationPage(), isActive: self.$isActive) {
                         Text("Personalize")
+                            .foregroundColor(.primary)
+                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                     }
                     SettingsRow(text: .constant("Tip Includes Tax"), isEnabled: self.$preferences.tipIncludeTax)
                     SettingsRow(text: .constant("Subtotal is Post Tax"), isEnabled: self.$preferences.subtotalIsPostTax)
                 }
                 
-                Section(header: Text("Round Up to Nearest Dollar").font(.headline)) {
+                Section(header: Text("Round Up to Nearest Dollar").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
                     SettingsRow(text: .constant("Tip Amount"), isEnabled: self.$preferences.roundTipAmount)
                     SettingsRow(text: .constant("Grand Total"), isEnabled: self.$preferences.roundTotalAmount)
                 }
                 
-                Section(header: Text("Accessibility").font(.headline)) {
+                Section(header: Text("Accessibility").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
                     SettingsRow(text: .constant("Use Your iPhone's Text Size"), isEnabled: self.$preferences.useDynamicText)
                 }
                 
-                Section(header: Text("Feedback").font(.headline)) {
+                Section(header: Text("Feedback").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
                     Button(action: {
                         
                     }) {
@@ -52,19 +55,20 @@ struct Settings: View {
                             .foregroundColor(.primary)
                             .onTapGesture {
                                 SKStoreReviewController.requestReview()
-                        }
+                            }
+                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                     }
                 }
                 
-                Section(header: Text("Support").font(.headline)) {
-                    Text("Optimal Usage Guide")
+                Section(header: Text("Support").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
+                    Text("Optimal Usage Guide").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                 }
                 
-                Section(header: Text("About").font(.headline)) {
-                    Text("About Merces")
+                Section(header: Text("About").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
+                    Text("About Merces").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                 }
             }
-        .navigationBarTitle(Text("Settings"))
+        .navigationBarTitle(Text("Settings").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18))))
 //        }
     }
 }
