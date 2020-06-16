@@ -62,14 +62,14 @@ struct VenueView: View {
             }
             .padding()
             .frame(width: geo.size.width, height: geo.size.height)
-            .background(Color(coloringThemes.viewBackgroundColor))
-            .border(Color(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)), width: 2)
             .cornerRadius(2)
             .onTapGesture {
                 self.calcModel.selectedVenue = self.venue
                 self.activeField = .none
             }
-            
+            .border(Color.primary)
+//            .background(Color(coloringThemes.viewBackgroundColor))
+//            .border(Color(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)), width: 2)
         }
     }
 }
@@ -95,8 +95,9 @@ struct VenueSelectionView: View {
             .padding()
             .frame(width: geo.size.width, height: geo.size.height)
             .cornerRadius(2)
-            .background(Color(coloringThemes.mainColor))
-            .border(Color(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)), width: 2)
+            .border(Color.primary)
+//            .background(Color(coloringThemes.mainColor))
+//            .border(Color(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)), width: 2)
         }
     }
 }

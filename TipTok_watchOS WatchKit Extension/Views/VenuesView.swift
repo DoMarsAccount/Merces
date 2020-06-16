@@ -51,7 +51,7 @@ struct VenuesView: View {
                 }
                 .sheet(isPresented: self.$isActive) {
                     WatchKeypad(value: self.$venueEditor.tipAmount, isPresented: self.$isActive, activeField: self.$venueEditor.activeField)
-                }.navigationBarTitle("Done")
+                }
                 .accessibility(label: Text("Tip Rate \(nForm.roundForPercentWithTwoDecimalPlaces(currentTipRate(for: self.venueEditor.selectedVenue, service: self.venueEditor.service)))"))
                 
             }

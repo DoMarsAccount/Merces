@@ -76,11 +76,10 @@ class SettingsPage: UITableViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
-//        let userPrefs = UserPreferences.sharedInstance
-//        userPrefs.roundTotalAmount = totalAmountSwitch.isOn
-//        userPrefs.roundTipAmount = tipAmountSwitch.isOn
-//        userPrefs.tipIncludeTax = tipIncludesTaxSwitch.isOn
-//        userPrefs.subtotalIsPostTax = subtotalPostTaxSwitch.isOn
+//        roundTotalAmountSubscriber?.cancel()
+//        roundTipAmountSubscriber?.cancel()
+//        subtotalPostTaxSubscriber?.cancel()
+//        tipIncludesTaxSubscriber?.cancel()
     }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {

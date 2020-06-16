@@ -47,11 +47,10 @@ struct Keypad: View {
                     .border(Color.primary, width: 2)
                 }
             }
-//            .padding()
-            .background(Color(coloringThemes.mainColor))
             .frame(width: geometry.size.width, height: geometry.size.height)
-            .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)))
-            .border(Color(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)), width: 2)
+//            .background(Color(coloringThemes.mainColor))
+//            .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)))
+//            .border(Color(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)), width: 2)
         }
     }
 }

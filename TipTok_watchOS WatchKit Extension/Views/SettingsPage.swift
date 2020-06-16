@@ -81,7 +81,7 @@ struct MyMerces: View {
                     }
                     .sheet(isPresented: self.$isKeypadPresented) {
                         WatchKeypad(value: self.$preferences.localSalesTax, isPresented: self.$isKeypadPresented, activeField: .constant(.localTax))
-                    }.navigationBarTitle("Done")
+                    }
                     .accessibility(label: Text("Local Sales Tax Rate: \(nForm.roundForPercentWithThreeDecimalPlaces(number: self.preferences.localSalesTax))"))
                 VenuesView().padding([.top])
             }

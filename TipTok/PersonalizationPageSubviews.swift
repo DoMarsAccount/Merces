@@ -57,9 +57,12 @@ struct PPageMiddleView: View {
                 
                 HStack {
                     VStack {
-                        Text("Bad")
-                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                            .scaleEffect(self.activeField == EditableTextFields.poorTip ? highlightedScale : 1.0)
+                        HStack {
+                            Text("Bad")
+                                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                                .scaleEffect(self.activeField == EditableTextFields.poorTip ? highlightedScale : 1.0)
+                            ServiceQuality.Bad.image
+                        }
                         
                         Text(nForm.roundForPercentWithTwoDecimalPlaces(currentTipRate(for: self.venueEditor.selectedVenue, service: .Bad)))
                             .frame(minWidth: 0, maxWidth: .infinity)
@@ -73,9 +76,12 @@ struct PPageMiddleView: View {
                     }
                     
                     VStack {
-                        Text("Good")
-                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                            .scaleEffect(self.activeField == EditableTextFields.averageTip ? highlightedScale : 1.0)
+                        HStack {
+                            Text("Good")
+                                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                                .scaleEffect(self.activeField == EditableTextFields.averageTip ? highlightedScale : 1.0)
+                            ServiceQuality.Good.image
+                        }
                         Text(nForm.roundForPercentWithTwoDecimalPlaces(currentTipRate(for: self.venueEditor.selectedVenue, service: .Good)))
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .padding()
@@ -87,9 +93,12 @@ struct PPageMiddleView: View {
                     }
                     
                     VStack {
-                        Text("Great")
-                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                            .scaleEffect(self.activeField == EditableTextFields.greatTip ? highlightedScale : 1.0)
+                        HStack {
+                            Text("Great")
+                                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                                .scaleEffect(self.activeField == EditableTextFields.greatTip ? highlightedScale : 1.0)
+                            ServiceQuality.Great.image
+                        }
                         Text(nForm.roundForPercentWithTwoDecimalPlaces(currentTipRate(for: self.venueEditor.selectedVenue, service: .Great)))
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .padding()
@@ -113,7 +122,7 @@ struct PPageBottomView: View {
     var body: some View {
         GeometryReader { geo in
             VStack {
-                Text("")
+                Spacer()
             }
             .padding()
             .frame(width: geo.size.width, height: geo.size.height)

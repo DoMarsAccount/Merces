@@ -67,7 +67,7 @@ struct WatchKeypad: View {
                     KeypadButton(text: .constant("0"), activeField: self.$activeField)
                     KeypadDeleteButton(activeField: self.$activeField)
                 }
-            }
+            }.navigationBarTitle("Done")
             .frame(width: geometry.size.width, height: geometry.size.height + 80)
             .edgesIgnoringSafeArea([.leading, .trailing, .bottom])
         }

@@ -29,13 +29,14 @@ struct MainPageSwiftUI: View {
             }
             .padding([.leading, .trailing])
             .navigationBarTitle(Text("TipTok").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                , displayMode: .inline)
+                , displayMode: .automatic)
                 
-            .background(NavigationConfigurator { nc in
-                nc.navigationBar.barTintColor = coloringThemes.mainColor
-                nc.navigationBar.titleTextAttributes = [.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)!]
-            })
-            
+//            .background(NavigationConfigurator { nc in
+//                nc.navigationBar.barTintColor = coloringThemes.mainColor
+//                nc.navigationBar.titleTextAttributes = [.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)!]
+//            })
+//            .background(Color(coloringThemes.backgroundColor))
+//            .edgesIgnoringSafeArea(.bottom)
             .navigationBarItems(trailing: NavigationLink(destination: Settings(), isActive: self.$isSettingsActive) {
                 Image(systemName: "gear")
                     .resizable()
@@ -44,7 +45,7 @@ struct MainPageSwiftUI: View {
                     .accessibility(label: Text("Settings"))
             })
         }
-    .navigationViewStyle(StackNavigationViewStyle())
+//    .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

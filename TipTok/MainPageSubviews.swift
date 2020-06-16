@@ -88,6 +88,7 @@ struct MainPageTopSubview: View {
             .frame(width: geo.size.width, height: geo.size.height)
             .border(Color.primary, width: 2)
             .cornerRadius(2)
+//            .background(Color(coloringThemes.viewBackgroundColor))
         }
     }
 }
@@ -135,6 +136,7 @@ struct MainPageMiddleSubview: View {
             .frame(width: geo.size.width, height: geo.size.height)
             .border(Color.primary, width: 2)
             .cornerRadius(2)
+//            .background(Color(coloringThemes.viewBackgroundColor))
         }
     }
 }
@@ -177,6 +179,7 @@ struct MainPageBottomSubview: View {
             .frame(width: geo.size.width, height: geo.size.height)
             .border(Color.primary, width: 2)
             .cornerRadius(2)
+//            .background(Color(coloringThemes.viewBackgroundColor))
         }
     }
 }
