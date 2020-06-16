@@ -19,6 +19,7 @@ struct CurrencyView: View {
             .border(Color.primary, width: 2)
             .cornerRadius(2)
             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+//            .background(Color.secondary)
     }
 }
 
@@ -31,6 +32,7 @@ struct IntegerView: View {
             .border(Color.primary, width: 2)
             .cornerRadius(2)
             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+//            .background(Color.secondary)
     }
 }
 
@@ -43,6 +45,7 @@ struct PercentageView: View {
             .border(Color.primary, width: 2)
             .cornerRadius(2)
             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+//            .background(Color.secondary)
     }
 }
 
@@ -107,6 +110,9 @@ struct MainPageMiddleSubview: View {
                             .border(Color.primary, width: 2)
                             .cornerRadius(2)
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+//                            .background(Color.secondary)
+                    }.onTapGesture {
+                        self.activeField = EditableTextFields.venue
                     }
                     
                     VStack {

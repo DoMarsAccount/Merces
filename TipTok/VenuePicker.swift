@@ -11,15 +11,21 @@ import SwiftUI
 struct VenuePicker: View {
     @ObservedObject var calcModel = varAmts.calcModel
     var body: some View {
-        VStack {
-            Picker(selection: self.$calcModel.selectedVenue, label: Text("Venue")) {
-                ForEach(1..<VenueType.allCases.count) { index in
-                    Text(VenueType.allCases[index].name)
-                        .tag(VenueType.allCases[index])
-                        .accessibility(value: Text("Venue: \(VenueType.allCases[index].name)"))
+        GeometryReader { geo in
+            VStack {
+                Picker(selection: self.$calcModel.selectedVenue, label: Text("Venue")) {
+                    ForEach(1..<VenueType.allCases.count) { index in
+                        Text(VenueType.allCases[index].name)
+                            .tag(VenueType.allCases[index])
+                            .accessibility(value: Text("Venue: \(VenueType.allCases[index].name)"))
+                    }
                 }
+                .pickerStyle(WheelPickerStyle())
             }
-            .pickerStyle(WheelPickerStyle())
+            .padding()
+            .frame(width: geo.size.width, height: geo.size.height)
+            .border(Color.primary, width: 2)
+            .cornerRadius(2)
         }
     }
 }
@@ -29,7 +35,7 @@ struct PPageVenuePicker: View {
         
         var body: some View {
             VStack {
-                Picker(selection: self.$venueEditor.selectedVenue, label: Text("Venue")) {
+                Picker("Venue", selection: self.$venueEditor.selectedVenue) {
                     ForEach(1..<VenueType.allCases.count) { index in
                         Text(VenueType.allCases[index].emoji)
                             .tag(VenueType.allCases[index])
@@ -41,9 +47,61 @@ struct PPageVenuePicker: View {
         }
 }
 
+struct VenueView: View {
+    @ObservedObject var calcModel = varAmts.calcModel
+    var venue: VenueType
+    @Binding var activeField: EditableTextFields
+    var body: some View {
+        GeometryReader { geo in
+            VStack {
+                Text(self.venue.emoji)
+//                    .padding()
+                Text(self.venue.name)
+                    .padding(.top)
+                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+            }
+            .padding()
+            .frame(width: geo.size.width, height: geo.size.height)
+            .border(Color.primary, width: 2)
+            .cornerRadius(2)
+            .onTapGesture {
+                self.calcModel.selectedVenue = self.venue
+                self.activeField = .none
+            }
+        }
+    }
+}
+
+struct VenueSelectionView: View {
+    @ObservedObject var calcModel = varAmts.calcModel
+    @Binding var activeField: EditableTextFields
+    var body: some View {
+        GeometryReader { geo in
+            VStack {
+                HStack {
+                    VenueView(venue: .bar, activeField: self.$activeField)
+                    VenueView(venue: .quick, activeField: self.$activeField)
+                    VenueView(venue: .dining, activeField: self.$activeField)
+                }
+                
+                HStack {
+                    VenueView(venue: .taxi, activeField: self.$activeField)
+                    VenueView(venue: .salon, activeField: self.$activeField)
+                    VenueView(venue: .delivery, activeField: self.$activeField)
+                }
+            }
+            .padding()
+            .frame(width: geo.size.width, height: geo.size.height)
+            .border(Color.primary, width: 2)
+            .cornerRadius(2)
+        }
+    }
+}
+
 struct VenuePicker_Previews: PreviewProvider {
     static var previews: some View {
-        PPageVenuePicker()
-//        Text("\u{1F355}")
+//        VenuePicker()
+        VenueSelectionView(activeField: .constant(.none))
+//        PPageVenuePicker()
     }
 }

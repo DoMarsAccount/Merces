@@ -19,11 +19,16 @@ struct MainPageSwiftUI: View {
                 MainPageTopSubview(activeField: self.$activeField).padding(.top)
                 MainPageMiddleSubview(activeField: self.$activeField)
                 if (self.activeField == .none) {
-                    MainPageBottomSubview().padding(.bottom)
+                    MainPageBottomSubview()
+                        .padding(.bottom)
+                        .transition(.moveAndFade)
+                } else if (self.activeField == EditableTextFields.venue) {
+                    VenueSelectionView(activeField: self.$activeField)
                 } else {
                     Keypad(activeField: self.$activeField)
                 }
             }
+            .transition(.moveAndFade)
             .padding([.leading, .trailing])
             .navigationBarTitle(Text("TipTok").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                 , displayMode: .automatic)
@@ -41,7 +46,8 @@ struct MainPageSwiftUI: View {
 
 struct MainPageSwiftUI_Previews: PreviewProvider {
     static var previews: some View {
-        MainPageSwiftUI().environmentObject(UserPreferences.sharedInstance)
-//        MainPageTopSubview()
+        MainPageSwiftUI()
+            .environmentObject(UserPreferences.sharedInstance)
+//            .environment(\.colorScheme, .dark)
     }
 }

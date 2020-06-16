@@ -13,6 +13,7 @@ enum EditableTextFields: CaseIterable, Hashable, Identifiable {
     case salesTax
     case partySize
     case tipRate
+    case venue
     case localTax
     case poorTip
     case averageTip

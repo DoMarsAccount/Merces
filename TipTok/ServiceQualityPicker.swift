@@ -8,8 +8,6 @@
 
 import SwiftUI
 
-
-
 struct ServiceQualityPicker: View {
     @ObservedObject var calcModel = varAmts.calcModel
     
@@ -21,7 +19,11 @@ struct ServiceQualityPicker: View {
                     .tag(ServiceQuality.allCases[index])
                     .accessibility(value: Text("Service Level: \(ServiceQuality.allCases[index].name)"))
             }
-        }.pickerStyle(SegmentedPickerStyle())
+        }
+        .pickerStyle(SegmentedPickerStyle())
+        .border(Color.primary, width: 2)
+        .cornerRadius(7)
+//        .background(Color.secondary)
     }
 }
 
