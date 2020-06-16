@@ -21,17 +21,20 @@ struct MainPageSwiftUI: View {
                 if (self.activeField == .none) {
                     MainPageBottomSubview()
                         .padding(.bottom)
-                        .transition(.moveAndFade)
                 } else if (self.activeField == EditableTextFields.venue) {
                     VenueSelectionView(activeField: self.$activeField)
                 } else {
                     Keypad(activeField: self.$activeField)
                 }
             }
-            .transition(.moveAndFade)
             .padding([.leading, .trailing])
             .navigationBarTitle(Text("TipTok").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                , displayMode: .automatic)
+                , displayMode: .inline)
+                
+            .background(NavigationConfigurator { nc in
+                nc.navigationBar.barTintColor = .systemBlue
+                nc.navigationBar.titleTextAttributes = [.foregroundColor : UIColor.white]
+            })
             
             .navigationBarItems(trailing: NavigationLink(destination: Settings(), isActive: self.$isSettingsActive) {
                 Image(systemName: "gear")
@@ -41,6 +44,7 @@ struct MainPageSwiftUI: View {
                     .accessibility(label: Text("Settings"))
             })
         }
+    .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
