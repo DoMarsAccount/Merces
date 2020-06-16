@@ -130,7 +130,7 @@ class ColoringAndThemes {
         }
     }
     
-    func getMainColor() -> UIColor {
+    var mainColor: UIColor {
         if let currentMainColor = UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.string(forKey: "phoneMainColor") {
             //print("\(UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.string(forKey: "phoneMainColor"))")
             return uiColor(for: currentMainColor)
@@ -138,7 +138,7 @@ class ColoringAndThemes {
         return appIconGreen3
     }
     
-    func getBackgroundColor() -> UIColor {
+    var backgroundColor: UIColor {
         if let currentBackgroundColor = UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.string(forKey: "phoneBackgroundColor") {
             //print("\(UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.string(forKey: "phoneBackgroundColor"))")
             return uiColor(for: currentBackgroundColor)
@@ -146,7 +146,7 @@ class ColoringAndThemes {
         return appleBackgroundColor
     }
     
-    func getViewBackgroundColor() -> UIColor {
+    var viewBackgroundColor: UIColor {
         if let currentViewBackgroundColor = mUserDefaults?.string(forKey: "phoneViewBackgroundColor") {
             //print("\(UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.string(forKey: "phoneViewBackgroundColor"))")
             return uiColor(for: currentViewBackgroundColor)

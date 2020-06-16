@@ -202,7 +202,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             
             keypadButtons.layer.borderColor = keypadViewOutlet.backgroundColor?.cgColor
             
-            keypadButtons.backgroundColor = coloringThemes.getMainColor()
+            keypadButtons.backgroundColor = coloringThemes.mainColor
             
         }
         
@@ -419,7 +419,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                 
             } else {
                 
-                inputDisplays.layer.borderColor = coloringThemes.getMainColor().cgColor
+                inputDisplays.layer.borderColor = coloringThemes.mainColor.cgColor
                 
                 inputDisplays.layer.borderWidth = 3
                 

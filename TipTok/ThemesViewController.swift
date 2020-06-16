@@ -64,7 +64,7 @@ class ThemesViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         cell.layer.cornerRadius = cell.bounds.size.width / 2
         
-        cell.layer.borderColor = coloringThemes.getViewBackgroundColor().cgColor
+        cell.layer.borderColor = coloringThemes.viewBackgroundColor.cgColor
         
         cell.viewCellImageOutlet.layer.cornerRadius = cell.viewCellImageOutlet.bounds.size.width/2
         
@@ -79,7 +79,7 @@ class ThemesViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         if collectionView == self.themesCollectionView {
             
-            if coloringThemes.uiColorValue(for: TipTokColor.allCases[indexPath.item]) == coloringThemes.getMainColor() {
+            if coloringThemes.uiColorValue(for: TipTokColor.allCases[indexPath.item]) == coloringThemes.mainColor {
                 cell.layer.borderWidth = 3
                 cell.layer.borderColor = UIColor.green.cgColor
                 themesLabel.text = "Main Color: \(TipTokColor.allCases[indexPath.item].name)"
@@ -87,7 +87,7 @@ class ThemesViewController: UIViewController, UICollectionViewDataSource, UIColl
             
         } else if collectionView == self.themesBackgroundCollectionView {
             
-            if coloringThemes.uiColorValue(for: TipTokColor.allCases[indexPath.item]) == coloringThemes.getBackgroundColor() {
+            if coloringThemes.uiColorValue(for: TipTokColor.allCases[indexPath.item]) == coloringThemes.backgroundColor {
                 cell.layer.borderWidth = 3
                 cell.layer.borderColor = UIColor.green.cgColor
                 themesBackgroundLabel.text = "Background Color: \(TipTokColor.allCases[indexPath.item].name)"
@@ -95,7 +95,7 @@ class ThemesViewController: UIViewController, UICollectionViewDataSource, UIColl
             
         } else if collectionView == self.themesViewCollectionView {
             
-            if coloringThemes.uiColorValue(for: TipTokColor.allCases[indexPath.item]) == coloringThemes.getViewBackgroundColor() {
+            if coloringThemes.uiColorValue(for: TipTokColor.allCases[indexPath.item]) == coloringThemes.viewBackgroundColor {
                 cell.layer.borderWidth = 3
                 cell.layer.borderColor = UIColor.green.cgColor
                 themesViewLabel.text = "View Color: \(TipTokColor.allCases[indexPath.item].name)"
@@ -140,35 +140,35 @@ class ThemesViewController: UIViewController, UICollectionViewDataSource, UIColl
         /* ------------ Navigation Bar Coloring ------------- */
         
         // Full Nav Bar Coloring
-        self.navigationController?.navigationBar.barTintColor = coloringThemes.getMainColor()
+        self.navigationController?.navigationBar.barTintColor = coloringThemes.mainColor
         
         // Background Coloring
-        self.view.backgroundColor = coloringThemes.getBackgroundColor()
+        self.view.backgroundColor = coloringThemes.backgroundColor
         
         // Title Coloring
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)!]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)!]
         
         
         // Back Button Coloring
-        self.navigationController?.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)
+        self.navigationController?.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)
         
-        themesLabel.backgroundColor = coloringThemes.getMainColor()
+        themesLabel.backgroundColor = coloringThemes.mainColor
         
-        themesLabel.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)
+        themesLabel.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)
         
-        themesBackgroundLabel.backgroundColor = coloringThemes.getBackgroundColor()
+        themesBackgroundLabel.backgroundColor = coloringThemes.backgroundColor
         
-        themesBackgroundLabel.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getBackgroundColor(), isFlat: true)
+        themesBackgroundLabel.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.backgroundColor, isFlat: true)
         
-        themesViewLabel.backgroundColor = coloringThemes.getViewBackgroundColor()
+        themesViewLabel.backgroundColor = coloringThemes.viewBackgroundColor
         
-        themesViewLabel.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getViewBackgroundColor(), isFlat: true)
+        themesViewLabel.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.viewBackgroundColor, isFlat: true)
         
         for collectionView in collectionThemesCollectionViews {
             
             collectionView.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor!, isFlat: true).cgColor
             
-            collectionView.backgroundColor = coloringThemes.getViewBackgroundColor()
+            collectionView.backgroundColor = coloringThemes.viewBackgroundColor
             
         }
         

@@ -119,32 +119,32 @@ class SettingsPage: UITableViewController {
     func updateColorValues() {
         
         /* ------------ Navigation Bar Coloring ------------- */
-        self.navigationController?.navigationBar.barTintColor = coloringThemes.getMainColor()
+        self.navigationController?.navigationBar.barTintColor = coloringThemes.mainColor
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)!]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)!]
         
-        self.navigationController?.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)
+        self.navigationController?.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)
         
         
-        view.backgroundColor = coloringThemes.getBackgroundColor()
+        view.backgroundColor = coloringThemes.backgroundColor
         
         
         for tableViewCell in collectionTableViewCell {
-            tableViewCell.backgroundColor = coloringThemes.getViewBackgroundColor()
+            tableViewCell.backgroundColor = coloringThemes.viewBackgroundColor
         }
         
         for settingsHeaders in collectionSettingsInformation {
-            settingsHeaders.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getViewBackgroundColor(), isFlat: true)
+            settingsHeaders.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.viewBackgroundColor, isFlat: true)
         }
         
         for switches in collectionSwitches {
-            switches.onTintColor = coloringThemes.getMainColor()
+            switches.onTintColor = coloringThemes.mainColor
             
-            if coloringThemes.getMainColor() == coloringThemes.getViewBackgroundColor() {
+            if coloringThemes.mainColor == coloringThemes.viewBackgroundColor {
                 
-                switches.onTintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)
+                switches.onTintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)
                 
-                switches.tintColor =  UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)
+                switches.tintColor =  UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)
                 
             }
         }
@@ -154,18 +154,18 @@ class SettingsPage: UITableViewController {
         
         let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         
-        header.tintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getBackgroundColor(), isFlat: true)
+        header.tintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.backgroundColor, isFlat: true)
         
-        header.textLabel!.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getBackgroundColor(), isFlat: true)
+        header.textLabel!.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.backgroundColor, isFlat: true)
     }
     
     override func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
         
         let footer: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         
-        footer.tintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getBackgroundColor(), isFlat: true)
+        footer.tintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.backgroundColor, isFlat: true)
         
-        footer.textLabel?.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getBackgroundColor(), isFlat: true)
+        footer.textLabel?.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.backgroundColor, isFlat: true)
     }
 }
 

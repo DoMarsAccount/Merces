@@ -332,13 +332,13 @@ class MyMerces: UIViewController {
     func updateColorValues() {
         
         /* ------------ Navigation Bar Coloring ------------- */
-        self.navigationController?.navigationBar.barTintColor = coloringThemes.getMainColor()
+        self.navigationController?.navigationBar.barTintColor = coloringThemes.mainColor
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)! ]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)! ]
         
-        self.navigationController?.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true)
+        self.navigationController?.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)
         
-        view.backgroundColor = coloringThemes.getBackgroundColor()
+        view.backgroundColor = coloringThemes.backgroundColor
         
         
         // for billTax, Venue, and totaledAmounts Views
@@ -350,7 +350,7 @@ class MyMerces: UIViewController {
             
             MainViews.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor!, isFlat: true).cgColor
             
-            MainViews.backgroundColor = coloringThemes.getViewBackgroundColor()
+            MainViews.backgroundColor = coloringThemes.viewBackgroundColor
             
         }
         
@@ -363,22 +363,22 @@ class MyMerces: UIViewController {
         
         keypadStuffView.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor!, isFlat: true).cgColor
         
-        keypadStuffView.backgroundColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getViewBackgroundColor(), isFlat: true)
+        keypadStuffView.backgroundColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.viewBackgroundColor, isFlat: true)
         
         
         for keypadButtons in collectionKeypadButtons {
             
-            keypadButtons.setTitleColor(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true), for: .normal)
+            keypadButtons.setTitleColor(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true), for: .normal)
             
-            keypadButtons.setTitleColor(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true), for: .highlighted)
+            keypadButtons.setTitleColor(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true), for: .highlighted)
             
-            keypadButtons.setTitleColor(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getMainColor(), isFlat: true), for: .selected)
+            keypadButtons.setTitleColor(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true), for: .selected)
             
             keypadButtons.layer.borderWidth = 1.5
             
-            keypadButtons.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getBackgroundColor(), isFlat: true).cgColor
+            keypadButtons.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.backgroundColor, isFlat: true).cgColor
             
-            keypadButtons.backgroundColor = coloringThemes.getMainColor()
+            keypadButtons.backgroundColor = coloringThemes.mainColor
             
             keypadButtons.layer.cornerRadius = 5
             
@@ -387,16 +387,16 @@ class MyMerces: UIViewController {
         
         for headerLabels in collectionHeaderLabels {
             
-            headerLabels.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getViewBackgroundColor(), isFlat: true)
-            //UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getBackgroundColor(), isFlat: true)
+            headerLabels.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.viewBackgroundColor, isFlat: true)
+            //UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getBackgroundColor, isFlat: true)
             
         }
         
         
         for inputFields in collectionInputFieldLabels {
             
-            inputFields.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getViewBackgroundColor(), isFlat: true)
-            //UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getViewBackgroundColor(), isFlat: true)
+            inputFields.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.viewBackgroundColor, isFlat: true)
+            //UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getViewBackgroundColor, isFlat: true)
             
             inputFields.layer.cornerRadius = 2.5
             
@@ -406,8 +406,8 @@ class MyMerces: UIViewController {
             
         }
         
-        venueSegmentedControlOutlet.tintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getViewBackgroundColor(), isFlat: true)
-        //UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getBackgroundColor(), isFlat: true)
+        venueSegmentedControlOutlet.tintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.viewBackgroundColor, isFlat: true)
+        //UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getBackgroundColor, isFlat: true)
         
     }
     

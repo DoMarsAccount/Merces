@@ -48,9 +48,10 @@ struct Keypad: View {
                 }
             }
 //            .padding()
+            .background(Color(coloringThemes.mainColor))
             .frame(width: geometry.size.width, height: geometry.size.height)
-            .accentColor(.primary)
-            .border(Color.primary, width: 2)
+            .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)))
+            .border(Color(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)), width: 2)
         }
     }
 }

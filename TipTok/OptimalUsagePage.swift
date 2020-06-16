@@ -34,11 +34,11 @@ class OptimalUsagePage: UIViewController {
     
     func updateColorValues() {
         
-        self.view.backgroundColor = coloringThemes.getBackgroundColor()
+        self.view.backgroundColor = coloringThemes.backgroundColor
         
-        textViewOutlet.backgroundColor = coloringThemes.getBackgroundColor()
+        textViewOutlet.backgroundColor = coloringThemes.backgroundColor
         
-        textViewOutlet.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getBackgroundColor(), isFlat: true)
+        textViewOutlet.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.backgroundColor, isFlat: true)
         
     }
     

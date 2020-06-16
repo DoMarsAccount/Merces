@@ -32,8 +32,8 @@ struct MainPageSwiftUI: View {
                 , displayMode: .inline)
                 
             .background(NavigationConfigurator { nc in
-                nc.navigationBar.barTintColor = .systemBlue
-                nc.navigationBar.titleTextAttributes = [.foregroundColor : UIColor.white]
+                nc.navigationBar.barTintColor = coloringThemes.mainColor
+                nc.navigationBar.titleTextAttributes = [.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)!]
             })
             
             .navigationBarItems(trailing: NavigationLink(destination: Settings(), isActive: self.$isSettingsActive) {
