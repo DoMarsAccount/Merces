@@ -77,7 +77,7 @@ struct MainPageMiddleSubview: View {
                     }
                 }
                 
-                VStack {
+                VStack(spacing: 0) {
                     Text("Service Level")
                         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                     ServiceQualityPicker()

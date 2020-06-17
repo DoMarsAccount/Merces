@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct TTCardModifier: ViewModifier {
+    @Environment(\.colorScheme) var colorScheme
+
     func body(content: Content) -> some View {
         GeometryReader { geo in
             content
@@ -16,10 +18,10 @@ struct TTCardModifier: ViewModifier {
                 .frame(width: geo.size.width, height: geo.size.height)
                 .background(
                     ZStack {
-                        Color(.white)
+//                        Color(.white)
                         
                         RoundedRectangle(cornerRadius: 16, style: .circular)
-                            .foregroundColor(.white)
+                            .foregroundColor(self.colorScheme == .dark ? .secondary : .secondary)
                             .blur(radius: 4)
                             .offset(x: -8, y: -8)
                         
@@ -27,13 +29,13 @@ struct TTCardModifier: ViewModifier {
 //                            .fill(
 //                                LinearGradient(gradient: Gradient(colors: [Color("DropShadowBlack"), .white]), startPoint: .topLeading, endPoint: .bottomTrailing)
 //                            )
-                            .foregroundColor(.white)
+                            .foregroundColor(self.colorScheme == .dark ? Color("DropShadowBlack") : Color("BabyPowder"))
                             .padding(2)
                             .blur(radius: 2)
                     }
                 )
                 .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                .shadow(color: Color("DropShadowBlack"), radius: 20, x: 0, y: 20)
+                .shadow(color: .black, radius: 10, x: 10, y: 10)
 //                .shadow(color: Color("DropShadowBlack"), radius: 10, x: 0, y: 0)
         }
     }
