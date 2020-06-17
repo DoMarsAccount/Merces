@@ -91,6 +91,8 @@ struct ValuesView: View {
 
 struct ValuesView_Previews: PreviewProvider {
     static var previews: some View {
-        ValuesView().environmentObject(CalculationsModel())
+        ValuesView()
+            .environmentObject(CalculationsModel())
+            .environment(\.sizeCategory, .extraLarge)
     }
 }
