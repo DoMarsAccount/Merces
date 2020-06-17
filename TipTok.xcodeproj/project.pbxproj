@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04282A55249A4B64004F2879 /* CardViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04282A54249A4B64004F2879 /* CardViewModifier.swift */; };
 		0444E6D024953A49004793BF /* WatchStyleValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0444E6CF24953A49004793BF /* WatchStyleValues.swift */; };
 		046C65012495B24A00B99784 /* defaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3AB12181E2DBF210021C889 /* defaultPreferences.plist */; };
 		046C65022495B24D00B99784 /* defaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3AB12181E2DBF210021C889 /* defaultPreferences.plist */; };
@@ -170,6 +171,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		04282A54249A4B64004F2879 /* CardViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModifier.swift; sourceTree = "<group>"; };
 		0444E6CF24953A49004793BF /* WatchStyleValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStyleValues.swift; sourceTree = "<group>"; };
 		04719F782497233C00132EC8 /* MainPageSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageSwiftUI.swift; sourceTree = "<group>"; };
 		04719F7A2497234F00132EC8 /* SettingsPageSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageSwiftUI.swift; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 				048715442497AE4200DF33E5 /* Keypad.swift */,
 				048715472497B08700DF33E5 /* KeypadButtons.swift */,
 				048715512498521700DF33E5 /* NavigationConfigurator.swift */,
+				04282A54249A4B64004F2879 /* CardViewModifier.swift */,
 			);
 			name = SwiftUIViews;
 			sourceTree = "<group>";
@@ -961,6 +964,7 @@
 				E3FD0FB11EC3DB3600763ED2 /* ColoringAndThemes.swift in Sources */,
 				048715452497AE4200DF33E5 /* Keypad.swift in Sources */,
 				E33460B11E32F23D00D467C6 /* ThemesViewController.swift in Sources */,
+				04282A55249A4B64004F2879 /* CardViewModifier.swift in Sources */,
 				0487153C2497A72300DF33E5 /* MainPageSubviews.swift in Sources */,
 				04719F7E2497247100132EC8 /* PersonalizationPage.swift in Sources */,
 				E3AB12091E2DBE950021C889 /* MainPage.swift in Sources */,

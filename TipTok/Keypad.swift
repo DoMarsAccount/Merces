@@ -47,10 +47,7 @@ struct Keypad: View {
                     .border(Color.primary, width: 2)
                 }
             }
-            .frame(width: geometry.size.width, height: geometry.size.height)
-//            .background(Color(coloringThemes.mainColor))
-//            .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)))
-//            .border(Color(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)), width: 2)
+            .modifier(TTCardModifier())
         }
     }
 }

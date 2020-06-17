@@ -84,11 +84,7 @@ struct MainPageTopSubview: View {
                     }
                 }.padding(.top)
             }
-            .padding()
-            .frame(width: geo.size.width, height: geo.size.height)
-            .border(Color.primary, width: 2)
-            .cornerRadius(2)
-//            .background(Color(coloringThemes.viewBackgroundColor))
+            .modifier(TTCardModifier())
         }
     }
 }
@@ -132,11 +128,7 @@ struct MainPageMiddleSubview: View {
                     ServiceQualityPicker()
                 }.padding(.top)
             }
-            .padding()
-            .frame(width: geo.size.width, height: geo.size.height)
-            .border(Color.primary, width: 2)
-            .cornerRadius(2)
-//            .background(Color(coloringThemes.viewBackgroundColor))
+            .modifier(TTCardModifier())
         }
     }
 }
@@ -175,11 +167,7 @@ struct MainPageBottomSubview: View {
 //                    .padding(.top)
                 }
             }
-            .padding()
-            .frame(width: geo.size.width, height: geo.size.height)
-            .border(Color.primary, width: 2)
-            .cornerRadius(2)
-//            .background(Color(coloringThemes.viewBackgroundColor))
+            .modifier(TTCardModifier())
         }
     }
 }

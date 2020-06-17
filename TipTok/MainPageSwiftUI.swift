@@ -28,6 +28,9 @@ struct MainPageSwiftUI: View {
                 }
             }
             .padding([.leading, .trailing])
+//            .frame(maxWidth: .infinity)
+            .background(Color("Background"))
+                
             .navigationBarTitle(Text("TipTok").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                 , displayMode: .automatic)
                 
@@ -36,7 +39,6 @@ struct MainPageSwiftUI: View {
 //                nc.navigationBar.titleTextAttributes = [.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)!]
 //            })
 //            .background(Color(coloringThemes.backgroundColor))
-//            .edgesIgnoringSafeArea(.bottom)
             .navigationBarItems(trailing: NavigationLink(destination: Settings(), isActive: self.$isSettingsActive) {
                 Image(systemName: "gear")
                     .resizable()

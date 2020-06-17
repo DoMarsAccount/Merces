@@ -93,7 +93,7 @@ struct KeypadDeleteButton: View {
             }) {
                 Image(systemName: "delete.left.fill")
                     .resizable()
-                    .foregroundColor(.red)
+                    .foregroundColor(.primary)
                     .accessibility(label: Text("Delete"))
                     .scaledToFit()
                     .padding()

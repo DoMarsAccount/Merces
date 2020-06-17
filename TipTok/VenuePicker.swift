@@ -68,8 +68,8 @@ struct VenueView: View {
                 self.activeField = .none
             }
             .border(Color.primary)
-//            .background(Color(coloringThemes.viewBackgroundColor))
-//            .border(Color(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)), width: 2)
+            .background(Color.white)
+            .shadow(color: Color("DropShadow"), radius: 10, x: 10, y: 10)
         }
     }
 }
@@ -92,12 +92,7 @@ struct VenueSelectionView: View {
                     VenueView(venue: .delivery, activeField: self.$activeField)
                 }
             }
-            .padding()
-            .frame(width: geo.size.width, height: geo.size.height)
-            .cornerRadius(2)
-            .border(Color.primary)
-//            .background(Color(coloringThemes.mainColor))
-//            .border(Color(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)), width: 2)
+            .modifier(TTCardModifier())
         }
     }
 }
