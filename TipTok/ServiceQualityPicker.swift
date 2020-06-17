@@ -16,16 +16,14 @@ struct ServiceQualityPicker: View {
             Picker(selection: self.$calcModel.service, label: Text("Service Quality")) {
                 ForEach(0..<ServiceQuality.allCases.count) { index in
                     ServiceQuality.allCases[index].image
-    //                Text(ServiceQuality.allCases[index].name)
                         .tag(ServiceQuality.allCases[index])
                         .accessibility(value: Text("Service Level: \(ServiceQuality.allCases[index].name)"))
                 }
             }
             .pickerStyle(SegmentedPickerStyle())
-            .border(Color.primary, width: 2)
-            .cornerRadius(7)
+            .clipShape(RoundedRectangle(cornerRadius: 2, style: .circular))
+//            .border(Color.primary, width: 2)
 //            .frame(width: geo.size.width, height: geo.size.height)
-    //        .background(Color.secondary)
         }
     }
 }

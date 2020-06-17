@@ -10,45 +10,6 @@ import SwiftUI
 
 let highlightedScale: CGFloat = 1.3
 
-struct CurrencyView: View {
-    @Binding var value: Double
-    var body: some View {
-        Text(nForm.roundForCurrency(number: self.value))
-            .frame(minWidth: 0, maxWidth: .infinity)
-            .padding()
-            .border(Color.primary, width: 2)
-            .cornerRadius(2)
-            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-//            .background(Color.secondary)
-    }
-}
-
-struct IntegerView: View {
-    @Binding var value: Int
-    var body: some View {
-        Text(nForm.formatIntegerNumbers(self.value))
-            .frame(minWidth: 0, maxWidth: .infinity)
-            .padding()
-            .border(Color.primary, width: 2)
-            .cornerRadius(2)
-            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-//            .background(Color.secondary)
-    }
-}
-
-struct PercentageView: View {
-    @Binding var value: Double
-    var body: some View {
-        Text(nForm.roundForPercentWithTwoDecimalPlaces(self.value))
-            .frame(minWidth: 0, maxWidth: .infinity)
-            .padding()
-            .border(Color.primary, width: 2)
-            .cornerRadius(2)
-            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-//            .background(Color.secondary)
-    }
-}
-
 struct MainPageTopSubview: View {
     @ObservedObject var calcModel: CalculationsModel = varAmts.calcModel
     @Binding var activeField: EditableTextFields
@@ -99,15 +60,9 @@ struct MainPageMiddleSubview: View {
                     VStack {
                         Text("Venue")
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                            
-//                        VenuePicker()
                         
                         Text(self.calcModel.selectedVenue.name)
-                            .padding()
-                            .border(Color.primary, width: 2)
-                            .cornerRadius(2)
-                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-//                            .background(Color.secondary)
+                        .modifier(TextFieldViewModifier())
                     }.onTapGesture {
                         self.activeField = EditableTextFields.venue
                     }

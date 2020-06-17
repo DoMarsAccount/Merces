@@ -28,8 +28,6 @@ struct MainPageSwiftUI: View {
                 }
             }
             .padding([.leading, .trailing])
-//            .frame(maxWidth: .infinity)
-            .background(Color("Background"))
                 
             .navigationBarTitle(Text("TipTok").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                 , displayMode: .automatic)
