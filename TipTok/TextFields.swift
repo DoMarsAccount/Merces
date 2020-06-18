@@ -40,7 +40,6 @@ struct TextFieldViewModifier: ViewModifier {
         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
         .border(Color.primary, width: 2)
         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 24)))
-//        .background(Color.secondary)
     }
 }
 

@@ -26,17 +26,13 @@ struct TTCardModifier: ViewModifier {
                             .offset(x: -8, y: -8)
                         
                         RoundedRectangle(cornerRadius: 16, style: .continuous)
-//                            .fill(
-//                                LinearGradient(gradient: Gradient(colors: [Color("DropShadowBlack"), .white]), startPoint: .topLeading, endPoint: .bottomTrailing)
-//                            )
-                            .foregroundColor(self.colorScheme == .dark ? Color("DropShadowBlack") : Color("BabyPowder"))
+                            .foregroundColor(self.colorScheme == .dark ? Color("Eerie") : Color("BabyPowder"))
                             .padding(2)
                             .blur(radius: 2)
                     }
                 )
                 .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                 .shadow(color: .black, radius: 10, x: 10, y: 10)
-//                .shadow(color: Color("DropShadowBlack"), radius: 10, x: 0, y: 0)
         }
     }
 }
