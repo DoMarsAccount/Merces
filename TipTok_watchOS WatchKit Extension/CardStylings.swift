@@ -98,7 +98,7 @@ struct IntegerCardStyle: ViewModifier {
     }
 }
 
-// MARK: - Vertical Layout, designed for half screen
+// MARK: - Vertical Layout, designed for half screen width
 struct vCurrencyCardStyle: ViewModifier {
     @Binding var value: Double
     var backgroundColor: Color = .black
@@ -196,6 +196,6 @@ extension View {
 
 struct CardStylings_Previews: PreviewProvider {
     static var previews: some View {
-        Text("Subtotal").vCardStyled(value: .constant(999.99), style: .currency)
+        Text("Subtotal").cardStyled(value: .constant(999.99), style: .currency, backgroundColor: Color("MercesGreen"))
     }
 }

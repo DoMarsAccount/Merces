@@ -21,9 +21,9 @@ struct ValuesView: View {
         GeometryReader { geo in
             ScrollView(.vertical) {
                 VStack(spacing: viewHeight) {
-                    HStack {
+//                    HStack {
                         Text("Subtotal")
-                            .vCardStyled(value: self.$wCalcModel.subtotal, style: .currency, backgroundColor: .green)
+                            .cardStyled(value: self.$wCalcModel.subtotal, style: .currency, backgroundColor: Color("MercesGreen"))
                             .onTapGesture {
                                 self.isSubtotalKeypadPresented.toggle()
                             }
@@ -33,7 +33,7 @@ struct ValuesView: View {
                             .accessibility(label: Text("Subtotal: \(nForm.roundForCurrency(number: self.wCalcModel.subtotal) )"))
                         
                         Text("Tax")
-                        .vCardStyled(value: self.$wCalcModel.taxAmount, style: .currency, backgroundColor: .blue)
+                        .cardStyled(value: self.$wCalcModel.taxAmount, style: .currency, backgroundColor: Color("CrayolaRed"))
                         .onTapGesture {
                             self.isTaxAmountKeypadPresented.toggle()
                         }
@@ -41,11 +41,11 @@ struct ValuesView: View {
                             WatchKeypad(value: self.$wCalcModel.taxAmount, isPresented: self.$isTaxAmountKeypadPresented, activeField: .constant(.salesTax))
                         }
                         .accessibility(label: Text("Tax: \(nForm.roundForCurrency(number: self.wCalcModel.taxAmount) )"))
-                    }
+//                    }
                 
-                    HStack {
+//                    HStack {
                         Text("Tip %")
-                            .vCardStyled(value: self.$wCalcModel.tipRate, style: .percentage, backgroundColor: .purple)
+                            .cardStyled(value: self.$wCalcModel.tipRate, style: .percentage, backgroundColor: Color("FadedBlue"))
                             .onTapGesture {
                                 self.isDetailedTipRateViewPresented.toggle()
                             }
@@ -56,7 +56,7 @@ struct ValuesView: View {
                         
                         
                         Text("Party of")
-                        .vCardStyled(value: self.$wCalcModel.partySize.double, style: .integer, backgroundColor: .orange)
+                        .cardStyled(value: self.$wCalcModel.partySize.double, style: .integer, backgroundColor: Color("SeaSerpent"))
                         .onTapGesture {
                             self.isPartySizeKeypadPresented.toggle()
                         }
@@ -64,7 +64,7 @@ struct ValuesView: View {
                             WatchKeypad(value: self.$wCalcModel.partySize.double, isPresented: self.$isPartySizeKeypadPresented, activeField: .constant(.partySize))
                         }
                         .accessibility(label: Text("Party Size: \(nForm.formatIntegerNumbers(self.wCalcModel.partySize))"))
-                    }
+//                    }
                     
                     Text("Tip:")
                         .cardStyled(value: self.$wCalcModel.tipAmount, style: .currency, backgroundColor: .secondary)

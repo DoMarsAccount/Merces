@@ -10,6 +10,7 @@
 		041CAAD3249BCCB8000C1A1A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3B4B2C01ABB2CF7002A6C16 /* Images.xcassets */; };
 		041CAAD4249BCCBB000C1A1A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3B4B2C01ABB2CF7002A6C16 /* Images.xcassets */; };
 		041CAAD5249BCCBC000C1A1A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3B4B2C01ABB2CF7002A6C16 /* Images.xcassets */; };
+		041CAAD7249BDA1E000C1A1A /* LayoutTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CAAD6249BDA1E000C1A1A /* LayoutTesting.swift */; };
 		04282A55249A4B64004F2879 /* CardViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04282A54249A4B64004F2879 /* CardViewModifier.swift */; };
 		04282A57249A7FFD004F2879 /* TextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04282A56249A7FFD004F2879 /* TextFields.swift */; };
 		0444E6D024953A49004793BF /* WatchStyleValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0444E6CF24953A49004793BF /* WatchStyleValues.swift */; };
@@ -175,6 +176,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		041CAAD6249BDA1E000C1A1A /* LayoutTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutTesting.swift; sourceTree = "<group>"; };
 		04282A54249A4B64004F2879 /* CardViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModifier.swift; sourceTree = "<group>"; };
 		04282A56249A7FFD004F2879 /* TextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFields.swift; sourceTree = "<group>"; };
 		0444E6CF24953A49004793BF /* WatchStyleValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStyleValues.swift; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 				04EF6DA7248D3452009CEF03 /* ComplicationController.swift */,
 				0480B37424910E4600036864 /* WatchDataHandler.swift */,
 				0480B3762491637100036864 /* CardStylings.swift */,
+				041CAAD6249BDA1E000C1A1A /* LayoutTesting.swift */,
 				046C65062496789400B99784 /* Views */,
 				04EF6DA9248D3453009CEF03 /* Assets.xcassets */,
 				04EF6DAE248D3453009CEF03 /* Info.plist */,
@@ -918,6 +921,7 @@
 			files = (
 				04EF6DC8248D367F009CEF03 /* ColoringAndThemes.swift in Sources */,
 				04EF6DC9248D3683009CEF03 /* VariableAmountsClass.swift in Sources */,
+				041CAAD7249BDA1E000C1A1A /* LayoutTesting.swift in Sources */,
 				04EF6DCA248D36CC009CEF03 /* AppleWatchColors.swift in Sources */,
 				04EF6DCD248D36DB009CEF03 /* VenueEditor.swift in Sources */,
 				0480B3772491637100036864 /* CardStylings.swift in Sources */,
