@@ -45,25 +45,33 @@ struct TextFieldViewModifier: ViewModifier {
                 RoundedRectangle(cornerRadius: 16, style: .circular)
                     .foregroundColor(self.colorScheme == .dark ? .secondary : .secondary)
                     .blur(radius: 4)
-                    .offset(x: -8, y: -8)
+//                    .offset(x: -8, y: -8)
                 
                 RoundedRectangle(cornerRadius: 16, style: .continuous)
                     .foregroundColor(self.colorScheme == .dark ? Color("Eerie") : Color("BabyPowder"))
                     .padding(2)
                     .blur(radius: 2)
                 
-//                RoundedRectangle(cornerRadius: 16, style: .continuous)
-//                .fill(
-//                    LinearGradient(gradient: Gradient(colors: [Color("BabyPowder"), .white]), startPoint: .topLeading, endPoint: .bottomTrailing)
-//                )
-//                .padding(2)
-//                .blur(radius: 2)
-                    
+                if self.colorScheme == .dark {
+                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .fill(
+                        LinearGradient(gradient: Gradient(colors: [Color("Licorice"), Color("Jet")]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                    )
+                    .padding(2)
+                    .blur(radius: 2)
+                } else {
+                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .fill(
+                        LinearGradient(gradient: Gradient(colors: [Color("BabyPowder"), .white]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                    )
+                    .padding(2)
+                    .blur(radius: 2)
+                }
             }
         )
-        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+//        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
 //        .border(Color.primary, width: 2)
-        .shadow(color: self.colorScheme == .dark ? Color("Eerie") : Color("Alabaster"), radius: 2, x: 2, y: 2)
+        .shadow(color: self.colorScheme == .dark ? Color("Licorice") : Color("Alabaster"), radius: 2, x: 2, y: 2)
         .shadow(color: self.colorScheme == .dark ? Color("Eerie") : Color("Alabaster"), radius: 2, x: -2, y: -2)
         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 24)))
     }

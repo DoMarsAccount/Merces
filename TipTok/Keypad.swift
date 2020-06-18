@@ -47,7 +47,7 @@ struct Keypad: View {
 //                    .modifier(KeypadButtonModifier())
                 }
             }
-            .modifier(TTCardModifier())
+            .modifier(TextFieldViewModifier())
         }
     }
 }
@@ -55,7 +55,7 @@ struct Keypad: View {
 struct KeypadButtonModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .border(Color.primary, width: 2)
+//            .border(Color.primary, width: 2)
 //            .background(Color.white)
     }
 }

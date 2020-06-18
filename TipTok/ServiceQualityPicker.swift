@@ -20,10 +20,12 @@ struct ServiceQualityPicker: View {
                         .accessibility(value: Text("Service Level: \(ServiceQuality.allCases[index].name)"))
                 }
             }
+            .background(Color("Snow"))
             .pickerStyle(SegmentedPickerStyle())
-            .clipShape(RoundedRectangle(cornerRadius: 2, style: .circular))
+            .modifier(TextFieldViewModifier())
+//            .clipShape(RoundedRectangle(cornerRadius: 2, style: .circular))
 //            .border(Color.primary, width: 2)
-//            .frame(width: geo.size.width, height: geo.size.height)
+            .frame(width: geo.size.width, height: geo.size.height)
         }
     }
 }
