@@ -26,7 +26,7 @@ struct TTCardModifier: ViewModifier {
                             .offset(x: -8, y: -8)
                         
                         RoundedRectangle(cornerRadius: 16, style: .continuous)
-                            .foregroundColor(self.colorScheme == .dark ? Color("Eerie") : Color("BabyPowder"))
+                            .foregroundColor(self.colorScheme == .dark ? Color("Eerie") : Color("Snow"))
                             .padding(2)
                             .blur(radius: 2)
                     }
