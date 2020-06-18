@@ -34,20 +34,33 @@ struct ValuesView: View {
                             }
                             .accessibility(label: Text("Subtotal: \(nForm.roundForCurrency(number: self.wCalcModel.subtotal) )"))
                         
+                    HStack {
                         Text("Tax")
-                        .cardStyled(value: self.$wCalcModel.taxAmount, style: .currency, backgroundColor: Color("CrayolaRed"))
-                        .onTapGesture {
-                            self.isTaxAmountKeypadPresented.toggle()
-                        }
-                        .sheet(isPresented: self.$isTaxAmountKeypadPresented) {
-                            WatchKeypad(value: self.$wCalcModel.taxAmount, isPresented: self.$isTaxAmountKeypadPresented, activeField: .constant(.salesTax))
-                        }
+                            .vCardStyled(value: self.$wCalcModel.taxAmount, style: .currency, backgroundColor: Color("MercesGreenAccent"))
+                            .onTapGesture {
+                                self.isTaxAmountKeypadPresented.toggle()
+                            }
+                            .sheet(isPresented: self.$isTaxAmountKeypadPresented) {
+                                WatchKeypad(value: self.$wCalcModel.taxAmount, isPresented: self.$isTaxAmountKeypadPresented, activeField: .constant(.salesTax))
+                            }
                         .accessibility(label: Text("Tax: \(nForm.roundForCurrency(number: self.wCalcModel.taxAmount) )"))
+                        
+                        Text("Party of")
+                            .cardStyled(value: self.$wCalcModel.partySize.double, style: .integer, backgroundColor: Color("FadedBlue"))
+                            .onTapGesture {
+                                self.isPartySizeKeypadPresented.toggle()
+                            }
+                            .sheet(isPresented: self.$isPartySizeKeypadPresented) {
+                                WatchKeypad(value: self.$wCalcModel.partySize.double, isPresented: self.$isPartySizeKeypadPresented, activeField: .constant(.partySize))
+                            }
+                            .accessibility(label: Text("Party Size: \(nForm.formatIntegerNumbers(self.wCalcModel.partySize))"))
+    //                    }
+                    }
 //                    }
                 
 //                    HStack {
                         Text("Tip %")
-                            .cardStyled(value: self.$wCalcModel.tipRate, style: .percentage, backgroundColor: Color("FadedBlue"))
+                            .cardStyled(value: self.$wCalcModel.tipRate, style: .percentage, backgroundColor: Color("FadedBlueAccent"))
                             .onTapGesture {
                                 self.isDetailedTipRateViewPresented.toggle()
                             }
@@ -56,17 +69,6 @@ struct ValuesView: View {
                             }
                         .accessibility(label: Text("Tip Rate: \(nForm.roundForPercentWithTwoDecimalPlaces(self.wCalcModel.tipRate))"))
                         
-                        
-                        Text("Party of")
-                        .cardStyled(value: self.$wCalcModel.partySize.double, style: .integer, backgroundColor: Color("SeaSerpent"))
-                        .onTapGesture {
-                            self.isPartySizeKeypadPresented.toggle()
-                        }
-                        .sheet(isPresented: self.$isPartySizeKeypadPresented) {
-                            WatchKeypad(value: self.$wCalcModel.partySize.double, isPresented: self.$isPartySizeKeypadPresented, activeField: .constant(.partySize))
-                        }
-                        .accessibility(label: Text("Party Size: \(nForm.formatIntegerNumbers(self.wCalcModel.partySize))"))
-//                    }
                     
                     Text("Tip:")
                         .cardStyled(value: self.$wCalcModel.tipAmount, style: .currency, backgroundColor: .secondary)
