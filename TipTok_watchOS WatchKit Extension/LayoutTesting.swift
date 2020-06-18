@@ -29,8 +29,21 @@ extension CGFloat {
         if self > 0.03 {
             return 1
         } else {
-            return 0.96 + self
+            return 0.97 + self
         }
+    }
+}
+
+struct scalingEffect: ViewModifier {
+    func body(content: Content) -> some View {
+        GeometryReader { geo in
+            content
+                .scaleEffect(
+                    (1 - ((geo.frame(in: .global).maxY)/200)).scaled
+                )
+        }
+        .frame(maxWidth: .infinity)
+        .frame(height: viewHeight)
     }
 }
 
@@ -39,14 +52,8 @@ struct LayoutTesting: View {
         ScrollView(.vertical) {
             VStack {
                 ForEach(1..<6) { _ in
-                    GeometryReader { geo in
-                        EffectTesting(value: 1 - ((geo.frame(in: .global).maxY)/200))
-                        .scaleEffect(
-                            (1 - ((geo.frame(in: .global).maxY)/200)).scaled
-                        )
-                    }
-                    .frame(maxWidth: .infinity)
-                    .frame(height: viewHeight)
+                    EffectTesting(value: 0.5)
+                        .modifier(scalingEffect())
                 }
             }
         }
