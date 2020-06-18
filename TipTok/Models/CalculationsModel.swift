@@ -120,6 +120,10 @@ class CalculationsModel: ObservableObject {
         } else if partySize > 1 {
             moreOrLessPerPerson = ((totalAmountPerPerson * Double(partySize)) - (totalAmountPerPerson.roundTo(places: 2) * Double(partySize))) * 100
             
+            if moreOrLessPerPerson > 0 {
+                totalAmountPerPerson += 0.01
+            }
+            
         } else {
             moreOrLessPerPerson = 0
         }
