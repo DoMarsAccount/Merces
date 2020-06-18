@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041CAAD3249BCCB8000C1A1A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3B4B2C01ABB2CF7002A6C16 /* Images.xcassets */; };
+		041CAAD4249BCCBB000C1A1A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3B4B2C01ABB2CF7002A6C16 /* Images.xcassets */; };
+		041CAAD5249BCCBC000C1A1A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3B4B2C01ABB2CF7002A6C16 /* Images.xcassets */; };
 		04282A55249A4B64004F2879 /* CardViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04282A54249A4B64004F2879 /* CardViewModifier.swift */; };
 		04282A57249A7FFD004F2879 /* TextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04282A56249A7FFD004F2879 /* TextFields.swift */; };
 		0444E6D024953A49004793BF /* WatchStyleValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0444E6CF24953A49004793BF /* WatchStyleValues.swift */; };
@@ -793,6 +796,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				041CAAD4249BCCBB000C1A1A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -811,6 +815,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04EF6DAD248D3453009CEF03 /* Preview Assets.xcassets in Resources */,
+				041CAAD3249BCCB8000C1A1A /* Images.xcassets in Resources */,
 				046C65032495B24E00B99784 /* defaultPreferences.plist in Resources */,
 				04EF6DAA248D3453009CEF03 /* Assets.xcassets in Resources */,
 			);
@@ -820,6 +825,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				041CAAD5249BCCBC000C1A1A /* Images.xcassets in Resources */,
 				E3AB12321E2DC2080021C889 /* MainInterface.storyboard in Resources */,
 				046C65042495B24F00B99784 /* defaultPreferences.plist in Resources */,
 			);
