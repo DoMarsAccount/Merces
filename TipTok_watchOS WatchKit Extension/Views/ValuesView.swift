@@ -22,7 +22,7 @@ struct ValuesView: View {
     var body: some View {
         GeometryReader { geo in
             ScrollView(.vertical) {
-                VStack(spacing: viewHeight) {
+                VStack() {
 //                    HStack {
                         Text("Subtotal")
                             .cardStyled(value: self.$wCalcModel.subtotal, style: .currency, backgroundColor: Color("MercesGreen"))
@@ -33,10 +33,11 @@ struct ValuesView: View {
                                 WatchKeypad(value: self.$wCalcModel.subtotal, isPresented: self.$isSubtotalKeypadPresented, activeField: .constant(.subtotal))
                             }
                             .accessibility(label: Text("Subtotal: \(nForm.roundForCurrency(number: self.wCalcModel.subtotal) )"))
+                            .modifier(scalingEffect())
                         
                     HStack {
                         Text("Tax")
-                            .vCardStyled(value: self.$wCalcModel.taxAmount, style: .currency, backgroundColor: Color("MercesGreenAccent"))
+                            .vCardStyled(value: self.$wCalcModel.taxAmount, style: .currency, backgroundColor: Color("MercesGreen"))
                             .onTapGesture {
                                 self.isTaxAmountKeypadPresented.toggle()
                             }
@@ -44,9 +45,10 @@ struct ValuesView: View {
                                 WatchKeypad(value: self.$wCalcModel.taxAmount, isPresented: self.$isTaxAmountKeypadPresented, activeField: .constant(.salesTax))
                             }
                         .accessibility(label: Text("Tax: \(nForm.roundForCurrency(number: self.wCalcModel.taxAmount) )"))
+                        .modifier(scalingEffect())
                         
                         Text("Party of")
-                            .cardStyled(value: self.$wCalcModel.partySize.double, style: .integer, backgroundColor: Color("FadedBlue"))
+                            .vCardStyled(value: self.$wCalcModel.partySize.double, style: .integer, backgroundColor: Color("MercesGreen"))
                             .onTapGesture {
                                 self.isPartySizeKeypadPresented.toggle()
                             }
@@ -54,35 +56,40 @@ struct ValuesView: View {
                                 WatchKeypad(value: self.$wCalcModel.partySize.double, isPresented: self.$isPartySizeKeypadPresented, activeField: .constant(.partySize))
                             }
                             .accessibility(label: Text("Party Size: \(nForm.formatIntegerNumbers(self.wCalcModel.partySize))"))
+                            .modifier(scalingEffect())
     //                    }
                     }
 //                    }
                 
 //                    HStack {
                         Text("Tip %")
-                            .cardStyled(value: self.$wCalcModel.tipRate, style: .percentage, backgroundColor: Color("FadedBlueAccent"))
+                            .cardStyled(value: self.$wCalcModel.tipRate, style: .percentage, backgroundColor: Color("MercesGreen"))
                             .onTapGesture {
                                 self.isDetailedTipRateViewPresented.toggle()
                             }
                             .sheet(isPresented: self.$isDetailedTipRateViewPresented) {
                                 DetailedTipRateView(isActive: self.$isDetailedTipRateViewPresented).environmentObject(self.wCalcModel)
                             }
-                        .accessibility(label: Text("Tip Rate: \(nForm.roundForPercentWithTwoDecimalPlaces(self.wCalcModel.tipRate))"))
+                            .accessibility(label: Text("Tip Rate: \(nForm.roundForPercentWithTwoDecimalPlaces(self.wCalcModel.tipRate))"))
+                        .modifier(scalingEffect())
                         
                     
                     Text("Tip:")
                         .cardStyled(value: self.$wCalcModel.tipAmount, style: .currency, backgroundColor: .secondary)
                         .accessibility(label: Text("Tip Amount: \(nForm.roundForCurrency(number: self.wCalcModel.tipAmount) )"))
+                        .modifier(scalingEffect())
                     
                     if (self.wCalcModel.partySize != 1) {
                         Text("Per Person:")
                             .cardStyled(value: self.$wCalcModel.totalAmountPerPerson, style: .currency, backgroundColor: .secondary)
                             .accessibility(label: Text("Tip Amount Per Person: \(nForm.roundForCurrency(number: self.wCalcModel.totalAmountPerPerson) )"))
+                            .modifier(scalingEffect())
                     }
                     
                     Text("Total:")
                         .cardStyled(value: self.$wCalcModel.totalAmount, style: .currency, backgroundColor: .secondary)
                         .accessibility(label: Text("Total: \(nForm.roundForCurrency(number: self.wCalcModel.totalAmount) )"))
+                        .modifier(scalingEffect())
                     
                     Spacer()
                     

@@ -17,14 +17,21 @@ struct DetailedTipRateView: View {
         GeometryReader { geo in
             ScrollView(.vertical) {
                 VStack(spacing: 10) {
-                    VStack {
-                        Text("Tip %").font(.headline)
+                    HStack {
+                        Text("Tip %")
+                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: subHeadlineTextSize)))
+                            .padding()
+                            .minimumScaleFactor(0.3)
+                        
+                        Spacer()
                         Text(nForm.roundForPercentWithTwoDecimalPlaces(currentTipRate(for: self.wCalcModel.selectedVenue, service: self.wCalcModel.service)))
+                            .padding()
+                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: title3TextSize)))
+                            .minimumScaleFactor(0.8)
                     }
-                    .padding()
-                    .frame(width: geo.size.width / 2, height: viewHeight)
-                    .background(Color.purple)
-                    .border(Color.purple, width: 2.5)
+                    .frame(width: geo.size.width, height: viewHeight)
+                    .background(Color("MercesGreen"))
+                    .border(Color("MercesGreen"), width: 2.5)
                     .cornerRadius(2.5)
                     .onTapGesture {
                         self.presentKeypad.toggle()
