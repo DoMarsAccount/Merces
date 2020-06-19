@@ -84,7 +84,7 @@ struct MyMerces: View {
                     }
                     .accessibility(label: Text("Local Sales Tax Rate: \(nForm.roundForPercentWithThreeDecimalPlaces(number: self.preferences.localSalesTax))"))
                 VenuesView().padding([.top])
-            }
+            }.navigationBarTitle("Done")
         }
     }
 }

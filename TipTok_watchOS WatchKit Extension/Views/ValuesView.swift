@@ -36,7 +36,7 @@ struct ValuesView: View {
                             .modifier(scalingEffect())
                         
                     HStack {
-                        Text("Tax")
+                        Text("Sales Tax")
                             .vCardStyled(value: self.$wCalcModel.taxAmount, style: .currency, backgroundColor: Color("MercesGreen"))
                             .onTapGesture {
                                 self.isTaxAmountKeypadPresented.toggle()
@@ -44,7 +44,7 @@ struct ValuesView: View {
                             .sheet(isPresented: self.$isTaxAmountKeypadPresented) {
                                 WatchKeypad(value: self.$wCalcModel.taxAmount, isPresented: self.$isTaxAmountKeypadPresented, activeField: .constant(.salesTax))
                             }
-                        .accessibility(label: Text("Tax: \(nForm.roundForCurrency(number: self.wCalcModel.taxAmount) )"))
+                        .accessibility(label: Text("Sales Tax: \(nForm.roundForCurrency(number: self.wCalcModel.taxAmount) )"))
                         .modifier(scalingEffect())
                         
                         Text("Party of")
