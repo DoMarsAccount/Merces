@@ -38,8 +38,8 @@ struct MercesStyleTextField: ViewModifier {
         content
         .frame(minWidth: 0, maxWidth: .infinity)
         .padding()
-        .clipShape(RoundedRectangle(cornerRadius: 16, style: .circular))
         .border(Color.primary, width: 2)
+        .clipShape(RoundedRectangle(cornerRadius: 4, style: .circular))
         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 24)))
     }
 }

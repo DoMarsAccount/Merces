@@ -96,7 +96,9 @@ struct MainPageBottomSubview: View {
                 HStack(alignment: .center) {
                     Text("Totaled Amounts")
                         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                        .minimumScaleFactor(0.5)
                 }
+                
                 if self.calcModel.tipAmount != 0.0 {
                     HStack {
                         Text("Tip Amount:")
