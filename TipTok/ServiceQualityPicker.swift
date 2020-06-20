@@ -12,21 +12,17 @@ struct ServiceQualityPicker: View {
     @ObservedObject var calcModel = varAmts.calcModel
     
     var body: some View {
-        GeometryReader { geo in
-            Picker(selection: self.$calcModel.service, label: Text("Service Quality")) {
-                ForEach(0..<ServiceQuality.allCases.count) { index in
-                    ServiceQuality.allCases[index].image
-                        .tag(ServiceQuality.allCases[index])
-                        .accessibility(value: Text("Service Level: \(ServiceQuality.allCases[index].name)"))
-                }
+        Picker(selection: self.$calcModel.service, label: Text("Service Quality")) {
+            ForEach(0..<ServiceQuality.allCases.count) { index in
+                ServiceQuality.allCases[index].image
+                    .tag(ServiceQuality.allCases[index])
+                    .accessibility(value: Text("Service Level: \(ServiceQuality.allCases[index].name)"))
             }
-//            .background(Color("Snow"))
-            .pickerStyle(SegmentedPickerStyle())
-//            .modifier(TextFieldViewModifier())
-//            .clipShape(RoundedRectangle(cornerRadius: 2, style: .circular))
-//            .border(Color.primary, width: 2)
-            .frame(width: geo.size.width, height: geo.size.height)
         }
+        .pickerStyle(SegmentedPickerStyle())
+        .frame(maxWidth: .infinity)
+//        .border(Color.primary, width: 2)
+        .clipShape(RoundedRectangle(cornerRadius: 4, style: .circular))
     }
 }
 

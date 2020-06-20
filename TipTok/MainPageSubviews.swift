@@ -20,30 +20,34 @@ struct MainPageTopSubview: View {
                     Text("Subtotal")
                         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                         .scaleEffect(self.activeField == EditableTextFields.subtotal ? highlightedScale : 1.0)
+                        .minimumScaleFactor(0.75)
                     CurrencyView(value: self.$calcModel.subtotal)
                 }.onTapGesture {
                     self.activeField = EditableTextFields.subtotal
-                }
+                }.accessibility(value: Text("Subtotal \(nForm.roundForCurrency(number: self.calcModel.subtotal))"))
                 
                 HStack {
                     VStack {
                         Text("Sales Tax")
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                             .scaleEffect(self.activeField == EditableTextFields.salesTax ? highlightedScale : 1.0)
+                            .minimumScaleFactor(0.75)
                         CurrencyView(value: self.$calcModel.taxAmount)
                     }.onTapGesture {
                         self.activeField = EditableTextFields.salesTax
-                    }
+                    }.accessibility(value: Text("Sales Tax \(nForm.roundForCurrency(number: self.calcModel.taxAmount))"))
                     
                     VStack {
                         Text("Party of")
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                             .scaleEffect(self.activeField == EditableTextFields.partySize ? highlightedScale : 1.0)
+                            .minimumScaleFactor(0.75)
                         IntegerView(value: self.$calcModel.partySize)
                     }.onTapGesture {
                         self.activeField = EditableTextFields.partySize
-                    }
-                }.padding(.top)
+                    }.accessibility(value: Text("Party Size:  \(nForm.roundForCurrency(number: self.calcModel.subtotal))"))
+                }
+//                .padding(.top)
             }
             .modifier(TTCardModifier())
         }
@@ -54,37 +58,36 @@ struct MainPageMiddleSubview: View {
     @ObservedObject var calcModel: CalculationsModel = varAmts.calcModel
     @Binding var activeField: EditableTextFields
     var body: some View {
-        GeometryReader { geo in
-            VStack {
-                HStack {
-                    VStack {
-                        Text("Venue")
-                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                        
-                        Text(self.calcModel.selectedVenue.name)
-                        .modifier(MercesStyleTextField())
-                    }.onTapGesture {
-                        self.activeField = EditableTextFields.venue
-                    }
+        VStack {
+            HStack {
+                VStack {
+                    Text("Venue")
+                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                     
-                    VStack {
-                        Text("Tip %")
-                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                            .scaleEffect(self.activeField == EditableTextFields.tipRate ? highlightedScale : 1.0)
-                        PercentageView(value: self.$calcModel.tipRate)
-                    }.onTapGesture {
-                        self.activeField = EditableTextFields.tipRate
-                    }
+                    Text(self.calcModel.selectedVenue.name)
+                    .modifier(MercesStyleTextField())
+                }.onTapGesture {
+                    self.activeField = EditableTextFields.venue
                 }
                 
-                VStack(spacing: 0) {
-                    Text("Service Level")
+                VStack {
+                    Text("Tip %")
                         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                    ServiceQualityPicker()
-                }.padding(.top)
+                        .scaleEffect(self.activeField == EditableTextFields.tipRate ? highlightedScale : 1.0)
+                    PercentageView(value: self.$calcModel.tipRate)
+                }.onTapGesture {
+                    self.activeField = EditableTextFields.tipRate
+                }
             }
-            .modifier(TTCardModifier())
+            
+            VStack(spacing: 0) {
+                Text("Service Level")
+                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                ServiceQualityPicker()
+            }
+            .padding(.top)
         }
+        .modifier(TTCardModifier())
     }
 }
 

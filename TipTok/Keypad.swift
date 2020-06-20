@@ -12,43 +12,41 @@ struct Keypad: View {
     @Binding var activeField: EditableTextFields
     
     var body: some View {
-        GeometryReader { geometry in
-            VStack (spacing: 1) {
-                HStack (spacing: 1) {
-                    KeypadButton(text: .constant("1"), activeField: self.$activeField)
-                    .modifier(KeypadButtonModifier())
-                    KeypadButton(text: .constant("2"), activeField: self.$activeField)
-                    .modifier(KeypadButtonModifier())
-                    KeypadButton(text: .constant("3"), activeField: self.$activeField)
-                    .modifier(KeypadButtonModifier())
-                }
-                HStack (spacing: 1) {
-                    KeypadButton(text: .constant("4"), activeField: self.$activeField)
-                    .modifier(KeypadButtonModifier())
-                    KeypadButton(text: .constant("5"), activeField: self.$activeField)
-                    .modifier(KeypadButtonModifier())
-                    KeypadButton(text: .constant("6"), activeField: self.$activeField)
-                    .modifier(KeypadButtonModifier())
-                }
-                HStack (spacing: 1) {
-                    KeypadButton(text: .constant("7"), activeField: self.$activeField)
-                    .modifier(KeypadButtonModifier())
-                    KeypadButton(text: .constant("8"), activeField: self.$activeField)
-                    .modifier(KeypadButtonModifier())
-                    KeypadButton(text: .constant("9"), activeField: self.$activeField)
-                    .modifier(KeypadButtonModifier())
-                }
-                HStack (spacing: 1) {
-                    KeypadDoneButton(activeField: self.$activeField)
-//                    .modifier(KeypadButtonModifier())
-                    KeypadButton(text: .constant("0"), activeField: self.$activeField)
-                    .modifier(KeypadButtonModifier())
-                    KeypadDeleteButton(activeField: self.$activeField)
-//                    .modifier(KeypadButtonModifier())
-                }
+        VStack (spacing: 1) {
+            HStack (spacing: 1) {
+                KeypadButton(text: .constant("1"), activeField: self.$activeField)
+                .modifier(KeypadButtonModifier())
+                KeypadButton(text: .constant("2"), activeField: self.$activeField)
+                .modifier(KeypadButtonModifier())
+                KeypadButton(text: .constant("3"), activeField: self.$activeField)
+                .modifier(KeypadButtonModifier())
             }
-            .modifier(TextFieldViewModifier())
+            HStack (spacing: 1) {
+                KeypadButton(text: .constant("4"), activeField: self.$activeField)
+                .modifier(KeypadButtonModifier())
+                KeypadButton(text: .constant("5"), activeField: self.$activeField)
+                .modifier(KeypadButtonModifier())
+                KeypadButton(text: .constant("6"), activeField: self.$activeField)
+                .modifier(KeypadButtonModifier())
+            }
+            HStack (spacing: 1) {
+                KeypadButton(text: .constant("7"), activeField: self.$activeField)
+                .modifier(KeypadButtonModifier())
+                KeypadButton(text: .constant("8"), activeField: self.$activeField)
+                .modifier(KeypadButtonModifier())
+                KeypadButton(text: .constant("9"), activeField: self.$activeField)
+                .modifier(KeypadButtonModifier())
+            }
+            HStack (spacing: 1) {
+                KeypadDoneButton(activeField: self.$activeField)
+//                    .modifier(KeypadButtonModifier())
+                KeypadButton(text: .constant("0"), activeField: self.$activeField)
+                .modifier(KeypadButtonModifier())
+                KeypadDeleteButton(activeField: self.$activeField)
+//                .modifier(KeypadButtonModifier())
+            }
         }
+        .modifier(TextFieldViewModifier())
     }
 }
 

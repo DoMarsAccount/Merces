@@ -16,21 +16,31 @@ struct MainPageSwiftUI: View {
     var body: some View {
         NavigationView {
             VStack {
-                MainPageTopSubview(activeField: self.$activeField).padding(.top)
+                MainPageTopSubview(activeField: self.$activeField)
+                    .padding(.top)
+                    .minimumScaleFactor(0.75)
+                
                 MainPageMiddleSubview(activeField: self.$activeField)
+                    .minimumScaleFactor(0.8)
+                
                 if (self.activeField == .none) {
                     MainPageBottomSubview()
+                        .minimumScaleFactor(0.75)
                         .padding(.bottom)
                 } else if (self.activeField == EditableTextFields.venue) {
                     VenueSelectionView(activeField: self.$activeField)
+                        .minimumScaleFactor(0.75)
+                        .padding(.bottom)
                 } else {
                     Keypad(activeField: self.$activeField)
+                        .minimumScaleFactor(0.75)
+                        .padding(.bottom)
                 }
             }
             .padding([.leading, .trailing])
                 
             .navigationBarTitle(Text("TipTok").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                , displayMode: .automatic)
+                , displayMode: .inline)
                 
 //            .background(NavigationConfigurator { nc in
 //                nc.navigationBar.barTintColor = coloringThemes.mainColor

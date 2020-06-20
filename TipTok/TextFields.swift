@@ -36,11 +36,12 @@ struct MercesStyleTextField: ViewModifier {
     @Environment(\.colorScheme) var colorScheme
     func body(content: Content) -> some View {
         content
-        .frame(minWidth: 0, maxWidth: .infinity)
+        .frame(maxWidth: .infinity)
         .padding()
         .border(Color.primary, width: 2)
         .clipShape(RoundedRectangle(cornerRadius: 4, style: .circular))
         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 24)))
+        .minimumScaleFactor(0.75)
     }
 }
 
