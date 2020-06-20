@@ -12,7 +12,7 @@ struct CurrencyView: View {
     @Binding var value: Double
     var body: some View {
         Text(nForm.roundForCurrency(number: self.value))
-        .modifier(TextFieldViewModifier())
+        .modifier(MercesStyleTextField())
     }
 }
 
@@ -20,7 +20,7 @@ struct IntegerView: View {
     @Binding var value: Int
     var body: some View {
         Text(nForm.formatIntegerNumbers(self.value))
-        .modifier(TextFieldViewModifier())
+        .modifier(MercesStyleTextField())
     }
 }
 
@@ -28,7 +28,19 @@ struct PercentageView: View {
     @Binding var value: Double
     var body: some View {
         Text(nForm.roundForPercentWithTwoDecimalPlaces(self.value))
-        .modifier(TextFieldViewModifier())
+        .modifier(MercesStyleTextField())
+    }
+}
+
+struct MercesStyleTextField: ViewModifier {
+    @Environment(\.colorScheme) var colorScheme
+    func body(content: Content) -> some View {
+        content
+        .frame(minWidth: 0, maxWidth: .infinity)
+        .padding()
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .circular))
+        .border(Color.primary, width: 2)
+        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 24)))
     }
 }
 

@@ -62,7 +62,7 @@ struct MainPageMiddleSubview: View {
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                         
                         Text(self.calcModel.selectedVenue.name)
-                        .modifier(TextFieldViewModifier())
+                        .modifier(MercesStyleTextField())
                     }.onTapGesture {
                         self.activeField = EditableTextFields.venue
                     }

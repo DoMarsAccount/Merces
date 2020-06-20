@@ -19,8 +19,6 @@ struct DetailedTipRateView: View {
                 VStack(spacing: 10) {
                     TipRateField(presentKeypad: self.$presentKeypad)
                     
-                    
-                    
                     Picker(selection: self.$wCalcModel.selectedVenue, label: Text("Venue").font(.headline)) {
                         ForEach(1..<VenueType.allCases.count) { index in
                             Text(VenueType.allCases[index].name).tag(VenueType.allCases[index])
@@ -116,9 +114,9 @@ struct TipRateField: View {
             .cornerRadius(2.5)
             .onTapGesture {
                 self.presentKeypad.toggle()
-        }
-        .sheet(isPresented: self.$presentKeypad) {
-            WatchKeypad(value: self.$wCalcModel.tipRate, isPresented: self.$presentKeypad, activeField: .constant(.tipRate))
-        }
+            }
+            .sheet(isPresented: self.$presentKeypad) {
+                WatchKeypad(value: self.$wCalcModel.tipRate, isPresented: self.$presentKeypad, activeField: .constant(.tipRate))
+            }
     }
 }

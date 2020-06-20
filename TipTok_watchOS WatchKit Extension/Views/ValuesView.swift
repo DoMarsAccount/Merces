@@ -67,11 +67,17 @@ struct ValuesView: View {
                             .onTapGesture {
                                 self.isDetailedTipRateViewPresented.toggle()
                             }
+//                            .onLongPressGesture(minimumDuration: 0.5) {
+//                                self.isDetailedTipRateViewPresented.toggle()
+//                            }
+//                            .sheet(isPresented: self.$isTipRateKeypadPresented) {
+//                                WatchKeypad(value: self.$wCalcModel.tipRate, isPresented: self.$isTipRateKeypadPresented, activeField: .constant(.tipRate))
+//                            }
                             .sheet(isPresented: self.$isDetailedTipRateViewPresented) {
                                 DetailedTipRateView(isActive: self.$isDetailedTipRateViewPresented).environmentObject(self.wCalcModel)
                             }
                             .accessibility(label: Text("Tip Rate: \(nForm.roundForPercentWithTwoDecimalPlaces(self.wCalcModel.tipRate))"))
-                        .modifier(scalingEffect())
+                            .modifier(scalingEffect())
                         
                     
                     Text("Tip:")
