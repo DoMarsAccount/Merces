@@ -32,7 +32,7 @@ struct TTCardModifier: ViewModifier {
                     }
                 )
                 .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                .shadow(color: self.colorScheme == .dark ? .black :  Color("OuterSpace"), radius: 10, x: 10, y: 10)
+                .shadow(color: self.colorScheme == .dark ? .black :  Color("OuterSpace"), radius: 10)
         }
     }
 }
