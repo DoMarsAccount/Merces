@@ -58,7 +58,7 @@ struct TipTokStyleCard: ViewModifier {
 //                        Color(.white)
                         
                         RoundedRectangle(cornerRadius: 16, style: .circular)
-                            .foregroundColor(self.colorScheme == .dark ? .secondary : .secondary)
+                            .foregroundColor(self.colorScheme == .dark ? Color("Charcoal") : .secondary)
                             .blur(radius: 4)
 //                            .offset(x: -8, y: -8)
                         
@@ -69,7 +69,7 @@ struct TipTokStyleCard: ViewModifier {
                     }
                 )
                 .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                .shadow(color: self.colorScheme == .dark ? .black :  Color("OuterSpace"), radius: 10)
+                .shadow(color: self.colorScheme == .dark ? Color("Charcoal") :  Color("OuterSpace"), radius: 10)
         }
     }
 }

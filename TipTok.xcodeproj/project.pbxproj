@@ -13,6 +13,7 @@
 		041CAAD7249BDA1E000C1A1A /* LayoutTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CAAD6249BDA1E000C1A1A /* LayoutTesting.swift */; };
 		04282A55249A4B64004F2879 /* CardViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04282A54249A4B64004F2879 /* CardViewModifier.swift */; };
 		04282A57249A7FFD004F2879 /* TextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04282A56249A7FFD004F2879 /* TextFields.swift */; };
+		0430E5AA249FEE9A0014E8E5 /* ThemesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0430E5A9249FEE9A0014E8E5 /* ThemesPage.swift */; };
 		0444E6D024953A49004793BF /* WatchStyleValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0444E6CF24953A49004793BF /* WatchStyleValues.swift */; };
 		046C65012495B24A00B99784 /* defaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3AB12181E2DBF210021C889 /* defaultPreferences.plist */; };
 		046C65022495B24D00B99784 /* defaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3AB12181E2DBF210021C889 /* defaultPreferences.plist */; };
@@ -179,6 +180,7 @@
 		041CAAD6249BDA1E000C1A1A /* LayoutTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutTesting.swift; sourceTree = "<group>"; };
 		04282A54249A4B64004F2879 /* CardViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModifier.swift; sourceTree = "<group>"; };
 		04282A56249A7FFD004F2879 /* TextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFields.swift; sourceTree = "<group>"; };
+		0430E5A9249FEE9A0014E8E5 /* ThemesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesPage.swift; sourceTree = "<group>"; };
 		0444E6CF24953A49004793BF /* WatchStyleValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStyleValues.swift; sourceTree = "<group>"; };
 		04719F782497233C00132EC8 /* MainPageSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageSwiftUI.swift; sourceTree = "<group>"; };
 		04719F7A2497234F00132EC8 /* SettingsPageSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageSwiftUI.swift; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 				048715512498521700DF33E5 /* NavigationConfigurator.swift */,
 				04282A54249A4B64004F2879 /* CardViewModifier.swift */,
 				04282A56249A7FFD004F2879 /* TextFields.swift */,
+				0430E5A9249FEE9A0014E8E5 /* ThemesPage.swift */,
 			);
 			name = SwiftUIViews;
 			sourceTree = "<group>";
@@ -979,6 +982,7 @@
 				048715452497AE4200DF33E5 /* Keypad.swift in Sources */,
 				E33460B11E32F23D00D467C6 /* ThemesViewController.swift in Sources */,
 				04282A55249A4B64004F2879 /* CardViewModifier.swift in Sources */,
+				0430E5AA249FEE9A0014E8E5 /* ThemesPage.swift in Sources */,
 				0487153C2497A72300DF33E5 /* MainPageSubviews.swift in Sources */,
 				04719F7E2497247100132EC8 /* PersonalizationPage.swift in Sources */,
 				E3AB12091E2DBE950021C889 /* MainPage.swift in Sources */,

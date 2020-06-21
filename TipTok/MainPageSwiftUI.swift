@@ -71,6 +71,6 @@ struct MainPageSwiftUI_Previews: PreviewProvider {
     static var previews: some View {
         MainPageSwiftUI()
             .environmentObject(UserPreferences.sharedInstance)
-            .environment(\.colorScheme, .dark)
+//            .environment(\.colorScheme, .dark)
     }
 }
