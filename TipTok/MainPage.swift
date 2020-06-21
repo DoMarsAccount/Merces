@@ -463,7 +463,7 @@ class MainPage: UIViewController {
         
         scaleViewsWithSpring(billAmountTextFieldOutlet.tag)
         
-        // Here to smooth out effects of "Subtotal is Post Tax switch"
+        // Here to smooth out effects of "Subtotal Includes Sales Tax switch"
         
         self.calculate(varAmts.arrayOfButtonsPressedForBillAmountAsString, activeField: self.userEditingThisField)
         

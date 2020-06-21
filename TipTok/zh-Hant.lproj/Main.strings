@@ -26,8 +26,8 @@
 /* Class = "UILabel"; text = "Local Sales Tax Rate"; ObjectID = "7aw-et-bXV"; */
 "7aw-et-bXV.text" = "Local Sales Tax Rate";
 
-/* Class = "UILabel"; text = "Subtotal is Post Tax"; ObjectID = "7vM-yK-3hN"; */
-"7vM-yK-3hN.text" = "Subtotal is Post Tax";
+/* Class = "UILabel"; text = "Subtotal Includes Sales Tax"; ObjectID = "7vM-yK-3hN"; */
+"7vM-yK-3hN.text" = "Subtotal Includes Sales Tax";
 
 /* Class = "UIButton"; normalTitle = "4"; ObjectID = "81E-Ga-4tY"; */
 "81E-Ga-4tY.normalTitle" = "4";
