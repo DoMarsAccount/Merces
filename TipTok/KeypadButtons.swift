@@ -41,7 +41,6 @@ struct KeypadButton: View {
                     .accentColor(.primary)
                     .accessibility(label: Text(self.text))
                     .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 36)))
-//                    .border(Color.primary, width: 2)
             }
             .cornerRadius(2)
         }

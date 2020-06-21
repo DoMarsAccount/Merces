@@ -53,8 +53,8 @@ struct Keypad: View {
 struct KeypadButtonModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-//            .border(Color.primary, width: 2)
-//            .background(Color.white)
+            .border(Color.primary, width: 2)
+            .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
     }
 }
 

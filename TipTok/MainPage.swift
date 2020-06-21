@@ -77,10 +77,6 @@ class MainPage: UIViewController {
     
     @IBOutlet weak var taxAmountMaskOutlet: UIButton!
     
-    @IBOutlet var coinsImageOutlet: UIImageView!
-    
-    @IBOutlet var moreOrLessPerPersonLabel: UILabel!
-    
     /* ----------------- Constraint Outlets -------------------- */
     
     @IBOutlet var singlePersonTotaledAmountsViewCOnstraint: NSLayoutConstraint!
@@ -397,78 +393,10 @@ class MainPage: UIViewController {
     
     
     @IBAction func donePressed(_ sender: UIButton) {
-        
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
-        
         self.unscaleViewsWithSpring()
-        
         self.keypadDisappear()
-        
         self.updateFieldValues()
-        
-        self.checkTotalAmountPerPersonValue()
-        
-    }
-    
-    func checkTotalAmountPerPersonValue() {
-        
-        if varAmts.calcModel.moreOrLessPerPerson != 0.0 {
-            
-            if moreOrLessPerPersonLabel.isHidden != true {
-                
-                moreOrLessPerPersonLabel.isHidden = true
-                
-                totalAmountPerPersonTitleLabel.isHidden = false
-                
-                totalAmountPerPersonLabelOutlet.isHidden = false
-                
-            }
-            
-            coinsImageOutlet.isHidden = false
-            
-            var hold = varAmts.calcModel.moreOrLessPerPerson
-            
-            // $0.09 / 2 yields odd result
-            
-            if round(hold) == 0 {
-                
-                if hold > 0 { hold = 1 }
-                else { hold = -1 }
-                
-            }
-            
-            if hold < 0 {
-                
-                coinsImageOutlet.image = UIImage(named: "coins-green")
-                
-            } else if hold > 0 {
-                
-                coinsImageOutlet.image = UIImage(named: "coins-red")
-                
-            } else {
-                
-                coinsImageOutlet.image = UIImage(named: "")
-                
-            }
-            
-            //print("Round:\(round(hold)) | Reg:\(hold) | Actual: \(varAmountsObject.moreOrLessPerPerson)")
-            
-        } else {
-            
-            moreOrLessPerPersonLabel.isHidden = true
-            
-            if varAmts.calcModel.partySize != 1 {
-            
-                totalAmountPerPersonTitleLabel.isHidden = false
-                
-                totalAmountPerPersonLabelOutlet.isHidden = false
-                
-            }
-            
-            coinsImageOutlet.isHidden = true
-            
-        }
-        
     }
     
     @IBAction func venueSelected(_ sender: UIButton) {
@@ -615,8 +543,6 @@ class MainPage: UIViewController {
         varAmts.calcModel.tipRate = varAmts.tipRateArray[sender.selectedSegmentIndex]
         
         updateFieldValues()
-        
-        checkTotalAmountPerPersonValue()
         
     }
     
@@ -768,14 +694,6 @@ class MainPage: UIViewController {
         totalAmountLabelOutlet.text = varAmts.updateValues().totalAmount
         
         totalAmountPerPersonLabelOutlet.text = varAmts.updateValues().totalAmountPerPerson
-        
-        if varAmts.calcModel.moreOrLessPerPerson < 0 {
-            coinsImageOutlet.image = UIImage(named: "coins-green")
-        } else if varAmts.calcModel.moreOrLessPerPerson > 0 {
-            coinsImageOutlet.image = UIImage(named: "coins-red")
-        } else {
-            coinsImageOutlet.isHidden = true
-        }
     }
 
     /// This method updates the colors used throughout the app in response to user changing their theme
@@ -932,22 +850,16 @@ class MainPage: UIViewController {
             
             venueViews.layer.borderWidth = 2.5
             
-            venueViews.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true).cgColor
+            venueViews.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.viewBackgroundColor, isFlat: true).cgColor
             
         }
         
         if UserPreferences.sharedInstance.localSalesTax != 0.0 {
-        
             taxAmountMaskOutlet.isEnabled = false
-            
             taxAmountTextFieldOutlet.backgroundColor = tipAmountLabelOutlet.backgroundColor
-            
         } else {
-            
             taxAmountMaskOutlet.isEnabled = true
-            
             taxAmountTextFieldOutlet.backgroundColor = UIColor.clear
-            
         }
         
     }
@@ -1221,12 +1133,7 @@ class MainPage: UIViewController {
     @IBAction func totaledAmountsLabelWasTapped(_ recognizer:UITapGestureRecognizer) {
         
         totalAmountsViewIsFull = !totalAmountsViewIsFull
-        
-        self.coinsImageOutlet.isHidden = true
-        
-        // if user is looking at MOLPP message, change back
-        moreOrLessPerPersonLabel.isHidden = true
-        
+
         if varAmts.calcModel.partySize > 1 {
         
             totalAmountPerPersonTitleLabel.isHidden = false
@@ -1491,83 +1398,6 @@ class MainPage: UIViewController {
 //            
 //        }
 
-        
-    }
-    
-    @IBAction func coinsImageWasTapped(_ recognizer:UITapGestureRecognizer) {
-        
-        if varAmts.calcModel.moreOrLessPerPerson != 0.0 {
-            
-            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-            
-            springForInputViews(0.3, animations: {
-            
-                self.coinsImageOutlet.isHidden = true
-                
-                self.moreOrLessPerPersonLabel.isHidden = false
-                
-                self.totalAmountPerPersonTitleLabel.isHidden = true
-                
-                self.totalAmountPerPersonLabelOutlet.isHidden = true
-                
-            })
-            
-            var hold = varAmts.calcModel.moreOrLessPerPerson
-            
-            if round(hold) == 0 {
-                
-                if hold > 0 { hold = 1 }
-                else { hold = -1 }
-                
-            }
-            
-            let absValHold = Int(abs(round(hold)))
-            
-            if hold < 0 {
-                
-                if absValHold == 1 {
-                    
-                    moreOrLessPerPersonLabel.text = "Results in \(absValHold) penny extra"
-                    
-                } else {
-                    
-                    moreOrLessPerPersonLabel.text = "Results in \(absValHold) pennies extra"
-                    
-                }
-                
-            } else {
-                
-                if absValHold == 1 {
-                    
-                    moreOrLessPerPersonLabel.text = "Result will need \(absValHold) more penny"
-                    
-                } else {
-                    
-                    moreOrLessPerPersonLabel.text = "Result will need \(absValHold) more pennies"
-                    
-                }
-                
-            }
-            
-        }
-        
-    }
-    
-    @IBAction func MOLPPLabelWasTapped(_ recognizer:UITapGestureRecognizer) {
-        
-        if moreOrLessPerPersonLabel.isHidden == false {
-            
-            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-            
-            moreOrLessPerPersonLabel.isHidden = true
-            
-            totalAmountPerPersonTitleLabel.isHidden = false
-            
-            totalAmountPerPersonLabelOutlet.isHidden = false
-            
-            coinsImageOutlet.isHidden = false
-            
-        }
         
     }
     
