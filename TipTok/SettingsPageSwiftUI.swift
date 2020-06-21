@@ -45,6 +45,7 @@ struct Settings: View {
                 
                 Section(header: Text("Accessibility").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
                     SettingsRow(text: .constant("Use Your iPhone's Text Size"), isEnabled: self.$preferences.useDynamicText)
+                    SettingsRow(text: .constant("Use Flat Style Views"), isEnabled: self.$preferences.useFlatStyleViews)
                 }
                 
                 Section(header: Text("Feedback").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {

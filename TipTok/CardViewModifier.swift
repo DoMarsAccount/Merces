@@ -8,6 +8,19 @@
 
 import SwiftUI
 
+struct AdaptiveViewBackground: ViewModifier {
+    @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
+    func body(content: Content) -> some View {
+        Group {
+            if userPrefs.useFlatStyleViews {
+                content.modifier(MercesStyleCard())
+            } else {
+                content.modifier(TipTokStyleCard())
+            }
+        }
+    }
+}
+
 struct MercesStyleCard: ViewModifier {
     @Environment(\.colorScheme) var colorScheme
     func body(content: Content) -> some View {
@@ -25,7 +38,7 @@ struct MercesStyleCard: ViewModifier {
     }
 }
 
-struct TTCardModifier: ViewModifier {
+struct TipTokStyleCard: ViewModifier {
     @Environment(\.colorScheme) var colorScheme
 
     func body(content: Content) -> some View {
@@ -56,6 +69,6 @@ struct TTCardModifier: ViewModifier {
 
 extension View {
     func cardStyled(value: Binding<Double>, backgroundColor: Color = .black) -> some View {
-        self.modifier(TTCardModifier())
+        self.modifier(TipTokStyleCard())
     }
 }

@@ -55,6 +55,11 @@ class UserPreferences: ObservableObject {
             mUserDefaults!.set(true, forKey: "setupAlertShown")
         }
     }
+    @Published var useFlatStyleViews: Bool {
+        didSet {
+            updatePreferences()
+        }
+    }
     
     var isModeTipCalc: Bool = true
     
@@ -66,6 +71,7 @@ class UserPreferences: ObservableObject {
         useDynamicText = mUserDefaults!.bool(forKey: "useDynamicText")
         localSalesTax = mUserDefaults!.double(forKey: "userLocalSalesTax")
         shouldShowSetupAlert = !mUserDefaults!.bool(forKey: "setupAlertShown")
+        useFlatStyleViews = mUserDefaults!.bool(forKey: "useFlatStyleViews")
     }
     
     func updatePreferences() {
@@ -75,6 +81,7 @@ class UserPreferences: ObservableObject {
         mUserDefaults!.set(subtotalIsPostTax, forKey: "subtotalIsPostTaxSwitchOnOff")
         mUserDefaults!.set(useDynamicText, forKey: "useDynamicText")
         mUserDefaults!.set(localSalesTax, forKey: "userLocalSalesTax")
+        mUserDefaults!.set(useFlatStyleViews, forKey: "useFlatStyleViews")
     }
     
     func checkForDynamicType(preferredFontSize: CGFloat) -> UIFont {

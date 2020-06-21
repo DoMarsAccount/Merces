@@ -92,7 +92,7 @@ struct VenueSelectionView: View {
                     VenueView(venue: .delivery, activeField: self.$activeField)
                 }
             }
-            .modifier(TTCardModifier())
+            .modifier(TipTokStyleCard())
         }
     }
 }

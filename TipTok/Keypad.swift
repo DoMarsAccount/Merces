@@ -46,7 +46,7 @@ struct Keypad: View {
 //                .modifier(KeypadButtonModifier())
             }
         }
-        .modifier(TextFieldViewModifier())
+        .modifier(AdaptiveViewBackground())
     }
 }
 

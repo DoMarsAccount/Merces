@@ -72,5 +72,7 @@
 	<false/>
 	<key>setupAlertShown</key>
 	<false/>
+	<key>useFlatStyleViews</key>
+	<false/>
 </dict>
 </plist>

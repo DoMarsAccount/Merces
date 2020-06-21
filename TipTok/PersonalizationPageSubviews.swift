@@ -35,7 +35,7 @@ struct PPageTopView: View {
             }.onTapGesture {
                 self.activeField = EditableTextFields.localTax
             }
-            .modifier(TTCardModifier())
+            .modifier(AdaptiveViewBackground())
         }
     }
 }
@@ -107,7 +107,7 @@ struct PPageMiddleView: View {
                     }
                 }.padding(.top)
             }
-            .modifier(TTCardModifier())
+            .modifier(AdaptiveViewBackground())
         }
     }
 }
