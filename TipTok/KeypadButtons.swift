@@ -38,7 +38,6 @@ struct KeypadButton: View {
             }) {
                 Text(self.text)
                     .padding()
-                    .accentColor(.primary)
                     .accessibility(label: Text(self.text))
                     .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 36)))
             }
@@ -92,11 +91,10 @@ struct KeypadDeleteButton: View {
             }) {
                 Image(systemName: "delete.left.fill")
                     .resizable()
-                    .foregroundColor(.primary)
+                    .padding(8)
                     .accessibility(label: Text("Delete"))
                     .scaledToFit()
             }
-            .cornerRadius(0)
         }
     }
 }
@@ -109,10 +107,11 @@ struct KeypadDoneButton: View {
             Button(action: {
                 self.activeField = EditableTextFields.none
             }) {
-                Text("OK")
-                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 36)))
-                    .foregroundColor(.green)
-                    .accessibility(label: Text("Done"))
+                Image(systemName: "checkmark")
+                    .resizable()
+                    .padding()
+                    .accessibility(label: Text("Delete"))
+                    .scaledToFit()
             }
             .cornerRadius(0)
         }

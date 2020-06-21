@@ -62,14 +62,13 @@ struct VenueView: View {
             }
             .padding()
             .frame(width: geo.size.width, height: geo.size.height)
-            .cornerRadius(2)
+            .background(Color.white)
+            .border(Color.primary, width: 1)
+            .clipShape(RoundedRectangle(cornerRadius: 2.5, style: .continuous))
             .onTapGesture {
                 self.calcModel.selectedVenue = self.venue
                 self.activeField = .none
             }
-            .border(Color.primary)
-            .background(Color.white)
-            .shadow(color: Color("DropShadow"), radius: 10, x: 10, y: 10)
         }
     }
 }
@@ -92,7 +91,7 @@ struct VenueSelectionView: View {
                     VenueView(venue: .delivery, activeField: self.$activeField)
                 }
             }
-            .modifier(TipTokStyleCard())
+            .modifier(AdaptiveViewBackground(backgroundColor: Color(coloringThemes.mainColor)))
         }
     }
 }

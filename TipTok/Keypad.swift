@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct Keypad: View {
+    @Environment(\.colorScheme) var colorScheme
     @Binding var activeField: EditableTextFields
     
     var body: some View {
@@ -39,22 +40,24 @@ struct Keypad: View {
             }
             HStack (spacing: 1) {
                 KeypadDoneButton(activeField: self.$activeField)
-//                    .modifier(KeypadButtonModifier())
+                    .modifier(KeypadButtonModifier())
                 KeypadButton(text: .constant("0"), activeField: self.$activeField)
                 .modifier(KeypadButtonModifier())
                 KeypadDeleteButton(activeField: self.$activeField)
-//                .modifier(KeypadButtonModifier())
+                .modifier(KeypadButtonModifier())
             }
         }
-        .modifier(AdaptiveViewBackground())
+        .foregroundColor(self.colorScheme == .dark ? .primary : Color(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.backgroundColor, isFlat: true)))
+        .modifier(AdaptiveViewBackground(usePadding: false, backgroundColor: Color(coloringThemes.mainColor)))
     }
 }
 
 struct KeypadButtonModifier: ViewModifier {
+    @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
     func body(content: Content) -> some View {
         content
-            .border(Color.primary, width: 2)
-            .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
+            .border(Color.primary, width: 1)
+            .clipShape(RoundedRectangle(cornerRadius: self.userPrefs.useFlatStyleViews ? 2.5 : 16, style: .continuous))
     }
 }
 

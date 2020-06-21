@@ -10,12 +10,14 @@ import SwiftUI
 
 struct AdaptiveViewBackground: ViewModifier {
     @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
+    var usePadding: Bool = true
+    var backgroundColor: Color = Color(coloringThemes.viewBackgroundColor)
     func body(content: Content) -> some View {
         Group {
             if userPrefs.useFlatStyleViews {
-                content.modifier(MercesStyleCard())
+                content.modifier(MercesStyleCard(usePadding: self.usePadding, backgroundColor: self.backgroundColor))
             } else {
-                content.modifier(TipTokStyleCard())
+                content.modifier(TipTokStyleCard(usePadding: self.usePadding, backgroundColor: self.backgroundColor))
             }
         }
     }
@@ -23,14 +25,17 @@ struct AdaptiveViewBackground: ViewModifier {
 
 struct MercesStyleCard: ViewModifier {
     @Environment(\.colorScheme) var colorScheme
+    var usePadding: Bool = true
+    var backgroundColor: Color = Color(coloringThemes.viewBackgroundColor)
+    
     func body(content: Content) -> some View {
         GeometryReader { geo in
             content
-                .padding()
+                .padding(self.usePadding ? 16: 0)
                 .frame(width: geo.size.width, height: geo.size.height)
                 .background(
                     RoundedRectangle(cornerRadius: 2.5, style: .continuous)
-                        .foregroundColor(self.colorScheme == .dark ? Color("Eerie") : .white)
+                        .foregroundColor(self.colorScheme == .dark ? Color("Eerie") : self.backgroundColor)
                 )
                 .border(Color.primary, width: 1)
                 .clipShape(RoundedRectangle(cornerRadius: 2.5, style: .continuous))
@@ -40,11 +45,13 @@ struct MercesStyleCard: ViewModifier {
 
 struct TipTokStyleCard: ViewModifier {
     @Environment(\.colorScheme) var colorScheme
+    var usePadding: Bool = true
+    var backgroundColor: Color = Color(coloringThemes.viewBackgroundColor)
 
     func body(content: Content) -> some View {
         GeometryReader { geo in
             content
-                .padding()
+                .padding(self.usePadding ? 16: 0)
                 .frame(width: geo.size.width, height: geo.size.height)
                 .background(
                     ZStack {
@@ -53,10 +60,10 @@ struct TipTokStyleCard: ViewModifier {
                         RoundedRectangle(cornerRadius: 16, style: .circular)
                             .foregroundColor(self.colorScheme == .dark ? .secondary : .secondary)
                             .blur(radius: 4)
-                            .offset(x: -8, y: -8)
+//                            .offset(x: -8, y: -8)
                         
                         RoundedRectangle(cornerRadius: 16, style: .continuous)
-                            .foregroundColor(self.colorScheme == .dark ? Color("Eerie") : Color(coloringThemes.viewBackgroundColor))
+                            .foregroundColor(self.colorScheme == .dark ? Color("Eerie") : self.backgroundColor)
                             .padding(2)
                             .blur(radius: 2)
                     }
