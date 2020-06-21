@@ -50,6 +50,7 @@ struct MainPageSwiftUI: View {
                     .background(NavigationConfigurator { nc in
                         nc.navigationBar.barTintColor = (self.colorScheme == .dark ? .black : coloringThemes.mainColor)
                         nc.navigationBar.titleTextAttributes = [.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? .black : coloringThemes.mainColor), isFlat: true)!]
+                        nc.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? .black : coloringThemes.mainColor), isFlat: true)
                     })
                     .navigationBarItems(trailing: NavigationLink(destination: Settings(), isActive: self.$isSettingsActive) {
                         Image(systemName: "gear")
@@ -58,10 +59,7 @@ struct MainPageSwiftUI: View {
                             .frame(width: 30, height: 30)
                             .accessibility(label: Text("Settings"))
                     })
-                
-                
             }
-            
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
@@ -71,6 +69,6 @@ struct MainPageSwiftUI_Previews: PreviewProvider {
     static var previews: some View {
         MainPageSwiftUI()
             .environmentObject(UserPreferences.sharedInstance)
-            .environment(\.colorScheme, .dark)
+//            .environment(\.colorScheme, .dark)
     }
 }

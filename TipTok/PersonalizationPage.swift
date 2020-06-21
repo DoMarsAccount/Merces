@@ -24,8 +24,9 @@ struct PersonalizationPage: View {
                     PPageBottomView()
                 }
             }
-            .padding([.leading, .trailing])
-        }.navigationBarTitle(Text("Personalize").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18))))
+            .padding()
+        }
+        .navigationBarTitle(Text("Personalize").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18))))
     }
 }
 
