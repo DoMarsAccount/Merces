@@ -48,6 +48,7 @@ struct PPageVenuePicker: View {
 }
 
 struct VenueView: View {
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var calcModel = varAmts.calcModel
     var venue: VenueType
     @Binding var activeField: EditableTextFields
@@ -61,7 +62,7 @@ struct VenueView: View {
                     .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
             }
             .frame(width: geo.size.width, height: geo.size.height)
-            .background(Color.white)
+            .background(self.colorScheme == .dark ? Color("Eerie") : Color.white)
             .border(Color.primary, width: 4)
             .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
             .onTapGesture {
@@ -90,7 +91,7 @@ struct VenueSelectionView: View {
                     VenueView(venue: .delivery, activeField: self.$activeField)
                 }
             }
-            .modifier(AdaptiveViewBackground(backgroundColor: Color(coloringThemes.mainColor)))
+            .modifier(AdaptiveCardBackground(backgroundColor: Color(coloringThemes.mainColor)))
         }
     }
 }

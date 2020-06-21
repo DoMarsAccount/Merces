@@ -27,6 +27,7 @@ struct MainPageSwiftUI: View {
                     
                     MainPageMiddleSubview(activeField: self.$activeField)
                         .minimumScaleFactor(0.8)
+                    
                     ZStack {
                     
                         VenueSelectionView(activeField: self.$activeField)
@@ -70,6 +71,6 @@ struct MainPageSwiftUI_Previews: PreviewProvider {
     static var previews: some View {
         MainPageSwiftUI()
             .environmentObject(UserPreferences.sharedInstance)
-//            .environment(\.colorScheme, .dark)
+            .environment(\.colorScheme, .dark)
     }
 }

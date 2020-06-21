@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct AdaptiveViewBackground: ViewModifier {
+struct AdaptiveCardBackground: ViewModifier {
     @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
     var usePadding: Bool = true
     var backgroundColor: Color = Color(coloringThemes.viewBackgroundColor)

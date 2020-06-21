@@ -48,7 +48,7 @@ struct Keypad: View {
             }
         }
         .foregroundColor(self.colorScheme == .dark ? .primary : Color(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.backgroundColor, isFlat: true)))
-        .modifier(AdaptiveViewBackground(usePadding: false, backgroundColor: Color(coloringThemes.mainColor)))
+        .modifier(AdaptiveCardBackground(usePadding: false, backgroundColor: Color(coloringThemes.mainColor)))
     }
 }
 
