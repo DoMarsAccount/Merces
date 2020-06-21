@@ -9,53 +9,61 @@
 import SwiftUI
 
 struct MainPageSwiftUI: View {
+    @Environment(\.colorScheme) var colorScheme
     @State private var isSettingsActive: Bool = false
     @EnvironmentObject var userPrefs: UserPreferences
     @State private var activeField: EditableTextFields = .none
     
     var body: some View {
         NavigationView {
-            VStack {
-                MainPageTopSubview(activeField: self.$activeField)
-                    .padding(.top)
-                    .minimumScaleFactor(0.75)
+            ZStack {
+                Color(colorScheme == .dark ? .black : coloringThemes.backgroundColor)
+                    .edgesIgnoringSafeArea(.bottom)
                 
-                MainPageMiddleSubview(activeField: self.$activeField)
-                    .minimumScaleFactor(0.8)
-                
-                if (self.activeField == .none) {
-                    MainPageBottomSubview()
+                VStack {
+                    MainPageTopSubview(activeField: self.$activeField)
+                        .padding(.top)
                         .minimumScaleFactor(0.75)
-                        .padding(.bottom)
-                } else if (self.activeField == EditableTextFields.venue) {
-                    VenueSelectionView(activeField: self.$activeField)
-                        .minimumScaleFactor(0.75)
-                        .padding(.bottom)
-                } else {
-                    Keypad(activeField: self.$activeField)
-                        .minimumScaleFactor(0.75)
-                        .padding(.bottom)
+                    
+                    MainPageMiddleSubview(activeField: self.$activeField)
+                        .minimumScaleFactor(0.8)
+                    
+                    if (self.activeField == .none) {
+                        MainPageBottomSubview()
+                            .minimumScaleFactor(0.75)
+                            .padding(.bottom)
+                    } else if (self.activeField == EditableTextFields.venue) {
+                        VenueSelectionView(activeField: self.$activeField)
+                            .minimumScaleFactor(0.75)
+                            .padding(.bottom)
+                    } else {
+                        Keypad(activeField: self.$activeField)
+                            .minimumScaleFactor(0.75)
+                            .padding(.bottom)
+                    }
                 }
+                    .padding([.leading, .trailing])
+                        
+                    .navigationBarTitle(Text("TipTok")
+                        , displayMode: .inline)
+                        
+                    .background(NavigationConfigurator { nc in
+                        nc.navigationBar.barTintColor = (self.colorScheme == .dark ? .black : coloringThemes.mainColor)
+                        nc.navigationBar.titleTextAttributes = [.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? .black : coloringThemes.mainColor), isFlat: true)!]
+                    })
+                    .navigationBarItems(trailing: NavigationLink(destination: Settings(), isActive: self.$isSettingsActive) {
+                        Image(systemName: "gear")
+                            .resizable()
+                            .accentColor(.primary)
+                            .frame(width: 30, height: 30)
+                            .accessibility(label: Text("Settings"))
+                    })
+                
+                
             }
-            .padding([.leading, .trailing])
-                
-            .navigationBarTitle(Text("TipTok").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                , displayMode: .inline)
-                
-//            .background(NavigationConfigurator { nc in
-//                nc.navigationBar.barTintColor = coloringThemes.mainColor
-//                nc.navigationBar.titleTextAttributes = [.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)!]
-//            })
-//            .background(Color(coloringThemes.backgroundColor))
-            .navigationBarItems(trailing: NavigationLink(destination: Settings(), isActive: self.$isSettingsActive) {
-                Image(systemName: "gear")
-                    .resizable()
-                    .accentColor(.primary)
-                    .frame(width: 30, height: 30)
-                    .accessibility(label: Text("Settings"))
-            })
+            
         }
-//    .navigationViewStyle(StackNavigationViewStyle())
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

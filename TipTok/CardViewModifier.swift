@@ -8,6 +8,23 @@
 
 import SwiftUI
 
+struct MercesStyleCard: ViewModifier {
+    @Environment(\.colorScheme) var colorScheme
+    func body(content: Content) -> some View {
+        GeometryReader { geo in
+            content
+                .padding()
+                .frame(width: geo.size.width, height: geo.size.height)
+                .background(
+                    RoundedRectangle(cornerRadius: 4, style: .continuous)
+                        .foregroundColor(self.colorScheme == .dark ? Color("Eerie") : .white)
+                )
+                .border(Color.primary, width: 2)
+                .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
+        }
+    }
+}
+
 struct TTCardModifier: ViewModifier {
     @Environment(\.colorScheme) var colorScheme
 

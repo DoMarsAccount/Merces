@@ -43,13 +43,9 @@ class MainPage: UIViewController {
     /* ----------------- Views -------------------- */
     
     @IBOutlet var billTaxPeopleStuffView: UIView!
-    
     @IBOutlet var venueAndServiceStuffView: UIView!
-    
     @IBOutlet var totaledAmountsStuffView: UIView!
-    
     @IBOutlet var keypadStuffView: UIView!
-    
     @IBOutlet var venuesStuffView: UIView!
     
     /* ----------------- Outlets -------------------- */
@@ -721,7 +717,8 @@ class MainPage: UIViewController {
         //UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor, isFlat: true)
         
 //        serviceRatingLabelOutlet.layer.borderColor = self.view.backgroundColor?.cgColor
-        serviceRatingLabelOutlet.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor!, isFlat: true).cgColor
+        serviceRatingLabelOutlet.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.viewBackgroundColor, isFlat: true).cgColor
+        serviceRatingLabelOutlet.backgroundColor = coloringThemes.viewBackgroundColor
        
         
         for sectionHeader in collectionSectionHeaderLabels {

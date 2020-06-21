@@ -49,7 +49,7 @@ struct MainPageTopSubview: View {
                 }
 //                .padding(.top)
             }
-            .modifier(TTCardModifier())
+            .modifier(MercesStyleCard())
         }
     }
 }
@@ -87,7 +87,7 @@ struct MainPageMiddleSubview: View {
             }
             .padding(.top)
         }
-        .modifier(TTCardModifier())
+        .modifier(MercesStyleCard())
     }
 }
 
@@ -127,7 +127,7 @@ struct MainPageBottomSubview: View {
 //                    .padding(.top)
                 }
             }
-            .modifier(TTCardModifier())
+            .modifier(MercesStyleCard())
         }
     }
 }
