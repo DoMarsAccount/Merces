@@ -27,20 +27,22 @@ struct MainPageSwiftUI: View {
                     
                     MainPageMiddleSubview(activeField: self.$activeField)
                         .minimumScaleFactor(0.8)
+                    ZStack {
                     
-                    if (self.activeField == .none) {
-                        MainPageBottomSubview()
-                            .minimumScaleFactor(0.75)
-                            .padding(.bottom)
-                    } else if (self.activeField == EditableTextFields.venue) {
                         VenueSelectionView(activeField: self.$activeField)
-                            .minimumScaleFactor(0.75)
-                            .padding(.bottom)
-                    } else {
+                            .offset(x: activeField == .venue ? 0 : UIScreen.main.bounds.maxX)
+                    
                         Keypad(activeField: self.$activeField)
-                            .minimumScaleFactor(0.75)
-                            .padding(.bottom)
+                            .offset(x: (activeField != .none && activeField != .venue) ? 0 : UIScreen.main.bounds.maxX)
+                        
+                        MainPageBottomSubview()
+                            .offset(x: activeField == .none ? 0 : UIScreen.main.bounds.maxX)
+                        
                     }
+                        .minimumScaleFactor(0.75)
+                        .padding(.bottom)
+                        .animation(.spring(response: 0.7, dampingFraction: 0.7, blendDuration: 1.0))
+//                        .animation(.interpolatingSpring(mass: 1.0, stiffness: 0.0, damping: 0.7, initialVelocity: 0.7))
                 }
                     .padding([.leading, .trailing])
                         
@@ -68,6 +70,6 @@ struct MainPageSwiftUI_Previews: PreviewProvider {
     static var previews: some View {
         MainPageSwiftUI()
             .environmentObject(UserPreferences.sharedInstance)
-            .environment(\.colorScheme, .dark)
+//            .environment(\.colorScheme, .dark)
     }
 }

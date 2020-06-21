@@ -60,11 +60,10 @@ struct VenueView: View {
                     .padding(.top)
                     .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
             }
-            .padding()
             .frame(width: geo.size.width, height: geo.size.height)
             .background(Color.white)
-            .border(Color.primary, width: 1)
-            .clipShape(RoundedRectangle(cornerRadius: 2.5, style: .continuous))
+            .border(Color.primary, width: 4)
+            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
             .onTapGesture {
                 self.calcModel.selectedVenue = self.venue
                 self.activeField = .none
