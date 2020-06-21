@@ -45,7 +45,7 @@ struct Settings: View {
                 
                 Section(header: Text("Accessibility").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
                     SettingsRow(text: .constant("Use Your iPhone's Text Size"), isEnabled: self.$preferences.useDynamicText)
-                    SettingsRow(text: .constant("Use Flat Style Views"), isEnabled: self.$preferences.useFlatStyleViews)
+                    SettingsRow(text: .constant("Use Flat Views"), isEnabled: self.$preferences.useFlatStyleViews)
                 }
                 
                 Section(header: Text("Feedback").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
@@ -57,7 +57,7 @@ struct Settings: View {
                             .onTapGesture {
                                 SKStoreReviewController.requestReview()
                             }
-                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                     }
                 }
                 

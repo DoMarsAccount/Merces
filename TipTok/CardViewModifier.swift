@@ -29,11 +29,11 @@ struct MercesStyleCard: ViewModifier {
                 .padding()
                 .frame(width: geo.size.width, height: geo.size.height)
                 .background(
-                    RoundedRectangle(cornerRadius: 4, style: .continuous)
+                    RoundedRectangle(cornerRadius: 2.5, style: .continuous)
                         .foregroundColor(self.colorScheme == .dark ? Color("Eerie") : .white)
                 )
-                .border(Color.primary, width: 2)
-                .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
+                .border(Color.primary, width: 1)
+                .clipShape(RoundedRectangle(cornerRadius: 2.5, style: .continuous))
         }
     }
 }

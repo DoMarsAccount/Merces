@@ -55,7 +55,6 @@ struct MainPageSwiftUI: View {
                     .navigationBarItems(trailing: NavigationLink(destination: Settings(), isActive: self.$isSettingsActive) {
                         Image(systemName: "gear")
                             .resizable()
-                            .accentColor(.primary)
                             .frame(width: 30, height: 30)
                             .accessibility(label: Text("Settings"))
                     })
