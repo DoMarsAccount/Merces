@@ -17,163 +17,26 @@ import UIKit
 import WatchConnectivity
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
-    
-    // MARK: - Types
-    
-    enum ShortcutIdentifier: String {
-        case First
-        case Second
-        
-        // MARK: - Initializers
-        
-        init?(fullType: String) {
-            guard let last = fullType.components(separatedBy: ".").last else { return nil }
-            
-            self.init(rawValue: last)
-        }
-        
-        // MARK: - Properties
-        
-        var type: String {
-            return Bundle.main.bundleIdentifier! + ".\(self.rawValue)"
-        }
-    }
-    
-    // MARK: - Static Properties
-    
-    static let applicationShortcutUserInfoIconKey = "applicationShortcutUserInfoIconKey"
-    
-    // MARK: - Properties
-    
-    /*
-     The app delegate must implement the window from UIApplicationDelegate
-     protocol to use a main storyboard file.
-     */
-    var window: UIWindow?
-    
-    /// Saved shortcut item used as a result of an app launch, used later when app is activated.
-    var launchedShortcutItem: UIApplicationShortcutItem?
+class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-        // Override point for customization after application launch.
-        var shouldPerformAdditionalDelegateHandling = true
-        
-        // If a shortcut was launched, display its information and take the appropriate action
-        if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
-            
-            launchedShortcutItem = shortcutItem
-            
-            // This will block "performActionForShortcutItem:completionHandler" from being called.
-            shouldPerformAdditionalDelegateHandling = false
-            
-        }
-        
-        return shouldPerformAdditionalDelegateHandling
+        return true
     }
-    
-    func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+
+    // MARK: UISceneSession Lifecycle
+
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        // Called when a new scene session is being created.
+        // Use this method to select a configuration to create the new scene with.
+        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
-    
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+
+    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
+        // Called when the user discards a scene session.
+        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
+        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-    
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    }
-    
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        
-        guard let shortcut = launchedShortcutItem else { return }
-        _ = handleShortcut(shortcutItem: shortcut)
-        launchedShortcutItem = nil
-        
-        if (WCSession.isSupported()) {
-            let session = WCSession.default
-            session.delegate = self
-            session.activate()
-        }
-    }
-    
-    func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-    
-    func handleShortcut( shortcutItem:UIApplicationShortcutItem ) -> Bool {
-        
-        // Construct an alert using the details of the shortcut used to open the application.
-        
-        let rootView = self.window!.rootViewController as! NavigationController
-        
-        if shortcutItem.localizedTitle == "Personalize" {
-            
-            let requestedViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Personalize") as! MyMerces
-            
-            rootView.pushViewController(requestedViewController, animated: true)
-            
-        } else if shortcutItem.localizedTitle == "Color Picker" {
-            
-            let requestedViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ThemesPage") as! ThemesViewController
-            
-            rootView.pushViewController(requestedViewController, animated: true)
-            
-        }
-        
-        return (launchedShortcutItem != nil)
-        
-    }
-    
-    func application(_ application: UIApplication,
-                     performActionFor shortcutItem: UIApplicationShortcutItem,
-                     completionHandler: @escaping (Bool) -> Void) {
-        
-        completionHandler(handleShortcut(shortcutItem: shortcutItem))
-        
-        
-    }
-    
-    // MARK: - WCDelegate Methods
-    
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        
-    }
-    
-    func sessionDidBecomeInactive(_ session: WCSession) {
-        
-    }
-    
-    func sessionDidDeactivate(_ session: WCSession) {
-        
-    }
-    
-    func sessionWatchStateDidChange(_ session: WCSession) {
-        // Called when the watch gets paired with the phone
-        if session.isWatchAppInstalled {
-            // session.watchDirectoryURL is guaranteed non-nil when the app is installed
-            // path to directory on the watch
-            // the lifetime of this directory is tied to the watchAppInstalled property
-            do {
-//                let defaultPrefsFile = Bundle.main.path(forResource: "defaultPreferences", ofType: "plist")
-//                let defaultPreferences = NSDictionary(contentsOfFile: defaultPrefsFile!)
-//                UserDefaults(suiteName:"group.DoMarsToyBox.Merces")?.register(defaults: defaultPreferences! as! [String : AnyObject])
-                
-                try session.updateApplicationContext((mUserDefaults?.dictionaryRepresentation())!)
-            } catch {
-                
-            }
-            
-            // session.isComplicationEnabled
-        }
-    }
-    
-    
     
 }
 

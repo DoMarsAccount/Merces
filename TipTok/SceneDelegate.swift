@@ -8,24 +8,21 @@
 
 import UIKit
 import SwiftUI
+import WatchConnectivity
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, WCSessionDelegate {
 
     var window: UIWindow?
-
-
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
-        // Create the SwiftUI view that provides the window contents.
-        let mainPage = MainPageSwiftUI().environmentObject(UserPreferences.sharedInstance)
-
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: mainPage)
+            window.rootViewController = UIHostingController(rootView: ContentView())
             self.window = window
             window.makeKeyAndVisible()
         }
@@ -41,6 +38,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+        
+        guard let shortcut = launchedShortcutItem else { return }
+        _ = handleShortcut(shortcutItem: shortcut)
+        launchedShortcutItem = nil
+        
+        if (WCSession.isSupported()) {
+            let session = WCSession.default
+            session.delegate = self
+            session.activate()
+        }
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
@@ -59,6 +66,90 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
+    // MARK: - Widgets
+    
+    enum ShortcutIdentifier: String {
+           case First
+           case Second
+           
+           // MARK: Initializers
+           
+           init?(fullType: String) {
+               guard let last = fullType.components(separatedBy: ".").last else { return nil }
+               
+               self.init(rawValue: last)
+           }
+           
+           // MARK: Properties
+           
+           var type: String {
+               return Bundle.main.bundleIdentifier! + ".\(self.rawValue)"
+           }
+       }
+    // MARK: Static Properties
+    static let applicationShortcutUserInfoIconKey = "applicationShortcutUserInfoIconKey"
+    
+    /// Saved shortcut item used as a result of an app launch, used later when app is activated.
+    var launchedShortcutItem: UIApplicationShortcutItem?
+    func handleShortcut( shortcutItem:UIApplicationShortcutItem ) -> Bool {
+        
+        // Construct an alert using the details of the shortcut used to open the application.
+        
+        let rootView = self.window!.rootViewController as! NavigationController
+        
+        if shortcutItem.localizedTitle == "Personalize" {
+            
+            let requestedViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Personalize") as! MyMerces
+            
+            rootView.pushViewController(requestedViewController, animated: true)
+            
+        } else if shortcutItem.localizedTitle == "Color Picker" {
+            
+            let requestedViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ThemesPage") as! ThemesViewController
+            
+            rootView.pushViewController(requestedViewController, animated: true)
+            
+        }
+        return (launchedShortcutItem != nil)
+    }
+    
+    func windowScene(_ windowScene: UIWindowScene, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        completionHandler(handleShortcut(shortcutItem: shortcutItem))
+    }
+    
+    // MARK: - WCDelegate Methods
+        
+        func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+            
+        }
+        
+        func sessionDidBecomeInactive(_ session: WCSession) {
+            
+        }
+        
+        func sessionDidDeactivate(_ session: WCSession) {
+            
+        }
+        
+        func sessionWatchStateDidChange(_ session: WCSession) {
+            // Called when the watch gets paired with the phone
+            if session.isWatchAppInstalled {
+                // session.watchDirectoryURL is guaranteed non-nil when the app is installed
+                // path to directory on the watch
+                // the lifetime of this directory is tied to the watchAppInstalled property
+                do {
+    //                let defaultPrefsFile = Bundle.main.path(forResource: "defaultPreferences", ofType: "plist")
+    //                let defaultPreferences = NSDictionary(contentsOfFile: defaultPrefsFile!)
+    //                UserDefaults(suiteName:"group.DoMarsToyBox.Merces")?.register(defaults: defaultPreferences! as! [String : AnyObject])
+                    
+                    try session.updateApplicationContext((mUserDefaults?.dictionaryRepresentation())!)
+                } catch {
+                    
+                }
+                
+                // session.isComplicationEnabled
+            }
+        }
 
 }
 

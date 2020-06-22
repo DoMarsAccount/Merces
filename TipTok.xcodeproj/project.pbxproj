@@ -16,6 +16,7 @@
 		0430E5AA249FEE9A0014E8E5 /* ThemesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0430E5A9249FEE9A0014E8E5 /* ThemesPage.swift */; };
 		0430E5AC24A041170014E8E5 /* TipTok.ckcomplication in Resources */ = {isa = PBXBuildFile; fileRef = 0430E5AB24A041170014E8E5 /* TipTok.ckcomplication */; };
 		0430E5B024A121300014E8E5 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0430E5AF24A121300014E8E5 /* WidgetView.swift */; };
+		0430E5B224A143190014E8E5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0430E5B124A143190014E8E5 /* ContentView.swift */; };
 		0444E6D024953A49004793BF /* WatchStyleValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0444E6CF24953A49004793BF /* WatchStyleValues.swift */; };
 		046C65012495B24A00B99784 /* defaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3AB12181E2DBF210021C889 /* defaultPreferences.plist */; };
 		046C65022495B24D00B99784 /* defaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3AB12181E2DBF210021C889 /* defaultPreferences.plist */; };
@@ -185,6 +186,7 @@
 		0430E5A9249FEE9A0014E8E5 /* ThemesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesPage.swift; sourceTree = "<group>"; };
 		0430E5AB24A041170014E8E5 /* TipTok.ckcomplication */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TipTok.ckcomplication; sourceTree = "<group>"; };
 		0430E5AF24A121300014E8E5 /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
+		0430E5B124A143190014E8E5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0444E6CF24953A49004793BF /* WatchStyleValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStyleValues.swift; sourceTree = "<group>"; };
 		04719F782497233C00132EC8 /* MainPageSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageSwiftUI.swift; sourceTree = "<group>"; };
 		04719F7A2497234F00132EC8 /* SettingsPageSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageSwiftUI.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 				04282A56249A7FFD004F2879 /* TextFields.swift */,
 				0430E5A9249FEE9A0014E8E5 /* ThemesPage.swift */,
 				0430E5AF24A121300014E8E5 /* WidgetView.swift */,
+				0430E5B124A143190014E8E5 /* ContentView.swift */,
 			);
 			name = SwiftUIViews;
 			sourceTree = "<group>";
@@ -993,6 +996,7 @@
 				0487153C2497A72300DF33E5 /* MainPageSubviews.swift in Sources */,
 				0430E5B024A121300014E8E5 /* WidgetView.swift in Sources */,
 				04719F7E2497247100132EC8 /* PersonalizationPage.swift in Sources */,
+				0430E5B224A143190014E8E5 /* ContentView.swift in Sources */,
 				E3AB12091E2DBE950021C889 /* MainPage.swift in Sources */,
 				04E012782489628A009FAEEB /* UserPreferences.swift in Sources */,
 				E3B4B2BA1ABB2CF7002A6C16 /* AppDelegate.swift in Sources */,
