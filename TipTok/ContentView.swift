@@ -11,7 +11,9 @@ let themes = Themes()
 
 struct ContentView: View {
     var body: some View {
-        MainPageSwiftUI().environmentObject(UserPreferences.sharedInstance)
+        MainPageSwiftUI()
+            .environmentObject(UserPreferences.sharedInstance)
+            
     }
 }
 

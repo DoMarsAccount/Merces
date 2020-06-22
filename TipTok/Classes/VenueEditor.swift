@@ -71,40 +71,29 @@ enum VenueType: CaseIterable, Hashable, Identifiable {
 class Tipping {
     static let sharedInstance = Tipping()
     
+    init() {
+        let defaultPrefsFile = Bundle.main.path(forResource: "defaultPreferences", ofType: "plist")
+        
+        let defaultPreferences = NSDictionary(contentsOfFile: defaultPrefsFile!)
+        
+        UserDefaults(suiteName:"group.DoMarsToyBox.Merces")?.register(defaults: defaultPreferences! as! [String : AnyObject])
+    }
+    
     /// Returns the array of tip rates for the given Venue
     func tipRates(for venue: VenueType) -> [Double] {
-        var array: [Double]
         switch venue {
         case .quick:
-            if let array = mUserDefaults?.array(forKey: "quickTipArray") {
-                return array as! [Double]
-            }
-            return [0.0, 0.0, 0.0]
+            return mUserDefaults?.array(forKey: "quickTipArray") as! [Double]
         case .bar:
-            if let array = mUserDefaults?.array(forKey: "barTipArray") {
-                return array as! [Double]
-            }
-            return [0.0, 0.0, 0.0]
+            return mUserDefaults?.array(forKey: "barTipArray") as! [Double]
         case .dining:
-            if let array = mUserDefaults?.array(forKey: "diningTipArray") {
-                return array as! [Double]
-            }
-            return [0.0, 0.0, 0.0]
+            return mUserDefaults?.array(forKey: "diningTipArray") as! [Double]
         case .salon:
-            if let array = mUserDefaults?.array(forKey: "salonTipArray") {
-                return array as! [Double]
-            }
-            return [0.0, 0.0, 0.0]
+            return mUserDefaults?.array(forKey: "salonTipArray") as! [Double]
         case .taxi:
-            if let array = mUserDefaults?.array(forKey: "taxiTipArray") {
-                return array as! [Double]
-            }
-            return [0.0, 0.0, 0.0]
+            return mUserDefaults?.array(forKey: "taxiTipArray") as! [Double]
         case .delivery:
-            if let array = mUserDefaults?.array(forKey: "deliveryTipArray") {
-                return array as! [Double]
-            }
-            return [0.0, 0.0, 0.0]
+            return mUserDefaults?.array(forKey: "deliveryTipArray") as! [Double]
         case .none:
             return [0.0, 0.0, 0.0]
         }
