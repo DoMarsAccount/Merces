@@ -10,24 +10,42 @@ import SwiftUI
 
 struct CurrencyView: View {
     @Binding var value: Double
+    var isEnabled: Bool = true
     var body: some View {
-        Text(nForm.roundForCurrency(number: self.value))
+        ZStack {
+            Color.black
+                .opacity(isEnabled ? 0.0 : 0.07)
+            
+            Text(nForm.roundForCurrency(number: self.value))
+        }
         .modifier(MercesStyleTextField())
     }
 }
 
 struct IntegerView: View {
     @Binding var value: Int
+    var isEnabled: Bool = true
     var body: some View {
-        Text(nForm.formatIntegerNumbers(self.value))
+        ZStack {
+            Color.black
+                .opacity(isEnabled ? 0.0 : 0.07)
+            
+            Text(nForm.formatIntegerNumbers(self.value))
+        }
         .modifier(MercesStyleTextField())
     }
 }
 
 struct PercentageView: View {
     @Binding var value: Double
+    var isEnabled: Bool = true
     var body: some View {
-        Text(nForm.roundForPercentWithTwoDecimalPlaces(self.value))
+        ZStack {
+            Color.black
+                .opacity(isEnabled ? 0.0 : 0.07)
+            
+            Text(nForm.roundForPercentWithTwoDecimalPlaces(self.value))
+        }
         .modifier(MercesStyleTextField())
     }
 }
@@ -37,7 +55,7 @@ struct MercesStyleTextField: ViewModifier {
     func body(content: Content) -> some View {
         content
         .frame(maxWidth: .infinity)
-        .padding()
+//        .padding()
         .border(Color.primary, width: 1)
             .clipShape(RoundedRectangle(cornerRadius: 2.5, style: .circular))
         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 24)))
@@ -50,7 +68,7 @@ struct TextFieldViewModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
         .frame(minWidth: 0, maxWidth: .infinity)
-        .padding()
+//        .padding()
         .background(
             ZStack {
                 Color(self.colorScheme == .dark ? "Eerie" : "Snow")

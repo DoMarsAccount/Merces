@@ -45,6 +45,7 @@ enum TipTokColor: CaseIterable, Hashable, Identifiable {
 }
 
 class Themes: ObservableObject {
+    @Environment(\.colorScheme) var colorScheme
     @Published var mainColor: UIColor
     @Published var background: UIColor
     @Published var viewColor: UIColor

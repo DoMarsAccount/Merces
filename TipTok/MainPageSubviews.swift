@@ -12,6 +12,7 @@ let highlightedScale: CGFloat = 1.3
 
 struct MainPageTopSubview: View {
     @ObservedObject var calcModel: CalculationsModel = varAmts.calcModel
+    @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
     @Binding var activeField: EditableTextFields
     var body: some View {
         GeometryReader { geo in
@@ -32,9 +33,11 @@ struct MainPageTopSubview: View {
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                             .scaleEffect(self.activeField == EditableTextFields.salesTax ? highlightedScale : 1.0)
                             .minimumScaleFactor(0.75)
-                        CurrencyView(value: self.$calcModel.taxAmount)
+                        CurrencyView(value: self.$calcModel.taxAmount, isEnabled: self.userPrefs.localSalesTax == 0.0)
                     }.onTapGesture {
-                        self.activeField = EditableTextFields.salesTax
+                        if self.userPrefs.localSalesTax == 0.0 {
+                            self.activeField = EditableTextFields.salesTax
+                        }
                     }.accessibility(value: Text("Sales Tax \(nForm.roundForCurrency(number: self.calcModel.taxAmount))"))
                     
                     VStack {
@@ -64,7 +67,11 @@ struct MainPageMiddleSubview: View {
                     Text("Venue")
                         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                     
-                    Text(self.calcModel.selectedVenue.name)
+                    ZStack {
+                        Color.black
+                            .opacity(0.0)
+                        Text(self.calcModel.selectedVenue.name)
+                    }
                     .modifier(MercesStyleTextField())
                 }.onTapGesture {
                     self.activeField = EditableTextFields.venue
@@ -106,7 +113,7 @@ struct MainPageBottomSubview: View {
                     HStack {
                         Text("Tip Amount:")
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                        CurrencyView(value: self.$calcModel.tipAmount)
+                        CurrencyView(value: self.$calcModel.tipAmount, isEnabled: false)
                     }
     //                .padding(.top)
                 }
@@ -114,7 +121,7 @@ struct MainPageBottomSubview: View {
                 HStack {
                     Text("Grand Total:")
                         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                    CurrencyView(value: self.$calcModel.totalAmount)
+                    CurrencyView(value: self.$calcModel.totalAmount, isEnabled: false)
                 }
 //                .padding(.top)
                 
@@ -122,7 +129,7 @@ struct MainPageBottomSubview: View {
                     HStack {
                         Text("Each Person:")
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                        CurrencyView(value: self.$calcModel.totalAmountPerPerson)
+                        CurrencyView(value: self.$calcModel.totalAmountPerPerson, isEnabled: false)
                     }
 //                    .padding(.top)
                 }
