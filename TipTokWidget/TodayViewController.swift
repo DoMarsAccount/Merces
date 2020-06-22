@@ -19,7 +19,7 @@ import NotificationCenter
 
 let varAmountsObject = VariableAmountsClass()
 
-let coloringThemes = ColoringAndThemes()
+let coloringThemes = Themes()
 
 let generator = UISelectionFeedbackGenerator()
 
@@ -98,23 +98,16 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             inputDisplays.layer.borderColor = inputDisplays.textColor!.cgColor
             
             if inputDisplays.tag <= 6 {
-                
                 inputDisplays.backgroundColor = UIColor.white
-                
             }
-            
         }
         
         for item in collectionCompactViewBottomItems {
-            
             item.translatesAutoresizingMaskIntoConstraints = false
-            
         }
         
         for item in collectionExpandedViewItems {
-            
             item.translatesAutoresizingMaskIntoConstraints = false
-            
         }
         
         updateColors()
@@ -140,9 +133,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             self.preferredContentSize = maxSize
             
             for item in collectionExpandedViewItems {
-                
                 item.isHidden = true
-                
             }
             
             subTBottomConstraint.priority = UILayoutPriority(rawValue: 997)
@@ -202,7 +193,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             
             keypadButtons.layer.borderColor = keypadViewOutlet.backgroundColor?.cgColor
             
-            keypadButtons.backgroundColor = coloringThemes.mainColor
+//            keypadButtons.backgroundColor = coloringThemes.mainColor
             
         }
         
@@ -419,7 +410,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                 
             } else {
                 
-                inputDisplays.layer.borderColor = coloringThemes.mainColor.cgColor
+//                inputDisplays.layer.borderColor = coloringThemes.mainColor.cgColor
                 
                 inputDisplays.layer.borderWidth = 3
                 

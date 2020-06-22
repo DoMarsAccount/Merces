@@ -118,32 +118,32 @@ class SettingsPage: UITableViewController {
     func updateColorValues() {
         
         /* ------------ Navigation Bar Coloring ------------- */
-        self.navigationController?.navigationBar.barTintColor = coloringThemes.mainColor
+        self.navigationController?.navigationBar.barTintColor = themes.mainColor
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)!]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: themes.mainColor, isFlat: true)!]
         
-        self.navigationController?.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)
+        self.navigationController?.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: themes.mainColor, isFlat: true)
         
         
-        view.backgroundColor = coloringThemes.backgroundColor
+        view.backgroundColor = themes.background
         
         
         for tableViewCell in collectionTableViewCell {
-            tableViewCell.backgroundColor = coloringThemes.viewBackgroundColor
+            tableViewCell.backgroundColor = themes.viewColor
         }
         
         for settingsHeaders in collectionSettingsInformation {
-            settingsHeaders.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.viewBackgroundColor, isFlat: true)
+            settingsHeaders.textColor = UIColor(contrastingBlackOrWhiteColorOn: themes.viewColor, isFlat: true)
         }
         
         for switches in collectionSwitches {
-            switches.onTintColor = coloringThemes.mainColor
+            switches.onTintColor = themes.mainColor
             
-            if coloringThemes.mainColor == coloringThemes.viewBackgroundColor {
+            if themes.mainColor == themes.viewColor {
                 
-                switches.onTintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)
+                switches.onTintColor = UIColor(contrastingBlackOrWhiteColorOn: themes.mainColor, isFlat: true)
                 
-                switches.tintColor =  UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)
+                switches.tintColor =  UIColor(contrastingBlackOrWhiteColorOn: themes.mainColor, isFlat: true)
                 
             }
         }
@@ -153,18 +153,18 @@ class SettingsPage: UITableViewController {
         
         let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         
-        header.tintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.backgroundColor, isFlat: true)
+        header.tintColor = UIColor(contrastingBlackOrWhiteColorOn: themes.background, isFlat: true)
         
-        header.textLabel!.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.backgroundColor, isFlat: true)
+        header.textLabel!.textColor = UIColor(contrastingBlackOrWhiteColorOn: themes.background, isFlat: true)
     }
     
     override func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
         
         let footer: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         
-        footer.tintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.backgroundColor, isFlat: true)
+        footer.tintColor = UIColor(contrastingBlackOrWhiteColorOn: themes.background, isFlat: true)
         
-        footer.textLabel?.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.backgroundColor, isFlat: true)
+        footer.textLabel?.textColor = UIColor(contrastingBlackOrWhiteColorOn: themes.background, isFlat: true)
     }
 }
 

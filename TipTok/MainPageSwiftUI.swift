@@ -17,7 +17,7 @@ struct MainPageSwiftUI: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color(colorScheme == .dark ? .black : coloringThemes.backgroundColor)
+                Color(colorScheme == .dark ? .black : themes.background)
                     .edgesIgnoringSafeArea(.bottom)
                 
                 VStack {
@@ -51,9 +51,9 @@ struct MainPageSwiftUI: View {
                         , displayMode: .inline)
                         
                     .background(NavigationConfigurator { nc in
-                        nc.navigationBar.barTintColor = (self.colorScheme == .dark ? .black : coloringThemes.mainColor)
-                        nc.navigationBar.titleTextAttributes = [.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? .black : coloringThemes.mainColor), isFlat: true)!]
-                        nc.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? .black : coloringThemes.mainColor), isFlat: true)
+                        nc.navigationBar.barTintColor = (self.colorScheme == .dark ? .black : themes.mainColor)
+                        nc.navigationBar.titleTextAttributes = [.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? .black : themes.mainColor), isFlat: true)!]
+                        nc.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? .black : themes.mainColor), isFlat: true)
                     })
                     .navigationBarItems(trailing: NavigationLink(destination: Settings(), isActive: self.$isSettingsActive) {
                         Image(systemName: "gear")

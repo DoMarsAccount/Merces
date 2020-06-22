@@ -15,10 +15,7 @@ class OptimalUsagePage: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
         updateColorValues()
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,19 +24,13 @@ class OptimalUsagePage: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
         updateColorValues()
-        
     }
     
     func updateColorValues() {
-        
-        self.view.backgroundColor = coloringThemes.backgroundColor
-        
-        textViewOutlet.backgroundColor = coloringThemes.backgroundColor
-        
-        textViewOutlet.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.backgroundColor, isFlat: true)
-        
+        self.view.backgroundColor = themes.background
+        textViewOutlet.backgroundColor = themes.viewColor
+        textViewOutlet.textColor = UIColor(contrastingBlackOrWhiteColorOn: themes.viewColor, isFlat: true)
     }
     
     

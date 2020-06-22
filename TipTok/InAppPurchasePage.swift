@@ -51,13 +51,9 @@ class InAppPurchasePage: UIViewController {
     }
     
     func updateColorValues() {
-        
-        self.view.backgroundColor = coloringThemes.backgroundColor
-        
-        textViewOutlet.backgroundColor = coloringThemes.backgroundColor
-        
-        //textViewOutlet.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.getBackgroundColor(), isFlat: true)
-        
+        self.view.backgroundColor = themes.background
+        textViewOutlet.backgroundColor = themes.background
+        //textViewOutlet.textColor = UIColor(contrastingBlackOrWhiteColorOn: themes.getBackgroundColor(), isFlat: true)
     }
     
     

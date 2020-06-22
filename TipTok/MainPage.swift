@@ -10,7 +10,7 @@
 import UIKit
 import ChameleonFramework
 
-let coloringThemes = ColoringAndThemes()
+let themes = Themes()
 
 @available(iOS 10.0, *)
 class MainPage: UIViewController {
@@ -698,32 +698,32 @@ class MainPage: UIViewController {
         /* ------------ Navigation Bar Coloring ------------- */
         
         // Full Nav Bar Coloring
-        self.navigationController?.navigationBar.barTintColor = coloringThemes.mainColor
+        self.navigationController?.navigationBar.barTintColor = themes.mainColor
         
         // Background Coloring
-        self.view.backgroundColor = coloringThemes.backgroundColor
+        self.view.backgroundColor = themes.background
         
         
         // Title Coloring
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)!]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: themes.mainColor, isFlat: true)!]
         
         
         // Back Button Coloring
-        self.navigationController?.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)
+        self.navigationController?.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: themes.mainColor, isFlat: true)
         
         /* other */
         
-        serviceRatingLabelOutlet.tintColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.viewBackgroundColor, isFlat: true)
+        serviceRatingLabelOutlet.tintColor = UIColor(contrastingBlackOrWhiteColorOn: themes.viewColor, isFlat: true)
         //UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor, isFlat: true)
         
 //        serviceRatingLabelOutlet.layer.borderColor = self.view.backgroundColor?.cgColor
-        serviceRatingLabelOutlet.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.viewBackgroundColor, isFlat: true).cgColor
-        serviceRatingLabelOutlet.backgroundColor = coloringThemes.viewBackgroundColor
+        serviceRatingLabelOutlet.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: themes.viewColor, isFlat: true).cgColor
+        serviceRatingLabelOutlet.backgroundColor = themes.viewColor
        
         
         for sectionHeader in collectionSectionHeaderLabels {
             
-            sectionHeader.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.viewBackgroundColor, isFlat: true)
+            sectionHeader.textColor = UIColor(contrastingBlackOrWhiteColorOn: themes.viewColor, isFlat: true)
 //            UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor, isFlat: true)
             
         }
@@ -739,13 +739,13 @@ class MainPage: UIViewController {
             
             MainViews.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor!, isFlat: true).cgColor
             
-            MainViews.backgroundColor = coloringThemes.viewBackgroundColor
+            MainViews.backgroundColor = themes.viewColor
             
         }
         
         for inputFields in collectionInputFieldLabels {
             
-            inputFields.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.viewBackgroundColor, isFlat: true)
+            inputFields.textColor = UIColor(contrastingBlackOrWhiteColorOn: themes.viewColor, isFlat: true)
             
             inputFields.layer.cornerRadius = 2.5
             
@@ -777,14 +777,14 @@ class MainPage: UIViewController {
         
         for totaledDisplays in collectionTotaledAmountDisplays {
             
-            totaledDisplays.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.viewBackgroundColor, isFlat: true)
+            totaledDisplays.textColor = UIColor(contrastingBlackOrWhiteColorOn: themes.viewColor, isFlat: true)
             //UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor, isFlat: true)
             
         }
         
         for totaledAmounts in collectionTotaledAmountsLabels {
         
-            totaledAmounts.textColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.viewBackgroundColor, isFlat: true)
+            totaledAmounts.textColor = UIColor(contrastingBlackOrWhiteColorOn: themes.viewColor, isFlat: true)
             //UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor, isFlat: true)
             
         }
@@ -797,22 +797,22 @@ class MainPage: UIViewController {
         
         keypadStuffView.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor!, isFlat: true).cgColor
         
-        keypadStuffView.backgroundColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.viewBackgroundColor, isFlat: true)
+        keypadStuffView.backgroundColor = UIColor(contrastingBlackOrWhiteColorOn: themes.viewColor, isFlat: true)
         
         
         for keypadButtons in collectionKeypadButtons {
             
-            keypadButtons.setTitleColor(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true), for: .normal)
+            keypadButtons.setTitleColor(UIColor(contrastingBlackOrWhiteColorOn: themes.mainColor, isFlat: true), for: .normal)
             
-            keypadButtons.setTitleColor(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true), for: .highlighted)
+            keypadButtons.setTitleColor(UIColor(contrastingBlackOrWhiteColorOn: themes.mainColor, isFlat: true), for: .highlighted)
             
-            keypadButtons.setTitleColor(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true), for: .selected)
+            keypadButtons.setTitleColor(UIColor(contrastingBlackOrWhiteColorOn: themes.mainColor, isFlat: true), for: .selected)
             
             keypadButtons.layer.borderWidth = 1.5
             
-            keypadButtons.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.backgroundColor, isFlat: true).cgColor
+            keypadButtons.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: themes.background, isFlat: true).cgColor
             
-            keypadButtons.backgroundColor = coloringThemes.mainColor
+            keypadButtons.backgroundColor = themes.mainColor
             
             keypadButtons.layer.cornerRadius = 5
             
@@ -820,22 +820,22 @@ class MainPage: UIViewController {
         
         /* -------- VenueView coloring -------- */
         
-        venuesStuffView.backgroundColor = coloringThemes.mainColor
+        venuesStuffView.backgroundColor = themes.mainColor
         
         venuesStuffView.layer.cornerRadius = 5
         
         venuesStuffView.layer.borderWidth = 2.5
         
-        venuesStuffView.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.backgroundColor, isFlat: true).cgColor
+        venuesStuffView.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: themes.background, isFlat: true).cgColor
         
-        venuesStuffView.backgroundColor = coloringThemes.mainColor
+        venuesStuffView.backgroundColor = themes.mainColor
   
 
         for venueViews in collectionVenueViews {
             
-            if "\(String(describing: UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)))" == "UIExtendedSRGBColorSpace 0.15 0.15 0.15 1" {
+            if "\(String(describing: UIColor(contrastingBlackOrWhiteColorOn: themes.mainColor, isFlat: true)))" == "UIExtendedSRGBColorSpace 0.15 0.15 0.15 1" {
                 
-                venueViews.backgroundColor = coloringThemes.mainColor
+                venueViews.backgroundColor = themes.mainColor
                 
             } else {
             
@@ -847,7 +847,7 @@ class MainPage: UIViewController {
             
             venueViews.layer.borderWidth = 2.5
             
-            venueViews.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.viewBackgroundColor, isFlat: true).cgColor
+            venueViews.layer.borderColor = UIColor(contrastingBlackOrWhiteColorOn: themes.viewColor, isFlat: true).cgColor
             
         }
         

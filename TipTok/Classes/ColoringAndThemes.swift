@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 DoMarsToyBox. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 
 enum TipTokColor: CaseIterable, Hashable, Identifiable {
     case MercesGreen
@@ -34,28 +34,54 @@ enum TipTokColor: CaseIterable, Hashable, Identifiable {
     }
     
     var stringRepresentation: String {
-        return "\(ColoringAndThemes().uiColorValue(for: self))"
+        return "\(Coloring().uiColorValue(for: self))"
     }
     
     var id: TipTokColor { self }
+    
+    var color: UIColor {
+        return Coloring().uiColorValue(for: self)
+    }
 }
 
-class ColoringAndThemes {
+class Themes: ObservableObject {
+    @Published var mainColor: UIColor
+    @Published var background: UIColor
+    @Published var viewColor: UIColor
+    
+    private let coloring = Coloring()
+    
+    init() {
+        if let currentMainColor = mUserDefaults?.string(forKey: "phoneMainColor") {
+            mainColor = coloring.uiColor(for: currentMainColor)
+        }
+        mainColor = coloring.uiColorValue(for: .MercesGreen)
+        
+        if let currentBackgroundColor = mUserDefaults?.string(forKey: "phoneBackgroundColor") {
+            background = coloring.uiColor(for: currentBackgroundColor)
+        }
+        background = coloring.uiColorValue(for: .LightGray)
+        
+        if let currentViewBackgroundColor = mUserDefaults?.string(forKey: "phoneViewBackgroundColor") {
+            viewColor = coloring.uiColor(for: currentViewBackgroundColor)
+        }
+        viewColor = coloring.uiColorValue(for: .White)
+    }
+    
+    func setMainColor(to color: UIColor) {
+        mUserDefaults?.set("\(color)", forKey: "phoneMainColor")
+    }
+    func setBackgroundColor(to color: UIColor) {
+        mUserDefaults?.set("\(color)", forKey: "phoneBackgroundColor")
+    }
+    func setViewBackgroundColor(to color: UIColor) {
+        mUserDefaults?.set("\(color)", forKey: "phoneViewBackgroundColor")
+    }
+}
+
+class Coloring {
     
     let appleWatchObject = AppleWatchColors()
-    
-    
-    let camoGreen = UIColor(red: 0.549, green: 0.627, blue: 0.490, alpha: 1)
-    
-    let tan =  UIColor(red: 1.0, green: 0.97254901960784, blue: 0.91372549019608, alpha: 1)
-    
-    let textColor = UIColor(red: 0.30980392, green: 0.31372549, blue: 0.31764706, alpha: 1)
-    
-    let textColor2 = UIColor(red:0.682, green:0.706, blue:0.749, alpha:1)
-    
-    let watchMainColor = UIColor(red: 0.549, green: 0.627, blue: 0.490, alpha: 1)
-    
-    let watchTextColor = UIColor(red: 1.0, green: 0.97254901960784, blue: 0.91372549019608, alpha: 1)
     
     // #4
     //let appIconGreen1 = UIColor(red:0.51, green:0.85, blue:0.57, alpha:1.0)
@@ -70,25 +96,6 @@ class ColoringAndThemes {
     // #3
     let appIconGreen4 = UIColor(red:0.04, green:0.85, blue:0.57, alpha:1.0)
     
-    // Light Gray (Default)
-    let appleBackgroundColor = UIColor(red:0.94, green:0.94, blue:0.96, alpha:1.0)
-    
-    // Hot Pink
-    let appleMusicColor = UIColor(red:1.00, green:0.18, blue:0.33, alpha:1.0)
-    
-    // Neon Green
-    let appleMessagesColor = UIColor(red:0.30, green:0.85, blue:0.39, alpha:1.0)
-    
-    // Purple
-    let fiveDollarBillPurple = UIColor(red:0.506, green:0.310, blue:0.384, alpha:1)
-    
-    // Orange
-    let hundredDollarBillOrange = UIColor(red:0.722, green:0.420, blue:0.192, alpha:1)
-    
-    // Blue
-    let hundredDollarBillBlue = UIColor(red:0.220, green:0.275, blue:0.467, alpha:1)
-    
-    
     func uiColorValue(for TTColor: TipTokColor) -> UIColor {
         switch TTColor {
         case .MercesGreen:
@@ -99,26 +106,26 @@ class ColoringAndThemes {
             return .black
         case .FadedBlue:
             return appleWatchObject.leatherLoopBrightBlue
-        case .LightGray:
-            return appleBackgroundColor
+        case .LightGray:    // Apple View Background
+            return UIColor(red:0.94, green:0.94, blue:0.96, alpha:1.0)
         case .Gold:
             return appleWatchObject.gold
         case .RoseGold:
             return appleWatchObject.roseGold
         case .CamoGreen:
-            return camoGreen
+            return UIColor(red: 0.549, green: 0.627, blue: 0.490, alpha: 1)
         case .Tan:
-            return tan
-        case .Purple:
-            return fiveDollarBillPurple
-        case .Blue:
-            return hundredDollarBillBlue
+            return UIColor(red: 1.0, green: 0.97254901960784, blue: 0.91372549019608, alpha: 1)
+        case .Purple:       // Five Dollar Bill Purple
+            return UIColor(red:0.506, green:0.310, blue:0.384, alpha:1)
+        case .Blue:         // Hundred Dollar Bill Blue
+            return UIColor(red:0.220, green:0.275, blue:0.467, alpha:1)
         case .BurntOrange:
-            return hundredDollarBillOrange
-        case .HotPink:
-            return appleMusicColor
-        case .NeonGreen:
-            return appleMessagesColor
+            return UIColor(red:0.722, green:0.420, blue:0.192, alpha:1)
+        case .HotPink:      // Apple Music
+            return UIColor(red:1.00, green:0.18, blue:0.33, alpha:1.0)
+        case .NeonGreen:    // Apple Messages
+            return UIColor(red:0.30, green:0.85, blue:0.39, alpha:1.0)
         case .BrightRed:
             return appleWatchObject.modernBuckleBrightRed
         case .Brown:
@@ -129,56 +136,7 @@ class ColoringAndThemes {
             return UIColor(red: 0.3019607843, green: 0.9098039216, blue: 0.9568627451, alpha: 1.0)
         }
     }
-    
-    var mainColor: UIColor {
-        if let currentMainColor = UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.string(forKey: "phoneMainColor") {
-            //print("\(UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.string(forKey: "phoneMainColor"))")
-            return uiColor(for: currentMainColor)
-        }
-        return appIconGreen3
-    }
-    
-    var backgroundColor: UIColor {
-        if let currentBackgroundColor = UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.string(forKey: "phoneBackgroundColor") {
-            //print("\(UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.string(forKey: "phoneBackgroundColor"))")
-            return uiColor(for: currentBackgroundColor)
-        }
-        return appleBackgroundColor
-    }
-    
-    var viewBackgroundColor: UIColor {
-        if let currentViewBackgroundColor = mUserDefaults?.string(forKey: "phoneViewBackgroundColor") {
-            //print("\(UserDefaults(suiteName: "group.DoMarsToyBox.Merces")?.string(forKey: "phoneViewBackgroundColor"))")
-            return uiColor(for: currentViewBackgroundColor)
-        }
-        return UIColor.white
-        
-    }
-    
-    func getTextColor() -> UIColor {
-        if let currentTextColor = mUserDefaults?.string(forKey: "phoneTextColor") {
-            return uiColor(for: currentTextColor)
-            
-        }
-        return textColor
-    }
-    
-    func getMainColorForWatch() -> UIColor {
-        
-        if let currentMainColor = mUserDefaults?.string(forKey: "watchMainColor") {
-            return uiColor(for: currentMainColor)
-        }
-        return watchMainColor
-        
-    }
-    
-    func getSecondaryColorForWatch() -> UIColor {
-        if let currentTextColor = mUserDefaults?.string(forKey: "watchTextColor") {
-            return uiColor(for: currentTextColor)
-        }
-        return watchTextColor
-    }
-    
+    /// Searches through all TipTokColors for a color representaiton matching the provided string
     func uiColor(for detailedString: String) -> UIColor {
         for TTColor in TipTokColor.allCases {
             if TTColor.stringRepresentation.elementsEqual(detailedString) {
@@ -186,5 +144,10 @@ class ColoringAndThemes {
             }
         }
         return .white
+    }
+    
+    /// Returns true if the provided color values are the same, false otherwise
+    func colorsMatch(color1: UIColor, color2: UIColor) -> Bool {
+        return color1 == color2
     }
 }

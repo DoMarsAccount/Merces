@@ -91,7 +91,7 @@ struct VenueSelectionView: View {
                     VenueView(venue: .delivery, activeField: self.$activeField)
                 }
             }
-            .modifier(AdaptiveCardBackground(backgroundColor: Color(coloringThemes.mainColor)))
+            .modifier(AdaptiveCardBackground(backgroundColor: Color(themes.mainColor)))
         }
     }
 }

@@ -19,21 +19,55 @@ enum Appearance: CaseIterable, Hashable, Identifiable {
     var id: Appearance { self }
 }
 
+struct ColorSelectionItem: View {
+    @Environment(\.colorScheme) var colorScheme
+    @State var isActive: Bool = false
+    var color: UIColor
+    var body: some View {
+        Button(action: {
+            themes.setMainColor(to: self.color)
+        }) {
+            ZStack {
+                Circle()
+                    .foregroundColor(colorScheme == .dark ? .white : .black)
+                
+                Circle()
+                    .foregroundColor(.green)
+                    .opacity(isActive ? 1.0 : 0.0)
+                
+                Circle()
+                    .padding(4)
+                    .foregroundColor(Color(color))
+            }
+            .frame(width: 80, height: 80)
+        }
+        
+    }
+}
+
 struct ThemesPage: View {
     @Environment(\.colorScheme) var colorScheme
     @State private var appearance: Appearance = .Light
     var body: some View {
         ZStack {
-            Color(self.colorScheme == .dark ? .black : coloringThemes.backgroundColor)
+            Color(self.colorScheme == .dark ? .black : themes.background)
                 .edgesIgnoringSafeArea(.bottom)
             
             VStack {
                 AppearancePicker(appearance: $appearance)
                 
+                ScrollView(.horizontal) {
+                    HStack {
+                        ForEach(0..<TipTokColor.allCases.count) { index in
+                            ColorSelectionItem(color: TipTokColor.allCases[index].color)
+                        }
+                    }
+                }.background(Color.white)
+                
                 Text("Main Color: \(TipTokColor.MercesGreen.name)")
                     .padding()
-                    .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: coloringThemes.mainColor, isFlat: true)))
-                    .background(Color(coloringThemes.mainColor))
+                    .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: themes.mainColor, isFlat: true)))
+                    .background(Color(themes.mainColor))
             }
             .padding()
         }
