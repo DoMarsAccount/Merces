@@ -116,7 +116,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         varAmountsObject.calcModel.selectedVenue = .quick
         
-        varAmountsObject.tipRateArray = tipRates(for: varAmountsObject.calcModel.selectedVenue)
+        varAmountsObject.tipRateArray = Tipping.sharedInstance.tipRates(for: varAmountsObject.calcModel.selectedVenue)
         
         varAmountsObject.calcModel.tipRate = varAmountsObject.tipRateArray[1]
         

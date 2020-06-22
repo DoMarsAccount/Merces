@@ -39,7 +39,7 @@ struct VenuesView: View {
                 
                 VStack {
                     Text("Tip %").font(.headline)
-                    Text(nForm.roundForPercentWithTwoDecimalPlaces(currentTipRate(for: self.venueEditor.selectedVenue, service: self.venueEditor.service)))
+                    Text(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venueEditor.selectedVenue, service: self.venueEditor.service)))
                 }
                 .padding([.leading, .trailing])
                 .frame(height: viewHeight)
@@ -52,7 +52,7 @@ struct VenuesView: View {
                 .sheet(isPresented: self.$isActive) {
                     WatchKeypad(value: self.$venueEditor.tipAmount, isPresented: self.$isActive, activeField: self.$venueEditor.activeField)
                 }
-                .accessibility(label: Text("Tip Rate \(nForm.roundForPercentWithTwoDecimalPlaces(currentTipRate(for: self.venueEditor.selectedVenue, service: self.venueEditor.service)))"))
+                .accessibility(label: Text("Tip Rate \(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venueEditor.selectedVenue, service: self.venueEditor.service)))"))
                 
             }
             

@@ -37,12 +37,12 @@ class CalculationsModel: ObservableObject {
     
     @Published var selectedVenue: VenueType {
         didSet {
-            tipRate = currentTipRate(for: selectedVenue, service: service)
+            tipRate = Tipping.sharedInstance.currentTipRate(for: selectedVenue, service: service)
         }
     }
     @Published var service: ServiceQuality {
         didSet {
-            tipRate = currentTipRate(for: selectedVenue, service: service)
+            tipRate = Tipping.sharedInstance.currentTipRate(for: selectedVenue, service: service)
         }
     }
     
@@ -60,7 +60,7 @@ class CalculationsModel: ObservableObject {
         
         self.selectedVenue = .quick
         self.service = .Good
-        self.tipRate = tipRates(for: .quick)[1]
+        self.tipRate = Tipping.sharedInstance.tipRates(for: .quick)[1]
         
         self.displayedTotalAmountPerPerson = 0.0
         self.moreOrLessPerPerson = 0.00
@@ -77,7 +77,7 @@ class CalculationsModel: ObservableObject {
         
         self.selectedVenue = .quick
         self.service = .Good
-        self.tipRate = tipRates(for: self.selectedVenue)[1]
+        self.tipRate = Tipping.sharedInstance.tipRates(for: self.selectedVenue)[1]
         
         self.displayedTotalAmountPerPerson = 0.0
         self.moreOrLessPerPerson = 0.00

@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+let themes = Themes()
 
 struct ContentView: View {
     var body: some View {

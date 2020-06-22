@@ -48,6 +48,7 @@
 		04E0127E248962B5009FAEEB /* VenueEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0126F248961F0009FAEEB /* VenueEditor.swift */; };
 		04E19BAB2493210500994668 /* DetailedTipRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E19BAA2493210500994668 /* DetailedTipRateView.swift */; };
 		04E19BAD2493CB4000994668 /* SetupAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E19BAC2493CB4000994668 /* SetupAlertView.swift */; };
+		04EE912D24A1664F0033D0AF /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12001E2DBE950021C889 /* NavigationController.swift */; };
 		04EF6D8A248D3451009CEF03 /* TipTok.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 04EF6D89248D3451009CEF03 /* TipTok.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		04EF6D99248D3452009CEF03 /* TipTok_watchOS WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 04EF6D98248D3452009CEF03 /* TipTok_watchOS WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		04EF6D9E248D3452009CEF03 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6D9D248D3452009CEF03 /* ContentView.swift */; };
@@ -72,15 +73,7 @@
 		78B3D1EF1F6A05FF009C8051 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78B3D1F11F6A05FF009C8051 /* Main.storyboard */; };
 		840BA3EF03ADAA0438876195 /* Pods_TipTok.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44B1E14A2489C90421D914A /* Pods_TipTok.framework */; };
 		A772DC3530ACBA79C83E613A /* libPods-TipTokTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 444E1671A7D392F99FAE1EAD /* libPods-TipTokTests.a */; };
-		E33460AB1E32EF2300D467C6 /* ThemesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33460AA1E32EF2300D467C6 /* ThemesCollectionViewCell.swift */; };
-		E33460B11E32F23D00D467C6 /* ThemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33460B01E32F23D00D467C6 /* ThemesViewController.swift */; };
 		E3A61E101AE3F69C00F2467C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E3A61E121AE3F69C00F2467C /* Localizable.strings */; };
-		E3AB12081E2DBE950021C889 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12001E2DBE950021C889 /* NavigationController.swift */; };
-		E3AB12091E2DBE950021C889 /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12011E2DBE950021C889 /* MainPage.swift */; };
-		E3AB120A1E2DBE950021C889 /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12021E2DBE950021C889 /* SettingsPage.swift */; };
-		E3AB120B1E2DBE950021C889 /* OptimalUsagePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12031E2DBE950021C889 /* OptimalUsagePage.swift */; };
-		E3AB120C1E2DBE950021C889 /* MyMerces.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12041E2DBE950021C889 /* MyMerces.swift */; };
-		E3AB120E1E2DBE950021C889 /* InAppPurchasePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12061E2DBE950021C889 /* InAppPurchasePage.swift */; };
 		E3AB12221E2DC1DF0021C889 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3AB12211E2DC1DF0021C889 /* NotificationCenter.framework */; };
 		E3AB12251E2DC1DF0021C889 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12241E2DC1DF0021C889 /* TodayViewController.swift */; };
 		E3AB122C1E2DC1DF0021C889 /* Tip Tok.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E3AB12201E2DC1DF0021C889 /* Tip Tok.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -981,38 +974,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3FD0FB31EC3DB3600763ED2 /* VariableAmountsClass.swift in Sources */,
-				E3AB12081E2DBE950021C889 /* NavigationController.swift in Sources */,
 				04719F8024972C4C00132EC8 /* ServiceQualityPicker.swift in Sources */,
 				048715482497B08700DF33E5 /* KeypadButtons.swift in Sources */,
 				04719F7B2497234F00132EC8 /* SettingsPageSwiftUI.swift in Sources */,
 				04E01270248961F0009FAEEB /* VenueEditor.swift in Sources */,
-				E3AB120C1E2DBE950021C889 /* MyMerces.swift in Sources */,
+				04EE912D24A1664F0033D0AF /* NavigationController.swift in Sources */,
 				04282A57249A7FFD004F2879 /* TextFields.swift in Sources */,
 				E3FD0FB11EC3DB3600763ED2 /* ColoringAndThemes.swift in Sources */,
 				048715452497AE4200DF33E5 /* Keypad.swift in Sources */,
-				E33460B11E32F23D00D467C6 /* ThemesViewController.swift in Sources */,
 				04282A55249A4B64004F2879 /* CardViewModifier.swift in Sources */,
 				0430E5AA249FEE9A0014E8E5 /* ThemesPage.swift in Sources */,
 				0487153C2497A72300DF33E5 /* MainPageSubviews.swift in Sources */,
 				0430E5B024A121300014E8E5 /* WidgetView.swift in Sources */,
 				04719F7E2497247100132EC8 /* PersonalizationPage.swift in Sources */,
 				0430E5B224A143190014E8E5 /* ContentView.swift in Sources */,
-				E3AB12091E2DBE950021C889 /* MainPage.swift in Sources */,
 				04E012782489628A009FAEEB /* UserPreferences.swift in Sources */,
 				E3B4B2BA1ABB2CF7002A6C16 /* AppDelegate.swift in Sources */,
 				0487154A2497C15A00DF33E5 /* SceneDelegate.swift in Sources */,
 				E3FD0FAF1EC3DB3600763ED2 /* AppleWatchColors.swift in Sources */,
-				E3AB120E1E2DBE950021C889 /* InAppPurchasePage.swift in Sources */,
-				E33460AB1E32EF2300D467C6 /* ThemesCollectionViewCell.swift in Sources */,
 				04E0127A2489628A009FAEEB /* CalculationsModel.swift in Sources */,
 				04719F792497233C00132EC8 /* MainPageSwiftUI.swift in Sources */,
 				E3B4B2DB1ABB2D62002A6C16 /* BlurView.swift in Sources */,
 				E3B4B2DC1ABB2D62002A6C16 /* SpringAnimation.swift in Sources */,
 				04E012762489628A009FAEEB /* ReceiptModel.swift in Sources */,
-				E3AB120A1E2DBE950021C889 /* SettingsPage.swift in Sources */,
 				048715502498321A00DF33E5 /* PersonalizationPageSubviews.swift in Sources */,
 				04719F8224972FC800132EC8 /* VenuePicker.swift in Sources */,
-				E3AB120B1E2DBE950021C889 /* OptimalUsagePage.swift in Sources */,
 				048715522498521700DF33E5 /* NavigationConfigurator.swift in Sources */,
 				E3FD0FAA1EC3DB1A00763ED2 /* NumberFormattingClass.swift in Sources */,
 			);

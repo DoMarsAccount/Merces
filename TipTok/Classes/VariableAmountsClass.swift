@@ -192,7 +192,7 @@ class VariableAmountsClass
         calcModel.taxAmount = 0.00
         calcModel.selectedVenue = .quick
         
-        tipRateArray = tipRates(for: self.calcModel.selectedVenue)
+        tipRateArray = Tipping.sharedInstance.tipRates(for: self.calcModel.selectedVenue)
         
         arrayOfButtonsPressedForBillAmountAsString = []
         arrayOfButtonsPressedForTaxAmountAsString = []

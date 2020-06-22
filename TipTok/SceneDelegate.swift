@@ -99,13 +99,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, WCSessionDelegate {
         
         if shortcutItem.localizedTitle == "Personalize" {
             
-            let requestedViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Personalize") as! MyMerces
+            let requestedViewController = UIHostingController(rootView: PersonalizationPage())
             
             rootView.pushViewController(requestedViewController, animated: true)
             
         } else if shortcutItem.localizedTitle == "Color Picker" {
             
-            let requestedViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ThemesPage") as! ThemesViewController
+            let requestedViewController = UIHostingController(rootView: ThemesPage())
             
             rootView.pushViewController(requestedViewController, animated: true)
             

@@ -102,7 +102,7 @@ struct TipRateField: View {
                 .minimumScaleFactor(0.3)
             
             Spacer()
-            Text(nForm.roundForPercentWithTwoDecimalPlaces(currentTipRate(for: self.wCalcModel.selectedVenue, service: self.wCalcModel.service)))
+            Text(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.wCalcModel.selectedVenue, service: self.wCalcModel.service)))
                 .padding()
                 .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: title3TextSize)))
                 .minimumScaleFactor(0.8)

@@ -37,7 +37,7 @@ struct ContentView: View {
 
             }
             .onAppear {
-                self.wCalcModel.tipRate = currentTipRate(for: self.wCalcModel.selectedVenue, service: self.wCalcModel.service)
+                self.wCalcModel.tipRate = Tipping.sharedInstance.currentTipRate(for: self.wCalcModel.selectedVenue, service: self.wCalcModel.service)
                 _ = self.wCalcModel.computeTippingValues()
             }
             .modifier(SetupAlert(isActive: self.$userPrefs.shouldShowSetupAlert, doesUserWantSetup: self.$doesUserWantSetup))

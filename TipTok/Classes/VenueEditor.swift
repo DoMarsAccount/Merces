@@ -68,6 +68,60 @@ enum VenueType: CaseIterable, Hashable, Identifiable {
     }
 }
 
+class Tipping {
+    static let sharedInstance = Tipping()
+    
+    /// Returns the array of tip rates for the given Venue
+    func tipRates(for venue: VenueType) -> [Double] {
+        var array: [Double]
+        switch venue {
+        case .quick:
+            if let array = mUserDefaults?.array(forKey: "quickTipArray") {
+                return array as! [Double]
+            }
+            return [0.0, 0.0, 0.0]
+        case .bar:
+            if let array = mUserDefaults?.array(forKey: "barTipArray") {
+                return array as! [Double]
+            }
+            return [0.0, 0.0, 0.0]
+        case .dining:
+            if let array = mUserDefaults?.array(forKey: "diningTipArray") {
+                return array as! [Double]
+            }
+            return [0.0, 0.0, 0.0]
+        case .salon:
+            if let array = mUserDefaults?.array(forKey: "salonTipArray") {
+                return array as! [Double]
+            }
+            return [0.0, 0.0, 0.0]
+        case .taxi:
+            if let array = mUserDefaults?.array(forKey: "taxiTipArray") {
+                return array as! [Double]
+            }
+            return [0.0, 0.0, 0.0]
+        case .delivery:
+            if let array = mUserDefaults?.array(forKey: "deliveryTipArray") {
+                return array as! [Double]
+            }
+            return [0.0, 0.0, 0.0]
+        case .none:
+            return [0.0, 0.0, 0.0]
+        }
+    }
+
+    func currentTipRate(for venue: VenueType, service: ServiceQuality) -> Double {
+        switch service {
+        case .Bad:
+            return tipRates(for: venue)[0]
+        case .Good:
+            return tipRates(for: venue)[1]
+        case .Great:
+            return tipRates(for: venue)[2]
+        }
+    }
+}
+
 func localizedName(for venue: VenueType) -> String {
     switch venue {
     case .quick:
@@ -87,36 +141,7 @@ func localizedName(for venue: VenueType) -> String {
     }
 }
 
-/// Returns the array of tip rates for the given Venue
-func tipRates(for venue: VenueType) -> [Double] {
-    switch venue {
-    case .quick:
-        return mUserDefaults?.array(forKey: "quickTipArray") as! [Double]
-    case .bar:
-        return mUserDefaults?.array(forKey: "barTipArray") as! [Double]
-    case .dining:
-        return mUserDefaults?.array(forKey: "diningTipArray") as! [Double]
-    case .salon:
-        return mUserDefaults?.array(forKey: "salonTipArray") as! [Double]
-    case .taxi:
-        return mUserDefaults?.array(forKey: "taxiTipArray") as! [Double]
-    case .delivery:
-        return mUserDefaults?.array(forKey: "deliveryTipArray") as! [Double]
-    case .none:
-        return [0.0, 0.0, 0.0]
-    }
-}
 
-func currentTipRate(for venue: VenueType, service: ServiceQuality) -> Double {
-    switch service {
-    case .Bad:
-        return tipRates(for: venue)[0]
-    case .Good:
-        return tipRates(for: venue)[1]
-    case .Great:
-        return tipRates(for: venue)[2]
-    }
-}
 
 /// Wrapper around VenueEditor that update the user's Tip Ratings stored in UserDefaults
 func userDefinedTipRatings (_ arrayOfPressedButtonValues: [String], venueToEdit: VenueType, tipRateToEdit: Int) {
@@ -142,6 +167,7 @@ func userDefinedTipRatings (_ arrayOfPressedButtonValues: [String], venueToEdit:
 }
 
 class VenueEditor: ObservableObject {
+    private let tip: Tipping = Tipping.sharedInstance
     @Published var selectedVenue: VenueType
     @Published var service: ServiceQuality {
         didSet {
@@ -189,10 +215,10 @@ class VenueEditor: ObservableObject {
         service = .Good
         activeField = .averageTip
         
-        tipAmount = currentTipRate(for: .quick, service: .Good)
-        badServiceTipAmount = currentTipRate(for: .quick, service: .Bad)
-        goodServiceTipAmount = currentTipRate(for: .quick, service: .Good)
-        greatServiceTipAmount = currentTipRate(for: .quick, service: .Great)
+        tipAmount = tip.currentTipRate(for: .quick, service: .Good)
+        badServiceTipAmount = tip.currentTipRate(for: .quick, service: .Bad)
+        goodServiceTipAmount = tip.currentTipRate(for: .quick, service: .Good)
+        greatServiceTipAmount = tip.currentTipRate(for: .quick, service: .Great)
     }
     
     /// Update the tip rating for the given venue and quality in UserDefaults
@@ -208,7 +234,7 @@ class VenueEditor: ObservableObject {
             index = 2
         }
         
-        var venueArray = tipRates(for: venue)
+        var venueArray = tip.tipRates(for: venue)
         venueArray[index] = newRating //* 0.01
         
         switch venue {
@@ -238,11 +264,11 @@ class VenueEditor: ObservableObject {
     func currTipRate(for venue: VenueType, service: ServiceQuality) -> Double {
         switch service {
         case .Bad:
-            return tipRates(for: venue)[0]
+            return tip.tipRates(for: venue)[0]
         case .Good:
-            return tipRates(for: venue)[1]
+            return tip.tipRates(for: venue)[1]
         case .Great:
-            return tipRates(for: venue)[2]
+            return tip.tipRates(for: venue)[2]
         }
     }
     

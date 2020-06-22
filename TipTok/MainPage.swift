@@ -10,8 +10,6 @@
 import UIKit
 import ChameleonFramework
 
-let themes = Themes()
-
 @available(iOS 10.0, *)
 class MainPage: UIViewController {
     
@@ -217,7 +215,7 @@ class MainPage: UIViewController {
         
         updateColorValues()
         
-        varAmts.tipRateArray = tipRates(for: varAmts.calcModel.selectedVenue)
+        varAmts.tipRateArray = Tipping.sharedInstance.tipRates(for: varAmts.calcModel.selectedVenue)
         
         updateFieldValues()
         

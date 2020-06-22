@@ -62,7 +62,7 @@ struct PPageMiddleView: View {
                             ServiceQuality.Bad.image
                         }
                         
-                        Text(nForm.roundForPercentWithTwoDecimalPlaces(currentTipRate(for: self.venueEditor.selectedVenue, service: .Bad)))
+                        Text(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venueEditor.selectedVenue, service: .Bad)))
                             .frame(minWidth: 0, maxWidth: .infinity)
                             .padding()
                             .border(Color.primary, width: 2)
@@ -80,7 +80,7 @@ struct PPageMiddleView: View {
                                 .scaleEffect(self.activeField == EditableTextFields.averageTip ? highlightedScale : 1.0)
                             ServiceQuality.Good.image
                         }
-                        Text(nForm.roundForPercentWithTwoDecimalPlaces(currentTipRate(for: self.venueEditor.selectedVenue, service: .Good)))
+                        Text(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venueEditor.selectedVenue, service: .Good)))
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .padding()
                         .border(Color.primary, width: 2)
@@ -97,7 +97,7 @@ struct PPageMiddleView: View {
                                 .scaleEffect(self.activeField == EditableTextFields.greatTip ? highlightedScale : 1.0)
                             ServiceQuality.Great.image
                         }
-                        Text(nForm.roundForPercentWithTwoDecimalPlaces(currentTipRate(for: self.venueEditor.selectedVenue, service: .Great)))
+                        Text(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venueEditor.selectedVenue, service: .Great)))
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .padding()
                         .border(Color.primary, width: 2)
