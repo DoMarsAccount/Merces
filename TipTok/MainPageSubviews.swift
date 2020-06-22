@@ -15,45 +15,43 @@ struct MainPageTopSubview: View {
     @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
     @Binding var activeField: EditableTextFields
     var body: some View {
-        GeometryReader { geo in
+        VStack {
             VStack {
+                Text("Subtotal")
+                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                    .scaleEffect(self.activeField == EditableTextFields.subtotal ? highlightedScale : 1.0)
+                    .minimumScaleFactor(0.75)
+                CurrencyView(value: self.$calcModel.subtotal)
+            }.onTapGesture {
+                self.activeField = EditableTextFields.subtotal
+            }.accessibility(value: Text("Subtotal \(nForm.roundForCurrency(number: self.calcModel.subtotal))"))
+            
+            HStack {
                 VStack {
-                    Text("Subtotal")
+                    Text("Sales Tax")
                         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                        .scaleEffect(self.activeField == EditableTextFields.subtotal ? highlightedScale : 1.0)
+                        .scaleEffect(self.activeField == EditableTextFields.salesTax ? highlightedScale : 1.0)
                         .minimumScaleFactor(0.75)
-                    CurrencyView(value: self.$calcModel.subtotal)
+                    CurrencyView(value: self.$calcModel.taxAmount, isEnabled: self.userPrefs.localSalesTax == 0.0)
                 }.onTapGesture {
-                    self.activeField = EditableTextFields.subtotal
-                }.accessibility(value: Text("Subtotal \(nForm.roundForCurrency(number: self.calcModel.subtotal))"))
+                    if self.userPrefs.localSalesTax == 0.0 {
+                        self.activeField = EditableTextFields.salesTax
+                    }
+                }.accessibility(value: Text("Sales Tax \(nForm.roundForCurrency(number: self.calcModel.taxAmount))"))
                 
-                HStack {
-                    VStack {
-                        Text("Sales Tax")
-                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                            .scaleEffect(self.activeField == EditableTextFields.salesTax ? highlightedScale : 1.0)
-                            .minimumScaleFactor(0.75)
-                        CurrencyView(value: self.$calcModel.taxAmount, isEnabled: self.userPrefs.localSalesTax == 0.0)
-                    }.onTapGesture {
-                        if self.userPrefs.localSalesTax == 0.0 {
-                            self.activeField = EditableTextFields.salesTax
-                        }
-                    }.accessibility(value: Text("Sales Tax \(nForm.roundForCurrency(number: self.calcModel.taxAmount))"))
-                    
-                    VStack {
-                        Text("Party of")
-                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                            .scaleEffect(self.activeField == EditableTextFields.partySize ? highlightedScale : 1.0)
-                            .minimumScaleFactor(0.75)
-                        IntegerView(value: self.$calcModel.partySize)
-                    }.onTapGesture {
-                        self.activeField = EditableTextFields.partySize
-                    }.accessibility(value: Text("Party Size:  \(nForm.roundForCurrency(number: self.calcModel.subtotal))"))
-                }
-//                .padding(.top)
+                VStack {
+                    Text("Party of")
+                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                        .scaleEffect(self.activeField == EditableTextFields.partySize ? highlightedScale : 1.0)
+                        .minimumScaleFactor(0.75)
+                    IntegerView(value: self.$calcModel.partySize)
+                }.onTapGesture {
+                    self.activeField = EditableTextFields.partySize
+                }.accessibility(value: Text("Party Size:  \(nForm.roundForCurrency(number: self.calcModel.subtotal))"))
             }
-            .modifier(AdaptiveCardBackground())
+//                .padding(.top)
         }
+        .modifier(AdaptiveCardBackground())
     }
 }
 
@@ -87,12 +85,12 @@ struct MainPageMiddleSubview: View {
                 }
             }
             
-            VStack(spacing: 0) {
+            VStack {
                 Text("Service Level")
                     .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                 ServiceQualityPicker()
             }
-            .padding(.top)
+//            .padding(.top)
         }
         .modifier(AdaptiveCardBackground())
     }
@@ -101,41 +99,39 @@ struct MainPageMiddleSubview: View {
 struct MainPageBottomSubview: View {
     @ObservedObject var calcModel: CalculationsModel = varAmts.calcModel
     var body: some View {
-        GeometryReader { geo in
-            VStack {
-                HStack(alignment: .center) {
-                    Text("Totaled Amounts")
-                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                        .minimumScaleFactor(0.5)
-                }
-                
-                if self.calcModel.tipAmount != 0.0 {
-                    HStack {
-                        Text("Tip Amount:")
-                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                        CurrencyView(value: self.$calcModel.tipAmount, isEnabled: false)
-                    }
-    //                .padding(.top)
-                }
-                
+        VStack {
+            HStack(alignment: .center) {
+                Text("Totaled Amounts")
+                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                    .minimumScaleFactor(0.5)
+            }
+            
+            if self.calcModel.tipAmount != 0.0 {
                 HStack {
-                    Text("Grand Total:")
+                    Text("Tip Amount:")
                         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                    CurrencyView(value: self.$calcModel.totalAmount, isEnabled: false)
+                    CurrencyView(value: self.$calcModel.tipAmount, isEnabled: false)
                 }
 //                .padding(.top)
-                
-                if self.calcModel.partySize != 1 {
-                    HStack {
-                        Text("Each Person:")
-                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                        CurrencyView(value: self.$calcModel.totalAmountPerPerson, isEnabled: false)
-                    }
-//                    .padding(.top)
-                }
             }
-            .modifier(AdaptiveCardBackground())
+            
+            HStack {
+                Text("Grand Total:")
+                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                CurrencyView(value: self.$calcModel.totalAmount, isEnabled: false)
+            }
+//                .padding(.top)
+            
+            if self.calcModel.partySize != 1 {
+                HStack {
+                    Text("Each Person:")
+                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                    CurrencyView(value: self.$calcModel.totalAmountPerPerson, isEnabled: false)
+                }
+//                    .padding(.top)
+            }
         }
+        .modifier(AdaptiveCardBackground())
     }
 }
 
