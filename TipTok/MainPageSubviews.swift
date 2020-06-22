@@ -139,6 +139,7 @@ struct MainPageBottomSubview: View {
     //                    .padding(.top)
                 }
             }
+//            .frame(maxHeight: geo.size.height / 4)
             .modifier(AdaptiveCardBackground())
         }
     }

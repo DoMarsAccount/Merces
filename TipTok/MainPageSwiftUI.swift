@@ -10,6 +10,7 @@ import SwiftUI
 
 struct MainPageSwiftUI: View {
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass!
     @State private var isSettingsActive: Bool = false
     @EnvironmentObject var userPrefs: UserPreferences
     @State private var activeField: EditableTextFields = .none
@@ -18,7 +19,7 @@ struct MainPageSwiftUI: View {
         NavigationView {
             ZStack {
                 Color(colorScheme == .dark ? .black : themes.background)
-                    .edgesIgnoringSafeArea(.bottom)
+                    .edgesIgnoringSafeArea(.all)
                 
                 VStack {
                     MainPageTopSubview(activeField: self.$activeField)
