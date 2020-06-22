@@ -95,20 +95,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, WCSessionDelegate {
         
         // Construct an alert using the details of the shortcut used to open the application.
         
-        let rootView = self.window!.rootViewController as! NavigationController
+        let rootView = self.window!.rootViewController
         
         if shortcutItem.localizedTitle == "Personalize" {
             
-            let requestedViewController = UIHostingController(rootView: PersonalizationPage())
-            
-            rootView.pushViewController(requestedViewController, animated: true)
+            let requestedViewController = UIHostingController(rootView: PersonalizationPage().environmentObject(UserPreferences.sharedInstance))
+            rootView?.present(requestedViewController, animated: true, completion: {
+                
+            })
             
         } else if shortcutItem.localizedTitle == "Color Picker" {
             
             let requestedViewController = UIHostingController(rootView: ThemesPage())
             
-            rootView.pushViewController(requestedViewController, animated: true)
-            
+            rootView?.present(requestedViewController, animated: true, completion: {
+                
+            })
         }
         return (launchedShortcutItem != nil)
     }
