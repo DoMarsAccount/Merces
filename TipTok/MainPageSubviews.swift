@@ -59,79 +59,88 @@ struct MainPageMiddleSubview: View {
     @ObservedObject var calcModel: CalculationsModel = varAmts.calcModel
     @Binding var activeField: EditableTextFields
     var body: some View {
-        VStack {
-            HStack {
-                VStack {
-                    Text("Venue")
-                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                    
-                    ZStack {
-                        Color.black
-                            .opacity(0.0)
-                        Text(self.calcModel.selectedVenue.name)
+        GeometryReader { geo in
+            VStack {
+                HStack {
+                    VStack {
+                        Text("Venue")
+                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                        
+                        ZStack {
+                            Color.black
+                                .opacity(0.0)
+                            Text(self.calcModel.selectedVenue.name)
+                        }
+                        .frame(maxHeight: geo.size.height / 3)
+                        .modifier(MercesStyleTextField())
+                    }.onTapGesture {
+                        self.activeField = EditableTextFields.venue
                     }
-                    .modifier(MercesStyleTextField())
-                }.onTapGesture {
-                    self.activeField = EditableTextFields.venue
+                    
+                    VStack {
+                        Text("Tip %")
+                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                            .scaleEffect(self.activeField == EditableTextFields.tipRate ? highlightedScale : 1.0)
+                        PercentageView(value: self.$calcModel.tipRate)
+                            .frame(maxHeight: geo.size.height / 3)
+                    }.onTapGesture {
+                        self.activeField = EditableTextFields.tipRate
+                    }
                 }
                 
                 VStack {
-                    Text("Tip %")
+                    Text("Service Level")
                         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                        .scaleEffect(self.activeField == EditableTextFields.tipRate ? highlightedScale : 1.0)
-                    PercentageView(value: self.$calcModel.tipRate)
-                }.onTapGesture {
-                    self.activeField = EditableTextFields.tipRate
+                    ServiceQualityPicker()
                 }
+    //            .padding(.top)
             }
-            
-            VStack {
-                Text("Service Level")
-                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                ServiceQualityPicker()
-            }
-//            .padding(.top)
+            .modifier(AdaptiveCardBackground())
         }
-        .modifier(AdaptiveCardBackground())
     }
 }
 
 struct MainPageBottomSubview: View {
     @ObservedObject var calcModel: CalculationsModel = varAmts.calcModel
     var body: some View {
-        VStack {
-            HStack(alignment: .center) {
-                Text("Totaled Amounts")
-                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                    .minimumScaleFactor(0.5)
-            }
-            
-            if self.calcModel.tipAmount != 0.0 {
-                HStack {
-                    Text("Tip Amount:")
+        GeometryReader { geo in
+            VStack {
+                HStack(alignment: .center) {
+                    Text("Totaled Amounts")
                         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                    CurrencyView(value: self.$calcModel.tipAmount, isEnabled: false)
+                        .minimumScaleFactor(0.5)
                 }
-//                .padding(.top)
-            }
-            
-            HStack {
-                Text("Grand Total:")
-                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                CurrencyView(value: self.$calcModel.totalAmount, isEnabled: false)
-            }
-//                .padding(.top)
-            
-            if self.calcModel.partySize != 1 {
+                
+                if self.calcModel.tipAmount != 0.0 {
+                    HStack {
+                        Text("Tip Amount:")
+                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                        CurrencyView(value: self.$calcModel.tipAmount, isEnabled: false)
+                    }
+                    .frame(maxHeight: geo.size.height / 3)
+    //                .padding(.top)
+                }
+                
                 HStack {
-                    Text("Each Person:")
+                    Text("Grand Total:")
                         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                    CurrencyView(value: self.$calcModel.totalAmountPerPerson, isEnabled: false)
+                    CurrencyView(value: self.$calcModel.totalAmount, isEnabled: false)
                 }
-//                    .padding(.top)
+                .frame(maxHeight: geo.size.height / 3)
+    //                .padding(.top)
+                
+                if self.calcModel.partySize != 1 {
+                    HStack {
+                        Text("Each Person:")
+                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                        CurrencyView(value: self.$calcModel.totalAmountPerPerson, isEnabled: false)
+                    }
+                    .frame(maxHeight: geo.size.height / 3)
+    //                    .padding(.top)
+                }
             }
+            .modifier(AdaptiveCardBackground())
         }
-        .modifier(AdaptiveCardBackground())
     }
 }
 

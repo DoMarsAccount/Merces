@@ -35,6 +35,7 @@ struct PPageTopView: View {
             }.onTapGesture {
                 self.activeField = EditableTextFields.localTax
             }
+            .frame(maxHeight: geo.size.height / 3)
             .modifier(AdaptiveCardBackground())
         }
     }

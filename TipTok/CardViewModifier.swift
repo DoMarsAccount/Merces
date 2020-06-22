@@ -14,7 +14,8 @@ struct AdaptiveCardBackground: ViewModifier {
     var backgroundColor: Color = Color(themes.viewColor)
     func body(content: Content) -> some View {
         Group {
-            if userPrefs.useFlatStyleViews {
+//            if userPrefs.useFlatStyleViews {
+            if true {
                 content.modifier(MercesStyleCard(usePadding: self.usePadding, backgroundColor: self.backgroundColor))
             } else {
                 content.modifier(TipTokStyleCard(usePadding: self.usePadding, backgroundColor: self.backgroundColor))
