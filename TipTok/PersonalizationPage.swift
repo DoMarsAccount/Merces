@@ -9,22 +9,28 @@
 import SwiftUI
 
 struct PersonalizationPage: View {
+    @Environment(\.colorScheme) var colorScheme
     @State private var activeField: EditableTextFields = .none
     @EnvironmentObject var userPrefs: UserPreferences
     @ObservedObject var venueEditor = UserPreferences.sharedInstance.venueEditor
     
     var body: some View {
         GeometryReader { geo in
-            VStack {
-                PPageTopView(activeField: self.$activeField)
-                PPageMiddleView(activeField: self.$activeField)
-                if (self.activeField != .none) {
-                    Keypad(activeField: self.$activeField)
-                } else {
-                    PPageBottomView()
+            ZStack {
+                Color(self.colorScheme == .dark ? .black : coloringThemes.backgroundColor)
+                    .edgesIgnoringSafeArea(.bottom)
+                
+                VStack {
+                    PPageTopView(activeField: self.$activeField)
+                    PPageMiddleView(activeField: self.$activeField)
+                    if (self.activeField != .none) {
+                        Keypad(activeField: self.$activeField)
+                    } else {
+                        PPageBottomView()
+                    }
                 }
+                .padding()
             }
-            .padding()
         }
         .navigationBarTitle(Text("Personalize").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18))))
     }
