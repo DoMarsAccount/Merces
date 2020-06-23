@@ -101,6 +101,12 @@ class Themes: ObservableObject {
         }
     }
     
+    func reset() {
+        self.mainColor = coloring.uiColorValue(for: .MercesGreen)
+        self.background = coloring.uiColorValue(for: .LightGray)
+        self.viewColor = coloring.uiColorValue(for: .White)
+    }
+    
 }
 
 class Coloring {

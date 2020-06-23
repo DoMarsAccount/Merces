@@ -37,6 +37,7 @@
 		048715502498321A00DF33E5 /* PersonalizationPageSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0487154F2498321A00DF33E5 /* PersonalizationPageSubviews.swift */; };
 		048715522498521700DF33E5 /* NavigationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048715512498521700DF33E5 /* NavigationConfigurator.swift */; };
 		049C69692491CAE600273450 /* VenuesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049C69682491CAE600273450 /* VenuesView.swift */; };
+		049E4E6724A2AEEA00852607 /* ListStyleMainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE912E24A19AAD0033D0AF /* ListStyleMainPage.swift */; };
 		04D5E83424958AE000883DE8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3B4B2C01ABB2CF7002A6C16 /* Images.xcassets */; };
 		04E01270248961F0009FAEEB /* VenueEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0126F248961F0009FAEEB /* VenueEditor.swift */; };
 		04E012762489628A009FAEEB /* ReceiptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E012722489628A009FAEEB /* ReceiptModel.swift */; };
@@ -49,7 +50,6 @@
 		04E19BAB2493210500994668 /* DetailedTipRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E19BAA2493210500994668 /* DetailedTipRateView.swift */; };
 		04E19BAD2493CB4000994668 /* SetupAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E19BAC2493CB4000994668 /* SetupAlertView.swift */; };
 		04EE912D24A1664F0033D0AF /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12001E2DBE950021C889 /* NavigationController.swift */; };
-		04EE912F24A19AAD0033D0AF /* ListStyleMainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE912E24A19AAD0033D0AF /* ListStyleMainPage.swift */; };
 		04EF6D8A248D3451009CEF03 /* TipTok.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 04EF6D89248D3451009CEF03 /* TipTok.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		04EF6D99248D3452009CEF03 /* TipTok_watchOS WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 04EF6D98248D3452009CEF03 /* TipTok_watchOS WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		04EF6D9E248D3452009CEF03 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6D9D248D3452009CEF03 /* ContentView.swift */; };
@@ -985,7 +985,6 @@
 				04282A57249A7FFD004F2879 /* TextFields.swift in Sources */,
 				E3FD0FB11EC3DB3600763ED2 /* ColoringAndThemes.swift in Sources */,
 				048715452497AE4200DF33E5 /* Keypad.swift in Sources */,
-				04EE912F24A19AAD0033D0AF /* ListStyleMainPage.swift in Sources */,
 				04282A55249A4B64004F2879 /* CardViewModifier.swift in Sources */,
 				0430E5AA249FEE9A0014E8E5 /* ThemesPage.swift in Sources */,
 				0487153C2497A72300DF33E5 /* MainPageSubviews.swift in Sources */,
@@ -1003,6 +1002,7 @@
 				04E012762489628A009FAEEB /* ReceiptModel.swift in Sources */,
 				048715502498321A00DF33E5 /* PersonalizationPageSubviews.swift in Sources */,
 				04719F8224972FC800132EC8 /* VenuePicker.swift in Sources */,
+				049E4E6724A2AEEA00852607 /* ListStyleMainPage.swift in Sources */,
 				048715522498521700DF33E5 /* NavigationConfigurator.swift in Sources */,
 				E3FD0FAA1EC3DB1A00763ED2 /* NumberFormattingClass.swift in Sources */,
 			);
