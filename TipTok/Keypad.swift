@@ -41,10 +41,15 @@ struct Keypad: View {
             HStack (spacing: 1) {
                 KeypadDoneButton(activeField: self.$activeField)
                     .modifier(CondensedKeypadButton())
+                    .accessibility(label: Text("Done"))
+                    .accessibility(hint: Text("Closes keypad"))
+                
                 KeypadButton(text: .constant("0"), activeField: self.$activeField)
-                .modifier(CondensedKeypadButton())
+                    .modifier(CondensedKeypadButton())
+                
                 KeypadDeleteButton(activeField: self.$activeField)
-                .modifier(CondensedKeypadButton())
+                    .modifier(CondensedKeypadButton())
+                    .accessibility(label: Text("Delete"))
             }
         }
         .foregroundColor(self.colorScheme == .dark ? .primary : Color(UIColor(contrastingBlackOrWhiteColorOn: themes.background, isFlat: true)))

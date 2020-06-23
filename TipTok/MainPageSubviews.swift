@@ -24,7 +24,7 @@ struct MainPageTopSubview: View {
                 CurrencyView(value: self.$calcModel.subtotal)
             }.onTapGesture {
                 self.activeField = EditableTextFields.subtotal
-            }.accessibility(value: Text("Subtotal \(nForm.roundForCurrency(number: self.calcModel.subtotal))"))
+            }.accessibility(label: Text("Subtotal \(nForm.roundForCurrency(number: self.calcModel.subtotal))"))
             
             HStack {
                 VStack {
@@ -37,7 +37,7 @@ struct MainPageTopSubview: View {
                     if self.userPrefs.localSalesTax == 0.0 {
                         self.activeField = EditableTextFields.salesTax
                     }
-                }.accessibility(value: Text("Sales Tax \(nForm.roundForCurrency(number: self.calcModel.taxAmount))"))
+                }.accessibility(label: Text("Sales Tax \(nForm.roundForCurrency(number: self.calcModel.taxAmount))"))
                 
                 VStack {
                     Text("Party of")
@@ -47,7 +47,7 @@ struct MainPageTopSubview: View {
                     IntegerView(value: self.$calcModel.partySize)
                 }.onTapGesture {
                     self.activeField = EditableTextFields.partySize
-                }.accessibility(value: Text("Party Size:  \(nForm.roundForCurrency(number: self.calcModel.subtotal))"))
+                }.accessibility(label: Text("Party Size:  \(nForm.formatIntegerNumbers(self.calcModel.partySize))"))
             }
 //                .padding(.top)
         }
@@ -70,12 +70,14 @@ struct MainPageMiddleSubview: View {
                             Color.black
                                 .opacity(0.0)
                             Text(self.calcModel.selectedVenue.name)
+                                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                         }
                         .frame(maxHeight: geo.size.height / 3)
                         .modifier(MercesStyleTextField())
                     }.onTapGesture {
                         self.activeField = EditableTextFields.venue
                     }
+                    .accessibility(label: Text("Venue: \(self.calcModel.selectedVenue.name)"))
                     
                     VStack {
                         Text("Tip %")
@@ -86,13 +88,14 @@ struct MainPageMiddleSubview: View {
                     }.onTapGesture {
                         self.activeField = EditableTextFields.tipRate
                     }
+                    .accessibility(label: Text("Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(self.calcModel.tipRate))"))
                 }
                 
                 VStack {
                     Text("Service Level")
                         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                     ServiceQualityPicker()
-                }
+                }.accessibility(label: Text("Service Level: \(self.calcModel.service.name)"))
     //            .padding(.top)
             }
             .modifier(AdaptiveCardBackground())
@@ -118,6 +121,7 @@ struct MainPageBottomSubview: View {
                         CurrencyView(value: self.$calcModel.tipAmount, isEnabled: false)
                     }
                     .frame(maxHeight: geo.size.height / 3)
+                    .accessibility(label: Text("Tip Amount: \(nForm.roundForCurrency(number: self.calcModel.tipAmount))"))
     //                .padding(.top)
                 }
                 
@@ -127,6 +131,7 @@ struct MainPageBottomSubview: View {
                     CurrencyView(value: self.$calcModel.totalAmount, isEnabled: false)
                 }
                 .frame(maxHeight: geo.size.height / 3)
+                .accessibility(label: Text("Grand Total: \(nForm.roundForCurrency(number: self.calcModel.totalAmount))"))
     //                .padding(.top)
                 
                 if self.calcModel.partySize != 1 {
@@ -136,6 +141,7 @@ struct MainPageBottomSubview: View {
                         CurrencyView(value: self.$calcModel.totalAmountPerPerson, isEnabled: false)
                     }
                     .frame(maxHeight: geo.size.height / 3)
+                    .accessibility(label: Text("Total Per Person: \(nForm.roundForCurrency(number: self.calcModel.totalAmountPerPerson))"))
     //                    .padding(.top)
                 }
             }

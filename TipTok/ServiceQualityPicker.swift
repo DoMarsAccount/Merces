@@ -17,12 +17,13 @@ struct ServiceQualityPicker: View {
                 ServiceQuality.allCases[index].image
                     .resizable()
                     .tag(ServiceQuality.allCases[index])
-                    .accessibility(value: Text("Service Level: \(ServiceQuality.allCases[index].name)"))
+                    .accessibility(label: Text("Service Quality: \(ServiceQuality.allCases[index].name)"))
             }
         }
         .pickerStyle(SegmentedPickerStyle())
         .scaledToFill()
         .clipShape(RoundedRectangle(cornerRadius: 4, style: .circular))
+        .accessibility(label: Text("Service Quality: \(self.calcModel.service.name)"))
     }
 }
 

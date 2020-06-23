@@ -17,6 +17,7 @@ struct CurrencyView: View {
                 .opacity(isEnabled ? 0.0 : 0.07)
             
             Text(nForm.roundForCurrency(number: self.value))
+                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
         }
         .modifier(MercesStyleTextField())
     }
@@ -31,6 +32,7 @@ struct IntegerView: View {
                 .opacity(isEnabled ? 0.0 : 0.07)
             
             Text(nForm.formatIntegerNumbers(self.value))
+                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
         }
         .modifier(MercesStyleTextField())
     }
@@ -45,6 +47,7 @@ struct PercentageView: View {
                 .opacity(isEnabled ? 0.0 : 0.07)
             
             Text(nForm.roundForPercentWithTwoDecimalPlaces(self.value))
+                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
         }
         .modifier(MercesStyleTextField())
     }

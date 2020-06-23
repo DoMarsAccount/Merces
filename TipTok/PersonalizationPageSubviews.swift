@@ -37,6 +37,8 @@ struct PPageTopView: View {
             }
             .frame(maxHeight: geo.size.height / 3)
             .modifier(AdaptiveCardBackground())
+            .accessibility(label: Text("Local Sales Tax: \(nForm.roundForPercentWithTwoDecimalPlaces(self.userPrefs.localSalesTax)))"))
+            .accessibility(hint: Text("Updates "))
         }
     }
 }
@@ -49,9 +51,11 @@ struct PPageMiddleView: View {
     var body: some View {
         GeometryReader { geo in
             VStack {
-                Text("Venue: \(self.userPrefs.venueEditor.selectedVenue.name)")
-                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                PPageVenuePicker()
+                VStack {
+                    Text("Venue: \(self.userPrefs.venueEditor.selectedVenue.name)")
+                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                    PPageVenuePicker()
+                }.accessibility(label: Text("Venue: \(self.userPrefs.venueEditor.selectedVenue.name)"))
                 
                 HStack {
                     VStack {
@@ -71,7 +75,7 @@ struct PPageMiddleView: View {
                         
                     }.onTapGesture {
                         self.activeField = EditableTextFields.poorTip
-                    }
+                    }.accessibility(label: Text("Bad Service Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venueEditor.selectedVenue, service: .Bad)))"))
                     
                     VStack {
                         HStack {
@@ -88,7 +92,7 @@ struct PPageMiddleView: View {
                         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                     }.onTapGesture {
                         self.activeField = EditableTextFields.averageTip
-                    }
+                    }.accessibility(label: Text("Good Service Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venueEditor.selectedVenue, service: .Good)))"))
                     
                     VStack {
                         HStack {
@@ -105,7 +109,9 @@ struct PPageMiddleView: View {
                         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                     }.onTapGesture {
                         self.activeField = EditableTextFields.greatTip
-                    }
+                    }.accessibility(label: Text("Great Service Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venueEditor.selectedVenue, service: .Great)))"))
+                    
+                    
                 }.padding(.top)
             }
             .modifier(AdaptiveCardBackground())

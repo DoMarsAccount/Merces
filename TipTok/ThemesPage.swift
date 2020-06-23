@@ -51,7 +51,7 @@ struct ThemesPage: View {
     var body: some View {
         ZStack {
             Color(self.colorScheme == .dark ? .black : themes.background)
-                .edgesIgnoringSafeArea(.bottom)
+                .edgesIgnoringSafeArea(.all)
             
             VStack {
                 AppearancePicker(appearance: $appearance)

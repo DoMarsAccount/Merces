@@ -18,7 +18,7 @@ struct PersonalizationPage: View {
         GeometryReader { geo in
             ZStack {
                 Color(self.colorScheme == .dark ? .black : themes.background)
-                    .edgesIgnoringSafeArea(.bottom)
+                    .edgesIgnoringSafeArea(.all)
                 
                 VStack {
                     PPageTopView(activeField: self.$activeField)
