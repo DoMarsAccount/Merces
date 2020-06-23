@@ -107,7 +107,9 @@ class VariableAmountsClass
         var inputAmount = 0.0
         
         if !arrayOfPressedButtonValues.isEmpty {
-           inputAmount = NumberFormatter().number(from: arrayOfPressedButtonValues.joined(separator: "")) as! Double * 0.01
+            if (arrayOfPressedButtonValues.count <= 15) {
+                inputAmount = NumberFormatter().number(from: arrayOfPressedButtonValues.joined(separator: "")) as! Double * 0.01
+            }
            
        } else {
            switch activeField {
