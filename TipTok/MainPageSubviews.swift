@@ -48,21 +48,36 @@ struct MainPageTopSubview: View {
                     }
                     .accentColor(.primary)
                     .accessibility(label: Text("Sales Tax \(nForm.roundForCurrency(number: self.calcModel.taxAmount))"))
-                }
                 
-                Button(action: {
-                    self.activeField = EditableTextFields.partySize
-                }) {
-                    VStack {
-                        Text("Party of")
-                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                            .scaleEffect(self.activeField == EditableTextFields.partySize ? highlightedScale : 1.0)
-                            .minimumScaleFactor(0.75)
-                        IntegerView(value: self.$calcModel.partySize)
+                    Button(action: {
+                        self.activeField = EditableTextFields.partySize
+                    }) {
+                        VStack {
+                            Text("Party Size")
+                                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                                .scaleEffect(self.activeField == EditableTextFields.partySize ? highlightedScale : 1.0)
+                                .minimumScaleFactor(0.75)
+                            IntegerView(value: self.$calcModel.partySize)
+                        }
                     }
+                    .accentColor(.primary)
+                    .accessibility(label: Text("Party Size:  \(nForm.formatIntegerNumbers(self.calcModel.partySize))"))
+                } else {
+                    Button(action: {
+                        self.activeField = EditableTextFields.partySize
+                    }) {
+                        HStack {
+                            Text("Party Size")
+                                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                                .scaleEffect(self.activeField == EditableTextFields.partySize ? highlightedScale : 1.0)
+                                .minimumScaleFactor(0.75)
+                                .padding()
+                            IntegerView(value: self.$calcModel.partySize)
+                        }.padding(.vertical )
+                    }
+                    .accentColor(.primary)
+                    .accessibility(label: Text("Party Size:  \(nForm.formatIntegerNumbers(self.calcModel.partySize))"))
                 }
-                .accentColor(.primary)
-                .accessibility(label: Text("Party Size:  \(nForm.formatIntegerNumbers(self.calcModel.partySize))"))
             }
 //                .padding(.top)
         }

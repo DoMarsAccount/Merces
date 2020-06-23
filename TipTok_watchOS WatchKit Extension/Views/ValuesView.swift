@@ -59,7 +59,7 @@ struct ValuesView: View {
                             .accessibility(label: Text("Party Size: \(nForm.formatIntegerNumbers(self.wCalcModel.partySize))"))
                             .modifier(scalingEffect())
                         } else {
-                            Text("Party of")
+                            Text("Party Size")
                             .cardStyled(value: self.$wCalcModel.partySize.double, style: .integer, backgroundColor: Color("MercesGreen"))
                             .onTapGesture {
                                 self.isPartySizeKeypadPresented.toggle()
