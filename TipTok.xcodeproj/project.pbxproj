@@ -49,6 +49,7 @@
 		04E19BAB2493210500994668 /* DetailedTipRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E19BAA2493210500994668 /* DetailedTipRateView.swift */; };
 		04E19BAD2493CB4000994668 /* SetupAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E19BAC2493CB4000994668 /* SetupAlertView.swift */; };
 		04EE912D24A1664F0033D0AF /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AB12001E2DBE950021C889 /* NavigationController.swift */; };
+		04EE912F24A19AAD0033D0AF /* ListStyleMainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE912E24A19AAD0033D0AF /* ListStyleMainPage.swift */; };
 		04EF6D8A248D3451009CEF03 /* TipTok.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 04EF6D89248D3451009CEF03 /* TipTok.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		04EF6D99248D3452009CEF03 /* TipTok_watchOS WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 04EF6D98248D3452009CEF03 /* TipTok_watchOS WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		04EF6D9E248D3452009CEF03 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6D9D248D3452009CEF03 /* ContentView.swift */; };
@@ -204,6 +205,7 @@
 		04E012742489628A009FAEEB /* CalculationsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalculationsModel.swift; path = Models/CalculationsModel.swift; sourceTree = "<group>"; };
 		04E19BAA2493210500994668 /* DetailedTipRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTipRateView.swift; sourceTree = "<group>"; };
 		04E19BAC2493CB4000994668 /* SetupAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupAlertView.swift; sourceTree = "<group>"; };
+		04EE912E24A19AAD0033D0AF /* ListStyleMainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStyleMainPage.swift; sourceTree = "<group>"; };
 		04EF6D86248D3451009CEF03 /* TipTok_watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TipTok_watchOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04EF6D89248D3451009CEF03 /* TipTok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TipTok.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04EF6D8F248D3451009CEF03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -348,8 +350,9 @@
 		04719F7C2497235700132EC8 /* SwiftUIViews */ = {
 			isa = PBXGroup;
 			children = (
-				0487153B2497A72300DF33E5 /* MainPageSubviews.swift */,
 				04719F782497233C00132EC8 /* MainPageSwiftUI.swift */,
+				0487153B2497A72300DF33E5 /* MainPageSubviews.swift */,
+				04EE912E24A19AAD0033D0AF /* ListStyleMainPage.swift */,
 				04719F7A2497234F00132EC8 /* SettingsPageSwiftUI.swift */,
 				0487154F2498321A00DF33E5 /* PersonalizationPageSubviews.swift */,
 				04719F7D2497247100132EC8 /* PersonalizationPage.swift */,
@@ -982,6 +985,7 @@
 				04282A57249A7FFD004F2879 /* TextFields.swift in Sources */,
 				E3FD0FB11EC3DB3600763ED2 /* ColoringAndThemes.swift in Sources */,
 				048715452497AE4200DF33E5 /* Keypad.swift in Sources */,
+				04EE912F24A19AAD0033D0AF /* ListStyleMainPage.swift in Sources */,
 				04282A55249A4B64004F2879 /* CardViewModifier.swift in Sources */,
 				0430E5AA249FEE9A0014E8E5 /* ThemesPage.swift in Sources */,
 				0487153C2497A72300DF33E5 /* MainPageSubviews.swift in Sources */,

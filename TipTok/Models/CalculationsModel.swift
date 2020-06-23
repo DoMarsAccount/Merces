@@ -88,9 +88,9 @@ class CalculationsModel: ObservableObject {
         
         self.objectWillChange.send()
         
-//        if userPrefs.subtotalIsPostTax {
-//            subtotal = subtotal / (1 + userPrefs.localSalesTax)
-//            taxAmount = subtotal * userPrefs.localSalesTax
+//        if UserPreferences.sharedInstance.subtotalIsPostTax {
+//            subtotal = subtotal / (1 + UserPreferences.sharedInstance.localSalesTax)
+//            taxAmount = subtotal * UserPreferences.sharedInstance.localSalesTax
 //        }
         
         tipAmount = (UserPreferences.sharedInstance.tipIncludeTax ? (subtotal + taxAmount) * (tipRate) : subtotal * (tipRate))

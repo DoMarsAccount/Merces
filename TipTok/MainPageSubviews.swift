@@ -16,38 +16,51 @@ struct MainPageTopSubview: View {
     @Binding var activeField: EditableTextFields
     var body: some View {
         VStack {
-            VStack {
-                Text("Subtotal")
-                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                    .scaleEffect(self.activeField == EditableTextFields.subtotal ? highlightedScale : 1.0)
-                    .minimumScaleFactor(0.75)
-                CurrencyView(value: self.$calcModel.subtotal)
-            }.onTapGesture {
+            Button(action: {
                 self.activeField = EditableTextFields.subtotal
-            }.accessibility(label: Text("Subtotal \(nForm.roundForCurrency(number: self.calcModel.subtotal))"))
+            }) {
+                VStack {
+                    Text("Subtotal")
+                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                        .scaleEffect(self.activeField == EditableTextFields.subtotal ? highlightedScale : 1.0)
+                        .minimumScaleFactor(0.75)
+                    CurrencyView(value: self.$calcModel.subtotal)
+                }
+            }
+            .accentColor(.primary)
+            .accessibility(label: Text("Subtotal \(nForm.roundForCurrency(number: self.calcModel.subtotal))"))
+            
             
             HStack {
-                VStack {
-                    Text("Sales Tax")
-                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                        .scaleEffect(self.activeField == EditableTextFields.salesTax ? highlightedScale : 1.0)
-                        .minimumScaleFactor(0.75)
-                    CurrencyView(value: self.$calcModel.taxAmount, isEnabled: self.userPrefs.localSalesTax == 0.0)
-                }.onTapGesture {
+                Button(action: {
                     if self.userPrefs.localSalesTax == 0.0 {
                         self.activeField = EditableTextFields.salesTax
                     }
-                }.accessibility(label: Text("Sales Tax \(nForm.roundForCurrency(number: self.calcModel.taxAmount))"))
+                }) {
+                    VStack {
+                        Text("Sales Tax")
+                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                            .scaleEffect(self.activeField == EditableTextFields.salesTax ? highlightedScale : 1.0)
+                            .minimumScaleFactor(0.75)
+                        CurrencyView(value: self.$calcModel.taxAmount, isEnabled: self.userPrefs.localSalesTax == 0.0)
+                    }
+                }
+                .accentColor(.primary)
+                .accessibility(label: Text("Sales Tax \(nForm.roundForCurrency(number: self.calcModel.taxAmount))"))
                 
-                VStack {
-                    Text("Party of")
-                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                        .scaleEffect(self.activeField == EditableTextFields.partySize ? highlightedScale : 1.0)
-                        .minimumScaleFactor(0.75)
-                    IntegerView(value: self.$calcModel.partySize)
-                }.onTapGesture {
+                Button(action: {
                     self.activeField = EditableTextFields.partySize
-                }.accessibility(label: Text("Party Size:  \(nForm.formatIntegerNumbers(self.calcModel.partySize))"))
+                }) {
+                    VStack {
+                        Text("Party of")
+                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                            .scaleEffect(self.activeField == EditableTextFields.partySize ? highlightedScale : 1.0)
+                            .minimumScaleFactor(0.75)
+                        IntegerView(value: self.$calcModel.partySize)
+                    }
+                }
+                .accentColor(.primary)
+                .accessibility(label: Text("Party Size:  \(nForm.formatIntegerNumbers(self.calcModel.partySize))"))
             }
 //                .padding(.top)
         }
@@ -62,32 +75,39 @@ struct MainPageMiddleSubview: View {
         GeometryReader { geo in
             VStack {
                 HStack {
-                    VStack {
-                        Text("Venue")
-                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                        
-                        ZStack {
-                            Color.black
-                                .opacity(0.0)
-                            Text(self.calcModel.selectedVenue.name)
-                                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                        }
-                        .frame(maxHeight: geo.size.height / 3)
-                        .modifier(MercesStyleTextField())
-                    }.onTapGesture {
+                    
+                    Button(action: {
                         self.activeField = EditableTextFields.venue
+                    }) {
+                        VStack {
+                            Text("Venue")
+                                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                            
+                            ZStack {
+                                Color.black
+                                    .opacity(0.0)
+                                Text(self.calcModel.selectedVenue.name)
+                                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                            }
+                            .frame(maxHeight: geo.size.height / 3)
+                            .modifier(MercesStyleTextField())
+                        }
                     }
+                    .accentColor(.primary)
                     .accessibility(label: Text("Venue: \(self.calcModel.selectedVenue.name)"))
                     
-                    VStack {
-                        Text("Tip %")
-                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                            .scaleEffect(self.activeField == EditableTextFields.tipRate ? highlightedScale : 1.0)
-                        PercentageView(value: self.$calcModel.tipRate)
-                            .frame(maxHeight: geo.size.height / 3)
-                    }.onTapGesture {
+                    Button(action: {
                         self.activeField = EditableTextFields.tipRate
+                    }) {
+                        VStack {
+                            Text("Tip %")
+                                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                                .scaleEffect(self.activeField == EditableTextFields.tipRate ? highlightedScale : 1.0)
+                            PercentageView(value: self.$calcModel.tipRate)
+                                .frame(maxHeight: geo.size.height / 3)
+                        }
                     }
+                    .accentColor(.primary)
                     .accessibility(label: Text("Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(self.calcModel.tipRate))"))
                 }
                 
