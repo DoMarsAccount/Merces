@@ -54,16 +54,26 @@ struct VenueView: View {
     @Binding var activeField: EditableTextFields
     var body: some View {
         GeometryReader { geo in
-            VStack {
-                Text(self.venue.emoji)
-//                    .padding()
-                Text(self.venue.name)
-                    .padding(.top)
-                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+            ZStack {
+                if self.colorScheme == .dark {
+                    Color("Eerie")
+                        .opacity(0.75)
+                } else {
+                    Color.white
+                        .opacity(0.75)
+                }
+                
+                VStack {
+                    Text(self.venue.emoji)
+    //                    .padding()
+                    Text(self.venue.name)
+                        .padding(.top)
+                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                        .foregroundColor(self.calcModel.selectedVenue == self.venue ? Color.green : Color.primary)
+                }
             }
             .frame(width: geo.size.width, height: geo.size.height)
-            .background(self.colorScheme == .dark ? Color("Eerie") : Color.white)
-            .border(Color.primary, width: 4)
+            .border(self.calcModel.selectedVenue == self.venue ? Color.green : Color.primary, width: 4)
             .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
             .onTapGesture {
                 self.calcModel.selectedVenue = self.venue
