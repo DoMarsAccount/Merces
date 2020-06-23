@@ -11,6 +11,7 @@ import SwiftUI
 struct Keypad: View {
     @Environment(\.colorScheme) var colorScheme
     @Binding var activeField: EditableTextFields
+    @ObservedObject var themes = Themes.sharedInstance
     
     var body: some View {
         VStack (spacing: 1) {
@@ -53,7 +54,7 @@ struct Keypad: View {
             }
         }
         .foregroundColor(self.colorScheme == .dark ? .primary : Color(UIColor(contrastingBlackOrWhiteColorOn: themes.background, isFlat: true)))
-        .modifier(AdaptiveCardBackground(usePadding: false, backgroundColor: Color(themes.mainColor)))
+        .modifier(AdaptiveCardBackground(backgroundColor: Color(themes.mainColor), usePadding: false))
     }
 }
 

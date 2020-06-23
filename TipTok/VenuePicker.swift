@@ -85,6 +85,7 @@ struct VenueView: View {
 
 struct VenueSelectionView: View {
     @ObservedObject var calcModel = varAmts.calcModel
+    @ObservedObject var themes = Themes.sharedInstance
     @Binding var activeField: EditableTextFields
     var body: some View {
         GeometryReader { geo in
@@ -101,7 +102,7 @@ struct VenueSelectionView: View {
                     VenueView(venue: .delivery, activeField: self.$activeField)
                 }
             }
-            .modifier(AdaptiveCardBackground(backgroundColor: Color(themes.mainColor)))
+            .modifier(AdaptiveCardBackground(backgroundColor: Color(self.themes.mainColor)))
         }
     }
 }

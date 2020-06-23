@@ -39,7 +39,7 @@ struct PPageTopView: View {
                 }
             }
             .frame(maxHeight: geo.size.height / 3)
-            .modifier(AdaptiveCardBackground())
+            .modifier(AdaptiveCardBackground(backgroundColor: Color(Themes.sharedInstance.viewColor)))
             .accentColor(.primary)
             .accessibility(label: Text("Local Sales Tax: \(nForm.roundForPercentWithTwoDecimalPlaces(self.userPrefs.localSalesTax)))"))
             .accessibility(hint: Text("Updates "))
@@ -130,7 +130,7 @@ struct PPageMiddleView: View {
                     
                 }.padding(.top)
             }
-            .modifier(AdaptiveCardBackground())
+            .modifier(AdaptiveCardBackground(backgroundColor: Color(Themes.sharedInstance.viewColor)))
         }
     }
 }

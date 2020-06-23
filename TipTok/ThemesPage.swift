@@ -21,11 +21,20 @@ enum Appearance: CaseIterable, Hashable, Identifiable {
 
 struct ColorSelectionItem: View {
     @Environment(\.colorScheme) var colorScheme
-    @State var isActive: Bool = false
+    @ObservedObject var themes: Themes = Themes.sharedInstance
+    
+    var themeItem: ThemeItem
     var color: UIColor
     var body: some View {
         Button(action: {
-            themes.setMainColor(to: self.color)
+            switch self.themeItem {
+            case .MainColor:
+                self.themes.setMainColor(to: self.color)
+            case .Background:
+                self.themes.setBackgroundColor(to: self.color)
+            case .ViewColor:
+                self.themes.setViewBackgroundColor(to: self.color)
+            }
         }) {
             ZStack {
                 Circle()
@@ -33,7 +42,7 @@ struct ColorSelectionItem: View {
                 
                 Circle()
                     .foregroundColor(.green)
-                    .opacity(isActive ? 1.0 : 0.0)
+                    .opacity(self.themes.isActiveColor(uicolor: self.color, for: self.themeItem) ? 1.0 : 0.0)
                 
                 Circle()
                     .padding(4)
@@ -47,27 +56,18 @@ struct ColorSelectionItem: View {
 
 struct ThemesPage: View {
     @Environment(\.colorScheme) var colorScheme
+    @ObservedObject var themes: Themes = Themes.sharedInstance
     @State private var appearance: Appearance = .Light
     var body: some View {
         ZStack {
-            Color(self.colorScheme == .dark ? .black : themes.background)
+            Color(self.colorScheme == .dark ? .black : self.themes.background)
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
                 AppearancePicker(appearance: $appearance)
-                
-                ScrollView(.horizontal) {
-                    HStack {
-                        ForEach(0..<TipTokColor.allCases.count) { index in
-                            ColorSelectionItem(color: TipTokColor.allCases[index].color)
-                        }
-                    }
-                }.background(Color.white)
-                
-                Text("Main Color: \(TipTokColor.MercesGreen.name)")
-                    .padding()
-                    .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: themes.mainColor, isFlat: true)))
-                    .background(Color(themes.mainColor))
+                ThemeItemColorPicker(themeItem: .MainColor)
+                ThemeItemColorPicker(themeItem: .ViewColor)
+                ThemeItemColorPicker(themeItem: .Background)
             }
             .padding()
         }
@@ -92,5 +92,52 @@ struct AppearancePicker: View {
         }
         .pickerStyle(SegmentedPickerStyle())
         .clipShape(RoundedRectangle(cornerRadius: 4, style: .circular))
+    }
+}
+
+struct ThemeItemColorPicker: View {
+    @ObservedObject var themes: Themes = Themes.sharedInstance
+    var themeItem: ThemeItem
+    var body: some View {
+        VStack(spacing: 0) {
+            
+            if self.themeItem == .MainColor {
+                Text("Main Color: \(Coloring().TTColorRepresentation(for: self.themes.mainColor).name)")
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .font(.system(size: 24))
+                    .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.themes.mainColor, isFlat: true)))
+                    .background(Color(self.themes.mainColor))
+                    .border(Color.primary)
+                
+            } else if self.themeItem == .Background {
+                Text("App Background Color: \(Coloring().TTColorRepresentation(for: self.themes.background).name)")
+                .padding()
+                .frame(maxWidth: .infinity)
+                .font(.system(size: 20))
+                .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.themes.background, isFlat: true)))
+                .background(Color(self.themes.background))
+                .border(Color.primary)
+                
+            } else if self.themeItem == .ViewColor {
+                Text("View Color: \(Coloring().TTColorRepresentation(for: self.themes.viewColor).name)")
+                .padding()
+                .frame(maxWidth: .infinity)
+                .font(.system(size: 24))
+                .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.themes.viewColor, isFlat: true)))
+                .background(Color(self.themes.viewColor))
+                .border(Color.primary)
+                
+            }
+            
+            ScrollView(.horizontal) {
+                HStack {
+                    ForEach(0..<TipTokColor.allCases.count) { index in
+                        ColorSelectionItem(themeItem: self.themeItem, color: TipTokColor.allCases[index].color)
+                    }
+                }.padding()
+            }.background(Color(self.themes.viewColor))
+            
+        }.border(Color.primary)
     }
 }

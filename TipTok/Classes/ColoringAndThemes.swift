@@ -44,7 +44,14 @@ enum TipTokColor: CaseIterable, Hashable, Identifiable {
     }
 }
 
+enum ThemeItem {
+    case MainColor
+    case Background
+    case ViewColor
+}
+
 class Themes: ObservableObject {
+    static let sharedInstance: Themes = Themes()
     @Environment(\.colorScheme) var colorScheme
     @Published var mainColor: UIColor
     @Published var background: UIColor
@@ -71,13 +78,28 @@ class Themes: ObservableObject {
     
     func setMainColor(to color: UIColor) {
         mUserDefaults?.set("\(color)", forKey: "phoneMainColor")
+        self.mainColor = color
     }
     func setBackgroundColor(to color: UIColor) {
         mUserDefaults?.set("\(color)", forKey: "phoneBackgroundColor")
+        self.background = color
     }
     func setViewBackgroundColor(to color: UIColor) {
         mUserDefaults?.set("\(color)", forKey: "phoneViewBackgroundColor")
+        self.viewColor = color
     }
+    
+    func isActiveColor(uicolor: UIColor, for themeItem: ThemeItem) -> Bool {
+        switch themeItem {
+        case .MainColor:
+            return uicolor == self.mainColor
+        case .Background:
+            return uicolor == self.background
+        case .ViewColor:
+            return uicolor == self.viewColor
+        }
+    }
+    
 }
 
 class Coloring {
@@ -137,7 +159,7 @@ class Coloring {
             return UIColor(red: 0.3019607843, green: 0.9098039216, blue: 0.9568627451, alpha: 1.0)
         }
     }
-    /// Searches through all TipTokColors for a color representaiton matching the provided string
+    /// Searches through TipTokColors for a color representaiton matching the provided string representation, returning the UIColor value of said TipTokColor
     func uiColor(for detailedString: String) -> UIColor {
         for TTColor in TipTokColor.allCases {
             if TTColor.stringRepresentation.elementsEqual(detailedString) {
@@ -145,6 +167,26 @@ class Coloring {
             }
         }
         return .white
+    }
+    
+    /// Returns TipTokColor matching the provided string representation
+    func TTColorRepresentation(for detailedString: String) -> TipTokColor {
+        for TTColor in TipTokColor.allCases {
+            if TTColor.stringRepresentation.elementsEqual(detailedString) {
+                return TTColor
+            }
+        }
+        return .MercesGreen
+    }
+    
+    /// Returns TipTokColor matching the provided UIColor
+    func TTColorRepresentation(for uicolor: UIColor) -> TipTokColor {
+        for TTColor in TipTokColor.allCases {
+            if self.uiColorValue(for: TTColor) == uicolor {
+                return TTColor
+            }
+        }
+        return .MercesGreen
     }
     
     /// Returns true if the provided color values are the same, false otherwise

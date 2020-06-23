@@ -14,6 +14,7 @@ struct MainPageSwiftUI: View {
     @State private var isSettingsActive: Bool = false
     @EnvironmentObject var userPrefs: UserPreferences
     @State private var activeField: EditableTextFields = .none
+    @ObservedObject var themes = Themes.sharedInstance
     
     var body: some View {
         NavigationView {
@@ -52,9 +53,9 @@ struct MainPageSwiftUI: View {
                         , displayMode: .inline)
                         
                     .background(NavigationConfigurator { nc in
-                        nc.navigationBar.barTintColor = (self.colorScheme == .dark ? .black : themes.mainColor)
-                        nc.navigationBar.titleTextAttributes = [.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? .black : themes.mainColor), isFlat: true)!]
-                        nc.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? .black : themes.mainColor), isFlat: true)
+                        nc.navigationBar.barTintColor = (self.colorScheme == .dark ? .black : self.themes.mainColor)
+                        nc.navigationBar.titleTextAttributes = [.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? .black : self.themes.mainColor), isFlat: true)!]
+                        nc.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? .black : self.themes.mainColor), isFlat: true)
                     })
                     .navigationBarItems(trailing: NavigationLink(destination: Settings(), isActive: self.$isSettingsActive) {
                         Image(systemName: "gear")

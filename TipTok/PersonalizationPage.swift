@@ -13,11 +13,12 @@ struct PersonalizationPage: View {
     @State private var activeField: EditableTextFields = .none
     @EnvironmentObject var userPrefs: UserPreferences
     @ObservedObject var venueEditor = UserPreferences.sharedInstance.venueEditor
+    @ObservedObject var themes = Themes.sharedInstance
     
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                Color(self.colorScheme == .dark ? .black : themes.background)
+                Color(self.colorScheme == .dark ? .black : self.themes.background)
                     .edgesIgnoringSafeArea(.all)
                 
                 VStack {

@@ -7,12 +7,12 @@
 //
 
 import SwiftUI
-let themes = Themes()
 
 struct ContentView: View {
     var body: some View {
-        MainPageSwiftUI()
-            .environmentObject(UserPreferences.sharedInstance)
+        ThemesPage()
+//        MainPageSwiftUI()
+//            .environmentObject(UserPreferences.sharedInstance)
             
     }
 }
@@ -20,6 +20,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environment(\.colorScheme, .dark)
+//            .environment(\.colorScheme, .dark)
     }
 }
