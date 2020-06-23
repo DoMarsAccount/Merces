@@ -10,8 +10,11 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        MainPageSwiftUI()
-            .environmentObject(UserPreferences.sharedInstance)
+        NavigationView {
+            MainPageSwiftUI()
+                .environmentObject(UserPreferences.sharedInstance)
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
             
     }
 }

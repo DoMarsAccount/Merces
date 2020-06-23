@@ -34,7 +34,7 @@ struct PersonalizationPage: View {
                 .padding()
             }
         }
-        .navigationBarTitle(Text("Personalize").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18))))
+        .navigationBarTitle(Text("Personalize"))
         .navigationBarItems(trailing: NavigationLink(destination: ThemesPage(), isActive: self.$isThemesPageActive, label: {
             Image(systemName: "eyedropper.halffull")
             .resizable()

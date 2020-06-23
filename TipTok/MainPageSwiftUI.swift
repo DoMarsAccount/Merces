@@ -17,57 +17,68 @@ struct MainPageSwiftUI: View {
     @ObservedObject var themes = Themes.sharedInstance
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                Color(colorScheme == .dark ? .black : themes.background)
-                    .edgesIgnoringSafeArea(.all)
+        ZStack {
+            Color(colorScheme == .dark ? .black : themes.background)
+                .edgesIgnoringSafeArea(.all)
+            
+            VStack {
+                MainPageTopSubview(activeField: self.$activeField)
+                    .padding(.top)
+                    .minimumScaleFactor(0.75)
                 
-                VStack {
-                    MainPageTopSubview(activeField: self.$activeField)
-                        .padding(.top)
-                        .minimumScaleFactor(0.75)
+                MainPageMiddleSubview(activeField: self.$activeField)
+                    .minimumScaleFactor(0.8)
+                
+                ZStack {
+                
+                    VenueSelectionView(activeField: self.$activeField)
+                        .offset(x: activeField == .venue ? 0 : UIScreen.main.bounds.maxX)
+                
+                    Keypad(activeField: self.$activeField)
+                        .offset(x: (activeField != .none && activeField != .venue) ? 0 : UIScreen.main.bounds.maxX)
                     
-                    MainPageMiddleSubview(activeField: self.$activeField)
-                        .minimumScaleFactor(0.8)
+                    MainPageBottomSubview()
+                        .offset(x: activeField == .none ? 0 : UIScreen.main.bounds.maxX)
                     
-                    ZStack {
-                    
-                        VenueSelectionView(activeField: self.$activeField)
-                            .offset(x: activeField == .venue ? 0 : UIScreen.main.bounds.maxX)
-                    
-                        Keypad(activeField: self.$activeField)
-                            .offset(x: (activeField != .none && activeField != .venue) ? 0 : UIScreen.main.bounds.maxX)
-                        
-                        MainPageBottomSubview()
-                            .offset(x: activeField == .none ? 0 : UIScreen.main.bounds.maxX)
-                        
-                    }
-                        .minimumScaleFactor(0.75)
-                        .padding(.bottom)
-                        .animation(.spring(response: 0.7, dampingFraction: 0.7, blendDuration: 1.0))
-//                        .animation(.interpolatingSpring(mass: 1.0, stiffness: 0.0, damping: 0.7, initialVelocity: 0.7))
                 }
-                    .padding([.leading, .trailing])
-                        
-                    .navigationBarTitle(Text("TipTok")
-                        , displayMode: .inline)
-                        
+                    .minimumScaleFactor(0.75)
+                    .padding(.bottom)
+                    .animation(.spring(response: 0.7, dampingFraction: 0.7, blendDuration: 1.0))
+//                        .animation(.interpolatingSpring(mass: 1.0, stiffness: 0.0, damping: 0.7, initialVelocity: 0.7))
+            }
+            .padding([.leading, .trailing])
+            .modifier(ClassicStyle(isClassic: .constant(true)))
+            .navigationBarItems(trailing: NavigationLink(destination: Settings(), isActive: self.$isSettingsActive) {
+                Image(systemName: "gear")
+                    .resizable()
+                    .frame(width: 30, height: 30)
+                    .accessibility(label: Text("Settings"))
+            })
+        }
+    }
+}
+
+struct ClassicStyle: ViewModifier {
+    @Environment(\.colorScheme) var colorScheme
+    @ObservedObject var themes = Themes.sharedInstance
+    @Binding var isClassic: Bool
+    func body(content: Content) -> some View {
+        Group  {
+            if isClassic {
+                content
+                    .navigationBarTitle(Text("TipTok"), displayMode: .inline)
                     .background(NavigationConfigurator { nc in
                         nc.navigationBar.barTintColor = (self.colorScheme == .dark ? .black : self.themes.mainColor)
                         nc.navigationBar.titleTextAttributes = [.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? .black : self.themes.mainColor), isFlat: true)!]
                         nc.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? .black : self.themes.mainColor), isFlat: true)
                     })
-                    .navigationBarItems(trailing: NavigationLink(destination: Settings(), isActive: self.$isSettingsActive) {
-                        Image(systemName: "gear")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                            .accessibility(label: Text("Settings"))
-                    })
+            } else {
+                content.navigationBarTitle(Text("TipTok"), displayMode: .automatic)
             }
         }
-        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
+
 
 struct MainPageSwiftUI_Previews: PreviewProvider {
     static var previews: some View {

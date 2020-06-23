@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import ChameleonFramework
 
 struct NavigationConfigurator: UIViewControllerRepresentable {
     var configure: (UINavigationController) -> Void = { _ in }
@@ -17,6 +18,7 @@ struct NavigationConfigurator: UIViewControllerRepresentable {
     
     func updateUIViewController(_ uiViewController: UIViewController, context: UIViewControllerRepresentableContext<NavigationConfigurator>) {
         if let nc = uiViewController.navigationController {
+            nc.setStatusBarStyle(UIStatusBarStyleContrast)  
             self.configure(nc)
         }
     }

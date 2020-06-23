@@ -40,6 +40,7 @@ struct KeypadButton: View {
                     .padding()
                     .accessibility(label: Text(self.text))
                     .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 36)))
+                    
             }
             .cornerRadius(2)
         }

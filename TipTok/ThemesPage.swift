@@ -71,6 +71,7 @@ struct ThemesPage: View {
             }
             .padding()
         }
+        .navigationBarTitle(Text("Color Picker"))
     }
 }
 
