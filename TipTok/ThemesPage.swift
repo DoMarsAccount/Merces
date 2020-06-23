@@ -29,11 +29,11 @@ struct ColorSelectionItem: View {
         Button(action: {
             switch self.themeItem {
             case .MainColor:
-                self.themes.setMainColor(to: self.color)
+                self.themes.mainColor = self.color
             case .Background:
-                self.themes.setBackgroundColor(to: self.color)
+                self.themes.background = self.color
             case .ViewColor:
-                self.themes.setViewBackgroundColor(to: self.color)
+                self.themes.viewColor = self.color
             }
         }) {
             ZStack {

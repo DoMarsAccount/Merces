@@ -92,3 +92,29 @@ class UserPreferences: ObservableObject {
         }
     }
 }
+
+extension UserDefaults {
+    func colorForKey(key: String) -> UIColor? {
+        var color: UIColor?
+        if let colorData = data(forKey: key) {
+            do {
+            try color = NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(colorData) as? UIColor
+            } catch {
+                return nil
+            }
+        }
+        return color
+    }
+    
+    func setColor(color: UIColor?, forKey key: String) {
+        var colorData: NSData?
+        if let color = color {
+            do {
+                try colorData = NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: false) as NSData?
+            } catch {
+                print("Color failed in conversion to type Data")
+            }
+            set(colorData, forKey: key)
+        }
+    }
+}

@@ -10,9 +10,8 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        ThemesPage()
-//        MainPageSwiftUI()
-//            .environmentObject(UserPreferences.sharedInstance)
+        MainPageSwiftUI()
+            .environmentObject(UserPreferences.sharedInstance)
             
     }
 }

@@ -52,41 +52,42 @@ enum ThemeItem {
 
 class Themes: ObservableObject {
     static let sharedInstance: Themes = Themes()
-    @Environment(\.colorScheme) var colorScheme
-    @Published var mainColor: UIColor
-    @Published var background: UIColor
-    @Published var viewColor: UIColor
-    
     private let coloring = Coloring()
+    @Environment(\.colorScheme) var colorScheme
+    @Published var mainColor: UIColor {
+        didSet {
+            mUserDefaults!.setValue("\(mainColor)", forKey: "phoneMainColor")
+        }
+    }
+    @Published var background: UIColor {
+        didSet {
+            mUserDefaults!.setValue("\(background)", forKey: "phoneBackgroundColor")
+        }
+    }
+    @Published var viewColor: UIColor {
+        didSet {
+            mUserDefaults!.setValue("\(viewColor)", forKey: "phoneViewBackgroundColor")
+        }
+    }
     
     init() {
         if let currentMainColor = mUserDefaults?.string(forKey: "phoneMainColor") {
             mainColor = coloring.uiColor(for: currentMainColor)
+        } else {
+            mainColor = coloring.uiColorValue(for: .MercesGreen)
         }
-        mainColor = coloring.uiColorValue(for: .MercesGreen)
         
         if let currentBackgroundColor = mUserDefaults?.string(forKey: "phoneBackgroundColor") {
             background = coloring.uiColor(for: currentBackgroundColor)
+        } else {
+            background = coloring.uiColorValue(for: .LightGray)
         }
-        background = coloring.uiColorValue(for: .LightGray)
         
         if let currentViewBackgroundColor = mUserDefaults?.string(forKey: "phoneViewBackgroundColor") {
             viewColor = coloring.uiColor(for: currentViewBackgroundColor)
+        } else {
+            viewColor = coloring.uiColorValue(for: .White)
         }
-        viewColor = coloring.uiColorValue(for: .White)
-    }
-    
-    func setMainColor(to color: UIColor) {
-        mUserDefaults?.set("\(color)", forKey: "phoneMainColor")
-        self.mainColor = color
-    }
-    func setBackgroundColor(to color: UIColor) {
-        mUserDefaults?.set("\(color)", forKey: "phoneBackgroundColor")
-        self.background = color
-    }
-    func setViewBackgroundColor(to color: UIColor) {
-        mUserDefaults?.set("\(color)", forKey: "phoneViewBackgroundColor")
-        self.viewColor = color
     }
     
     func isActiveColor(uicolor: UIColor, for themeItem: ThemeItem) -> Bool {
@@ -176,6 +177,7 @@ class Coloring {
                 return TTColor
             }
         }
+        print("Couldn't successfuly find color")
         return .MercesGreen
     }
     

@@ -11,6 +11,7 @@ import SwiftUI
 struct PersonalizationPage: View {
     @Environment(\.colorScheme) var colorScheme
     @State private var activeField: EditableTextFields = .none
+    @State private var isThemesPageActive: Bool = false
     @EnvironmentObject var userPrefs: UserPreferences
     @ObservedObject var venueEditor = UserPreferences.sharedInstance.venueEditor
     @ObservedObject var themes = Themes.sharedInstance
@@ -34,6 +35,12 @@ struct PersonalizationPage: View {
             }
         }
         .navigationBarTitle(Text("Personalize").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18))))
+        .navigationBarItems(trailing: NavigationLink(destination: ThemesPage(), isActive: self.$isThemesPageActive, label: {
+            Image(systemName: "eyedropper.halffull")
+            .resizable()
+            .frame(width: 30, height: 30)
+            .accessibility(label: Text("Settings"))
+        }))
     }
 }
 
