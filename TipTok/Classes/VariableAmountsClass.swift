@@ -167,14 +167,18 @@ class VariableAmountsClass
     }
     
     func useTaxAmount(_ doEditTaxAmount: Bool) {
-        var locallyCalculatedTaxAmount = calcModel.subtotal * UserPreferences.sharedInstance.localSalesTax
-        
-        if mUserDefaults?.double(forKey: "userLocalSalesTax") != 0.0 {
-            locallyCalculatedTaxAmount = calcModel.subtotal * UserPreferences.sharedInstance.localSalesTax
-        }
-        
-        if doEditTaxAmount != true {
-            calcModel.taxAmount = locallyCalculatedTaxAmount
+        if !UserPreferences.sharedInstance.subtotalIsPostTax {
+            var locallyCalculatedTaxAmount = calcModel.subtotal * UserPreferences.sharedInstance.localSalesTax
+            
+            if mUserDefaults?.double(forKey: "userLocalSalesTax") != 0.0 {
+                locallyCalculatedTaxAmount = calcModel.subtotal * UserPreferences.sharedInstance.localSalesTax
+            }
+            
+            if doEditTaxAmount != true {
+                calcModel.taxAmount = locallyCalculatedTaxAmount
+            }
+        } else {
+            calcModel.taxAmount = 0.0
         }
     }
     

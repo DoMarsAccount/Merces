@@ -36,6 +36,7 @@ struct ValuesView: View {
                             .modifier(scalingEffect())
                         
                     HStack {
+                        if !UserPreferences.sharedInstance.subtotalIsPostTax {
                         Text("Sales Tax")
                             .vCardStyled(value: self.$wCalcModel.taxAmount, style: .currency, backgroundColor: Color("MercesGreen"))
                             .onTapGesture {
@@ -57,9 +58,19 @@ struct ValuesView: View {
                             }
                             .accessibility(label: Text("Party Size: \(nForm.formatIntegerNumbers(self.wCalcModel.partySize))"))
                             .modifier(scalingEffect())
-    //                    }
+                        } else {
+                            Text("Party of")
+                            .cardStyled(value: self.$wCalcModel.partySize.double, style: .integer, backgroundColor: Color("MercesGreen"))
+                            .onTapGesture {
+                                self.isPartySizeKeypadPresented.toggle()
+                            }
+                            .sheet(isPresented: self.$isPartySizeKeypadPresented) {
+                                WatchKeypad(value: self.$wCalcModel.partySize.double, isPresented: self.$isPartySizeKeypadPresented, activeField: .constant(.partySize))
+                            }
+                            .accessibility(label: Text("Party Size: \(nForm.formatIntegerNumbers(self.wCalcModel.partySize))"))
+                            .modifier(scalingEffect())
+                        }
                     }
-//                    }
                 
 //                    HStack {
                         Text("Tip %")

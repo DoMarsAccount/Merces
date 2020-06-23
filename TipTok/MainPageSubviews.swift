@@ -32,21 +32,23 @@ struct MainPageTopSubview: View {
             
             
             HStack {
-                Button(action: {
-                    if self.userPrefs.localSalesTax == 0.0 {
-                        self.activeField = EditableTextFields.salesTax
+                if !UserPreferences.sharedInstance.subtotalIsPostTax {
+                    Button(action: {
+                        if self.userPrefs.localSalesTax == 0.0 {
+                            self.activeField = EditableTextFields.salesTax
+                        }
+                    }) {
+                        VStack {
+                            Text("Sales Tax")
+                                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                                .scaleEffect(self.activeField == EditableTextFields.salesTax ? highlightedScale : 1.0)
+                                .minimumScaleFactor(0.75)
+                            CurrencyView(value: self.$calcModel.taxAmount, isEnabled: self.userPrefs.localSalesTax == 0.0)
+                        }
                     }
-                }) {
-                    VStack {
-                        Text("Sales Tax")
-                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                            .scaleEffect(self.activeField == EditableTextFields.salesTax ? highlightedScale : 1.0)
-                            .minimumScaleFactor(0.75)
-                        CurrencyView(value: self.$calcModel.taxAmount, isEnabled: self.userPrefs.localSalesTax == 0.0)
-                    }
+                    .accentColor(.primary)
+                    .accessibility(label: Text("Sales Tax \(nForm.roundForCurrency(number: self.calcModel.taxAmount))"))
                 }
-                .accentColor(.primary)
-                .accessibility(label: Text("Sales Tax \(nForm.roundForCurrency(number: self.calcModel.taxAmount))"))
                 
                 Button(action: {
                     self.activeField = EditableTextFields.partySize

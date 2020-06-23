@@ -86,13 +86,6 @@ class CalculationsModel: ObservableObject {
     /// Replaces the updateValues method formerly found in VariableAmountsClass
     func computeTippingValues() -> (formattedBillAmount: String, formattedTaxAmount: String, formattedTipRate: String, numberOfPeoplePaying: String, tipAmount: String, totalAmount: String, totalAmountPerPerson: String) {
         
-        self.objectWillChange.send()
-        
-//        if UserPreferences.sharedInstance.subtotalIsPostTax {
-//            subtotal = subtotal / (1 + UserPreferences.sharedInstance.localSalesTax)
-//            taxAmount = subtotal * UserPreferences.sharedInstance.localSalesTax
-//        }
-        
         tipAmount = (UserPreferences.sharedInstance.tipIncludeTax ? (subtotal + taxAmount) * (tipRate) : subtotal * (tipRate))
         totalAmount = subtotal + tipAmount + taxAmount
         totalAmountPerPerson = totalAmount / Double(partySize)
