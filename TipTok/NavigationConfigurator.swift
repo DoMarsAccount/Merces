@@ -33,43 +33,25 @@ struct NavigationConfigurator_Previews: PreviewProvider {
 
 struct NavigationBarModifier: ViewModifier {
     @Environment(\.colorScheme) var colorScheme
-    var backgroundColor: UIColor?
     
-    init(backgroundColor: UIColor?) {
-        self.backgroundColor = backgroundColor
+    func body(content: Content) -> some View {
         let coloredAppearance = UINavigationBarAppearance()
         coloredAppearance.configureWithTransparentBackground()
-        coloredAppearance.backgroundColor = colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark
-        coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: self.backgroundColor, isFlat: true)!]
-        coloredAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: self.backgroundColor, isFlat: true)!]
+        coloredAppearance.backgroundColor = (colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark)
+        coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark, isFlat: true)!]
+        coloredAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark, isFlat: true)!]
         
         UINavigationBar.appearance().standardAppearance = coloredAppearance
         UINavigationBar.appearance().compactAppearance = coloredAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
-        UINavigationBar.appearance().tintColor = UIColor(contrastingBlackOrWhiteColorOn: self.backgroundColor, isFlat: true)!
-
-    }
-    
-    func body(content: Content) -> some View {
-        ZStack{
+        UINavigationBar.appearance().tintColor = UIColor(contrastingBlackOrWhiteColorOn: colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark, isFlat: true)!
+        
+        return ZStack{
             content
             VStack {
-                GeometryReader { geometry in
-//                    Color(self.backgroundColor ?? .clear)
-//                        .frame(height: geometry.safeAreaInsets.top)
-//                        .edgesIgnoringSafeArea(.top)
-                    Spacer()
-                }
+                Spacer()
             }
         }
     }
 }
 
-
-extension View {
- 
-    func navigationBarColor(_ backgroundColor: UIColor?) -> some View {
-        self.modifier(NavigationBarModifier(backgroundColor: backgroundColor))
-    }
-
-}

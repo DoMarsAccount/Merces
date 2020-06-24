@@ -76,7 +76,6 @@ struct ListStyleMainPage: View {
                         .resizable()
                         .frame(width: 30, height: 30)
                         .accessibility(label: Text("Settings"))
-                        .accentColor(.primary)
                 })
             }
         }

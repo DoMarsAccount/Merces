@@ -10,11 +10,15 @@ import SwiftUI
 import StoreKit
 
 struct SettingsRow: View {
+    @Environment(\.colorScheme) var colorScheme
     @Binding var text: String
     @Binding var isEnabled: Bool
     
     var body: some View {
-        Toggle(isOn: self.$isEnabled) {
+        let toggleApperance = UISwitch.appearance()
+        toggleApperance.onTintColor = colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark
+        
+        return Toggle(isOn: self.$isEnabled) {
             Text(self.text)
                 .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
         }

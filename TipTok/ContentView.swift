@@ -9,14 +9,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         NavigationView {
             ListStyleMainPage()
 //            MainPageSwiftUI()
                 .environmentObject(UserPreferences.sharedInstance)
         }
+        .modifier(NavigationBarModifier())
 //        .navigationViewStyle(StackNavigationViewStyle())
-        .navigationBarColor(Themes.sharedInstance.mainColor)
             
     }
 }
