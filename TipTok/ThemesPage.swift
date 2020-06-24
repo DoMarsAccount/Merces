@@ -64,6 +64,8 @@ struct ThemesPage: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
+                ListInputRow(activeField: .constant(.none), value: .constant(123.45), inputStyle: .Currency, title: "Example", field: .none, background: Themes.sharedInstance.mainColor)
+                
                 AppearancePicker(appearance: $appearance)
                 ThemeItemColorPicker(themeItem: .MainColor)
                 ThemeItemColorPicker(themeItem: .ViewColor)
