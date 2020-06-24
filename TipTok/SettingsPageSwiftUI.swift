@@ -22,13 +22,17 @@ struct SettingsRow: View {
 }
 
 struct Settings: View {
+    @Environment(\.colorScheme) var colorScheme
+    @ObservedObject var themes: Themes = Themes.sharedInstance
     @EnvironmentObject var preferences: UserPreferences
     @State private var isPersonalizePageActive: Bool = false
     @State private var isThemesPageActive: Bool = false
     
     var body: some View {
+        UITableView.appearance().backgroundColor = .clear
+        UITableViewCell.appearance().backgroundColor = .clear
 //        NavigationView {
-            Form {
+       return Form {
                 Section(header: Text("General").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
                     NavigationLink(destination: PersonalizationPage(), isActive: self.$isPersonalizePageActive) {
                         Text("Personalize")
@@ -75,6 +79,9 @@ struct Settings: View {
 //                    Text("About Merces").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
 //                }
             }
+            .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .dark ? self.themes.backgroundColorDark : self.themes.background, isFlat: true)))
+            .background(Color(self.colorScheme == .dark ? self.themes.backgroundColorDark : self.themes.background))
+            .edgesIgnoringSafeArea(.bottom)
             .navigationBarTitle(Text("Settings").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18))))
 //        }
     }

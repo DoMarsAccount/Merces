@@ -81,7 +81,7 @@ struct MainPageTopSubview: View {
             }
 //                .padding(.top)
         }
-        .modifier(AdaptiveCardBackground(backgroundColor: Color(Themes.sharedInstance.viewColor)))
+        .modifier(AdaptiveCardBackground(backgroundColor: Themes.sharedInstance.viewColor))
     }
 }
 
@@ -135,7 +135,7 @@ struct MainPageMiddleSubview: View {
                 }.accessibility(label: Text("Service Level: \(self.calcModel.service.name)"))
     //            .padding(.top)
             }
-            .modifier(AdaptiveCardBackground(backgroundColor: Color(Themes.sharedInstance.viewColor)))
+            .modifier(AdaptiveCardBackground(backgroundColor: Themes.sharedInstance.viewColor))
         }
     }
 }
@@ -183,7 +183,7 @@ struct MainPageBottomSubview: View {
                 }
             }
 //            .frame(maxHeight: geo.size.height / 4)
-            .modifier(AdaptiveCardBackground(backgroundColor: Color(Themes.sharedInstance.viewColor)))
+            .modifier(AdaptiveCardBackground(backgroundColor: Themes.sharedInstance.viewColor))
         }
     }
 }

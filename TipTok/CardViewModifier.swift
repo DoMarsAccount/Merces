@@ -10,7 +10,7 @@ import SwiftUI
 
 struct AdaptiveCardBackground: ViewModifier {
     @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
-    var backgroundColor: Color
+    var backgroundColor: UIColor
     var usePadding: Bool = true
     
     func body(content: Content) -> some View {
@@ -18,7 +18,7 @@ struct AdaptiveCardBackground: ViewModifier {
             if userPrefs.useFlatStyleViews {
                 content.modifier(MercesStyleCard(usePadding: self.usePadding, backgroundColor: self.backgroundColor))
             } else {
-                content.modifier(TipTokStyleCard(usePadding: self.usePadding, backgroundColor: self.backgroundColor))
+                content.modifier(TipTokStyleCard(usePadding: self.usePadding, backgroundColor: Color(self.backgroundColor)))
             }
         }
     }
@@ -27,7 +27,7 @@ struct AdaptiveCardBackground: ViewModifier {
 struct MercesStyleCard: ViewModifier {
     @Environment(\.colorScheme) var colorScheme
     var usePadding: Bool = true
-    var backgroundColor: Color
+    var backgroundColor: UIColor
     
     func body(content: Content) -> some View {
         GeometryReader { geo in
@@ -36,9 +36,9 @@ struct MercesStyleCard: ViewModifier {
                 .frame(width: geo.size.width, height: geo.size.height)
                 .background(
                     RoundedRectangle(cornerRadius: 2.5, style: .continuous)
-                        .foregroundColor(self.backgroundColor)
+                        .foregroundColor(Color(self.backgroundColor))
                 )
-                .border(Color.primary, width: 1)
+                .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.backgroundColor, isFlat: true)), width: 1)
                 .clipShape(RoundedRectangle(cornerRadius: 2.5, style: .continuous))
         }
     }

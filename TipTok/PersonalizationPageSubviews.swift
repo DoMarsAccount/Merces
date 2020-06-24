@@ -9,18 +9,20 @@
 import SwiftUI
 
 struct ThreeDecimalPercentageView: View {
+    @Environment(\.colorScheme) var colorScheme
     @Binding var value: Double
     var body: some View {
         Text(nForm.roundForPercentWithThreeDecimalPlaces(number: self.value))
             .frame(minWidth: 0, maxWidth: .infinity)
             .padding()
-            .border(Color.primary, width: 2)
+            .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.viewColor : Themes.sharedInstance.viewColorDark, isFlat: true)), width: 2)
             .cornerRadius(2)
             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
     }
 }
 
 struct PPageTopView: View {
+    @Environment(\.colorScheme) var colorScheme
     @Binding var activeField: EditableTextFields
     @EnvironmentObject var userPrefs: UserPreferences
     
@@ -39,8 +41,8 @@ struct PPageTopView: View {
                 }
             }
             .frame(maxHeight: geo.size.height / 3)
-            .modifier(AdaptiveCardBackground(backgroundColor: Color(Themes.sharedInstance.viewColor)))
-            .accentColor(.primary)
+            .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? Themes.sharedInstance.viewColor : Themes.sharedInstance.viewColorDark))
+            .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.viewColor : Themes.sharedInstance.viewColorDark, isFlat: true)))
             .accessibility(label: Text("Local Sales Tax: \(nForm.roundForPercentWithTwoDecimalPlaces(self.userPrefs.localSalesTax)))"))
             .accessibility(hint: Text("Updates "))
         }
@@ -48,6 +50,7 @@ struct PPageTopView: View {
 }
 
 struct PPageMiddleView: View {
+    @Environment(\.colorScheme) var colorScheme
     @Binding var activeField: EditableTextFields
     @EnvironmentObject var userPrefs: UserPreferences
     @ObservedObject var venueEditor = UserPreferences.sharedInstance.venueEditor
@@ -77,13 +80,13 @@ struct PPageMiddleView: View {
                             Text(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venueEditor.selectedVenue, service: .Bad)))
                                 .frame(minWidth: 0, maxWidth: .infinity)
                                 .padding()
-                                .border(Color.primary, width: 2)
+                                .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.viewColor : Themes.sharedInstance.viewColorDark, isFlat: true)), width: 2)
                                 .cornerRadius(2)
                                 .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                             
                         }
                     }
-                    .accentColor(.primary)
+                    .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.viewColor : Themes.sharedInstance.viewColorDark, isFlat: true)))
                     .accessibility(label: Text("Bad Service Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venueEditor.selectedVenue, service: .Bad)))"))
                     
                     Button(action: {
@@ -99,12 +102,12 @@ struct PPageMiddleView: View {
                             Text(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venueEditor.selectedVenue, service: .Good)))
                             .frame(minWidth: 0, maxWidth: .infinity)
                             .padding()
-                            .border(Color.primary, width: 2)
+                            .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.viewColor : Themes.sharedInstance.viewColorDark, isFlat: true)), width: 2)
                             .cornerRadius(2)
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                         }
                     }
-                    .accentColor(.primary)
+                    .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.viewColor : Themes.sharedInstance.viewColorDark, isFlat: true)))
                     .accessibility(label: Text("Good Service Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venueEditor.selectedVenue, service: .Good)))"))
                     
                     Button(action: {
@@ -120,17 +123,18 @@ struct PPageMiddleView: View {
                             Text(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venueEditor.selectedVenue, service: .Great)))
                             .frame(minWidth: 0, maxWidth: .infinity)
                             .padding()
-                            .border(Color.primary, width: 2)
+                            .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.viewColor : Themes.sharedInstance.viewColorDark, isFlat: true)), width: 2)
                             .cornerRadius(2)
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                         }
                     }
-                    .accentColor(.primary)
+                    .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.viewColor : Themes.sharedInstance.viewColorDark, isFlat: true)))
                     .accessibility(label: Text("Great Service Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venueEditor.selectedVenue, service: .Great)))"))
                     
                 }.padding(.top)
             }
-            .modifier(AdaptiveCardBackground(backgroundColor: Color(Themes.sharedInstance.viewColor)))
+            .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.viewColor : Themes.sharedInstance.viewColorDark, isFlat: true)))
+            .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? Themes.sharedInstance.viewColor : Themes.sharedInstance.viewColorDark))
         }
     }
 }

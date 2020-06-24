@@ -54,15 +54,16 @@ struct Keypad: View {
             }
         }
         .foregroundColor(self.colorScheme == .dark ? Color(UIColor(contrastingBlackOrWhiteColorOn: themes.mainColorDark, isFlat: true)) : Color(UIColor(contrastingBlackOrWhiteColorOn: themes.mainColor, isFlat: true)))
-        .modifier(AdaptiveCardBackground(backgroundColor: Color(self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark), usePadding: false))
+        .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark, usePadding: false))
     }
 }
 
 struct CondensedKeypadButton: ViewModifier {
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
     func body(content: Content) -> some View {
         content
-            .border(Color.primary, width: 1)
+            .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark, isFlat: true)), width: 1)
             .clipShape(RoundedRectangle(cornerRadius: self.userPrefs.useFlatStyleViews ? 2.5 : 16, style: .continuous))
     }
 }

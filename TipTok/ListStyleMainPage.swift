@@ -25,58 +25,60 @@ struct ListStyleMainPage: View {
     
     var body: some View {
         GeometryReader { geo in
-            VStack {
+            ZStack {
+                
+                Color(self.colorScheme == .dark ? self.themes.backgroundColorDark : self.themes.background)
+                    .edgesIgnoringSafeArea(.all)
+                
                 VStack {
-                    ListInputRow(activeField: self.$activeField, value: self.$calcModel.subtotal, inputStyle: .Currency, title: "Subtotal", field: .subtotal, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
-                    
-                    if !self.userPrefs.subtotalIsPostTax {
-                        ListInputRow(activeField: self.$activeField, value: self.$calcModel.taxAmount, inputStyle: .Currency, title: "Sales Tax", field: .salesTax, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
-                    }
-                    
-                    ListInputRow(activeField: self.$activeField, value: self.$calcModel.partySize.double, inputStyle: .Integer, title: "Party Size", field: .partySize, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
-                    
-                    ListInputRow(activeField: self.$activeField, value: self.$calcModel.tipRate, inputStyle: .TwoDecimalPercent, title: "Tip %", field: .tipRate, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
-                    
-//                    HStack {
-//
-//                    }
-                }
-                
-                ZStack {
-                
-                    VenueSelectionView(activeField: self.$activeField)
-                        .offset(x: self.activeField == .venue ? 0 : UIScreen.main.bounds.maxX)
-                
-                    Keypad(activeField: self.$activeField)
-                        .offset(x: (self.activeField != .none && self.activeField != .venue) ? 0 : UIScreen.main.bounds.maxX)
-                    
                     VStack {
-                        if (self.calcModel.tipAmount != 0) {
-                            ListDisplayRow(value: self.$calcModel.tipAmount, inputStyle: .Currency, title: "Tip Amount")
+                        ListInputRow(activeField: self.$activeField, value: self.$calcModel.subtotal, inputStyle: .Currency, title: "Subtotal", field: .subtotal, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
+                        
+                        if !self.userPrefs.subtotalIsPostTax {
+                            ListInputRow(activeField: self.$activeField, value: self.$calcModel.taxAmount, inputStyle: .Currency, title: "Sales Tax", field: .salesTax, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
                         }
                         
-                        if (self.calcModel.partySize != 1) {
-                            ListDisplayRow(value: self.$calcModel.totalAmountPerPerson, inputStyle: .Currency, title: "Total Per Person")
-                        }
+                        ListInputRow(activeField: self.$activeField, value: self.$calcModel.partySize.double, inputStyle: .Integer, title: "Party Size", field: .partySize, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
                         
-                        ListDisplayRow(value: self.$calcModel.totalAmount, inputStyle: .Currency, title: "Grand Total")
+                        ListInputRow(activeField: self.$activeField, value: self.$calcModel.tipRate, inputStyle: .TwoDecimalPercent, title: "Tip %", field: .tipRate, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
                     }
-                    .offset(x: self.activeField == .none ? 0 : UIScreen.main.bounds.maxX)
                     
+                    ZStack {
+                    
+                        VenueSelectionView(activeField: self.$activeField)
+                            .offset(x: self.activeField == .venue ? 0 : UIScreen.main.bounds.maxX)
+                    
+                        Keypad(activeField: self.$activeField)
+                            .offset(x: (self.activeField != .none && self.activeField != .venue) ? 0 : UIScreen.main.bounds.maxX)
+                        
+                        VStack {
+                            if (self.calcModel.tipAmount != 0) {
+                                ListDisplayRow(value: self.$calcModel.tipAmount, inputStyle: .Currency, title: "Tip Amount")
+                            }
+                            
+                            if (self.calcModel.partySize != 1) {
+                                ListDisplayRow(value: self.$calcModel.totalAmountPerPerson, inputStyle: .Currency, title: "Total Per Person")
+                            }
+                            
+                            ListDisplayRow(value: self.$calcModel.totalAmount, inputStyle: .Currency, title: "Grand Total")
+                        }
+                        .offset(x: self.activeField == .none ? 0 : UIScreen.main.bounds.maxX)
+                        
+                    }
+                    .frame(maxHeight: geo.size.height / 3)
+                    .minimumScaleFactor(0.75)
+                    .animation(.spring(response: 0.7, dampingFraction: 0.7, blendDuration: 1.0))
                 }
-                .frame(maxHeight: geo.size.height / 3)
-                .minimumScaleFactor(0.75)
-                .animation(.spring(response: 0.7, dampingFraction: 0.7, blendDuration: 1.0))
+                .padding()
+                .navigationBarTitle(Text("TipTok"), displayMode: .automatic)
+                .navigationBarItems(trailing: NavigationLink(destination: Settings(), isActive: self.$isSettingsActive) {
+                    Image(systemName: "gear")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .accessibility(label: Text("Settings"))
+                        .accentColor(.primary)
+                })
             }
-            .padding()
-            .navigationBarTitle(Text("TipTok"), displayMode: .automatic)
-            .navigationBarItems(trailing: NavigationLink(destination: Settings(), isActive: self.$isSettingsActive) {
-                Image(systemName: "gear")
-                    .resizable()
-                    .frame(width: 30, height: 30)
-                    .accessibility(label: Text("Settings"))
-                    .accentColor(.primary)
-            })
         }
     }
 }
@@ -121,7 +123,7 @@ struct ListInputRow: View {
                 .minimumScaleFactor(0.8)
             }
             .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.background, isFlat: true)))
-            .modifier(AdaptiveCardBackground(backgroundColor: Color(self.background)))
+            .modifier(AdaptiveCardBackground(backgroundColor: self.background))
             
         }
     }
@@ -156,6 +158,6 @@ struct ListDisplayRow: View {
             .minimumScaleFactor(0.8)
         }
         .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.viewColor : self.themes.viewColorDark, isFlat: true)))
-        .modifier(AdaptiveCardBackground(backgroundColor: Color(self.colorScheme == .light ? self.themes.viewColor : self.themes.viewColorDark)))
+        .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? self.themes.viewColor : self.themes.viewColorDark))
     }
 }

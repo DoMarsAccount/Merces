@@ -45,7 +45,7 @@ struct CondensedKeypad: View {
             }
         }
         .foregroundColor(self.colorScheme == .dark ? .primary : Color(UIColor(contrastingBlackOrWhiteColorOn: themes.background, isFlat: true)))
-        .modifier(AdaptiveCardBackground(backgroundColor: Color(themes.mainColor), usePadding: false))
+        .modifier(AdaptiveCardBackground(backgroundColor: themes.mainColor, usePadding: false))
     }
 }
 

@@ -59,7 +59,7 @@ struct MercesStyleTextField: ViewModifier {
         content
         .frame(maxWidth: .infinity)
 //        .padding()
-        .border(Color.primary, width: 1)
+        .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark, isFlat: true)), width: 1)
             .clipShape(RoundedRectangle(cornerRadius: 2.5, style: .circular))
         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 24)))
         .minimumScaleFactor(0.75)

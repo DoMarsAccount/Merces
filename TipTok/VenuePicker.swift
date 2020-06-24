@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct VenuePicker: View {
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var calcModel = varAmts.calcModel
     var body: some View {
         GeometryReader { geo in
@@ -24,7 +25,7 @@ struct VenuePicker: View {
             }
             .padding()
             .frame(width: geo.size.width, height: geo.size.height)
-            .border(Color.primary, width: 2)
+            .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.viewColor : Themes.sharedInstance.viewColorDark, isFlat: true)), width: 2)
             .cornerRadius(2)
         }
     }
@@ -69,11 +70,11 @@ struct VenueView: View {
                     Text(self.venue.name)
                         .padding(.top)
                         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                        .foregroundColor(self.calcModel.selectedVenue == self.venue ? Color.green : Color.primary)
+                        .foregroundColor(self.calcModel.selectedVenue == self.venue ? Color.green : Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark, isFlat: true)))
                 }
             }
             .frame(width: geo.size.width, height: geo.size.height)
-            .border(self.calcModel.selectedVenue == self.venue ? Color.green : Color.primary, width: 4)
+            .border(self.calcModel.selectedVenue == self.venue ? Color.green : Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark, isFlat: true)), width: 4)
             .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
             .onTapGesture {
                 self.calcModel.selectedVenue = self.venue
@@ -102,7 +103,7 @@ struct VenueSelectionView: View {
                     VenueView(venue: .delivery, activeField: self.$activeField)
                 }
             }
-            .modifier(AdaptiveCardBackground(backgroundColor: Color(self.themes.mainColor)))
+            .modifier(AdaptiveCardBackground(backgroundColor: self.themes.mainColor))
         }
     }
 }
