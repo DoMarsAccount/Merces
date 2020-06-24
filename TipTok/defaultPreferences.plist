@@ -62,6 +62,12 @@
 	<string>UIExtendedSRGBColorSpace 0.42 0.67 0.55 1</string>
 	<key>phoneViewBackgroundColor</key>
 	<string>UIExtendedSRGBColorSpace 1 1 1 1</string>
+	<key>mainColorDark</key>
+	<data></data>
+	<key>backgroundColorDark</key>
+	<data></data>
+	<key>viewColorDark</key>
+	<data></data>
 	<key>changeColorAlertShown</key>
 	<false/>
 	<key>setupAlertShown</key>

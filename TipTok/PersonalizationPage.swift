@@ -19,7 +19,7 @@ struct PersonalizationPage: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                Color(self.colorScheme == .dark ? .black : self.themes.background)
+                Color(self.colorScheme == .dark ? self.themes.backgroundColorDark : self.themes.background)
                     .edgesIgnoringSafeArea(.all)
                 
                 VStack {

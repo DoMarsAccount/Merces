@@ -9,16 +9,6 @@
 import SwiftUI
 import ChameleonFramework
 
-enum Appearance: CaseIterable, Hashable, Identifiable {
-    case Light
-    case Dark
-    
-    var name: String {
-        return "\(self)"
-    }
-    var id: Appearance { self }
-}
-
 struct ColorSelectionItem: View {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var themes: Themes = Themes.sharedInstance
@@ -29,16 +19,19 @@ struct ColorSelectionItem: View {
         Button(action: {
             switch self.themeItem {
             case .MainColor:
-                self.themes.mainColor = self.color
+                if self.themes.appearance == .Light { self.themes.mainColor = self.color }
+                else { self.themes.mainColorDark = self.color }
             case .Background:
-                self.themes.background = self.color
+                if self.themes.appearance == .Light { self.themes.background = self.color }
+                else { self.themes.backgroundColorDark = self.color }
             case .ViewColor:
-                self.themes.viewColor = self.color
+                if self.themes.appearance == .Light { self.themes.viewColor = self.color }
+                else { self.themes.viewColorDark = self.color }
             }
         }) {
             ZStack {
                 Circle()
-                    .foregroundColor(colorScheme == .dark ? .white : .black)
+                    .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.viewColor : self.themes.viewColorDark, isFlat: true)))
                 
                 Circle()
                     .foregroundColor(.green)
@@ -57,16 +50,15 @@ struct ColorSelectionItem: View {
 struct ThemesPage: View {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var themes: Themes = Themes.sharedInstance
-    @State private var appearance: Appearance = .Light
     var body: some View {
         ZStack {
-            Color(self.colorScheme == .dark ? .black : self.themes.background)
+            Color(self.colorScheme == .dark ? self.themes.backgroundColorDark : self.themes.background)
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
                 ListInputRow(activeField: .constant(.none), value: .constant(123.45), inputStyle: .Currency, title: "Example", field: .none, background: Themes.sharedInstance.mainColor)
                 
-                AppearancePicker(appearance: $appearance)
+                AppearancePicker(appearance: self.$themes.appearance)
                 ThemeItemColorPicker(themeItem: .MainColor)
                 ThemeItemColorPicker(themeItem: .ViewColor)
                 ThemeItemColorPicker(themeItem: .Background)
@@ -100,36 +92,37 @@ struct AppearancePicker: View {
 
 struct ThemeItemColorPicker: View {
     @ObservedObject var themes: Themes = Themes.sharedInstance
+    @Environment(\.colorScheme) var colorScheme
     var themeItem: ThemeItem
     var body: some View {
         VStack(spacing: 0) {
             
             if self.themeItem == .MainColor {
-                Text("Main Color: \(Coloring().TTColorRepresentation(for: self.themes.mainColor).name)")
+                Text("Inputs Color: \(Coloring().TTColorRepresentation(for: self.themes.appearance == Appearance.Light ? self.themes.mainColor : self.themes.mainColorDark).name)")
                     .padding()
                     .frame(maxWidth: .infinity)
                     .font(.system(size: 24))
-                    .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.themes.mainColor, isFlat: true)))
-                    .background(Color(self.themes.mainColor))
-                    .border(Color.primary)
+                    .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.themes.appearance == .Light ? self.themes.mainColor : self.themes.mainColorDark, isFlat: true)))
+                    .background(Color(self.themes.appearance == .Light ? self.themes.mainColor : self.themes.mainColorDark))
+                    .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.background : self.themes.backgroundColorDark, isFlat: true)))
                 
             } else if self.themeItem == .Background {
-                Text("App Background Color: \(Coloring().TTColorRepresentation(for: self.themes.background).name)")
-                .padding()
-                .frame(maxWidth: .infinity)
-                .font(.system(size: 20))
-                .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.themes.background, isFlat: true)))
-                .background(Color(self.themes.background))
-                .border(Color.primary)
+                Text("App Background Color: \(Coloring().TTColorRepresentation(for: self.themes.appearance == Appearance.Light ? self.themes.background : self.themes.backgroundColorDark).name)")
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .font(.system(size: 20))
+                    .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.themes.appearance == .Light ? self.themes.background : self.themes.backgroundColorDark, isFlat: true)))
+                    .background(Color(self.themes.appearance == .Light ? self.themes.background : self.themes.backgroundColorDark))
+                    .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.background : self.themes.backgroundColorDark, isFlat: true)))
                 
             } else if self.themeItem == .ViewColor {
-                Text("View Color: \(Coloring().TTColorRepresentation(for: self.themes.viewColor).name)")
-                .padding()
-                .frame(maxWidth: .infinity)
-                .font(.system(size: 24))
-                .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.themes.viewColor, isFlat: true)))
-                .background(Color(self.themes.viewColor))
-                .border(Color.primary)
+                Text("Outputs Color: \(Coloring().TTColorRepresentation(for: self.themes.appearance == Appearance.Light ? self.themes.viewColor : self.themes.viewColorDark).name)")
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .font(.system(size: 24))
+                    .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.themes.appearance == .Light ? self.themes.viewColor : self.themes.viewColorDark, isFlat: true)))
+                    .background(Color(self.themes.appearance == .Light ? self.themes.viewColor : self.themes.viewColorDark))
+                    .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.background : self.themes.backgroundColorDark, isFlat: true)))
                 
             }
             
@@ -139,8 +132,9 @@ struct ThemeItemColorPicker: View {
                         ColorSelectionItem(themeItem: self.themeItem, color: TipTokColor.allCases[index].color)
                     }
                 }.padding()
-            }.background(Color(self.themes.viewColor))
+            }.background(Color(self.colorScheme == .light ? self.themes.viewColor : self.themes.viewColorDark))
             
-        }.border(Color.primary)
+        }
+        .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.background : self.themes.backgroundColorDark, isFlat: true)))
     }
 }

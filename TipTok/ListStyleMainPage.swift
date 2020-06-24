@@ -21,20 +21,21 @@ struct ListStyleMainPage: View {
     @State private var isSettingsActive: Bool = false
     @State private var activeField: EditableTextFields = .none
     @ObservedObject var calcModel: CalculationsModel = varAmts.calcModel
+    @ObservedObject var themes: Themes = Themes.sharedInstance
     
     var body: some View {
         GeometryReader { geo in
             VStack {
                 VStack {
-                    ListInputRow(activeField: self.$activeField, value: self.$calcModel.subtotal, inputStyle: .Currency, title: "Subtotal", field: .subtotal, background: Themes.sharedInstance.mainColor)
+                    ListInputRow(activeField: self.$activeField, value: self.$calcModel.subtotal, inputStyle: .Currency, title: "Subtotal", field: .subtotal, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
                     
                     if !self.userPrefs.subtotalIsPostTax {
-                        ListInputRow(activeField: self.$activeField, value: self.$calcModel.taxAmount, inputStyle: .Currency, title: "Sales Tax", field: .salesTax, background: Themes.sharedInstance.mainColor)
+                        ListInputRow(activeField: self.$activeField, value: self.$calcModel.taxAmount, inputStyle: .Currency, title: "Sales Tax", field: .salesTax, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
                     }
                     
-                    ListInputRow(activeField: self.$activeField, value: self.$calcModel.partySize.double, inputStyle: .Integer, title: "Party Size", field: .partySize, background: Themes.sharedInstance.mainColor)
+                    ListInputRow(activeField: self.$activeField, value: self.$calcModel.partySize.double, inputStyle: .Integer, title: "Party Size", field: .partySize, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
                     
-                    ListInputRow(activeField: self.$activeField, value: self.$calcModel.tipRate, inputStyle: .TwoDecimalPercent, title: "Tip %", field: .tipRate, background: Themes.sharedInstance.mainColor)
+                    ListInputRow(activeField: self.$activeField, value: self.$calcModel.tipRate, inputStyle: .TwoDecimalPercent, title: "Tip %", field: .tipRate, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
                     
 //                    HStack {
 //
@@ -127,10 +128,11 @@ struct ListInputRow: View {
 }
 
 struct ListDisplayRow: View {
+    @Environment(\.colorScheme) var colorScheme
+    @ObservedObject var themes: Themes = Themes.sharedInstance
     @Binding var value: Double
     var inputStyle: InputStyles
     var title: String
-    var background: Color = .white
     
     var body: some View {
         ZStack {
@@ -153,7 +155,7 @@ struct ListDisplayRow: View {
             .padding()
             .minimumScaleFactor(0.8)
         }
-        .foregroundColor(.primary)
-        .modifier(AdaptiveCardBackground(backgroundColor: self.background))
+        .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.viewColor : self.themes.viewColorDark, isFlat: true)))
+        .modifier(AdaptiveCardBackground(backgroundColor: Color(self.colorScheme == .light ? self.themes.viewColor : self.themes.viewColorDark)))
     }
 }

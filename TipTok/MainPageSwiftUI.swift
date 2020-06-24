@@ -18,7 +18,7 @@ struct MainPageSwiftUI: View {
     
     var body: some View {
         ZStack {
-            Color(colorScheme == .dark ? .black : themes.background)
+            Color(colorScheme == .dark ? themes.backgroundColorDark : themes.background)
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
@@ -68,9 +68,9 @@ struct ClassicStyle: ViewModifier {
                 content
                     .navigationBarTitle(Text("TipTok"), displayMode: .inline)
                     .background(NavigationConfigurator { nc in
-                        nc.navigationBar.barTintColor = (self.colorScheme == .dark ? .black : self.themes.mainColor)
-                        nc.navigationBar.titleTextAttributes = [.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? .black : self.themes.mainColor), isFlat: true)!]
-                        nc.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? .black : self.themes.mainColor), isFlat: true)
+                        nc.navigationBar.barTintColor = (self.colorScheme == .dark ? self.themes.mainColorDark : self.themes.mainColor)
+                        nc.navigationBar.titleTextAttributes = [.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? self.themes.mainColorDark : self.themes.mainColor), isFlat: true)!]
+                        nc.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? self.themes.mainColorDark : self.themes.mainColor), isFlat: true)
                     })
             } else {
                 content.navigationBarTitle(Text("TipTok"), displayMode: .automatic)

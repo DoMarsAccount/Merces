@@ -36,7 +36,7 @@ struct MercesStyleCard: ViewModifier {
                 .frame(width: geo.size.width, height: geo.size.height)
                 .background(
                     RoundedRectangle(cornerRadius: 2.5, style: .continuous)
-                        .foregroundColor(self.colorScheme == .dark ? Color("Eerie") : self.backgroundColor)
+                        .foregroundColor(self.backgroundColor)
                 )
                 .border(Color.primary, width: 1)
                 .clipShape(RoundedRectangle(cornerRadius: 2.5, style: .continuous))

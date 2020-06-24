@@ -50,10 +50,21 @@ enum ThemeItem {
     case ViewColor
 }
 
+enum Appearance: CaseIterable, Hashable, Identifiable {
+    case Light
+    case Dark
+    
+    var name: String {
+        return "\(self)"
+    }
+    var id: Appearance { self }
+}
+
 class Themes: ObservableObject {
     static let sharedInstance: Themes = Themes()
     private let coloring = Coloring()
     @Environment(\.colorScheme) var colorScheme
+    @Published var appearance: Appearance = .Light
     @Published var mainColor: UIColor {
         didSet {
             mUserDefaults!.setValue("\(mainColor)", forKey: "phoneMainColor")
@@ -69,8 +80,24 @@ class Themes: ObservableObject {
             mUserDefaults!.setValue("\(viewColor)", forKey: "phoneViewBackgroundColor")
         }
     }
+    @Published var mainColorDark: UIColor {
+        didSet {
+            mUserDefaults!.setColor(color: mainColorDark, forKey: "mainColorDark")
+        }
+    }
+    @Published var backgroundColorDark: UIColor {
+        didSet {
+            mUserDefaults!.setColor(color: backgroundColorDark, forKey: "backgroundColorDark")
+        }
+    }
+    @Published var viewColorDark: UIColor {
+        didSet {
+            mUserDefaults!.setColor(color: viewColorDark, forKey: "viewColorDark")
+        }
+    }
     
     init() {
+        // MARK: Light Mode colors
         if let currentMainColor = mUserDefaults?.string(forKey: "phoneMainColor") {
             mainColor = coloring.uiColor(for: currentMainColor)
         } else {
@@ -88,23 +115,60 @@ class Themes: ObservableObject {
         } else {
             viewColor = coloring.uiColorValue(for: .White)
         }
+        
+        if let currMainColorDark = mUserDefaults?.colorForKey(key: "mainColorDark") {
+            mainColorDark = currMainColorDark
+        } else {
+            mainColorDark = .black
+        }
+        
+        // MARK: Dark Mode colors
+        if let currBackgroundColorDark = mUserDefaults?.colorForKey(key: "backgroundColorDark") {
+            backgroundColorDark = currBackgroundColorDark
+        } else {
+            backgroundColorDark = .black
+        }
+        
+        if let currViewColorDark = mUserDefaults?.colorForKey(key: "viewColorDark") {
+            viewColorDark = currViewColorDark
+        } else {
+            viewColorDark = .black
+        }
+        
     }
     
     func isActiveColor(uicolor: UIColor, for themeItem: ThemeItem) -> Bool {
-        switch themeItem {
-        case .MainColor:
-            return uicolor == self.mainColor
-        case .Background:
-            return uicolor == self.background
-        case .ViewColor:
-            return uicolor == self.viewColor
+        if self.appearance == .Light {
+            switch themeItem {
+            case .MainColor:
+                return uicolor == self.mainColor
+            case .Background:
+                return uicolor == self.background
+            case .ViewColor:
+                return uicolor == self.viewColor
+            }
+        } else {
+            switch themeItem {
+            case .MainColor:
+                return uicolor == self.mainColorDark
+            case .Background:
+                return uicolor == self.backgroundColorDark
+            case .ViewColor:
+                return uicolor == self.viewColorDark
+            }
         }
     }
     
     func reset() {
-        self.mainColor = coloring.uiColorValue(for: .MercesGreen)
-        self.background = coloring.uiColorValue(for: .LightGray)
-        self.viewColor = coloring.uiColorValue(for: .White)
+        if self.appearance == .Light {
+            self.mainColor = coloring.uiColorValue(for: .MercesGreen)
+            self.background = coloring.uiColorValue(for: .LightGray)
+            self.viewColor = coloring.uiColorValue(for: .White)
+        } else {
+            self.mainColor = coloring.uiColorValue(for: .Black)
+            self.background = coloring.uiColorValue(for: .Black)
+            self.viewColor = coloring.uiColorValue(for: .Black)
+        }
     }
     
 }
