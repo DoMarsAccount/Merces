@@ -15,7 +15,8 @@ struct ContentView: View {
 //            MainPageSwiftUI()
                 .environmentObject(UserPreferences.sharedInstance)
         }
-        .navigationViewStyle(StackNavigationViewStyle())
+//        .navigationViewStyle(StackNavigationViewStyle())
+        .navigationBarColor(Themes.sharedInstance.mainColor)
             
     }
 }
