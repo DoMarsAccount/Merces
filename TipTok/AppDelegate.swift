@@ -6,13 +6,6 @@
 //  Copyright (c) 2015 DoMarsToyBox. All rights reserved.
 //
 
-//
-//  AppDelegate.swift
-//  Mercii
-//
-//  Created by Donovan McCray on 12/13/16.
-//  Copyright © 2016 Donovan McCray. All rights reserved.
-//
 import UIKit
 import WatchConnectivity
 

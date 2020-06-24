@@ -18,40 +18,71 @@ enum InputStyles {
 struct ListStyleMainPage: View {
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var userPrefs: UserPreferences
+    @State private var isSettingsActive: Bool = false
     @State private var activeField: EditableTextFields = .none
     @ObservedObject var calcModel: CalculationsModel = varAmts.calcModel
-    @Binding var value: Double
-    var inputStyle: InputStyles
     
     var body: some View {
-        VStack {
-            ListInputRow(activeField: self.$activeField, value: self.$calcModel.subtotal, inputStyle: .Currency, title: "Subtotal", field: .subtotal)
-            
-            ListInputRow(activeField: self.$activeField, value: self.$calcModel.taxAmount, inputStyle: .Currency, title: "Sales Tax", field: .salesTax)
-            
-            ListInputRow(activeField: self.$activeField, value: self.$calcModel.partySize.double, inputStyle: .Integer, title: "Party Size", field: .partySize)
-            
-            ListInputRow(activeField: self.$activeField, value: self.$calcModel.tipRate, inputStyle: .TwoDecimalPercent, title: "Tip %", field: .tipRate)
-            
+        GeometryReader { geo in
             VStack {
-                if (self.calcModel.tipAmount != 0) {
-                    ListDisplayRow(value: self.$calcModel.tipAmount, inputStyle: .Currency, title: "Tip Amount")
+                VStack {
+                    ListInputRow(activeField: self.$activeField, value: self.$calcModel.subtotal, inputStyle: .Currency, title: "Subtotal", field: .subtotal, background: Themes.sharedInstance.mainColor)
+                    
+                    if !self.userPrefs.subtotalIsPostTax {
+                        ListInputRow(activeField: self.$activeField, value: self.$calcModel.taxAmount, inputStyle: .Currency, title: "Sales Tax", field: .salesTax, background: Themes.sharedInstance.mainColor)
+                    }
+                    
+                    ListInputRow(activeField: self.$activeField, value: self.$calcModel.partySize.double, inputStyle: .Integer, title: "Party Size", field: .partySize, background: Themes.sharedInstance.mainColor)
+                    
+                    ListInputRow(activeField: self.$activeField, value: self.$calcModel.tipRate, inputStyle: .TwoDecimalPercent, title: "Tip %", field: .tipRate, background: Themes.sharedInstance.mainColor)
+                    
+//                    HStack {
+//
+//                    }
                 }
                 
-                if (self.calcModel.partySize != 1) {
-                    ListDisplayRow(value: self.$calcModel.totalAmountPerPerson, inputStyle: .Currency, title: "Total Per Person")
-                }
+                ZStack {
                 
-                ListDisplayRow(value: self.$calcModel.totalAmount, inputStyle: .Currency, title: "Grand Total", background: Color(.black).opacity(0.07))
+                    VenueSelectionView(activeField: self.$activeField)
+                        .offset(x: self.activeField == .venue ? 0 : UIScreen.main.bounds.maxX)
+                
+                    Keypad(activeField: self.$activeField)
+                        .offset(x: (self.activeField != .none && self.activeField != .venue) ? 0 : UIScreen.main.bounds.maxX)
+                    
+                    VStack {
+                        if (self.calcModel.tipAmount != 0) {
+                            ListDisplayRow(value: self.$calcModel.tipAmount, inputStyle: .Currency, title: "Tip Amount")
+                        }
+                        
+                        if (self.calcModel.partySize != 1) {
+                            ListDisplayRow(value: self.$calcModel.totalAmountPerPerson, inputStyle: .Currency, title: "Total Per Person")
+                        }
+                        
+                        ListDisplayRow(value: self.$calcModel.totalAmount, inputStyle: .Currency, title: "Grand Total")
+                    }
+                    .offset(x: self.activeField == .none ? 0 : UIScreen.main.bounds.maxX)
+                    
+                }
+                .frame(maxHeight: geo.size.height / 3)
+                .minimumScaleFactor(0.75)
+                .animation(.spring(response: 0.7, dampingFraction: 0.7, blendDuration: 1.0))
             }
-            
-        }.padding()
+            .padding()
+            .navigationBarTitle(Text("TipTok"), displayMode: .automatic)
+            .navigationBarItems(trailing: NavigationLink(destination: Settings(), isActive: self.$isSettingsActive) {
+                Image(systemName: "gear")
+                    .resizable()
+                    .frame(width: 30, height: 30)
+                    .accessibility(label: Text("Settings"))
+                    .accentColor(.primary)
+            })
+        }
     }
 }
 
 struct ListStyleMainPage_Previews: PreviewProvider {
     static var previews: some View {
-        ListStyleMainPage(value: .constant(420.69), inputStyle: .Currency)
+        ListStyleMainPage()
     }
 }
 
@@ -60,8 +91,8 @@ struct ListInputRow: View {
     @Binding var value: Double
     var inputStyle: InputStyles
     var title: String
-    var background: Color = .white
     var field: EditableTextFields
+    var background: UIColor = .white
     
     var body: some View {
         Button(action: {
@@ -88,8 +119,8 @@ struct ListInputRow: View {
                 .padding()
                 .minimumScaleFactor(0.8)
             }
-            .foregroundColor(.primary)
-            .modifier(AdaptiveCardBackground(backgroundColor: self.background))
+            .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.background, isFlat: true)))
+            .modifier(AdaptiveCardBackground(backgroundColor: Color(self.background)))
             
         }
     }

@@ -104,7 +104,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, WCSessionDelegate {
                 
             })
             
-        } else if shortcutItem.localizedTitle == "Color Picker" {
+        } else if shortcutItem.localizedTitle == "Themes" {
             
             let requestedViewController = UIHostingController(rootView: ThemesPage())
             

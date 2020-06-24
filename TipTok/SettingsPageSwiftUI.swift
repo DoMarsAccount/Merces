@@ -23,14 +23,20 @@ struct SettingsRow: View {
 
 struct Settings: View {
     @EnvironmentObject var preferences: UserPreferences
-    @State private var isActive: Bool = false
+    @State private var isPersonalizePageActive: Bool = false
+    @State private var isThemesPageActive: Bool = false
     
     var body: some View {
 //        NavigationView {
             Form {
                 Section(header: Text("General").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
-                    NavigationLink(destination: PersonalizationPage(), isActive: self.$isActive) {
+                    NavigationLink(destination: PersonalizationPage(), isActive: self.$isPersonalizePageActive) {
                         Text("Personalize")
+                            .foregroundColor(.primary)
+                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                    }
+                    NavigationLink(destination: ThemesPage(), isActive: self.$isThemesPageActive) {
+                        Text("Themes")
                             .foregroundColor(.primary)
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                     }

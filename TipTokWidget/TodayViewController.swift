@@ -6,14 +6,6 @@
 //  Copyright © 2017 DoMarsToyBox. All rights reserved.
 //
 
-//
-//  TodayViewController.swift
-//  MerciiToday
-//
-//  Created by Donovan McCray on 1/10/17.
-//  Copyright © 2017 Donovan McCray. All rights reserved.
-//
-
 import UIKit
 import NotificationCenter
 

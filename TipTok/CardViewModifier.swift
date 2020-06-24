@@ -56,21 +56,27 @@ struct TipTokStyleCard: ViewModifier {
                 .frame(width: geo.size.width, height: geo.size.height)
                 .background(
                     ZStack {
-//                        Color(.white)
                         
                         RoundedRectangle(cornerRadius: 16, style: .circular)
-                            .foregroundColor(self.colorScheme == .dark ? Color("Charcoal") : .secondary)
+                            .foregroundColor(self.colorScheme == .dark ? Color("Charcoal") :  Color("Eerie"))
                             .blur(radius: 4)
 //                            .offset(x: -8, y: -8)
                         
+//                        RoundedRectangle(cornerRadius: 16, style: .continuous)
+//                            .foregroundColor(self.colorScheme == .dark ? Color("Eerie") : self.backgroundColor)
+//                            .padding(2)
+//                            .blur(radius: 2)
+                        
                         RoundedRectangle(cornerRadius: 16, style: .continuous)
-                            .foregroundColor(self.colorScheme == .dark ? Color("Eerie") : self.backgroundColor)
+                            .fill(
+                                LinearGradient(gradient: Gradient(colors: [self.backgroundColor, self.backgroundColor.opacity(0.80)]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                            )
                             .padding(2)
                             .blur(radius: 2)
                     }
                 )
                 .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                .shadow(color: self.colorScheme == .dark ? Color("Charcoal") :  Color("OuterSpace"), radius: 10)
+                .shadow(color: self.colorScheme == .dark ? Color("Charcoal") :  Color("Jet"), radius: 10)
         }
     }
 }

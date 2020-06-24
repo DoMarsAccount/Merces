@@ -58,7 +58,7 @@
 			<key>UIApplicationShortcutItemIconFile</key>
 			<string>sampler</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>Color Picker</string>
+			<string>Themes</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>dom.Mercii.openThemesPage</string>
 			<key>UIApplicationShortcutItemUserInfo</key>

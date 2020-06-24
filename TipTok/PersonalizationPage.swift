@@ -35,12 +35,6 @@ struct PersonalizationPage: View {
             }
         }
         .navigationBarTitle(Text("Personalize"))
-        .navigationBarItems(trailing: NavigationLink(destination: ThemesPage(), isActive: self.$isThemesPageActive, label: {
-            Image(systemName: "eyedropper.halffull")
-            .resizable()
-            .frame(width: 30, height: 30)
-            .accessibility(label: Text("Settings"))
-        }))
     }
 }
 

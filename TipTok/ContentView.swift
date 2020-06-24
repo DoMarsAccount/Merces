@@ -11,7 +11,8 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            MainPageSwiftUI()
+            ListStyleMainPage()
+//            MainPageSwiftUI()
                 .environmentObject(UserPreferences.sharedInstance)
         }
         .navigationViewStyle(StackNavigationViewStyle())
