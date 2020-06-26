@@ -17,31 +17,31 @@ struct CondensedKeypad: View {
         VStack (spacing: 1) {
             HStack (spacing: 1) {
                 KeypadButton(text: .constant("1"), activeField: self.$activeField)
-                .modifier(KeypadButtonModifier())
+                .modifier(CondensedKeypadModifier())
                 KeypadButton(text: .constant("2"), activeField: self.$activeField)
-                .modifier(KeypadButtonModifier())
+                .modifier(CondensedKeypadModifier())
                 KeypadButton(text: .constant("3"), activeField: self.$activeField)
-                .modifier(KeypadButtonModifier())
+                .modifier(CondensedKeypadModifier())
                 KeypadButton(text: .constant("4"), activeField: self.$activeField)
-                .modifier(KeypadButtonModifier())
+                .modifier(CondensedKeypadModifier())
                 KeypadButton(text: .constant("5"), activeField: self.$activeField)
-                .modifier(KeypadButtonModifier())
+                .modifier(CondensedKeypadModifier())
                 KeypadDoneButton(activeField: self.$activeField)
-                    .modifier(KeypadButtonModifier())
+                    .modifier(CondensedKeypadModifier())
             }
             HStack (spacing: 1) {
                 KeypadButton(text: .constant("6"), activeField: self.$activeField)
-                .modifier(KeypadButtonModifier())
+                .modifier(CondensedKeypadModifier())
                 KeypadButton(text: .constant("7"), activeField: self.$activeField)
-                .modifier(KeypadButtonModifier())
+                .modifier(CondensedKeypadModifier())
                 KeypadButton(text: .constant("8"), activeField: self.$activeField)
-                .modifier(KeypadButtonModifier())
+                .modifier(CondensedKeypadModifier())
                 KeypadButton(text: .constant("9"), activeField: self.$activeField)
-                .modifier(KeypadButtonModifier())
+                .modifier(CondensedKeypadModifier())
                 KeypadButton(text: .constant("0"), activeField: self.$activeField)
-                .modifier(KeypadButtonModifier())
+                .modifier(CondensedKeypadModifier())
                 KeypadDeleteButton(activeField: self.$activeField)
-                .modifier(KeypadButtonModifier())
+                .modifier(CondensedKeypadModifier())
             }
         }
         .foregroundColor(self.colorScheme == .dark ? .primary : Color(UIColor(contrastingBlackOrWhiteColorOn: themes.background, isFlat: true)))
@@ -49,7 +49,7 @@ struct CondensedKeypad: View {
     }
 }
 
-struct KeypadButtonModifier: ViewModifier {
+struct CondensedKeypadModifier: ViewModifier {
     @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
     func body(content: Content) -> some View {
         content

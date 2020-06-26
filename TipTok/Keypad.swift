@@ -17,39 +17,39 @@ struct Keypad: View {
         VStack (spacing: 1) {
             HStack (spacing: 1) {
                 KeypadButton(text: .constant("1"), activeField: self.$activeField)
-                .modifier(CondensedKeypadButton())
+                .modifier(KeypadButtonModifier())
                 KeypadButton(text: .constant("2"), activeField: self.$activeField)
-                .modifier(CondensedKeypadButton())
+                .modifier(KeypadButtonModifier())
                 KeypadButton(text: .constant("3"), activeField: self.$activeField)
-                .modifier(CondensedKeypadButton())
+                .modifier(KeypadButtonModifier())
             }
             HStack (spacing: 1) {
                 KeypadButton(text: .constant("4"), activeField: self.$activeField)
-                .modifier(CondensedKeypadButton())
+                .modifier(KeypadButtonModifier())
                 KeypadButton(text: .constant("5"), activeField: self.$activeField)
-                .modifier(CondensedKeypadButton())
+                .modifier(KeypadButtonModifier())
                 KeypadButton(text: .constant("6"), activeField: self.$activeField)
-                .modifier(CondensedKeypadButton())
+                .modifier(KeypadButtonModifier())
             }
             HStack (spacing: 1) {
                 KeypadButton(text: .constant("7"), activeField: self.$activeField)
-                .modifier(CondensedKeypadButton())
+                .modifier(KeypadButtonModifier())
                 KeypadButton(text: .constant("8"), activeField: self.$activeField)
-                .modifier(CondensedKeypadButton())
+                .modifier(KeypadButtonModifier())
                 KeypadButton(text: .constant("9"), activeField: self.$activeField)
-                .modifier(CondensedKeypadButton())
+                .modifier(KeypadButtonModifier())
             }
             HStack (spacing: 1) {
                 KeypadDoneButton(activeField: self.$activeField)
-                    .modifier(CondensedKeypadButton())
+                    .modifier(KeypadButtonModifier())
                     .accessibility(label: Text("Done"))
                     .accessibility(hint: Text("Closes keypad"))
                 
                 KeypadButton(text: .constant("0"), activeField: self.$activeField)
-                    .modifier(CondensedKeypadButton())
+                    .modifier(KeypadButtonModifier())
                 
                 KeypadDeleteButton(activeField: self.$activeField)
-                    .modifier(CondensedKeypadButton())
+                    .modifier(KeypadButtonModifier())
                     .accessibility(label: Text("Delete"))
             }
         }
@@ -58,12 +58,13 @@ struct Keypad: View {
     }
 }
 
-struct CondensedKeypadButton: ViewModifier {
+struct KeypadButtonModifier: ViewModifier {
     @Environment(\.colorScheme) var colorScheme
+    @ObservedObject var themes = Themes.sharedInstance
     @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
     func body(content: Content) -> some View {
         content
-            .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark, isFlat: true)), width: 1)
+            .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark, isFlat: true)), width: 1)
             .clipShape(RoundedRectangle(cornerRadius: self.userPrefs.useFlatStyleViews ? 2.5 : 16, style: .continuous))
     }
 }
