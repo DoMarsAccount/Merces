@@ -50,43 +50,37 @@ struct PPageVenuePicker: View {
 
 struct VenueView: View {
     @Environment(\.colorScheme) var colorScheme
+    @ObservedObject var themes = Themes.sharedInstance
     @ObservedObject var calcModel = varAmts.calcModel
     var venue: VenueType
     @Binding var activeField: EditableTextFields
     var body: some View {
-        GeometryReader { geo in
-            ZStack {
-                if self.colorScheme == .dark {
-                    Color("Eerie")
-                        .opacity(0.75)
-                } else {
-                    Color.white
-                        .opacity(0.75)
-                }
-                
-                VStack {
-                    Text(self.venue.emoji)
-    //                    .padding()
-                    Text(self.venue.name)
-                        .padding(.top)
-                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                        .foregroundColor(self.calcModel.selectedVenue == self.venue ? Color.green : Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark, isFlat: true)))
-                }
+        ZStack {
+            Color(self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
+                .opacity(self.calcModel.selectedVenue == self.venue ? 0.5 : 0.25)
+            
+            VStack {
+                Text(self.venue.emoji)
+                    .font(.system(size: self.calcModel.selectedVenue == self.venue ? 32 : 18))
+//                    .padding()
+                Text(self.venue.name)
+                    .font(.system(size: 24, weight: self.calcModel.selectedVenue == self.venue ? .bold : .regular, design: .default))
+                    .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark, isFlat: true)))
             }
-            .frame(width: geo.size.width, height: geo.size.height)
-            .border(self.calcModel.selectedVenue == self.venue ? Color.green : Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark, isFlat: true)), width: 4)
-            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-            .onTapGesture {
-                self.calcModel.selectedVenue = self.venue
-                self.activeField = .none
-            }
+        }
+        .border(self.calcModel.selectedVenue == self.venue ? Color.green : Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark, isFlat: true)), width: 4)
+        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+        .onTapGesture {
+            self.calcModel.selectedVenue = self.venue
+            self.activeField = .none
         }
     }
 }
 
 struct VenueSelectionView: View {
-    @ObservedObject var calcModel = varAmts.calcModel
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var themes = Themes.sharedInstance
+    @ObservedObject var calcModel = varAmts.calcModel
     @Binding var activeField: EditableTextFields
     var body: some View {
         GeometryReader { geo in
@@ -103,7 +97,7 @@ struct VenueSelectionView: View {
                     VenueView(venue: .delivery, activeField: self.$activeField)
                 }
             }
-            .modifier(AdaptiveCardBackground(backgroundColor: self.themes.mainColor))
+            .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark))
         }
     }
 }

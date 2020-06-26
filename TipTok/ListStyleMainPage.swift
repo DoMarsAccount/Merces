@@ -40,6 +40,28 @@ struct ListStyleMainPage: View {
                         
                         ListInputRow(activeField: self.$activeField, value: self.$calcModel.partySize.double, inputStyle: .Integer, title: "Party Size", field: .partySize, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
                         
+                        Button(action: {
+                            self.activeField = .venue
+                        }) {
+                            ZStack {
+                                
+                                HStack {
+                                    Text("Venue")
+                                        .font(.title)
+                                    
+                                    Spacer()
+                                    
+                                    Text(self.calcModel.selectedVenue.name)
+                                        .font(.largeTitle)
+                                }
+                                .padding()
+                                .minimumScaleFactor(0.8)
+                            }
+                            .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark, isFlat: true)))
+                            .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark))
+                            
+                        }
+                        
                         ListInputRow(activeField: self.$activeField, value: self.$calcModel.tipRate, inputStyle: .TwoDecimalPercent, title: "Tip %", field: .tipRate, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
                     }
                     
@@ -85,7 +107,7 @@ struct ListStyleMainPage: View {
 
 struct ListStyleMainPage_Previews: PreviewProvider {
     static var previews: some View {
-        ListStyleMainPage()
+        ListStyleMainPage().environmentObject(UserPreferences.sharedInstance)
     }
 }
 
