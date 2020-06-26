@@ -128,8 +128,8 @@ struct ThemeItemColorPicker: View {
             
             ScrollView(.horizontal) {
                 HStack {
-                    ForEach(0..<TipTokColor.allCases.count) { index in
-                        ColorSelectionItem(themeItem: self.themeItem, color: TipTokColor.allCases[index].color)
+                    ForEach(0..<MercesColors.allCases.count) { index in
+                        ColorSelectionItem(themeItem: self.themeItem, color: MercesColors.allCases[index].color)
                     }
                 }.padding()
             }.background(Color(self.colorScheme == .light ? self.themes.viewColor : self.themes.viewColorDark))
