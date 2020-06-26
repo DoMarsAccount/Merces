@@ -75,7 +75,7 @@ struct MyMerces: View {
         ScrollView(.vertical) {
             VStack(spacing: viewHeight) {
                 Text("Local Sales Tax Rate")
-                    .cardStyled(value: self.$preferences.localSalesTax, style: .percentage, backgroundColor: .pink)
+                    .cardStyled(value: self.$preferences.localSalesTax, style: .percentage, backgroundColor: Color("CrayolaRed"))
                     .onTapGesture {
                         self.isKeypadPresented.toggle()
                     }
@@ -83,8 +83,11 @@ struct MyMerces: View {
                         WatchKeypad(value: self.$preferences.localSalesTax, isPresented: self.$isKeypadPresented, activeField: .constant(.localTax))
                     }
                     .accessibility(label: Text("Local Sales Tax Rate: \(nForm.roundForPercentWithThreeDecimalPlaces(number: self.preferences.localSalesTax))"))
-                VenuesView().padding([.top])
-            }.navigationBarTitle("Done")
+                
+                VenuesView()
+                    .padding([.top])
+            }
+            .navigationBarTitle("Done")
         }
     }
 }

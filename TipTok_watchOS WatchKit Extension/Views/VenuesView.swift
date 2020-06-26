@@ -43,9 +43,8 @@ struct VenuesView: View {
                 }
                 .padding([.leading, .trailing])
                 .frame(height: viewHeight)
-                .background(Color.red)
-                .border(Color.red, width: 2.5)
-                .cornerRadius(2.5)
+                .background(Color("CrayolaRed"))
+                .clipShape(RoundedRectangle(cornerRadius: 8, style: .circular))
                 .onTapGesture {
                     self.isActive.toggle()
                 }
@@ -63,8 +62,9 @@ struct VenuesView: View {
                     Text(VenueType.allCases[index].name).tag(VenueType.allCases[index])
                         .accessibility(label: Text("Venue: \(VenueType.allCases[index].name)"))
                 }
-            }.frame(height: viewHeight)
-        
+            }
+            .frame(height: viewHeight)
+            .padding(.horizontal)
         }
     }
 }

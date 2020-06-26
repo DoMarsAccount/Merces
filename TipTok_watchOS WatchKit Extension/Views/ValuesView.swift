@@ -25,7 +25,7 @@ struct ValuesView: View {
                 VStack() {
 //                    HStack {
                         Text("Subtotal")
-                            .cardStyled(value: self.$wCalcModel.subtotal, style: .currency, backgroundColor: Color("MercesGreen"))
+                            .cardStyled(value: self.$wCalcModel.subtotal, style: .currency, backgroundColor: Color("CrayolaRed"))
                             .onTapGesture {
                                 self.isSubtotalKeypadPresented.toggle()
                             }
@@ -38,7 +38,7 @@ struct ValuesView: View {
                     HStack {
                         if !UserPreferences.sharedInstance.subtotalIsPostTax {
                         Text("Sales Tax")
-                            .vCardStyled(value: self.$wCalcModel.taxAmount, style: .currency, backgroundColor: Color("MercesGreen"))
+                            .vCardStyled(value: self.$wCalcModel.taxAmount, style: .currency, backgroundColor: Color("CrayolaRed"))
                             .onTapGesture {
                                 self.isTaxAmountKeypadPresented.toggle()
                             }
@@ -49,7 +49,7 @@ struct ValuesView: View {
                         .modifier(scalingEffect())
                         
                         Text("Party of")
-                            .vCardStyled(value: self.$wCalcModel.partySize.double, style: .integer, backgroundColor: Color("MercesGreen"))
+                            .vCardStyled(value: self.$wCalcModel.partySize.double, style: .integer, backgroundColor: Color("CrayolaRed"))
                             .onTapGesture {
                                 self.isPartySizeKeypadPresented.toggle()
                             }
@@ -60,7 +60,7 @@ struct ValuesView: View {
                             .modifier(scalingEffect())
                         } else {
                             Text("Party Size")
-                            .cardStyled(value: self.$wCalcModel.partySize.double, style: .integer, backgroundColor: Color("MercesGreen"))
+                            .cardStyled(value: self.$wCalcModel.partySize.double, style: .integer, backgroundColor: Color("CrayolaRed"))
                             .onTapGesture {
                                 self.isPartySizeKeypadPresented.toggle()
                             }
@@ -74,7 +74,7 @@ struct ValuesView: View {
                 
 //                    HStack {
                         Text("Tip %")
-                            .cardStyled(value: self.$wCalcModel.tipRate, style: .percentage, backgroundColor: Color("MercesGreen"))
+                            .cardStyled(value: self.$wCalcModel.tipRate, style: .percentage, backgroundColor: Color("CrayolaRed"))
                             .onTapGesture {
                                 self.isDetailedTipRateViewPresented.toggle()
                             }

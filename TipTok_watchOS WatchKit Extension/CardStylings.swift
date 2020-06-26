@@ -38,8 +38,7 @@ struct CurrencyCardStyle: ViewModifier {
             }
             .frame(width: geo.size.width, height: viewHeight)
             .background(self.backgroundColor)
-            .border(self.backgroundColor, width: 2.5)
-            .cornerRadius(2.5)
+            .clipShape(RoundedRectangle(cornerRadius: 8, style: .circular))
         }
     }
 }
@@ -65,8 +64,7 @@ struct PercentageCardStyle: ViewModifier {
             }
             .frame(width: geo.size.width, height: viewHeight)
             .background(self.backgroundColor)
-            .border(self.backgroundColor, width: 2.5)
-            .cornerRadius(2.5)
+            .clipShape(RoundedRectangle(cornerRadius: 8, style: .circular))
         }
     }
 }
@@ -92,8 +90,7 @@ struct IntegerCardStyle: ViewModifier {
             }
             .frame(width: geo.size.width, height: viewHeight)
             .background(self.backgroundColor)
-            .border(self.backgroundColor, width: 2.5)
-            .cornerRadius(2.5)
+            .clipShape(RoundedRectangle(cornerRadius: 8, style: .circular))
         }
     }
 }
@@ -116,8 +113,7 @@ struct vCurrencyCardStyle: ViewModifier {
             }
             .frame(width: geo.size.width, height: viewHeight)
             .background(self.backgroundColor)
-            .border(self.backgroundColor, width: 2.5)
-            .cornerRadius(2.5)
+            .clipShape(RoundedRectangle(cornerRadius: 8, style: .circular))
         }
     }
 }
@@ -139,8 +135,7 @@ struct vPercentageCardStyle: ViewModifier {
             }
             .frame(width: geo.size.width, height: viewHeight)
             .background(self.backgroundColor)
-            .border(self.backgroundColor, width: 2.5)
-            .cornerRadius(2.5)
+            .clipShape(RoundedRectangle(cornerRadius: 8, style: .circular))
         }
     }
 }
@@ -162,12 +157,12 @@ struct vIntegerCardStyle: ViewModifier {
             }
             .frame(width: geo.size.width, height: viewHeight)
             .background(self.backgroundColor)
-            .border(self.backgroundColor, width: 2.5)
-            .cornerRadius(2.5)
+            .clipShape(RoundedRectangle(cornerRadius: 8, style: .circular))
         }
     }
 }
 
+// MARK: - Convenience Extensions
 extension View {
     func cardStyled(value: Binding<Double>, style: CardStyles, backgroundColor: Color = .black) -> some View {
         Group {

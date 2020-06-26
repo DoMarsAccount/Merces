@@ -20,6 +20,7 @@
 		044119EE24A64B0D00BDA695 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044119ED24A64B0D00BDA695 /* Themes.swift */; };
 		044119EF24A64BD700BDA695 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044119ED24A64B0D00BDA695 /* Themes.swift */; };
 		044119F124A64BED00BDA695 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044119ED24A64B0D00BDA695 /* Themes.swift */; };
+		044119F324A66BAC00BDA695 /* ThemesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044119F224A66BAC00BDA695 /* ThemesPage.swift */; };
 		0444E6D024953A49004793BF /* WatchStyleValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0444E6CF24953A49004793BF /* WatchStyleValues.swift */; };
 		046C65012495B24A00B99784 /* defaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3AB12181E2DBF210021C889 /* defaultPreferences.plist */; };
 		046C65022495B24D00B99784 /* defaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3AB12181E2DBF210021C889 /* defaultPreferences.plist */; };
@@ -183,6 +184,7 @@
 		0430E5AF24A121300014E8E5 /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
 		0430E5B124A143190014E8E5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		044119ED24A64B0D00BDA695 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
+		044119F224A66BAC00BDA695 /* ThemesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesPage.swift; sourceTree = "<group>"; };
 		0444E6CF24953A49004793BF /* WatchStyleValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStyleValues.swift; sourceTree = "<group>"; };
 		04719F782497233C00132EC8 /* MainPageSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageSwiftUI.swift; sourceTree = "<group>"; };
 		04719F7A2497234F00132EC8 /* SettingsPageSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageSwiftUI.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 				049C69682491CAE600273450 /* VenuesView.swift */,
 				04E19BAC2493CB4000994668 /* SetupAlertView.swift */,
 				048715422497AD5600DF33E5 /* KeypadButtons.swift */,
+				044119F224A66BAC00BDA695 /* ThemesPage.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -894,6 +897,7 @@
 			files = (
 				04EF6DC8248D367F009CEF03 /* Coloring.swift in Sources */,
 				04EF6DC9248D3683009CEF03 /* VariableAmountsClass.swift in Sources */,
+				044119F324A66BAC00BDA695 /* ThemesPage.swift in Sources */,
 				041CAAD7249BDA1E000C1A1A /* LayoutTesting.swift in Sources */,
 				04EF6DCA248D36CC009CEF03 /* AppleWatchColors.swift in Sources */,
 				04EF6DCD248D36DB009CEF03 /* VenueEditor.swift in Sources */,
