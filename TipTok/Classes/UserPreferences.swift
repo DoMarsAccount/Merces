@@ -94,7 +94,7 @@ class UserPreferences: ObservableObject {
         if mUserDefaults?.bool(forKey: "useDynamicText") == true {
             return UIFont.preferredFont(forTextStyle: UIFont.TextStyle.headline)
         } else {
-            return UIFont(name: "HelveticaNeue-CondensedBlack", size: preferredFontSize)!
+            return UIFont.systemFont(ofSize: preferredFontSize, weight: .bold)
         }
     }
 }
