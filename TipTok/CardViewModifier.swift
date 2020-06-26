@@ -39,8 +39,8 @@ struct FlatCard: ViewModifier {
                     RoundedRectangle(cornerRadius: 2.5, style: .continuous)
                         .foregroundColor(Color(self.backgroundColor))
                 )
-                .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.background : self.themes.backgroundColorDark, isFlat: true)), width: 2)
-                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.background : self.themes.backgroundColorDark, isFlat: true)), width: 1)
+                .clipShape(RoundedRectangle(cornerRadius: 2.5, style: .continuous))
         }
     }
 }
@@ -58,8 +58,8 @@ struct TipTokStyleCard: ViewModifier {
                 .background(
                     ZStack {
                         
-                        RoundedRectangle(cornerRadius: 16, style: .circular)
-                            .foregroundColor(self.colorScheme == .dark ? Color("Charcoal") :  Color("Eerie"))
+                        RoundedRectangle(cornerRadius: 8, style: .circular)
+                            .foregroundColor(self.colorScheme == .dark ? Color("Eerie") :  Color("Eerie"))
                             .blur(radius: 4)
 //                            .offset(x: -8, y: -8)
                         
@@ -68,7 +68,7 @@ struct TipTokStyleCard: ViewModifier {
 //                            .padding(2)
 //                            .blur(radius: 2)
                         
-                        RoundedRectangle(cornerRadius: 16, style: .continuous)
+                        RoundedRectangle(cornerRadius: 8, style: .continuous)
                             .fill(
                                 LinearGradient(gradient: Gradient(colors: [self.backgroundColor, self.backgroundColor.opacity(0.80)]), startPoint: .topLeading, endPoint: .bottomTrailing)
                             )
@@ -76,8 +76,8 @@ struct TipTokStyleCard: ViewModifier {
                             .blur(radius: 2)
                     }
                 )
-                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                .shadow(color: self.colorScheme == .dark ? Color("Charcoal") :  Color("Jet"), radius: 10)
+                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                .shadow(color: self.colorScheme == .dark ? Color("Jet") :  Color("Jet"), radius: 10)
         }
     }
 }
