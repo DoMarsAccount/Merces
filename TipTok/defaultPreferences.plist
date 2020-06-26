@@ -74,5 +74,7 @@
 	<false/>
 	<key>useFlatStyleViews</key>
 	<false/>
+	<key>useClassicStyle</key>
+	<false/>
 </dict>
 </plist>

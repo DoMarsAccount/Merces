@@ -16,7 +16,7 @@ class UserPreferences: ObservableObject {
     
     @Published var tipIncludeTax: Bool {
         didSet {
-            updatePreferences()
+            mUserDefaults!.set(tipIncludeTax, forKey: "tipIncludeTaxSwitchOnOff")
         }
     }
     @Published var roundTipAmount: Bool {
@@ -24,7 +24,7 @@ class UserPreferences: ObservableObject {
             if self.roundTotalAmount { self.roundTotalAmount.toggle() }
         }
         didSet {
-            updatePreferences()
+            mUserDefaults!.set(roundTipAmount, forKey: "roundTipAmountSwitchOnOff")
         }
     }
     @Published var roundTotalAmount: Bool {
@@ -32,22 +32,22 @@ class UserPreferences: ObservableObject {
             if self.roundTipAmount { self.roundTipAmount.toggle() }
         }
         didSet {
-            updatePreferences()
+            mUserDefaults!.set(roundTotalAmount, forKey: "roundTotalAmountSwitchOnOff")
         }
     }
     @Published var subtotalIsPostTax: Bool {
         didSet {
-            updatePreferences()
+            mUserDefaults!.set(subtotalIsPostTax, forKey: "subtotalIsPostTaxSwitchOnOff")
         }
     }
     @Published var useDynamicText: Bool {
         didSet {
-            updatePreferences()
+            mUserDefaults!.set(useDynamicText, forKey: "useDynamicText")
         }
     }
     @Published var localSalesTax: Double {
         didSet {
-            updatePreferences()
+            mUserDefaults!.set(localSalesTax, forKey: "userLocalSalesTax")
         }
     }
     @Published var shouldShowSetupAlert: Bool {
@@ -57,7 +57,12 @@ class UserPreferences: ObservableObject {
     }
     @Published var useFlatStyleViews: Bool {
         didSet {
-            updatePreferences()
+            mUserDefaults!.set(useFlatStyleViews, forKey: "useFlatStyleViews")
+        }
+    }
+    @Published var useClassicStyle: Bool {
+        didSet {
+            mUserDefaults!.set(useClassicStyle, forKey: "useClassicStyle")
         }
     }
     
@@ -72,6 +77,7 @@ class UserPreferences: ObservableObject {
         localSalesTax = mUserDefaults!.double(forKey: "userLocalSalesTax")
         shouldShowSetupAlert = !mUserDefaults!.bool(forKey: "setupAlertShown")
         useFlatStyleViews = mUserDefaults!.bool(forKey: "useFlatStyleViews")
+        useClassicStyle = mUserDefaults!.bool(forKey: "useClassicStyle")
     }
     
     func updatePreferences() {

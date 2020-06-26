@@ -10,14 +10,26 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
+    @ObservedObject var userPrefs = UserPreferences.sharedInstance
+    @ObservedObject var themes = Themes.sharedInstance
     
     var body: some View {
         NavigationView {
-            ListStyleMainPage()
-//            MainPageSwiftUI()
-                .environmentObject(UserPreferences.sharedInstance)
+            if userPrefs.useClassicStyle {
+                MainPageSwiftUI()
+                    .environmentObject(UserPreferences.sharedInstance)
+            } else {
+                ListStyleMainPage()
+                    .environmentObject(UserPreferences.sharedInstance)
+            }
         }
-        .modifier(NavigationBarModifier())
+//        .background(NavigationConfigurator { nc in
+//            nc.navigationBar.backgroundColor = (self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
+//            nc.navigationBar.titleTextAttributes = [.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? self.themes.mainColorDark : self.themes.mainColor), isFlat: true)!]
+//            nc.navigationBar.largeTitleTextAttributes = [.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? self.themes.mainColorDark : self.themes.mainColor), isFlat: true)!]
+//            nc.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? self.themes.mainColorDark : self.themes.mainColor), isFlat: true)
+//        })
+//        .modifier(NavigationBarModifier())
 //        .navigationViewStyle(StackNavigationViewStyle())
             
     }

@@ -75,8 +75,7 @@ struct SettingsList: View {
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                     }
                 }
-                
-    //                Section(header: Text("Support").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
+//                    Section(header: Text("Support").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
     //                    Text("Optimal Usage Guide").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
     //                }
     //
@@ -142,6 +141,10 @@ struct Settings: View {
                             }
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                     }
+                }
+                
+                Section(header: Text("Extras").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
+                    SettingsRow(text: .constant("Use Classic Layout"), isEnabled: self.$preferences.useClassicStyle)
                 }
                 
 //                Section(header: Text("Support").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {

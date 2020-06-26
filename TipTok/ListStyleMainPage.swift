@@ -76,6 +76,7 @@ struct ListStyleMainPage: View {
                         .resizable()
                         .frame(width: 30, height: 30)
                         .accessibility(label: Text("Settings"))
+                        .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.background : self.themes.backgroundColorDark, isFlat: true)))
                 })
             }
         }

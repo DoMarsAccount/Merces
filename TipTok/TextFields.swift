@@ -55,12 +55,13 @@ struct PercentageView: View {
 
 struct MercesStyleTextField: ViewModifier {
     @Environment(\.colorScheme) var colorScheme
+    @ObservedObject var themes: Themes = Themes.sharedInstance
     func body(content: Content) -> some View {
         content
         .frame(maxWidth: .infinity)
 //        .padding()
-        .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark, isFlat: true)), width: 1)
-            .clipShape(RoundedRectangle(cornerRadius: 2.5, style: .circular))
+        .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.viewColor : self.themes.viewColorDark, isFlat: true)), width: 1)
+        .clipShape(RoundedRectangle(cornerRadius: 2.5, style: .circular))
         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 24)))
         .minimumScaleFactor(0.75)
     }

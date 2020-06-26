@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct ServiceQualityPicker: View {
+    @Environment(\.colorScheme) var colorScheme
+    @ObservedObject var themes = Themes.sharedInstance
     @ObservedObject var calcModel = varAmts.calcModel
     
     var body: some View {
@@ -18,6 +20,8 @@ struct ServiceQualityPicker: View {
                     .resizable()
                     .tag(ServiceQuality.allCases[index])
                     .accessibility(label: Text("Service Quality: \(ServiceQuality.allCases[index].name)"))
+                    .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.viewColor : self.themes.viewColorDark, isFlat: true)))
+                    .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.viewColor : self.themes.viewColorDark, isFlat: true)))
             }
         }
         .pickerStyle(SegmentedPickerStyle())

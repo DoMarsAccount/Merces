@@ -47,12 +47,14 @@ struct MainPageSwiftUI: View {
 //                        .animation(.interpolatingSpring(mass: 1.0, stiffness: 0.0, damping: 0.7, initialVelocity: 0.7))
             }
             .padding([.leading, .trailing])
-            .modifier(ClassicStyle(isClassic: .constant(true)))
+            .navigationBarTitle(Text("TipTok"), displayMode: .automatic)
+//            .modifier(ClassicStyle(isClassic: .constant(true)))
             .navigationBarItems(trailing: NavigationLink(destination: Settings(), isActive: self.$isSettingsActive) {
                 Image(systemName: "gear")
                     .resizable()
                     .frame(width: 30, height: 30)
                     .accessibility(label: Text("Settings"))
+                    .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.background : self.themes.backgroundColorDark, isFlat: true)))
             })
         }
     }

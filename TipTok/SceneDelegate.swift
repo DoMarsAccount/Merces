@@ -11,6 +11,8 @@ import SwiftUI
 import WatchConnectivity
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate, WCSessionDelegate {
+    @Environment(\.colorScheme) var colorScheme
+    @ObservedObject var themes = Themes.sharedInstance
 
     var window: UIWindow?
     
