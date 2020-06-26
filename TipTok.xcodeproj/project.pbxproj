@@ -17,6 +17,9 @@
 		0430E5AC24A041170014E8E5 /* TipTok.ckcomplication in Resources */ = {isa = PBXBuildFile; fileRef = 0430E5AB24A041170014E8E5 /* TipTok.ckcomplication */; };
 		0430E5B024A121300014E8E5 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0430E5AF24A121300014E8E5 /* WidgetView.swift */; };
 		0430E5B224A143190014E8E5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0430E5B124A143190014E8E5 /* ContentView.swift */; };
+		044119EE24A64B0D00BDA695 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044119ED24A64B0D00BDA695 /* Themes.swift */; };
+		044119EF24A64BD700BDA695 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044119ED24A64B0D00BDA695 /* Themes.swift */; };
+		044119F124A64BED00BDA695 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044119ED24A64B0D00BDA695 /* Themes.swift */; };
 		0444E6D024953A49004793BF /* WatchStyleValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0444E6CF24953A49004793BF /* WatchStyleValues.swift */; };
 		046C65012495B24A00B99784 /* defaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3AB12181E2DBF210021C889 /* defaultPreferences.plist */; };
 		046C65022495B24D00B99784 /* defaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3AB12181E2DBF210021C889 /* defaultPreferences.plist */; };
@@ -59,7 +62,7 @@
 		04EF6DA8248D3452009CEF03 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EF6DA7248D3452009CEF03 /* ComplicationController.swift */; };
 		04EF6DAA248D3453009CEF03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04EF6DA9248D3453009CEF03 /* Assets.xcassets */; };
 		04EF6DAD248D3453009CEF03 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04EF6DAC248D3453009CEF03 /* Preview Assets.xcassets */; };
-		04EF6DC8248D367F009CEF03 /* ColoringAndThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD0FAD1EC3DB3600763ED2 /* ColoringAndThemes.swift */; };
+		04EF6DC8248D367F009CEF03 /* Coloring.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD0FAD1EC3DB3600763ED2 /* Coloring.swift */; };
 		04EF6DC9248D3683009CEF03 /* VariableAmountsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD0FAE1EC3DB3600763ED2 /* VariableAmountsClass.swift */; };
 		04EF6DCA248D36CC009CEF03 /* AppleWatchColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD0FAC1EC3DB3600763ED2 /* AppleWatchColors.swift */; };
 		04EF6DCB248D36D4009CEF03 /* NumberFormattingClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD0FA91EC3DB1A00763ED2 /* NumberFormattingClass.swift */; };
@@ -90,8 +93,8 @@
 		E3FD0FAB1EC3DB1A00763ED2 /* NumberFormattingClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD0FA91EC3DB1A00763ED2 /* NumberFormattingClass.swift */; };
 		E3FD0FAF1EC3DB3600763ED2 /* AppleWatchColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD0FAC1EC3DB3600763ED2 /* AppleWatchColors.swift */; };
 		E3FD0FB01EC3DB3600763ED2 /* AppleWatchColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD0FAC1EC3DB3600763ED2 /* AppleWatchColors.swift */; };
-		E3FD0FB11EC3DB3600763ED2 /* ColoringAndThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD0FAD1EC3DB3600763ED2 /* ColoringAndThemes.swift */; };
-		E3FD0FB21EC3DB3600763ED2 /* ColoringAndThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD0FAD1EC3DB3600763ED2 /* ColoringAndThemes.swift */; };
+		E3FD0FB11EC3DB3600763ED2 /* Coloring.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD0FAD1EC3DB3600763ED2 /* Coloring.swift */; };
+		E3FD0FB21EC3DB3600763ED2 /* Coloring.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD0FAD1EC3DB3600763ED2 /* Coloring.swift */; };
 		E3FD0FB31EC3DB3600763ED2 /* VariableAmountsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD0FAE1EC3DB3600763ED2 /* VariableAmountsClass.swift */; };
 		E3FD0FB41EC3DB3600763ED2 /* VariableAmountsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FD0FAE1EC3DB3600763ED2 /* VariableAmountsClass.swift */; };
 /* End PBXBuildFile section */
@@ -181,6 +184,7 @@
 		0430E5AB24A041170014E8E5 /* TipTok.ckcomplication */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TipTok.ckcomplication; sourceTree = "<group>"; };
 		0430E5AF24A121300014E8E5 /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
 		0430E5B124A143190014E8E5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		044119ED24A64B0D00BDA695 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
 		0444E6CF24953A49004793BF /* WatchStyleValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStyleValues.swift; sourceTree = "<group>"; };
 		04719F782497233C00132EC8 /* MainPageSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageSwiftUI.swift; sourceTree = "<group>"; };
 		04719F7A2497234F00132EC8 /* SettingsPageSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageSwiftUI.swift; sourceTree = "<group>"; };
@@ -280,7 +284,7 @@
 		E3B4B3001ABBEC59002A6C16 /* TipTok.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TipTok.entitlements; sourceTree = "<group>"; };
 		E3FD0FA91EC3DB1A00763ED2 /* NumberFormattingClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NumberFormattingClass.swift; path = TipTok/Classes/NumberFormattingClass.swift; sourceTree = SOURCE_ROOT; };
 		E3FD0FAC1EC3DB3600763ED2 /* AppleWatchColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppleWatchColors.swift; path = TipTok/Classes/AppleWatchColors.swift; sourceTree = SOURCE_ROOT; };
-		E3FD0FAD1EC3DB3600763ED2 /* ColoringAndThemes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColoringAndThemes.swift; path = TipTok/Classes/ColoringAndThemes.swift; sourceTree = SOURCE_ROOT; };
+		E3FD0FAD1EC3DB3600763ED2 /* Coloring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Coloring.swift; path = TipTok/Classes/Coloring.swift; sourceTree = SOURCE_ROOT; };
 		E3FD0FAE1EC3DB3600763ED2 /* VariableAmountsClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VariableAmountsClass.swift; path = TipTok/Classes/VariableAmountsClass.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -377,8 +381,9 @@
 				04E0126F248961F0009FAEEB /* VenueEditor.swift */,
 				E3FD0FA91EC3DB1A00763ED2 /* NumberFormattingClass.swift */,
 				E3FD0FAC1EC3DB3600763ED2 /* AppleWatchColors.swift */,
-				E3FD0FAD1EC3DB3600763ED2 /* ColoringAndThemes.swift */,
+				E3FD0FAD1EC3DB3600763ED2 /* Coloring.swift */,
 				E3FD0FAE1EC3DB3600763ED2 /* VariableAmountsClass.swift */,
+				044119ED24A64B0D00BDA695 /* Themes.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -928,7 +933,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04EF6DC8248D367F009CEF03 /* ColoringAndThemes.swift in Sources */,
+				04EF6DC8248D367F009CEF03 /* Coloring.swift in Sources */,
 				04EF6DC9248D3683009CEF03 /* VariableAmountsClass.swift in Sources */,
 				041CAAD7249BDA1E000C1A1A /* LayoutTesting.swift in Sources */,
 				04EF6DCA248D36CC009CEF03 /* AppleWatchColors.swift in Sources */,
@@ -936,6 +941,7 @@
 				0480B3772491637100036864 /* CardStylings.swift in Sources */,
 				04EF6DCF248D45E6009CEF03 /* CalculationsModel.swift in Sources */,
 				04EF6DCB248D36D4009CEF03 /* NumberFormattingClass.swift in Sources */,
+				044119F124A64BED00BDA695 /* Themes.swift in Sources */,
 				0444E6D024953A49004793BF /* WatchStyleValues.swift in Sources */,
 				04EF6DA0248D3452009CEF03 /* HostingController.swift in Sources */,
 				04EF6DD4248E73E6009CEF03 /* ValuesView.swift in Sources */,
@@ -961,9 +967,10 @@
 			files = (
 				E3FD0FB41EC3DB3600763ED2 /* VariableAmountsClass.swift in Sources */,
 				04E012792489628A009FAEEB /* UserPreferences.swift in Sources */,
-				E3FD0FB21EC3DB3600763ED2 /* ColoringAndThemes.swift in Sources */,
+				E3FD0FB21EC3DB3600763ED2 /* Coloring.swift in Sources */,
 				E3AB12251E2DC1DF0021C889 /* TodayViewController.swift in Sources */,
 				E3AB12371E2DC25F0021C889 /* SpringAnimation.swift in Sources */,
+				044119EF24A64BD700BDA695 /* Themes.swift in Sources */,
 				04E0127B2489628A009FAEEB /* CalculationsModel.swift in Sources */,
 				04E0127E248962B5009FAEEB /* VenueEditor.swift in Sources */,
 				04E012772489628A009FAEEB /* ReceiptModel.swift in Sources */,
@@ -983,12 +990,13 @@
 				04E01270248961F0009FAEEB /* VenueEditor.swift in Sources */,
 				04EE912D24A1664F0033D0AF /* NavigationController.swift in Sources */,
 				04282A57249A7FFD004F2879 /* TextFields.swift in Sources */,
-				E3FD0FB11EC3DB3600763ED2 /* ColoringAndThemes.swift in Sources */,
+				E3FD0FB11EC3DB3600763ED2 /* Coloring.swift in Sources */,
 				048715452497AE4200DF33E5 /* Keypad.swift in Sources */,
 				04282A55249A4B64004F2879 /* CardViewModifier.swift in Sources */,
 				0430E5AA249FEE9A0014E8E5 /* ThemesPage.swift in Sources */,
 				0487153C2497A72300DF33E5 /* MainPageSubviews.swift in Sources */,
 				0430E5B024A121300014E8E5 /* WidgetView.swift in Sources */,
+				044119EE24A64B0D00BDA695 /* Themes.swift in Sources */,
 				04719F7E2497247100132EC8 /* PersonalizationPage.swift in Sources */,
 				0430E5B224A143190014E8E5 /* ContentView.swift in Sources */,
 				04E012782489628A009FAEEB /* UserPreferences.swift in Sources */,

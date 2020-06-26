@@ -11,7 +11,7 @@ import NotificationCenter
 
 let varAmountsObject = VariableAmountsClass()
 
-let coloringThemes = Themes()
+//let coloringThemes = Themes()
 
 let generator = UISelectionFeedbackGenerator()
 
