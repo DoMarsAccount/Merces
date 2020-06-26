@@ -16,7 +16,7 @@ struct AdaptiveCardBackground: ViewModifier {
     func body(content: Content) -> some View {
         Group {
             if userPrefs.useFlatStyleViews {
-                content.modifier(MercesStyleCard(usePadding: self.usePadding, backgroundColor: self.backgroundColor))
+                content.modifier(FlatCard(usePadding: self.usePadding, backgroundColor: self.backgroundColor))
             } else {
                 content.modifier(TipTokStyleCard(usePadding: self.usePadding, backgroundColor: Color(self.backgroundColor)))
             }
@@ -24,8 +24,9 @@ struct AdaptiveCardBackground: ViewModifier {
     }
 }
 
-struct MercesStyleCard: ViewModifier {
+struct FlatCard: ViewModifier {
     @Environment(\.colorScheme) var colorScheme
+    @ObservedObject var themes: Themes = Themes.sharedInstance
     var usePadding: Bool = true
     var backgroundColor: UIColor
     
@@ -38,8 +39,8 @@ struct MercesStyleCard: ViewModifier {
                     RoundedRectangle(cornerRadius: 2.5, style: .continuous)
                         .foregroundColor(Color(self.backgroundColor))
                 )
-                .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.backgroundColor, isFlat: true)), width: 1)
-                .clipShape(RoundedRectangle(cornerRadius: 2.5, style: .continuous))
+                .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.background : self.themes.backgroundColorDark, isFlat: true)), width: 2)
+                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         }
     }
 }
