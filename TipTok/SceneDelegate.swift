@@ -11,8 +11,6 @@ import SwiftUI
 import WatchConnectivity
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate, WCSessionDelegate {
-    @Environment(\.colorScheme) var colorScheme
-    @ObservedObject var themes = Themes.sharedInstance
 
     var window: UIWindow?
     
@@ -27,6 +25,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, WCSessionDelegate {
             window.rootViewController = UIHostingController(rootView: ContentView())
             self.window = window
             window.makeKeyAndVisible()
+        }
+        
+        if (WCSession.isSupported()) {
+            let session = WCSession.default
+            session.delegate = self
+            session.activate()
+            print("Scene did become active")
+            let defaultPrefsFile = Bundle.main.path(forResource: "defaultPreferences", ofType: "plist")
+            let defaultPreferences = NSDictionary(contentsOfFile: defaultPrefsFile!)
+            session.transferUserInfo(defaultPreferences as! [String : Any])
         }
     }
 
@@ -44,12 +52,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, WCSessionDelegate {
         guard let shortcut = launchedShortcutItem else { return }
         _ = handleShortcut(shortcutItem: shortcut)
         launchedShortcutItem = nil
-        
-        if (WCSession.isSupported()) {
-            let session = WCSession.default
-            session.delegate = self
-            session.activate()
-        }
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
@@ -124,7 +126,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, WCSessionDelegate {
     // MARK: - WCDelegate Methods
         
         func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-            
+            print("Watch Session did complete")
         }
         
         func sessionDidBecomeInactive(_ session: WCSession) {
@@ -142,11 +144,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, WCSessionDelegate {
                 // path to directory on the watch
                 // the lifetime of this directory is tied to the watchAppInstalled property
                 do {
-    //                let defaultPrefsFile = Bundle.main.path(forResource: "defaultPreferences", ofType: "plist")
-    //                let defaultPreferences = NSDictionary(contentsOfFile: defaultPrefsFile!)
-    //                UserDefaults(suiteName:"group.DoMarsToyBox.Merces")?.register(defaults: defaultPreferences! as! [String : AnyObject])
+                    print("Session Watch State Did Change")
+                    let defaultPrefsFile = Bundle.main.path(forResource: "defaultPreferences", ofType: "plist")
+                    let defaultPreferences = NSDictionary(contentsOfFile: defaultPrefsFile!)
+                    UserDefaults(suiteName:"group.DoMarsToyBox.Merces")?.register(defaults: defaultPreferences! as! [String : AnyObject])
+                    try session.updateApplicationContext((UserDefaults(suiteName:"group.DoMarsToyBox.Merces")?.dictionaryRepresentation())!)
                     
-                    try session.updateApplicationContext((mUserDefaults?.dictionaryRepresentation())!)
                 } catch {
                     
                 }
