@@ -92,7 +92,7 @@ struct ListStyleMainPage: View {
                     .animation(.spring(response: 0.7, dampingFraction: 0.7, blendDuration: 1.0))
                 }
                 .padding()
-                .navigationBarTitle(Text("TipTok"), displayMode: .automatic)
+                .navigationBarTitle(Text("TipTok"), displayMode: .large)
                 .navigationBarItems(trailing: NavigationLink(destination: Settings(), isActive: self.$isSettingsActive) {
                     Image(systemName: "gear")
                         .resizable()
@@ -102,6 +102,13 @@ struct ListStyleMainPage: View {
                 })
             }
         }
+//        .background(NavigationConfigurator { nc in
+//            nc.navigationBar.backgroundColor = (self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
+//            nc.navigationBar.barTintColor = (self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
+//            nc.navigationBar.titleTextAttributes = [.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? self.themes.mainColorDark : self.themes.mainColor), isFlat: true)!]
+//            nc.navigationBar.largeTitleTextAttributes = [.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? self.themes.mainColorDark : self.themes.mainColor), isFlat: true)!]
+//            nc.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? self.themes.mainColorDark : self.themes.mainColor), isFlat: true)
+//        })
     }
 }
 
@@ -180,6 +187,6 @@ struct ListDisplayRow: View {
             .minimumScaleFactor(0.8)
         }
         .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.viewColor : self.themes.viewColorDark, isFlat: true)))
-        .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? self.themes.viewColor : self.themes.viewColorDark))
+        .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? self.themes.viewColor : self.themes.viewColorDark, isInputCard: false))
     }
 }

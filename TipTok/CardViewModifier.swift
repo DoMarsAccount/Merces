@@ -12,11 +12,12 @@ struct AdaptiveCardBackground: ViewModifier {
     @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
     var backgroundColor: UIColor
     var usePadding: Bool = true
+    var isInputCard: Bool = true
     
     func body(content: Content) -> some View {
         Group {
             if userPrefs.useFlatStyleViews {
-                content.modifier(FlatCard(usePadding: self.usePadding, backgroundColor: self.backgroundColor))
+                content.modifier(FlatCard(usePadding: self.usePadding, backgroundColor: self.backgroundColor, isInputCard: self.isInputCard))
             } else {
                 content.modifier(TipTokStyleCard(usePadding: self.usePadding, backgroundColor: Color(self.backgroundColor)))
             }
@@ -29,6 +30,7 @@ struct FlatCard: ViewModifier {
     @ObservedObject var themes: Themes = Themes.sharedInstance
     var usePadding: Bool = true
     var backgroundColor: UIColor
+    var isInputCard: Bool
     
     func body(content: Content) -> some View {
         GeometryReader { geo in
@@ -36,11 +38,11 @@ struct FlatCard: ViewModifier {
                 .padding(self.usePadding ? 16: 0)
                 .frame(width: geo.size.width, height: geo.size.height)
                 .background(
-                    RoundedRectangle(cornerRadius: 2.5, style: .continuous)
+                    RoundedRectangle(cornerRadius: self.isInputCard ? 8 : 2.5, style: .continuous)
                         .foregroundColor(Color(self.backgroundColor))
                 )
-                .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.background : self.themes.backgroundColorDark, isFlat: true)), width: 1)
-                .clipShape(RoundedRectangle(cornerRadius: 2.5, style: .continuous))
+                .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.background : self.themes.backgroundColorDark, isFlat: true)), width: self.isInputCard ? 3 : 1)
+                .clipShape(RoundedRectangle(cornerRadius: self.isInputCard ? 8 : 2.5, style: .continuous))
         }
     }
 }

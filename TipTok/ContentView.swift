@@ -23,15 +23,8 @@ struct ContentView: View {
                     .environmentObject(UserPreferences.sharedInstance)
             }
         }
-//        .background(NavigationConfigurator { nc in
-//            nc.navigationBar.backgroundColor = (self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
-//            nc.navigationBar.titleTextAttributes = [.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? self.themes.mainColorDark : self.themes.mainColor), isFlat: true)!]
-//            nc.navigationBar.largeTitleTextAttributes = [.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? self.themes.mainColorDark : self.themes.mainColor), isFlat: true)!]
-//            nc.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? self.themes.mainColorDark : self.themes.mainColor), isFlat: true)
-//        })
 //        .modifier(NavigationBarModifier())
 //        .navigationViewStyle(StackNavigationViewStyle())
-        
     }
 }
 

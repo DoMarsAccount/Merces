@@ -10,8 +10,6 @@ import SwiftUI
 import ChameleonFramework
 
 struct NavigationConfigurator: UIViewControllerRepresentable {
-    @Environment(\.colorScheme) var colorScheme
-    @ObservedObject var themes = Themes.sharedInstance
     var configure: (UINavigationController) -> Void = { _ in }
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<NavigationConfigurator>) -> UIViewController {
@@ -20,11 +18,6 @@ struct NavigationConfigurator: UIViewControllerRepresentable {
     
     func updateUIViewController(_ uiViewController: UIViewController, context: UIViewControllerRepresentableContext<NavigationConfigurator>) {
         if let nc = uiViewController.navigationController {
-            nc.setStatusBarStyle(UIStatusBarStyleContrast)
-            nc.navigationBar.backgroundColor = (colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
-            nc.navigationBar.titleTextAttributes = [.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? self.themes.mainColorDark : self.themes.mainColor), isFlat: true)!]
-            nc.navigationBar.largeTitleTextAttributes = [.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? self.themes.mainColorDark : self.themes.mainColor), isFlat: true)!]
-            nc.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? self.themes.mainColorDark : self.themes.mainColor), isFlat: true)
             self.configure(nc)
         }
     }
@@ -40,14 +33,12 @@ struct NavigationConfigurator_Previews: PreviewProvider {
 struct NavigationBarModifier: ViewModifier {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var themes = Themes.sharedInstance
-    let coloredAppearance = UINavigationBarAppearance()
     
     func body(content: Content) -> some View {
         if self.themes.shouldReloadTheme {
+            let coloredAppearance = UINavigationBarAppearance()
             coloredAppearance.configureWithTransparentBackground()
-            
-//            coloredAppearance.backgroundColor = (colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
-            coloredAppearance.backgroundColor = .clear
+            coloredAppearance.backgroundColor = (colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
             coloredAppearance.titleTextAttributes = [.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? self.themes.mainColorDark : self.themes.mainColor), isFlat: true)!]
             coloredAppearance.largeTitleTextAttributes = [.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? self.themes.mainColorDark : self.themes.mainColor), isFlat: true)!]
             
@@ -59,8 +50,9 @@ struct NavigationBarModifier: ViewModifier {
             self.themes.shouldReloadTheme = false
         }
         
-        return ZStack{
+        return ZStack {
             content
+            
             VStack {
                 Spacer()
             }
