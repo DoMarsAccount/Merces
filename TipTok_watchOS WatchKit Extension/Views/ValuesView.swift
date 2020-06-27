@@ -30,7 +30,7 @@ struct ValuesView: View {
                                 self.isSubtotalKeypadPresented.toggle()
                             }
                             .sheet(isPresented: self.$isSubtotalKeypadPresented) {
-                                WatchKeypad(value: self.$wCalcModel.subtotal, isPresented: self.$isSubtotalKeypadPresented, activeField: .constant(.subtotal))
+                                Keypad(value: self.$wCalcModel.subtotal, isPresented: self.$isSubtotalKeypadPresented, activeField: .constant(.subtotal))
                             }
                             .accessibility(label: Text("Subtotal: \(nForm.roundForCurrency(number: self.wCalcModel.subtotal) )"))
                             .modifier(scalingEffect())
@@ -43,7 +43,7 @@ struct ValuesView: View {
                                 self.isTaxAmountKeypadPresented.toggle()
                             }
                             .sheet(isPresented: self.$isTaxAmountKeypadPresented) {
-                                WatchKeypad(value: self.$wCalcModel.taxAmount, isPresented: self.$isTaxAmountKeypadPresented, activeField: .constant(.salesTax))
+                                Keypad(value: self.$wCalcModel.taxAmount, isPresented: self.$isTaxAmountKeypadPresented, activeField: .constant(.salesTax))
                             }
                         .accessibility(label: Text("Sales Tax: \(nForm.roundForCurrency(number: self.wCalcModel.taxAmount) )"))
                         .modifier(scalingEffect())
@@ -54,7 +54,7 @@ struct ValuesView: View {
                                 self.isPartySizeKeypadPresented.toggle()
                             }
                             .sheet(isPresented: self.$isPartySizeKeypadPresented) {
-                                WatchKeypad(value: self.$wCalcModel.partySize.double, isPresented: self.$isPartySizeKeypadPresented, activeField: .constant(.partySize))
+                                Keypad(value: self.$wCalcModel.partySize.double, isPresented: self.$isPartySizeKeypadPresented, activeField: .constant(.partySize))
                             }
                             .accessibility(label: Text("Party Size: \(nForm.formatIntegerNumbers(self.wCalcModel.partySize))"))
                             .modifier(scalingEffect())
@@ -65,7 +65,7 @@ struct ValuesView: View {
                                 self.isPartySizeKeypadPresented.toggle()
                             }
                             .sheet(isPresented: self.$isPartySizeKeypadPresented) {
-                                WatchKeypad(value: self.$wCalcModel.partySize.double, isPresented: self.$isPartySizeKeypadPresented, activeField: .constant(.partySize))
+                                Keypad(value: self.$wCalcModel.partySize.double, isPresented: self.$isPartySizeKeypadPresented, activeField: .constant(.partySize))
                             }
                             .accessibility(label: Text("Party Size: \(nForm.formatIntegerNumbers(self.wCalcModel.partySize))"))
                             .modifier(scalingEffect())

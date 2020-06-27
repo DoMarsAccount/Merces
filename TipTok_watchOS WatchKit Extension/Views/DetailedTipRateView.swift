@@ -115,7 +115,7 @@ struct TipRateField: View {
                 self.presentKeypad.toggle()
             }
             .sheet(isPresented: self.$presentKeypad) {
-                WatchKeypad(value: self.$wCalcModel.tipRate, isPresented: self.$presentKeypad, activeField: .constant(.tipRate))
+                Keypad(value: self.$wCalcModel.tipRate, isPresented: self.$presentKeypad, activeField: .constant(.tipRate))
             }
     }
 }

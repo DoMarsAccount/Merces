@@ -26,9 +26,9 @@ struct KeypadButton: View {
                     varAmts.arrayOfButtonsPressedForTipRateAsString.append(self.text)
                 case .localTax:
                     varAmts.arrayOfButtonsPressedForLocalSalesTax.append(self.text)
-                case .poorTip:
+                case .badTip:
                     varAmts.arrayOfButtonsPressedForPoorTip.append(self.text)
-                case .averageTip:
+                case .goodTip:
                     varAmts.arrayOfButtonsPressedForAverageTip.append(self.text)
                 case .greatTip:
                     varAmts.arrayOfButtonsPressedForGreatTip.append(self.text)
@@ -74,11 +74,11 @@ struct KeypadDeleteButton: View {
                     if (!varAmts.arrayOfButtonsPressedForLocalSalesTax.isEmpty) {
                         varAmts.arrayOfButtonsPressedForLocalSalesTax.removeLast()
                     }
-                case .poorTip:
+                case .badTip:
                     if (!varAmts.arrayOfButtonsPressedForPoorTip.isEmpty) {
                         varAmts.arrayOfButtonsPressedForPoorTip.removeLast()
                     }
-                case .averageTip:
+                case .goodTip:
                     if (!varAmts.arrayOfButtonsPressedForAverageTip.isEmpty) {
                         varAmts.arrayOfButtonsPressedForAverageTip.removeLast()
                     }

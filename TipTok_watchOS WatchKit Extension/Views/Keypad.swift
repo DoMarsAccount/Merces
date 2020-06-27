@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct WatchKeypad: View {
+struct Keypad: View {
     @Binding var value: Double
     @Binding var isPresented: Bool
     @Binding var activeField: EditableTextFields
@@ -76,6 +76,6 @@ struct WatchKeypad: View {
 
 struct Keypad_Previews: PreviewProvider {
     static var previews: some View {
-        WatchKeypad(value: .constant(0.00), isPresented: .constant(false), activeField: .constant(.localTax))
+        Keypad(value: .constant(0.00), isPresented: .constant(false), activeField: .constant(.localTax))
     }
 }

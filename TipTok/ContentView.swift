@@ -31,7 +31,7 @@ struct ContentView: View {
 //        })
 //        .modifier(NavigationBarModifier())
 //        .navigationViewStyle(StackNavigationViewStyle())
-            
+        
     }
 }
 

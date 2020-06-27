@@ -80,7 +80,7 @@ struct MyMerces: View {
                         self.isKeypadPresented.toggle()
                     }
                     .sheet(isPresented: self.$isKeypadPresented) {
-                        WatchKeypad(value: self.$preferences.localSalesTax, isPresented: self.$isKeypadPresented, activeField: .constant(.localTax))
+                        Keypad(value: self.$preferences.localSalesTax, isPresented: self.$isKeypadPresented, activeField: .constant(.localTax))
                     }
                     .accessibility(label: Text("Local Sales Tax Rate: \(nForm.roundForPercentWithThreeDecimalPlaces(number: self.preferences.localSalesTax))"))
                 

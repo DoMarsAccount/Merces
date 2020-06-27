@@ -67,13 +67,13 @@ struct PPageMiddleView: View {
                 HStack {
                     
                     Button(action: {
-                        self.activeField = EditableTextFields.poorTip
+                        self.activeField = EditableTextFields.badTip
                     }) {
                         VStack {
                             HStack {
                                 Text("Bad")
                                     .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                                    .scaleEffect(self.activeField == EditableTextFields.poorTip ? highlightedScale : 1.0)
+                                    .scaleEffect(self.activeField == EditableTextFields.badTip ? highlightedScale : 1.0)
                                 ServiceQuality.Bad.image
                             }
                             
@@ -90,13 +90,13 @@ struct PPageMiddleView: View {
                     .accessibility(label: Text("Bad Service Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venueEditor.selectedVenue, service: .Bad)))"))
                     
                     Button(action: {
-                        self.activeField = EditableTextFields.averageTip
+                        self.activeField = EditableTextFields.goodTip
                     }) {
                         VStack {
                             HStack {
                                 Text("Good")
                                     .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                                    .scaleEffect(self.activeField == EditableTextFields.averageTip ? highlightedScale : 1.0)
+                                    .scaleEffect(self.activeField == EditableTextFields.goodTip ? highlightedScale : 1.0)
                                 ServiceQuality.Good.image
                             }
                             Text(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venueEditor.selectedVenue, service: .Good)))

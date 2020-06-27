@@ -162,9 +162,9 @@ class VenueEditor: ObservableObject {
         didSet {
             switch self.service {
             case .Bad:
-                self.activeField = .poorTip
+                self.activeField = .badTip
             case .Good:
-                self.activeField = .averageTip
+                self.activeField = .goodTip
             case .Great:
                 self.activeField = .greatTip
             }
@@ -202,7 +202,7 @@ class VenueEditor: ObservableObject {
     init() {
         selectedVenue = .quick
         service = .Good
-        activeField = .averageTip
+        activeField = .goodTip
         
         tipAmount = tip.currentTipRate(for: .quick, service: .Good)
         badServiceTipAmount = tip.currentTipRate(for: .quick, service: .Bad)
