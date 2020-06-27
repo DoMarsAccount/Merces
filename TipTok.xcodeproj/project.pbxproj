@@ -326,6 +326,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		044119F424A79EB400BDA695 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				04719F782497233C00132EC8 /* MainPageSwiftUI.swift */,
+				04EE912E24A19AAD0033D0AF /* ListStyleMainPage.swift */,
+				04719F7A2497234F00132EC8 /* SettingsPageSwiftUI.swift */,
+				04719F7D2497247100132EC8 /* PersonalizationPage.swift */,
+				0430E5A9249FEE9A0014E8E5 /* ThemesPage.swift */,
+				04719F8124972FC800132EC8 /* VenuePicker.swift */,
+				048715442497AE4200DF33E5 /* Keypad.swift */,
+			);
+			name = Pages;
+			sourceTree = "<group>";
+		};
+		044119F524A79ED600BDA695 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				04282A56249A7FFD004F2879 /* TextFields.swift */,
+				0487153B2497A72300DF33E5 /* MainPageSubviews.swift */,
+				0487154F2498321A00DF33E5 /* PersonalizationPageSubviews.swift */,
+				048715472497B08700DF33E5 /* KeypadButtons.swift */,
+				04719F7F24972C4C00132EC8 /* ServiceQualityPicker.swift */,
+				04282A54249A4B64004F2879 /* CardViewModifier.swift */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
 		046C65062496789400B99784 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -344,22 +371,7 @@
 		04719F7C2497235700132EC8 /* SwiftUIViews */ = {
 			isa = PBXGroup;
 			children = (
-				04719F782497233C00132EC8 /* MainPageSwiftUI.swift */,
-				0487153B2497A72300DF33E5 /* MainPageSubviews.swift */,
-				04EE912E24A19AAD0033D0AF /* ListStyleMainPage.swift */,
-				04719F7A2497234F00132EC8 /* SettingsPageSwiftUI.swift */,
-				0487154F2498321A00DF33E5 /* PersonalizationPageSubviews.swift */,
-				04719F7D2497247100132EC8 /* PersonalizationPage.swift */,
-				04719F7F24972C4C00132EC8 /* ServiceQualityPicker.swift */,
-				04719F8124972FC800132EC8 /* VenuePicker.swift */,
-				048715442497AE4200DF33E5 /* Keypad.swift */,
-				048715472497B08700DF33E5 /* KeypadButtons.swift */,
-				048715512498521700DF33E5 /* NavigationConfigurator.swift */,
-				04282A54249A4B64004F2879 /* CardViewModifier.swift */,
-				04282A56249A7FFD004F2879 /* TextFields.swift */,
-				0430E5A9249FEE9A0014E8E5 /* ThemesPage.swift */,
 				0430E5AF24A121300014E8E5 /* WidgetView.swift */,
-				0430E5B124A143190014E8E5 /* ContentView.swift */,
 			);
 			name = SwiftUIViews;
 			sourceTree = "<group>";
@@ -507,8 +519,12 @@
 				0430E5AB24A041170014E8E5 /* TipTok.ckcomplication */,
 				E3B4B2B91ABB2CF7002A6C16 /* AppDelegate.swift */,
 				048715492497C15A00DF33E5 /* SceneDelegate.swift */,
+				0430E5B124A143190014E8E5 /* ContentView.swift */,
+				048715512498521700DF33E5 /* NavigationConfigurator.swift */,
 				04E0127F24896385009FAEEB /* Models */,
 				04E0126E24896179009FAEEB /* Classes */,
+				044119F424A79EB400BDA695 /* Pages */,
+				044119F524A79ED600BDA695 /* Components */,
 				E3B4B2DD1ABB2D67002A6C16 /* Spring */,
 				E3B4B2ED1ABB2E46002A6C16 /* Views */,
 				E3B4B2C01ABB2CF7002A6C16 /* Images.xcassets */,
