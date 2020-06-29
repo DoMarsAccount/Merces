@@ -44,8 +44,8 @@ struct SettingsPage: View {
                         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: headlineTextSize)))
                         .accessibility(label: Text("Personalize"))
                 }
-                SettingsRow(text: .constant("Tip Includes Sales Tax"), isEnabled: self.$preferences.tipIncludeTax)
-                SettingsRow(text: .constant("Subtotal Includes Sales Tax"), isEnabled: self.$preferences.subtotalIsPostTax)
+                SettingsRow(text: .constant("Include Sales Tax in Tip"), isEnabled: self.$preferences.tipIncludeTax)
+                SettingsRow(text: .constant("Include Sales Tax in Subtotal"), isEnabled: self.$preferences.subtotalIsPostTax)
             }
             
             Section(header: Text("Round Up to Nearest Dollar").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: headlineTextSize)))

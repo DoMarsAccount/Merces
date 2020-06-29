@@ -10,17 +10,20 @@ import Foundation
 
 class CalculationsModel: ObservableObject {
     static let sharedInstance = CalculationsModel()
+    private var manuallyUpdatingTaxAmount: Bool = false
     
     @Published var subtotal: Double {
-           didSet {
-               _ = computeTippingValues()
-           }
+       didSet {
+           _ = computeTippingValues()
        }
+    }
     @Published var taxAmount: Double {
-           didSet {
-               _ = computeTippingValues()
-           }
-       }
+        didSet {
+            if !self.manuallyUpdatingTaxAmount {
+                _ = computeTippingValues()
+            }
+        }
+    }
     @Published var tipRate: Double {
         didSet {
             _ = computeTippingValues()
@@ -86,20 +89,32 @@ class CalculationsModel: ObservableObject {
     
     /// Replaces the updateValues method formerly found in VariableAmountsClass
     func computeTippingValues() {
+        var mathTaxAmount = taxAmount
+        if !UserPreferences.sharedInstance.subtotalIsPostTax {
+            // Check if user entered a local sales tax
+            if UserPreferences.sharedInstance.localSalesTax != 0.0 {
+                mathTaxAmount = subtotal * UserPreferences.sharedInstance.localSalesTax
+                self.manuallyUpdatingTaxAmount = true
+                taxAmount = mathTaxAmount
+                self.manuallyUpdatingTaxAmount = false
+            }
+        } else {
+            mathTaxAmount = 0.0
+        }
         
-        tipAmount = (UserPreferences.sharedInstance.tipIncludeTax ? (subtotal + taxAmount) * (tipRate) : subtotal * (tipRate))
-        totalAmount = subtotal + tipAmount + taxAmount
+        tipAmount = (UserPreferences.sharedInstance.tipIncludeTax ? (subtotal + mathTaxAmount) * (tipRate) : subtotal * (tipRate))
+        totalAmount = subtotal + tipAmount + mathTaxAmount
         totalAmountPerPerson = totalAmount / Double(partySize)
         
         if UserPreferences.sharedInstance.roundTipAmount {
             tipAmount = ceil(tipAmount)
-            totalAmount = subtotal + tipAmount + taxAmount
+            totalAmount = subtotal + tipAmount + mathTaxAmount
             totalAmountPerPerson = totalAmount / Double(partySize)
         }
         
-        if UserPreferences.sharedInstance.roundTotalAmount {let difference = ceil(subtotal + tipAmount + taxAmount) - totalAmount
+        if UserPreferences.sharedInstance.roundTotalAmount {let difference = ceil(subtotal + tipAmount + mathTaxAmount) - totalAmount
             tipAmount += difference // Add the required difference to the tipAmount so that totalAmount will be a round number
-            totalAmount = subtotal + tipAmount + taxAmount
+            totalAmount = subtotal + tipAmount + mathTaxAmount
             totalAmountPerPerson = totalAmount / Double(partySize)
         }
         
@@ -121,6 +136,9 @@ class CalculationsModel: ObservableObject {
         } else {
             moreOrLessPerPerson = 0
         }
+        
+        
+        print(totalAmount)
     }
     
     func computeShoppingValues() -> (formattedBillAmount: String, formattedTaxAmount: String, formattedTotalAmount: String) {

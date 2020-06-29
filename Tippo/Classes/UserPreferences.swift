@@ -18,6 +18,7 @@ class UserPreferences: ObservableObject {
     @Published var tipIncludeTax: Bool {
         didSet {
             mUserDefaults!.set(tipIncludeTax, forKey: "tipIncludeTaxSwitchOnOff")
+            self.calcModel.computeTippingValues()
         }
     }
     @Published var roundTipAmount: Bool {
@@ -41,6 +42,7 @@ class UserPreferences: ObservableObject {
     @Published var subtotalIsPostTax: Bool {
         didSet {
             mUserDefaults!.set(subtotalIsPostTax, forKey: "subtotalIsPostTaxSwitchOnOff")
+            self.calcModel.computeTippingValues()
         }
     }
     @Published var useDynamicText: Bool {
@@ -51,6 +53,7 @@ class UserPreferences: ObservableObject {
     @Published var localSalesTax: Double {
         didSet {
             mUserDefaults!.set(localSalesTax, forKey: "userLocalSalesTax")
+            self.calcModel.computeTippingValues()
         }
     }
     @Published var shouldShowSetupAlert: Bool {

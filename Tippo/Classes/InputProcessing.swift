@@ -127,11 +127,9 @@ class InputProcessing
         switch activeField {
         case .subtotal:
             calcModel.subtotal = inputAmount
-            useTaxAmount(false)
             
         case .salesTax:
             calcModel.taxAmount = inputAmount
-            useTaxAmount(true)
             
         case .partySize:
             if inputAmount >= 2147483647 {
@@ -163,22 +161,6 @@ class InputProcessing
         default:
             break
             
-        }
-    }
-    
-    func useTaxAmount(_ doEditTaxAmount: Bool) {
-        if !UserPreferences.sharedInstance.subtotalIsPostTax {
-            var locallyCalculatedTaxAmount = calcModel.subtotal * UserPreferences.sharedInstance.localSalesTax
-            
-            if mUserDefaults?.double(forKey: "userLocalSalesTax") != 0.0 {
-                locallyCalculatedTaxAmount = calcModel.subtotal * UserPreferences.sharedInstance.localSalesTax
-            }
-            
-            if doEditTaxAmount != true {
-                calcModel.taxAmount = locallyCalculatedTaxAmount
-            }
-        } else {
-            calcModel.taxAmount = 0.0
         }
     }
     
