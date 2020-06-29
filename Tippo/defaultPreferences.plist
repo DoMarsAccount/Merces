@@ -51,7 +51,7 @@
 	<key>roundTipAmountSwitchOnOff</key>
 	<false/>
 	<key>tipIncludeTaxSwitchOnOff</key>
-	<false/>
+	<true/>
 	<key>subtotalIsPostTaxSwitchOnOff</key>
 	<false/>
 	<key>useDynamicText</key>
