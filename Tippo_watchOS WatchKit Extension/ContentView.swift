@@ -16,7 +16,7 @@ struct ContentView: View {
     
     var body: some View {
         ValuesView()
-            .navigationBarTitle("TipTok")
+            .navigationBarTitle("Tippo")
             .environmentObject(wCalcModel)
             .contextMenu {
                 NavigationLink(destination: SettingsPage().environmentObject(userPrefs), isActive: self.$isActive) {

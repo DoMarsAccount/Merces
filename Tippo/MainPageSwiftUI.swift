@@ -47,7 +47,7 @@ struct MainPageSwiftUI: View {
 //                        .animation(.interpolatingSpring(mass: 1.0, stiffness: 0.0, damping: 0.7, initialVelocity: 0.7))
             }
             .padding([.leading, .trailing])
-            .navigationBarTitle(Text("TipTok"), displayMode: .automatic)
+            .navigationBarTitle(Text("Tippo"), displayMode: .automatic)
 //            .modifier(ClassicStyle(isClassic: .constant(true)))
             .navigationBarItems(trailing: NavigationLink(destination: Settings(), isActive: self.$isSettingsActive) {
                 Image(systemName: "gear")
@@ -68,14 +68,14 @@ struct ClassicStyle: ViewModifier {
         Group  {
             if isClassic {
                 content
-                    .navigationBarTitle(Text("TipTok"), displayMode: .inline)
+                    .navigationBarTitle(Text("Tippo"), displayMode: .inline)
                     .background(NavigationConfigurator { nc in
                         nc.navigationBar.barTintColor = (self.colorScheme == .dark ? self.themes.mainColorDark : self.themes.mainColor)
                         nc.navigationBar.titleTextAttributes = [.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? self.themes.mainColorDark : self.themes.mainColor), isFlat: true)!]
                         nc.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? self.themes.mainColorDark : self.themes.mainColor), isFlat: true)
                     })
             } else {
-                content.navigationBarTitle(Text("TipTok"), displayMode: .automatic)
+                content.navigationBarTitle(Text("Tippo"), displayMode: .automatic)
             }
         }
     }

@@ -1,7 +1,7 @@
 # Uncomment this line to define a global platform for your project
 # platform :ios, '13.0'
 
-target 'TipTok' do
+target 'Tippo' do
 use_frameworks!
 
 pod 'ChameleonSwift', '~> 3.2'
@@ -9,6 +9,6 @@ pod 'ChameleonFramework', '~> 2.1'
 
 end
 
-target 'TipTokTests' do
+target 'TippoTests' do
 
 end

@@ -92,7 +92,7 @@ struct ListStyleMainPage: View {
                     .animation(.spring(response: 0.7, dampingFraction: 0.7, blendDuration: 1.0))
                 }
                 .padding()
-                .navigationBarTitle(Text("TipTok"), displayMode: .large)
+                .navigationBarTitle(Text("Tippo"), displayMode: .large)
                 .navigationBarItems(trailing: NavigationLink(destination: Settings(), isActive: self.$isSettingsActive) {
                     Image(systemName: "gear")
                         .resizable()
