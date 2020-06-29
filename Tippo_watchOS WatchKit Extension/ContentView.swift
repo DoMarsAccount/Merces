@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var isActive: Bool = false
-    @ObservedObject var wCalcModel: CalculationsModel = varAmts.calcModel
+    @ObservedObject var wCalcModel: CalculationsModel = CalculationsModel.sharedInstance
     @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
     @State private var doesUserWantSetup: Bool = false
     

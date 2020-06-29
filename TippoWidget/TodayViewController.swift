@@ -9,7 +9,7 @@
 import UIKit
 import NotificationCenter
 
-let varAmountsObject = VariableAmountsClass()
+let varAmountsObject = InputProcessing()
 
 //let coloringThemes = Themes()
 
@@ -332,7 +332,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         varAmountsObject.processInput(varAmountsObject.arrayOfButtonsPressedForBillAmountAsString, activeField: .subtotal)
         
-        self.subtotalDisplayOutlet.text = varAmountsObject.updateValues().formattedBillAmount
+        self.subtotalDisplayOutlet.text = nForm.roundForCurrency(number: varAmountsObject.calcModel.subtotal)
         
         springForKeypadButtonsPressed(sender: sender, animations: {
             
@@ -440,19 +440,19 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         /* ---- Value Output --- */
         
-        subtotalDisplayOutlet.text = varAmountsObject.updateValues().formattedBillAmount
+        subtotalDisplayOutlet.text = nForm.roundForCurrency(number: varAmountsObject.calcModel.subtotal)
         
-        tipRateDisplayOutlet.text = varAmountsObject.updateValues().formattedTipRate
+        tipRateDisplayOutlet.text = nForm.roundForPercentWithTwoDecimalPlaces(varAmountsObject.calcModel.tipRate)
         
-        grandTotalDisplayOutlet.text = varAmountsObject.updateValues().totalAmount
+        grandTotalDisplayOutlet.text = nForm.roundForCurrency(number: varAmountsObject.calcModel.totalAmount)
+    
+        numOfPeopleDisplayOutlet.text = nForm.formatIntegerNumbers(varAmountsObject.calcModel.partySize)
         
-        numOfPeopleDisplayOutlet.text = varAmountsObject.updateValues().numberOfPeoplePaying
+        salesTaxDisplayOutlet.text = nForm.roundForCurrency(number: varAmountsObject.calcModel.taxAmount)
         
-        salesTaxDisplayOutlet.text = varAmountsObject.updateValues().formattedTaxAmount
+        tipAmountDisplayOutlet.text = nForm.roundForCurrency(number: varAmountsObject.calcModel.tipAmount)
         
-        tipAmountDisplayOutlet.text = varAmountsObject.updateValues().tipAmount
-        
-        totalAmountPerPersonDisplayOutlet.text = varAmountsObject.updateValues().totalAmountPerPerson
+        totalAmountPerPersonDisplayOutlet.text = nForm.roundForCurrency(number: varAmountsObject.calcModel.totalAmountPerPerson)
         
     }
     

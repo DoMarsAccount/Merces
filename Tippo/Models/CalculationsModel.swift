@@ -9,6 +9,7 @@
 import Foundation
 
 class CalculationsModel: ObservableObject {
+    static let sharedInstance = CalculationsModel()
     
     @Published var subtotal: Double {
            didSet {
@@ -84,7 +85,7 @@ class CalculationsModel: ObservableObject {
     }
     
     /// Replaces the updateValues method formerly found in VariableAmountsClass
-    func computeTippingValues() -> (formattedBillAmount: String, formattedTaxAmount: String, formattedTipRate: String, numberOfPeoplePaying: String, tipAmount: String, totalAmount: String, totalAmountPerPerson: String) {
+    func computeTippingValues() {
         
         tipAmount = (UserPreferences.sharedInstance.tipIncludeTax ? (subtotal + taxAmount) * (tipRate) : subtotal * (tipRate))
         totalAmount = subtotal + tipAmount + taxAmount
@@ -120,8 +121,6 @@ class CalculationsModel: ObservableObject {
         } else {
             moreOrLessPerPerson = 0
         }
-        
-        return (nForm.roundForCurrency(number: subtotal), nForm.roundForCurrency(number: taxAmount), nForm.roundForPercentWithTwoDecimalPlaces(tipRate),"\(partySize)", nForm.roundForCurrency(number: tipAmount), nForm.roundForCurrency(number: totalAmount), nForm.roundForCurrency(number: totalAmountPerPerson))
     }
     
     func computeShoppingValues() -> (formattedBillAmount: String, formattedTaxAmount: String, formattedTotalAmount: String) {

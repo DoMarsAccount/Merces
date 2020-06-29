@@ -11,26 +11,26 @@ import SwiftUI
 struct KeypadButton: View {
     @Binding var text: String
     @Binding var activeField: EditableTextFields
-    
+    var inputs = InputProcessing.sharedInstance
     var body: some View {
         Button(action: {
             switch self.activeField {
             case .subtotal:
-                varAmts.arrayOfButtonsPressedForBillAmountAsString.append(self.text)
+                self.inputs.arrayOfButtonsPressedForBillAmountAsString.append(self.text)
             case .salesTax:
-                varAmts.arrayOfButtonsPressedForTaxAmountAsString.append(self.text)
+                self.inputs.arrayOfButtonsPressedForTaxAmountAsString.append(self.text)
             case .partySize:
-                varAmts.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.append(self.text)
+                self.inputs.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.append(self.text)
             case .tipRate:
-                varAmts.arrayOfButtonsPressedForTipRateAsString.append(self.text)
+                self.inputs.arrayOfButtonsPressedForTipRateAsString.append(self.text)
             case .localTax:
-                varAmts.arrayOfButtonsPressedForLocalSalesTax.append(self.text)
+                self.inputs.arrayOfButtonsPressedForLocalSalesTax.append(self.text)
             case .badTip:
-                varAmts.arrayOfButtonsPressedForPoorTip.append(self.text)
+                self.inputs.arrayOfButtonsPressedForPoorTip.append(self.text)
             case .goodTip:
-                varAmts.arrayOfButtonsPressedForAverageTip.append(self.text)
+                self.inputs.arrayOfButtonsPressedForAverageTip.append(self.text)
             case .greatTip:
-                varAmts.arrayOfButtonsPressedForGreatTip.append(self.text)
+                self.inputs.arrayOfButtonsPressedForGreatTip.append(self.text)
             default:
                 break
             }
@@ -44,41 +44,42 @@ struct KeypadButton: View {
 
 struct KeypadDeleteButton: View {
     @Binding var activeField: EditableTextFields
+    var inputs = InputProcessing.sharedInstance
     
     var body: some View {
         Button(action: {
             switch self.activeField {
             case .subtotal:
-                if (!varAmts.arrayOfButtonsPressedForBillAmountAsString.isEmpty) {
-                    varAmts.arrayOfButtonsPressedForBillAmountAsString.removeLast()
+                if (!self.inputs.arrayOfButtonsPressedForBillAmountAsString.isEmpty) {
+                    self.inputs.arrayOfButtonsPressedForBillAmountAsString.removeLast()
                 }
             case .salesTax:
-                if (!varAmts.arrayOfButtonsPressedForTaxAmountAsString.isEmpty) {
-                    varAmts.arrayOfButtonsPressedForTaxAmountAsString.removeLast()
+                if (!self.inputs.arrayOfButtonsPressedForTaxAmountAsString.isEmpty) {
+                    self.inputs.arrayOfButtonsPressedForTaxAmountAsString.removeLast()
                 }
             case .partySize:
-                if (!varAmts.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.isEmpty) {
-                    varAmts.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.removeLast()
+                if (!self.inputs.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.isEmpty) {
+                    self.inputs.arrayOfButtonsPressedForNumberOfPeoplePayingAsString.removeLast()
                 }
             case .tipRate:
-                if (!varAmts.arrayOfButtonsPressedForTipRateAsString.isEmpty) {
-                    varAmts.arrayOfButtonsPressedForTipRateAsString.removeLast()
+                if (!self.inputs.arrayOfButtonsPressedForTipRateAsString.isEmpty) {
+                    self.inputs.arrayOfButtonsPressedForTipRateAsString.removeLast()
                 }
             case .localTax:
-                if (!varAmts.arrayOfButtonsPressedForLocalSalesTax.isEmpty) {
-                    varAmts.arrayOfButtonsPressedForLocalSalesTax.removeLast()
+                if (!self.inputs.arrayOfButtonsPressedForLocalSalesTax.isEmpty) {
+                    self.inputs.arrayOfButtonsPressedForLocalSalesTax.removeLast()
                 }
             case .badTip:
-                if (!varAmts.arrayOfButtonsPressedForPoorTip.isEmpty) {
-                    varAmts.arrayOfButtonsPressedForPoorTip.removeLast()
+                if (!self.inputs.arrayOfButtonsPressedForPoorTip.isEmpty) {
+                    self.inputs.arrayOfButtonsPressedForPoorTip.removeLast()
                 }
             case .goodTip:
-                if (!varAmts.arrayOfButtonsPressedForAverageTip.isEmpty) {
-                    varAmts.arrayOfButtonsPressedForAverageTip.removeLast()
+                if (!self.inputs.arrayOfButtonsPressedForAverageTip.isEmpty) {
+                    self.inputs.arrayOfButtonsPressedForAverageTip.removeLast()
                 }
             case .greatTip:
-                if (!varAmts.arrayOfButtonsPressedForGreatTip.isEmpty) {
-                    varAmts.arrayOfButtonsPressedForGreatTip.removeLast()
+                if (!self.inputs.arrayOfButtonsPressedForGreatTip.isEmpty) {
+                    self.inputs.arrayOfButtonsPressedForGreatTip.removeLast()
                 }
             default:
                 break

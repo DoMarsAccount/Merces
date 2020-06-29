@@ -13,6 +13,7 @@ let mUserDefaults = (UserDefaults(suiteName: "group.DoMarsToyBox.Merces"))
 class UserPreferences: ObservableObject {
     static let sharedInstance = UserPreferences()
     let venueEditor = VenueEditor()
+    let calcModel = CalculationsModel.sharedInstance
     
     @Published var tipIncludeTax: Bool {
         didSet {
@@ -25,6 +26,7 @@ class UserPreferences: ObservableObject {
         }
         didSet {
             mUserDefaults!.set(roundTipAmount, forKey: "roundTipAmountSwitchOnOff")
+            self.calcModel.computeTippingValues()
         }
     }
     @Published var roundTotalAmount: Bool {
@@ -33,6 +35,7 @@ class UserPreferences: ObservableObject {
         }
         didSet {
             mUserDefaults!.set(roundTotalAmount, forKey: "roundTotalAmountSwitchOnOff")
+            self.calcModel.computeTippingValues()
         }
     }
     @Published var subtotalIsPostTax: Bool {

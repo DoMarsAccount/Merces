@@ -12,7 +12,7 @@ let highlightedScale: CGFloat = 1.3
 
 struct MainPageTopSubview: View {
     @Environment(\.colorScheme) var colorScheme
-    @ObservedObject var calcModel: CalculationsModel = varAmts.calcModel
+    @ObservedObject var calcModel: CalculationsModel = CalculationsModel.sharedInstance
     @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
     @ObservedObject var themes: Themes = Themes.sharedInstance
     @Binding var activeField: EditableTextFields
@@ -91,7 +91,7 @@ struct MainPageTopSubview: View {
 
 struct MainPageMiddleSubview: View {
     @Environment(\.colorScheme) var colorScheme
-    @ObservedObject var calcModel: CalculationsModel = varAmts.calcModel
+    @ObservedObject var calcModel: CalculationsModel = CalculationsModel.sharedInstance
     @ObservedObject var themes: Themes = Themes.sharedInstance
     @Binding var activeField: EditableTextFields
     var body: some View {
@@ -150,7 +150,7 @@ struct MainPageMiddleSubview: View {
 
 struct MainPageBottomSubview: View {
     @Environment(\.colorScheme) var colorScheme
-    @ObservedObject var calcModel: CalculationsModel = varAmts.calcModel
+    @ObservedObject var calcModel: CalculationsModel = CalculationsModel.sharedInstance
     @ObservedObject var themes: Themes = Themes.sharedInstance
     var body: some View {
         GeometryReader { geo in

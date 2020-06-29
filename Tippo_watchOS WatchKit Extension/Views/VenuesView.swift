@@ -71,6 +71,6 @@ struct VenuesView: View {
 
 struct VenuesView_Previews: PreviewProvider {
     static var previews: some View {
-        VenuesView().environmentObject(varAmts.calcModel)
+        VenuesView().environmentObject(CalculationsModel.sharedInstance)
     }
 }

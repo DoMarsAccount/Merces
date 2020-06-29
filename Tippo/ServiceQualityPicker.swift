@@ -11,7 +11,7 @@ import SwiftUI
 struct ServiceQualityPicker: View {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var themes = Themes.sharedInstance
-    @ObservedObject var calcModel = varAmts.calcModel
+    @ObservedObject var calcModel = CalculationsModel.sharedInstance
     
     var body: some View {
         Picker(selection: self.$calcModel.service, label: Text("Service Quality")) {

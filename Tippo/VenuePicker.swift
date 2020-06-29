@@ -10,7 +10,7 @@ import SwiftUI
 
 struct VenuePicker: View {
     @Environment(\.colorScheme) var colorScheme
-    @ObservedObject var calcModel = varAmts.calcModel
+    @ObservedObject var calcModel = CalculationsModel.sharedInstance
     var body: some View {
         GeometryReader { geo in
             VStack {
@@ -51,7 +51,7 @@ struct PPageVenuePicker: View {
 struct VenueView: View {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var themes = Themes.sharedInstance
-    @ObservedObject var calcModel = varAmts.calcModel
+    @ObservedObject var calcModel = CalculationsModel.sharedInstance
     var venue: VenueType
     @Binding var activeField: EditableTextFields
     var body: some View {
@@ -80,7 +80,7 @@ struct VenueView: View {
 struct VenueSelectionView: View {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var themes = Themes.sharedInstance
-    @ObservedObject var calcModel = varAmts.calcModel
+    @ObservedObject var calcModel = CalculationsModel.sharedInstance
     @Binding var activeField: EditableTextFields
     var body: some View {
         GeometryReader { geo in

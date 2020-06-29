@@ -28,10 +28,10 @@ enum EditableTextFields: CaseIterable, Hashable, Identifiable {
     var id: EditableTextFields { self }
 }
 
-let varAmts = InputProcessing()
-
 class InputProcessing
 {
+    static let sharedInstance = InputProcessing()
+    
     /* Objects */
     let calcModel = CalculationsModel.sharedInstance
     let venueEditor = UserPreferences.sharedInstance.venueEditor

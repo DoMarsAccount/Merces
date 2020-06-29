@@ -75,6 +75,8 @@ class Themes: ObservableObject {
             mainColor = coloring.uiColorValue(for: .MercesGreen)
         }
         
+        mainColor = .systemGreen
+        
         if let currentBackgroundColor = mUserDefaults?.string(forKey: "phoneBackgroundColor") {
             background = coloring.uiColor(for: currentBackgroundColor)
         } else {
@@ -92,6 +94,8 @@ class Themes: ObservableObject {
         } else {
             mainColorDark = .black
         }
+        
+        mainColorDark = .systemIndigo
         
         // MARK: Dark Mode colors
         if let currBackgroundColorDark = mUserDefaults?.colorForKey(key: "backgroundColorDark") {

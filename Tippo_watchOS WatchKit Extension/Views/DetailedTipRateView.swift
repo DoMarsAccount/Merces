@@ -34,7 +34,7 @@ struct DetailedTipRateView: View {
 
 struct DetailedTipRateView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailedTipRateView(isActive: .constant(true)).environmentObject(varAmts.calcModel)
+        DetailedTipRateView(isActive: .constant(true)).environmentObject(CalculationsModel.sharedInstance)
     }
 }
 

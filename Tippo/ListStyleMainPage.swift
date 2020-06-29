@@ -20,7 +20,7 @@ struct ListStyleMainPage: View {
     @EnvironmentObject var userPrefs: UserPreferences
     @State private var isSettingsActive: Bool = false
     @State private var activeField: EditableTextFields = .none
-    @ObservedObject var calcModel: CalculationsModel = varAmts.calcModel
+    @ObservedObject var calcModel: CalculationsModel = CalculationsModel.sharedInstance
     @ObservedObject var themes: Themes = Themes.sharedInstance
     
     var body: some View {
