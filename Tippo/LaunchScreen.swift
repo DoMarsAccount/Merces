@@ -9,8 +9,32 @@
 import SwiftUI
 
 struct LaunchScreen: View {
+    @State var progress = 0.0
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Image(Int(progress) % 2 == 0 ? "Hippo_launch-screen_1" : "Hippo_launch-screen_2")
+            Text("Tippo").font(.largeTitle)
+        }
+        .onAppear() {
+            while self.progress < 4 {
+                self.handleAnimations()
+            }
+        }
+    }
+}
+
+extension LaunchScreen {
+    var uAnimationDuration: Double { return 5.0 }
+    
+    func handleAnimations() {
+        runAnimationsPart1()
+    }
+    
+    func runAnimationsPart1() {
+        withAnimation(.easeIn(duration: uAnimationDuration)) {
+            progress += 1.0
+        }
     }
 }
 
