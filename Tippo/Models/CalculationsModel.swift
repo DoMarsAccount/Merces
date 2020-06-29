@@ -136,9 +136,6 @@ class CalculationsModel: ObservableObject {
         } else {
             moreOrLessPerPerson = 0
         }
-        
-        
-        print(totalAmount)
     }
     
     func computeShoppingValues() -> (formattedBillAmount: String, formattedTaxAmount: String, formattedTotalAmount: String) {

@@ -23,7 +23,12 @@ struct PersonalizationPage: View {
                     .edgesIgnoringSafeArea(.all)
                 
                 VStack {
-                    PPageTopView(activeField: self.$activeField)
+                    
+                    if !self.userPrefs.useClassicStyle {
+                        ListInputRow(activeField: self.$activeField, value: self.$userPrefs.localSalesTax, inputStyle: .ThreeDecimalPercent, title: "Local Sales Tax Rate", field: .localTax, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
+                    } else {
+                        PPageTopView(activeField: self.$activeField)
+                    }
                     PPageMiddleView(activeField: self.$activeField)
                     if (self.activeField != .none) {
                         Keypad(activeField: self.$activeField)
