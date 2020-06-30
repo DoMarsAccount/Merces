@@ -37,7 +37,7 @@ struct VenueSelectionList: View {
                 }).accessibility(label: Text("Add a new venue"))
         }
         .sheet(isPresented: self.$addVenueSheetPresented) {
-            AddVenuePage(didFinishCreatingVenue: self.$addVenueSheetPresented)
+            AddVenuePage(isUserCreatingVenue: self.$addVenueSheetPresented)
         }
     }
     

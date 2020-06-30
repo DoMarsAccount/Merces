@@ -71,6 +71,18 @@ class Venues: ObservableObject {
     
     func updateExistingVenue(named name: String, tipAmounts: [Double]) {
         mUserDefaults?.setValue(tipAmounts, forKey: "\(name.lowercased())TipArray")
+        
+        // Reset, Update Venues
+        self.venues.removeAll()
+        let venueNames = mUserDefaults?.value(forKey: "venueNames") as! [String]
+        
+        for name in venueNames {
+            if let tipRates = tipRates(for: name) {
+                venues.append(Venue(name: name, tipAmounts: tipRates))
+            } else {
+                venues.append(Venue(name: name, tipAmounts: [0.0, 0.0, 0.0]))
+            }
+        }
     }
     
     func venue(named name: String) -> Venue? {

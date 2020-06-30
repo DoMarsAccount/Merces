@@ -16,7 +16,7 @@ struct AddVenuePage: View {
     @ObservedObject var newVenue = VenueCreator.sharedInstance
     @ObservedObject var venues = Venues.sharedInstance
     @State private var newVenueName: String = ""
-    @Binding var didFinishCreatingVenue: Bool
+    @Binding var isUserCreatingVenue: Bool
     
     @State private var renameVenueAlertIsShown: Bool = false
     
@@ -29,7 +29,9 @@ struct AddVenuePage: View {
                 
                 TextField("Enter a name for the venue...", text: self.$newVenueName, onCommit: {
                     print(self.newVenueName)
-                })
+                }).onTapGesture {
+                    self.inputs.activeField = .none
+                }
                     .padding(.vertical)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
             }
@@ -102,7 +104,7 @@ struct AddVenuePage: View {
             }
             
             Button(action: {
-                self.didFinishCreatingVenue = !self.addVenue()
+                self.isUserCreatingVenue = !self.addVenue()
             }) {
                 Text("Add Venue")
                     .padding()
@@ -118,6 +120,8 @@ struct AddVenuePage: View {
                 }), secondaryButton: .destructive(Text("Yes"), action: {
                     // Replace the tip rates of the existing venue
                     self.venues.updateExistingVenue(named: self.newVenueName, tipAmounts: [self.newVenue.badServiceTipAmount, self.newVenue.goodServiceTipAmount, self.newVenue.greatServiceTipAmount])
+                    self.renameVenueAlertIsShown = false
+                    self.isUserCreatingVenue = false
                 }))
             })
 //            Spacer()
@@ -129,6 +133,7 @@ struct AddVenuePage: View {
     }
     
     func addVenue() -> Bool {
+        self.inputs.activeField = .none
         let result = self.venues.createNewVenue(named: self.newVenueName, tipAmounts: [self.newVenue.badServiceTipAmount, self.newVenue.goodServiceTipAmount, self.newVenue.greatServiceTipAmount])
         if result {
             return true
@@ -141,6 +146,6 @@ struct AddVenuePage: View {
 
 struct AddVenuePage_Previews: PreviewProvider {
     static var previews: some View {
-        AddVenuePage(didFinishCreatingVenue: .constant(true))
+        AddVenuePage(isUserCreatingVenue: .constant(true))
     }
 }
