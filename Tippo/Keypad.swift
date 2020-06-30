@@ -10,51 +10,53 @@ import SwiftUI
 
 struct Keypad: View {
     @Environment(\.colorScheme) var colorScheme
-    @Binding var activeField: EditableTextFields
     @ObservedObject var themes = Themes.sharedInstance
     
     var body: some View {
-        VStack (spacing: 1) {
-            HStack (spacing: 1) {
-                KeypadButton(text: .constant("1"), activeField: self.$activeField)
-                .modifier(KeypadButtonModifier())
-                KeypadButton(text: .constant("2"), activeField: self.$activeField)
-                .modifier(KeypadButtonModifier())
-                KeypadButton(text: .constant("3"), activeField: self.$activeField)
-                .modifier(KeypadButtonModifier())
-            }
-            HStack (spacing: 1) {
-                KeypadButton(text: .constant("4"), activeField: self.$activeField)
-                .modifier(KeypadButtonModifier())
-                KeypadButton(text: .constant("5"), activeField: self.$activeField)
-                .modifier(KeypadButtonModifier())
-                KeypadButton(text: .constant("6"), activeField: self.$activeField)
-                .modifier(KeypadButtonModifier())
-            }
-            HStack (spacing: 1) {
-                KeypadButton(text: .constant("7"), activeField: self.$activeField)
-                .modifier(KeypadButtonModifier())
-                KeypadButton(text: .constant("8"), activeField: self.$activeField)
-                .modifier(KeypadButtonModifier())
-                KeypadButton(text: .constant("9"), activeField: self.$activeField)
-                .modifier(KeypadButtonModifier())
-            }
-            HStack (spacing: 1) {
-                KeypadDoneButton(activeField: self.$activeField)
+        GeometryReader { geo in
+            VStack (spacing: 1) {
+                HStack (spacing: 1) {
+                    KeypadButton(text: .constant("1"))
                     .modifier(KeypadButtonModifier())
-                    .accessibility(label: Text("Done"))
-                    .accessibility(hint: Text("Closes keypad"))
-                
-                KeypadButton(text: .constant("0"), activeField: self.$activeField)
+                    KeypadButton(text: .constant("2"))
                     .modifier(KeypadButtonModifier())
-                
-                KeypadDeleteButton(activeField: self.$activeField)
+                    KeypadButton(text: .constant("3"))
                     .modifier(KeypadButtonModifier())
-                    .accessibility(label: Text("Delete"))
+                }
+                HStack (spacing: 1) {
+                    KeypadButton(text: .constant("4"))
+                    .modifier(KeypadButtonModifier())
+                    KeypadButton(text: .constant("5"))
+                    .modifier(KeypadButtonModifier())
+                    KeypadButton(text: .constant("6"))
+                    .modifier(KeypadButtonModifier())
+                }
+                HStack (spacing: 1) {
+                    KeypadButton(text: .constant("7"))
+                    .modifier(KeypadButtonModifier())
+                    KeypadButton(text: .constant("8"))
+                    .modifier(KeypadButtonModifier())
+                    KeypadButton(text: .constant("9"))
+                    .modifier(KeypadButtonModifier())
+                }
+                HStack (spacing: 1) {
+                    KeypadDoneButton()
+                        .modifier(KeypadButtonModifier())
+                        .accessibility(label: Text("Done"))
+                        .accessibility(hint: Text("Closes keypad"))
+                    
+                    KeypadButton(text: .constant("0"))
+                        .modifier(KeypadButtonModifier())
+                    
+                    KeypadDeleteButton()
+                        .modifier(KeypadButtonModifier())
+                        .accessibility(label: Text("Delete"))
+                }
             }
+            .foregroundColor(self.colorScheme == .dark ? Color(UIColor(contrastingBlackOrWhiteColorOn: self.themes.mainColorDark, isFlat: true)) : Color(UIColor(contrastingBlackOrWhiteColorOn: self.themes.mainColor, isFlat: true)))
+            .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark, usePadding: false))
+//            .frame(maxHeight: geo.size.height / 2.5)
         }
-        .foregroundColor(self.colorScheme == .dark ? Color(UIColor(contrastingBlackOrWhiteColorOn: themes.mainColorDark, isFlat: true)) : Color(UIColor(contrastingBlackOrWhiteColorOn: themes.mainColor, isFlat: true)))
-        .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark, usePadding: false))
     }
 }
 
@@ -71,6 +73,6 @@ struct KeypadButtonModifier: ViewModifier {
 
 struct Keypad_Previews: PreviewProvider {
     static var previews: some View {
-        Keypad(activeField: .constant(.subtotal))
+        Keypad()
     }
 }

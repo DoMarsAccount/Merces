@@ -14,6 +14,7 @@ class UserPreferences: ObservableObject {
     static let sharedInstance = UserPreferences()
     let venueEditor = VenueEditor()
     let calcModel = CalculationsModel.sharedInstance
+    let venues = Venues.sharedInstance
     
     @Published var tipIncludeTax: Bool {
         didSet {

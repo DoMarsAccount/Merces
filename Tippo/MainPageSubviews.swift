@@ -12,19 +12,19 @@ let highlightedScale: CGFloat = 1.3
 
 struct MainPageTopSubview: View {
     @Environment(\.colorScheme) var colorScheme
+    @ObservedObject var inputs = InputProcessing.sharedInstance
     @ObservedObject var calcModel: CalculationsModel = CalculationsModel.sharedInstance
     @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
     @ObservedObject var themes: Themes = Themes.sharedInstance
-    @Binding var activeField: EditableTextFields
     var body: some View {
         VStack {
             Button(action: {
-                self.activeField = EditableTextFields.subtotal
+                self.inputs.activeField = EditableTextFields.subtotal
             }) {
                 VStack {
                     Text("Subtotal")
                         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                        .scaleEffect(self.activeField == EditableTextFields.subtotal ? highlightedScale : 1.0)
+                        .scaleEffect(self.inputs.activeField == EditableTextFields.subtotal ? highlightedScale : 1.0)
                         .minimumScaleFactor(0.75)
                     CurrencyView(value: self.$calcModel.subtotal)
                 }
@@ -37,13 +37,13 @@ struct MainPageTopSubview: View {
                 if !UserPreferences.sharedInstance.subtotalIsPostTax {
                     Button(action: {
                         if self.userPrefs.localSalesTax == 0.0 {
-                            self.activeField = EditableTextFields.salesTax
+                            self.inputs.activeField = EditableTextFields.salesTax
                         }
                     }) {
                         VStack {
                             Text("Sales Tax")
                                 .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                                .scaleEffect(self.activeField == EditableTextFields.salesTax ? highlightedScale : 1.0)
+                                .scaleEffect(self.inputs.activeField == EditableTextFields.salesTax ? highlightedScale : 1.0)
                                 .minimumScaleFactor(0.75)
                             CurrencyView(value: self.$calcModel.taxAmount, isEnabled: self.userPrefs.localSalesTax == 0.0)
                         }
@@ -52,12 +52,12 @@ struct MainPageTopSubview: View {
                     .accessibility(label: Text("Sales Tax \(nForm.roundForCurrency(number: self.calcModel.taxAmount))"))
                 
                     Button(action: {
-                        self.activeField = EditableTextFields.partySize
+                        self.inputs.activeField = EditableTextFields.partySize
                     }) {
                         VStack {
                             Text("Party Size")
                                 .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                                .scaleEffect(self.activeField == EditableTextFields.partySize ? highlightedScale : 1.0)
+                                .scaleEffect(self.inputs.activeField == EditableTextFields.partySize ? highlightedScale : 1.0)
                                 .minimumScaleFactor(0.75)
                             IntegerView(value: self.$calcModel.partySize)
                         }
@@ -66,12 +66,12 @@ struct MainPageTopSubview: View {
                     .accessibility(label: Text("Party Size:  \(nForm.formatIntegerNumbers(self.calcModel.partySize))"))
                 } else {
                     Button(action: {
-                        self.activeField = EditableTextFields.partySize
+                        self.inputs.activeField = EditableTextFields.partySize
                     }) {
                         HStack {
                             Text("Party Size")
                                 .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                                .scaleEffect(self.activeField == EditableTextFields.partySize ? highlightedScale : 1.0)
+                                .scaleEffect(self.inputs.activeField == EditableTextFields.partySize ? highlightedScale : 1.0)
                                 .minimumScaleFactor(0.75)
                                 .padding()
                             IntegerView(value: self.$calcModel.partySize)
@@ -91,16 +91,16 @@ struct MainPageTopSubview: View {
 
 struct MainPageMiddleSubview: View {
     @Environment(\.colorScheme) var colorScheme
+    @ObservedObject var inputs = InputProcessing.sharedInstance
     @ObservedObject var calcModel: CalculationsModel = CalculationsModel.sharedInstance
     @ObservedObject var themes: Themes = Themes.sharedInstance
-    @Binding var activeField: EditableTextFields
     var body: some View {
         GeometryReader { geo in
             VStack {
                 HStack {
                     
                     Button(action: {
-                        self.activeField = EditableTextFields.venue
+                        self.inputs.activeField = EditableTextFields.venue
                     }) {
                         VStack {
                             Text("Venue")
@@ -120,12 +120,12 @@ struct MainPageMiddleSubview: View {
                     .accessibility(label: Text("Venue: \(self.calcModel.selectedVenue.name)"))
                     
                     Button(action: {
-                        self.activeField = EditableTextFields.tipRate
+                        self.inputs.activeField = EditableTextFields.tipRate
                     }) {
                         VStack {
                             Text("Tip %")
                                 .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                                .scaleEffect(self.activeField == EditableTextFields.tipRate ? highlightedScale : 1.0)
+                                .scaleEffect(self.inputs.activeField == EditableTextFields.tipRate ? highlightedScale : 1.0)
                             PercentageView(value: self.$calcModel.tipRate)
                                 .frame(maxHeight: geo.size.height / 3)
                         }
@@ -203,6 +203,6 @@ struct MainPageBottomSubview: View {
 
 struct MainPageSubviews_Previews: PreviewProvider {
     static var previews: some View {
-        MainPageTopSubview(activeField: .constant(.none))
+        MainPageTopSubview()
     }
 }

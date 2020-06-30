@@ -8,6 +8,13 @@
 
 import UIKit
 
+enum InputStyles {
+    case Currency
+    case TwoDecimalPercent
+    case ThreeDecimalPercent
+    case Integer
+}
+
 enum EditableTextFields: CaseIterable, Hashable, Identifiable {
     case subtotal
     case salesTax
@@ -18,6 +25,9 @@ enum EditableTextFields: CaseIterable, Hashable, Identifiable {
     case badTip
     case goodTip
     case greatTip
+    case newBadTip
+    case newGoodTip
+    case newGreatTip
     case none
     
     var name: String {
@@ -28,7 +38,7 @@ enum EditableTextFields: CaseIterable, Hashable, Identifiable {
     var id: EditableTextFields { self }
 }
 
-class InputProcessing
+class InputProcessing: ObservableObject
 {
     static let sharedInstance = InputProcessing()
     
@@ -38,30 +48,31 @@ class InputProcessing
     
     /* Variables */
     var tipRateArray: [Double]
+    @Published var activeField: EditableTextFields = .none
     
     var arrayOfButtonsPressedForBillAmountAsString: [String] {
         didSet {
-            processInput(self.arrayOfButtonsPressedForBillAmountAsString, activeField: .subtotal)
+            calcModel.subtotal = processInput(arrayOfButtonsPressedForBillAmountAsString, inputStyle: .Currency)
         }
     }
     var arrayOfButtonsPressedForTaxAmountAsString: [String] {
         didSet {
-            processInput(self.arrayOfButtonsPressedForTaxAmountAsString, activeField: .salesTax)
+            calcModel.taxAmount = processInput(arrayOfButtonsPressedForTaxAmountAsString, inputStyle: .Currency)
         }
     }
     var arrayOfButtonsPressedForTipRateAsString: [String] {
         didSet {
-            processInput(self.arrayOfButtonsPressedForTipRateAsString, activeField: .tipRate)
+            calcModel.tipRate = processInput(arrayOfButtonsPressedForTipRateAsString, inputStyle: .TwoDecimalPercent)
         }
     }
     var arrayOfButtonsPressedForNumberOfPeoplePayingAsString: [String] {
         didSet {
-            processInput(self.arrayOfButtonsPressedForNumberOfPeoplePayingAsString, activeField: .partySize)
+            calcModel.partySize = Int(processInput(arrayOfButtonsPressedForNumberOfPeoplePayingAsString, inputStyle: .Integer))
         }
     }
     var arrayOfButtonsPressedForLocalSalesTax: [String] {
         didSet {
-            processInput(self.arrayOfButtonsPressedForLocalSalesTax, activeField: .localTax)
+            UserPreferences.sharedInstance.localSalesTax = processInput(arrayOfButtonsPressedForLocalSalesTax, inputStyle: .ThreeDecimalPercent)
         }
     }
     
@@ -81,6 +92,22 @@ class InputProcessing
         }
     }
     
+    var arrayOfButtonsNewBadTip: [String] {
+        didSet {
+            VenueCreator.sharedInstance.badServiceTipAmount = processInput(arrayOfButtonsNewBadTip, inputStyle: .TwoDecimalPercent)
+        }
+    }
+    var arrayOfButtonsNewGoodTip: [String] {
+        didSet {
+            VenueCreator.sharedInstance.goodServiceTipAmount = processInput(arrayOfButtonsNewGoodTip, inputStyle: .TwoDecimalPercent)
+        }
+    }
+    var arrayOfButtonsNewGreatTip: [String] {
+        didSet {
+            VenueCreator.sharedInstance.greatServiceTipAmount = processInput(arrayOfButtonsNewGreatTip, inputStyle: .TwoDecimalPercent)
+        }
+    }
+    
     init() {
         if let tipArray = mUserDefaults?.array(forKey: "quickTipArray") {
             tipRateArray = tipArray as! [Double]
@@ -97,71 +124,38 @@ class InputProcessing
         arrayOfButtonsPressedForPoorTip = []
         arrayOfButtonsPressedForAverageTip = []
         arrayOfButtonsPressedForGreatTip = []
+        
+        arrayOfButtonsNewBadTip = []
+        arrayOfButtonsNewGoodTip = []
+        arrayOfButtonsNewGreatTip = []
     }
     
     var firstResponderTag = 0
     
     /* Functions */
     
-    func processInput(_ arrayOfPressedButtonValues: [String], activeField: EditableTextFields) {
+    /// Converts the array of string values to the Double they represent
+    func processInput(_ arrayOfStringNumericValues: [String], inputStyle: InputStyles) -> Double {
         var inputAmount = 0.0
-        
-        if !arrayOfPressedButtonValues.isEmpty {
-            if (arrayOfPressedButtonValues.count <= 15) {
-                inputAmount = NumberFormatter().number(from: arrayOfPressedButtonValues.joined(separator: "")) as! Double * 0.01
-            }
-           
-       } else {
-           switch activeField {
-           case .partySize:
-               inputAmount = 1.0
-           default:
-               inputAmount = 0.0
-           }
-       }
-        checkInputFormat(inputAmount, activeField: activeField)
-    }
-    
-    func checkInputFormat(_ inputAmount: Double, activeField: EditableTextFields) {
-        
-        switch activeField {
-        case .subtotal:
-            calcModel.subtotal = inputAmount
-            
-        case .salesTax:
-            calcModel.taxAmount = inputAmount
-            
-        case .partySize:
-            if inputAmount >= 2147483647 {
-                arrayOfButtonsPressedForNumberOfPeoplePayingAsString = []
-                calcModel.partySize = 0
-                
-            } else {
-                
-                if inputAmount != 1 {
+         
+        if !arrayOfStringNumericValues.isEmpty {
+            if (arrayOfStringNumericValues.count <= 10) {
 
-                    if inputAmount == 0.0 { 
-                        calcModel.partySize = 1
-                    } else {
-                        calcModel.partySize = Int(inputAmount * 100)
-                    }
-                    
-                } else {
-                    calcModel.partySize = Int(inputAmount)
-                    
+                switch inputStyle {
+                case .TwoDecimalPercent:
+                inputAmount = NumberFormatter().number(from: arrayOfStringNumericValues.joined(separator: "")) as! Double * 0.0001
+                case .ThreeDecimalPercent:
+                inputAmount = NumberFormatter().number(from: arrayOfStringNumericValues.joined(separator: "")) as! Double * 0.00001
+                case .Integer:
+                inputAmount = NumberFormatter().number(from: arrayOfStringNumericValues.joined(separator: "")) as! Double
+                case .Currency:
+                inputAmount = NumberFormatter().number(from: arrayOfStringNumericValues.joined(separator: "")) as! Double * 0.01
                 }
             }
-            
-        case .tipRate:
-            calcModel.tipRate = inputAmount * 0.01
-            
-        case .localTax:
-            UserPreferences.sharedInstance.localSalesTax = inputAmount * 0.001
-            
-        default:
-            break
-            
+        } else {
+            if inputStyle == .Integer { inputAmount = 1.0 }
         }
+        return inputAmount
     }
     
     func resetValues() {
@@ -184,6 +178,10 @@ class InputProcessing
         arrayOfButtonsPressedForPoorTip = []
         arrayOfButtonsPressedForAverageTip = []
         arrayOfButtonsPressedForGreatTip = []
+        
+        arrayOfButtonsNewBadTip = []
+        arrayOfButtonsNewGoodTip = []
+        arrayOfButtonsNewGreatTip = []
     }
     
 }

@@ -44,8 +44,19 @@
 		<real>0.1</real>
 		<real>0.2</real>
 	</array>
+	<key>venueNames</key>
+	<array>
+		<string>quick</string>
+		<string>delivery</string>
+		<string>bar</string>
+		<string>dining</string>
+		<string>salon</string>
+		<string>Delete Test 1</string>
+		<string>Delete Test 2</string>
+		<string>Delete Test 3</string>
+	</array>
 	<key>userLocalSalesTax</key>
-	<real>0</real>
+	<integer>0</integer>
 	<key>roundTotalAmountSwitchOnOff</key>
 	<false/>
 	<key>roundTipAmountSwitchOnOff</key>

@@ -10,12 +10,12 @@ import SwiftUI
 
 struct KeypadButton: View {
     @Binding var text: String
-    @Binding var activeField: EditableTextFields
-    var inputs = InputProcessing.sharedInstance
+    @ObservedObject var inputs = InputProcessing.sharedInstance
+    
     var body: some View {
         GeometryReader { geo in
             Button(action: {
-                switch self.activeField {
+                switch self.inputs.activeField {
                 case .subtotal:
                     self.inputs.arrayOfButtonsPressedForBillAmountAsString.append(self.text)
                 case .salesTax:
@@ -32,6 +32,12 @@ struct KeypadButton: View {
                     self.inputs.arrayOfButtonsPressedForAverageTip.append(self.text)
                 case .greatTip:
                     self.inputs.arrayOfButtonsPressedForGreatTip.append(self.text)
+                case .newBadTip:
+                    self.inputs.arrayOfButtonsNewBadTip.append(self.text)
+                case .newGoodTip:
+                    self.inputs.arrayOfButtonsNewGoodTip.append(self.text)
+                case .newGreatTip:
+                    self.inputs.arrayOfButtonsNewGreatTip.append(self.text)
                 default:
                     break
                 }
@@ -48,13 +54,12 @@ struct KeypadButton: View {
 }
 
 struct KeypadDeleteButton: View {
-    @Binding var activeField: EditableTextFields
-    var inputs = InputProcessing.sharedInstance
+    @ObservedObject var inputs = InputProcessing.sharedInstance
     
     var body: some View {
         GeometryReader { geo in
             Button(action: {
-                switch self.activeField {
+                switch self.inputs.activeField {
                 case .subtotal:
                     if (!self.inputs.arrayOfButtonsPressedForBillAmountAsString.isEmpty) {
                         self.inputs.arrayOfButtonsPressedForBillAmountAsString.removeLast()
@@ -87,6 +92,18 @@ struct KeypadDeleteButton: View {
                     if (!self.inputs.arrayOfButtonsPressedForGreatTip.isEmpty) {
                         self.inputs.arrayOfButtonsPressedForGreatTip.removeLast()
                     }
+                case .newBadTip:
+                    if (!self.inputs.arrayOfButtonsNewBadTip.isEmpty) {
+                        self.inputs.arrayOfButtonsNewBadTip.removeLast()
+                    }
+                case .newGoodTip:
+                    if (!self.inputs.arrayOfButtonsNewGoodTip.isEmpty) {
+                        self.inputs.arrayOfButtonsNewGoodTip.removeLast()
+                    }
+                case .newGreatTip:
+                    if (!self.inputs.arrayOfButtonsNewGreatTip.isEmpty) {
+                        self.inputs.arrayOfButtonsNewGreatTip.removeLast()
+                    }
                 default:
                     break
                 }
@@ -102,12 +119,12 @@ struct KeypadDeleteButton: View {
 }
 
 struct KeypadDoneButton: View {
-    @Binding var activeField: EditableTextFields
+    @ObservedObject var inputs = InputProcessing.sharedInstance
     
     var body: some View {
         GeometryReader { geo in
             Button(action: {
-                self.activeField = EditableTextFields.none
+                self.inputs.activeField = EditableTextFields.none
             }) {
                 Image(systemName: "checkmark")
                     .resizable()
@@ -123,6 +140,6 @@ struct KeypadDoneButton: View {
 
 struct KeypadButtons_Previews: PreviewProvider {
     static var previews: some View {
-        Keypad(activeField: .constant(.subtotal))
+        Keypad()
     }
 }

@@ -10,9 +10,9 @@ import SwiftUI
 
 struct PersonalizationPage: View {
     @Environment(\.colorScheme) var colorScheme
-    @State private var activeField: EditableTextFields = .none
     @State private var isThemesPageActive: Bool = false
     @EnvironmentObject var userPrefs: UserPreferences
+    @ObservedObject var inputs = InputProcessing.sharedInstance
     @ObservedObject var venueEditor = UserPreferences.sharedInstance.venueEditor
     @ObservedObject var themes = Themes.sharedInstance
     
@@ -25,13 +25,13 @@ struct PersonalizationPage: View {
                 VStack {
                     
                     if !self.userPrefs.useClassicStyle {
-                        ListInputRow(activeField: self.$activeField, value: self.$userPrefs.localSalesTax, inputStyle: .ThreeDecimalPercent, title: "Local Sales Tax Rate", field: .localTax, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
+                        ListInputRow(value: self.$userPrefs.localSalesTax, inputStyle: .ThreeDecimalPercent, title: "Local Sales Tax Rate", field: .localTax, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
                     } else {
-                        PPageTopView(activeField: self.$activeField)
+                        PPageTopView()
                     }
-                    PPageMiddleView(activeField: self.$activeField)
-                    if (self.activeField != .none) {
-                        Keypad(activeField: self.$activeField)
+                    PPageMiddleView()
+                    if (self.inputs.activeField != .none) {
+                        Keypad()
                     } else {
                         PPageBottomView()
                     }

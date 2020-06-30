@@ -53,7 +53,7 @@ struct VenueView: View {
     @ObservedObject var themes = Themes.sharedInstance
     @ObservedObject var calcModel = CalculationsModel.sharedInstance
     var venue: VenueType
-    @Binding var activeField: EditableTextFields
+    @ObservedObject var inputs = InputProcessing.sharedInstance
     var body: some View {
         ZStack {
             Color(self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
@@ -72,7 +72,7 @@ struct VenueView: View {
         .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         .onTapGesture {
             self.calcModel.selectedVenue = self.venue
-            self.activeField = .none
+            self.inputs.activeField = .none
         }
     }
 }
@@ -81,20 +81,19 @@ struct VenueSelectionView: View {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var themes = Themes.sharedInstance
     @ObservedObject var calcModel = CalculationsModel.sharedInstance
-    @Binding var activeField: EditableTextFields
     var body: some View {
         GeometryReader { geo in
             VStack {
                 HStack {
-                    VenueView(venue: .bar, activeField: self.$activeField)
-                    VenueView(venue: .quick, activeField: self.$activeField)
-                    VenueView(venue: .dining, activeField: self.$activeField)
+                    VenueView(venue: .bar)
+                    VenueView(venue: .quick)
+                    VenueView(venue: .dining)
                 }
                 
                 HStack {
-                    VenueView(venue: .taxi, activeField: self.$activeField)
-                    VenueView(venue: .salon, activeField: self.$activeField)
-                    VenueView(venue: .delivery, activeField: self.$activeField)
+                    VenueView(venue: .taxi)
+                    VenueView(venue: .salon)
+                    VenueView(venue: .delivery)
                 }
             }
             .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark))
@@ -105,7 +104,7 @@ struct VenueSelectionView: View {
 struct VenuePicker_Previews: PreviewProvider {
     static var previews: some View {
 //        VenuePicker()
-        VenueSelectionView(activeField: .constant(.none))
+        VenueSelectionView()
 //        PPageVenuePicker()
     }
 }

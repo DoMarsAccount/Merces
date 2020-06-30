@@ -1,144 +1,98 @@
 //
 //  Venues.swift
-//  Merces_SwiftUI
+//  Tippo
 //
-//  Created by Donovan McCray on 6/1/20.
-//  Copyright © 2020 Donovan McCray. All rights reserved.
+//  Created by Donovan McCray on 6/29/20.
+//  Copyright © 2020 DoMarsToyBox. All rights reserved.
 //
 
 import Foundation
 
-enum ServiceQuality: CaseIterable, Hashable, Identifiable {
-    case Poor
-    case Average
-    case Great
-    
-    var name: String {
-        return "\(self)".map {
-            $0.isUppercase ? " \($0)" : "\($0)" }.joined().capitalized
-    }
-    
-    var id: ServiceQuality { self }
+struct Venue: Hashable {
+    var name: String
+    var tipAmounts: [Double]
 }
 
-enum VenueType: CaseIterable, Hashable, Identifiable {
-    case none
-    case quick
-    case bar
-    case dining
-    case salon
-    case taxi
-    case delivery
+class VenueCreator: ObservableObject {
+    static let sharedInstance = VenueCreator()
     
-    var name: String {
-        return "\(self)".map {
-            $0.isUppercase ? " \($0)" : "\($0)" }.joined().capitalized
-    }
-    
-    var id: VenueType { self }
-}
-
-func localizedName(for venue: VenueType) -> String {
-    switch venue {
-    case .quick:
-        return "Quick"
-    case .bar:
-        return NSLocalizedString("Bar", comment: "Bar")
-    case .dining:
-        return NSLocalizedString("Dining", comment:"Dining")
-    case .salon:
-        return NSLocalizedString("Salon", comment:"Salon")
-    case .taxi:
-        return NSLocalizedString("Taxi", comment:"Taxi")
-    case .delivery:
-        return NSLocalizedString("Delivery", comment:"Delivery")
-    case .none:
-        return "None"
-    }
-}
-
-func tipRates(for venue: VenueType) -> [Double] {
-    switch venue {
-    case .quick:
-        return mUserDefaults?.array(forKey: "quickTipArray") as! [Double]
-    case .bar:
-        return mUserDefaults?.array(forKey: "barTipArray") as! [Double]
-    case .dining:
-        return mUserDefaults?.array(forKey: "diningTipArray") as! [Double]
-    case .salon:
-        return mUserDefaults?.array(forKey: "salonTipArray") as! [Double]
-    case .taxi:
-        return mUserDefaults?.array(forKey: "taxiTipArray") as! [Double]
-    case .delivery:
-        return mUserDefaults?.array(forKey: "deliveryTipArray") as! [Double]
-    case .none:
-        return [0.0, 0.0, 0.0]
-    }
-}
-
-func tipRate(for venue: VenueType, service: ServiceQuality) -> Double {
-    switch service {
-    case .Poor:
-        return tipRates(for: venue)[0]
-    case .Average:
-        return tipRates(for: venue)[1]
-    case .Great:
-        return tipRates(for: venue)[2]
-    }
-}
-
-/// Update the user's Tip Ratings stored in NSUserDefaults
-func userDefinedTipRatings (_ arrayOfPressedButtonValues: [String], venueToEdit: VenueType, tipRateToEdit: Int) {
-    
-    var inputAmount = 0.00
-    if !arrayOfPressedButtonValues.isEmpty {
-        inputAmount = NumberFormatter().number(from: arrayOfPressedButtonValues.joined(separator: "")) as! Double * 0.01
-    }
-
-    /*
-     0 = Poor
-     1 = Average
-     2 = Great
-     */
-    
-    if tipRateToEdit >= 0 && tipRateToEdit <= 2 {
-        
-        var venueArray: [Double] = tipRates(for: venueToEdit)
-        venueArray[tipRateToEdit] = inputAmount * 0.01
-        
-        switch venueToEdit {
-        case .quick:
-            mUserDefaults?.setValue(venueArray, forKey: "quickTipArray")
-        case .bar:
-            mUserDefaults?.setValue(venueArray, forKey: "barTipArray")
-        case .dining:
-            mUserDefaults?.setValue(venueArray, forKey: "diningTipArray")
-        case .salon:
-            mUserDefaults?.setValue(venueArray, forKey: "salonTipArray")
-        case .taxi:
-            mUserDefaults?.setValue(venueArray, forKey: "taxiTipArray")
-        case .delivery:
-            mUserDefaults?.setValue(venueArray, forKey: "deliveryTipArray")
-        case .none: // should never use this case
-            return
-        }
-    }
-}
-
-class VenueEditor: ObservableObject {
-    @Published var selectedVenue: VenueType
-    @Published var service: ServiceQuality
-    
-    @Published var poorTipAmount: Double
-    @Published var averageTipAmount: Double
-    @Published var greatTipAmount: Double
+    @Published var badServiceTipAmount: Double
+    @Published var goodServiceTipAmount: Double
+    @Published var greatServiceTipAmount: Double
     
     init() {
-        selectedVenue = .quick
-        service = .Average
-        
-        poorTipAmount = 0.0
-        averageTipAmount = 0.0
-        greatTipAmount = 0.0
+        badServiceTipAmount = 0.0
+        goodServiceTipAmount = 0.0
+        greatServiceTipAmount = 0.0
     }
+    
+    func reset() {
+        badServiceTipAmount = 0.0
+        goodServiceTipAmount = 0.0
+        greatServiceTipAmount = 0.0
+    }
+}
+
+class Venues: ObservableObject {
+    @Published var venues: [Venue] = []
+    static let sharedInstance = Venues()
+    
+    init() {
+        let defaultPrefsFile = Bundle.main.path(forResource: "defaultPreferences", ofType: "plist")
+        let defaultPreferences = NSDictionary(contentsOfFile: defaultPrefsFile!)
+        UserDefaults(suiteName:"group.DoMarsToyBox.Merces")?.register(defaults: defaultPreferences! as! [String : AnyObject])
+        
+        let venueNames = mUserDefaults?.value(forKey: "venueNames") as! [String]
+        
+        for name in venueNames {
+            if let tipRates = tipRates(for: name) {
+                venues.append(Venue(name: name, tipAmounts: tipRates))
+            } else {
+                venues.append(Venue(name: name, tipAmounts: [0.0, 0.0, 0.0]))
+            }
+        }
+//        print(venueNames)
+    }
+    
+    func createNewVenue(named name: String, tipAmounts: [Double]) -> Bool {
+        var existingVenueNames = mUserDefaults?.value(forKey: "venueNames") as! [String]
+        
+        if !existingVenueNames.contains(name) {
+            existingVenueNames.append(name)
+            mUserDefaults?.set(existingVenueNames, forKey: "venueNames")
+            
+            mUserDefaults?.setValue(tipAmounts, forKey: "\(name.lowercased())TipArray")
+            
+            venues.append(Venue(name: name, tipAmounts: tipAmounts))
+            return true
+        }
+        return false
+    }
+    
+    func updateExistingVenue(named name: String, tipAmounts: [Double]) {
+        mUserDefaults?.setValue(tipAmounts, forKey: "\(name.lowercased())TipArray")
+    }
+    
+    func venue(named name: String) -> Venue? {
+        if let tipAmounts = mUserDefaults?.value(forKey: "\(name.lowercased())TipArray") {
+            return Venue(name: name, tipAmounts: tipAmounts as! [Double])
+        }
+        return nil
+    }
+    
+    func tipRates(for name: String) -> [Double]? {
+        if let venue = self.venue(named: name) {
+            return venue.tipAmounts
+        }
+        return nil
+    }
+    
+    func deleteVenue(at offsets: IndexSet) {
+        var existingVenueNames = mUserDefaults?.value(forKey: "venueNames") as! [String]
+        existingVenueNames.remove(atOffsets: offsets)
+        print(existingVenueNames)
+        mUserDefaults?.set(existingVenueNames, forKey: "venueNames")
+    }
+    
+    
 }

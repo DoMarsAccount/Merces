@@ -23,19 +23,19 @@ struct ThreeDecimalPercentageView: View {
 
 struct PPageTopView: View {
     @Environment(\.colorScheme) var colorScheme
-    @Binding var activeField: EditableTextFields
+    @ObservedObject var inputs = InputProcessing.sharedInstance
     @EnvironmentObject var userPrefs: UserPreferences
     
     var body: some View {
         GeometryReader { geo in
             
             Button(action: {
-                self.activeField = EditableTextFields.localTax
+                self.inputs.activeField = EditableTextFields.localTax
             }) {
                 VStack {
                     Text("Local Sales Tax Rate")
                         .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                        .scaleEffect(self.activeField == EditableTextFields.localTax ? highlightedScale : 1.0)
+                        .scaleEffect(self.inputs.activeField == EditableTextFields.localTax ? highlightedScale : 1.0)
                     
                     ThreeDecimalPercentageView(value: self.$userPrefs.localSalesTax).padding(.top)
                 }
@@ -51,8 +51,8 @@ struct PPageTopView: View {
 
 struct PPageMiddleView: View {
     @Environment(\.colorScheme) var colorScheme
-    @Binding var activeField: EditableTextFields
     @EnvironmentObject var userPrefs: UserPreferences
+    @ObservedObject var inputs = InputProcessing.sharedInstance
     @ObservedObject var venueEditor = UserPreferences.sharedInstance.venueEditor
     
     var body: some View {
@@ -67,13 +67,13 @@ struct PPageMiddleView: View {
                 HStack {
                     
                     Button(action: {
-                        self.activeField = EditableTextFields.badTip
+                        self.inputs.activeField = EditableTextFields.badTip
                     }) {
                         VStack {
                             HStack {
                                 Text("Bad")
                                     .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                                    .scaleEffect(self.activeField == EditableTextFields.badTip ? highlightedScale : 1.0)
+                                    .scaleEffect(self.inputs.activeField == EditableTextFields.badTip ? highlightedScale : 1.0)
                                 ServiceQuality.Bad.image
                             }
                             
@@ -90,13 +90,13 @@ struct PPageMiddleView: View {
                     .accessibility(label: Text("Bad Service Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venueEditor.selectedVenue, service: .Bad)))"))
                     
                     Button(action: {
-                        self.activeField = EditableTextFields.goodTip
+                        self.inputs.activeField = EditableTextFields.goodTip
                     }) {
                         VStack {
                             HStack {
                                 Text("Good")
                                     .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                                    .scaleEffect(self.activeField == EditableTextFields.goodTip ? highlightedScale : 1.0)
+                                    .scaleEffect(self.inputs.activeField == EditableTextFields.goodTip ? highlightedScale : 1.0)
                                 ServiceQuality.Good.image
                             }
                             Text(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venueEditor.selectedVenue, service: .Good)))
@@ -111,13 +111,13 @@ struct PPageMiddleView: View {
                     .accessibility(label: Text("Good Service Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venueEditor.selectedVenue, service: .Good)))"))
                     
                     Button(action: {
-                        self.activeField = EditableTextFields.greatTip
+                        self.inputs.activeField = EditableTextFields.greatTip
                     }) {
                         VStack {
                             HStack {
                                 Text("Great")
                                     .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                                    .scaleEffect(self.activeField == EditableTextFields.greatTip ? highlightedScale : 1.0)
+                                    .scaleEffect(self.inputs.activeField == EditableTextFields.greatTip ? highlightedScale : 1.0)
                                 ServiceQuality.Great.image
                             }
                             Text(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venueEditor.selectedVenue, service: .Great)))

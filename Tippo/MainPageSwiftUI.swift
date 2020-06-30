@@ -13,7 +13,7 @@ struct MainPageSwiftUI: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass!
     @State private var isSettingsActive: Bool = false
     @EnvironmentObject var userPrefs: UserPreferences
-    @State private var activeField: EditableTextFields = .none
+    @ObservedObject var inputs = InputProcessing.sharedInstance
     @ObservedObject var themes = Themes.sharedInstance
     
     var body: some View {
@@ -22,23 +22,23 @@ struct MainPageSwiftUI: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
-                MainPageTopSubview(activeField: self.$activeField)
+                MainPageTopSubview()
                     .padding(.top)
                     .minimumScaleFactor(0.75)
                 
-                MainPageMiddleSubview(activeField: self.$activeField)
+                MainPageMiddleSubview()
                     .minimumScaleFactor(0.8)
                 
                 ZStack {
                 
-                    VenueSelectionView(activeField: self.$activeField)
-                        .offset(x: activeField == .venue ? 0 : UIScreen.main.bounds.maxX)
+                    VenueSelectionView()
+                        .offset(x: self.inputs.activeField == .venue ? 0 : UIScreen.main.bounds.maxX)
                 
-                    Keypad(activeField: self.$activeField)
-                        .offset(x: (activeField != .none && activeField != .venue) ? 0 : UIScreen.main.bounds.maxX)
+                    Keypad()
+                        .offset(x: (self.inputs.activeField != .none && self.inputs.activeField != .venue) ? 0 : UIScreen.main.bounds.maxX)
                     
                     MainPageBottomSubview()
-                        .offset(x: activeField == .none ? 0 : UIScreen.main.bounds.maxX)
+                        .offset(x: self.inputs.activeField == .none ? 0 : UIScreen.main.bounds.maxX)
                     
                 }
                     .minimumScaleFactor(0.75)

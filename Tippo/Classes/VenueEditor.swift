@@ -1,5 +1,5 @@
 //
-//  Venues.swift
+//  VenueEditor.swift
 //  TipTok
 //
 //  Created by Donovan McCray on 6/1/20.

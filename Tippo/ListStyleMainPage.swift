@@ -8,18 +8,11 @@
 
 import SwiftUI
 
-enum InputStyles {
-    case Currency
-    case TwoDecimalPercent
-    case ThreeDecimalPercent
-    case Integer
-}
-
 struct ListStyleMainPage: View {
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var userPrefs: UserPreferences
     @State private var isSettingsActive: Bool = false
-    @State private var activeField: EditableTextFields = .none
+    @ObservedObject var inputs = InputProcessing.sharedInstance
     @ObservedObject var calcModel: CalculationsModel = CalculationsModel.sharedInstance
     @ObservedObject var themes: Themes = Themes.sharedInstance
     
@@ -32,16 +25,16 @@ struct ListStyleMainPage: View {
                 
                 VStack {
                     VStack {
-                        ListInputRow(activeField: self.$activeField, value: self.$calcModel.subtotal, inputStyle: .Currency, title: "Subtotal", field: .subtotal, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
+                        ListInputRow(value: self.$calcModel.subtotal, inputStyle: .Currency, title: "Subtotal", field: .subtotal, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
                         
                         if !self.userPrefs.subtotalIsPostTax {
-                            ListInputRow(activeField: self.$activeField, value: self.$calcModel.taxAmount, inputStyle: .Currency, title: "Sales Tax", field: .salesTax, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
+                            ListInputRow(value: self.$calcModel.taxAmount, inputStyle: .Currency, title: "Sales Tax", field: .salesTax, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
                         }
                         
-                        ListInputRow(activeField: self.$activeField, value: self.$calcModel.partySize.double, inputStyle: .Integer, title: "Party Size", field: .partySize, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
+                        ListInputRow(value: self.$calcModel.partySize.double, inputStyle: .Integer, title: "Party Size", field: .partySize, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
                         
                         Button(action: {
-                            self.activeField = .venue
+                            self.inputs.activeField = .venue
                         }) {
                             ZStack {
                                 
@@ -62,16 +55,16 @@ struct ListStyleMainPage: View {
                             
                         }
                         
-                        ListInputRow(activeField: self.$activeField, value: self.$calcModel.tipRate, inputStyle: .TwoDecimalPercent, title: "Tip %", field: .tipRate, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
+                        ListInputRow(value: self.$calcModel.tipRate, inputStyle: .TwoDecimalPercent, title: "Tip %", field: .tipRate, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
                     }
                     
                     ZStack {
                     
-                        VenueSelectionView(activeField: self.$activeField)
-                            .offset(x: self.activeField == .venue ? 0 : UIScreen.main.bounds.maxX)
+                        VenueSelectionView()
+                            .offset(x: self.inputs.activeField == .venue ? 0 : UIScreen.main.bounds.maxX)
                     
-                        Keypad(activeField: self.$activeField)
-                            .offset(x: (self.activeField != .none && self.activeField != .venue) ? 0 : UIScreen.main.bounds.maxX)
+                        Keypad()
+                            .offset(x: (self.inputs.activeField != .none && self.inputs.activeField != .venue) ? 0 : UIScreen.main.bounds.maxX)
                         
                         VStack {
                             if (self.calcModel.tipAmount != 0) {
@@ -84,7 +77,7 @@ struct ListStyleMainPage: View {
                             
                             ListDisplayRow(value: self.$calcModel.totalAmount, inputStyle: .Currency, title: "Grand Total")
                         }
-                        .offset(x: self.activeField == .none ? 0 : UIScreen.main.bounds.maxX)
+                        .offset(x: self.inputs.activeField == .none ? 0 : UIScreen.main.bounds.maxX)
                         
                     }
                     .frame(maxHeight: geo.size.height / 3)
@@ -119,8 +112,8 @@ struct ListStyleMainPage_Previews: PreviewProvider {
 }
 
 struct ListInputRow: View {
-    @Binding var activeField: EditableTextFields
     @Binding var value: Double
+    @ObservedObject var inputs = InputProcessing.sharedInstance
     var inputStyle: InputStyles
     var title: String
     var field: EditableTextFields
@@ -128,7 +121,7 @@ struct ListInputRow: View {
     
     var body: some View {
         Button(action: {
-            self.activeField = self.field
+            self.inputs.activeField = self.field
         }) {
             ZStack {
                 
