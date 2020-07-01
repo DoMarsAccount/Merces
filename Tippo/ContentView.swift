@@ -14,6 +14,7 @@ struct ContentView: View {
     @ObservedObject var themes = Themes.sharedInstance
     
     var body: some View {
+//        ListStyleMainPageSizeClassVariations().environmentObject(UserPreferences.sharedInstance)
         NavigationView {
             if userPrefs.useClassicStyle {
                 MainPageSwiftUI()
@@ -23,8 +24,8 @@ struct ContentView: View {
                     .environmentObject(UserPreferences.sharedInstance)
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
 //        .modifier(NavigationBarModifier())
-//        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

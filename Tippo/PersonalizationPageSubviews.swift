@@ -51,7 +51,7 @@ struct PPageTopView: View {
 
 struct PPageMiddleView: View {
     @Environment(\.colorScheme) var colorScheme
-    @EnvironmentObject var userPrefs: UserPreferences
+    @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
     @ObservedObject var inputs = InputProcessing.sharedInstance
     @ObservedObject var venueEditor = UserPreferences.sharedInstance.venueEditor
     
