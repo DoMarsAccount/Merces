@@ -17,12 +17,23 @@ struct VenueSelectionList: View {
         NavigationView {
             List {
                 ForEach(venues.venues, id: \.self) { venue in
-                    VStack(alignment: .leading) {
-                        Text(venue.name.capitalized)
-                            .font(.title)
-                        
-                        Text("(\(nForm.roundForPercentWithTwoDecimalPlaces(venue.tipAmounts[0])), \(nForm.roundForPercentWithTwoDecimalPlaces(venue.tipAmounts[1])), \(nForm.roundForPercentWithTwoDecimalPlaces(venue.tipAmounts[2])))")
-                            .font(.headline)
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(venue.name.capitalized)
+                                .font(.title)
+                                .bold()
+                            
+                            Text("(\(nForm.roundForPercentWithTwoDecimalPlaces(venue.tipAmounts[0])), \(nForm.roundForPercentWithTwoDecimalPlaces(venue.tipAmounts[1])), \(nForm.roundForPercentWithTwoDecimalPlaces(venue.tipAmounts[2])))")
+                                .font(.headline)
+                        }
+                        Spacer()
+                        Image(systemName: venue.isDefaultVenue ? "heart.fill" : "heart")
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                            .foregroundColor(.blue)
+                            .onTapGesture {
+                                self.venues.updateDefaultVenue(newVenue: venue.name)
+                            }
                     }
                 }
                 .onDelete(perform: venues.deleteVenue(at:))

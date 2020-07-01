@@ -55,6 +55,8 @@
 		<string>Delete Test 2</string>
 		<string>Delete Test 3</string>
 	</array>
+	<key>defaultVenue</key>
+	<string>quick</string>
 	<key>userLocalSalesTax</key>
 	<integer>0</integer>
 	<key>roundTotalAmountSwitchOnOff</key>

@@ -11,6 +11,7 @@ import Foundation
 struct Venue: Hashable {
     var name: String
     var tipAmounts: [Double]
+    var isDefaultVenue: Bool = false
 }
 
 class VenueCreator: ObservableObject {
@@ -43,12 +44,10 @@ class Venues: ObservableObject {
         UserDefaults(suiteName:"group.DoMarsToyBox.Merces")?.register(defaults: defaultPreferences! as! [String : AnyObject])
         
         let venueNames = mUserDefaults?.value(forKey: "venueNames") as! [String]
-        
+        let defaultVenue = mUserDefaults?.value(forKey: "defaultVenue") as! String
         for name in venueNames {
             if let tipRates = tipRates(for: name) {
-                venues.append(Venue(name: name, tipAmounts: tipRates))
-            } else {
-                venues.append(Venue(name: name, tipAmounts: [0.0, 0.0, 0.0]))
+                venues.append(Venue(name: name, tipAmounts: tipRates, isDefaultVenue: name == defaultVenue))
             }
         }
 //        print(venueNames)
@@ -106,5 +105,17 @@ class Venues: ObservableObject {
         mUserDefaults?.set(existingVenueNames, forKey: "venueNames")
     }
     
+    func updateDefaultVenue(newVenue name: String) {
+        mUserDefaults?.set(name, forKey: "defaultVenue")
+        
+        self.venues.removeAll()
+        let venueNames = mUserDefaults?.value(forKey: "venueNames") as! [String]
+        
+        for vName in venueNames {
+            if let tipRates = tipRates(for: vName) {
+                venues.append(Venue(name: vName, tipAmounts: tipRates, isDefaultVenue: vName == name))
+            }
+        }
+    }
     
 }
