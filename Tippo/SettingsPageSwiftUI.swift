@@ -25,17 +25,57 @@ struct SettingsRow: View {
     }
 }
 
+struct CalculationLogicControls: View {
+    @Environment(\.colorScheme) var colorScheme
+    @ObservedObject var themes: Themes = Themes.sharedInstance
+    @EnvironmentObject var preferences: UserPreferences
+    @State private var isSettingsActive: Bool = false
+
+    var body: some View {
+        NavigationView {
+            Form {
+                Section(header: Text("Include Sales Tax in...").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
+                    SettingsRow(text: .constant("Tip Amount"), isEnabled: self.$preferences.tipIncludeTax)
+                    SettingsRow(text: .constant("Subtotal"), isEnabled: self.$preferences.subtotalIsPostTax)
+                }
+                
+                Section(header: Text("Round Up to Nearest Dollar").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
+                    SettingsRow(text: .constant("Tip Amount"), isEnabled: self.$preferences.roundTipAmount)
+                    SettingsRow(text: .constant("Grand Total"), isEnabled: self.$preferences.roundTotalAmount)
+                }
+                
+            }
+            .padding(.bottom, 60)
+            .background(Color(self.colorScheme == .dark ? .secondarySystemBackground : .systemBackground))
+            .edgesIgnoringSafeArea(.bottom)
+            .navigationBarTitle(Text("Rules").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18))))
+            .navigationBarItems(leading: Button(action: {
+                self.isSettingsActive.toggle()
+            }, label: {
+                Image(systemName: "gear")
+                    .resizable()
+                    .frame(width: 30, height: 30)
+                    .accessibility(label: Text("Settings"))
+                    .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.background : self.themes.backgroundColorDark, isFlat: true)))
+            }))
+            .sheet(isPresented: self.$isSettingsActive) {
+                Settings().environmentObject(self.preferences)
+            }
+        }
+    }
+}
+
 struct Settings: View {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var themes: Themes = Themes.sharedInstance
     @EnvironmentObject var preferences: UserPreferences
     @State private var isPersonalizePageActive: Bool = false
     @State private var isThemesPageActive: Bool = false
-    
+    @State private var isSettingsActive: Bool = false
     var body: some View {
 //        UITableView.appearance().backgroundColor = .clear
 //        UITableViewCell.appearance().backgroundColor = .clear
-//        NavigationView {
+        NavigationView {
             Form {
                 Section(header: Text("General").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
                     NavigationLink(destination: PersonalizationPage(), isActive: self.$isPersonalizePageActive) {
@@ -48,13 +88,6 @@ struct Settings: View {
                             .foregroundColor(.primary)
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                     }
-                    SettingsRow(text: .constant("Include Sales Tax in Tip"), isEnabled: self.$preferences.tipIncludeTax)
-                    SettingsRow(text: .constant("Include Sales Tax in Subtotal"), isEnabled: self.$preferences.subtotalIsPostTax)
-                }
-                
-                Section(header: Text("Round Up to Nearest Dollar").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
-                    SettingsRow(text: .constant("Tip Amount"), isEnabled: self.$preferences.roundTipAmount)
-                    SettingsRow(text: .constant("Grand Total"), isEnabled: self.$preferences.roundTotalAmount)
                 }
                 
                 Section(header: Text("Accessibility").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
@@ -88,7 +121,7 @@ struct Settings: View {
             .background(Color(self.colorScheme == .dark ? self.themes.backgroundColorDark : self.themes.background))
             .edgesIgnoringSafeArea(.bottom)
             .navigationBarTitle(Text("Settings").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18))))
-//        }
+        }
     }
 }
 

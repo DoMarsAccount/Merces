@@ -17,45 +17,30 @@ struct MainPageSwiftUI: View {
     @ObservedObject var themes = Themes.sharedInstance
     
     var body: some View {
-        ZStack {
-            Color(colorScheme == .dark ? themes.backgroundColorDark : themes.background)
-                .edgesIgnoringSafeArea(.all)
+        VStack {
+            MainPageTopSubview()
+                .padding(.top)
+                .minimumScaleFactor(0.75)
             
-            VStack {
-                MainPageTopSubview()
-                    .padding(.top)
-                    .minimumScaleFactor(0.75)
+            MainPageMiddleSubview()
+                .minimumScaleFactor(0.8)
+            
+            ZStack {
+            
+                VenueSelectionView()
+                    .offset(x: self.inputs.activeField == .venue ? 0 : UIScreen.main.bounds.maxX)
+            
+                Keypad()
+                    .offset(x: (self.inputs.activeField != .none && self.inputs.activeField != .venue) ? 0 : UIScreen.main.bounds.maxX)
                 
-                MainPageMiddleSubview()
-                    .minimumScaleFactor(0.8)
+                MainPageBottomSubview()
+                    .offset(x: self.inputs.activeField == .none ? 0 : UIScreen.main.bounds.maxX)
                 
-                ZStack {
-                
-                    VenueSelectionView()
-                        .offset(x: self.inputs.activeField == .venue ? 0 : UIScreen.main.bounds.maxX)
-                
-                    Keypad()
-                        .offset(x: (self.inputs.activeField != .none && self.inputs.activeField != .venue) ? 0 : UIScreen.main.bounds.maxX)
-                    
-                    MainPageBottomSubview()
-                        .offset(x: self.inputs.activeField == .none ? 0 : UIScreen.main.bounds.maxX)
-                    
-                }
-                    .minimumScaleFactor(0.75)
-                    .padding(.bottom)
-                    .animation(.spring(response: 0.7, dampingFraction: 0.7, blendDuration: 1.0))
-//                        .animation(.interpolatingSpring(mass: 1.0, stiffness: 0.0, damping: 0.7, initialVelocity: 0.7))
             }
-            .padding([.leading, .trailing])
-            .navigationBarTitle(Text("Tippo"), displayMode: .automatic)
-//            .modifier(ClassicStyle(isClassic: .constant(true)))
-            .navigationBarItems(trailing: NavigationLink(destination: Settings(), isActive: self.$isSettingsActive) {
-                Image(systemName: "gear")
-                    .resizable()
-                    .frame(width: 30, height: 30)
-                    .accessibility(label: Text("Settings"))
-                    .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.background : self.themes.backgroundColorDark, isFlat: true)))
-            })
+                .minimumScaleFactor(0.75)
+                .padding(.bottom)
+                .animation(.spring(response: 0.7, dampingFraction: 0.7, blendDuration: 1.0))
+//                        .animation(.interpolatingSpring(mass: 1.0, stiffness: 0.0, damping: 0.7, initialVelocity: 0.7))
         }
     }
 }

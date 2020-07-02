@@ -13,19 +13,39 @@ struct ContentView: View {
     @ObservedObject var userPrefs = UserPreferences.sharedInstance
     @ObservedObject var themes = Themes.sharedInstance
     
+    @State private var bottomSheetShown = true
     var body: some View {
-//        ListStyleMainPageSizeClassVariations().environmentObject(UserPreferences.sharedInstance)
-        NavigationView {
-            if userPrefs.useClassicStyle {
-                MainPageSwiftUI()
-                    .environmentObject(UserPreferences.sharedInstance)
-            } else {
-                ListStyleMainPage()
-                    .environmentObject(UserPreferences.sharedInstance)
+//        NavigationView {
+//            if userPrefs.useClassicStyle {
+//                MainPageSwiftUI()
+//                    .environmentObject(UserPreferences.sharedInstance)
+//            } else {
+//                ListStyleMainPage()
+//                    .environmentObject(UserPreferences.sharedInstance)
+//            }
+//        }
+//        .navigationViewStyle(StackNavigationViewStyle())
+//        .modifier(NavigationBarModifier())
+        
+        GeometryReader { geo in
+//            Color.green
+            CalculationLogicControls().environmentObject(self.userPrefs)
+            CollapsableSheetView(isOpen: self.$bottomSheetShown, maxHeight: geo.size.height * 1.0) {
+//                Color.blue
+                Group {
+                    if self.userPrefs.useClassicStyle {
+                        MainPageSwiftUI()
+//                            .environmentObject(UserPreferences.sharedInstance)
+                    } else {
+                        ListStyleMainPage()
+//                            .environmentObject(UserPreferences.sharedInstance)
+                    }
+                }
+                .environmentObject(UserPreferences.sharedInstance)
+                .padding()
             }
         }
-        .navigationViewStyle(StackNavigationViewStyle())
-//        .modifier(NavigationBarModifier())
+//        .edgesIgnoringSafeArea(.all)
     }
 }
 

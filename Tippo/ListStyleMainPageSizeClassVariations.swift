@@ -165,7 +165,7 @@ struct CompactWidthCompactHeightListStyle: View {
     }
 }
 
-///
+/// Standard Portrait layout for all iPhones and compact split-view iPad
 struct CompactWidthRegularHeightListStyle: View {
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var userPrefs: UserPreferences

@@ -51,20 +51,13 @@ struct ThemesPage: View {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var themes: Themes = Themes.sharedInstance
     var body: some View {
-        ZStack {
-            Color(self.colorScheme == .dark ? self.themes.backgroundColorDark : self.themes.background)
-                .edgesIgnoringSafeArea(.all)
-            
-            VStack {
-                ListInputRow(value: .constant(123.45), inputStyle: .Currency, title: "Example", field: .none, background: self.themes.appearance == .Light ? self.themes.mainColor : self.themes.mainColorDark)
-                
-                AppearancePicker(appearance: self.$themes.appearance)
-                ThemeItemColorPicker(themeItem: .MainColor)
-                ThemeItemColorPicker(themeItem: .ViewColor)
-                ThemeItemColorPicker(themeItem: .Background)
-            }
-            .padding()
+        VStack {
+            AppearancePicker(appearance: self.$themes.appearance)
+            ThemeItemColorPicker(themeItem: .MainColor)
+            ThemeItemColorPicker(themeItem: .ViewColor)
+//                ThemeItemColorPicker(themeItem: .Background)
         }
+        .padding()
         .navigationBarTitle(Text("Themes"))
     }
 }

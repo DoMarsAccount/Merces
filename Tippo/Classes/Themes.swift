@@ -74,7 +74,6 @@ class Themes: ObservableObject {
         } else {
             mainColor = coloring.uiColorValue(for: .MercesGreen)
         }
-        
         mainColor = .systemGreen
         
         if let currentBackgroundColor = mUserDefaults?.string(forKey: "phoneBackgroundColor") {
@@ -82,6 +81,7 @@ class Themes: ObservableObject {
         } else {
             background = coloring.uiColorValue(for: .LightGray)
         }
+        background = .systemBackground
         
         if let currentViewBackgroundColor = mUserDefaults?.string(forKey: "phoneViewBackgroundColor") {
             viewColor = coloring.uiColor(for: currentViewBackgroundColor)
@@ -89,20 +89,21 @@ class Themes: ObservableObject {
             viewColor = coloring.uiColorValue(for: .White)
         }
         
+        // MARK: Dark Mode colors
         if let currMainColorDark = mUserDefaults?.colorForKey(key: "mainColorDark") {
             mainColorDark = currMainColorDark
         } else {
             mainColorDark = .black
         }
-        
         mainColorDark = .systemIndigo
         
-        // MARK: Dark Mode colors
+        
         if let currBackgroundColorDark = mUserDefaults?.colorForKey(key: "backgroundColorDark") {
             backgroundColorDark = currBackgroundColorDark
         } else {
             backgroundColorDark = .black
         }
+        backgroundColorDark = .secondarySystemBackground
         
         if let currViewColorDark = mUserDefaults?.colorForKey(key: "viewColorDark") {
             viewColorDark = currViewColorDark

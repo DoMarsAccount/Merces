@@ -41,7 +41,7 @@ struct FlatCard: ViewModifier {
                     RoundedRectangle(cornerRadius: self.isInputCard ? 8 : 2.5, style: .continuous)
                         .foregroundColor(Color(self.backgroundColor))
                 )
-                .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.background : self.themes.backgroundColorDark, isFlat: true)), width: self.isInputCard ? 3 : 1)
+                .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? .systemBackground : .secondarySystemBackground, isFlat: true)), width: self.isInputCard ? 0 : 1)
                 .clipShape(RoundedRectangle(cornerRadius: self.isInputCard ? 8 : 2.5, style: .continuous))
         }
     }
