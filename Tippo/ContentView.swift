@@ -15,37 +15,20 @@ struct ContentView: View {
     
     @State private var bottomSheetShown = true
     var body: some View {
-//        NavigationView {
-//            if userPrefs.useClassicStyle {
-//                MainPageSwiftUI()
-//                    .environmentObject(UserPreferences.sharedInstance)
-//            } else {
-//                ListStyleMainPage()
-//                    .environmentObject(UserPreferences.sharedInstance)
-//            }
-//        }
-//        .navigationViewStyle(StackNavigationViewStyle())
-//        .modifier(NavigationBarModifier())
-        
         GeometryReader { geo in
-//            Color.green
             CalculationLogicControls().environmentObject(self.userPrefs)
             CollapsableSheetView(isOpen: self.$bottomSheetShown, maxHeight: geo.size.height * 1.0) {
-//                Color.blue
                 Group {
                     if self.userPrefs.useClassicStyle {
                         MainPageSwiftUI()
-//                            .environmentObject(UserPreferences.sharedInstance)
                     } else {
                         ListStyleMainPage()
-//                            .environmentObject(UserPreferences.sharedInstance)
                     }
                 }
                 .environmentObject(UserPreferences.sharedInstance)
                 .padding()
             }
         }
-//        .edgesIgnoringSafeArea(.all)
     }
 }
 

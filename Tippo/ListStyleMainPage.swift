@@ -59,16 +59,9 @@ struct ListStyleMainPage: View {
                 }
                 .frame(maxHeight: geo.size.height / 3)
                 .minimumScaleFactor(0.75)
-                .animation(.spring(response: 0.7, dampingFraction: 0.7, blendDuration: 1.0))
+                .animation(.spring(response: 0.7, dampingFraction: 0.9, blendDuration: 1.0))
             }
         }
-//        .background(NavigationConfigurator { nc in
-//            nc.navigationBar.backgroundColor = (self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
-//            nc.navigationBar.barTintColor = (self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
-//            nc.navigationBar.titleTextAttributes = [.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? self.themes.mainColorDark : self.themes.mainColor), isFlat: true)!]
-//            nc.navigationBar.largeTitleTextAttributes = [.foregroundColor : UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? self.themes.mainColorDark : self.themes.mainColor), isFlat: true)!]
-//            nc.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: (self.colorScheme == .dark ? self.themes.mainColorDark : self.themes.mainColor), isFlat: true)
-//        })
     }
 }
 

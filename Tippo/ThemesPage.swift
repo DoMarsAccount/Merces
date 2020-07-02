@@ -56,6 +56,7 @@ struct ThemesPage: View {
             ThemeItemColorPicker(themeItem: .MainColor)
             ThemeItemColorPicker(themeItem: .ViewColor)
 //                ThemeItemColorPicker(themeItem: .Background)
+            Spacer()
         }
         .padding()
         .navigationBarTitle(Text("Themes"))
