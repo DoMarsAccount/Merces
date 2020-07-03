@@ -18,56 +18,75 @@ struct ListStyleMainPage: View {
     @ObservedObject var calcModel: CalculationsModel = CalculationsModel.sharedInstance
     @ObservedObject var themes: Themes = Themes.sharedInstance
     
+    @Binding var isOpen: Bool
+    
     var body: some View {
         GeometryReader { geo in
             VStack {
-                VStack {
-                    ListInputRow(value: self.$calcModel.subtotal, inputStyle: .Currency, title: "Subtotal", field: .subtotal, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
-                    
-                    if !self.userPrefs.subtotalIsPostTax {
-                        ListInputRow(value: self.$calcModel.taxAmount, inputStyle: .Currency, title: "Sales Tax", field: .salesTax, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
-                    }
-                    
-                    ListInputRow(value: self.$calcModel.partySize.double, inputStyle: .Integer, title: "Party Size", field: .partySize, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
-                    
-                    VenueButton()
-                    
-                    ListInputRow(value: self.$calcModel.tipRate, inputStyle: .TwoDecimalPercent, title: "Tip %", field: .tipRate, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
-                }
-            
-                ZStack {
-                
-                    VenueSelectionView()
-                        .offset(x: self.inputs.activeField == .venue ? 0 : UIScreen.main.bounds.maxX)
-                
-                    Keypad()
-                        .offset(x: (self.inputs.activeField != .none && self.inputs.activeField != .venue) ? 0 : UIScreen.main.bounds.maxX)
-                    
+                if self.isOpen {
                     VStack {
-                        if (self.calcModel.tipAmount != 0) {
-                            ListDisplayRow(value: self.$calcModel.tipAmount, inputStyle: .Currency, title: "Tip Amount")
+                        ListInputRow(value: self.$calcModel.subtotal, inputStyle: .Currency, title: "Subtotal", field: .subtotal, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
+                        
+                        if !self.userPrefs.subtotalIsPostTax {
+                            ListInputRow(value: self.$calcModel.taxAmount, inputStyle: .Currency, title: "Sales Tax", field: .salesTax, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
                         }
                         
-                        if (self.calcModel.partySize != 1) {
-                            ListDisplayRow(value: self.$calcModel.totalAmountPerPerson, inputStyle: .Currency, title: "Total Per Person")
-                        }
+                        ListInputRow(value: self.$calcModel.partySize.double, inputStyle: .Integer, title: "Party Size", field: .partySize, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
                         
-                        ListDisplayRow(value: self.$calcModel.totalAmount, inputStyle: .Currency, title: "Grand Total")
+                        VenueButton()
+                        
+                        ListInputRow(value: self.$calcModel.tipRate, inputStyle: .TwoDecimalPercent, title: "Tip %", field: .tipRate, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
                     }
-                    .offset(x: self.inputs.activeField == .none ? 0 : UIScreen.main.bounds.maxX)
+            
+                    ZStack {
                     
+                        VenueSelectionView()
+                            .offset(x: self.inputs.activeField == .venue ? 0 : UIScreen.main.bounds.maxX)
+                    
+                        Keypad()
+                            .offset(x: (self.inputs.activeField != .none && self.inputs.activeField != .venue) ? 0 : UIScreen.main.bounds.maxX)
+                        
+                        ListStyleTotaledAmounts()
+                        
+                    }
+                    .frame(maxHeight: geo.size.height / 3)
+                    .minimumScaleFactor(0.75)
+                    .animation(.spring(response: 0.7, dampingFraction: 0.9, blendDuration: 1.0))
+                } else {
+                    VStack {
+                        ListStyleTotaledAmounts()
+                            .frame(maxHeight: geo.size.height / 3)
+                        
+                        Spacer()
+                    }
                 }
-                .frame(maxHeight: geo.size.height / 3)
-                .minimumScaleFactor(0.75)
-                .animation(.spring(response: 0.7, dampingFraction: 0.9, blendDuration: 1.0))
             }
         }
     }
 }
 
+struct ListStyleTotaledAmounts: View {
+    @ObservedObject var inputs = InputProcessing.sharedInstance
+    @ObservedObject var calcModel: CalculationsModel = CalculationsModel.sharedInstance
+    var body: some View {
+        VStack {
+            if (self.calcModel.tipAmount != 0) {
+                ListDisplayRow(value: self.$calcModel.tipAmount, inputStyle: .Currency, title: "Tip Amount")
+            }
+            
+            if (self.calcModel.partySize != 1) {
+                ListDisplayRow(value: self.$calcModel.totalAmountPerPerson, inputStyle: .Currency, title: "Total Per Person")
+            }
+            
+            ListDisplayRow(value: self.$calcModel.totalAmount, inputStyle: .Currency, title: "Grand Total")
+        }
+        .offset(x: self.inputs.activeField == .none ? 0 : UIScreen.main.bounds.maxX)
+    }
+}
+
 struct ListStyleMainPage_Previews: PreviewProvider {
     static var previews: some View {
-        ListStyleMainPage().environmentObject(UserPreferences.sharedInstance)
+        ListStyleMainPage(isOpen: .constant(true)).environmentObject(UserPreferences.sharedInstance)
     }
 }
 

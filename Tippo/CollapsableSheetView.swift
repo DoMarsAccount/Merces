@@ -13,8 +13,8 @@ fileprivate enum Constants {
     static let radius: CGFloat = 16
     static let indicatorHeight: CGFloat = 6
     static let indicatorWidth: CGFloat = 60
-    static let snapRatio: CGFloat = 0.25
-    static let minHeightRatio: CGFloat = 0.3
+    static let snapRatio: CGFloat = 0.10
+    static let minHeightRatio: CGFloat = 0.4
 }
 
 struct CollapsableSheetView<Content: View>: View {
@@ -58,7 +58,9 @@ struct CollapsableSheetView<Content: View>: View {
             .gesture (
                 DragGesture().updating(self.$translation, body: { (value, state, _) in
                     state = value.translation.height
-                }).onEnded({ (value) in
+                    print(value.translation.height)
+                })
+                .onEnded({ (value) in
                     let snapDistance = self.maxHeight * Constants.snapRatio
                     guard abs(value.translation.height) > snapDistance else {
                         return

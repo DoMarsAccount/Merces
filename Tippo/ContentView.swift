@@ -17,17 +17,8 @@ struct ContentView: View {
     var body: some View {
         GeometryReader { geo in
             CalculationLogicControls().environmentObject(self.userPrefs)
-            CollapsableSheetView(isOpen: self.$bottomSheetShown, maxHeight: geo.size.height * 1.0) {
-                Group {
-                    if self.userPrefs.useClassicStyle {
-                        MainPageSwiftUI()
-                    } else {
-                        ListStyleMainPage()
-                    }
-                }
-                .environmentObject(UserPreferences.sharedInstance)
-                .padding()
-            }
+            MainPageSheet(maxHeight: geo.size.height)
+                .environmentObject(self.userPrefs)
         }
     }
 }

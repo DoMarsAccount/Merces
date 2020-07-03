@@ -49,7 +49,7 @@ struct CalculationLogicControls: View {
             .background(Color(self.colorScheme == .dark ? .secondarySystemBackground : .systemBackground))
             .edgesIgnoringSafeArea(.bottom)
             .navigationBarTitle(Text("Rules").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18))))
-            .navigationBarItems(leading: Button(action: {
+            .navigationBarItems(trailing: Button(action: {
                 self.isSettingsActive.toggle()
             }, label: {
                 Image(systemName: "gear")

@@ -30,7 +30,7 @@ struct ListStyleMainPageSizeClassVariations: View {
                         CompactWidthCompactHeightListStyle()
                     } else {
                         if self.horizontalSizeClass == .compact {
-                            ListStyleMainPage()
+                            CompactWidthRegularHeightListStyle()
                         } else {
                             RegularWidthRegulartHeightListStyle()
                         }
