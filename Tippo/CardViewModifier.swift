@@ -38,8 +38,14 @@ struct FlatCard: ViewModifier {
                 .padding(self.usePadding ? 16: 0)
                 .frame(width: geo.size.width, height: geo.size.height)
                 .background(
-                    RoundedRectangle(cornerRadius: self.isInputCard ? 8 : 2.5, style: .continuous)
-                        .foregroundColor(Color(self.backgroundColor))
+                    ZStack {
+                        Color(self.isInputCard ? .clear : self.backgroundColor)
+                        
+                        RoundedRectangle(cornerRadius: self.isInputCard ? 8 : 2.5, style: .continuous)
+                            .fill(
+                                LinearGradient(gradient: Gradient(colors: [Color(self.backgroundColor), Color(self.backgroundColor).opacity(0.80)]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                        )
+                    }
                 )
                 .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? .systemBackground : .secondarySystemBackground, isFlat: true)), width: self.isInputCard ? 0 : 1)
                 .clipShape(RoundedRectangle(cornerRadius: self.isInputCard ? 8 : 2.5, style: .continuous))
