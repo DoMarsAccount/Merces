@@ -119,7 +119,6 @@ struct MainPageSheet: View {
             .cornerRadius(Constants.radius)
             .frame(height: geo.size.height, alignment: .bottom)
             .offset(y: max(self.offset + self.translation, 0))
-//            .animation(.interactiveSpring())
             .animation(.spring(response: 0.7, dampingFraction: 0.9, blendDuration: 1.0))
             .gesture (
                 DragGesture().updating(self.$translation, body: { (value, state, _) in

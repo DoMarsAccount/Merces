@@ -22,7 +22,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="Y9A-qG-IeX" firstAttribute="leading" secondItem="mmu-YR-m6R" secondAttribute="leading" id="8OR-u2-fz1"/>
                 <constraint firstItem="u6W-zJ-GWB" firstAttribute="centerX" secondItem="mmu-YR-m6R" secondAttribute="centerX" id="JKD-Bf-zec"/>

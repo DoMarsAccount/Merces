@@ -192,7 +192,7 @@ struct VenueButton: View {
             }
             .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark, isFlat: true)))
             .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark))
-            
+            .id("\(self.calcModel.selectedVenue.name)")
         }
     }
 }
