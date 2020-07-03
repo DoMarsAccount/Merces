@@ -15,7 +15,7 @@ import SwiftUI
 
 fileprivate enum Constants {
     static let radius: CGFloat = 16
-    static let indicatorHeight: CGFloat = 6
+    static let indicatorHeight: CGFloat = 18
     static let indicatorWidth: CGFloat = 60
     static let snapRatio: CGFloat = 0.10
     static let minHeightRatio: CGFloat = 0.42
@@ -40,9 +40,10 @@ struct MainPageSheet: View {
     }
     
     private var indicator: some View {
-        RoundedRectangle(cornerRadius: Constants.radius)
-            .fill(Color.secondary)
+        Image(systemName: self.isOpen ? "chevron.compact.down" : "chevron.compact.up")
+            .resizable()
             .frame(width: Constants.indicatorWidth, height: Constants.indicatorHeight)
+            .accentColor(.secondary)
     }
     
     init(maxHeight: CGFloat) {
@@ -57,6 +58,7 @@ struct MainPageSheet: View {
                     .padding()
                     .onTapGesture {
                         self.isOpen.toggle()
+                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
                     }
                 
                 VStack {
@@ -77,7 +79,7 @@ struct MainPageSheet: View {
                         .opacity(1.0 - Double(self.translation) * 0.0035)
                 
                     } else {
-                        
+
                         VStack {
                             ListInputRow(value: self.$calcModel.subtotal, inputStyle: .Currency, title: "Subtotal", field: .subtotal, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark).id("\(self.calcModel.subtotal)")
                             
@@ -140,7 +142,7 @@ struct MainPageSheet: View {
 struct MainPageSheet_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { geo in
-            MainPageSheet(maxHeight: geo.size.height)
+            MainPageSheet(maxHeight: geo.size.height).environmentObject(UserPreferences.sharedInstance)
         }
     }
 }
