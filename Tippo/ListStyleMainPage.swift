@@ -23,44 +23,37 @@ struct ListStyleMainPage: View {
     var body: some View {
         GeometryReader { geo in
             VStack {
-                if self.isOpen {
-                    VStack {
-                        ListInputRow(value: self.$calcModel.subtotal, inputStyle: .Currency, title: "Subtotal", field: .subtotal, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
-                        
-                        if !self.userPrefs.subtotalIsPostTax {
-                            ListInputRow(value: self.$calcModel.taxAmount, inputStyle: .Currency, title: "Sales Tax", field: .salesTax, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
-                        }
-                        
-                        ListInputRow(value: self.$calcModel.partySize.double, inputStyle: .Integer, title: "Party Size", field: .partySize, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
-                        
-                        VenueButton()
-                        
-                        ListInputRow(value: self.$calcModel.tipRate, inputStyle: .TwoDecimalPercent, title: "Tip %", field: .tipRate, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
-                    }
-            
-                    ZStack {
+                VStack(spacing: 16) {
+                    ListInputRow(value: self.$calcModel.subtotal, inputStyle: .Currency, title: "Subtotal", field: .subtotal, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
                     
-                        VenueSelectionView()
-                            .offset(x: self.inputs.activeField == .venue ? 0 : UIScreen.main.bounds.maxX)
+                    if !self.userPrefs.subtotalIsPostTax {
+                        ListInputRow(value: self.$calcModel.taxAmount, inputStyle: .Currency, title: "Sales Tax", field: .salesTax, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
+                    }
                     
-                        Keypad()
-                            .offset(x: (self.inputs.activeField != .none && self.inputs.activeField != .venue) ? 0 : UIScreen.main.bounds.maxX)
-                        
-                        ListStyleTotaledAmounts()
-                        
-                    }
-                    .frame(maxHeight: geo.size.height / 3)
-                    .minimumScaleFactor(0.75)
-                    .animation(.spring(response: 0.7, dampingFraction: 0.9, blendDuration: 1.0))
-                } else {
-                    VStack {
-                        ListStyleTotaledAmounts()
-                            .frame(maxHeight: geo.size.height / 3)
-                        
-                        Spacer()
-                    }
+                    ListInputRow(value: self.$calcModel.partySize.double, inputStyle: .Integer, title: "Party Size", field: .partySize, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
+                    
+//                    VenueButton()
+                    
+                    ListInputRow(value: self.$calcModel.tipRate, inputStyle: .TwoDecimalPercent, title: "Tip %", field: .tipRate, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
                 }
+        
+                ZStack {
+                
+                    VenueSelectionView()
+                        .offset(x: self.inputs.activeField == .venue ? 0 : UIScreen.main.bounds.maxX)
+                
+                    Keypad()
+                        .offset(x: (self.inputs.activeField != .none && self.inputs.activeField != .venue) ? 0 : UIScreen.main.bounds.maxX)
+                    
+                    ListStyleTotaledAmounts()
+                    
+                }
+                .frame(maxHeight: geo.size.height / 3)
+                .minimumScaleFactor(0.75)
+                .animation(.spring(response: 0.7, dampingFraction: 0.9, blendDuration: 1.0))
+                
             }
+            .background(Color("Background"))
         }
     }
 }
@@ -90,6 +83,7 @@ struct ListStyleTotaledAmounts: View {
 struct ListStyleMainPage_Previews: PreviewProvider {
     static var previews: some View {
         ListStyleMainPage(isOpen: .constant(true)).environmentObject(UserPreferences.sharedInstance)
+            .padding()
     }
 }
 
@@ -128,6 +122,7 @@ struct ListInputRow: View {
             }
             .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.background, isFlat: true)))
             .modifier(AdaptiveCardBackground(backgroundColor: self.background))
+//                .modifier(NeumorphicStyle(viewBackgroundAccentColor: Color(.white), buttonColor: Color("DropShadowBlue")))
             
         }
     }

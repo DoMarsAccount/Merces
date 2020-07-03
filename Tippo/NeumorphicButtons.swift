@@ -20,7 +20,7 @@ struct NeumorphicButtons: View {
                     .frame(width: 200, height: 60)
                     .background(
                         ZStack {
-                            Color(#colorLiteral(red: 0.7725490196, green: 0.8156862745, blue: 0.9254901961, alpha: 1))
+                            Color("DropShadowBlue")
                             
                             RoundedRectangle(cornerRadius: 16, style: .continuous)
                                 .foregroundColor(.white)
@@ -29,32 +29,156 @@ struct NeumorphicButtons: View {
                             
                             RoundedRectangle(cornerRadius: 16, style: .continuous)
                             .fill(
-                                LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.7725490196, green: 0.8156862745, blue: 0.9254901961, alpha: 1)), .white]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                                LinearGradient(gradient: Gradient(colors: [Color("DropShadowBlue"), .white]), startPoint: .topLeading, endPoint: .bottomTrailing)
                             )
                             .padding(2)
                             .blur(radius: 2)
                         }
                     )
                     .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                    .shadow(color: Color(#colorLiteral(red: 0.7725490196, green: 0.8156862745, blue: 0.9254901961, alpha: 1)), radius: 20, x: 10, y: 10)
+                    .shadow(color: Color("DropShadowBlue"), radius: 20, x: 10, y: 10)
                     .shadow(color: Color(.white), radius: 20, x: -10, y: -10)
             }
-//            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color(#colorLiteral(red: 0.8941176471, green: 0.9294117647, blue: 1, alpha: 1)))
-            .edgesIgnoringSafeArea(.all)
         }
+    }
+}
+
+struct NeumorphicRaisedSection: View {
+    var body: some View {
+        Button(action: {
+            print("Hello")
+        }) {
+            VStack {
+                Text("Button")
+                    .font(.system(size: 20, weight: .semibold, design: .rounded))
+                    .frame(width: 200, height: 60)
+                    .background(
+                        ZStack {
+                            Color("Background")
+                            
+                            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                .foregroundColor(Color("DropShadowBlue").opacity(0.20))
+                            .blur(radius: 4)
+//                            .offset(x: 5, y: 5)
+                            
+                            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                .foregroundColor(Color("Background"))
+                                .padding(2)
+                                .blur(radius: 2)
+                        }
+                    )
+                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                    .shadow(color: Color("Jet").opacity(0.83), radius: 5, x: 5, y: 5)
+                    .shadow(color: Color(.white).opacity(0.83), radius: 5, x: -5, y: -5)
+            }
+        }
+    }
+}
+
+struct NeumorphicRecessedSection: View {
+    var body: some View {
+        VStack {
+            Spacer()
+        }
+        .frame(width: 400, height: 300)
+        .background(
+            ZStack {
+                Color("DropShadowBlue").opacity(0.75)
+
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .fill(
+                        LinearGradient(gradient: Gradient(colors: [Color("Licorice"), Color("Background")]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                    )
+                    .blur(radius: 4)
+                    .offset(x: -8, y: -8)
+
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .foregroundColor(Color("Background"))
+                .padding(2)
+                .blur(radius: 2)
+            }
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+    }
+}
+
+struct AbstractNeumorphicButton: View {
+    var viewBackgroundAccentColor: Color
+    var buttonColor: Color
+    
+    var body: some View {
+        Button(action: {
+            
+        }) {
+            VStack {
+                Text("Button")
+                    .font(.system(size: 20, weight: .semibold, design: .rounded))
+                    .frame(width: 200, height: 60)
+                    .background(
+                        ZStack {
+                            self.buttonColor
+                            
+                            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                .foregroundColor(self.viewBackgroundAccentColor)
+                                .blur(radius: 4)
+                                .offset(x: -8, y: -8)
+                            
+                            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                            .fill(
+                                LinearGradient(gradient: Gradient(colors: [self.buttonColor, self.viewBackgroundAccentColor]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                            )
+                            .padding(2)
+                            .blur(radius: 2)
+                        }
+                    )
+                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                    .shadow(color: self.buttonColor, radius: 20, x: 10, y: 10)
+                    .shadow(color: self.viewBackgroundAccentColor, radius: 20, x: -10, y: -10)
+            }
+        }
+    }
+}
+
+struct NeumorphicStyle: ViewModifier {
+    var viewBackgroundAccentColor: Color
+    var buttonColor: Color
+    func body(content: Content) -> some View {
+        content
+            .padding(16)
+            .background(
+                ZStack {
+                    self.buttonColor
+                    
+                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                        .foregroundColor(self.viewBackgroundAccentColor)
+                        .blur(radius: 4)
+                        .offset(x: -8, y: -8)
+                    
+                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .fill(
+                        LinearGradient(gradient: Gradient(colors: [self.buttonColor, self.viewBackgroundAccentColor]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                    )
+                    .padding(2)
+                    .blur(radius: 2)
+                }
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+            .shadow(color: self.buttonColor, radius: 20, x: 5, y: 5)
+            .shadow(color: self.viewBackgroundAccentColor, radius: 20, x: -5, y: -5)
     }
 }
 
 struct NeumorphicButtons_Previews: PreviewProvider {
     static var previews: some View {
-        VStack {
+        VStack(spacing: 16) {
             NeumorphicButtons()
             NeumorphicButtons()
-            NeumorphicButtons()
+            AbstractNeumorphicButton(viewBackgroundAccentColor: .white, buttonColor: Color("DropShadowBlue"))
+            NeumorphicRaisedSection()
+            NeumorphicRecessedSection()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(#colorLiteral(red: 0.8941176471, green: 0.9294117647, blue: 1, alpha: 1)))
+        .background(Color("Background"))
         .edgesIgnoringSafeArea(.all)
     }
 }
