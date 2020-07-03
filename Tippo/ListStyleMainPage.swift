@@ -72,13 +72,16 @@ struct ListStyleTotaledAmounts: View {
         VStack {
             if (self.calcModel.tipAmount != 0) {
                 ListDisplayRow(value: self.$calcModel.tipAmount, inputStyle: .Currency, title: "Tip Amount")
+                    .id("\(self.calcModel.tipAmount)")
             }
             
             if (self.calcModel.partySize != 1) {
                 ListDisplayRow(value: self.$calcModel.totalAmountPerPerson, inputStyle: .Currency, title: "Total Per Person")
+                    .id("\(self.calcModel.totalAmountPerPerson)")
             }
             
             ListDisplayRow(value: self.$calcModel.totalAmount, inputStyle: .Currency, title: "Grand Total")
+                .id("\(self.calcModel.totalAmount)")
         }
         .offset(x: self.inputs.activeField == .none ? 0 : UIScreen.main.bounds.maxX)
     }
