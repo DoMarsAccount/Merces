@@ -45,10 +45,11 @@ struct KeypadButton: View {
                 Text(self.text)
                     .padding()
                     .accessibility(label: Text(self.text))
-                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 36)))
+                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 48)))
                     
             }
             .cornerRadius(2)
+            .buttonStyle(KeypadStyle())
         }
     }
 }
@@ -114,6 +115,7 @@ struct KeypadDeleteButton: View {
                     .accessibility(label: Text("Delete"))
                     .scaledToFit()
             }
+            .buttonStyle(KeypadStyle())
         }
     }
 }
@@ -133,7 +135,21 @@ struct KeypadDoneButton: View {
                     .scaledToFit()
             }
             .cornerRadius(0)
+            .buttonStyle(KeypadStyle())
         }
+    }
+}
+
+struct KeypadStyle: ButtonStyle {
+    @Environment(\.colorScheme) var colorScheme
+    @ObservedObject var themes = Themes.sharedInstance
+    @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
+    
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .frame(minWidth: 0, maxWidth: .infinity)
+            .frame(minHeight: 0, maxHeight: .infinity)
+            .scaleEffect(configuration.isPressed ? 0.8 : 1.0)
     }
 }
 
