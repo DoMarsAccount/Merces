@@ -64,25 +64,25 @@ struct MainPageSheet: View {
                     VStack {
                         ListInputRow(value: self.$calcModel.subtotal, inputStyle: .Currency, title: "Subtotal", field: .subtotal, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
                             .id("\(self.calcModel.subtotal)")
-                            .opacity(1.0 - Double((self.offset + self.translation) * 0.0025))
+                            .opacity(1.0 - Double((self.offset + self.translation) * 0.0021))
                         
                         if !self.userPrefs.subtotalIsPostTax {
                             ListInputRow(value: self.$calcModel.taxAmount, inputStyle: .Currency, title: "Sales Tax", field: .salesTax, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
                                 .id("\(self.calcModel.taxAmount)")
-                                .opacity(1.0 - Double((self.offset + self.translation) * 0.0027))
+                                .opacity(1.0 - Double((self.offset + self.translation) * 0.0025))
                         }
                         
                         ListInputRow(value: self.$calcModel.partySize.double, inputStyle: .Integer, title: "Party Size", field: .partySize, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
                             .id("\(self.calcModel.partySize)")
-                            .opacity(1.0 - Double((self.offset + self.translation) * 0.0030))
+                            .opacity(1.0 - Double((self.offset + self.translation) * 0.0032))
                         
                         VenueButton()
                             .id("Venue")
-                            .opacity(1.0 - Double((self.offset + self.translation) * 0.0032))
+                            .opacity(1.0 - Double((self.offset + self.translation) * 0.0050))
                         
                         ListInputRow(value: self.$calcModel.tipRate, inputStyle: .TwoDecimalPercent, title: "Tip %", field: .tipRate, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
                             .id("\(self.calcModel.tipRate)")
-                            .opacity(1.0 - Double((self.offset + self.translation) * 0.0035))
+                            .opacity(1.0 - Double((self.offset + self.translation) * 0.0085))
                     }
                 
                 ZStack {
