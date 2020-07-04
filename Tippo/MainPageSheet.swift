@@ -61,44 +61,32 @@ struct MainPageSheet: View {
                         UIImpactFeedbackGenerator(style: .light).impactOccurred()
                     }
                 
-                VStack {
-                    if self.isOpen {
-                        VStack {
-                            ListInputRow(value: self.$calcModel.subtotal, inputStyle: .Currency, title: "Subtotal", field: .subtotal, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark).id("\(self.calcModel.subtotal)")
-                            
-                            if !self.userPrefs.subtotalIsPostTax {
-                                ListInputRow(value: self.$calcModel.taxAmount, inputStyle: .Currency, title: "Sales Tax", field: .salesTax, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark).id("\(self.calcModel.taxAmount)")
-                            }
-                            
-                            ListInputRow(value: self.$calcModel.partySize.double, inputStyle: .Integer, title: "Party Size", field: .partySize, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark).id("\(self.calcModel.partySize)")
-                            
-                            VenueButton().id("Venue")
-                            
-                            ListInputRow(value: self.$calcModel.tipRate, inputStyle: .TwoDecimalPercent, title: "Tip %", field: .tipRate, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark).id("\(self.calcModel.tipRate)")
+                    VStack {
+                        ListInputRow(value: self.$calcModel.subtotal, inputStyle: .Currency, title: "Subtotal", field: .subtotal, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
+                            .id("\(self.calcModel.subtotal)")
+                            .opacity(1.0 - Double((self.offset + self.translation) * 0.0025))
+                        
+                        if !self.userPrefs.subtotalIsPostTax {
+                            ListInputRow(value: self.$calcModel.taxAmount, inputStyle: .Currency, title: "Sales Tax", field: .salesTax, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
+                                .id("\(self.calcModel.taxAmount)")
+                                .opacity(1.0 - Double((self.offset + self.translation) * 0.0027))
                         }
-                        .opacity(1.0 - Double(self.translation) * 0.0035)
-                
-                    } else {
-
-                        VStack {
-                            ListInputRow(value: self.$calcModel.subtotal, inputStyle: .Currency, title: "Subtotal", field: .subtotal, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark).id("\(self.calcModel.subtotal)")
-                            
-                            if !self.userPrefs.subtotalIsPostTax {
-                                ListInputRow(value: self.$calcModel.taxAmount, inputStyle: .Currency, title: "Sales Tax", field: .salesTax, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark).id("\(self.calcModel.taxAmount)")
-                            }
-                            
-                            ListInputRow(value: self.$calcModel.partySize.double, inputStyle: .Integer, title: "Party Size", field: .partySize, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark).id("\(self.calcModel.partySize)")
-                            
-                            VenueButton().id("Venue")
-                            
-                            ListInputRow(value: self.$calcModel.tipRate, inputStyle: .TwoDecimalPercent, title: "Tip %", field: .tipRate, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark).id("\(self.calcModel.tipRate)")
-                        }
-                        .opacity(0.0 - Double(self.translation) * 0.0035)
-                        .offset(y: self.translation * 0.025)
+                        
+                        ListInputRow(value: self.$calcModel.partySize.double, inputStyle: .Integer, title: "Party Size", field: .partySize, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
+                            .id("\(self.calcModel.partySize)")
+                            .opacity(1.0 - Double((self.offset + self.translation) * 0.0030))
+                        
+                        VenueButton()
+                            .id("Venue")
+                            .opacity(1.0 - Double((self.offset + self.translation) * 0.0032))
+                        
+                        ListInputRow(value: self.$calcModel.tipRate, inputStyle: .TwoDecimalPercent, title: "Tip %", field: .tipRate, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
+                            .id("\(self.calcModel.tipRate)")
+                            .opacity(1.0 - Double((self.offset + self.translation) * 0.0035))
                     }
-                }
                 
                 ZStack {
+                    
                     VenueSelectionView()
                         .offset(x: self.inputs.activeField == .venue ? 0 : UIScreen.main.bounds.maxX)
                 
@@ -106,7 +94,7 @@ struct MainPageSheet: View {
                         .offset(x: (self.inputs.activeField != .none && self.inputs.activeField != .venue) ? 0 : UIScreen.main.bounds.maxX)
                     
                     ListStyleTotaledAmounts()
-                        .offset(y: -(self.offset + self.translation) )
+                        .offset(y: -(self.offset + self.translation))
                     
                 }
                 .padding(.top)
