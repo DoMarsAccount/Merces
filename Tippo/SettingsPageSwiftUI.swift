@@ -35,7 +35,7 @@ struct CalculationLogicControls: View {
 
     var body: some View {
         NavigationView {
-            List {
+            Form {
                 Section(header: Text("Include Sales Tax in...").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
                     SettingsRow(text: .constant("Subtotal"), isEnabled: self.$preferences.subtotalIsPostTax)
                     SettingsRow(text: .constant("Tip Amount"), isEnabled: self.$preferences.tipIncludeTax)
@@ -57,10 +57,8 @@ struct CalculationLogicControls: View {
                 }.frame(height: 80)
                 
             }
-            .navigationBarTitle(Text("Rules").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18))))
-            .listStyle(GroupedListStyle())
+            .navigationBarTitle(Text("Rules"))
             .padding(.bottom, 60)
-            .background(Color(self.colorScheme == .dark ? .secondarySystemBackground : .systemBackground))
             .edgesIgnoringSafeArea(.bottom)
             .navigationBarItems(trailing: Button(action: {
                 self.isSettingsActive.toggle()
@@ -90,7 +88,7 @@ struct Settings: View {
 //        UITableView.appearance().backgroundColor = .clear
 //        UITableViewCell.appearance().backgroundColor = .clear
         NavigationView {
-            List {
+            Form {
                 Section(header: Text("Appearance").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
                     NavigationLink(destination: ThemesPage(), isActive: self.$isThemesPageActive) {
                         Text("Themes")
@@ -137,10 +135,7 @@ struct Settings: View {
 //                
                 
             }
-            .navigationBarTitle(Text("Settings").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18))))
-            .listStyle(GroupedListStyle())
-//            .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .dark ? self.themes.backgroundColorDark : self.themes.background, isFlat: true)))
-            .background(Color(self.colorScheme == .dark ? self.themes.backgroundColorDark : self.themes.background))
+            .navigationBarTitle(Text("Settings"))
             .edgesIgnoringSafeArea(.bottom)
         }
     }
@@ -198,8 +193,6 @@ struct SettingsPane: View {
                     }
                 }
             }
-//            .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .dark ? self.themes.backgroundColorDark : self.themes.background, isFlat: true)))
-            .background(Color(self.colorScheme == .dark ? self.themes.backgroundColorDark : self.themes.background))
             .edgesIgnoringSafeArea(.bottom)
             .navigationBarTitle(Text("Settings"), displayMode: .automatic)
 //        }
@@ -209,7 +202,7 @@ struct SettingsPane: View {
 
 struct SettingsPageSwiftUI_Previews: PreviewProvider {
     static var previews: some View {
-//        Settings().environmentObject(UserPreferences.sharedInstance)
-        CalculationLogicControls().environmentObject(UserPreferences.sharedInstance)
+        Settings().environmentObject(UserPreferences.sharedInstance)
+//        CalculationLogicControls().environmentObject(UserPreferences.sharedInstance)
     }
 }
