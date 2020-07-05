@@ -66,23 +66,47 @@ struct MainPageSheet: View {
                             .id("\(self.calcModel.subtotal)")
                             .opacity(1.0 - Double((self.offset + self.translation) * 0.0021))
                         
-                        if !self.userPrefs.subtotalIsPostTax {
-                            ListInputRow(value: self.$calcModel.taxAmount, inputStyle: .Currency, title: "Sales Tax", field: .salesTax, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
-                                .id("\(self.calcModel.taxAmount)")
-                                .opacity(1.0 - Double((self.offset + self.translation) * 0.0025))
+                        HStack {
+                            if !self.userPrefs.subtotalIsPostTax {
+                                ListInputHalfRow(value: self.$calcModel.taxAmount, inputStyle: .Currency, title: "Sales Tax", field: .salesTax, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
+                                    .id("\(self.calcModel.taxAmount)")
+                                
+                                ListInputHalfRow(value: self.$calcModel.partySize.double, inputStyle: .Integer, title: "Party Size", field: .partySize, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
+                                .id("\(self.calcModel.partySize)")
+                                
+                            } else {
+                            
+                            ListInputRow(value: self.$calcModel.partySize.double, inputStyle: .Integer, title: "Party Size", field: .partySize, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
+                                .id("\(self.calcModel.partySize)")
+                            }
+                        }
+                        .opacity(1.0 - Double((self.offset + self.translation) * 0.0025))
+                        
+                        HStack {
+                            if self.userPrefs.layoutPrefs.displayVenueCards {
+                                VenueHalfButton()
+                                    .id("Venue")
+                                
+                                ListInputHalfRow(value: self.$calcModel.tipRate, inputStyle: .TwoDecimalPercent, title: "Tip %", field: .tipRate, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
+                                    .id("\(self.calcModel.tipRate)")
+                            } else {
+                                ListInputRow(value: self.$calcModel.tipRate, inputStyle: .TwoDecimalPercent, title: "Tip %", field: .tipRate, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
+                                .id("\(self.calcModel.tipRate)")
+                            }
+                        }
+                        .opacity(1.0 - Double((self.offset + self.translation) * 0.0032))
+                        
+//                        VenueButton()
+//                            .id("Venue")
+//                            .opacity(1.0 - Double((self.offset + self.translation) * 0.0032))
+                        if self.userPrefs.layoutPrefs.displayVenueCards {
+                            ServiceQualityPickerButtons()
+                            .opacity(1.0 - Double((self.offset + self.translation) * 0.0050))
                         }
                         
-                        ListInputRow(value: self.$calcModel.partySize.double, inputStyle: .Integer, title: "Party Size", field: .partySize, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
-                            .id("\(self.calcModel.partySize)")
-                            .opacity(1.0 - Double((self.offset + self.translation) * 0.0032))
-                        
-                        VenueButton()
-                            .id("Venue")
-                            .opacity(1.0 - Double((self.offset + self.translation) * 0.0050))
-                        
-                        ListInputRow(value: self.$calcModel.tipRate, inputStyle: .TwoDecimalPercent, title: "Tip %", field: .tipRate, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
-                            .id("\(self.calcModel.tipRate)")
-                            .opacity(1.0 - Double((self.offset + self.translation) * 0.0085))
+//                        ListInputRow(value: self.$calcModel.tipRate, inputStyle: .TwoDecimalPercent, title: "Tip %", field: .tipRate, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
+//                            .id("\(self.calcModel.tipRate)")
+//                            .opacity(1.0 - Double((self.offset + self.translation) * 0.0085))
                     }
                 
                 ZStack {
@@ -94,9 +118,9 @@ struct MainPageSheet: View {
                         .offset(x: (self.inputs.activeField != .none && self.inputs.activeField != .venue) ? 0 : UIScreen.main.bounds.maxX)
                     
                     ListStyleTotaledAmounts()
-                        .offset(y: -(self.offset + self.translation))
                     
                 }
+                .offset(y: -(self.offset + self.translation))
                 .padding(.top)
                 .frame(maxHeight: geo.size.height / 3)
                 .minimumScaleFactor(0.75)

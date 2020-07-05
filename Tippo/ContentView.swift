@@ -12,8 +12,8 @@ struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var userPrefs = UserPreferences.sharedInstance
     @ObservedObject var themes = Themes.sharedInstance
-    
     @State private var bottomSheetShown = true
+    
     var body: some View {
         GeometryReader { geo in
             CalculationLogicControls().environmentObject(self.userPrefs)

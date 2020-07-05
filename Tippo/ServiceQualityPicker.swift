@@ -31,8 +31,80 @@ struct ServiceQualityPicker: View {
     }
 }
 
+struct ServiceQualityPickerButtons: View {
+    @Environment(\.colorScheme) var colorScheme
+    @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
+    @ObservedObject var themes = Themes.sharedInstance
+    @ObservedObject var calcModel = CalculationsModel.sharedInstance
+    
+    var body: some View {
+        HStack {
+            
+            Button(action: {
+                self.calcModel.service = .Bad
+            }) {
+                VStack {
+                    HStack {
+                        Text("Bad")
+                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                        ServiceQuality.Bad.image
+                    }
+                    
+                    Text(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.calcModel.selectedVenue, service: .Bad)))
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .cornerRadius(2)
+                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                    
+                }
+            }
+            .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark, isFlat: true)))
+            .accessibility(label: Text("Bad Service Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.calcModel.selectedVenue, service: .Bad)))"))
+            .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark))
+            
+            Button(action: {
+                self.calcModel.service = .Good
+            }) {
+                VStack {
+                    HStack {
+                        Text("Good")
+                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                        ServiceQuality.Good.image
+                    }
+                    Text(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.calcModel.selectedVenue, service: .Good)))
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .cornerRadius(2)
+                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                }
+            }
+            .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark, isFlat: true)))
+            .accessibility(label: Text("Good Service Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.calcModel.selectedVenue, service: .Good)))"))
+            .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark))
+            
+            Button(action: {
+                self.calcModel.service = .Great
+            }) {
+                VStack {
+                    HStack {
+                        Text("Great")
+                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                        ServiceQuality.Great.image
+                    }
+                    Text(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.calcModel.selectedVenue, service: .Great)))
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .cornerRadius(2)
+                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                }
+            }
+            .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark, isFlat: true)))
+            .accessibility(label: Text("Great Service Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.calcModel.selectedVenue, service: .Great)))"))
+            .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark))
+            
+        }
+    }
+}
+
 struct ServiceQualityPicker_Previews: PreviewProvider {
     static var previews: some View {
-        ServiceQualityPicker()
+        ServiceQualityPickerButtons()
     }
 }

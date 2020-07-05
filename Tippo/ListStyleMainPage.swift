@@ -103,22 +103,71 @@ struct ListInputRow: View {
                 
                 HStack {
                     Text(self.title)
-                        .font(.title)
+//                        .font(.title)
+                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 24)))
                     
                     Spacer()
-                    
-                    if self.inputStyle == .Currency {
-                        Text(nForm.roundForCurrency(number: self.value)).font(.largeTitle)
-                    } else if inputStyle == .TwoDecimalPercent {
-                        Text(nForm.roundForPercentWithTwoDecimalPlaces(self.value)).font(.largeTitle)
-                    } else if inputStyle == .ThreeDecimalPercent {
-                        Text(nForm.roundForPercentWithThreeDecimalPlaces(number: self.value)).font(.largeTitle)
-                    } else {
-                        Text(nForm.formatIntegerNumbers(Int(self.value))).font(.largeTitle)
+                    Group {
+                        if self.inputStyle == .Currency {
+                            Text(nForm.roundForCurrency(number: self.value))
+                        } else if inputStyle == .TwoDecimalPercent {
+                            Text(nForm.roundForPercentWithTwoDecimalPlaces(self.value))
+                        } else if inputStyle == .ThreeDecimalPercent {
+                            Text(nForm.roundForPercentWithThreeDecimalPlaces(number: self.value))
+                        } else {
+                            Text(nForm.formatIntegerNumbers(Int(self.value)))
+                        }
                     }
+                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 30)))
                 }
-                .padding()
+                .padding(.horizontal)
                 .minimumScaleFactor(0.8)
+            }
+            .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.background, isFlat: true)))
+            .modifier(AdaptiveCardBackground(backgroundColor: self.background))
+//                .modifier(NeumorphicStyle(viewBackgroundAccentColor: Color(.white), buttonColor: Color("DropShadowBlue")))
+            
+        }
+    }
+}
+
+struct ListInputHalfRow: View {
+    @Binding var value: Double
+    @ObservedObject var inputs = InputProcessing.sharedInstance
+    var inputStyle: InputStyles
+    var title: String
+    var field: EditableTextFields
+    var background: UIColor = .white
+    
+    var body: some View {
+        Button(action: {
+            self.inputs.activeField = self.field
+        }) {
+            VStack {
+                HStack {
+                    Text(self.title)
+//                        .font(.headline)
+                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 24)))
+                    Spacer()
+                }
+                .minimumScaleFactor(0.8)
+                
+                HStack {
+                    Spacer()
+                    Group {
+                        if self.inputStyle == .Currency {
+                            Text(nForm.roundForCurrency(number: self.value))
+                        } else if inputStyle == .TwoDecimalPercent {
+                            Text(nForm.roundForPercentWithTwoDecimalPlaces(self.value))
+                        } else if inputStyle == .ThreeDecimalPercent {
+                            Text(nForm.roundForPercentWithThreeDecimalPlaces(number: self.value))
+                        } else {
+                            Text(nForm.formatIntegerNumbers(Int(self.value)))
+                        }
+                    }
+                    .minimumScaleFactor(0.8)
+                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 30)))
+                }
             }
             .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.background, isFlat: true)))
             .modifier(AdaptiveCardBackground(backgroundColor: self.background))
@@ -139,19 +188,23 @@ struct ListDisplayRow: View {
         ZStack {
             HStack {
                 Text(self.title)
-                    .font(.title)
+//                    .font(.title)
+
+                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 24)))
                 
                 Spacer()
-                
-                if self.inputStyle == .Currency {
-                    Text(nForm.roundForCurrency(number: self.value)).font(.largeTitle)
-                } else if inputStyle == .TwoDecimalPercent {
-                    Text(nForm.roundForPercentWithTwoDecimalPlaces(self.value)).font(.largeTitle)
-                } else if inputStyle == .ThreeDecimalPercent {
-                    Text(nForm.roundForPercentWithThreeDecimalPlaces(number: self.value)).font(.largeTitle)
-                } else {
-                    Text(nForm.formatIntegerNumbers(Int(self.value))).font(.largeTitle)
+                Group {
+                    if self.inputStyle == .Currency {
+                        Text(nForm.roundForCurrency(number: self.value))
+                    } else if inputStyle == .TwoDecimalPercent {
+                        Text(nForm.roundForPercentWithTwoDecimalPlaces(self.value))
+                    } else if inputStyle == .ThreeDecimalPercent {
+                        Text(nForm.roundForPercentWithThreeDecimalPlaces(number: self.value))
+                    } else {
+                        Text(nForm.formatIntegerNumbers(Int(self.value)))
+                    }
                 }
+                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 30)))
             }
             .padding()
             .minimumScaleFactor(0.8)
@@ -171,19 +224,52 @@ struct VenueButton: View {
         Button(action: {
             self.inputs.activeField = .venue
         }) {
-            ZStack {
+            VStack {
                 
                 HStack {
                     Text("Venue")
-                        .font(.title)
+                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 24)))
                     
                     Spacer()
                     
                     Text(self.calcModel.selectedVenue.name)
-                        .font(.largeTitle)
+                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 30)))
                 }
-                .padding()
+                .padding(.horizontal)
                 .minimumScaleFactor(0.8)
+            }
+            .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark, isFlat: true)))
+            .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark))
+            .id("\(self.calcModel.selectedVenue.name)")
+        }
+    }
+}
+
+struct VenueHalfButton: View {
+    @Environment(\.colorScheme) var colorScheme
+    @ObservedObject var inputs = InputProcessing.sharedInstance
+    @ObservedObject var calcModel: CalculationsModel = CalculationsModel.sharedInstance
+    @ObservedObject var themes: Themes = Themes.sharedInstance
+    
+    var body: some View {
+        Button(action: {
+            self.inputs.activeField = .venue
+        }) {
+            VStack {
+                HStack {
+                    Text("Venue")
+                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 24)))
+                    Spacer()
+                }
+                .minimumScaleFactor(0.8)
+                
+                HStack {
+                    Spacer()
+                    Text(self.calcModel.selectedVenue.name)
+                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 30)))
+                        .minimumScaleFactor(0.8)
+                }
+                
             }
             .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark, isFlat: true)))
             .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark))
