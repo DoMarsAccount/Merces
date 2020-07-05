@@ -27,15 +27,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, WCSessionDelegate {
             window.makeKeyAndVisible()
         }
         
-        if (WCSession.isSupported()) {
-            let session = WCSession.default
-            session.delegate = self
-            session.activate()
-            print("Scene did become active")
-            let defaultPrefsFile = Bundle.main.path(forResource: "defaultPreferences", ofType: "plist")
-            let defaultPreferences = NSDictionary(contentsOfFile: defaultPrefsFile!)
-            session.transferUserInfo(defaultPreferences as! [String : Any])
-        }
+//        if (WCSession.isSupported()) {
+//            let session = WCSession.default
+//            session.delegate = self
+//            session.activate()
+//            print("Scene did become active")
+//            let defaultPrefsFile = Bundle.main.path(forResource: "defaultPreferences", ofType: "plist")
+//            let defaultPreferences = NSDictionary(contentsOfFile: defaultPrefsFile!)
+//            session.transferUserInfo(defaultPreferences as! [String : Any])
+//        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
