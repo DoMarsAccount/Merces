@@ -93,9 +93,9 @@ struct NeumorphicRecessedSection: View {
                     .offset(x: -8, y: -8)
 
                 RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .foregroundColor(Color("Background"))
-                .padding(2)
-                .blur(radius: 2)
+                    .foregroundColor(Color("Background"))
+                    .padding(2)
+                    .blur(radius: 2)
             }
         )
         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))

@@ -13,10 +13,11 @@ struct SettingsRow: View {
     @Environment(\.colorScheme) var colorScheme
     @Binding var text: String
     @Binding var isEnabled: Bool
+    @ObservedObject var themes = Themes.sharedInstance
     
     var body: some View {
         let toggleApperance = UISwitch.appearance()
-        toggleApperance.onTintColor = colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark
+        toggleApperance.onTintColor = colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark
         
         return Toggle(isOn: self.$isEnabled) {
             Text(self.text)
@@ -122,9 +123,9 @@ struct Settings: View {
                     }
                 }
                 
-                Section(header: Text("About").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
-                    Text("About Tippo").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                }
+//                Section(header: Text("About").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
+//                    Text("About Tippo").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+//                }
                 
 //                Section(header: Text("Extras").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
 //                    SettingsRow(text: .constant("Use Classic Layout"), isEnabled: self.$preferences.useClassicStyle)
