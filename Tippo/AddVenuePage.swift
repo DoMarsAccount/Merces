@@ -21,115 +21,119 @@ struct AddVenuePage: View {
     @State private var renameVenueAlertIsShown: Bool = false
     
     var body: some View {
-        VStack {
-            HStack {
-                Text("Venue:")
-                    .font(.callout)
-                    .bold()
-                
-                TextField("Enter a name for the venue...", text: self.$newVenueName, onCommit: {
-                    print(self.newVenueName)
-                }).onTapGesture {
-                    self.inputs.activeField = .none
-                }
-                    .padding(.vertical)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-            }
-            
-            HStack {
-                Button(action: {
-                    self.inputs.activeField = EditableTextFields.newBadTip
-                }) {
-                    VStack {
-                        HStack {
-                            Text("Bad")
-                                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                                .scaleEffect(self.inputs.activeField == EditableTextFields.badTip ? highlightedScale : 1.0)
-                            ServiceQuality.Bad.image
-                        }
+        GeometryReader { geo in
+            VStack {
+                Spacer(minLength: 40)
+                HStack {
+                    Text("Venue:")
+                        .font(.callout)
+                        .bold()
+                    
+                    TextField("Enter a name for the venue...", text: self.$newVenueName, onCommit: {
                         
-                        Text(nForm.roundForPercentWithTwoDecimalPlaces(self.newVenue.badServiceTipAmount))
+                    }).onTapGesture {
+                        self.inputs.activeField = .none
+                    }
+                        .padding(.vertical)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                }
+                
+                HStack {
+                    Button(action: {
+                        self.inputs.activeField = EditableTextFields.newBadTip
+                    }) {
+                        VStack {
+                            HStack {
+                                Text("Bad")
+                                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                                    .scaleEffect(self.inputs.activeField == EditableTextFields.badTip ? highlightedScale : 1.0)
+                                ServiceQuality.Bad.image
+                            }
+                            
+                            Text(nForm.roundForPercentWithTwoDecimalPlaces(self.newVenue.badServiceTipAmount))
+                                .frame(minWidth: 0, maxWidth: .infinity)
+                                .padding()
+                                .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.viewColor : Themes.sharedInstance.viewColorDark, isFlat: true)), width: 2)
+                                .cornerRadius(2)
+                                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                            
+                        }
+                    }
+                    .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.viewColor : Themes.sharedInstance.viewColorDark, isFlat: true)))
+                    .accessibility(label: Text("Bad Service Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(self.newVenue.badServiceTipAmount))"))
+                    
+                    Button(action: {
+                        self.inputs.activeField = EditableTextFields.newGoodTip
+                    }) {
+                        VStack {
+                            HStack {
+                                Text("Good")
+                                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                                    .scaleEffect(self.inputs.activeField == EditableTextFields.goodTip ? highlightedScale : 1.0)
+                                ServiceQuality.Good.image
+                            }
+                            Text(nForm.roundForPercentWithTwoDecimalPlaces(self.newVenue.goodServiceTipAmount))
                             .frame(minWidth: 0, maxWidth: .infinity)
                             .padding()
                             .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.viewColor : Themes.sharedInstance.viewColorDark, isFlat: true)), width: 2)
                             .cornerRadius(2)
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                        
+                        }
                     }
+                    .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.viewColor : Themes.sharedInstance.viewColorDark, isFlat: true)))
+                    .accessibility(label: Text("Good Service Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(self.newVenue.goodServiceTipAmount))"))
+                    
+                    Button(action: {
+                        self.inputs.activeField = EditableTextFields.newGreatTip
+                    }) {
+                        VStack {
+                            HStack {
+                                Text("Great")
+                                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                                    .scaleEffect(self.inputs.activeField == EditableTextFields.greatTip ? highlightedScale : 1.0)
+                                ServiceQuality.Great.image
+                            }
+                            Text(nForm.roundForPercentWithTwoDecimalPlaces(self.newVenue.greatServiceTipAmount))
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                            .padding()
+                            .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.viewColor : Themes.sharedInstance.viewColorDark, isFlat: true)), width: 2)
+                            .cornerRadius(2)
+                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                        }
+                    }
+                    .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.viewColor : Themes.sharedInstance.viewColorDark, isFlat: true)))
+                    .accessibility(label: Text("Great Service Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(self.newVenue.greatServiceTipAmount))"))
                 }
-                .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.viewColor : Themes.sharedInstance.viewColorDark, isFlat: true)))
-                .accessibility(label: Text("Bad Service Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(self.newVenue.badServiceTipAmount))"))
                 
                 Button(action: {
-                    self.inputs.activeField = EditableTextFields.newGoodTip
+                    self.isUserCreatingVenue = !self.addVenue()
                 }) {
-                    VStack {
-                        HStack {
-                            Text("Good")
-                                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                                .scaleEffect(self.inputs.activeField == EditableTextFields.goodTip ? highlightedScale : 1.0)
-                            ServiceQuality.Good.image
-                        }
-                        Text(nForm.roundForPercentWithTwoDecimalPlaces(self.newVenue.goodServiceTipAmount))
-                        .frame(minWidth: 0, maxWidth: .infinity)
+                    Text("Add Venue")
                         .padding()
-                        .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.viewColor : Themes.sharedInstance.viewColorDark, isFlat: true)), width: 2)
-                        .cornerRadius(2)
-                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                    }
+                        .foregroundColor(.white)
+                        .background(Color.blue)
+                        .clipShape(RoundedRectangle(cornerRadius: 8, style: .circular))
                 }
-                .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.viewColor : Themes.sharedInstance.viewColorDark, isFlat: true)))
-                .accessibility(label: Text("Good Service Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(self.newVenue.goodServiceTipAmount))"))
+                .padding(.vertical)
+                .alert(isPresented: self.$renameVenueAlertIsShown, content: {
+                    Alert(title: Text("A Venue named '\(self.newVenueName)' already exists"), message: Text("Do you want to overwrite the existing venue?"), primaryButton: .default(Text("No"), action: {
+                        // Allow user to choose a new name
+                        self.renameVenueAlertIsShown = false
+                    }), secondaryButton: .destructive(Text("Yes"), action: {
+                        // Replace the tip rates of the existing venue
+                        self.venues.updateExistingVenue(named: self.newVenueName, tipAmounts: [self.newVenue.badServiceTipAmount, self.newVenue.goodServiceTipAmount, self.newVenue.greatServiceTipAmount])
+                        self.renameVenueAlertIsShown = false
+                        self.isUserCreatingVenue = false
+                    }))
+                })
+//                Spacer()
                 
-                Button(action: {
-                    self.inputs.activeField = EditableTextFields.newGreatTip
-                }) {
-                    VStack {
-                        HStack {
-                            Text("Great")
-                                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                                .scaleEffect(self.inputs.activeField == EditableTextFields.greatTip ? highlightedScale : 1.0)
-                            ServiceQuality.Great.image
-                        }
-                        Text(nForm.roundForPercentWithTwoDecimalPlaces(self.newVenue.greatServiceTipAmount))
-                        .frame(minWidth: 0, maxWidth: .infinity)
-                        .padding()
-                        .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.viewColor : Themes.sharedInstance.viewColorDark, isFlat: true)), width: 2)
-                        .cornerRadius(2)
-                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-                    }
-                }
-                .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.viewColor : Themes.sharedInstance.viewColorDark, isFlat: true)))
-                .accessibility(label: Text("Great Service Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(self.newVenue.greatServiceTipAmount))"))
+                Keypad()
+                    .offset(x: (self.inputs.activeField != .none) ? 0 : UIScreen.main.bounds.maxX)
+                    .frame(maxHeight: geo.size.height / 3)
             }
-            
-            Button(action: {
-                self.isUserCreatingVenue = !self.addVenue()
-            }) {
-                Text("Add Venue")
-                    .padding()
-                    .foregroundColor(.white)
-                    .background(Color.blue)
-                    .clipShape(RoundedRectangle(cornerRadius: 8, style: .circular))
-            }
-            .padding(.vertical)
-            .alert(isPresented: self.$renameVenueAlertIsShown, content: {
-                Alert(title: Text("A Venue named '\(self.newVenueName)' already exists"), message: Text("Do you want to overwrite the existing venue?"), primaryButton: .default(Text("No"), action: {
-                    // Allow user to choose a new name
-                    self.renameVenueAlertIsShown = false
-                }), secondaryButton: .destructive(Text("Yes"), action: {
-                    // Replace the tip rates of the existing venue
-                    self.venues.updateExistingVenue(named: self.newVenueName, tipAmounts: [self.newVenue.badServiceTipAmount, self.newVenue.goodServiceTipAmount, self.newVenue.greatServiceTipAmount])
-                    self.renameVenueAlertIsShown = false
-                    self.isUserCreatingVenue = false
-                }))
-            })
-//            Spacer()
-            
-            Keypad()
-                .offset(x: (self.inputs.activeField != .none) ? 0 : UIScreen.main.bounds.maxX)
+            .padding()
         }
-        .padding()
     }
     
     func addVenue() -> Bool {

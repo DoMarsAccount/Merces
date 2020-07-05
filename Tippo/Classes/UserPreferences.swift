@@ -15,6 +15,7 @@ class UserPreferences: ObservableObject {
     let venueEditor = VenueEditor()
     let calcModel = CalculationsModel.sharedInstance
     let venues = Venues.sharedInstance
+    let layoutPrefs = LayoutPreferences.sharedInstance
     
     @Published var tipIncludeTax: Bool {
         didSet {

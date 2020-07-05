@@ -69,6 +69,8 @@
 	<false/>
 	<key>useDynamicText</key>
 	<false/>
+	<key>displayVenueCards</key>
+	<true/>
 	<key>phoneBackgroundColor</key>
 	<string>UIExtendedSRGBColorSpace 0.94 0.94 0.96 1</string>
 	<key>phoneMainColor</key>

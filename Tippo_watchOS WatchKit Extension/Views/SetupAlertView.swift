@@ -13,21 +13,21 @@ struct SetupAlert: ViewModifier {
     @Binding var doesUserWantSetup: Bool
     @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
     
-    let welcomeText: String = "Welcome to TipTok!"
+    let welcomeText: String = "Welcome to Tippo!"
     let message: String = "To save time later, please personalize some settings now"
     
     func body(content: Content) -> some View {
         
         let setupButton = Alert.Button.default(
         Text("Okay")
-            .foregroundColor(.blue)
+//            .foregroundColor(.blue)
         ) {
             self.doesUserWantSetup.toggle()
         }
         
         let cancelButton = Alert.Button.cancel(
         Text("Nope")
-            .foregroundColor(.purple)
+//            .foregroundColor(.purple)
         ) {
             self.doesUserWantSetup = false
         }

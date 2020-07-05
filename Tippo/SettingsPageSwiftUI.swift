@@ -30,25 +30,37 @@ struct CalculationLogicControls: View {
     @ObservedObject var themes: Themes = Themes.sharedInstance
     @EnvironmentObject var preferences: UserPreferences
     @State private var isSettingsActive: Bool = false
+    @State private var isPersonalizationPageActive: Bool = false
 
     var body: some View {
         NavigationView {
-            Form {
+            List {
                 Section(header: Text("Include Sales Tax in...").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
-                    SettingsRow(text: .constant("Tip Amount"), isEnabled: self.$preferences.tipIncludeTax)
                     SettingsRow(text: .constant("Subtotal"), isEnabled: self.$preferences.subtotalIsPostTax)
+                    SettingsRow(text: .constant("Tip Amount"), isEnabled: self.$preferences.tipIncludeTax)
                 }
                 
                 Section(header: Text("Round Up to Nearest Dollar").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
                     SettingsRow(text: .constant("Tip Amount"), isEnabled: self.$preferences.roundTipAmount)
                     SettingsRow(text: .constant("Grand Total"), isEnabled: self.$preferences.roundTotalAmount)
                 }
+                Section(header: Text("Auto-calculate Sales Tax").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
+                    NavigationLink(destination: PersonalizationPage(), isActive: self.$isPersonalizationPageActive) {
+                        Text("Local Sales Tax: \(nForm.roundForPercentWithThreeDecimalPlaces(number: self.preferences.localSalesTax))")
+                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                    }
+                }
+                
+                Section(header: Text(""), footer: Text("")) {
+                    Text("Nothing to see here...👀")
+                }.frame(height: 80)
                 
             }
+            .navigationBarTitle(Text("Rules").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18))))
+            .listStyle(GroupedListStyle())
             .padding(.bottom, 60)
             .background(Color(self.colorScheme == .dark ? .secondarySystemBackground : .systemBackground))
             .edgesIgnoringSafeArea(.bottom)
-            .navigationBarTitle(Text("Rules").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18))))
             .navigationBarItems(trailing: Button(action: {
                 self.isSettingsActive.toggle()
             }, label: {
@@ -68,23 +80,28 @@ struct CalculationLogicControls: View {
 struct Settings: View {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var themes: Themes = Themes.sharedInstance
+    @ObservedObject var layoutPrefs = LayoutPreferences.sharedInstance
     @EnvironmentObject var preferences: UserPreferences
-    @State private var isPersonalizePageActive: Bool = false
     @State private var isThemesPageActive: Bool = false
     @State private var isSettingsActive: Bool = false
+    @State private var isVenuesSelectionListActive: Bool = false
     var body: some View {
 //        UITableView.appearance().backgroundColor = .clear
 //        UITableViewCell.appearance().backgroundColor = .clear
         NavigationView {
-            Form {
-                Section(header: Text("General").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
-                    NavigationLink(destination: PersonalizationPage(), isActive: self.$isPersonalizePageActive) {
-                        Text("Personalize")
+            List {
+                Section(header: Text("Appearance").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
+                    NavigationLink(destination: ThemesPage(), isActive: self.$isThemesPageActive) {
+                        Text("Themes")
                             .foregroundColor(.primary)
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                     }
-                    NavigationLink(destination: ThemesPage(), isActive: self.$isThemesPageActive) {
-                        Text("Themes")
+                }
+                
+                Section(header: Text("Venues").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
+                    SettingsRow(text: .constant("Display Venue-related Views"), isEnabled: self.$layoutPrefs.displayVenueCards)
+                    NavigationLink(destination: VenueSelectionList(), isActive: self.$isVenuesSelectionListActive) {
+                        Text("Edit Venues")
                             .foregroundColor(.primary)
                             .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                     }
@@ -105,22 +122,25 @@ struct Settings: View {
                     }
                 }
                 
-                Section(header: Text("Extras").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
-                    SettingsRow(text: .constant("Use Classic Layout"), isEnabled: self.$preferences.useClassicStyle)
+                Section(header: Text("About").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
+                    Text("About Tippo").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
                 }
+                
+//                Section(header: Text("Extras").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
+//                    SettingsRow(text: .constant("Use Classic Layout"), isEnabled: self.$preferences.useClassicStyle)
+//                }
                 
 //                Section(header: Text("Support").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
 //                    Text("Optimal Usage Guide").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
 //                }
 //                
-//                Section(header: Text("About").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
-//                    Text("About Merces").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
-//                }
+                
             }
+            .navigationBarTitle(Text("Settings").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18))))
+            .listStyle(GroupedListStyle())
 //            .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .dark ? self.themes.backgroundColorDark : self.themes.background, isFlat: true)))
             .background(Color(self.colorScheme == .dark ? self.themes.backgroundColorDark : self.themes.background))
             .edgesIgnoringSafeArea(.bottom)
-            .navigationBarTitle(Text("Settings").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18))))
         }
     }
 }
@@ -188,6 +208,7 @@ struct SettingsPane: View {
 
 struct SettingsPageSwiftUI_Previews: PreviewProvider {
     static var previews: some View {
-        Settings().environmentObject(UserPreferences.sharedInstance)
+//        Settings().environmentObject(UserPreferences.sharedInstance)
+        CalculationLogicControls().environmentObject(UserPreferences.sharedInstance)
     }
 }

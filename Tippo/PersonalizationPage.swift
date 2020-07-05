@@ -23,23 +23,14 @@ struct PersonalizationPage: View {
                     .edgesIgnoringSafeArea(.all)
                 
                 VStack {
-                    
-                    if !self.userPrefs.useClassicStyle {
-                        ListInputRow(value: self.$userPrefs.localSalesTax, inputStyle: .ThreeDecimalPercent, title: "Local Sales Tax Rate", field: .localTax, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
-                    } else {
-                        PPageTopView()
-                    }
-                    PPageMiddleView()
-                    if (self.inputs.activeField != .none) {
-                        Keypad()
-                    } else {
-                        PPageBottomView()
-                    }
+                    ListInputRow(value: self.$userPrefs.localSalesTax, inputStyle: .ThreeDecimalPercent, title: "Local Sales Tax Rate", field: .localTax, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
+                    PPageBottomView()
+                    PPageBottomView()
                 }
                 .padding()
             }
         }
-        .navigationBarTitle(Text("Personalize"))
+        .navigationBarTitle(Text("Local Sales Tax"))
     }
 }
 
