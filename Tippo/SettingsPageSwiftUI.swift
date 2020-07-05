@@ -54,7 +54,7 @@ struct CalculationLogicControls: View {
                 
                 Section(header: Text(""), footer: Text("")) {
                     Text("Nothing to see here...👀")
-                }.frame(height: 80)
+                }.frame(height: 60)
                 
             }
             .navigationBarTitle(Text("Rules"))
@@ -85,8 +85,6 @@ struct Settings: View {
     @State private var isSettingsActive: Bool = false
     @State private var isVenuesSelectionListActive: Bool = false
     var body: some View {
-//        UITableView.appearance().backgroundColor = .clear
-//        UITableViewCell.appearance().backgroundColor = .clear
         NavigationView {
             Form {
                 Section(header: Text("Appearance").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))) {
@@ -202,7 +200,7 @@ struct SettingsPane: View {
 
 struct SettingsPageSwiftUI_Previews: PreviewProvider {
     static var previews: some View {
-        Settings().environmentObject(UserPreferences.sharedInstance)
-//        CalculationLogicControls().environmentObject(UserPreferences.sharedInstance)
+//        Settings().environmentObject(UserPreferences.sharedInstance)
+        CalculationLogicControls().environmentObject(UserPreferences.sharedInstance)
     }
 }

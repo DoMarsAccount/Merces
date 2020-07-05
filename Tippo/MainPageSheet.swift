@@ -96,17 +96,10 @@ struct MainPageSheet: View {
                         }
                         .opacity(1.0 - Double((self.offset + self.translation) * 0.0032))
                         
-//                        VenueButton()
-//                            .id("Venue")
-//                            .opacity(1.0 - Double((self.offset + self.translation) * 0.0032))
                         if self.userPrefs.layoutPrefs.displayVenueCards {
                             ServiceQualityPickerButtons()
                             .opacity(1.0 - Double((self.offset + self.translation) * 0.0050))
                         }
-                        
-//                        ListInputRow(value: self.$calcModel.tipRate, inputStyle: .TwoDecimalPercent, title: "Tip %", field: .tipRate, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
-//                            .id("\(self.calcModel.tipRate)")
-//                            .opacity(1.0 - Double((self.offset + self.translation) * 0.0085))
                     }
                 
                 ZStack {
@@ -129,7 +122,8 @@ struct MainPageSheet: View {
             }
             .padding()
             .frame(width: geo.size.width, height: self.maxHeight, alignment: .top)
-            .background(Color(self.colorScheme == .light ? .systemBackground : .secondarySystemBackground))
+            .background(Color(.systemBackground))
+//            .background(Color(self.colorScheme == .light ? .systemBackground : .secondarySystemBackground))
             .cornerRadius(Constants.radius)
             .frame(height: geo.size.height, alignment: .bottom)
             .offset(y: max(self.offset + self.translation, 0))
