@@ -45,7 +45,7 @@ struct KeypadButton: View {
                 Text(self.text)
                     .padding()
                     .accessibility(label: Text(self.text))
-                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 48)))
+                    .font(Font(UserPreferences.sharedInstance.headlineFont(size: 48)))
                     
             }
             .cornerRadius(2)

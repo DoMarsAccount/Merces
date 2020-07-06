@@ -90,6 +90,7 @@ struct ListStyleMainPage_Previews: PreviewProvider {
 struct ListInputRow: View {
     @Binding var value: Double
     @ObservedObject var inputs = InputProcessing.sharedInstance
+    @EnvironmentObject var userPrefs: UserPreferences
     var inputStyle: InputStyles
     var title: String
     var field: EditableTextFields
@@ -104,7 +105,7 @@ struct ListInputRow: View {
                 HStack {
                     Text(self.title)
 //                        .font(.title)
-                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 24)))
+                        .font(Font(self.userPrefs.headlineFont(size: 24)))
                     
                     Spacer()
                     Group {
@@ -118,7 +119,7 @@ struct ListInputRow: View {
                             Text(nForm.formatIntegerNumbers(Int(self.value)))
                         }
                     }
-                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 30)))
+                    .font(Font(self.userPrefs.headlineFont(size: 30)))
                 }
                 .padding(.horizontal)
                 .minimumScaleFactor(0.8)
@@ -134,6 +135,7 @@ struct ListInputRow: View {
 struct ListInputHalfRow: View {
     @Binding var value: Double
     @ObservedObject var inputs = InputProcessing.sharedInstance
+    @EnvironmentObject var userPrefs: UserPreferences
     var inputStyle: InputStyles
     var title: String
     var field: EditableTextFields
@@ -147,7 +149,7 @@ struct ListInputHalfRow: View {
                 HStack {
                     Text(self.title)
 //                        .font(.headline)
-                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 24)))
+                        .font(Font(self.userPrefs.headlineFont(size: 24)))
                     Spacer()
                 }
                 .minimumScaleFactor(0.8)
@@ -166,7 +168,7 @@ struct ListInputHalfRow: View {
                         }
                     }
                     .minimumScaleFactor(0.8)
-                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 30)))
+                    .font(Font(self.userPrefs.headlineFont(size: 30)))
                 }
             }
             .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.background, isFlat: true)))
@@ -180,6 +182,7 @@ struct ListInputHalfRow: View {
 struct ListDisplayRow: View {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var themes: Themes = Themes.sharedInstance
+    @EnvironmentObject var userPrefs: UserPreferences
     @Binding var value: Double
     var inputStyle: InputStyles
     var title: String
@@ -190,7 +193,7 @@ struct ListDisplayRow: View {
                 Text(self.title)
 //                    .font(.title)
 
-                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 24)))
+                    .font(Font(self.userPrefs.headlineFont(size: 24)))
                 
                 Spacer()
                 Group {
@@ -204,7 +207,7 @@ struct ListDisplayRow: View {
                         Text(nForm.formatIntegerNumbers(Int(self.value)))
                     }
                 }
-                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 30)))
+                .font(Font(self.userPrefs.headlineFont(size: 30)))
             }
             .padding()
             .minimumScaleFactor(0.8)
@@ -216,6 +219,7 @@ struct ListDisplayRow: View {
 
 struct VenueButton: View {
     @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var userPrefs: UserPreferences
     @ObservedObject var inputs = InputProcessing.sharedInstance
     @ObservedObject var calcModel: CalculationsModel = CalculationsModel.sharedInstance
     @ObservedObject var themes: Themes = Themes.sharedInstance
@@ -228,12 +232,12 @@ struct VenueButton: View {
                 
                 HStack {
                     Text("Venue")
-                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 24)))
+                        .font(Font(self.userPrefs.headlineFont(size: 24)))
                     
                     Spacer()
                     
                     Text(self.calcModel.selectedVenue.name)
-                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 30)))
+                    .font(Font(self.userPrefs.headlineFont(size: 30)))
                 }
                 .padding(.horizontal)
                 .minimumScaleFactor(0.8)
@@ -247,6 +251,7 @@ struct VenueButton: View {
 
 struct VenueHalfButton: View {
     @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var userPrefs: UserPreferences
     @ObservedObject var inputs = InputProcessing.sharedInstance
     @ObservedObject var calcModel: CalculationsModel = CalculationsModel.sharedInstance
     @ObservedObject var themes: Themes = Themes.sharedInstance
@@ -258,7 +263,7 @@ struct VenueHalfButton: View {
             VStack {
                 HStack {
                     Text("Venue")
-                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 24)))
+                    .font(Font(self.userPrefs.headlineFont(size: 24)))
                     Spacer()
                 }
                 .minimumScaleFactor(0.8)
@@ -266,7 +271,7 @@ struct VenueHalfButton: View {
                 HStack {
                     Spacer()
                     Text(self.calcModel.selectedVenue.name)
-                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 30)))
+                    .font(Font(self.userPrefs.headlineFont(size: 30)))
                         .minimumScaleFactor(0.8)
                 }
                 

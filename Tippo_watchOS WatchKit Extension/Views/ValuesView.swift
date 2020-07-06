@@ -11,7 +11,7 @@ import SwiftUI
 
 
 struct ValuesView: View {
-    
+    @EnvironmentObject var userPrefs: UserPreferences
     @EnvironmentObject var wCalcModel: CalculationsModel
     @State private var isSubtotalKeypadPresented: Bool = false
     @State private var isTaxAmountKeypadPresented: Bool = false

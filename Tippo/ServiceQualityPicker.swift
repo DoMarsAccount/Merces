@@ -46,14 +46,14 @@ struct ServiceQualityPickerButtons: View {
                 VStack {
                     HStack {
                         Text("Bad")
-                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                            .font(Font(self.userPrefs.headlineFont(size: 18)))
                         ServiceQuality.Bad.image
                     }
                     
                     Text(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.calcModel.selectedVenue, service: .Bad)))
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .cornerRadius(2)
-                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                        .font(Font(self.userPrefs.headlineFont(size: 18)))
                     
                 }
             }
@@ -67,13 +67,13 @@ struct ServiceQualityPickerButtons: View {
                 VStack {
                     HStack {
                         Text("Good")
-                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                            .font(Font(self.userPrefs.headlineFont(size: 18)))
                         ServiceQuality.Good.image
                     }
                     Text(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.calcModel.selectedVenue, service: .Good)))
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .cornerRadius(2)
-                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                    .font(Font(self.userPrefs.headlineFont(size: 18)))
                 }
             }
             .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark, isFlat: true)))
@@ -86,13 +86,13 @@ struct ServiceQualityPickerButtons: View {
                 VStack {
                     HStack {
                         Text("Great")
-                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                            .font(Font(self.userPrefs.headlineFont(size: 18)))
                         ServiceQuality.Great.image
                     }
                     Text(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.calcModel.selectedVenue, service: .Great)))
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .cornerRadius(2)
-                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                    .font(Font(self.userPrefs.headlineFont(size: 18)))
                 }
             }
             .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark, isFlat: true)))

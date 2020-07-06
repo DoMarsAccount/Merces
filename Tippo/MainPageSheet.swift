@@ -58,7 +58,7 @@ struct MainPageSheet: View {
                     .padding()
                     .onTapGesture {
                         self.isOpen.toggle()
-                        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                        if !self.userPrefs.reduceHaptics { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
                     }
                 
                     VStack {
@@ -118,12 +118,10 @@ struct MainPageSheet: View {
                 .frame(maxHeight: geo.size.height / 3)
                 .minimumScaleFactor(0.75)
                     
-                
             }
             .padding()
             .frame(width: geo.size.width, height: self.maxHeight, alignment: .top)
             .background(Color(.systemBackground))
-//            .background(Color(self.colorScheme == .light ? .systemBackground : .secondarySystemBackground))
             .cornerRadius(Constants.radius)
             .frame(height: geo.size.height, alignment: .bottom)
             .offset(y: max(self.offset + self.translation, 0))

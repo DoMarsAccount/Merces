@@ -19,13 +19,14 @@ enum CardStyles {
 // MARK: - Horizontal Layout, designed for full screen width
 struct CurrencyCardStyle: ViewModifier {
     @Binding var value: Double
+    @EnvironmentObject var userPrefs: UserPreferences
     var backgroundColor: Color = .black
     
     func body(content: Content) -> some View {
         GeometryReader { geo in
             HStack {
                 content
-                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: subHeadlineTextSize)))
+                    .font(Font(self.userPrefs.headlineFont(size: subHeadlineTextSize)))
                     .padding()
                     .minimumScaleFactor(0.3)
                 
@@ -33,7 +34,7 @@ struct CurrencyCardStyle: ViewModifier {
                 
                 Text(nForm.roundForCurrency(number: self.value))
                     .padding()
-                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: title3TextSize)))
+                    .font(Font(self.userPrefs.headlineFont(size: title3TextSize)))
                     .minimumScaleFactor(0.8)
             }
             .frame(width: geo.size.width, height: viewHeight)
@@ -45,13 +46,14 @@ struct CurrencyCardStyle: ViewModifier {
 
 struct PercentageCardStyle: ViewModifier {
     @Binding var value: Double
+    @EnvironmentObject var userPrefs: UserPreferences
     var backgroundColor: Color = .black
     
     func body(content: Content) -> some View {
         GeometryReader { geo in
             HStack {
                 content
-                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: subHeadlineTextSize)))
+                    .font(Font(self.userPrefs.headlineFont(size: subHeadlineTextSize)))
                     .padding()
                     .minimumScaleFactor(0.3)
                 
@@ -59,7 +61,7 @@ struct PercentageCardStyle: ViewModifier {
                 
                 Text(nForm.roundForPercentWithTwoDecimalPlaces(self.value))
                     .padding()
-                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: title3TextSize)))
+                    .font(Font(self.userPrefs.headlineFont(size: title3TextSize)))
                     .minimumScaleFactor(0.8)
             }
             .frame(width: geo.size.width, height: viewHeight)
@@ -71,13 +73,14 @@ struct PercentageCardStyle: ViewModifier {
 
 struct IntegerCardStyle: ViewModifier {
     @Binding var value: Double
+    @EnvironmentObject var userPrefs: UserPreferences
     var backgroundColor: Color = .black
     
     func body(content: Content) -> some View {
         GeometryReader { geo in
             HStack {
                 content
-                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: subHeadlineTextSize)))
+                    .font(Font(self.userPrefs.headlineFont(size: subHeadlineTextSize)))
                     .padding()
                     .minimumScaleFactor(0.3)
                 
@@ -85,7 +88,7 @@ struct IntegerCardStyle: ViewModifier {
             
                 Text(nForm.formatIntegerNumbers(Int(self.value)))
                     .padding()
-                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: title3TextSize)))
+                    .font(Font(self.userPrefs.headlineFont(size: title3TextSize)))
                     .minimumScaleFactor(0.8)
             }
             .frame(width: geo.size.width, height: viewHeight)
@@ -98,17 +101,18 @@ struct IntegerCardStyle: ViewModifier {
 // MARK: - Vertical Layout, designed for half screen width
 struct vCurrencyCardStyle: ViewModifier {
     @Binding var value: Double
+    @EnvironmentObject var userPrefs: UserPreferences
     var backgroundColor: Color = .black
     
     func body(content: Content) -> some View {
         GeometryReader { geo in
             VStack {
                 content
-                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: subHeadlineTextSize)))
+                    .font(Font(self.userPrefs.headlineFont(size: subHeadlineTextSize)))
                     .minimumScaleFactor(0.75)
                 
                 Text(nForm.roundForCurrency(number: self.value))
-                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: headlineTextSize)))
+                    .font(Font(self.userPrefs.headlineFont(size: headlineTextSize)))
                     .minimumScaleFactor(0.75)
             }
             .frame(width: geo.size.width, height: viewHeight)
@@ -120,17 +124,18 @@ struct vCurrencyCardStyle: ViewModifier {
 
 struct vPercentageCardStyle: ViewModifier {
     @Binding var value: Double
+    @EnvironmentObject var userPrefs: UserPreferences
     var backgroundColor: Color = .black
     
     func body(content: Content) -> some View {
         GeometryReader { geo in
             VStack {
                 content
-                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: subHeadlineTextSize)))
+                    .font(Font(self.userPrefs.headlineFont(size: subHeadlineTextSize)))
                     .minimumScaleFactor(0.75)
                 
                 Text(nForm.roundForPercentWithTwoDecimalPlaces(self.value))
-                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: headlineTextSize)))
+                    .font(Font(self.userPrefs.headlineFont(size: headlineTextSize)))
                     .minimumScaleFactor(0.75)
             }
             .frame(width: geo.size.width, height: viewHeight)
@@ -142,17 +147,18 @@ struct vPercentageCardStyle: ViewModifier {
 
 struct vIntegerCardStyle: ViewModifier {
     @Binding var value: Double
+    @EnvironmentObject var userPrefs: UserPreferences
     var backgroundColor: Color = .black
     
     func body(content: Content) -> some View {
         GeometryReader { geo in
             VStack {
                 content
-                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: subHeadlineTextSize)))
+                    .font(Font(self.userPrefs.headlineFont(size: subHeadlineTextSize)))
                     .minimumScaleFactor(0.75)
             
                 Text(nForm.formatIntegerNumbers(Int(self.value)))
-                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: headlineTextSize)))
+                    .font(Font(self.userPrefs.headlineFont(size: headlineTextSize)))
                     .minimumScaleFactor(0.75)
             }
             .frame(width: geo.size.width, height: viewHeight)

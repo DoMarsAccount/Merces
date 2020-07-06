@@ -45,7 +45,7 @@ struct AddVenuePage: View {
                         VStack {
                             HStack {
                                 Text("Bad")
-                                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                                    .font(Font(self.userPrefs.headlineFont(size: 18)))
                                     .scaleEffect(self.inputs.activeField == EditableTextFields.badTip ? highlightedScale : 1.0)
                                 ServiceQuality.Bad.image
                             }
@@ -55,7 +55,7 @@ struct AddVenuePage: View {
                                 .padding()
                                 .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.viewColor : Themes.sharedInstance.viewColorDark, isFlat: true)), width: 2)
                                 .cornerRadius(2)
-                                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                                .font(Font(self.userPrefs.headlineFont(size: 18)))
                             
                         }
                     }
@@ -68,7 +68,7 @@ struct AddVenuePage: View {
                         VStack {
                             HStack {
                                 Text("Good")
-                                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                                    .font(Font(self.userPrefs.headlineFont(size: 18)))
                                     .scaleEffect(self.inputs.activeField == EditableTextFields.goodTip ? highlightedScale : 1.0)
                                 ServiceQuality.Good.image
                             }
@@ -77,7 +77,7 @@ struct AddVenuePage: View {
                             .padding()
                             .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.viewColor : Themes.sharedInstance.viewColorDark, isFlat: true)), width: 2)
                             .cornerRadius(2)
-                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                            .font(Font(self.userPrefs.headlineFont(size: 18)))
                         }
                     }
                     .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.viewColor : Themes.sharedInstance.viewColorDark, isFlat: true)))
@@ -89,7 +89,7 @@ struct AddVenuePage: View {
                         VStack {
                             HStack {
                                 Text("Great")
-                                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                                    .font(Font(self.userPrefs.headlineFont(size: 18)))
                                     .scaleEffect(self.inputs.activeField == EditableTextFields.greatTip ? highlightedScale : 1.0)
                                 ServiceQuality.Great.image
                             }
@@ -98,7 +98,7 @@ struct AddVenuePage: View {
                             .padding()
                             .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.viewColor : Themes.sharedInstance.viewColorDark, isFlat: true)), width: 2)
                             .cornerRadius(2)
-                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                            .font(Font(self.userPrefs.headlineFont(size: 18)))
                         }
                     }
                     .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.viewColor : Themes.sharedInstance.viewColorDark, isFlat: true)))

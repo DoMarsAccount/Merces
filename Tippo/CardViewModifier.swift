@@ -15,13 +15,14 @@ struct AdaptiveCardBackground: ViewModifier {
     var isInputCard: Bool = true
     
     func body(content: Content) -> some View {
-        Group {
-            if userPrefs.useFlatStyleViews {
-                content.modifier(FlatCard(usePadding: self.usePadding, backgroundColor: self.backgroundColor, isInputCard: self.isInputCard))
-            } else {
-                content.modifier(TipTokStyleCard(usePadding: self.usePadding, backgroundColor: Color(self.backgroundColor)))
-            }
-        }
+        content.modifier(FlatCard(usePadding: self.usePadding, backgroundColor: self.backgroundColor, isInputCard: self.isInputCard))
+//        Group {
+//            if userPrefs.useFlatStyleViews {
+//                content.modifier(FlatCard(usePadding: self.usePadding, backgroundColor: self.backgroundColor, isInputCard: self.isInputCard))
+//            } else {
+//                content.modifier(TipTokStyleCard(usePadding: self.usePadding, backgroundColor: Color(self.backgroundColor)))
+//            }
+//        }
     }
 }
 

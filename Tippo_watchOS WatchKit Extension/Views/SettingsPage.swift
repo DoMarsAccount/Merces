@@ -11,19 +11,21 @@ import SwiftUI
 struct SettingsRow: View {
     @Binding var text: String
     @Binding var isEnabled: Bool
+    @EnvironmentObject var userPrefs: UserPreferences
     
     var body: some View {
         Toggle(isOn: self.$isEnabled) {
             Text(self.text)
-            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: headlineTextSize)))
+            .font(Font(self.userPrefs.headlineFont(size: headlineTextSize)))
                 .accessibility(label: Text(self.text))
         }
     }
 }
 
 struct SettingsPage: View {
-    @EnvironmentObject var preferences: UserPreferences
-    @State private var isActive: Bool = false
+    @EnvironmentObject var userPrefs: UserPreferences
+    @State private var isLocalSalesTaxPageActive: Bool = false
+    @State private var isVenueEditPageActive: Bool = false
     
     var body: some View {
         /*
@@ -35,33 +37,44 @@ struct SettingsPage: View {
          */
         
         Form {
-            Section(header: Text("General").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: headlineTextSize)))
+            Section(header: Text("General").font(Font(self.userPrefs.headlineFont(size: headlineTextSize)))
                 .accessibility(label: Text("General"))
                 )
             {
-                NavigationLink(destination: MyMerces(), isActive: self.$isActive) {
-                    Text("Personalize")
-                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: headlineTextSize)))
-                        .accessibility(label: Text("Personalize"))
+                NavigationLink(destination: MyMerces(), isActive: self.$isLocalSalesTaxPageActive) {
+                    Text("Local Sales Tax")
+                        .font(Font(self.userPrefs.headlineFont(size: headlineTextSize)))
+                        .accessibility(label: Text("Local Sales Tax"))
                 }
-                SettingsRow(text: .constant("Include Sales Tax in Tip"), isEnabled: self.$preferences.tipIncludeTax)
-                SettingsRow(text: .constant("Include Sales Tax in Subtotal"), isEnabled: self.$preferences.subtotalIsPostTax)
+                NavigationLink(destination: VenueEditingView(), isActive: self.$isVenueEditPageActive) {
+                    Text("Edit Venues")
+                        .font(Font(self.userPrefs.headlineFont(size: headlineTextSize)))
+                        .accessibility(label: Text("Edit Venues"))
+                }
             }
             
-            Section(header: Text("Round Up to Nearest Dollar").font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: headlineTextSize)))
+            Section(header: Text("Include Sales Tax in...").font(Font(self.userPrefs.headlineFont(size: headlineTextSize)))
+                .accessibility(label: Text("Include Sales Tax in"))
+                )
+            {
+                SettingsRow(text: .constant("Subtotal"), isEnabled: self.$userPrefs.subtotalIsPostTax)
+                SettingsRow(text: .constant("Tip"), isEnabled: self.$userPrefs.tipIncludeTax)
+            }
+            
+            Section(header: Text("Round Up to Nearest Dollar").font(Font(self.userPrefs.headlineFont(size: headlineTextSize)))
                 .accessibility(label: Text("Round Up to Nearest Dollar"))
                 )
             {
-                SettingsRow(text: .constant("Tip Amount"), isEnabled: self.$preferences.roundTipAmount)
-                SettingsRow(text: .constant("Grand Total"), isEnabled: self.$preferences.roundTotalAmount)
+                SettingsRow(text: .constant("Tip Amount"), isEnabled: self.$userPrefs.roundTipAmount)
+                SettingsRow(text: .constant("Grand Total"), isEnabled: self.$userPrefs.roundTotalAmount)
             }
             
             Section(header: Text("Accessibility")
-                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: headlineTextSize)))
+                .font(Font(self.userPrefs.headlineFont(size: headlineTextSize)))
                 .accessibility(label: Text("Accessibility"))
                 )
             {
-                SettingsRow(text: .constant("Use System Text Size"), isEnabled: self.$preferences.useDynamicText)
+                SettingsRow(text: .constant("Use System Text Size"), isEnabled: self.$userPrefs.useDynamicText)
             }
         }
     }
@@ -72,23 +85,31 @@ struct MyMerces: View {
     @State private var isKeypadPresented: Bool = false
     
     var body: some View {
-        ScrollView(.vertical) {
-            VStack(spacing: viewHeight) {
-                Text("Local Sales Tax Rate")
-                    .cardStyled(value: self.$preferences.localSalesTax, style: .percentage, backgroundColor: Color("CrayolaRed"))
-                    .onTapGesture {
-                        self.isKeypadPresented.toggle()
-                    }
-                    .sheet(isPresented: self.$isKeypadPresented) {
-                        Keypad(value: self.$preferences.localSalesTax, isPresented: self.$isKeypadPresented, activeField: .constant(.localTax))
-                    }
-                    .accessibility(label: Text("Local Sales Tax Rate: \(nForm.roundForPercentWithThreeDecimalPlaces(number: self.preferences.localSalesTax))"))
-                
-                VenuesView()
-                    .padding([.top])
-            }
-            .navigationBarTitle("Done")
+        VStack(spacing: viewHeight) {
+            Text("Local Sales Tax Rate")
+                .cardStyled(value: self.$preferences.localSalesTax, style: .percentage, backgroundColor: Color("CrayolaRed"))
+                .onTapGesture {
+                    self.isKeypadPresented.toggle()
+                }
+                .sheet(isPresented: self.$isKeypadPresented) {
+                    Keypad(value: self.$preferences.localSalesTax, isPresented: self.$isKeypadPresented, activeField: .constant(.localTax))
+                }
+                .accessibility(label: Text("Local Sales Tax Rate: \(nForm.roundForPercentWithThreeDecimalPlaces(number: self.preferences.localSalesTax))"))
         }
+        .navigationBarTitle("Done")
+    }
+}
+
+struct VenueEditingView: View {
+    @EnvironmentObject var preferences: UserPreferences
+    @State private var isKeypadPresented: Bool = false
+    
+    var body: some View {
+        VStack(spacing: viewHeight) {
+            VenuesView()
+                .padding([.top])
+        }
+        .navigationBarTitle("Done")
     }
 }
 

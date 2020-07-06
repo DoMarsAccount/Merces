@@ -23,7 +23,7 @@ struct MainPageTopSubview: View {
             }) {
                 VStack {
                     Text("Subtotal")
-                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                        .font(Font(self.userPrefs.headlineFont(size: 18)))
                         .scaleEffect(self.inputs.activeField == EditableTextFields.subtotal ? highlightedScale : 1.0)
                         .minimumScaleFactor(0.75)
                     CurrencyView(value: self.$calcModel.subtotal)
@@ -42,7 +42,7 @@ struct MainPageTopSubview: View {
                     }) {
                         VStack {
                             Text("Sales Tax")
-                                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                                .font(Font(self.userPrefs.headlineFont(size: 18)))
                                 .scaleEffect(self.inputs.activeField == EditableTextFields.salesTax ? highlightedScale : 1.0)
                                 .minimumScaleFactor(0.75)
                             CurrencyView(value: self.$calcModel.taxAmount, isEnabled: self.userPrefs.localSalesTax == 0.0)
@@ -56,7 +56,7 @@ struct MainPageTopSubview: View {
                     }) {
                         VStack {
                             Text("Party Size")
-                                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                                .font(Font(self.userPrefs.headlineFont(size: 18)))
                                 .scaleEffect(self.inputs.activeField == EditableTextFields.partySize ? highlightedScale : 1.0)
                                 .minimumScaleFactor(0.75)
                             IntegerView(value: self.$calcModel.partySize)
@@ -70,7 +70,7 @@ struct MainPageTopSubview: View {
                     }) {
                         HStack {
                             Text("Party Size")
-                                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                                .font(Font(self.userPrefs.headlineFont(size: 18)))
                                 .scaleEffect(self.inputs.activeField == EditableTextFields.partySize ? highlightedScale : 1.0)
                                 .minimumScaleFactor(0.75)
                                 .padding()
@@ -93,6 +93,7 @@ struct MainPageMiddleSubview: View {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var inputs = InputProcessing.sharedInstance
     @ObservedObject var calcModel: CalculationsModel = CalculationsModel.sharedInstance
+    @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
     @ObservedObject var themes: Themes = Themes.sharedInstance
     var body: some View {
         GeometryReader { geo in
@@ -104,13 +105,13 @@ struct MainPageMiddleSubview: View {
                     }) {
                         VStack {
                             Text("Venue")
-                                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                                .font(Font(self.userPrefs.headlineFont(size: 18)))
                             
                             ZStack {
                                 Color.black
                                     .opacity(0.0)
                                 Text(self.calcModel.selectedVenue.name)
-                                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                                    .font(Font(self.userPrefs.headlineFont(size: 18)))
                             }
                             .frame(maxHeight: geo.size.height / 3)
                             .modifier(MercesStyleTextField())
@@ -124,7 +125,7 @@ struct MainPageMiddleSubview: View {
                     }) {
                         VStack {
                             Text("Tip %")
-                                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                                .font(Font(self.userPrefs.headlineFont(size: 18)))
                                 .scaleEffect(self.inputs.activeField == EditableTextFields.tipRate ? highlightedScale : 1.0)
                             PercentageView(value: self.$calcModel.tipRate)
                                 .frame(maxHeight: geo.size.height / 3)
@@ -136,7 +137,7 @@ struct MainPageMiddleSubview: View {
                 
                 VStack {
                     Text("Service Level")
-                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                        .font(Font(self.userPrefs.headlineFont(size: 18)))
                     ServiceQualityPicker()
                 }.accessibility(label: Text("Service Level: \(self.calcModel.service.name)"))
     //            .padding(.top)
@@ -151,20 +152,21 @@ struct MainPageMiddleSubview: View {
 struct MainPageBottomSubview: View {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var calcModel: CalculationsModel = CalculationsModel.sharedInstance
+    @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
     @ObservedObject var themes: Themes = Themes.sharedInstance
     var body: some View {
         GeometryReader { geo in
             VStack {
                 HStack(alignment: .center) {
                     Text("Totaled Amounts")
-                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                        .font(Font(self.userPrefs.headlineFont(size: 18)))
                         .minimumScaleFactor(0.5)
                 }
                 
                 if self.calcModel.tipAmount != 0.0 {
                     HStack {
                         Text("Tip Amount:")
-                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                            .font(Font(self.userPrefs.headlineFont(size: 18)))
                         CurrencyView(value: self.$calcModel.tipAmount, isEnabled: false)
                     }
                     .frame(maxHeight: geo.size.height / 3)
@@ -174,7 +176,7 @@ struct MainPageBottomSubview: View {
                 
                 HStack {
                     Text("Grand Total:")
-                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                        .font(Font(self.userPrefs.headlineFont(size: 18)))
                     CurrencyView(value: self.$calcModel.totalAmount, isEnabled: false)
                 }
                 .frame(maxHeight: geo.size.height / 3)
@@ -184,7 +186,7 @@ struct MainPageBottomSubview: View {
                 if self.calcModel.partySize != 1 {
                     HStack {
                         Text("Each Person:")
-                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                            .font(Font(self.userPrefs.headlineFont(size: 18)))
                         CurrencyView(value: self.$calcModel.totalAmountPerPerson, isEnabled: false)
                     }
                     .frame(maxHeight: geo.size.height / 3)

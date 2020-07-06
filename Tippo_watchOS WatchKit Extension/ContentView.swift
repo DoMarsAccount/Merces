@@ -18,6 +18,7 @@ struct ContentView: View {
         ValuesView()
             .navigationBarTitle("Tippo")
             .environmentObject(wCalcModel)
+            .environmentObject(userPrefs)
             .contextMenu {
                 NavigationLink(destination: SettingsPage().environmentObject(userPrefs), isActive: self.$isActive) {
                     HStack {

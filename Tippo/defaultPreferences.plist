@@ -71,6 +71,8 @@
 	<false/>
 	<key>displayVenueCards</key>
 	<true/>
+	<key>reduceHaptics</key>
+	<false/>
 	<key>phoneBackgroundColor</key>
 	<string>UIExtendedSRGBColorSpace 0.94 0.94 0.96 1</string>
 	<key>phoneMainColor</key>

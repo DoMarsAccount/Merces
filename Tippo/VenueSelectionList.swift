@@ -11,6 +11,7 @@ import SwiftUI
 
 
 struct VenueSelectionList: View {
+    @EnvironmentObject var userPrefs: UserPreferences
     @ObservedObject var venues = Venues.sharedInstance
     @State private var addVenueSheetPresented: Bool = false
     var body: some View {
@@ -20,11 +21,11 @@ struct VenueSelectionList: View {
                     HStack {
                         VStack(alignment: .leading) {
                             Text(venue.name.capitalized)
-                                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 24)))
+                                .font(Font(self.userPrefs.headlineFont(size: 24)))
                                 .bold()
                             
                             Text("(\(nForm.roundForPercentWithTwoDecimalPlaces(venue.tipAmounts[0])), \(nForm.roundForPercentWithTwoDecimalPlaces(venue.tipAmounts[1])), \(nForm.roundForPercentWithTwoDecimalPlaces(venue.tipAmounts[2])))")
-                                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                                .font(Font(self.userPrefs.headlineFont(size: 18)))
                         }
                         Spacer()
                         Image(systemName: venue.isDefaultVenue ? "heart.fill" : "heart")

@@ -16,7 +16,8 @@ struct ContentView: View {
     
     var body: some View {
         GeometryReader { geo in
-            CalculationLogicControls().environmentObject(self.userPrefs)
+            CalculationLogicControls()
+                .environmentObject(self.userPrefs)
             MainPageSheet(maxHeight: geo.size.height)
                 .environmentObject(self.userPrefs)
         }
@@ -26,6 +27,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environment(\.colorScheme, .dark)
+//            .environment(\.colorScheme, .dark)
     }
 }

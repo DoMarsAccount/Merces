@@ -17,7 +17,7 @@ struct CurrencyView: View {
                 .opacity(isEnabled ? 0.0 : 0.07)
             
             Text(nForm.roundForCurrency(number: self.value))
-                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                .font(Font(UserPreferences.sharedInstance.headlineFont(size: 18)))
         }
         .modifier(MercesStyleTextField())
     }
@@ -32,7 +32,7 @@ struct IntegerView: View {
                 .opacity(isEnabled ? 0.0 : 0.07)
             
             Text(nForm.formatIntegerNumbers(self.value))
-                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                .font(Font(UserPreferences.sharedInstance.headlineFont(size: 18)))
         }
         .modifier(MercesStyleTextField())
     }
@@ -47,7 +47,7 @@ struct PercentageView: View {
                 .opacity(isEnabled ? 0.0 : 0.07)
             
             Text(nForm.roundForPercentWithTwoDecimalPlaces(self.value))
-                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                .font(Font(UserPreferences.sharedInstance.headlineFont(size: 18)))
         }
         .modifier(MercesStyleTextField())
     }
@@ -62,7 +62,7 @@ struct MercesStyleTextField: ViewModifier {
 //        .padding()
         .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.viewColor : self.themes.viewColorDark, isFlat: true)), width: 1)
         .clipShape(RoundedRectangle(cornerRadius: 2.5, style: .circular))
-        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 24)))
+        .font(Font(UserPreferences.sharedInstance.headlineFont(size: 24)))
         .minimumScaleFactor(0.75)
     }
 }
@@ -108,7 +108,7 @@ struct TextFieldViewModifier: ViewModifier {
 //        .border(Color.primary, width: 2)
         .shadow(color: self.colorScheme == .dark ? Color("Licorice") : Color("Alabaster"), radius: 2, x: 2, y: 2)
         .shadow(color: self.colorScheme == .dark ? Color("Eerie") : Color("Alabaster"), radius: 2, x: -2, y: -2)
-        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 24)))
+        .font(Font(UserPreferences.sharedInstance.headlineFont(size: 24)))
     }
 }
 

@@ -12,6 +12,7 @@ struct Keypad: View {
     @Binding var value: Double
     @Binding var isPresented: Bool
     @Binding var activeField: EditableTextFields
+    @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
     
     var body: some View {
         GeometryReader { geometry in
@@ -22,28 +23,28 @@ struct Keypad: View {
                     Text("\(self.activeField.name):")
                         .minimumScaleFactor(0.5)
                         .multilineTextAlignment(.leading)
-                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: subHeadlineTextSize)))
+                        .font(Font(self.userPrefs.headlineFont(size: subHeadlineTextSize)))
                     
                     if (self.activeField == EditableTextFields.partySize) {
                         Text(nForm.formatIntegerNumbers(Int(self.value)))
                             .multilineTextAlignment(.trailing)
-                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: subHeadlineTextSize)))
+                            .font(Font(self.userPrefs.headlineFont(size: subHeadlineTextSize)))
                         
                     } else if (self.activeField == EditableTextFields.subtotal || self.activeField == EditableTextFields.salesTax) {
                         Text(nForm.roundForCurrency(number: self.value))
                         .multilineTextAlignment(.trailing)
-                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: subHeadlineTextSize)))
+                        .font(Font(self.userPrefs.headlineFont(size: subHeadlineTextSize)))
                         
                     } else if (self.activeField == EditableTextFields.localTax) {
                         Text(nForm.roundForPercentWithThreeDecimalPlaces(number: self.value))
                             .minimumScaleFactor(0.8)
                             .multilineTextAlignment(.trailing)
-                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: subHeadlineTextSize)))
+                            .font(Font(self.userPrefs.headlineFont(size: subHeadlineTextSize)))
                         
                     } else {
                         Text(nForm.roundForPercentWithTwoDecimalPlaces(self.value))
                         .multilineTextAlignment(.trailing)
-                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: subHeadlineTextSize)))
+                        .font(Font(self.userPrefs.headlineFont(size: subHeadlineTextSize)))
                     }
                 }
                 

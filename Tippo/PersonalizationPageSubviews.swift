@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ThreeDecimalPercentageView: View {
     @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var userPrefs: UserPreferences
     @Binding var value: Double
     var body: some View {
         Text(nForm.roundForPercentWithThreeDecimalPlaces(number: self.value))
@@ -17,7 +18,7 @@ struct ThreeDecimalPercentageView: View {
             .padding()
             .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.viewColor : Themes.sharedInstance.viewColorDark, isFlat: true)), width: 2)
             .cornerRadius(2)
-            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+            .font(Font(self.userPrefs.headlineFont(size: 18)))
     }
 }
 
@@ -34,7 +35,7 @@ struct PPageTopView: View {
             }) {
                 VStack {
                     Text("Local Sales Tax Rate")
-                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                        .font(Font(self.userPrefs.headlineFont(size: 18)))
                         .scaleEffect(self.inputs.activeField == EditableTextFields.localTax ? highlightedScale : 1.0)
                     
                     ThreeDecimalPercentageView(value: self.$userPrefs.localSalesTax).padding(.top)
@@ -63,7 +64,7 @@ struct PPageMiddle: View {
                 VStack {
                     HStack {
                         Text("Bad")
-                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                            .font(Font(self.userPrefs.headlineFont(size: 18)))
                             .scaleEffect(self.inputs.activeField == EditableTextFields.badTip ? highlightedScale : 1.0)
                         ServiceQuality.Bad.image
                     }
@@ -71,7 +72,7 @@ struct PPageMiddle: View {
                     Text(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venueEditor.selectedVenue, service: .Bad)))
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .cornerRadius(2)
-                        .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                        .font(Font(self.userPrefs.headlineFont(size: 18)))
                     
                 }
             }
@@ -85,14 +86,14 @@ struct PPageMiddle: View {
                 VStack {
                     HStack {
                         Text("Good")
-                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                            .font(Font(self.userPrefs.headlineFont(size: 18)))
                             .scaleEffect(self.inputs.activeField == EditableTextFields.goodTip ? highlightedScale : 1.0)
                         ServiceQuality.Good.image
                     }
                     Text(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venueEditor.selectedVenue, service: .Good)))
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .cornerRadius(2)
-                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                    .font(Font(self.userPrefs.headlineFont(size: 18)))
                 }
             }
             .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark, isFlat: true)))
@@ -105,14 +106,14 @@ struct PPageMiddle: View {
                 VStack {
                     HStack {
                         Text("Great")
-                            .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                            .font(Font(self.userPrefs.headlineFont(size: 18)))
                             .scaleEffect(self.inputs.activeField == EditableTextFields.greatTip ? highlightedScale : 1.0)
                         ServiceQuality.Great.image
                     }
                     Text(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venueEditor.selectedVenue, service: .Great)))
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .cornerRadius(2)
-                    .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                    .font(Font(self.userPrefs.headlineFont(size: 18)))
                 }
             }
             .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark, isFlat: true)))
@@ -166,7 +167,7 @@ struct PPageVenueSelection: View {
     var body: some View {
         VStack {
             Text("Venue: \(self.userPrefs.venueEditor.selectedVenue.name)")
-                .font(Font(UserPreferences.sharedInstance.checkForDynamicType(preferredFontSize: 18)))
+                .font(Font(self.userPrefs.headlineFont(size: 18)))
             PPageVenuePicker()
         }
         .accessibility(label: Text("Venue: \(self.userPrefs.venueEditor.selectedVenue.name)"))

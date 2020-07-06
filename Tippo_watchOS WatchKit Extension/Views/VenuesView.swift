@@ -21,28 +21,13 @@ struct VenuesView: View {
         VStack {
             
             HStack {
-                Picker(selection: self.$venueEditor.service, label: Text("Service Level")
-                        .font(.headline)
-                        .multilineTextAlignment(.leading)
-                        .minimumScaleFactor(0.8)
-                        .accessibility(label: Text("Service Level: \(self.venueEditor.service.name)"))
-                ){
-                    ForEach(0..<ServiceQuality.allCases.count) { index in
-                        HStack {
-                            Text(ServiceQuality.allCases[index].name)
-                            ServiceQuality.allCases[index].image
-                        }
-                        .tag(ServiceQuality.allCases[index])
-                        .accessibility(value: Text("Service Level: \(ServiceQuality.allCases[index].name)"))
-                    }
-                }.frame(height: viewHeight)
-                
-                VStack {
-                    Text("Tip %").font(.headline)
-                    Text(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venueEditor.selectedVenue, service: self.venueEditor.service)))
-                }
+                Text("Tip %").font(.headline)
+                Spacer()
+                Text(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venueEditor.selectedVenue, service: self.venueEditor.service)))
+            }
                 .padding([.leading, .trailing])
                 .frame(height: viewHeight)
+                .frame(maxWidth: .infinity)
                 .background(Color("CrayolaRed"))
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .circular))
                 .onTapGesture {
@@ -52,8 +37,22 @@ struct VenuesView: View {
                     Keypad(value: self.$venueEditor.tipAmount, isPresented: self.$isActive, activeField: self.$venueEditor.activeField)
                 }
                 .accessibility(label: Text("Tip Rate \(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venueEditor.selectedVenue, service: self.venueEditor.service)))"))
-                
-            }
+            
+            Picker(selection: self.$venueEditor.service, label: Text("Service Level")
+                    .font(.headline)
+                    .multilineTextAlignment(.leading)
+                    .minimumScaleFactor(0.8)
+                    .accessibility(label: Text("Service Level: \(self.venueEditor.service.name)"))
+            ){
+                ForEach(0..<ServiceQuality.allCases.count) { index in
+                    HStack {
+                        Text(ServiceQuality.allCases[index].name)
+                        ServiceQuality.allCases[index].image
+                    }
+                    .tag(ServiceQuality.allCases[index])
+                    .accessibility(value: Text("Service Level: \(ServiceQuality.allCases[index].name)"))
+                }
+            }.frame(height: viewHeight)
             
             Picker(selection: self.$venueEditor.selectedVenue, label: Text("Venue").font(.headline)
                 .accessibility(label: Text("Venue: \(self.venueEditor.selectedVenue.name)"))

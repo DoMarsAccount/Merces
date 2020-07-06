@@ -73,6 +73,11 @@ class UserPreferences: ObservableObject {
             mUserDefaults!.set(useClassicStyle, forKey: "useClassicStyle")
         }
     }
+    @Published var reduceHaptics: Bool {
+        didSet {
+            mUserDefaults!.set(reduceHaptics, forKey: "reduceHaptics")
+        }
+    }
     
     var isModeTipCalc: Bool = true
     
@@ -86,23 +91,14 @@ class UserPreferences: ObservableObject {
         shouldShowSetupAlert = !mUserDefaults!.bool(forKey: "setupAlertShown")
         useFlatStyleViews = mUserDefaults!.bool(forKey: "useFlatStyleViews")
         useClassicStyle = mUserDefaults!.bool(forKey: "useClassicStyle")
+        reduceHaptics = mUserDefaults!.bool(forKey: "reduceHaptics")
     }
     
-    func updatePreferences() {
-        mUserDefaults!.set(tipIncludeTax, forKey: "tipIncludeTaxSwitchOnOff")
-        mUserDefaults!.set(roundTipAmount, forKey: "roundTipAmountSwitchOnOff")
-        mUserDefaults!.set(roundTotalAmount, forKey: "roundTotalAmountSwitchOnOff")
-        mUserDefaults!.set(subtotalIsPostTax, forKey: "subtotalIsPostTaxSwitchOnOff")
-        mUserDefaults!.set(useDynamicText, forKey: "useDynamicText")
-        mUserDefaults!.set(localSalesTax, forKey: "userLocalSalesTax")
-        mUserDefaults!.set(useFlatStyleViews, forKey: "useFlatStyleViews")
-    }
-    
-    func checkForDynamicType(preferredFontSize: CGFloat) -> UIFont {
+    func headlineFont(size: CGFloat) -> UIFont {
         if mUserDefaults?.bool(forKey: "useDynamicText") == true {
             return UIFont.preferredFont(forTextStyle: UIFont.TextStyle.headline)
         } else {
-            return UIFont.systemFont(ofSize: preferredFontSize, weight: .bold)
+            return UIFont.systemFont(ofSize: size, weight: .bold)
         }
     }
 }

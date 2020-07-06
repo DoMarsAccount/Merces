@@ -16,11 +16,11 @@ class HostingController: WKHostingController<ContentView>, WCSessionDelegate {
     }
     
     override func willActivate() {
-        if WCSession.isSupported() {
-            let session = WCSession.default
-            session.delegate = self
-            session.activate()
-        }
+//        if WCSession.isSupported() {
+//            let session = WCSession.default
+//            session.delegate = self
+//            session.activate()
+//        }
     }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {

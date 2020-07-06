@@ -8,6 +8,19 @@
 
 import SwiftUI
 
+enum TippoColors: CaseIterable, Hashable, Identifiable {
+    case BurntOrange
+    case Green
+    case Indigo
+    
+    var name: String {
+        return "\(self)".map {
+            $0.isUppercase ? " \($0)" : "\($0)" }.joined().capitalized
+    }
+    
+    var id: TippoColors { self }
+}
+
 enum TipTokColors: CaseIterable, Hashable, Identifiable {
     case MercesGreen
     case MercesGreenAccent
