@@ -91,12 +91,17 @@ struct Settings: View {
 struct SettingsFooter: View {
     @EnvironmentObject var userPrefs: UserPreferences
     var body: some View {
-        VStack {
-            Text("Made by Donovan McCray in Baytown, TX")
-            Text("Version 3.0")
+        HStack {
+            Spacer()
+            VStack {
+                Text("Tippo 2020.1 (3.0)")
+                Text("By Donovan McCray")
+                Text("Made in Texas")
+            }
+                .font(Font(self.userPrefs.subHeadlineFont(size: 18)))
+                .padding()
+            Spacer()
         }
-        .font(Font(self.userPrefs.headlineFont(size: 16)))
-        .padding()
     }
 }
 

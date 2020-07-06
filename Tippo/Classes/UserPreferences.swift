@@ -101,6 +101,22 @@ class UserPreferences: ObservableObject {
             return UIFont.systemFont(ofSize: size, weight: .bold)
         }
     }
+    
+    func subHeadlineFont(size: CGFloat) -> UIFont {
+        if mUserDefaults?.bool(forKey: "useDynamicText") == true {
+            return UIFont.preferredFont(forTextStyle: UIFont.TextStyle.subheadline)
+        } else {
+            return UIFont.systemFont(ofSize: size, weight: .regular)
+        }
+    }
+    
+    func bodyFont(size: CGFloat) -> UIFont {
+        if mUserDefaults?.bool(forKey: "useDynamicText") == true {
+            return UIFont.preferredFont(forTextStyle: UIFont.TextStyle.body)
+        } else {
+            return UIFont.systemFont(ofSize: size, weight: .regular)
+        }
+    }
 }
 
 extension UserDefaults {
