@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-fileprivate var aboutMessage = "👋🏾 Hi, I’m Donovan McCray.\n\nI’m a software engineer from Texas.\n\nI started work on this app (originally titled ”Merces”) back in 2014 in order to familiarize myself with iOS app development.\n\nAs you’ve probably noticed, this app is a bit gratuitous (pun intended). To put it plainly, there is no shortage of tip calculator apps on the App Store. But, for a number of reasons, I was driven to create something I thought was better.\n\nI’d love to hear your thoughts on Tippo. If you tweet, feel free to contact me on Twitter @iDonosaur.\n\nIf you enjoy Tippo, please share it with a friend, or leave it a review on the App Store!"
+fileprivate var aboutMessage = "👋🏾 Hi, I’m Donovan McCray.\n\nI’m a software engineer from Baytown, Texas.\n\nI started work on this app (originally titled ”Merces”) back in 2014 in order to familiarize myself with iOS app development.\n\nAs you’ve probably noticed, this app is a bit gratuitous (pun intended). To put it plainly, there is no shortage of tip calculator apps on the App Store. But, for a number of reasons, I was driven to create something I thought was better.\n\nI’d love to hear your thoughts on Tippo. If you tweet, feel free to contact me on Twitter @iDonosaur.\n\nIf you enjoy Tippo, please share it with a friend, or leave it a review on the App Store!"
 
 struct AboutPage: View {
     var body: some View {
