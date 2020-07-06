@@ -41,7 +41,7 @@ struct SettingsPage: View {
                 .accessibility(label: Text("General"))
                 )
             {
-                NavigationLink(destination: MyMerces(), isActive: self.$isLocalSalesTaxPageActive) {
+                NavigationLink(destination: LocalSalesTaxPage(), isActive: self.$isLocalSalesTaxPageActive) {
                     Text("Local Sales Tax")
                         .font(Font(self.userPrefs.headlineFont(size: headlineTextSize)))
                         .accessibility(label: Text("Local Sales Tax"))
@@ -80,7 +80,7 @@ struct SettingsPage: View {
     }
 }
 
-struct MyMerces: View {
+struct LocalSalesTaxPage: View {
     @EnvironmentObject var preferences: UserPreferences
     @State private var isKeypadPresented: Bool = false
     
@@ -116,6 +116,6 @@ struct VenueEditingView: View {
 struct SettingsPage_Previews: PreviewProvider {
     static var previews: some View {
         SettingsPage().environmentObject(UserPreferences.sharedInstance)
-//        MyMerces().environmentObject(UserPreferences.sharedInstance)
+//        LocalSalesTaxPage().environmentObject(UserPreferences.sharedInstance)
     }
 }

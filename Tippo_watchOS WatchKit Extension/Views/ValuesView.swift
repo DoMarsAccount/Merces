@@ -18,6 +18,7 @@ struct ValuesView: View {
     @State private var isPartySizeKeypadPresented: Bool = false
     @State private var isTipRateKeypadPresented: Bool = false
     @State private var isDetailedTipRateViewPresented: Bool = false
+    @State private var isSettingsPageActive: Bool = false
     
     var body: some View {
         GeometryReader { geo in
@@ -110,6 +111,28 @@ struct ValuesView: View {
                     
                     Spacer()
                     
+                    Divider()
+                    
+                    NavigationLink(destination: SettingsPage().environmentObject(self.userPrefs), isActive: self.$isSettingsPageActive) {
+                        HStack {
+                            Image(systemName: "gear")
+                            Spacer()
+                            Text("Settings").font(.headline)
+                        }
+                    }
+                    .modifier(scalingEffect())
+                    
+                    Button(action: {
+                        self.wCalcModel.resetValues()
+                    }) {
+                        HStack {
+                            Image(systemName: "xmark")
+                            Spacer()
+                            Text("Clear Values").font(.headline)
+                        }
+                    }
+                    .modifier(scalingEffect())
+                    
                 }
                 .edgesIgnoringSafeArea([.leading, .trailing, .bottom])
             }
@@ -121,6 +144,7 @@ struct ValuesView_Previews: PreviewProvider {
     static var previews: some View {
         ValuesView()
             .environmentObject(CalculationsModel())
+            .environmentObject(UserPreferences.sharedInstance)
             .environment(\.sizeCategory, .extraLarge)
     }
 }

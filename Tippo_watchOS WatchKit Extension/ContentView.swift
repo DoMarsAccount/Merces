@@ -19,31 +19,13 @@ struct ContentView: View {
             .navigationBarTitle("Tippo")
             .environmentObject(wCalcModel)
             .environmentObject(userPrefs)
-            .contextMenu {
-                NavigationLink(destination: SettingsPage().environmentObject(userPrefs), isActive: self.$isActive) {
-                    HStack {
-                        Image(systemName: "gear")
-                        Text("Settings").font(.headline)
-                    }
-                }
-
-                Button(action: {
-                    self.wCalcModel.resetValues()
-                }) {
-                    HStack {
-                        Image(systemName: "xmark")
-                        Text("Clear Values").font(.headline)
-                    }
-                }
-
-            }
             .onAppear {
                 self.wCalcModel.tipRate = Tipping.sharedInstance.currentTipRate(for: self.wCalcModel.selectedVenue, service: self.wCalcModel.service)
                 _ = self.wCalcModel.computeTippingValues()
             }
             .modifier(SetupAlert(isActive: self.$userPrefs.shouldShowSetupAlert, doesUserWantSetup: self.$doesUserWantSetup))
             .sheet(isPresented: self.$doesUserWantSetup) {
-                MyMerces().environmentObject(self.userPrefs)
+                LocalSalesTaxPage().environmentObject(self.userPrefs)
             }
     }
 }
