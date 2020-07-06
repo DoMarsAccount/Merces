@@ -17,49 +17,59 @@ struct CalculationLogicControls: View {
 
     var body: some View {
         NavigationView {
-            Form {
-                Section(header: Text("Include Sales Tax in...").font(Font(self.preferences.headlineFont(size: 18)))) {
-                    SettingsRow(text: .constant("Subtotal"), isEnabled: self.$preferences.subtotalIsPostTax)
-                    SettingsRow(text: .constant("Tip Amount"), isEnabled: self.$preferences.tipIncludeTax)
-                }
-                
-                Section(header: Text("Round Up to Nearest Dollar").font(Font(self.preferences.headlineFont(size: 18)))) {
-                    SettingsRow(text: .constant("Tip Amount"), isEnabled: self.$preferences.roundTipAmount)
-                    SettingsRow(text: .constant("Grand Total"), isEnabled: self.$preferences.roundTotalAmount)
-                }
-                Section(header: Text("Auto-calculate Sales Tax").font(Font(self.preferences.headlineFont(size: 18)))) {
-                    NavigationLink(destination: PersonalizationPage(), isActive: self.$isPersonalizationPageActive) {
-                        Text("Local Sales Tax: \(nForm.roundForPercentWithThreeDecimalPlaces(number: self.preferences.localSalesTax))")
-                            .font(Font(self.preferences.headlineFont(size: 18)))
+            VStack {
+                Form {
+                    Section(header: Text("Include Sales Tax in...").font(Font(self.preferences.headlineFont(size: 18)))) {
+                        SettingsRow(text: .constant("Subtotal"), isEnabled: self.$preferences.subtotalIsPostTax)
+                        SettingsRow(text: .constant("Tip Amount"), isEnabled: self.$preferences.tipIncludeTax)
                     }
+                    
+                    Section(header: Text("Round Up to Nearest Dollar").font(Font(self.preferences.headlineFont(size: 18)))) {
+                        SettingsRow(text: .constant("Tip Amount"), isEnabled: self.$preferences.roundTipAmount)
+                        SettingsRow(text: .constant("Grand Total"), isEnabled: self.$preferences.roundTotalAmount)
+                    }
+                    Section(header: Text("Auto-calculate Sales Tax").font(Font(self.preferences.headlineFont(size: 18)))) {
+                        NavigationLink(destination: PersonalizationPage(), isActive: self.$isPersonalizationPageActive) {
+                            Text("Local Sales Tax: \(nForm.roundForPercentWithThreeDecimalPlaces(number: self.preferences.localSalesTax))")
+                                .font(Font(self.preferences.headlineFont(size: 18)))
+                        }
+                    }
+                    
+                    Section(header: Text(""), footer: Text("")) {
+                        Text("Nothing to see here...👀")
+                    }.frame(height: 60)
+                    
+                }
+                .navigationBarTitle(Text("Rules"))
+                .padding(.bottom, 60)
+                .edgesIgnoringSafeArea(.bottom)
+                .navigationBarItems(trailing: Button(action: {
+                    self.isSettingsActive.toggle()
+                }, label: {
+                    Image(systemName: "gear")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .accessibility(label: Text("Settings"))
+                        .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.background : self.themes.backgroundColorDark, isFlat: true)))
+                }))
+                .sheet(isPresented: self.$isSettingsActive) {
+                    Settings().environmentObject(self.preferences)
                 }
                 
-                Section(header: Text(""), footer: Text("")) {
-                    Text("Nothing to see here...👀")
-                }.frame(height: 60)
-                
+                Text("")
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(self.colorScheme == .light ? Color(.systemBackground) : Color(.secondarySystemBackground))
             }
-            .navigationBarTitle(Text("Rules"))
-            .padding(.bottom, 60)
             .edgesIgnoringSafeArea(.bottom)
-            .navigationBarItems(trailing: Button(action: {
-                self.isSettingsActive.toggle()
-            }, label: {
-                Image(systemName: "gear")
-                    .resizable()
-                    .frame(width: 30, height: 30)
-                    .accessibility(label: Text("Settings"))
-                    .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.background : self.themes.backgroundColorDark, isFlat: true)))
-            }))
-            .sheet(isPresented: self.$isSettingsActive) {
-                Settings().environmentObject(self.preferences)
-            }
         }
     }
 }
 
 struct CalculationLogicControls_Previews: PreviewProvider {
     static var previews: some View {
-        CalculationLogicControls().environmentObject(UserPreferences.sharedInstance)
+        CalculationLogicControls()
+            .environmentObject(UserPreferences.sharedInstance)
+            .environment(\.colorScheme, .dark)
     }
 }

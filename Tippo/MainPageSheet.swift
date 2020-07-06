@@ -121,7 +121,7 @@ struct MainPageSheet: View {
             }
             .padding()
             .frame(width: geo.size.width, height: self.maxHeight, alignment: .top)
-            .background(Color(.systemBackground))
+            .background(self.colorScheme == .light ? Color(.systemBackground) : Color(.secondarySystemBackground))
             .cornerRadius(Constants.radius)
             .frame(height: geo.size.height, alignment: .bottom)
             .offset(y: max(self.offset + self.translation, 0))
