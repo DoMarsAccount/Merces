@@ -73,7 +73,7 @@ struct Settings: View {
                     }
                 }
                 
-                Section(footer: Text("Made by Donovan McCray in Baytown, TX").font(Font(self.userPrefs.headlineFont(size: 18)))) {
+                Section(footer: SettingsFooter()) {
                     
                     NavigationLink(destination: AboutPage(), isActive: self.$isAboutPageActive) {
                         Text("About Tippo")
@@ -88,62 +88,15 @@ struct Settings: View {
     }
 }
 
-// MARK: Intended for iPad Only
-struct SettingsPane: View {
-    @Environment(\.colorScheme) var colorScheme
-    @ObservedObject var themes: Themes = Themes.sharedInstance
-    @EnvironmentObject var preferences: UserPreferences
-    @State private var isPersonalizePageActive: Bool = false
-    @State private var isThemesPageActive: Bool = false
-    
+struct SettingsFooter: View {
+    @EnvironmentObject var userPrefs: UserPreferences
     var body: some View {
-//        NavigationView {
-            Form {
-                Section(header: Text("General").font(Font(self.preferences.headlineFont(size: 18)))) {
-                    Button(action: {
-                        self.isPersonalizePageActive.toggle()
-                    }) {
-                        Text("Personalize")
-                            .foregroundColor(.primary)
-                            .font(Font(self.preferences.headlineFont(size: 18)))
-                    }
-                    
-                    Button(action: {
-                        self.isThemesPageActive.toggle()
-                    }) {
-                        Text("Themes")
-                            .foregroundColor(.primary)
-                            .font(Font(self.preferences.headlineFont(size: 18)))
-                    }
-                    
-                    SettingsRow(text: .constant("Include Sales Tax in Tip"), isEnabled: self.$preferences.tipIncludeTax)
-                    SettingsRow(text: .constant("Include Sales Tax in Subtotal"), isEnabled: self.$preferences.subtotalIsPostTax)
-                }
-                
-                Section(header: Text("Round Up to Nearest Dollar").font(Font(self.preferences.headlineFont(size: 18)))) {
-                    SettingsRow(text: .constant("Tip Amount"), isEnabled: self.$preferences.roundTipAmount)
-                    SettingsRow(text: .constant("Grand Total"), isEnabled: self.$preferences.roundTotalAmount)
-                }
-                
-                Section(header: Text("Accessibility").font(Font(self.preferences.headlineFont(size: 18)))) {
-                    SettingsRow(text: .constant("Use Your iPhone's Text Size"), isEnabled: self.$preferences.useDynamicText)
-                    SettingsRow(text: .constant("Use Flat Views"), isEnabled: self.$preferences.useFlatStyleViews)
-                }
-                
-                Section(header: Text("Feedback").font(Font(self.preferences.headlineFont(size: 18)))) {
-                    Button(action: {
-                        SKStoreReviewController.requestReview()
-                    }) {
-                        Text("Leave a Rating")
-                            .foregroundColor(.primary)
-                            .font(Font(self.preferences.headlineFont(size: 18)))
-                    }
-                }
-            }
-            .edgesIgnoringSafeArea(.bottom)
-            .navigationBarTitle(Text("Settings"), displayMode: .automatic)
-//        }
-            
+        VStack {
+            Text("Made by Donovan McCray in Baytown, TX")
+            Text("Version 3.0")
+        }
+        .font(Font(self.userPrefs.headlineFont(size: 16)))
+        .padding()
     }
 }
 
