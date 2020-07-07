@@ -44,7 +44,7 @@ class InputProcessing: ObservableObject
     
     /* Objects */
     let calcModel = CalculationsModel.sharedInstance
-    let venueEditor = UserPreferences.sharedInstance.venueEditor
+    let venueEditor = VenueEditor.sharedInstance
     
     /* Variables */
     var tipRateArray: [Double]
@@ -78,17 +78,17 @@ class InputProcessing: ObservableObject
     
     var arrayOfButtonsPressedForPoorTip: [String] {
         didSet {
-            userDefinedTipRatings(self.arrayOfButtonsPressedForPoorTip, venueToEdit: self.venueEditor.selectedVenue, tipRateToEdit: 0)
+            userDefinedTipRatings(self.arrayOfButtonsPressedForPoorTip, serviceQuality: .Bad)
         }
     }
     var arrayOfButtonsPressedForAverageTip: [String] {
         didSet {
-            userDefinedTipRatings(self.arrayOfButtonsPressedForAverageTip, venueToEdit: self.venueEditor.selectedVenue, tipRateToEdit: 1)
+            userDefinedTipRatings(self.arrayOfButtonsPressedForAverageTip, serviceQuality: .Good)
         }
     }
     var arrayOfButtonsPressedForGreatTip: [String] {
         didSet {
-            userDefinedTipRatings(self.arrayOfButtonsPressedForGreatTip, venueToEdit: self.venueEditor.selectedVenue, tipRateToEdit: 2)
+            userDefinedTipRatings(self.arrayOfButtonsPressedForGreatTip, serviceQuality: .Great)
         }
     }
     
@@ -108,7 +108,7 @@ class InputProcessing: ObservableObject
         }
     }
     
-    init() {
+    private init() {
         if let tipArray = mUserDefaults?.array(forKey: "quickTipArray") {
             tipRateArray = tipArray as! [Double]
         } else {
@@ -166,9 +166,9 @@ class InputProcessing: ObservableObject
         calcModel.subtotal = 0.00
         calcModel.tipRate = 0.0
         calcModel.taxAmount = 0.00
-        calcModel.selectedVenue = .quick
+        calcModel.selectedVenue = Venues.sharedInstance.selectedVenue
         
-        tipRateArray = Tipping.sharedInstance.tipRates(for: self.calcModel.selectedVenue)
+        tipRateArray = Venues.sharedInstance.currentTipRates(for: calcModel.selectedVenue)!
         
         arrayOfButtonsPressedForBillAmountAsString = []
         arrayOfButtonsPressedForTaxAmountAsString = []

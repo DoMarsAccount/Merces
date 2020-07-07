@@ -36,21 +36,30 @@ class VenueCreator: ObservableObject {
 
 class Venues: ObservableObject {
     @Published var venues: [Venue] = []
+    @Published var selectedVenue: Venue
+//    {
+//        didSet {
+//            CalculationsModel.sharedInstance.selectedVenue = selectedVenue
+//        }
+//    }
     static let sharedInstance = Venues()
     
-    init() {
+    private init() {
         let defaultPrefsFile = Bundle.main.path(forResource: "defaultPreferences", ofType: "plist")
         let defaultPreferences = NSDictionary(contentsOfFile: defaultPrefsFile!)
         UserDefaults(suiteName:"group.DoMarsToyBox.Merces")?.register(defaults: defaultPreferences! as! [String : AnyObject])
+        
+        selectedVenue = Venue(name: "None", tipAmounts: [0.0, 0.0, 0.0])
         
         let venueNames = mUserDefaults?.value(forKey: "venueNames") as! [String]
         let defaultVenue = mUserDefaults?.value(forKey: "defaultVenue") as! String
         for name in venueNames {
             if let tipRates = tipRates(for: name) {
-                venues.append(Venue(name: name, tipAmounts: tipRates, isDefaultVenue: name == defaultVenue))
+                let venue = Venue(name: name, tipAmounts: tipRates, isDefaultVenue: name == defaultVenue)
+                venues.append(venue)
+                if venue.isDefaultVenue { selectedVenue = venue }
             }
         }
-//        print(venueNames)
     }
     
     func createNewVenue(named name: String, tipAmounts: [Double]) -> Bool {
@@ -59,10 +68,19 @@ class Venues: ObservableObject {
         if !existingVenueNames.contains(name) {
             existingVenueNames.append(name)
             mUserDefaults?.set(existingVenueNames, forKey: "venueNames")
-            
             mUserDefaults?.setValue(tipAmounts, forKey: "\(name.lowercased())TipArray")
             
-            venues.append(Venue(name: name, tipAmounts: tipAmounts))
+            // Reset, Update Venues
+            self.venues.removeAll()
+            let venueNames = mUserDefaults?.value(forKey: "venueNames") as! [String]
+            
+            for name in venueNames {
+                if let tipRates = tipRates(for: name) {
+                    venues.append(Venue(name: name, tipAmounts: tipRates))
+                } else {
+                    venues.append(Venue(name: name, tipAmounts: [0.0, 0.0, 0.0]))
+                }
+            }
             return true
         }
         return false
@@ -116,6 +134,25 @@ class Venues: ObservableObject {
                 venues.append(Venue(name: vName, tipAmounts: tipRates, isDefaultVenue: vName == name))
             }
         }
+    }
+    
+    // MARK: Tip Class Replacement Methods
+    func currentTipRates(for venue: Venue) -> [Double]? {
+        return tipRates(for: venue.name)
+    }
+    
+    func currentTipRate(for venue: Venue, service: ServiceQuality) -> Double? {
+        if let tips = tipRates(for: venue.name) {
+            switch service {
+            case .Bad:
+                return tips[0]
+            case .Good:
+                return tips[1]
+            case .Great:
+                return tips[2]
+            }
+        }
+        return nil
     }
     
 }

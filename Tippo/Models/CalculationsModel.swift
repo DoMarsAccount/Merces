@@ -10,6 +10,7 @@ import Foundation
 
 class CalculationsModel: ObservableObject {
     static let sharedInstance = CalculationsModel()
+    private var venues = Venues.sharedInstance
     private var manuallyUpdatingTaxAmount: Bool = false
     
     @Published var subtotal: Double {
@@ -39,21 +40,21 @@ class CalculationsModel: ObservableObject {
     @Published var totalAmount: Double
     @Published var totalAmountPerPerson: Double
     
-    @Published var selectedVenue: VenueType {
+    @Published var selectedVenue: Venue {
         didSet {
-            tipRate = Tipping.sharedInstance.currentTipRate(for: selectedVenue, service: service)
+            tipRate = venues.currentTipRate(for: selectedVenue, service: service)!
         }
     }
     @Published var service: ServiceQuality {
         didSet {
-            tipRate = Tipping.sharedInstance.currentTipRate(for: selectedVenue, service: service)
+            tipRate = venues.currentTipRate(for: selectedVenue, service: service)!
         }
     }
     
     var displayedTotalAmountPerPerson: Double
     var moreOrLessPerPerson: Double
     
-    init() {
+    private init() {
         self.subtotal = 0.00
         self.taxAmount = 0.00
         self.tipAmount = 0.0
@@ -62,9 +63,9 @@ class CalculationsModel: ObservableObject {
         self.totalAmount = 0.0
         self.totalAmountPerPerson = 0.0
         
-        self.selectedVenue = .quick
+        self.selectedVenue = venues.selectedVenue
         self.service = .Good
-        self.tipRate = Tipping.sharedInstance.tipRates(for: .quick)[1]
+        self.tipRate = venues.currentTipRate(for: venues.selectedVenue, service: .Good)!
         
         self.displayedTotalAmountPerPerson = 0.0
         self.moreOrLessPerPerson = 0.00
@@ -79,9 +80,9 @@ class CalculationsModel: ObservableObject {
         self.totalAmount = 0.0
         self.totalAmountPerPerson = 0.0
         
-        self.selectedVenue = .quick
+        self.selectedVenue = venues.selectedVenue
         self.service = .Good
-        self.tipRate = Tipping.sharedInstance.tipRates(for: self.selectedVenue)[1]
+        self.tipRate = venues.currentTipRate(for: venues.selectedVenue, service: .Good)!
         
         self.displayedTotalAmountPerPerson = 0.0
         self.moreOrLessPerPerson = 0.00

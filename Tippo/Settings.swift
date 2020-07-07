@@ -40,17 +40,17 @@ struct Settings: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Appearance").font(Font(self.userPrefs.headlineFont(size: 18)))) {
-                    NavigationLink(destination: ThemesPage(), isActive: self.$isThemesPageActive) {
-                        Text("Themes")
-                            .foregroundColor(.primary)
-                            .font(Font(self.userPrefs.headlineFont(size: 18)))
-                    }
-                }
+//                Section(header: Text("Appearance").font(Font(self.userPrefs.headlineFont(size: 18)))) {
+//                    NavigationLink(destination: ThemesPage(), isActive: self.$isThemesPageActive) {
+//                        Text("Themes")
+//                            .foregroundColor(.primary)
+//                            .font(Font(self.userPrefs.headlineFont(size: 18)))
+//                    }
+//                }
                 
                 Section(header: Text("Venues").font(Font(self.userPrefs.headlineFont(size: 18)))) {
                     SettingsRow(text: .constant("Display Venue-related Views"), isEnabled: self.$layoutPrefs.displayVenueCards)
-                    NavigationLink(destination: VenueSelectionList(), isActive: self.$isVenuesSelectionListActive) {
+                    NavigationLink(destination: VenueEditingView(), isActive: self.$isVenuesSelectionListActive) {
                         Text("Edit Venues")
                             .foregroundColor(.primary)
                             .font(Font(self.userPrefs.headlineFont(size: 18)))

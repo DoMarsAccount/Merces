@@ -57,6 +57,7 @@ struct ServiceQualityPickerButtons: View {
                     
                 }
             }
+            .id("\(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.calcModel.selectedVenue, service: .Bad)))")
             .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark, isFlat: true)))
             .accessibility(label: Text("Bad Service Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.calcModel.selectedVenue, service: .Bad)))"))
             .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark))
@@ -76,6 +77,7 @@ struct ServiceQualityPickerButtons: View {
                     .font(Font(self.userPrefs.headlineFont(size: 18)))
                 }
             }
+            .id("\(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.calcModel.selectedVenue, service: .Good)))")
             .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark, isFlat: true)))
             .accessibility(label: Text("Good Service Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.calcModel.selectedVenue, service: .Good)))"))
             .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark))
@@ -95,6 +97,7 @@ struct ServiceQualityPickerButtons: View {
                     .font(Font(self.userPrefs.headlineFont(size: 18)))
                 }
             }
+            .id("\(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.calcModel.selectedVenue, service: .Great)))")
             .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark, isFlat: true)))
             .accessibility(label: Text("Great Service Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.calcModel.selectedVenue, service: .Great)))"))
             .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark))

@@ -12,7 +12,7 @@ struct AddVenuePage: View {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var inputs = InputProcessing.sharedInstance
     @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
-    @ObservedObject var venueEditor = UserPreferences.sharedInstance.venueEditor
+    @ObservedObject var venueEditor = VenueEditor.sharedInstance
     @ObservedObject var newVenue = VenueCreator.sharedInstance
     @ObservedObject var venues = Venues.sharedInstance
     @State private var newVenueName: String = ""
@@ -40,6 +40,7 @@ struct AddVenuePage: View {
                 
                 HStack {
                     Button(action: {
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                         self.inputs.activeField = EditableTextFields.newBadTip
                     }) {
                         VStack {
@@ -63,6 +64,7 @@ struct AddVenuePage: View {
                     .accessibility(label: Text("Bad Service Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(self.newVenue.badServiceTipAmount))"))
                     
                     Button(action: {
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                         self.inputs.activeField = EditableTextFields.newGoodTip
                     }) {
                         VStack {
@@ -84,6 +86,7 @@ struct AddVenuePage: View {
                     .accessibility(label: Text("Good Service Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(self.newVenue.goodServiceTipAmount))"))
                     
                     Button(action: {
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                         self.inputs.activeField = EditableTextFields.newGreatTip
                     }) {
                         VStack {

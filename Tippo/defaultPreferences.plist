@@ -51,9 +51,6 @@
 		<string>bar</string>
 		<string>dining</string>
 		<string>salon</string>
-		<string>Delete Test 1</string>
-		<string>Delete Test 2</string>
-		<string>Delete Test 3</string>
 	</array>
 	<key>defaultVenue</key>
 	<string>quick</string>

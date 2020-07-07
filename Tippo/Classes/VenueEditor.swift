@@ -40,14 +40,14 @@ enum VenueType: CaseIterable, Hashable, Identifiable {
     case salon
     case taxi
     case delivery
-    
+
     var name: String {
         return "\(self)".map {
             $0.isUppercase ? " \($0)" : "\($0)" }.joined().capitalized
     }
-    
+
     var id: VenueType { self }
-    
+
     var emoji: String {
         switch self {
         case .none:
@@ -70,15 +70,15 @@ enum VenueType: CaseIterable, Hashable, Identifiable {
 
 class Tipping {
     static let sharedInstance = Tipping()
-    
-    init() {
+
+    private init() {
         let defaultPrefsFile = Bundle.main.path(forResource: "defaultPreferences", ofType: "plist")
-        
+
         let defaultPreferences = NSDictionary(contentsOfFile: defaultPrefsFile!)
-        
+
         UserDefaults(suiteName:"group.DoMarsToyBox.Merces")?.register(defaults: defaultPreferences! as! [String : AnyObject])
     }
-    
+
     /// Returns the array of tip rates for the given Venue
     func tipRates(for venue: VenueType) -> [Double] {
         switch venue {
@@ -99,15 +99,16 @@ class Tipping {
         }
     }
 
-    func currentTipRate(for venue: VenueType, service: ServiceQuality) -> Double {
-        switch service {
-        case .Bad:
-            return tipRates(for: venue)[0]
-        case .Good:
-            return tipRates(for: venue)[1]
-        case .Great:
-            return tipRates(for: venue)[2]
-        }
+    func currentTipRate(for venue: Venue, service: ServiceQuality) -> Double {
+        return Venues.sharedInstance.currentTipRate(for: venue, service: service)!
+//        switch service {
+//        case .Bad:
+//            return tipRates(for: venue)[0]
+//        case .Good:
+//            return tipRates(for: venue)[1]
+//        case .Great:
+//            return tipRates(for: venue)[2]
+//        }
     }
 }
 
@@ -133,31 +134,30 @@ func localizedName(for venue: VenueType) -> String {
 
 
 /// Wrapper around VenueEditor that update the user's Tip Ratings stored in UserDefaults
-func userDefinedTipRatings (_ arrayOfPressedButtonValues: [String], venueToEdit: VenueType, tipRateToEdit: Int) {
-    
-    let venueEditor = UserPreferences.sharedInstance.venueEditor
-    
+func userDefinedTipRatings (_ arrayOfPressedButtonValues: [String], serviceQuality: ServiceQuality) {
+
+    var venueEditor = VenueEditor.sharedInstance
+
     var inputAmount = 0.00
     if !arrayOfPressedButtonValues.isEmpty {
         inputAmount = NumberFormatter().number(from: arrayOfPressedButtonValues.joined(separator: "")) as! Double * 0.01
     }
-    venueEditor.selectedVenue = venueToEdit
-    switch tipRateToEdit {
-    case 0:
+    
+    switch serviceQuality {
+    case .Bad:
         venueEditor.service = .Bad
-    case 1:
+    case .Good:
         venueEditor.service = .Good
-    case 2:
+    case .Great:
         venueEditor.service = .Great
-    default:
-        break
     }
     venueEditor.tipAmount = inputAmount * 0.01
 }
 
 class VenueEditor: ObservableObject {
-    private let tip: Tipping = Tipping.sharedInstance
-    @Published var selectedVenue: VenueType
+    static let sharedInstance = VenueEditor()
+    var venues = Venues.sharedInstance
+    
     @Published var service: ServiceQuality {
         didSet {
             switch self.service {
@@ -174,7 +174,7 @@ class VenueEditor: ObservableObject {
     @Published var tipAmount: Double {
         didSet {
             if (!shouldReset) {
-                self.changeTipRating(for: self.selectedVenue, quality: self.service, newRating: self.tipAmount)
+                self.changeTipRating(for: self.venues.selectedVenue, quality: self.service, newRating: self.tipAmount)
             }
         }
     }
@@ -182,37 +182,43 @@ class VenueEditor: ObservableObject {
     @Published var badServiceTipAmount: Double {
         willSet { self.service = .Bad }
         didSet {
-            self.changeTipRating(for: self.selectedVenue, quality: .Bad, newRating: self.badServiceTipAmount)
+            self.changeTipRating(for: self.venues.selectedVenue, quality: .Bad, newRating: self.badServiceTipAmount)
         }
     }
     @Published var goodServiceTipAmount: Double {
         willSet { self.service = .Good }
         didSet {
-            self.changeTipRating(for: self.selectedVenue, quality: .Good, newRating: self.goodServiceTipAmount)
+            self.changeTipRating(for: self.venues.selectedVenue, quality: .Good, newRating: self.goodServiceTipAmount)
         }
     }
     @Published var greatServiceTipAmount: Double {
         willSet { self.service = .Great }
         didSet {
-            self.changeTipRating(for: self.selectedVenue, quality: .Great, newRating: self.greatServiceTipAmount)
+            self.changeTipRating(for: self.venues.selectedVenue, quality: .Great, newRating: self.greatServiceTipAmount)
         }
     }
     private var shouldReset: Bool = false
-    
-    init() {
-        selectedVenue = .quick
+
+    private init() {
         service = .Good
         activeField = .goodTip
         
-        tipAmount = tip.currentTipRate(for: .quick, service: .Good)
-        badServiceTipAmount = tip.currentTipRate(for: .quick, service: .Bad)
-        goodServiceTipAmount = tip.currentTipRate(for: .quick, service: .Good)
-        greatServiceTipAmount = tip.currentTipRate(for: .quick, service: .Great)
+        if let tipRates = venues.currentTipRates(for: venues.selectedVenue) {
+            tipAmount = tipRates[1]
+            badServiceTipAmount = tipRates[0]
+            goodServiceTipAmount = tipRates[1]
+            greatServiceTipAmount = tipRates[2]
+        } else {
+            tipAmount = 0.0
+            badServiceTipAmount = 0.0
+            goodServiceTipAmount = 0.0
+            greatServiceTipAmount = 00.0
+        }
     }
-    
+
     /// Update the tip rating for the given venue and quality in UserDefaults
-    func changeTipRating(for venue: VenueType, quality: ServiceQuality, newRating: Double) {
-        
+    func changeTipRating(for venue: Venue, quality: ServiceQuality, newRating: Double) {
+
         var index: Int = 0
         switch quality {
         case .Bad:
@@ -222,43 +228,19 @@ class VenueEditor: ObservableObject {
         case .Great:
             index = 2
         }
-        
-        var venueArray = tip.tipRates(for: venue)
-        venueArray[index] = newRating //* 0.01
-        
-        switch venue {
-        case .quick:
-            mUserDefaults?.setValue(venueArray, forKey: "quickTipArray")
-        case .bar:
-            mUserDefaults?.setValue(venueArray, forKey: "barTipArray")
-        case .dining:
-            mUserDefaults?.setValue(venueArray, forKey: "diningTipArray")
-        case .salon:
-            mUserDefaults?.setValue(venueArray, forKey: "salonTipArray")
-        case .taxi:
-            mUserDefaults?.setValue(venueArray, forKey: "taxiTipArray")
-        case .delivery:
-            mUserDefaults?.setValue(venueArray, forKey: "deliveryTipArray")
-        default:
-            break
+
+        if let venueArray = venues.currentTipRates(for: venue) {
+            var newArray = venueArray
+            newArray[index] = newRating //* 0.01
+            venues.updateExistingVenue(named: venue.name, tipAmounts: newArray)
+        } else {
+            return
         }
     }
-    
+
     func resetTipAmount() {
         self.shouldReset = true
         self.tipAmount = 0.0
         self.shouldReset = false
     }
-    
-    func currTipRate(for venue: VenueType, service: ServiceQuality) -> Double {
-        switch service {
-        case .Bad:
-            return tip.tipRates(for: venue)[0]
-        case .Good:
-            return tip.tipRates(for: venue)[1]
-        case .Great:
-            return tip.tipRates(for: venue)[2]
-        }
-    }
-    
 }

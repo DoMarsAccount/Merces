@@ -60,6 +60,19 @@ struct MainPageSheet: View {
                         self.isOpen.toggle()
                         if !self.userPrefs.reduceHaptics { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
                     }
+                    .gesture (
+                        DragGesture().updating(self.$translation, body: { (value, state, _) in
+                            state = value.translation.height
+        //                    print(state)
+                            self.inputs.activeField = .none
+                        }).onEnded({ (value) in
+                            let snapDistance = self.maxHeight * Constants.snapRatio
+                            guard abs(value.translation.height) > snapDistance else {
+                                return
+                            }
+                            self.isOpen = value.translation.height < 0
+                        })
+                    )
                 
                     VStack {
                         ListInputRow(value: self.$calcModel.subtotal, inputStyle: .Currency, title: "Subtotal", field: .subtotal, background: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark)
@@ -103,15 +116,26 @@ struct MainPageSheet: View {
                     }
                 
                 ZStack {
-                    
-                    VenueSelectionView()
+                    VenuePicker()
                         .offset(x: self.inputs.activeField == .venue ? 0 : UIScreen.main.bounds.maxX)
                 
                     Keypad()
                         .offset(x: (self.inputs.activeField != .none && self.inputs.activeField != .venue) ? 0 : UIScreen.main.bounds.maxX)
                     
                     ListStyleTotaledAmounts()
-                    
+                        .gesture (
+                            DragGesture().updating(self.$translation, body: { (value, state, _) in
+                                state = value.translation.height
+            //                    print(state)
+                                self.inputs.activeField = .none
+                            }).onEnded({ (value) in
+                                let snapDistance = self.maxHeight * Constants.snapRatio
+                                guard abs(value.translation.height) > snapDistance else {
+                                    return
+                                }
+                                self.isOpen = value.translation.height < 0
+                            })
+                        )
                 }
                 .offset(y: -(self.offset + self.translation))
                 .padding(.top)
@@ -126,19 +150,6 @@ struct MainPageSheet: View {
             .frame(height: geo.size.height, alignment: .bottom)
             .offset(y: max(self.offset + self.translation, 0))
             .animation(.spring(response: 0.7, dampingFraction: 0.9, blendDuration: 1.0))
-            .gesture (
-                DragGesture().updating(self.$translation, body: { (value, state, _) in
-                    state = value.translation.height
-//                    print(state)
-                    self.inputs.activeField = .none
-                }).onEnded({ (value) in
-                    let snapDistance = self.maxHeight * Constants.snapRatio
-                    guard abs(value.translation.height) > snapDistance else {
-                        return
-                    }
-                    self.isOpen = value.translation.height < 0
-                })
-            )
         }
     }
 }

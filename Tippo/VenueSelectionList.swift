@@ -8,12 +8,12 @@
 
 import SwiftUI
 
-
-
 struct VenueSelectionList: View {
     @EnvironmentObject var userPrefs: UserPreferences
     @ObservedObject var venues = Venues.sharedInstance
     @State private var addVenueSheetPresented: Bool = false
+    @Binding var selectedVenue: Venue
+    
     var body: some View {
 //        NavigationView {
             List {
@@ -35,6 +35,9 @@ struct VenueSelectionList: View {
                             .onTapGesture {
                                 self.venues.updateDefaultVenue(newVenue: venue.name)
                             }
+                    }
+                    .onTapGesture {
+                        self.selectedVenue = venue
                     }
                 }
                 .onDelete(perform: venues.deleteVenue(at:))
@@ -60,6 +63,6 @@ struct VenueSelectionList: View {
 
 struct VenueSelectionList_Previews: PreviewProvider {
     static var previews: some View {
-        VenueSelectionList()
+        VenueSelectionList(selectedVenue: .constant(Venue(name: "None", tipAmounts: [0.0, 0.0, 0.0]))).environmentObject(UserPreferences.sharedInstance)
     }
 }

@@ -191,7 +191,7 @@ struct VenueHalfButton: View {
                 
                 HStack {
                     Spacer()
-                    Text(self.calcModel.selectedVenue.name)
+                    Text(self.calcModel.selectedVenue.name.capitalized)
                     .font(Font(self.userPrefs.headlineFont(size: 30)))
                         .minimumScaleFactor(0.8)
                 }

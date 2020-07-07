@@ -12,7 +12,6 @@ let mUserDefaults = (UserDefaults(suiteName: "group.DoMarsToyBox.Merces"))
 
 class UserPreferences: ObservableObject {
     static let sharedInstance = UserPreferences()
-    let venueEditor = VenueEditor()
     let calcModel = CalculationsModel.sharedInstance
     let venues = Venues.sharedInstance
     let layoutPrefs = LayoutPreferences.sharedInstance
@@ -81,7 +80,7 @@ class UserPreferences: ObservableObject {
     
     var isModeTipCalc: Bool = true
     
-    init() {
+    private init() {
         tipIncludeTax = mUserDefaults!.bool(forKey: "tipIncludeTaxSwitchOnOff")
         roundTipAmount = mUserDefaults!.bool(forKey: "roundTipAmountSwitchOnOff")
         roundTotalAmount = mUserDefaults!.bool(forKey: "roundTotalAmountSwitchOnOff")

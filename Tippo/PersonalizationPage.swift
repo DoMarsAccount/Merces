@@ -13,7 +13,7 @@ struct PersonalizationPage: View {
     @State private var isThemesPageActive: Bool = false
     @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
     @ObservedObject var inputs = InputProcessing.sharedInstance
-    @ObservedObject var venueEditor = UserPreferences.sharedInstance.venueEditor
+    @ObservedObject var venueEditor = VenueEditor.sharedInstance
     @ObservedObject var themes = Themes.sharedInstance
     
     var body: some View {

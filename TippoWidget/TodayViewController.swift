@@ -9,7 +9,7 @@
 import UIKit
 import NotificationCenter
 
-let varAmountsObject = InputProcessing()
+let varAmountsObject = InputProcessing.sharedInstance
 
 //let coloringThemes = Themes()
 
@@ -106,9 +106,9 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 
         /* ------------ Display Quick Venue ------------- */
 
-        varAmountsObject.calcModel.selectedVenue = .quick
+        varAmountsObject.calcModel.selectedVenue = Venues.sharedInstance.selectedVenue
 
-        varAmountsObject.tipRateArray = Tipping.sharedInstance.tipRates(for: varAmountsObject.calcModel.selectedVenue)
+        varAmountsObject.tipRateArray = Venues.sharedInstance.currentTipRates(for: Venues.sharedInstance.selectedVenue)!
 
         varAmountsObject.calcModel.tipRate = varAmountsObject.tipRateArray[1]
 

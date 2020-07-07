@@ -39,8 +39,8 @@ struct ListStyleMainPage: View {
         
                 ZStack {
                 
-                    VenueSelectionView()
-                        .offset(x: self.inputs.activeField == .venue ? 0 : UIScreen.main.bounds.maxX)
+//                    VenueSelectionView()
+//                        .offset(x: self.inputs.activeField == .venue ? 0 : UIScreen.main.bounds.maxX)
                 
                     Keypad()
                         .offset(x: (self.inputs.activeField != .none && self.inputs.activeField != .venue) ? 0 : UIScreen.main.bounds.maxX)
