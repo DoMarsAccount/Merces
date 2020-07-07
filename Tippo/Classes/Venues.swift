@@ -73,10 +73,10 @@ class Venues: ObservableObject {
             // Reset, Update Venues
             self.venues.removeAll()
             let venueNames = mUserDefaults?.value(forKey: "venueNames") as! [String]
-            
+            let defaultVenue = mUserDefaults?.value(forKey: "defaultVenue") as! String
             for name in venueNames {
                 if let tipRates = tipRates(for: name) {
-                    venues.append(Venue(name: name, tipAmounts: tipRates))
+                    venues.append(Venue(name: name, tipAmounts: tipRates, isDefaultVenue: name == defaultVenue))
                 } else {
                     venues.append(Venue(name: name, tipAmounts: [0.0, 0.0, 0.0]))
                 }
@@ -92,10 +92,10 @@ class Venues: ObservableObject {
         // Reset, Update Venues
         self.venues.removeAll()
         let venueNames = mUserDefaults?.value(forKey: "venueNames") as! [String]
-        
+        let defaultVenue = mUserDefaults?.value(forKey: "defaultVenue") as! String
         for name in venueNames {
             if let tipRates = tipRates(for: name) {
-                venues.append(Venue(name: name, tipAmounts: tipRates))
+                venues.append(Venue(name: name, tipAmounts: tipRates, isDefaultVenue: name == defaultVenue))
             } else {
                 venues.append(Venue(name: name, tipAmounts: [0.0, 0.0, 0.0]))
             }
