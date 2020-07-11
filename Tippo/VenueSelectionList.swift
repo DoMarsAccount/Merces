@@ -43,7 +43,7 @@ struct VenueSelectionList: View {
                 .onDelete(perform: venues.deleteVenue(at:))
                 
             }
-            .navigationBarTitle(Text("Venues"))
+            .navigationBarTitle(Text("Venues"), displayMode: .inline)
             .navigationBarItems(trailing: Button(action: {
                 self.addNewVenue()
             }) {

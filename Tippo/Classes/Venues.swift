@@ -69,18 +69,7 @@ class Venues: ObservableObject {
             existingVenueNames.append(name)
             mUserDefaults?.set(existingVenueNames, forKey: "venueNames")
             mUserDefaults?.setValue(tipAmounts, forKey: "\(name.lowercased())TipArray")
-            
-            // Reset, Update Venues
-            self.venues.removeAll()
-            let venueNames = mUserDefaults?.value(forKey: "venueNames") as! [String]
-            let defaultVenue = mUserDefaults?.value(forKey: "defaultVenue") as! String
-            for name in venueNames {
-                if let tipRates = tipRates(for: name) {
-                    venues.append(Venue(name: name, tipAmounts: tipRates, isDefaultVenue: name == defaultVenue))
-                } else {
-                    venues.append(Venue(name: name, tipAmounts: [0.0, 0.0, 0.0]))
-                }
-            }
+            refreshVenuesArray()
             return true
         }
         return false
@@ -88,18 +77,7 @@ class Venues: ObservableObject {
     
     func updateExistingVenue(named name: String, tipAmounts: [Double]) {
         mUserDefaults?.setValue(tipAmounts, forKey: "\(name.lowercased())TipArray")
-        
-        // Reset, Update Venues
-        self.venues.removeAll()
-        let venueNames = mUserDefaults?.value(forKey: "venueNames") as! [String]
-        let defaultVenue = mUserDefaults?.value(forKey: "defaultVenue") as! String
-        for name in venueNames {
-            if let tipRates = tipRates(for: name) {
-                venues.append(Venue(name: name, tipAmounts: tipRates, isDefaultVenue: name == defaultVenue))
-            } else {
-                venues.append(Venue(name: name, tipAmounts: [0.0, 0.0, 0.0]))
-            }
-        }
+        refreshVenuesArray()
     }
     
     func venue(named name: String) -> Venue? {
@@ -119,19 +97,23 @@ class Venues: ObservableObject {
     func deleteVenue(at offsets: IndexSet) {
         var existingVenueNames = mUserDefaults?.value(forKey: "venueNames") as! [String]
         existingVenueNames.remove(atOffsets: offsets)
-        print(existingVenueNames)
+//        print(existingVenueNames)
         mUserDefaults?.set(existingVenueNames, forKey: "venueNames")
+        refreshVenuesArray()
     }
     
     func updateDefaultVenue(newVenue name: String) {
         mUserDefaults?.set(name, forKey: "defaultVenue")
-        
+        refreshVenuesArray()
+    }
+    
+    private func refreshVenuesArray() {
         self.venues.removeAll()
         let venueNames = mUserDefaults?.value(forKey: "venueNames") as! [String]
-        
+        let defaultVenue = mUserDefaults?.value(forKey: "defaultVenue") as! String
         for vName in venueNames {
             if let tipRates = tipRates(for: vName) {
-                venues.append(Venue(name: vName, tipAmounts: tipRates, isDefaultVenue: vName == name))
+                venues.append(Venue(name: vName, tipAmounts: tipRates, isDefaultVenue: vName == defaultVenue))
             }
         }
     }

@@ -61,6 +61,7 @@ struct ServiceQualityPickerButtons: View {
             .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark, isFlat: true)))
             .accessibility(label: Text("Bad Service Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.calcModel.selectedVenue, service: .Bad)))"))
             .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark))
+            .opacity(self.calcModel.service == .Bad ? 1.0 : 0.6)
             
             Button(action: {
                 self.calcModel.service = .Good
@@ -81,6 +82,7 @@ struct ServiceQualityPickerButtons: View {
             .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark, isFlat: true)))
             .accessibility(label: Text("Good Service Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.calcModel.selectedVenue, service: .Good)))"))
             .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark))
+            .opacity(self.calcModel.service == .Good ? 1.0 : 0.6)
             
             Button(action: {
                 self.calcModel.service = .Great
@@ -101,6 +103,7 @@ struct ServiceQualityPickerButtons: View {
             .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark, isFlat: true)))
             .accessibility(label: Text("Great Service Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.calcModel.selectedVenue, service: .Great)))"))
             .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? Themes.sharedInstance.mainColor : Themes.sharedInstance.mainColorDark))
+            .opacity(self.calcModel.service == .Great ? 1.0 : 0.6)
             
         }
     }

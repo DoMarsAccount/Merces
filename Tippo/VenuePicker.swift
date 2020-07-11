@@ -16,7 +16,7 @@ struct VenuePicker: View {
     @ObservedObject var themes = Themes.sharedInstance
     
     var body: some View {
-        GeometryReader { geo in
+//        GeometryReader { geo in
             VStack {
                 HStack {
                     Text("Done")
@@ -28,7 +28,7 @@ struct VenuePicker: View {
                 }
                 .padding(.top)
                 
-                Picker(selection: self.$calcModel.selectedVenue, label: Text("")) {
+                Picker(selection: self.$calcModel.selectedVenue, label: Text("Venues")) {
                     ForEach(self.venues.venues, id: \.self) { venue in
                         Text(venue.name.capitalized)
                             .tag(venue)
@@ -36,12 +36,13 @@ struct VenuePicker: View {
                     }
                 }
                 .pickerStyle(WheelPickerStyle())
+                .labelsHidden()
             }
             .padding()
-            .frame(width: geo.size.width, height: geo.size.height)
+//            .frame(width: geo.size.width, height: geo.size.height)
             .foregroundColor(self.colorScheme == .dark ? Color(UIColor(contrastingBlackOrWhiteColorOn: self.themes.mainColorDark, isFlat: true)) : Color(UIColor(contrastingBlackOrWhiteColorOn: self.themes.mainColor, isFlat: true)))
             .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark, usePadding: false, isInputCard: true))
-        }
+//        }
     }
 }
 
@@ -128,8 +129,14 @@ struct VenueEditingView: View {
             VenueSelectionList(selectedVenue: self.$venues.selectedVenue)
             
             VStack {
-                Text("Selected Venue: \(self.venues.selectedVenue.name.capitalized)")
-                    .font(Font(self.userPrefs.headlineFont(size: 18)))
+                HStack {
+                    Text("Selected Venue:")
+                        .font(Font(self.userPrefs.headlineFont(size: 18)))
+                    
+                    Text(self.venues.selectedVenue.name.capitalized)
+                        .font(Font(self.userPrefs.headlineFont(size: 24)))
+                        .bold()
+                }
                 
                 HStack {
                     Button(action: {
