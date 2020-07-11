@@ -20,6 +20,7 @@ struct ListInputRow: View {
     var body: some View {
         Button(action: {
             self.inputs.activeField = self.field
+            if !self.userPrefs.reduceHaptics { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
         }) {
             ZStack {
                 
@@ -65,6 +66,7 @@ struct ListInputHalfRow: View {
     var body: some View {
         Button(action: {
             self.inputs.activeField = self.field
+            if !self.userPrefs.reduceHaptics { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
         }) {
             VStack {
                 HStack {
@@ -148,6 +150,7 @@ struct VenueButton: View {
     var body: some View {
         Button(action: {
             self.inputs.activeField = .venue
+            if !self.userPrefs.reduceHaptics { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
         }) {
             VStack {
                 
@@ -180,6 +183,7 @@ struct VenueHalfButton: View {
     var body: some View {
         Button(action: {
             self.inputs.activeField = .venue
+            if !self.userPrefs.reduceHaptics { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
         }) {
             VStack {
                 HStack {

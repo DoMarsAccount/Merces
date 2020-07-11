@@ -127,6 +127,7 @@ struct KeypadDoneButton: View {
         GeometryReader { geo in
             Button(action: {
                 self.inputs.activeField = EditableTextFields.none
+                if !UserPreferences.sharedInstance.reduceHaptics { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
             }) {
                 Image(systemName: "checkmark")
                     .resizable()

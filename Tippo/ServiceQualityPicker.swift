@@ -42,6 +42,7 @@ struct ServiceQualityPickerButtons: View {
             
             Button(action: {
                 self.calcModel.service = .Bad
+                if !self.userPrefs.reduceHaptics { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
             }) {
                 VStack {
                     HStack {
@@ -65,6 +66,7 @@ struct ServiceQualityPickerButtons: View {
             
             Button(action: {
                 self.calcModel.service = .Good
+                if !self.userPrefs.reduceHaptics { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
             }) {
                 VStack {
                     HStack {
@@ -86,6 +88,7 @@ struct ServiceQualityPickerButtons: View {
             
             Button(action: {
                 self.calcModel.service = .Great
+                if !self.userPrefs.reduceHaptics { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
             }) {
                 VStack {
                     HStack {
