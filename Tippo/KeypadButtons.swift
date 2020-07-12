@@ -131,8 +131,9 @@ struct KeypadDoneButton: View {
             }) {
                 Image(systemName: "checkmark")
                     .resizable()
-                    .padding()
-                    .accessibility(label: Text("Delete"))
+                    .padding(8)
+                    .accessibility(label: Text("Done"))
+                    .accessibility(hint: Text("Removes Keypad"))
                     .scaledToFit()
             }
             .cornerRadius(0)
