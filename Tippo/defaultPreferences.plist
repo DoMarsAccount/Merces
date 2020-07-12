@@ -8,12 +8,6 @@
 		<real>0.21</real>
 		<real>0.25</real>
 	</array>
-	<key>quickTipArray</key>
-	<array>
-		<real>0</real>
-		<integer>0</integer>
-		<integer>0</integer>
-	</array>
 	<key>salonTipArray</key>
 	<array>
 		<real>0.1</real>
@@ -32,12 +26,6 @@
 		<real>0.2</real>
 		<real>0.25</real>
 	</array>
-	<key>casinoTipArray</key>
-	<array>
-		<real>0</real>
-		<real>0.01</real>
-		<real>0.03</real>
-	</array>
 	<key>barTipArray</key>
 	<array>
 		<real>0.05</real>
@@ -46,14 +34,14 @@
 	</array>
 	<key>venueNames</key>
 	<array>
-		<string>quick</string>
 		<string>delivery</string>
 		<string>bar</string>
 		<string>dining</string>
 		<string>salon</string>
+		<string>taxi</string>
 	</array>
 	<key>defaultVenue</key>
-	<string>quick</string>
+	<string>delivery</string>
 	<key>userLocalSalesTax</key>
 	<integer>0</integer>
 	<key>roundTotalAmountSwitchOnOff</key>
