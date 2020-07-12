@@ -131,6 +131,8 @@ struct AddVenuePage: View {
                 })
 //                Spacer()
                 
+                PPageBottomView()
+                
                 Keypad()
                     .offset(x: (self.inputs.activeField != .none) ? 0 : UIScreen.main.bounds.maxX)
                     .frame(maxHeight: geo.size.height / 3)

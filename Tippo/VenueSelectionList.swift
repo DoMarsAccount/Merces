@@ -15,44 +15,31 @@ struct VenueSelectionList: View {
     @Binding var selectedVenue: Venue
     
     var body: some View {
-//        NavigationView {
-            List {
-                ForEach(venues.venues, id: \.self) { venue in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(venue.name.capitalized)
-                                .font(Font(self.userPrefs.headlineFont(size: 24)))
-                                .bold()
-                            
-                            Text("(\(nForm.roundForPercentWithTwoDecimalPlaces(venue.tipAmounts[0])), \(nForm.roundForPercentWithTwoDecimalPlaces(venue.tipAmounts[1])), \(nForm.roundForPercentWithTwoDecimalPlaces(venue.tipAmounts[2])))")
-                                .font(Font(self.userPrefs.headlineFont(size: 18)))
+        List {
+            ForEach(venues.venues, id: \.self) { venue in
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(venue.name.capitalized)
+                            .font(Font(self.userPrefs.headlineFont(size: 24)))
+                            .bold()
+                        
+                        Text("(\(nForm.roundForPercentWithTwoDecimalPlaces(venue.tipAmounts[0])), \(nForm.roundForPercentWithTwoDecimalPlaces(venue.tipAmounts[1])), \(nForm.roundForPercentWithTwoDecimalPlaces(venue.tipAmounts[2])))")
+                            .font(Font(self.userPrefs.headlineFont(size: 18)))
+                    }
+                    Spacer()
+                    Image(systemName: venue.isDefaultVenue ? "heart.fill" : "heart")
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                        .foregroundColor(.blue)
+                        .onTapGesture {
+                            self.venues.updateDefaultVenue(newVenue: venue.name)
                         }
-                        Spacer()
-                        Image(systemName: venue.isDefaultVenue ? "heart.fill" : "heart")
-                            .resizable()
-                            .frame(width: 40, height: 40)
-                            .foregroundColor(.blue)
-                            .onTapGesture {
-                                self.venues.updateDefaultVenue(newVenue: venue.name)
-                            }
-                    }
-                    .onTapGesture {
-                        self.selectedVenue = venue
-                    }
                 }
-                .onDelete(perform: venues.deleteVenue(at:))
-                
+                .onTapGesture {
+                    self.selectedVenue = venue
+                }
             }
-            .navigationBarTitle(Text("Venues"), displayMode: .inline)
-            .navigationBarItems(trailing: Button(action: {
-                self.addNewVenue()
-            }) {
-                Image(systemName: "plus")
-                    .resizable()
-                }).accessibility(label: Text("Add a new venue"))
-//        }
-        .sheet(isPresented: self.$addVenueSheetPresented) {
-            AddVenuePage(isUserCreatingVenue: self.$addVenueSheetPresented)
+            .onDelete(perform: venues.deleteVenue(at:))
         }
     }
     

@@ -35,13 +35,9 @@ class VenueCreator: ObservableObject {
 }
 
 class Venues: ObservableObject {
-    @Published var venues: [Venue] = []
+    @Published var venues: [Venue] = [Venue]()
     @Published var selectedVenue: Venue
-//    {
-//        didSet {
-//            CalculationsModel.sharedInstance.selectedVenue = selectedVenue
-//        }
-//    }
+    @Published var pickerID: UUID
     static let sharedInstance = Venues()
     
     private init() {
@@ -50,6 +46,7 @@ class Venues: ObservableObject {
         UserDefaults(suiteName:"group.DoMarsToyBox.Merces")?.register(defaults: defaultPreferences! as! [String : AnyObject])
         
         selectedVenue = Venue(name: "None", tipAmounts: [0.0, 0.0, 0.0])
+        pickerID = UUID()
         
         let venueNames = mUserDefaults?.value(forKey: "venueNames") as! [String]
         let defaultVenue = mUserDefaults?.value(forKey: "defaultVenue") as! String
@@ -64,7 +61,6 @@ class Venues: ObservableObject {
     
     func createNewVenue(named name: String, tipAmounts: [Double]) -> Bool {
         var existingVenueNames = mUserDefaults?.value(forKey: "venueNames") as! [String]
-        
         if !existingVenueNames.contains(name) {
             existingVenueNames.append(name)
             mUserDefaults?.set(existingVenueNames, forKey: "venueNames")
@@ -116,6 +112,7 @@ class Venues: ObservableObject {
                 venues.append(Venue(name: vName, tipAmounts: tipRates, isDefaultVenue: vName == defaultVenue))
             }
         }
+        pickerID = UUID()
     }
     
     // MARK: Tip Class Replacement Methods

@@ -37,6 +37,7 @@ struct VenuePicker: View {
                 }
                 .pickerStyle(WheelPickerStyle())
                 .labelsHidden()
+                .id(venues.pickerID)
             }
             .padding()
 //            .frame(width: geo.size.width, height: geo.size.height)
@@ -123,6 +124,7 @@ struct VenueEditingView: View {
     @ObservedObject var inputs = InputProcessing.sharedInstance
     @EnvironmentObject var userPrefs: UserPreferences
     @ObservedObject var venues = Venues.sharedInstance
+    @State private var addVenueSheetPresented: Bool = false
     
     var body: some View {
         VStack {
@@ -218,6 +220,20 @@ struct VenueEditingView: View {
             }
             .padding()
         }
+        .navigationBarTitle(Text("Venues"))
+        .navigationBarItems(trailing: Button(action: {
+            self.addNewVenue()
+        }) {
+            Image(systemName: "plus")
+                .resizable()
+        }).accessibility(label: Text("Add a new venue"))
+        .sheet(isPresented: self.$addVenueSheetPresented) {
+            AddVenuePage(isUserCreatingVenue: self.$addVenueSheetPresented)
+        }
+    }
+    
+    private func addNewVenue() {
+        self.addVenueSheetPresented = true
     }
 }
 
