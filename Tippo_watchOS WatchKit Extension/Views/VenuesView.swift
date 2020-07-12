@@ -15,7 +15,8 @@ struct VenuesView: View {
             venueEditor.resetTipAmount()
         }
     }
-    @ObservedObject var venueEditor = UserPreferences.sharedInstance.venueEditor
+    @ObservedObject var venueEditor = VenueEditor.sharedInstance
+    @ObservedObject var venues = Venues.sharedInstance
     
     var body: some View {
         VStack {
@@ -23,7 +24,7 @@ struct VenuesView: View {
             HStack {
                 Text("Tip %").font(.headline)
                 Spacer()
-                Text(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venueEditor.selectedVenue, service: self.venueEditor.service)))
+                Text(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venues.selectedVenue, service: self.venueEditor.service)))
             }
                 .padding([.leading, .trailing])
                 .frame(height: viewHeight)
@@ -36,7 +37,7 @@ struct VenuesView: View {
                 .sheet(isPresented: self.$isActive) {
                     Keypad(value: self.$venueEditor.tipAmount, isPresented: self.$isActive, activeField: self.$venueEditor.activeField)
                 }
-                .accessibility(label: Text("Tip Rate \(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venueEditor.selectedVenue, service: self.venueEditor.service)))"))
+                .accessibility(label: Text("Tip Rate \(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venues.selectedVenue, service: self.venueEditor.service)))"))
             
             Picker(selection: self.$venueEditor.service, label: Text("Service Level")
                     .font(.headline)
@@ -54,12 +55,12 @@ struct VenuesView: View {
                 }
             }.frame(height: viewHeight)
             
-            Picker(selection: self.$venueEditor.selectedVenue, label: Text("Venue").font(.headline)
-                .accessibility(label: Text("Venue: \(self.venueEditor.selectedVenue.name)"))
+            Picker(selection: self.$venues.selectedVenue, label: Text("Venue").font(.headline)
+                .accessibility(label: Text("Venue: \(self.venues.selectedVenue.name)"))
             ) {
-                ForEach(1..<VenueType.allCases.count) { index in
-                    Text(VenueType.allCases[index].name).tag(VenueType.allCases[index])
-                        .accessibility(label: Text("Venue: \(VenueType.allCases[index].name)"))
+                ForEach(self.venues.venues, id: \.self) { venue in
+                    Text(venue.name.capitalized).tag(venue.name)
+                        .accessibility(label: Text("Venue: \(venue.name)"))
                 }
             }
             .frame(height: viewHeight)

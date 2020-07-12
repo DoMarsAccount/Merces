@@ -10,6 +10,7 @@ import SwiftUI
 
 struct DetailedTipRateView: View {
     @EnvironmentObject var wCalcModel: CalculationsModel
+    @ObservedObject var venues = Venues.sharedInstance
     @Binding var isActive: Bool
     @State private var presentKeypad: Bool = false
     
@@ -20,8 +21,8 @@ struct DetailedTipRateView: View {
                     TipRateField(presentKeypad: self.$presentKeypad)
                     
                     Picker(selection: self.$wCalcModel.selectedVenue, label: Text("Venue").font(.headline)) {
-                        ForEach(1..<VenueType.allCases.count) { index in
-                            Text(VenueType.allCases[index].name).tag(VenueType.allCases[index])
+                        ForEach(self.venues.venues, id: \.self) { venue in
+                            Text(venue.name.capitalized).tag(venue.name)
                         }
                     }.frame(height: viewHeight)
                     

@@ -24,6 +24,11 @@ enum Appearance: CaseIterable, Hashable, Identifiable {
     var id: Appearance { self }
 }
 
+struct Theme {
+    var mainColor: UIColor
+    var contrastingColor: UIColor
+}
+
 class Themes: ObservableObject {
     static let sharedInstance: Themes = Themes()
     private let coloring = Coloring()

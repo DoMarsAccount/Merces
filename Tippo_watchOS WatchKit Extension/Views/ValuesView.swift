@@ -142,7 +142,7 @@ struct ValuesView: View {
 struct ValuesView_Previews: PreviewProvider {
     static var previews: some View {
         ValuesView()
-            .environmentObject(CalculationsModel())
+            .environmentObject(CalculationsModel.sharedInstance)
             .environmentObject(UserPreferences.sharedInstance)
             .environment(\.sizeCategory, .extraLarge)
     }
