@@ -132,15 +132,6 @@ struct VenueEditingView: View {
             
             VStack {
                 HStack {
-                    Text("Selected Venue:")
-                        .font(Font(self.userPrefs.headlineFont(size: 18)))
-                    
-                    Text(self.venues.selectedVenue.name.capitalized)
-                        .font(Font(self.userPrefs.headlineFont(size: 24)))
-                        .bold()
-                }
-                
-                HStack {
                     Button(action: {
                         self.inputs.activeField = EditableTextFields.badTip
                     }) {
@@ -220,7 +211,7 @@ struct VenueEditingView: View {
             }
             .padding()
         }
-        .navigationBarTitle(Text("Venues"))
+        .navigationBarTitle(Text("Venues"), displayMode: .inline)
         .navigationBarItems(trailing: Button(action: {
             self.addNewVenue()
         }) {

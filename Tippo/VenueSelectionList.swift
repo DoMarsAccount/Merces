@@ -35,6 +35,7 @@ struct VenueSelectionList: View {
                             self.venues.updateDefaultVenue(newVenue: venue.name)
                         }
                 }
+                .listRowBackground(self.selectedVenue == venue ? Color.gray : Color(UIColor.systemGroupedBackground))
                 .onTapGesture {
                     self.selectedVenue = venue
                 }
