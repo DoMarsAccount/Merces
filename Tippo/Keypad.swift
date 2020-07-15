@@ -14,8 +14,8 @@ struct Keypad: View {
     
     var body: some View {
         GeometryReader { geo in
-            VStack (spacing: 1) {
-                HStack (spacing: 1) {
+            VStack (spacing: 0) {
+                HStack (spacing: 0) {
                     KeypadButton(text: .constant("1"))
                     .modifier(KeypadButtonModifier())
                     KeypadButton(text: .constant("2"))
@@ -23,7 +23,7 @@ struct Keypad: View {
                     KeypadButton(text: .constant("3"))
                     .modifier(KeypadButtonModifier())
                 }
-                HStack (spacing: 1) {
+                HStack (spacing: 0) {
                     KeypadButton(text: .constant("4"))
                     .modifier(KeypadButtonModifier())
                     KeypadButton(text: .constant("5"))
@@ -31,7 +31,7 @@ struct Keypad: View {
                     KeypadButton(text: .constant("6"))
                     .modifier(KeypadButtonModifier())
                 }
-                HStack (spacing: 1) {
+                HStack (spacing: 0) {
                     KeypadButton(text: .constant("7"))
                     .modifier(KeypadButtonModifier())
                     KeypadButton(text: .constant("8"))
@@ -39,7 +39,7 @@ struct Keypad: View {
                     KeypadButton(text: .constant("9"))
                     .modifier(KeypadButtonModifier())
                 }
-                HStack (spacing: 1) {
+                HStack (spacing: 0) {
                     KeypadDoneButton()
                         .modifier(KeypadButtonModifier())
                         .accessibility(label: Text("Done"))
@@ -67,12 +67,15 @@ struct KeypadButtonModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark, isFlat: true)), width: 1)
-            .clipShape(RoundedRectangle(cornerRadius: self.userPrefs.useFlatStyleViews ? 2.5 : 16, style: .continuous))
     }
 }
 
 struct Keypad_Previews: PreviewProvider {
     static var previews: some View {
-        Keypad()
+        VStack {
+            Spacer()
+            Keypad()
+                .frame(maxHeight: 400)
+        }
     }
 }
