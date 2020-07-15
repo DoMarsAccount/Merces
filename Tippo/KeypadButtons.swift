@@ -17,6 +17,7 @@ struct KeypadButton: View {
     
     var body: some View {
         Button(action: {
+            if !UserPreferences.sharedInstance.reduceHaptics { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
             switch self.inputs.activeField {
             case .subtotal:
                 self.inputs.arrayOfButtonsPressedForBillAmountAsString.append(self.text)
@@ -51,7 +52,7 @@ struct KeypadButton: View {
                 .accessibility(label: Text(self.text))
                 .font(Font(UserPreferences.sharedInstance.headlineFont(size: 48)))
                 
-        }
+        }.buttonStyle(KeypadStyle())
     }
 }
 
@@ -60,6 +61,7 @@ struct KeypadDeleteButton: View {
     
     var body: some View {
         Button(action: {
+            if !UserPreferences.sharedInstance.reduceHaptics { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
             switch self.inputs.activeField {
             case .subtotal:
                 if (!self.inputs.arrayOfButtonsPressedForBillAmountAsString.isEmpty) {
@@ -114,9 +116,7 @@ struct KeypadDeleteButton: View {
                 .padding(8)
                 .accessibility(label: Text("Delete"))
                 .scaledToFit()
-        }
-        .frame(minWidth: minButtonWidth, maxWidth: .infinity)
-        .frame(minHeight: minButtonHeight, maxHeight: .infinity)
+        }.buttonStyle(KeypadStyle())
     }
 }
 
@@ -134,9 +134,7 @@ struct KeypadDoneButton: View {
                 .accessibility(label: Text("Done"))
                 .accessibility(hint: Text("Removes Keypad"))
                 .scaledToFit()
-        }
-        .frame(minWidth: minButtonWidth, maxWidth: .infinity)
-        .frame(minHeight: minButtonHeight, maxHeight: .infinity)
+        }.buttonStyle(KeypadStyle())
     }
 }
 
@@ -149,6 +147,7 @@ struct KeypadStyle: ButtonStyle {
         configuration.label
             .frame(minWidth: 0, maxWidth: .infinity)
             .frame(minHeight: 0, maxHeight: .infinity)
+            .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark, isFlat: true)), width: 1)
             .scaleEffect(configuration.isPressed ? 0.8 : 1.0)
     }
 }

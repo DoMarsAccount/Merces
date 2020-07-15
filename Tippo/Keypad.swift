@@ -17,39 +17,27 @@ struct Keypad: View {
             VStack (spacing: 0) {
                 HStack (spacing: 0) {
                     KeypadButton(text: .constant("1"))
-                    .modifier(KeypadButtonModifier())
                     KeypadButton(text: .constant("2"))
-                    .modifier(KeypadButtonModifier())
                     KeypadButton(text: .constant("3"))
-                    .modifier(KeypadButtonModifier())
                 }
                 HStack (spacing: 0) {
                     KeypadButton(text: .constant("4"))
-                    .modifier(KeypadButtonModifier())
                     KeypadButton(text: .constant("5"))
-                    .modifier(KeypadButtonModifier())
                     KeypadButton(text: .constant("6"))
-                    .modifier(KeypadButtonModifier())
                 }
                 HStack (spacing: 0) {
                     KeypadButton(text: .constant("7"))
-                    .modifier(KeypadButtonModifier())
                     KeypadButton(text: .constant("8"))
-                    .modifier(KeypadButtonModifier())
                     KeypadButton(text: .constant("9"))
-                    .modifier(KeypadButtonModifier())
                 }
                 HStack (spacing: 0) {
                     KeypadDoneButton()
-                        .modifier(KeypadButtonModifier())
                         .accessibility(label: Text("Done"))
                         .accessibility(hint: Text("Closes keypad"))
                     
                     KeypadButton(text: .constant("0"))
-                        .modifier(KeypadButtonModifier())
                     
                     KeypadDeleteButton()
-                        .modifier(KeypadButtonModifier())
                         .accessibility(label: Text("Delete"))
                 }
             }
@@ -57,16 +45,6 @@ struct Keypad: View {
             .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark, usePadding: false, isInputCard: false))
 //            .frame(maxHeight: geo.size.height / 2.5)
         }
-    }
-}
-
-struct KeypadButtonModifier: ViewModifier {
-    @Environment(\.colorScheme) var colorScheme
-    @ObservedObject var themes = Themes.sharedInstance
-    @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
-    func body(content: Content) -> some View {
-        content
-            .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark, isFlat: true)), width: 1)
     }
 }
 
