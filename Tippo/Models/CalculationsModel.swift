@@ -65,7 +65,8 @@ class CalculationsModel: ObservableObject {
         
         self.selectedVenue = venues.selectedVenue
         self.service = .Good
-        self.tipRate = venues.currentTipRate(for: venues.selectedVenue, service: .Good)!
+        self.tipRate = 0.00
+//        self.tipRate = venues.currentTipRate(for: venues.selectedVenue, service: .Good)!
         
         self.displayedTotalAmountPerPerson = 0.0
         self.moreOrLessPerPerson = 0.00
@@ -82,7 +83,8 @@ class CalculationsModel: ObservableObject {
         
         self.selectedVenue = venues.selectedVenue
         self.service = .Good
-        self.tipRate = venues.currentTipRate(for: venues.selectedVenue, service: .Good)!
+        self.tipRate = 0.00
+//        self.tipRate = venues.currentTipRate(for: venues.selectedVenue, service: .Good)!
         
         self.displayedTotalAmountPerPerson = 0.0
         self.moreOrLessPerPerson = 0.00
