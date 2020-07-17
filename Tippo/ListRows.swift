@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+fileprivate let minScaleFactor: CGFloat = 0.25
+
 struct ListInputRow: View {
     @Binding var value: Double
     @ObservedObject var inputs = InputProcessing.sharedInstance
@@ -44,7 +46,8 @@ struct ListInputRow: View {
                     .font(Font(self.userPrefs.headlineFont(size: 30)))
                 }
                 .padding(.horizontal)
-                .minimumScaleFactor(0.8)
+                .minimumScaleFactor(minScaleFactor)
+                .lineLimit(1)
             }
             .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.background, isFlat: true)))
             .modifier(AdaptiveCardBackground(backgroundColor: self.background))
@@ -90,7 +93,8 @@ struct ListInputHalfRow: View {
                             Text(nForm.formatIntegerNumbers(Int(self.value)))
                         }
                     }
-                    .minimumScaleFactor(0.8)
+                    .minimumScaleFactor(minScaleFactor)
+                    .lineLimit(1)
                     .font(Font(self.userPrefs.headlineFont(size: 30)))
                 }
             }
@@ -133,7 +137,8 @@ struct ListDisplayRow: View {
                 .font(Font(self.userPrefs.headlineFont(size: 30)))
             }
             .padding()
-            .minimumScaleFactor(0.8)
+            .minimumScaleFactor(minScaleFactor)
+            .lineLimit(1)
         }
         .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.viewColor : self.themes.viewColorDark, isFlat: true)))
         .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? self.themes.viewColor : self.themes.viewColorDark, isInputCard: false))
@@ -164,7 +169,8 @@ struct VenueButton: View {
                     .font(Font(self.userPrefs.headlineFont(size: 30)))
                 }
                 .padding(.horizontal)
-                .minimumScaleFactor(0.8)
+                .minimumScaleFactor(minScaleFactor)
+                .lineLimit(1)
             }
             .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark, isFlat: true)))
             .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark))
@@ -196,8 +202,9 @@ struct VenueHalfButton: View {
                 HStack {
                     Spacer()
                     Text(self.calcModel.selectedVenue.name.capitalized)
-                    .font(Font(self.userPrefs.headlineFont(size: 30)))
-                        .minimumScaleFactor(0.8)
+                        .font(Font(self.userPrefs.headlineFont(size: 30)))
+                        .minimumScaleFactor(minScaleFactor)
+                        .lineLimit(1)
                 }
                 
             }
