@@ -94,7 +94,7 @@ struct SettingsFooter: View {
         HStack {
             Spacer()
             VStack {
-                Text("Tippo 2020.1 (3.0)")
+                Text("Tippo 3.0")
                 Text("By Donovan McCray")
                 Text("Made in Texas")
             }
