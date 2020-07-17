@@ -214,6 +214,7 @@ struct VenueEditingView: View {
         }) {
             Image(systemName: "plus")
                 .resizable()
+                .padding(EdgeInsets(top: 16, leading: 32, bottom: 16, trailing: 16))
         }).accessibility(label: Text("Add a new venue"))
         .sheet(isPresented: self.$addVenueSheetPresented) {
             AddVenuePage(isUserCreatingVenue: self.$addVenueSheetPresented)
@@ -227,7 +228,10 @@ struct VenueEditingView: View {
 
 struct VenuePicker_Previews: PreviewProvider {
     static var previews: some View {
-        VenueEditingView().environmentObject(UserPreferences.sharedInstance)
+        NavigationView {
+            VenueEditingView()
+                .environmentObject(UserPreferences.sharedInstance)
+        }
 //        VenuePicker()
 //        VenueSelectionView()
 //        PPageVenuePicker()

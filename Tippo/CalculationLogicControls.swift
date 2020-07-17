@@ -49,6 +49,7 @@ struct CalculationLogicControls: View {
                     Image(systemName: "gear")
                         .resizable()
                         .frame(width: 30, height: 30)
+                        .padding(EdgeInsets(top: 16, leading: 32, bottom: 16, trailing: 0))
                         .accessibility(label: Text("Settings"))
                         .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.background : self.themes.backgroundColorDark, isFlat: true)))
                 }))
