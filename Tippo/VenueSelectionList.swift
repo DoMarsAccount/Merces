@@ -27,9 +27,9 @@ struct VenueSelectionList: View {
                             .font(Font(self.userPrefs.headlineFont(size: 18)))
                     }
                     Spacer()
-                    Image(systemName: venue.isDefaultVenue ? "heart.fill" : "heart")
+                    Image(systemName: venue.isDefaultVenue ? "bookmark.fill" : "bookmark")
                         .resizable()
-                        .frame(width: 40, height: 40)
+                        .frame(width: 40, height: 60)
                         .foregroundColor(.blue)
                         .onTapGesture {
                             self.venues.updateDefaultVenue(newVenue: venue.name)
