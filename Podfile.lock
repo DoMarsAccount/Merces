@@ -2,7 +2,7 @@ PODS:
   - ChameleonFramework (2.1.0):
     - ChameleonFramework/Default (= 2.1.0)
   - ChameleonFramework/Default (2.1.0)
-  - ChameleonSwift (3.2)
+  - ChameleonSwift (3.3)
 
 DEPENDENCIES:
   - ChameleonFramework (~> 2.1)
@@ -15,8 +15,8 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
-  ChameleonSwift: c718783c206d7b2f6ab9b86549a82f399793275e
+  ChameleonSwift: f29e830276adf20f176bab8b39181a34c16b8fab
 
-PODFILE CHECKSUM: bfd674653808c9a00334d2f83fb526e93ec093bd
+PODFILE CHECKSUM: 2fd59b29fec79184d333290785a8b51274fe9afb
 
 COCOAPODS: 1.8.4

@@ -28,6 +28,7 @@ struct CalculationLogicControls: View {
                         SettingsRow(text: .constant("Tip Amount"), isEnabled: self.$preferences.roundTipAmount)
                         SettingsRow(text: .constant("Grand Total"), isEnabled: self.$preferences.roundTotalAmount)
                     }
+                    
                     Section(header: Text("Auto-calculate Sales Tax").font(Font(self.preferences.headlineFont(size: 18)))) {
                         NavigationLink(destination: PersonalizationPage(), isActive: self.$isPersonalizationPageActive) {
                             Text("Local Sales Tax: \(nForm.roundForPercentWithThreeDecimalPlaces(number: self.preferences.localSalesTax))")
