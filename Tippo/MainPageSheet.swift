@@ -58,6 +58,7 @@ struct MainPageSheet: View {
                     .padding()
                     .onTapGesture {
                         self.isOpen.toggle()
+                        self.inputs.activeField = .none
                         if !self.userPrefs.reduceHaptics { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
                     }
                     .gesture (
