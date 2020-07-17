@@ -198,14 +198,11 @@ struct VenueEditingView: View {
                     .accessibility(label: Text("Great Service Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(self.venues.selectedVenue.tipAmounts[2]))"))
                 }
                 ZStack {
-                    
                     PPageBottomView()
                 
                     Keypad()
                         .offset(x: (self.inputs.activeField != .none) ? 0 : UIScreen.main.bounds.maxX)
-                    
                 }
-    //            .frame(maxHeight: geo.size.height / 3)
                 .minimumScaleFactor(0.75)
                 .animation(.spring(response: 0.7, dampingFraction: 0.9, blendDuration: 1.0))
             }

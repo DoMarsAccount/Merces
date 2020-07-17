@@ -104,12 +104,15 @@ class Venues: ObservableObject {
     }
     
     private func refreshVenuesArray() {
+        let prevSelectedVenue = selectedVenue.name
         self.venues.removeAll()
         let venueNames = mUserDefaults?.value(forKey: "venueNames") as! [String]
         let defaultVenue = mUserDefaults?.value(forKey: "defaultVenue") as! String
         for vName in venueNames {
             if let tipRates = tipRates(for: vName) {
-                venues.append(Venue(name: vName, tipAmounts: tipRates, isDefaultVenue: vName == defaultVenue))
+                let venue = Venue(name: vName, tipAmounts: tipRates, isDefaultVenue: vName == defaultVenue)
+                venues.append(venue)
+                if venue.name == prevSelectedVenue { selectedVenue = venue }
             }
         }
         pickerID = UUID()
