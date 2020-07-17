@@ -17,8 +17,8 @@ struct SettingsRow: View {
     @ObservedObject var themes = Themes.sharedInstance
     
     var body: some View {
-//        let toggleApperance = UISwitch.appearance()
-//        toggleApperance.onTintColor = colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark
+        let toggleApperance = UISwitch.appearance()
+        toggleApperance.onTintColor = colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark
         
         return Toggle(isOn: self.$isEnabled) {
             Text(self.text)
