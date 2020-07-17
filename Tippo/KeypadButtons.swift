@@ -46,13 +46,14 @@ struct KeypadButton: View {
             }
         }) {
             Text(self.text)
-                .frame(minWidth: minButtonWidth, maxWidth: .infinity)
-                .frame(minHeight: minButtonHeight, maxHeight: .infinity)
-                .padding()
                 .accessibility(label: Text(self.text))
                 .font(Font(UserPreferences.sharedInstance.headlineFont(size: 48)))
+                .frame(minWidth: minButtonWidth, maxWidth: .infinity)
+                .frame(minHeight: minButtonHeight, maxHeight: .infinity)
                 
-        }.buttonStyle(KeypadStyle())
+        }
+        .modifier(KeypadButtonModifier())
+//        .buttonStyle(KeypadStyle())
     }
 }
 
@@ -113,10 +114,14 @@ struct KeypadDeleteButton: View {
         }) {
             Image(systemName: "delete.left.fill")
                 .resizable()
-                .padding(8)
+                .padding()
                 .accessibility(label: Text("Delete"))
                 .scaledToFit()
-        }.buttonStyle(KeypadStyle())
+                .frame(minWidth: minButtonWidth, maxWidth: .infinity)
+                .frame(minHeight: minButtonHeight, maxHeight: .infinity)
+        }
+//        .buttonStyle(KeypadStyle())
+        .modifier(KeypadButtonModifier())
     }
 }
 
@@ -130,11 +135,29 @@ struct KeypadDoneButton: View {
         }) {
             Image(systemName: "checkmark")
                 .resizable()
-                .padding(8)
+                .padding()
                 .accessibility(label: Text("Done"))
                 .accessibility(hint: Text("Removes Keypad"))
                 .scaledToFit()
-        }.buttonStyle(KeypadStyle())
+                .frame(minWidth: minButtonWidth, maxWidth: .infinity)
+                .frame(minHeight: minButtonHeight, maxHeight: .infinity)
+        }
+//        .buttonStyle(KeypadStyle())
+        .modifier(KeypadButtonModifier())
+    }
+}
+
+struct KeypadButtonModifier: ViewModifier {
+    @Environment(\.colorScheme) var colorScheme
+    @ObservedObject var themes = Themes.sharedInstance
+    @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
+    func body(content: Content) -> some View {
+        content
+            .foregroundColor(self.colorScheme == .dark ? Color(UIColor(contrastingBlackOrWhiteColorOn: self.themes.mainColorDark, isFlat: true)) : Color(UIColor(contrastingBlackOrWhiteColorOn: self.themes.mainColor, isFlat: true)))
+//            .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColor, isFlat: true)), width: 1)
+            .border(Color.black, width: 1)
+            .background(Color(self.colorScheme == .dark ? self.themes.mainColorDark : self.themes.mainColor))
+//            .background(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark, isFlat: true)))
     }
 }
 
@@ -145,10 +168,11 @@ struct KeypadStyle: ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .frame(minWidth: 0, maxWidth: .infinity)
-            .frame(minHeight: 0, maxHeight: .infinity)
-            .border(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark, isFlat: true)), width: 1)
-            .scaleEffect(configuration.isPressed ? 0.8 : 1.0)
+            .frame(minWidth: minButtonWidth, maxWidth: .infinity)
+            .frame(minHeight: minButtonHeight, maxHeight: .infinity)
+//            .background(Color(self.colorScheme == .dark ? self.themes.mainColorDark : self.themes.mainColor))
+//            .background(self.colorScheme == .light ? Color(self.themes.mainColor) : Color(self.themes.mainColorDark))
+            .scaleEffect(configuration.isPressed ? 0.75 : 1.0)
     }
 }
 
