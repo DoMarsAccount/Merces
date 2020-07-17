@@ -147,7 +147,8 @@ class InputProcessing: ObservableObject
                 case .ThreeDecimalPercent:
                 inputAmount = number * 0.00001
                 case .Integer:
-                inputAmount = number
+                    if number > 0 { inputAmount = number }
+                    else { inputAmount = 1 }
                 case .Currency:
                 inputAmount = number * 0.01
                 }
