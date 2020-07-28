@@ -1,23 +1,17 @@
 //
 //  ExtensionDelegate.swift
-//  TipTok_watchOS WatchKit Extension
+//  TippoWatch Extension
 //
-//  Created by Donovan McCray on 6/7/20.
+//  Created by Donovan McCray on 7/28/20.
 //  Copyright © 2020 DoMarsToyBox. All rights reserved.
 //
 
 import WatchKit
-import WatchConnectivity
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
 
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
-        let defaultPrefsFile = Bundle.main.path(forResource: "defaultPreferences", ofType: "plist")
-        
-        let defaultPreferences = NSDictionary(contentsOfFile: defaultPrefsFile!)
-        
-        UserDefaults(suiteName:"group.DoMarsToyBox.Merces")?.register(defaults: defaultPreferences! as! [String : AnyObject])
     }
 
     func applicationDidBecomeActive() {
