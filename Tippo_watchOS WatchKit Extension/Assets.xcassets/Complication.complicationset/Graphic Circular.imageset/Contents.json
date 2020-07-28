@@ -6,19 +6,19 @@
       "screen-width" : "<=145"
     },
     {
-      "filename" : "40mm_Graphic-Circular.png",
+      "filename" : "Graphic Circular 84pt (40,42mm).png",
       "idiom" : "watch",
       "scale" : "2x",
       "screen-width" : ">161"
     },
     {
-      "filename" : "40mm_Graphic-Circular-1.png",
+      "filename" : "Graphic Circular 84pt (40,42mm)-1.png",
       "idiom" : "watch",
       "scale" : "2x",
       "screen-width" : ">145"
     },
     {
-      "filename" : "44mm_Graphic-Bezel.png",
+      "filename" : "Graphic Circular 94pt (44mm).png",
       "idiom" : "watch",
       "scale" : "2x",
       "screen-width" : ">183"

@@ -1,25 +1,25 @@
 {
   "images" : [
     {
-      "filename" : "38mm_Circular.png",
+      "filename" : "Circular 32pt (38mm).png",
       "idiom" : "watch",
       "scale" : "2x",
       "screen-width" : "<=145"
     },
     {
-      "filename" : "40-42mm_Circular.png",
+      "filename" : "Circular 36pt (40,42mm).png",
       "idiom" : "watch",
       "scale" : "2x",
       "screen-width" : ">161"
     },
     {
-      "filename" : "40-42mm_Circular-1.png",
+      "filename" : "Circular 36pt (40,42mm)-1.png",
       "idiom" : "watch",
       "scale" : "2x",
       "screen-width" : ">145"
     },
     {
-      "filename" : "iPad Spotlight 40pt.png",
+      "filename" : "Circular 40pt (44mm).png",
       "idiom" : "watch",
       "scale" : "2x",
       "screen-width" : ">183"

@@ -1,25 +1,25 @@
 {
   "images" : [
     {
-      "filename" : "38mm_Extra-Large.png",
+      "filename" : "Extra large 182pt (38mm).png",
       "idiom" : "watch",
       "scale" : "2x",
       "screen-width" : "<=145"
     },
     {
-      "filename" : "40-42mm_Extra-Large.png",
+      "filename" : "Extra large 203pt (40,42mm).png",
       "idiom" : "watch",
       "scale" : "2x",
       "screen-width" : ">161"
     },
     {
-      "filename" : "40-42mm_Extra-Large-1.png",
+      "filename" : "Extra large 203pt (40,42mm)-1.png",
       "idiom" : "watch",
       "scale" : "2x",
       "screen-width" : ">145"
     },
     {
-      "filename" : "44mm_Extra-Large.png",
+      "filename" : "Extra large 224pt (44mm).png",
       "idiom" : "watch",
       "scale" : "2x",
       "screen-width" : ">183"
