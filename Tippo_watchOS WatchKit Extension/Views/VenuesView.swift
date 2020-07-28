@@ -39,6 +39,16 @@ struct VenuesView: View {
                 }
                 .accessibility(label: Text("Tip Rate \(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venues.selectedVenue, service: self.venueEditor.service)))"))
             
+            Picker(selection: self.$venues.selectedVenue, label: Text("Venue").font(.headline)
+                .accessibility(label: Text("Venue: \(self.venues.selectedVenue.name)"))
+            ) {
+                ForEach(self.venues.venues, id: \.self) { venue in
+                    Text(venue.name.capitalized).tag(venue.name)
+                        .accessibility(label: Text("Venue: \(venue.name)"))
+                }
+            }
+            .frame(height: viewHeight)
+            
             Picker(selection: self.$venueEditor.service, label: Text("Service Level")
                     .font(.headline)
                     .multilineTextAlignment(.leading)
@@ -54,17 +64,6 @@ struct VenuesView: View {
                     .accessibility(value: Text("Service Level: \(ServiceQuality.allCases[index].name)"))
                 }
             }.frame(height: viewHeight)
-            
-            Picker(selection: self.$venues.selectedVenue, label: Text("Venue").font(.headline)
-                .accessibility(label: Text("Venue: \(self.venues.selectedVenue.name)"))
-            ) {
-                ForEach(self.venues.venues, id: \.self) { venue in
-                    Text(venue.name.capitalized).tag(venue.name)
-                        .accessibility(label: Text("Venue: \(venue.name)"))
-                }
-            }
-            .frame(height: viewHeight)
-            .padding(.horizontal)
         }
     }
 }

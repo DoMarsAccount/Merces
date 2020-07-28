@@ -115,8 +115,8 @@ struct ValuesView: View {
                 NavigationLink(destination: SettingsPage().environmentObject(self.userPrefs), isActive: self.$isSettingsPageActive) {
                     HStack {
                         Image(systemName: "gear")
-                        Spacer()
                         Text("Settings").font(.headline)
+                        Spacer()
                     }
                 }
                 .modifier(scalingEffect())
@@ -126,8 +126,8 @@ struct ValuesView: View {
                 }) {
                     HStack {
                         Image(systemName: "xmark")
-                        Spacer()
                         Text("Clear Values").font(.headline)
+                        Spacer()
                     }
                 }
                 .modifier(scalingEffect())
