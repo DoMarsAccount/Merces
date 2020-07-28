@@ -29,7 +29,7 @@ struct AddVenuePage: View {
                         .font(.callout)
                         .bold()
                     
-                    TextField("Enter a name for the venue...", text: self.$newVenueName, onCommit: {
+                    TextField("Enter a name...", text: self.$newVenueName, onCommit: {
                         
                     }).onTapGesture {
                         self.inputs.activeField = .none
