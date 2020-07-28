@@ -40,7 +40,7 @@
 		<key>NSExtensionAttributes</key>
 		<dict>
 			<key>WKAppBundleIdentifier</key>
-			<string>com.domar.Tippo-watchOS.watchkitapp</string>
+			<string>com.DoMarsToyBox.Tippo.watchkitapp</string>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.watchkit</string>
