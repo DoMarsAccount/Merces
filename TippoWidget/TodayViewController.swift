@@ -413,7 +413,12 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 
         displayViewOutlet.backgroundColor = UIColor.white
 
-        keypadViewOutlet.backgroundColor = UIColor.black
+        keypadViewOutlet.backgroundColor = Themes.sharedInstance.mainColor
+        
+        for keypadButton in collectionKeypadButtons {
+            keypadButton.layer.borderColor = UIColor.black.cgColor
+            keypadButton.layer.borderWidth = 1
+        }
         
         for inputLabel in collectionInputDisplayLabels {
             inputLabel.textColor = UIColor.black
