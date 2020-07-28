@@ -29,7 +29,7 @@ struct VenuesView: View {
                 .padding([.leading, .trailing])
                 .frame(height: viewHeight)
                 .frame(maxWidth: .infinity)
-                .background(Color("CrayolaRed"))
+                .background(Color("TippoIndigo"))
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .circular))
                 .onTapGesture {
                     self.isActive.toggle()

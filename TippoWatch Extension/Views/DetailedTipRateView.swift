@@ -111,7 +111,7 @@ struct TipRateField: View {
         }
             //                    .frame(width: .infinity)
             //                    .frame(height: viewHeight)
-            .background(Color("CrayolaRed"))
+            .background(Color("TippoIndigo"))
             .clipShape(RoundedRectangle(cornerRadius: 8, style: .circular))
             .onTapGesture {
                 self.presentKeypad.toggle()

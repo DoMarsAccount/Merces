@@ -87,7 +87,7 @@ struct LocalSalesTaxPage: View {
     var body: some View {
         VStack(spacing: viewHeight) {
             Text("Local Sales Tax Rate")
-                .cardStyled(value: self.$preferences.localSalesTax, style: .percentage, backgroundColor: Color("CrayolaRed"))
+                .cardStyled(value: self.$preferences.localSalesTax, style: .percentage, backgroundColor: Color("TippoIndigo"))
                 .onTapGesture {
                     self.isKeypadPresented.toggle()
                 }
