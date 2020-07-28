@@ -209,7 +209,7 @@ class InputProcessing: ObservableObject
         let formatter = NumberFormatter()
         formatter.minimumFractionDigits = 0
         formatter.maximumFractionDigits = 2
-        let number = formatter.number(from: input.joined(separator: "")) as! Double
+//        let number = formatter.number(from: input.joined(separator: "")) as! Double
         switch inputStyle {
         case .TwoDecimalPercent:
         return formatter.number(from: input.joined(separator: "")) as! Double * 0.0001

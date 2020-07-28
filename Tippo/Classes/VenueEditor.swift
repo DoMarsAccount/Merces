@@ -136,7 +136,7 @@ func localizedName(for venue: VenueType) -> String {
 /// Wrapper around VenueEditor that update the user's Tip Ratings stored in UserDefaults
 func userDefinedTipRatings (_ arrayOfPressedButtonValues: [String], serviceQuality: ServiceQuality) {
 
-    var venueEditor = VenueEditor.sharedInstance
+    let venueEditor = VenueEditor.sharedInstance
 
     var inputAmount = 0.00
     if !arrayOfPressedButtonValues.isEmpty {
