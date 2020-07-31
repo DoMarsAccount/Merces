@@ -17,17 +17,59 @@ struct Venue: Hashable {
 class VenueCreator: ObservableObject {
     static let sharedInstance = VenueCreator()
     
+    @Published var service: ServiceQuality {
+        didSet {
+            switch self.service {
+            case .Bad:
+                self.activeField = .newBadTip
+            case .Good:
+                self.activeField = .newGoodTip
+            case .Great:
+                self.activeField = .newGreatTip
+            }
+        }
+    }
+    @Published var activeField: EditableTextFields
+    @Published var tipAmount: Double {
+        didSet {
+            switch service {
+            case .Bad:
+                badServiceTipAmount = tipAmount
+            case .Good:
+                goodServiceTipAmount = tipAmount
+            case .Great:
+                greatServiceTipAmount = tipAmount
+            }
+        }
+    }
     @Published var badServiceTipAmount: Double
     @Published var goodServiceTipAmount: Double
     @Published var greatServiceTipAmount: Double
     
     init() {
+        service = .Good
+        activeField = .newGoodTip
+        tipAmount = 0.0
         badServiceTipAmount = 0.0
         goodServiceTipAmount = 0.0
         greatServiceTipAmount = 0.0
     }
     
+    func currentTipRate(service: ServiceQuality) -> Double {
+        switch service {
+        case .Bad:
+            return badServiceTipAmount
+        case .Good:
+            return goodServiceTipAmount
+        case .Great:
+            return greatServiceTipAmount
+        }
+    }
+    
     func reset() {
+        service = .Good
+        activeField = .newGoodTip
+        tipAmount = 0.0
         badServiceTipAmount = 0.0
         goodServiceTipAmount = 0.0
         greatServiceTipAmount = 0.0

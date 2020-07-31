@@ -101,14 +101,6 @@ class Tipping {
 
     func currentTipRate(for venue: Venue, service: ServiceQuality) -> Double {
         return Venues.sharedInstance.currentTipRate(for: venue, service: service)!
-//        switch service {
-//        case .Bad:
-//            return tipRates(for: venue)[0]
-//        case .Good:
-//            return tipRates(for: venue)[1]
-//        case .Great:
-//            return tipRates(for: venue)[2]
-//        }
     }
 }
 

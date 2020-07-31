@@ -31,6 +31,12 @@ struct KeypadButton: View {
                 self.inputs.arrayOfButtonsPressedForAverageTip.append(self.text)
             case .greatTip:
                 self.inputs.arrayOfButtonsPressedForGreatTip.append(self.text)
+            case .newBadTip:
+                self.inputs.arrayOfButtonsNewBadTip.append(self.text)
+            case .newGoodTip:
+                self.inputs.arrayOfButtonsNewGoodTip.append(self.text)
+            case .newGreatTip:
+                self.inputs.arrayOfButtonsNewGreatTip.append(self.text)
             default:
                 break
             }
@@ -80,6 +86,18 @@ struct KeypadDeleteButton: View {
             case .greatTip:
                 if (!self.inputs.arrayOfButtonsPressedForGreatTip.isEmpty) {
                     self.inputs.arrayOfButtonsPressedForGreatTip.removeLast()
+                }
+            case .newBadTip:
+                if (!self.inputs.arrayOfButtonsNewBadTip.isEmpty) {
+                    self.inputs.arrayOfButtonsNewBadTip.removeLast()
+                }
+            case .newGoodTip:
+                if (!self.inputs.arrayOfButtonsNewGoodTip.isEmpty) {
+                    self.inputs.arrayOfButtonsNewGoodTip.removeLast()
+                }
+            case .newGreatTip:
+                if (!self.inputs.arrayOfButtonsNewGreatTip.isEmpty) {
+                    self.inputs.arrayOfButtonsNewGreatTip.removeLast()
                 }
             default:
                 break

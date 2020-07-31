@@ -26,6 +26,7 @@ struct SettingsPage: View {
     @EnvironmentObject var userPrefs: UserPreferences
     @State private var isLocalSalesTaxPageActive: Bool = false
     @State private var isVenueEditPageActive: Bool = false
+    @State private var isAddVenuePageActive: Bool = false
     
     var body: some View {
         /*
@@ -50,6 +51,11 @@ struct SettingsPage: View {
                     Text("Edit Venues")
                         .font(Font(self.userPrefs.headlineFont(size: headlineTextSize)))
                         .accessibility(label: Text("Edit Venues"))
+                }
+                NavigationLink(destination: AddVenueView(isUserCreatingVenue: self.$isAddVenuePageActive), isActive: self.$isAddVenuePageActive) {
+                    Text("Add Venue")
+                        .font(Font(self.userPrefs.headlineFont(size: headlineTextSize)))
+                        .accessibility(label: Text("Add Venue"))
                 }
             }
             
@@ -95,19 +101,6 @@ struct LocalSalesTaxPage: View {
                     Keypad(value: self.$preferences.localSalesTax, isPresented: self.$isKeypadPresented, activeField: .constant(.localTax))
                 }
                 .accessibility(label: Text("Local Sales Tax Rate: \(nForm.roundForPercentWithThreeDecimalPlaces(number: self.preferences.localSalesTax))"))
-        }
-        .navigationBarTitle("Done")
-    }
-}
-
-struct VenueEditingView: View {
-    @EnvironmentObject var preferences: UserPreferences
-    @State private var isKeypadPresented: Bool = false
-    
-    var body: some View {
-        VStack(spacing: viewHeight) {
-            VenuesView()
-                .padding([.top])
         }
         .navigationBarTitle("Done")
     }
