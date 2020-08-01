@@ -135,7 +135,13 @@ class Venues: ObservableObject {
     func deleteVenue(at offsets: IndexSet) {
         var existingVenueNames = mUserDefaults?.value(forKey: "venueNames") as! [String]
         existingVenueNames.remove(atOffsets: offsets)
-//        print(existingVenueNames)
+        mUserDefaults?.set(existingVenueNames, forKey: "venueNames")
+        refreshVenuesArray()
+    }
+    
+    func deleteVenue(named name: String) {
+        var existingVenueNames = mUserDefaults?.value(forKey: "venueNames") as! [String]
+        existingVenueNames.removeAll { $0 == name }
         mUserDefaults?.set(existingVenueNames, forKey: "venueNames")
         refreshVenuesArray()
     }

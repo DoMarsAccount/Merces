@@ -21,7 +21,7 @@ struct VenueEditingView: View {
     }
 }
 
-struct VenuesView: View {
+struct UpdateTipsView: View {
     @EnvironmentObject var wCalcModel: CalculationsModel
     @State private var isActive: Bool = false {
         didSet {
@@ -32,7 +32,11 @@ struct VenuesView: View {
     @ObservedObject var venues = Venues.sharedInstance
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
+            Text("Updating: \(self.venues.selectedVenue.name.capitalized)")
+                .font(.headline)
+            
+            Divider()
             
             HStack {
                 Text("Tip %").font(.headline)
@@ -52,16 +56,6 @@ struct VenuesView: View {
                 }
                 .accessibility(label: Text("Tip Rate \(nForm.roundForPercentWithTwoDecimalPlaces(Tipping.sharedInstance.currentTipRate(for: self.venues.selectedVenue, service: self.venueEditor.service)))"))
             
-            Picker(selection: self.$venues.selectedVenue, label: Text("Venue").font(.headline)
-                .accessibility(label: Text("Venue: \(self.venues.selectedVenue.name)"))
-            ) {
-                ForEach(self.venues.venues, id: \.self) { venue in
-                    Text(venue.name.capitalized).tag(venue.name)
-                        .accessibility(label: Text("Venue: \(venue.name)"))
-                }
-            }
-            .frame(height: viewHeight)
-            
             Picker(selection: self.$venueEditor.service, label: Text("Service Level")
                     .font(.headline)
                     .multilineTextAlignment(.leading)
@@ -77,6 +71,78 @@ struct VenuesView: View {
                     .accessibility(value: Text("Service Level: \(ServiceQuality.allCases[index].name)"))
                 }
             }.frame(height: viewHeight)
+        }
+    }
+}
+
+struct VenuesView: View {
+    @EnvironmentObject var wCalcModel: CalculationsModel
+    @State private var isActive: Bool = false {
+        didSet {
+            venueEditor.resetTipAmount()
+        }
+    }
+    @ObservedObject var venueEditor = VenueEditor.sharedInstance
+    @ObservedObject var venues = Venues.sharedInstance
+    
+    @State private var isUpdateTipsViewActive: Bool = false
+    
+    var body: some View {
+        ScrollView(.vertical) {
+            VStack(alignment: .leading) {
+                
+                Picker(selection: self.$venues.selectedVenue, label: Text("Venue").font(.headline)
+                    .accessibility(label: Text("Venue: \(self.venues.selectedVenue.name)"))
+                ) {
+                    ForEach(self.venues.venues, id: \.self) { venue in
+                        Text(venue.name.capitalized).tag(venue.name)
+                            .accessibility(label: Text("Venue: \(venue.name)"))
+                    }
+                }
+                .frame(height: viewHeight)
+                
+                Group {
+                    HStack {
+                        Text("Bad:")
+                        Spacer()
+                        Text(nForm.roundForPercentWithTwoDecimalPlaces(self.venues.selectedVenue.tipAmounts[0]))
+                    }
+                    HStack {
+                        Text("Good:")
+                        Spacer()
+                        Text(nForm.roundForPercentWithTwoDecimalPlaces(self.venues.selectedVenue.tipAmounts[1]))
+                    }
+                    HStack {
+                        Text("Great:")
+                        Spacer()
+                        Text(nForm.roundForPercentWithTwoDecimalPlaces(self.venues.selectedVenue.tipAmounts[2]))
+                    }
+                }
+
+                Divider()
+                
+                NavigationLink(destination: UpdateTipsView(), isActive: $isUpdateTipsViewActive) {
+                    Text("Update Tip Rates")
+                        .minimumScaleFactor(0.5)
+                }
+                .modifier(scalingEffect())
+                
+                Button(action: {
+                    self.venues.updateDefaultVenue(newVenue: self.venues.selectedVenue.name)
+                }) {
+                    Text("Make Default Venue")
+                        .minimumScaleFactor(0.5)
+                }
+                .modifier(scalingEffect())
+                
+                Button(action: {
+                    self.venues.deleteVenue(named: self.venues.selectedVenue.name)
+                }) {
+                    Text("Delete Venue")
+                        .minimumScaleFactor(0.5)
+                }
+                .modifier(scalingEffect())
+            }
         }
     }
 }
