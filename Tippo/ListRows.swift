@@ -8,7 +8,8 @@
 
 import SwiftUI
 
-fileprivate let minScaleFactor: CGFloat = 0.25
+fileprivate let contentScaleFactor: CGFloat = 1.0
+fileprivate let titleScaleFactor: CGFloat = 1.0
 
 struct ListInputRow: View {
     @Binding var value: Double
@@ -28,8 +29,8 @@ struct ListInputRow: View {
                 
                 HStack {
                     Text(self.title)
-//                        .font(.title)
                         .font(Font(self.userPrefs.headlineFont(size: 24)))
+                        .minimumScaleFactor(titleScaleFactor)
                     
                     Spacer()
                     Group {
@@ -44,10 +45,10 @@ struct ListInputRow: View {
                         }
                     }
                     .font(Font(self.userPrefs.headlineFont(size: 30)))
+                    .minimumScaleFactor(contentScaleFactor)
                 }
                 .padding(.horizontal)
-                .minimumScaleFactor(minScaleFactor)
-                .lineLimit(1)
+//                .lineLimit(1)
             }
             .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.background, isFlat: true)))
             .modifier(AdaptiveCardBackground(backgroundColor: self.background))
@@ -72,35 +73,28 @@ struct ListInputHalfRow: View {
             if !self.userPrefs.reduceHaptics { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
         }) {
             VStack {
-                HStack {
-                    Text(self.title)
-//                        .font(.headline)
-                        .font(Font(self.userPrefs.headlineFont(size: 24)))
-                    Spacer()
-                }
-                .minimumScaleFactor(0.8)
+                Text(self.title)
+                    .font(Font(self.userPrefs.headlineFont(size: 24)))
+                    .frame(maxWidth: .infinity)
+                    .minimumScaleFactor(titleScaleFactor)
                 
-                HStack {
-                    Spacer()
-                    Group {
-                        if self.inputStyle == .Currency {
-                            Text(nForm.roundForCurrency(number: self.value))
-                        } else if inputStyle == .TwoDecimalPercent {
-                            Text(nForm.roundForPercentWithTwoDecimalPlaces(self.value))
-                        } else if inputStyle == .ThreeDecimalPercent {
-                            Text(nForm.roundForPercentWithThreeDecimalPlaces(number: self.value))
-                        } else {
-                            Text(nForm.formatIntegerNumbers(Int(self.value)))
-                        }
+                Group {
+                    if self.inputStyle == .Currency {
+                        Text(nForm.roundForCurrency(number: self.value))
+                    } else if inputStyle == .TwoDecimalPercent {
+                        Text(nForm.roundForPercentWithTwoDecimalPlaces(self.value))
+                    } else if inputStyle == .ThreeDecimalPercent {
+                        Text(nForm.roundForPercentWithThreeDecimalPlaces(number: self.value))
+                    } else {
+                        Text(nForm.formatIntegerNumbers(Int(self.value)))
                     }
-                    .minimumScaleFactor(minScaleFactor)
-                    .lineLimit(1)
-                    .font(Font(self.userPrefs.headlineFont(size: 30)))
                 }
+                .font(Font(self.userPrefs.headlineFont(size: 30)))
+                .frame(maxWidth: .infinity)
+                .minimumScaleFactor(contentScaleFactor)
             }
             .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.background, isFlat: true)))
             .modifier(AdaptiveCardBackground(backgroundColor: self.background))
-//                .modifier(NeumorphicStyle(viewBackgroundAccentColor: Color(.white), buttonColor: Color("DropShadowBlue")))
             
         }
     }
@@ -118,9 +112,8 @@ struct ListDisplayRow: View {
         ZStack {
             HStack {
                 Text(self.title)
-//                    .font(.title)
-
                     .font(Font(self.userPrefs.headlineFont(size: 24)))
+                    .minimumScaleFactor(titleScaleFactor)
                 
                 Spacer()
                 Group {
@@ -135,10 +128,9 @@ struct ListDisplayRow: View {
                     }
                 }
                 .font(Font(self.userPrefs.headlineFont(size: 30)))
+                .minimumScaleFactor(contentScaleFactor)
             }
             .padding()
-            .minimumScaleFactor(minScaleFactor)
-            .lineLimit(1)
         }
         .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.viewColor : self.themes.viewColorDark, isFlat: true)))
         .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? self.themes.viewColor : self.themes.viewColorDark, isInputCard: false))
@@ -162,15 +154,15 @@ struct VenueButton: View {
                 HStack {
                     Text("Venue")
                         .font(Font(self.userPrefs.headlineFont(size: 24)))
+                        .minimumScaleFactor(titleScaleFactor)
                     
                     Spacer()
                     
                     Text(self.calcModel.selectedVenue.name)
-                    .font(Font(self.userPrefs.headlineFont(size: 30)))
+                        .font(Font(self.userPrefs.headlineFont(size: 30)))
+                        .minimumScaleFactor(contentScaleFactor)
                 }
                 .padding(.horizontal)
-                .minimumScaleFactor(minScaleFactor)
-                .lineLimit(1)
             }
             .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark, isFlat: true)))
             .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark))
@@ -192,20 +184,15 @@ struct VenueHalfButton: View {
             if !self.userPrefs.reduceHaptics { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
         }) {
             VStack {
-                HStack {
-                    Text("Venue")
+                Text("Venue")
                     .font(Font(self.userPrefs.headlineFont(size: 24)))
-                    Spacer()
-                }
-                .minimumScaleFactor(0.8)
+                    .frame(maxWidth: .infinity)
+                    .minimumScaleFactor(titleScaleFactor)
                 
-                HStack {
-                    Spacer()
-                    Text(self.calcModel.selectedVenue.name.capitalized)
-                        .font(Font(self.userPrefs.headlineFont(size: 30)))
-                        .minimumScaleFactor(minScaleFactor)
-                        .lineLimit(1)
-                }
+                Text(self.calcModel.selectedVenue.name.capitalized)
+                    .font(Font(self.userPrefs.headlineFont(size: 30)))
+                    .frame(maxWidth: .infinity)
+                    .minimumScaleFactor(contentScaleFactor)
                 
             }
             .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.mainColor : self.themes.mainColorDark, isFlat: true)))
@@ -217,7 +204,9 @@ struct VenueHalfButton: View {
 
 struct ListRows_Previews: PreviewProvider {
     static var previews: some View {
-        ListStyleMainPage(isOpen: .constant(true)).environmentObject(UserPreferences.sharedInstance)
-        .padding()
+        GeometryReader { geo in
+            MainPageSheet(maxHeight: geo.size.height)
+                .environmentObject(UserPreferences.sharedInstance)
+        }
     }
 }

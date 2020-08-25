@@ -53,7 +53,7 @@ struct MainPageSheet: View {
     
     var body: some View {
         GeometryReader { geo in
-            VStack(spacing: 0) {
+            VStack {
                 self.indicator
                     .padding()
                     .onTapGesture {
