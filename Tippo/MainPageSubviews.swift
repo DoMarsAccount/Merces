@@ -1,0 +1,210 @@
+//
+//  MainPageSubviews.swift
+//  TipTok
+//
+//  Created by Donovan McCray on 6/15/20.
+//  Copyright © 2020 DoMarsToyBox. All rights reserved.
+//
+
+import SwiftUI
+
+let highlightedScale: CGFloat = 1.3
+
+struct MainPageTopSubview: View {
+    @Environment(\.colorScheme) var colorScheme
+    @ObservedObject var inputs = InputProcessing.sharedInstance
+    @ObservedObject var calcModel: CalculationsModel = CalculationsModel.sharedInstance
+    @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
+    @ObservedObject var themes: Themes = Themes.sharedInstance
+    var body: some View {
+        VStack {
+            Button(action: {
+                self.inputs.activeField = EditableTextFields.subtotal
+            }) {
+                VStack {
+                    Text("Subtotal")
+                        .font(Font(self.userPrefs.headlineFont(size: 18)))
+                        .scaleEffect(self.inputs.activeField == EditableTextFields.subtotal ? highlightedScale : 1.0)
+                        .minimumScaleFactor(0.75)
+                    CurrencyView(value: self.$calcModel.subtotal)
+                }
+            }
+//            .accentColor(.primary)
+            .accessibility(label: Text("Subtotal \(nForm.roundForCurrency(number: self.calcModel.subtotal))"))
+            
+            
+            HStack {
+                if !UserPreferences.sharedInstance.subtotalIsPostTax {
+                    Button(action: {
+                        if self.userPrefs.localSalesTax == 0.0 {
+                            self.inputs.activeField = EditableTextFields.salesTax
+                        }
+                    }) {
+                        VStack {
+                            Text("Sales Tax")
+                                .font(Font(self.userPrefs.headlineFont(size: 18)))
+                                .scaleEffect(self.inputs.activeField == EditableTextFields.salesTax ? highlightedScale : 1.0)
+                                .minimumScaleFactor(0.75)
+                            CurrencyView(value: self.$calcModel.taxAmount, isEnabled: self.userPrefs.localSalesTax == 0.0)
+                        }
+                    }
+//                    .accentColor(.primary)
+                    .accessibility(label: Text("Sales Tax \(nForm.roundForCurrency(number: self.calcModel.taxAmount))"))
+                
+                    Button(action: {
+                        self.inputs.activeField = EditableTextFields.partySize
+                    }) {
+                        VStack {
+                            Text("Party Size")
+                                .font(Font(self.userPrefs.headlineFont(size: 18)))
+                                .scaleEffect(self.inputs.activeField == EditableTextFields.partySize ? highlightedScale : 1.0)
+                                .minimumScaleFactor(0.75)
+                            IntegerView(value: self.$calcModel.partySize)
+                        }
+                    }
+//                    .accentColor(.primary)
+                    .accessibility(label: Text("Party Size:  \(nForm.formatIntegerNumbers(self.calcModel.partySize))"))
+                } else {
+                    Button(action: {
+                        self.inputs.activeField = EditableTextFields.partySize
+                    }) {
+                        HStack {
+                            Text("Party Size")
+                                .font(Font(self.userPrefs.headlineFont(size: 18)))
+                                .scaleEffect(self.inputs.activeField == EditableTextFields.partySize ? highlightedScale : 1.0)
+                                .minimumScaleFactor(0.75)
+                                .padding()
+                            IntegerView(value: self.$calcModel.partySize)
+                        }.padding(.vertical )
+                    }
+//                    .accentColor(.primary)
+                    .accessibility(label: Text("Party Size:  \(nForm.formatIntegerNumbers(self.calcModel.partySize))"))
+                }
+            }
+//                .padding(.top)
+        }
+        .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.viewColor : self.themes.viewColorDark, isFlat: true)))
+        .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.viewColor : self.themes.viewColorDark, isFlat: true)))
+        .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? self.themes.viewColor : self.themes.viewColorDark, isInputCard: false))
+    }
+}
+
+struct MainPageMiddleSubview: View {
+    @Environment(\.colorScheme) var colorScheme
+    @ObservedObject var inputs = InputProcessing.sharedInstance
+    @ObservedObject var calcModel: CalculationsModel = CalculationsModel.sharedInstance
+    @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
+    @ObservedObject var themes: Themes = Themes.sharedInstance
+    var body: some View {
+        GeometryReader { geo in
+            VStack {
+                HStack {
+                    
+                    Button(action: {
+                        self.inputs.activeField = EditableTextFields.venue
+                    }) {
+                        VStack {
+                            Text("Venue")
+                                .font(Font(self.userPrefs.headlineFont(size: 18)))
+                            
+                            ZStack {
+                                Color.black
+                                    .opacity(0.0)
+                                Text(self.calcModel.selectedVenue.name)
+                                    .font(Font(self.userPrefs.headlineFont(size: 18)))
+                            }
+                            .frame(maxHeight: geo.size.height / 3)
+                            .modifier(MercesStyleTextField())
+                        }
+                    }
+                    .accentColor(.primary)
+                    .accessibility(label: Text("Venue: \(self.calcModel.selectedVenue.name)"))
+                    
+                    Button(action: {
+                        self.inputs.activeField = EditableTextFields.tipRate
+                    }) {
+                        VStack {
+                            Text("Tip %")
+                                .font(Font(self.userPrefs.headlineFont(size: 18)))
+                                .scaleEffect(self.inputs.activeField == EditableTextFields.tipRate ? highlightedScale : 1.0)
+                            PercentageView(value: self.$calcModel.tipRate)
+                                .frame(maxHeight: geo.size.height / 3)
+                        }
+                    }
+                    .accentColor(.primary)
+                    .accessibility(label: Text("Tip: \(nForm.roundForPercentWithTwoDecimalPlaces(self.calcModel.tipRate))"))
+                }
+                
+                VStack {
+                    Text("Service Level")
+                        .font(Font(self.userPrefs.headlineFont(size: 18)))
+                    ServiceQualityPicker()
+                }.accessibility(label: Text("Service Level: \(self.calcModel.service.name)"))
+    //            .padding(.top)
+            }
+            .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.viewColor : self.themes.viewColorDark, isFlat: true)))
+            .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.viewColor : self.themes.viewColorDark, isFlat: true)))
+            .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? self.themes.viewColor : self.themes.viewColorDark, isInputCard: false))
+        }
+    }
+}
+
+struct MainPageBottomSubview: View {
+    @Environment(\.colorScheme) var colorScheme
+    @ObservedObject var calcModel: CalculationsModel = CalculationsModel.sharedInstance
+    @ObservedObject var userPrefs: UserPreferences = UserPreferences.sharedInstance
+    @ObservedObject var themes: Themes = Themes.sharedInstance
+    var body: some View {
+        GeometryReader { geo in
+            VStack {
+                HStack(alignment: .center) {
+                    Text("Totaled Amounts")
+                        .font(Font(self.userPrefs.headlineFont(size: 18)))
+                        .minimumScaleFactor(0.5)
+                }
+                
+                if self.calcModel.tipAmount != 0.0 {
+                    HStack {
+                        Text("Tip Amount:")
+                            .font(Font(self.userPrefs.headlineFont(size: 18)))
+                        CurrencyView(value: self.$calcModel.tipAmount, isEnabled: false)
+                    }
+                    .frame(maxHeight: geo.size.height / 3)
+                    .accessibility(label: Text("Tip Amount: \(nForm.roundForCurrency(number: self.calcModel.tipAmount))"))
+    //                .padding(.top)
+                }
+                
+                HStack {
+                    Text("Grand Total:")
+                        .font(Font(self.userPrefs.headlineFont(size: 18)))
+                    CurrencyView(value: self.$calcModel.totalAmount, isEnabled: false)
+                }
+                .frame(maxHeight: geo.size.height / 3)
+                .accessibility(label: Text("Grand Total: \(nForm.roundForCurrency(number: self.calcModel.totalAmount))"))
+    //                .padding(.top)
+                
+                if self.calcModel.partySize != 1 {
+                    HStack {
+                        Text("Each Person:")
+                            .font(Font(self.userPrefs.headlineFont(size: 18)))
+                        CurrencyView(value: self.$calcModel.totalAmountPerPerson, isEnabled: false)
+                    }
+                    .frame(maxHeight: geo.size.height / 3)
+                    .accessibility(label: Text("Total Per Person: \(nForm.roundForCurrency(number: self.calcModel.totalAmountPerPerson))"))
+    //                    .padding(.top)
+                }
+            }
+//            .frame(maxHeight: geo.size.height / 4)
+            .accentColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.viewColor : self.themes.viewColorDark, isFlat: true)))
+            .foregroundColor(Color(UIColor(contrastingBlackOrWhiteColorOn: self.colorScheme == .light ? self.themes.viewColor : self.themes.viewColorDark, isFlat: true)))
+                
+            .modifier(AdaptiveCardBackground(backgroundColor: self.colorScheme == .light ? self.themes.viewColor : self.themes.viewColorDark, isInputCard: false))
+        }
+    }
+}
+
+struct MainPageSubviews_Previews: PreviewProvider {
+    static var previews: some View {
+        MainPageTopSubview()
+    }
+}

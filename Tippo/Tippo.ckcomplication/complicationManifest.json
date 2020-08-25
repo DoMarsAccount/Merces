@@ -1,0 +1,15 @@
+{
+  "supported complication families" : {
+    "3" : "5B817342-6256-4393-A4A3-33AF4D7BFDC5.json",
+    "8" : "C5E55FF2-F179-4103-8541-9AB793CCA132.json",
+    "11" : "36592C8F-C952-4A25-94E3-9FA9D0939C6B.json",
+    "0" : "21D48BE6-2F1A-4006-9045-211714E6E6C4.json",
+    "4" : "3937FC4A-3AA0-4C5D-8035-6FAA2E937390.json",
+    "9" : "940552FE-BF5F-44A6-9571-5302D3A92EFF.json",
+    "1" : "C4950122-8AFA-48A3-B870-2D0EBE0BC863.json",
+    "6" : "D4E41D83-C3D1-485F-B76A-8C20660F9A60.json",
+    "10" : "D56F5427-0F23-4C7E-8C46-BEBDBDB1BBFA.json",
+    "2" : "F09A4803-E9E6-4297-9E9C-08692FFF16C7.json"
+  },
+  "client ID" : "com.domar.Tippo-watchOS.watchkitapp.watchkitextension"
+}
